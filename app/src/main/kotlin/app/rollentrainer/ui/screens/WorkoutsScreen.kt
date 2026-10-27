@@ -138,10 +138,10 @@ fun WorkoutsScreen(container: AppContainer, onEdit: (id: String?, copy: Boolean)
             }
             .sortedWith(
                 when (sort) {
-                    Sort.NAME -> compareBy { it.name.lowercase() }
-                    Sort.DURATION -> compareBy { it.durationSec() }
-                    Sort.TSS -> compareByDescending { stress[it.id]?.second ?: 0.0 }
-                    Sort.INTENSITY -> compareByDescending { stress[it.id]?.first ?: 0.0 }
+                    Sort.NAME -> compareBy<Workout> { it.name.lowercase() }
+                    Sort.DURATION -> compareBy<Workout> { it.durationSec() }
+                    Sort.TSS -> compareByDescending<Workout> { stress[it.id]?.second ?: 0.0 }
+                    Sort.INTENSITY -> compareByDescending<Workout> { stress[it.id]?.first ?: 0.0 }
                 },
             )
             .sortedByDescending { it.id in favorites }

@@ -135,11 +135,12 @@ class RideSession(
 
             // Trainer command: ERG target (with PowerMatch) or simulation mode.
             val match = powerMatch(m, cfg.powerMatch)
+            val command = st.commandWatts
             when {
                 st.finished && !wasFinished -> hub.releaseTrainer()
                 st.finished -> Unit
                 !st.erg -> hub.setSimulation(st.gradePct)
-                st.commandWatts != null -> hub.setTargetPower((st.commandWatts - (match ?: 0)).coerceAtLeast(0))
+                command != null -> hub.setTargetPower((command - (match ?: 0)).coerceAtLeast(0))
             }
 
             if (st.segmentIndex != lastSegment && lastSegment >= 0) stats.newLap()

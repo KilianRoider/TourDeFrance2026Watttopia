@@ -329,7 +329,9 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                         }
                         Stat("RPE", delta(ride.rpe, prev.rpe, ""))
                     }
-                    if (s.avgHr != null && prev.summary.avgHr != null && s.avgPower >= prev.summary.avgPower && s.avgHr < prev.summary.avgHr) {
+                    val hrNow = s.avgHr
+                    val hrBefore = prev.summary.avgHr
+                    if (hrNow != null && hrBefore != null && s.avgPower >= prev.summary.avgPower && hrNow < hrBefore) {
                         Text("Gleiche oder mehr Leistung bei niedrigerem Puls – ein gutes Zeichen für deine Form.",
                             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 8.dp))
                     }

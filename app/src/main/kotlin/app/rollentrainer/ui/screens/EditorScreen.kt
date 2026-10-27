@@ -77,6 +77,7 @@ import kotlin.math.roundToInt
 private fun newId() = UUID.randomUUID().toString()
 
 /** Builds a workout from blocks. Built-in workouts are copied before editing. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onDone: () -> Unit) {
     val settings by container.settings.state.collectAsStateWithLifecycle()

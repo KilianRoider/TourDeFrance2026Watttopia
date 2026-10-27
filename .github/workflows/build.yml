@@ -22,7 +22,26 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
 
       - name: Test and build APK
-        run: ./gradlew --no-daemon :core:test :app:assembleDebug
+        run: |
+          set -o pipefail
+          ./gradlew --no-daemon :core:test :app:assembleDebug 2>&1 | tee build.log
+
+      # Compiler errors as annotations and as a commit comment, so they can be read without the raw log.
+      - name: Report build errors
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          grep -E "^e: |What went wrong|^> Task .* FAILED|^\* What|tests completed" build.log | head -200 > errors.txt || true
+          head -10 errors.txt | while IFS= read -r line; do echo "::error::${line}"; done
+          {
+            echo "Build ${{ github.run_number }} fehlgeschlagen (Run ${{ github.run_id }})."
+            echo
+            echo '```'
+            cat errors.txt
+            echo '```'
+          } > comment.md
+          gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -F body=@comment.md >/dev/null || true
 
       - name: Rename APK
         run: cp app/build/outputs/apk/debug/app-debug.apk Wattwerk.apk

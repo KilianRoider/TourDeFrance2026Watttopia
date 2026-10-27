@@ -5,22 +5,30 @@ entwickelt für den **Van Rysel D100** und den **Wahoo Kickr Core 2**.
 
 ## Funktionen
 
-- **Block-Editor:** Trainings aus Blöcken bauen (konstant, Rampe, Intervalle mit Wiederholungen), Leistung in % FTP oder Watt,
-  Vorschau mit Zonenfarben, IF und TSS.
-- **ERG-Modus:** Die App gibt dem Trainer für jeden Abschnitt die Zielleistung vor. Während der Fahrt: Pause, Überspringen,
-  Intensität ±5 %, Countdown-Töne, Auto-Pause/Auto-Start, optionaler Schutz bei niedriger Trittfrequenz.
-- **Live-Graphen:** Leistung (mit Ziel), Herzfrequenz und Trittfrequenz, letzte 10 Minuten oder ganze Fahrt.
-- **Datenfelder wie am Garmin Edge:** 42 Felder in sechs Gruppen (Leistung 3 s/10 s/30 s, NP, IF, TSS, W/kg, Pulszone,
-  Abschnitt verbleibend, nächstes Ziel, Uhrzeit, …). Im Training über „Anpassen“ antippen, ersetzen, verschieben;
-  Vorlagen Minimal/Standard/Alles, 2 bis 4 Spalten, Zielbalken, Profil und Graphen abschaltbar.
-- **Coaching:** Trittfrequenz-Ziele und Text-Hinweise pro Block (kompatibel mit Zwift `Cadence` und `textevent`),
-  Zielbalken grün/gelb/rot, Sterne pro Abschnitt für Zielgenauigkeit.
-- **Auswertung:** Abschnitts-Tabelle, Zeit in Leistungs- und Pulszonen, FTP-Vorschlag nach Rampentest (75 % der
-  besten Minute) oder 20-Minuten-Test (95 %).
+- **Block-Editor:** Trainings aus Blöcken bauen (konstant, Rampe, Intervalle mit Wiederholungen, **frei ohne ERG**),
+  Leistung in % FTP oder Watt, Trittfrequenz-Ziele, mehrere Hinweistexte mit Zeitpunkt pro Block, Kennzeichnung als
+  FTP-Test, Vorschau mit Zonenfarben, IF und TSS.
+- **ERG-Modus:** Die App gibt dem Trainer für jeden Abschnitt die Zielleistung vor; das nächste Ziel wird 2 s früher
+  gesendet. Während der Fahrt: Pause, Abschnitt zurück/überspringen, **+1 min / +10 s verlängern**, Intensität in
+  1-%-Schritten (plus ±5/±10 und Reset), **ERG an/aus** mit simulierter Steigung, „Ich bin platt“ beim Rampentest,
+  **Weiterfahren** nach dem Ende, Countdown-Overlay 3-2-1 und „Gleich: …“-Vorschau.
+- **Spirale des Todes:** Fällt die Trittfrequenz unter die Schwelle, nimmt die App das Ziel auf 40 % zurück und führt
+  es nach dem Antreten in 3 s wieder hoch (oder sofort per Tipp). **PowerMatch** gleicht Trainer und Powermeter ab.
+- **Datenseiten wie am Garmin Edge:** 8 feste Raster (1 Feld bis 3 × 4), bis zu 6 Seiten zum Wischen, getrennt für
+  Training und freie Fahrt, Schriftgröße S–XL. 50 Felder in sechs Gruppen (Leistung 3 s/10 s/30 s, NP, IF, TSS, W/kg,
+  W'-Bilanz, Pulszone, Abschnitt verbleibend, nächster Abschnitt, Uhrzeit, ERG-Status, …).
+- **Live-Graphen:** Leistung (mit Ziel), Herzfrequenz, Trittfrequenz und W'-Bilanz, letzte 10 Minuten oder ganze Fahrt.
+- **Töne:** Countdown, Abschnittswechsel (heller wenn härter), Trittfrequenz-Hinweise, Metronom im Takt der
+  Ziel-Trittfrequenz, Lautstärke und jede Art einzeln abschaltbar.
+- **Auswertung:** Sterne pro Abschnitt mit wählbarer Toleranz (locker/normal/streng; Rampen, freie Blöcke und kurze
+  Abschnitte unbewertet, die ersten 5 s zählen nicht), Bestwerte 5 s/1/5/20 min mit Rekorden der letzten 365 Tage,
+  Vergleich mit dem letzten gleichen Training, RPE und Notiz, Zeit in Zonen (Coggan 7 oder Zwift 6), FTP-Vorschlag
+  nach Rampentest (75 % der besten Minute) oder 20-Minuten-Test (95 %), FTP-Verlauf, Wochenziel und Wochen-Serie.
+- **Bibliothek:** 18 Vorlagen (Rampentest, Rampentest Lite, 20-Minuten-Test, Sweet Spot, Schwelle, Over-Under, VO2max,
+  30/30, Anaerob, Sprints, Pyramide, Tempo, Trittfrequenz-Drills, Grundlage, Regeneration), Suche, Sortieren, Filter
+  nach Art und Dauer, Favoriten. Import von Zwift (.zwo) und TrainerRoad/ErgVideo (.mrc, .erg), Export als .zwo.
 - **Sensoren in den Einstellungen:** Smart-Trainer (FTMS), Pulsgurt, Trittfrequenzsensor (CSC) und Powermeter koppeln,
   mit Verbindungsstatus und Akkustand. Automatisches Wiederverbinden.
-- **Vorlagen:** FTP-Rampentest, Sweet Spot, VO2max, Schwelle 2 × 20, Grundlage, Regeneration. Import und Export von Zwift-Dateien (.zwo).
-- **Verlauf:** Auswertung mit NP, IF, TSS, kJ, W/kg und Wochensumme.
 - **Export:** FIT-Datei (geprüft mit Garmins offiziellem FIT-Decoder), Upload zu Strava, Teilen für Garmin Connect.
 
 ## Installation

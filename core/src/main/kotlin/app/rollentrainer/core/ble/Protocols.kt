@@ -1,6 +1,7 @@
 package app.rollentrainer.core.ble
 
 import java.util.UUID
+import kotlin.math.roundToInt
 
 /** Bluetooth SIG UUIDs for the services the app speaks. */
 object Uuids {
@@ -74,6 +75,11 @@ object Ftms {
     const val OP_RESPONSE = 0x80
 
     const val RESULT_SUCCESS = 0x01
+    const val RESULT_NOT_SUPPORTED = 0x02
+    const val RESULT_INVALID_PARAMETER = 0x03
+    const val RESULT_FAILED = 0x04
+    /** The trainer no longer accepts our commands; Request Control has to be repeated. */
+    const val RESULT_CONTROL_NOT_PERMITTED = 0x05
 
     fun requestControl() = byteArrayOf(OP_REQUEST_CONTROL.toByte())
     fun startOrResume() = byteArrayOf(OP_START_RESUME.toByte())
@@ -81,9 +87,9 @@ object Ftms {
     /** Stop (1) or pause (2). */
     fun stop(pause: Boolean) = byteArrayOf(OP_STOP_PAUSE.toByte(), (if (pause) 2 else 1).toByte())
 
-    /** Resistance level 0..100 in simulation-free "level" mode (unit 0.1). */
+    /** Resistance level 0..25.5 in simulation-free "level" mode (FTMS: uint8 with 0.1 resolution). */
     fun setTargetResistance(level: Double): ByteArray {
-        val v = (level * 10).toInt().coerceIn(0, 255)
+        val v = (level * 10).roundToInt().coerceIn(0, 255)
         return byteArrayOf(OP_SET_TARGET_RESISTANCE.toByte(), v.toByte())
     }
 
@@ -92,10 +98,10 @@ object Ftms {
      * coefficients. Trainers switch from ERG to a "flat road" with this command.
      */
     fun setSimulation(gradePct: Double, windMps: Double = 0.0, crr: Double = 0.004, cw: Double = 0.51): ByteArray {
-        val wind = (windMps * 1000).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt())
-        val grade = (gradePct * 100).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt())
-        val c = (crr * 10_000).toInt().coerceIn(0, 255)
-        val w = (cw * 100).toInt().coerceIn(0, 255)
+        val wind = (windMps * 1000).roundToInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt())
+        val grade = (gradePct * 100).roundToInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt())
+        val c = (crr * 10_000).roundToInt().coerceIn(0, 255)
+        val w = (cw * 100).roundToInt().coerceIn(0, 255)
         return byteArrayOf(
             OP_SET_SIMULATION.toByte(),
             (wind and 0xFF).toByte(), (wind shr 8 and 0xFF).toByte(),

@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -41,6 +42,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,6 +57,7 @@ import app.rollentrainer.data.FontScale
 import app.rollentrainer.ride.RideState
 import app.rollentrainer.ui.components.CardShape
 import app.rollentrainer.ui.components.SectionTitle
+import kotlinx.coroutines.launch
 
 /**
  * Fixed grids like the data pages of a bike computer: every page has one layout and one field per
@@ -131,7 +134,6 @@ fun FieldTile(
         3 -> 42f
         else -> 32f
     } * scale
-    val unitSize = (base * 0.28f).coerceAtLeast(12f)
     Column(
         modifier
             .clip(CardShape)
@@ -157,27 +159,33 @@ fun FieldTile(
             Box(Modifier.size(8.dp).clip(CircleShape).background(value.accent ?: MaterialTheme.colorScheme.outline))
             Spacer(Modifier.width(8.dp))
             Text(
-                field.label.uppercase(), style = MaterialTheme.typography.labelMedium,
+                field.shortLabel.uppercase(), style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis,
             )
         }
-        Row(verticalAlignment = Alignment.Bottom) {
-            Text(
-                value.text,
-                fontSize = base.sp,
-                lineHeight = (base * 1.05f).sp,
-                style = MaterialTheme.typography.displayLarge,
-                maxLines = 1,
-                softWrap = false,
-                color = if (perRow == 1) value.accent ?: MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface,
-            )
-            if (value.unit.isNotEmpty()) {
-                Spacer(Modifier.width(6.dp))
+        // The value shrinks to the tile's width (digits are about 0.58 em wide), so "1:29:59" or "245 W" never gets cut off.
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val units = value.text.length * 0.58f + if (value.unit.isEmpty()) 0f else 0.1f + value.unit.length * 0.28f * 0.6f
+            val size = minOf(base, maxWidth.value / units).coerceAtLeast(14f)
+            val unitSize = (size * 0.28f).coerceAtLeast(12f)
+            Row(verticalAlignment = Alignment.Bottom) {
                 Text(
-                    value.unit, fontSize = unitSize.sp, lineHeight = (unitSize * 1.2f).sp,
-                    style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = (base * 0.12f).dp),
+                    value.text,
+                    fontSize = size.sp,
+                    lineHeight = (size * 1.05f).sp,
+                    style = MaterialTheme.typography.displayLarge,
+                    maxLines = 1,
+                    softWrap = false,
+                    color = if (perRow == 1) value.accent ?: MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface,
                 )
+                if (value.unit.isNotEmpty()) {
+                    Spacer(Modifier.width(6.dp))
+                    Text(
+                        value.unit, fontSize = unitSize.sp, lineHeight = (unitSize * 1.2f).sp,
+                        style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(bottom = (size * 0.12f).dp),
+                    )
+                }
             }
         }
         if (value.sub != null) {
@@ -202,12 +210,11 @@ private fun PageGrid(
 ) {
     val layout = PageLayout.byKey(page.layout)
     val scale = settings.rideFontScale.factor
-    Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(ROW_GAP)) {
         var slot = 0
         for (perRow in layout.rows) {
             val rowWeight = when (perRow) { 1 -> 1.9f; 2 -> 1.3f; else -> 1f }
-            val rowHeight = when (perRow) { 1 -> 168.dp; 2 -> 118.dp; else -> 96.dp } * scale
-            val rowModifier = if (fill) Modifier.fillMaxWidth().weight(rowWeight) else Modifier.fillMaxWidth().height(rowHeight)
+            val rowModifier = if (fill) Modifier.fillMaxWidth().weight(rowWeight) else Modifier.fillMaxWidth().height(rowHeight(perRow, scale))
             Row(rowModifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 for (c in 0 until perRow) {
                     val index = slot++
@@ -222,6 +229,15 @@ private fun PageGrid(
         }
     }
 }
+
+private val ROW_GAP = 8.dp
+
+/** Height of one tile row in the scrolling (phone) layout; tablets fill the available height instead. */
+private fun rowHeight(perRow: Int, scale: Float) = when (perRow) { 1 -> 168.dp; 2 -> 118.dp; else -> 96.dp } * scale
+
+/** Height of a whole page in the scrolling layout, so that the pager keeps one height across pages. */
+private fun pageHeight(layout: PageLayout, scale: Float) =
+    layout.rows.fold(0.dp) { acc, perRow -> acc + rowHeight(perRow, scale) } + ROW_GAP * (layout.rows.size - 1)
 
 /**
  * The swipeable data pages with dots below. In edit mode a toolbar changes the layout, adds or
@@ -243,6 +259,13 @@ fun DataPages(
         if (pagerState.currentPage >= pages.size && pages.isNotEmpty()) pagerState.scrollToPage(pages.size - 1)
     }
     var picker by remember { mutableStateOf<Pair<Int, Int>?>(null) } // page, slot
+    val scope = rememberCoroutineScope()
+
+    /** Reorders the pages and keeps the pager on the page that moved, so the toolbar keeps editing it. */
+    fun move(from: Int, to: Int) {
+        onChange(pages.toMutableList().also { it.add(to, it.removeAt(from)) })
+        scope.launch { pagerState.scrollToPage(to) }
+    }
 
     fun setPage(index: Int, page: DataPage) = onChange(pages.toMutableList().also { it[index] = page })
 
@@ -254,11 +277,11 @@ fun DataPages(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("Seite ${current + 1} von ${pages.size}", style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
                     IconButton(onClick = {
-                        if (current > 0) onChange(pages.toMutableList().also { it.add(current - 1, it.removeAt(current)) })
-                    }, enabled = current > 0) { Icon(Icons.Outlined.ChevronLeft, "Seite nach vorne") }
+                        if (current > 0) move(current, current - 1)
+                    }, enabled = current > 0) { Icon(Icons.Outlined.ChevronLeft, "Seite nach links verschieben") }
                     IconButton(onClick = {
-                        if (current < pages.lastIndex) onChange(pages.toMutableList().also { it.add(current + 1, it.removeAt(current)) })
-                    }, enabled = current < pages.lastIndex) { Icon(Icons.Outlined.ChevronRight, "Seite nach hinten") }
+                        if (current < pages.lastIndex) move(current, current + 1)
+                    }, enabled = current < pages.lastIndex) { Icon(Icons.Outlined.ChevronRight, "Seite nach rechts verschieben") }
                     IconButton(onClick = { if (pages.size > 1) onChange(pages.filterIndexed { i, _ -> i != current }) }, enabled = pages.size > 1) {
                         Icon(Icons.Outlined.Delete, "Seite löschen", tint = MaterialTheme.colorScheme.error)
                     }
@@ -286,9 +309,12 @@ fun DataPages(
                 }
             }
         }
+        // In the scrolling layout every page gets the height of the tallest one, so the charts below don't jump while swiping.
+        val scale = settings.rideFontScale.factor
+        val fixedHeight = pages.maxOfOrNull { pageHeight(PageLayout.byKey(it.layout), scale) } ?: pageHeight(PageLayout.HERO7, scale)
         HorizontalPager(
             state = pagerState,
-            modifier = if (fill) Modifier.fillMaxWidth().weight(1f) else Modifier.fillMaxWidth(),
+            modifier = if (fill) Modifier.fillMaxWidth().weight(1f) else Modifier.fillMaxWidth().height(fixedHeight),
             pageSpacing = 16.dp,
             userScrollEnabled = pages.size > 1,
         ) { index ->
@@ -357,8 +383,8 @@ fun FieldPickerDialog(current: DataField?, onPick: (DataField?) -> Unit, onDismi
                 }
             }
         },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Abbrechen") } },
-        dismissButton = { TextButton(onClick = { onPick(null) }) { Text("Feld leeren") } },
+        confirmButton = { if (current != null) TextButton(onClick = { onPick(null) }) { Text("Feld leeren") } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Abbrechen") } },
     )
 }
 

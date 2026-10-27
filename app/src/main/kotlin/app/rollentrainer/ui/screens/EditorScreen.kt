@@ -103,7 +103,8 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
     val timeline = remember(workout) { Timeline(workout) }
 
     fun save() = scope.launch {
-        container.workouts.save(workout)
+        // Cues are kept in editing order while stepping their time (rows would jump under the finger); sort once here.
+        container.workouts.save(workout.copy(blocks = workout.blocks.map { b -> withCues(b, b.cues.sortedBy { c -> c.offsetSec }) }))
         onDone()
     }
 
@@ -138,7 +139,7 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(selected = test == TestKind.NONE, onClick = { test = TestKind.NONE }, label = { Text("Kein Test") })
                     FilterChip(selected = test == TestKind.RAMP, onClick = { test = TestKind.RAMP }, label = { Text("Rampentest (75 % der besten Minute)") })
-                    FilterChip(selected = test == TestKind.TWENTY_MIN, onClick = { test = TestKind.TWENTY_MIN }, label = { Text("20-min-Test (95 %)") })
+                    FilterChip(selected = test == TestKind.TWENTY_MIN, onClick = { test = TestKind.TWENTY_MIN }, label = { Text("20-Minuten-Test (95 %)") })
                 }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -359,8 +360,8 @@ private fun CueEditor(cues: List<Cue>, maxSec: Int, onChange: (List<Cue>) -> Uni
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Stepper(
                     formatDuration(cue.offsetSec),
-                    onMinus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec - stepFor(cue.offsetSec)).coerceAtLeast(0)) }.sortedBy { it.offsetSec }) },
-                    onPlus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec + stepFor(cue.offsetSec)).coerceAtMost((maxSec - 1).coerceAtLeast(0))) }.sortedBy { it.offsetSec }) },
+                    onMinus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec - stepFor(cue.offsetSec)).coerceAtLeast(0)) }) },
+                    onPlus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec + stepFor(cue.offsetSec)).coerceAtMost((maxSec - 1).coerceAtLeast(0))) }) },
                 )
                 OutlinedTextField(
                     cue.text, { t -> onChange(cues.toMutableList().also { it[i] = cue.copy(text = t) }) },

@@ -148,7 +148,8 @@ class RideSession(
                 if (startEpochSec == 0L) startEpochSec = System.currentTimeMillis() / 1000
                 if (timeline != null && st.segmentIndex >= 0 && (lapStarts.isEmpty() || st.segmentIndex != lastSegment)) {
                     val seg = timeline.segments.getOrNull(st.segmentIndex)
-                    lapStarts += LapBoundary(samples.size, st.segmentLabel.ifBlank { "Abschnitt ${st.segmentIndex + 1}" }, rated = seg?.erg ?: true)
+                    // Ramps and free-ride segments get no stars; a steady segment stays rated even if the intensity is changed.
+                    lapStarts += LapBoundary(samples.size, st.segmentLabel.ifBlank { "Abschnitt ${st.segmentIndex + 1}" }, rated = seg != null && seg.erg && !seg.isRamp)
                 }
                 if (st.continuing && lapStarts.isNotEmpty() && lapStarts.last().label != "Weiterfahren") {
                     lapStarts += LapBoundary(samples.size, "Weiterfahren", rated = false)
@@ -156,8 +157,9 @@ class RideSession(
                 val target = if (st.erg) st.targetWatts else null
                 samples += Sample(samples.size, m.power, target, m.heartRate, m.cadence, m.speedKmh)
                 stats.add(m.power, target, m.heartRate, m.cadence, m.speedKmh)
-                wbal.update(m.power, 1.0)
             }
+            // W' recovers while standing still too, so the balance follows wall-clock time, not recorded samples.
+            wbal.update(if (st.paused) 0 else m.power, dt.coerceIn(0.0, 5.0))
             audio(st, m, lastSegment, lastErgState, cfg)
             lastSegment = st.segmentIndex
             lastErgState = st.ergState

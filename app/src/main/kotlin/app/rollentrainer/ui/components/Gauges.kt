@@ -105,7 +105,7 @@ fun PowerZoneBars(seconds: IntArray, modifier: Modifier = Modifier) = ZoneBars(
 /** Zone bars for any scheme (Coggan 7 or Zwift 6). */
 @Composable
 fun PowerZoneBars(seconds: IntArray, scheme: ZoneScheme, modifier: Modifier = Modifier) = ZoneBars(
-    seconds, (0 until scheme.count).map { "${scheme.name(it)} ${scheme.labels[it]}" }, (0 until scheme.count).map { zoneColorAt(it) }, modifier,
+    seconds, (0 until scheme.count).map { "${scheme.zoneName(it)} ${scheme.labels[it]}" }, (0 until scheme.count).map { zoneColorAt(it) }, modifier,
 )
 
 @Composable

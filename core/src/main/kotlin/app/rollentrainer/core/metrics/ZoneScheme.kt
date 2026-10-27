@@ -26,7 +26,8 @@ enum class ZoneScheme(val title: String, val labels: List<String>, private val u
         return upperPct.indexOfFirst { p <= it }.coerceAtLeast(0)
     }
 
-    fun name(index: Int): String = "Z${index + 1}"
+    /** Short label "Z1".."Z7"; not called `name` because the enum already has one. */
+    fun zoneName(index: Int): String = "Z${index + 1}"
 
     /** Seconds per zone from 1 Hz power values. */
     fun timeInZones(powers: Iterable<Int?>, ftp: Int): IntArray {

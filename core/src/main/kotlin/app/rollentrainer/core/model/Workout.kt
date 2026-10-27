@@ -89,6 +89,8 @@ sealed class Block {
         /** Cadence target during the recovery part. */
         val offCadence: Int? = null,
         override val cues: List<Cue> = emptyList(),
+        /** Name of the second part; empty means "Erholung" when it is easier than the first part. */
+        val offLabel: String = "",
     ) : Block() {
         override fun durationSec() = repeat * (onSec + offSec)
     }
@@ -123,7 +125,6 @@ data class Workout(
     val blocks: List<Block> = emptyList(),
     val builtIn: Boolean = false,
     val test: TestKind = TestKind.NONE,
-    val favorite: Boolean = false,
 ) {
     fun durationSec(): Int = blocks.sumOf { it.durationSec() }
 
@@ -262,7 +263,14 @@ class Timeline private constructor(val workout: Workout, val segments: List<Segm
                             t += block.onSec
                         }
                         if (block.offSec > 0) {
-                            out += Segment(index, t, block.offSec, block.offPower, block.offPower, "Erholung $n", block.offCadence)
+                            // The second part is only a recovery when it is easier (over-unders and cadence drills are not).
+                            val offName = when {
+                                block.offLabel.isNotBlank() -> block.offLabel
+                                block.offPower.percentOfFtp(250) < block.onPower.percentOfFtp(250) -> "Erholung"
+                                block.offCadence != null && block.offCadence != block.cadence -> "$name ${block.offCadence} rpm"
+                                else -> "$name · Teil 2"
+                            }
+                            out += Segment(index, t, block.offSec, block.offPower, block.offPower, "$offName $n", block.offCadence)
                             t += block.offSec
                         }
                     }

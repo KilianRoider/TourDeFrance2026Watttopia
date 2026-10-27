@@ -10,6 +10,8 @@ import android.media.ToneGenerator
 class Sounds {
     private var tone: ToneGenerator? = null
     private var volume = -1
+    /** Until when a cue tone is playing; metronome clicks are skipped meanwhile so they don't cut it off. */
+    private var cueUntil = 0L
 
     fun prepare(volume: Int) {
         val v = volume.coerceIn(0, 100)
@@ -31,13 +33,17 @@ class Sounds {
     /** Cadence drifts away from the target. */
     fun cadenceHint() = play(ToneGenerator.TONE_PROP_NACK, 200)
 
-    /** Metronome click. */
-    fun click() = play(ToneGenerator.TONE_DTMF_1, 25)
+    /** Metronome click; skipped while a cue tone plays. */
+    fun click() {
+        if (System.currentTimeMillis() < cueUntil) return
+        tone?.startTone(ToneGenerator.TONE_DTMF_1, 25)
+    }
 
     /** ERG released because the rider bogged down. */
     fun released() = play(ToneGenerator.TONE_SUP_ERROR, 250)
 
     private fun play(kind: Int, ms: Int) {
+        cueUntil = System.currentTimeMillis() + ms + 50
         tone?.startTone(kind, ms)
     }
 

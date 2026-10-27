@@ -49,7 +49,7 @@ data class LapResult(
     }
 }
 
-/** Where a lap boundary lies and how the lap should be judged. */
+/** Where a lap boundary lies and whether the lap is judged (not for ramps and free-ride segments). */
 data class LapBoundary(val sampleIndex: Int, val label: String, val rated: Boolean = true)
 
 /**
@@ -136,7 +136,7 @@ object Analysis {
     /**
      * Splits the samples at [boundaries] into lap results. The first boundary is expected at index 0.
      * The first [SETTLE_SEC] seconds of every lap do not count towards accuracy, and laps shorter than
-     * [MIN_RATED_SEC], ramps (target changes) and unrated boundaries get no accuracy at all.
+     * [MIN_RATED_SEC] or marked unrated by the caller (ramps, free ride) get no accuracy at all.
      */
     fun lapsOf(samples: List<Sample>, boundaries: List<LapBoundary>): List<LapResult> {
         if (samples.isEmpty() || boundaries.isEmpty()) return emptyList()
@@ -150,8 +150,7 @@ object Analysis {
             val targets = part.mapNotNull { it.target }
             val hrs = part.mapNotNull { it.hr?.takeIf { h -> h > 0 } }
             val cads = part.mapNotNull { it.cadence?.takeIf { c -> c > 0 } }
-            val isRamp = targets.size >= 2 && (targets.max() - targets.min()) > 5
-            val rated = b.rated && part.size >= MIN_RATED_SEC && !isRamp && targets.isNotEmpty()
+            val rated = b.rated && part.size >= MIN_RATED_SEC && targets.isNotEmpty()
             val judged = if (rated) part.drop(SETTLE_SEC) else emptyList()
             val relDev = judged.mapNotNull { s ->
                 val t = s.target ?: return@mapNotNull null

@@ -107,6 +107,7 @@ class SettingsStore(context: Context) {
 
     private fun load(): AppSettings = prefs.getString(KEY, null)
         ?.let { runCatching { AppJson.decodeFromString(AppSettings.serializer(), it) }.getOrNull() }
+        ?.let { it.copy(wPrimeKj = it.wPrimeKj.coerceIn(5, 50), ftp = it.ftp.coerceIn(50, 600)) }
         ?: AppSettings()
 
     @Synchronized

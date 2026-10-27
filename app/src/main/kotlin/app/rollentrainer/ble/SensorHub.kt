@@ -12,14 +12,19 @@ import app.rollentrainer.core.ble.Uuids
 import app.rollentrainer.data.SavedSensor
 import app.rollentrainer.data.SensorRole
 import app.rollentrainer.data.SettingsStore
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withTimeoutOrNull
 import java.util.UUID
 
 /** A reading with the time it arrived, so stale values can be ignored. */
@@ -84,6 +89,11 @@ class SensorHub(
     private var simulation = false
     private var lastGrade: Double? = null
     private var lastGradeSentAt = 0L
+    private var lastControlRequestAt = 0L
+
+    /** FTMS is a procedure protocol: one control-point command at a time, each answered by an indication. */
+    private val cpLock = Mutex()
+    private var cpResponse: CompletableDeferred<Int>? = null
 
     private fun now() = SystemClock.elapsedRealtime()
 
@@ -138,8 +148,9 @@ class SensorHub(
                 subscribe(Uuids.FTMS, Uuids.INDOOR_BIKE_DATA)
                 subscribe(Uuids.FTMS, Uuids.FTMS_STATUS)
                 if (subscribe(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, indicate = true)) {
-                    write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.requestControl())
-                    // The response arrives as an indication and sets trainerControl.
+                    lastControlRequestAt = now()
+                    control(Ftms.requestControl())
+                    // The response arrives as an indication and sets trainerControl; ensureControl() retries if it does not.
                 } else {
                     Log.w(TAG, "Trainer has no FTMS control point")
                 }
@@ -171,15 +182,25 @@ class SensorHub(
                 }
             }
             Uuids.FTMS_CONTROL_POINT -> Ftms.parseControlResponse(value)?.let { (op, result) ->
-                if (op == Ftms.OP_REQUEST_CONTROL) {
-                    _trainerControl.value = result == Ftms.RESULT_SUCCESS
-                    if (result == Ftms.RESULT_SUCCESS) {
-                        scope.launch {
-                            clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.startOrResume())
-                            if (simulation) lastGrade?.let { g ->
-                                clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setSimulation(g))
-                            } else lastTarget?.let { forceTarget(it) }
-                        }
+                cpResponse?.complete(result)
+                when {
+                    op == Ftms.OP_REQUEST_CONTROL -> {
+                        _trainerControl.value = result == Ftms.RESULT_SUCCESS
+                        if (result == Ftms.RESULT_SUCCESS) scope.launch { resendAfterControl() }
+                    }
+                    // Any command answered with "control not permitted" means we lost control without a status event.
+                    result == Ftms.RESULT_CONTROL_NOT_PERMITTED -> {
+                        _trainerControl.value = false
+                        lastTargetSentAt = 0L
+                        lastGradeSentAt = 0L
+                        lastControlRequestAt = 0L
+                        ensureControl()
+                    }
+                    result != Ftms.RESULT_SUCCESS -> {
+                        Log.w(TAG, "FTMS op 0x%02x failed with 0x%02x".format(op, result))
+                        // The next tick repeats the target or grade instead of waiting for the periodic resend.
+                        lastTargetSentAt = 0L
+                        lastGradeSentAt = 0L
                     }
                 }
             }
@@ -187,9 +208,8 @@ class SensorHub(
                 // 0xFF = control permission lost (e.g. another app took over): ask again.
                 if (value.firstOrNull()?.toInt()?.and(0xFF) == 0xFF) {
                     _trainerControl.value = false
-                    scope.launch {
-                        clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.requestControl())
-                    }
+                    lastControlRequestAt = 0L
+                    ensureControl()
                 }
             }
             Uuids.HEART_RATE_MEASUREMENT -> HeartRate.parse(value)?.takeIf { it > 0 }?.let { hr ->
@@ -216,7 +236,9 @@ class SensorHub(
     fun current(): LiveMetrics {
         val r = _raw.value
         val t = now()
-        val usePm = settings.value.preferPowerMeter && r.meterPower?.fresh(t) == true
+        // PowerMatch regulates the trainer so that the meter hits the target, so the meter must be what is shown.
+        val cfg = settings.value
+        val usePm = (cfg.preferPowerMeter || cfg.powerMatch) && r.meterPower?.fresh(t) == true
         val power = if (usePm) r.meterPower?.value else r.trainerPower?.takeIf { it.fresh(t) }?.value
             ?: r.meterPower?.takeIf { it.fresh(t) }?.value
         val cadence = r.sensorCadence?.takeIf { it.fresh(t) }?.value
@@ -245,8 +267,11 @@ class SensorHub(
         }
         lastTarget = w
         lastTargetSentAt = t
-        if (!_trainerControl.value) return
-        scope.launch { forceTarget(w) }
+        if (!_trainerControl.value) { ensureControl(); return }
+        scope.launch {
+            // A refused write is retried on the next tick instead of silently holding the old target for 10 s.
+            if (control(Ftms.setTargetPower(w)) == CP_WRITE_FAILED) lastTargetSentAt = 0L
+        }
     }
 
     /**
@@ -261,28 +286,64 @@ class SensorHub(
         if (!modeSwitch && t - lastGradeSentAt < 500) return
         lastGrade = gradePct
         lastGradeSentAt = t
-        if (!_trainerControl.value) return
+        if (!_trainerControl.value) { ensureControl(); return }
         scope.launch {
-            clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setSimulation(gradePct))
+            if (control(Ftms.setSimulation(gradePct)) == CP_WRITE_FAILED) lastGradeSentAt = 0L
         }
     }
 
-    private suspend fun forceTarget(w: Int) {
-        clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setTargetPower(w))
-    }
-
-    /** Releases the trainer at the end of a ride so it spins freely. */
+    /**
+     * Releases the trainer at the end of a ride: a flat road in simulation mode, so coasting is free and
+     * pedalling feels like riding on the flat. (A 0 W ERG target is outside some trainers' supported range
+     * and would be rejected, leaving the last interval's resistance active.)
+     */
     fun releaseTrainer() {
         lastTarget = null
-        simulation = false
-        scope.launch {
-            clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setTargetPower(0))
-        }
+        simulation = true
+        lastGrade = 0.0
+        lastGradeSentAt = now()
+        scope.launch { control(Ftms.setSimulation(0.0)) }
+    }
+
+    /**
+     * Writes one control-point command and waits for the trainer's response indication, so that commands
+     * never overlap (a second write during a running procedure is refused with "procedure already in
+     * progress"). Returns the result code, null when no response came in time, or [CP_WRITE_FAILED].
+     */
+    private suspend fun control(cmd: ByteArray): Int? = cpLock.withLock {
+        val client = clients[SensorRole.TRAINER] ?: return@withLock CP_WRITE_FAILED
+        val response = CompletableDeferred<Int>()
+        cpResponse = response
+        val written = client.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, cmd)
+        val result = if (written) withTimeoutOrNull(CP_RESPONSE_TIMEOUT_MS) { response.await() } else CP_WRITE_FAILED
+        cpResponse = null
+        delay(CP_GAP_MS) // some firmware is slow to clear the procedure
+        result
+    }
+
+    /** After control was granted (or regained) the trainer starts from scratch: start it and repeat the current command. */
+    private suspend fun resendAfterControl() {
+        control(Ftms.startOrResume())
+        if (simulation) lastGrade?.let { control(Ftms.setSimulation(it)) }
+        else lastTarget?.let { control(Ftms.setTargetPower(it)) }
+    }
+
+    /** Asks for control again every few seconds while the trainer is connected but has not granted it. */
+    private fun ensureControl() {
+        val t = now()
+        if (_trainerControl.value || t - lastControlRequestAt < CONTROL_RETRY_MS) return
+        if (_status.value[SensorRole.TRAINER]?.state != ConnectionState.CONNECTED) return
+        lastControlRequestAt = t
+        scope.launch { control(Ftms.requestControl()) }
     }
 
     companion object {
         private const val TAG = "SensorHub"
         /** Some trainers drop a target after a reconnect; repeating it now and then is cheap. */
         private const val RESEND_MS = 10_000L
+        private const val CONTROL_RETRY_MS = 5_000L
+        private const val CP_RESPONSE_TIMEOUT_MS = 1_500L
+        private const val CP_GAP_MS = 80L
+        private const val CP_WRITE_FAILED = -1
     }
 }

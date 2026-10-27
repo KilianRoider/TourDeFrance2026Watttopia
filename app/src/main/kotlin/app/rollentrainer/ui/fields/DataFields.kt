@@ -41,6 +41,8 @@ enum class DataField(
     val label: String,
     val group: FieldGroup,
     val description: String,
+    /** What the tile shows as its heading; short enough for a quarter-width tile. */
+    val shortLabel: String = label,
 ) {
     POWER("power", "Leistung", FieldGroup.POWER, "Aktuelle Leistung, geglättet wie in den Einstellungen gewählt"),
     POWER_3S("power3s", "Leistung 3 s", FieldGroup.POWER, "Über 3 Sekunden gemittelt"),
@@ -53,12 +55,12 @@ enum class DataField(
     POWER_AVG("powerAvg", "Ø Leistung", FieldGroup.POWER, "Durchschnitt der ganzen Fahrt"),
     POWER_LAP("powerLap", "Ø Abschnitt", FieldGroup.POWER, "Durchschnitt im aktuellen Abschnitt"),
     POWER_MAX("powerMax", "Max. Leistung", FieldGroup.POWER, "Höchster Wert der Fahrt"),
-    NP("np", "Normalized Power", FieldGroup.POWER, "Gewichtete Durchschnittsleistung"),
+    NP("np", "Normalized Power", FieldGroup.POWER, "Gewichtete Durchschnittsleistung", "NP"),
     IF("if", "Intensität (IF)", FieldGroup.POWER, "Normalized Power geteilt durch FTP"),
     TSS("tss", "TSS", FieldGroup.POWER, "Training Stress Score bis jetzt"),
     WATTS_PER_KG("wkg", "W/kg", FieldGroup.POWER, "Leistung pro Kilogramm Körpergewicht"),
     WORK("work", "Arbeit", FieldGroup.POWER, "Geleistete Arbeit in Kilojoule"),
-    ACCURACY("accuracy", "Trefferquote", FieldGroup.POWER, "Wie genau du im Abschnitt am Ziel liegst"),
+    ACCURACY("accuracy", "Genauigkeit", FieldGroup.POWER, "100 % minus mittlere Abweichung vom Ziel im Abschnitt", "Genau."),
     WBAL("wbal", "W'-Bilanz", FieldGroup.POWER, "Verbleibende anaerobe Reserve (Skiba); sinkt über der FTP, füllt sich darunter"),
     POWER_MATCH("powerMatch", "PowerMatch", FieldGroup.POWER, "Korrektur zwischen Powermeter und Trainer"),
 
@@ -66,16 +68,16 @@ enum class DataField(
     HR_ZONE("hrZone", "Pulszone", FieldGroup.HEART, "Zone 1 bis 5 nach maximaler Herzfrequenz"),
     HR_PCT("hrPct", "% HFmax", FieldGroup.HEART, "Puls in Prozent der maximalen Herzfrequenz"),
     HR_AVG("hrAvg", "Ø Puls", FieldGroup.HEART, "Durchschnitt der ganzen Fahrt"),
-    HR_LAP("hrLap", "Ø Puls Abschnitt", FieldGroup.HEART, "Durchschnitt im aktuellen Abschnitt"),
+    HR_LAP("hrLap", "Ø Puls Abschnitt", FieldGroup.HEART, "Durchschnitt im aktuellen Abschnitt", "Ø Puls Abschn."),
     HR_MAX("hrMax", "Max. Puls", FieldGroup.HEART, "Höchster Wert der Fahrt"),
 
     CADENCE("cadence", "Trittfrequenz", FieldGroup.CADENCE, "Aktuelle Umdrehungen pro Minute"),
-    CADENCE_AVG("cadenceAvg", "Ø Trittfrequenz", FieldGroup.CADENCE, "Durchschnitt ohne Rollphasen"),
-    CADENCE_LAP("cadenceLap", "Ø Trittfr. Abschnitt", FieldGroup.CADENCE, "Durchschnitt im aktuellen Abschnitt"),
-    CADENCE_TARGET("cadenceTarget", "Ziel-Trittfrequenz", FieldGroup.CADENCE, "Vorgabe aus dem Trainingsblock, falls gesetzt"),
+    CADENCE_AVG("cadenceAvg", "Ø Trittfrequenz", FieldGroup.CADENCE, "Durchschnitt ohne Rollphasen", "Ø Trittfreq."),
+    CADENCE_LAP("cadenceLap", "Ø Trittfrequenz Abschnitt", FieldGroup.CADENCE, "Durchschnitt im aktuellen Abschnitt", "Ø TF Abschnitt"),
+    CADENCE_TARGET("cadenceTarget", "Ziel-Trittfrequenz", FieldGroup.CADENCE, "Vorgabe des aktuellen Abschnitts, falls gesetzt", "Ziel-TF"),
 
-    SEGMENT_REMAINING("segRemaining", "Abschnitt verbleibend", FieldGroup.TIME, "Countdown bis zum nächsten Abschnitt"),
-    SEGMENT_ELAPSED("segElapsed", "Abschnitt gefahren", FieldGroup.TIME, "Zeit im aktuellen Abschnitt"),
+    SEGMENT_REMAINING("segRemaining", "Abschnitt verbleibend", FieldGroup.TIME, "Countdown bis zum nächsten Abschnitt", "Rest Abschnitt"),
+    SEGMENT_ELAPSED("segElapsed", "Abschnitt gefahren", FieldGroup.TIME, "Zeit im aktuellen Abschnitt", "Abschn. gefahren"),
     WORKOUT_ELAPSED("workoutElapsed", "Trainingszeit", FieldGroup.TIME, "Gefahrene Zeit im Training"),
     WORKOUT_REMAINING("workoutRemaining", "Verbleibend", FieldGroup.TIME, "Restzeit des Trainings"),
     RIDE_TIME("rideTime", "Fahrzeit", FieldGroup.TIME, "Aufgezeichnete Zeit ohne Pausen"),
@@ -140,7 +142,7 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
             if (power == null || ftp <= 0) dash()
             else {
                 val z = scheme.indexOf(power * 100.0 / ftp)
-                FieldValue(scheme.name(z), "", scheme.labels[z], zoneColorAt(z))
+                FieldValue(scheme.zoneName(z), "", scheme.labels[z], zoneColorAt(z))
             }
         }
         DataField.POWER_AVG -> w(st.avgPower.takeIf { st.seconds > 0 })
@@ -153,6 +155,7 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
         DataField.WORK -> FieldValue(st.workKj.roundToInt().toString(), "kJ")
         DataField.ACCURACY -> st.lapAccuracyPct?.let { FieldValue(it.toString(), "%") } ?: dash()
         DataField.WBAL -> {
+            if (s.wPrimeJ <= 0) return dash()
             val pct = (s.wBalJ / s.wPrimeJ * 100).roundToInt()
             val color = when {
                 pct > 50 -> Good
@@ -240,7 +243,7 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
             else {
                 val z = scheme.indexOf(power * 100.0 / ftp)
                 val seconds = if (scheme == ZoneScheme.COGGAN) st.zoneSeconds else scheme.timeInZones(s.samples.map { it.power }, ftp)
-                FieldValue(formatDuration(seconds.getOrElse(z) { 0 }), "", "in ${scheme.name(z)}", zoneColorAt(z))
+                FieldValue(formatDuration(seconds.getOrElse(z) { 0 }), "", "in ${scheme.zoneName(z)}", zoneColorAt(z))
             }
         }
         DataField.ERG -> when {

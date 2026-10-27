@@ -45,8 +45,8 @@ object Presets {
         Workout(
             id = "preset-20min-test",
             name = "20-Minuten-FTP-Test",
-            description = "Der klassische Feldtest: nach dem Einfahren 5 Minuten voll, dann 20 Minuten so hart wie gleichmäßig möglich " +
-                "ohne ERG. FTP ≈ 95 % der 20 Minuten.",
+            description = "Der klassische Feldtest: nach Einfahren und drei kurzen Aktivierungen 5 Minuten voll, dann 20 Minuten ohne ERG " +
+                "so hart wie möglich, aber gleichmäßig. FTP ≈ 95 % der 20 Minuten.",
             builtIn = true,
             test = TestKind.TWENTY_MIN,
             blocks = listOf(
@@ -138,7 +138,7 @@ object Presets {
                 easy(2),
             ) + (1..3).flatMap { set ->
                 listOf(
-                    Block.Intervals(id(), 3, min(2), Power.pct(95), 60, Power.pct(105), "Over-Under $set"),
+                    Block.Intervals(id(), 3, min(2), Power.pct(95), 60, Power.pct(105), "Under $set", offLabel = "Over $set"),
                     Block.Steady(id(), min(5), Power.pct(50), "Erholung"),
                 )
             } + cooldown(),
@@ -146,7 +146,7 @@ object Presets {
         Workout(
             id = "preset-anaerobic",
             name = "Anaerob 8 × 1",
-            description = "Acht Minuten-Intervalle bei 130 % mit doppelt so langer Erholung.",
+            description = "Acht einminütige Intervalle bei 130 % mit jeweils zwei Minuten Erholung.",
             builtIn = true,
             blocks = listOf(
                 warmup(),
@@ -200,7 +200,7 @@ object Presets {
             builtIn = true,
             blocks = listOf(
                 warmup(),
-                Block.Intervals(id(), 6, min(3), Power.pct(70), min(3), Power.pct(70), "Drill", cadence = 105, offCadence = 65),
+                Block.Intervals(id(), 6, min(3), Power.pct(70), min(3), Power.pct(70), "105 rpm", cadence = 105, offCadence = 65, offLabel = "65 rpm"),
                 cooldown(),
             ),
         ),

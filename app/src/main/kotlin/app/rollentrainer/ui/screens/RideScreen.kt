@@ -3,6 +3,7 @@ package app.rollentrainer.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -44,7 +45,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -86,7 +86,6 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val status by container.sensors.status.collectAsStateWithLifecycle()
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val s = state ?: return
-    val scope = rememberCoroutineScope()
     var askEnd by remember { mutableStateOf(false) }
     var askRpe by remember { mutableStateOf(false) }
     var finishSeen by remember { mutableStateOf(false) }
@@ -97,7 +96,9 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val pages = settings.pages(free)
     val onPages: (List<app.rollentrainer.data.DataPage>) -> Unit = { p -> update { if (free) it.copy(freePages = p) else it.copy(ridePages = p) } }
 
-    fun end(save: Boolean, rpe: Int? = null, notes: String = "") = scope.launch {
+    // Runs in the app scope: the screen leaves the composition while the ride is being saved, which would
+    // cancel a screen-bound coroutine before the report is opened and the Strava upload is started.
+    fun end(save: Boolean, rpe: Int? = null, notes: String = "") = container.scope.launch {
         askEnd = false
         askRpe = false
         val ride = container.session.finish(save, rpe, notes)
@@ -119,7 +120,7 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val window = if (fullHistory) Int.MAX_VALUE else 600
     val shown = s.samples.takeLast(window)
     val chartKinds = settings.rideCharts
-    val wbalSeries = remember(s.samples.size, settings.ftp, settings.wPrimeKj) {
+    val wbalSeries = remember(s.samples.size, settings.ftp, settings.wPrimeKj, "wbal" in chartKinds) {
         if ("wbal" in chartKinds) Analysis.wBalSeries(s.samples, settings.ftp, settings.wPrimeKj * 1000) else DoubleArray(0)
     }
 
@@ -226,7 +227,7 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     if ((askEnd || done) && !askRpe) {
         AlertDialog(
             onDismissRequest = { if (!done) askEnd = false },
-            title = { Text(if (done) "Geschafft!" else "Training beenden?") },
+            title = { Text(if (done) "Geschafft!" else if (s.workout == null) "Fahrt beenden?" else "Training beenden?") },
             text = {
                 Column {
                     if (done) {
@@ -241,10 +242,12 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
                     )
                 }
             },
-            confirmButton = { Button(onClick = { if (s.elapsedSec < 30) end(true) else askRpe = true }) { Text("Beenden und speichern") } },
+            confirmButton = {
+                Button(onClick = { if (s.elapsedSec < 30) end(true) else askRpe = true }) { Text(if (s.elapsedSec < 30) "Beenden" else "Beenden und speichern") }
+            },
             dismissButton = {
                 Row {
-                    TextButton(onClick = { end(false) }) { Text("Verwerfen", color = MaterialTheme.colorScheme.error) }
+                    if (s.elapsedSec >= 30) TextButton(onClick = { end(false) }) { Text("Verwerfen", color = MaterialTheme.colorScheme.error) }
                     if (done) {
                         TextButton(onClick = {
                             finishSeen = true
@@ -272,7 +275,7 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
 private fun RpeDialog(onSave: (Int?, String) -> Unit, onSkip: () -> Unit, onDismiss: () -> Unit) {
     var rpe by remember { mutableStateOf<Int?>(null) }
     var notes by remember { mutableStateOf("") }
-    val labels = mapOf(1 to "sehr leicht", 2 to "leicht", 3 to "locker", 4 to "moderat", 5 to "etwas hart", 6 to "hart", 7 to "sehr hart", 8 to "sehr hart", 9 to "extrem hart", 10 to "maximal")
+    val labels = mapOf(1 to "sehr leicht", 2 to "leicht", 3 to "locker", 4 to "moderat", 5 to "etwas hart", 6 to "hart", 7 to "sehr hart", 8 to "sehr, sehr hart", 9 to "extrem hart", 10 to "maximal")
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Wie anstrengend war es?") },
@@ -339,10 +342,11 @@ private fun NextPreview(s: RideState) {
 
 /** Big 3-2-1 over the fields right before a segment change. */
 @Composable
-private fun CountdownOverlay(s: RideState) {
+private fun BoxScope.CountdownOverlay(s: RideState) {
     val rem = s.engine.segmentRemainingSec
     if (s.engine.paused || s.engine.nextSegment == null || rem !in 0..2 || s.engine.continuing) return
-    Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background.copy(alpha = 0.55f), CardShape), contentAlignment = Alignment.Center) {
+    // matchParentSize covers the data pages in the scrolling phone layout too, where the Box has no bounded height.
+    Box(Modifier.matchParentSize().background(MaterialTheme.colorScheme.background.copy(alpha = 0.55f), CardShape), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("${rem + 1}", fontSize = 140.sp, lineHeight = 150.sp, style = MaterialTheme.typography.displayLarge, color = MaterialTheme.colorScheme.primary)
             val next = s.engine.nextSegment
@@ -425,23 +429,19 @@ private fun Controls(container: AppContainer, s: RideState, settings: AppSetting
             FilledTonalIconButton(onClick = { session.skip() }, modifier = Modifier.height(56.dp)) { Icon(Icons.Default.SkipNext, "Überspringen") }
             OutlinedButton(onClick = { session.extend(60) }) { Text("+1 min") }
             OutlinedButton(onClick = { session.extend(10) }) { Text("+10 s") }
-            Column {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Stepper("${e.intensityPct} %", { session.adjustIntensity(-1) }, { session.adjustIntensity(1) }, label = "Intensität")
-                    Spacer(Modifier.width(4.dp))
-                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                            SmallChip("−10") { session.adjustIntensity(-10) }
-                            SmallChip("−5") { session.adjustIntensity(-5) }
-                        }
-                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                            SmallChip("+5") { session.adjustIntensity(5) }
-                            SmallChip("+10") { session.adjustIntensity(10) }
-                        }
-                    }
-                    if (e.intensityPct != 100) TextButton(onClick = { session.setIntensity(100) }) { Text("100 %") }
+            // Three direct children, so the row can wrap between them on a phone.
+            Stepper("${e.intensityPct} %", { session.adjustIntensity(-1) }, { session.adjustIntensity(1) }, label = "Intensität")
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    SmallChip("−10") { session.adjustIntensity(-10) }
+                    SmallChip("−5") { session.adjustIntensity(-5) }
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    SmallChip("+5") { session.adjustIntensity(5) }
+                    SmallChip("+10") { session.adjustIntensity(10) }
                 }
             }
+            if (e.intensityPct != 100) TextButton(onClick = { session.setIntensity(100) }) { Text("100 %") }
             if (s.workout?.test == TestKind.RAMP) {
                 Button(onClick = { session.bail() }, colors = androidx.compose.material3.ButtonDefaults.filledTonalButtonColors()) { Text("Ich bin platt") }
             }
@@ -451,7 +451,6 @@ private fun Controls(container: AppContainer, s: RideState, settings: AppSetting
             SmallChip("+25") { session.adjustManual(25) }
         }
         ErgControls(s, onErg = { session.setErg(it) }, onGrade = { session.adjustGrade(it) })
-        Spacer(Modifier.weight(1f))
         OutlinedButton(onClick = onEnd, modifier = Modifier.height(56.dp)) {
             Icon(Icons.Default.Stop, null)
             Spacer(Modifier.width(8.dp))
@@ -475,7 +474,7 @@ private fun ErgControls(s: RideState, onErg: (Boolean) -> Unit, onGrade: (Double
             selected = s.engine.erg,
             onClick = { if (!blockFree) onErg(!s.engine.erg) },
             enabled = !blockFree,
-            label = { Text(if (blockFree) "ERG aus (Block)" else if (s.engine.erg) "ERG an" else "ERG aus") },
+            label = { Text(if (blockFree) "ERG aus (frei)" else if (s.engine.erg) "ERG an" else "ERG aus") },
         )
         if (!s.engine.erg) {
             Stepper("%.1f %%".format(s.engine.gradePct), { onGrade(-0.5) }, { onGrade(0.5) }, label = "Steigung")

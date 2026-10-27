@@ -152,7 +152,7 @@ fun HistoryScreen(container: AppContainer, onOpen: (String) -> Unit) {
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                         Stat("Dauer", formatDuration(ride.summary.durationSec))
-                        Stat("Ø Watt", ride.summary.avgPower.toString())
+                        Stat("Ø Leistung", "${ride.summary.avgPower} W")
                         Stat("TSS", ride.summary.tss.roundToInt().toString())
                         val rated = ride.laps.filter { it.rated }
                         if (rated.isNotEmpty()) Stat("Sterne", "${rated.sumOf { it.stars(settings.starTolerance) }}/${rated.size * 3}")
@@ -231,13 +231,13 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                     Stat("Dauer", formatDuration(s.durationSec))
                     Stat("Ø Leistung", "${s.avgPower} W")
                     Stat("NP", "${s.normalizedPower} W")
-                    Stat("Max", "${s.maxPower} W")
+                    Stat("Max. Leistung", "${s.maxPower} W")
                     Stat("IF", "%.2f".format(s.intensityFactor))
                     Stat("TSS", s.tss.roundToInt().toString())
                     Stat("Arbeit", "${s.workKj} kJ")
                     Stat("W/kg", "%.2f".format(s.avgPower / settings.weightKg))
                     s.avgHr?.let { Stat("Ø Puls", "$it bpm") }
-                    s.maxHr?.let { Stat("Max Puls", "$it bpm") }
+                    s.maxHr?.let { Stat("Max. Puls", "$it bpm") }
                     s.avgCadence?.let { Stat("Ø Trittfrequenz", "$it rpm") }
                     if (s.distanceM > 0) Stat("Distanz", "%.1f km".format(s.distanceM / 1000))
                     Stat("RPE", ride.rpe?.let { "$it/10" } ?: "–")
@@ -297,7 +297,7 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                                 when {
                                     prev == null -> Text("erster Wert", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                     v > prev -> Text("Rekord (+${v - prev} W)", style = MaterialTheme.typography.labelSmall, color = Color(0xFFEAB308))
-                                    else -> Text("Rekord $prev W", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    else -> Text("Bisher $prev W", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                 }
                             }
                         }
@@ -355,7 +355,7 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                     Spacer(Modifier.height(8.dp))
                     Row(Modifier.fillMaxWidth()) {
                         Text("Abschnitt", Modifier.weight(1.6f), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        listOf("Dauer", "Ziel", "Ø W", "Ø Puls", "Ø rpm", "Genau").forEach {
+                        listOf("Dauer", "Ziel", "Ø W", "Ø Puls", "Ø rpm", "Genauigk.").forEach {
                             Text(it, Modifier.weight(1f), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                         Spacer(Modifier.weight(1f))
@@ -373,7 +373,8 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                         }
                     }
                     Text(
-                        "Rampen, freie Blöcke und Abschnitte unter 30 s werden nicht bewertet; die ersten 5 s jedes Abschnitts zählen nicht.",
+                        "Rampen, freie Blöcke und Abschnitte unter 30 s werden nicht bewertet; die ersten 5 s jedes Abschnitts zählen nicht. " +
+                            "3 Sterne bei einer Abweichung bis ±${tolerance.pct} % (oder höchstens 10 W), 2 bis ±${tolerance.pct * 2} %, 1 bis ±${tolerance.pct * 3} %.",
                         style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp),
                     )
                 }

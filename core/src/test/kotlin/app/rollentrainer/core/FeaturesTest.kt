@@ -102,6 +102,46 @@ class FeaturesTest {
         assertEquals(200, e.state.commandWatts)
     }
 
+    @Test fun ergRespectsSegmentCadenceAndMissingCadence() {
+        // A 65 rpm drill with the release threshold set to 70 rpm: riding the prescribed cadence is not "bogging down".
+        val tl = Timeline(Workout("x", "x", blocks = listOf(Block.Steady("a", 600, Power.pct(100), cadence = 65))))
+        val e = WorkoutEngine(tl, EngineConfig(ftp = 200, spiralRpm = 70))
+        repeat(10) { e.tick(1.0, 200, 65) }
+        assertEquals(ErgState.NORMAL, e.state.ergState)
+        // Below target - 10 rpm (55) it is released, and at the prescribed cadence (65 = 55 + 10) it comes back
+        // without flapping, although the rider's power is still low from the released phase.
+        repeat(3) { e.tick(1.0, 120, 40) }
+        assertEquals(ErgState.RELEASED, e.state.ergState)
+        repeat(2) { e.tick(1.0, 80, 65) }
+        assertEquals(ErgState.RE_ENGAGING, e.state.ergState)
+        repeat(3) { e.tick(1.0, 90, 65) }
+        assertEquals(ErgState.NORMAL, e.state.ergState)
+        assertEquals(200, e.state.commandWatts)
+        // Without a cadence reading ERG is never released, whatever the power does.
+        val e2 = WorkoutEngine(Timeline(Workout("y", "y", blocks = listOf(Block.Steady("a", 600, Power.pct(100))))), EngineConfig(ftp = 200, spiralRpm = 50))
+        repeat(10) { e2.tick(1.0, 60, null) }
+        assertEquals(ErgState.NORMAL, e2.state.ergState)
+        assertEquals(200, e2.state.commandWatts)
+    }
+
+    @Test fun lapsStayRatedAfterIntensityChange() {
+        // A steady lap whose target moved by +5 % keeps its rating; only the boundary's flag makes a lap unrated.
+        val samples = (0 until 120).map { i ->
+            val target = if (i < 60) 200 else 210
+            Sample(i, target, target, null, 90, null)
+        }
+        val laps = Analysis.lapsOf(samples, listOf(LapBoundary(0, "Steady"), LapBoundary(60, "Ramp", rated = false)))
+        assertTrue(laps[0].rated)
+        assertEquals(3, laps[0].stars)
+        assertFalse(laps[1].rated)
+    }
+
+    @Test fun simulationBytesAreRounded() {
+        // 0.29 % must encode as 29 (not 28 by truncation).
+        val b = Ftms.setSimulation(0.29)
+        assertEquals(29, (b[3].toInt() and 0xFF) or ((b[4].toInt() and 0xFF) shl 8))
+    }
+
     @Test fun extendBackAndContinue() {
         val tl = Timeline(Workout("x", "x", blocks = listOf(Block.Steady("a", 60, Power.pct(50)), Block.Steady("b", 60, Power.pct(100)))))
         val e = WorkoutEngine(tl, EngineConfig(ftp = 200, spiralRpm = 0))

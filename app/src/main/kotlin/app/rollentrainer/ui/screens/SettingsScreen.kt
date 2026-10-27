@@ -255,17 +255,18 @@ private fun PairDialog(container: AppContainer, role: SensorRole, onDismiss: () 
     )
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ProfilePanel(container: AppContainer, settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
     Panel(Modifier.fillMaxWidth()) {
-        Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Stepper("${settings.ftp} W", { container.settings.setFtp(settings.ftp - 5, "Manuell") },
                 { container.settings.setFtp(settings.ftp + 5, "Manuell") }, label = "FTP")
             Stepper("%.1f kg".format(settings.weightKg), { update { it.copy(weightKg = (it.weightKg - 0.5).coerceAtLeast(30.0)) } },
                 { update { it.copy(weightKg = (it.weightKg + 0.5).coerceAtMost(200.0)) } }, label = "Gewicht")
         }
         Spacer(Modifier.height(16.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalAlignment = Alignment.Bottom) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Stepper("${settings.maxHr}", { update { it.copy(maxHr = (it.maxHr - 1).coerceAtLeast(120)) } },
                 { update { it.copy(maxHr = (it.maxHr + 1).coerceAtMost(230)) } }, label = "Max. Herzfrequenz")
             Column {
@@ -273,7 +274,7 @@ private fun ProfilePanel(container: AppContainer, settings: AppSettings, update:
                 Text("%.2f W/kg".format(settings.ftp / settings.weightKg), style = MaterialTheme.typography.titleMedium)
             }
             Stepper("${settings.wPrimeKj} kJ", { update { it.copy(wPrimeKj = (it.wPrimeKj - 1).coerceAtLeast(5)) } },
-                { update { it.copy(wPrimeKj = (it.wPrimeKj + 1).coerceAtMost(50)) } }, label = "W' (anaerobe Reserve)")
+                { update { it.copy(wPrimeKj = (it.wPrimeKj + 1).coerceAtMost(50)) } }, label = "W' (anaerob)")
         }
         Spacer(Modifier.height(8.dp))
         Text(
@@ -302,10 +303,13 @@ private fun SoundsPanel(settings: AppSettings, update: ((AppSettings) -> AppSett
     Panel(Modifier.fillMaxWidth()) {
         SwitchRow("Töne", "Alle Signale während der Fahrt", settings.sounds) { v -> update { it.copy(sounds = v) } }
         if (settings.sounds) {
-            Text("Lautstärke ${settings.soundVolume} %", style = MaterialTheme.typography.bodyLarge)
+            // The slider keeps a local value while dragging and writes the settings once when the finger lifts.
+            var volume by remember(settings.soundVolume) { mutableStateOf(settings.soundVolume.toFloat()) }
+            Text("Lautstärke ${volume.toInt()} %", style = MaterialTheme.typography.bodyLarge)
             Slider(
-                value = settings.soundVolume.toFloat(),
-                onValueChange = { v -> update { it.copy(soundVolume = v.toInt()) } },
+                value = volume,
+                onValueChange = { v -> volume = v },
+                onValueChangeFinished = { update { it.copy(soundVolume = volume.toInt()) } },
                 valueRange = 0f..100f,
                 steps = 9,
             )
@@ -353,7 +357,7 @@ private fun TrainingPanel(settings: AppSettings, update: ((AppSettings) -> AppSe
         SwitchRow("Bildschirm anlassen", "Während des Trainings", settings.keepScreenOn) { v -> update { it.copy(keepScreenOn = v) } }
         SwitchRow("Powermeter bevorzugen", "Leistung vom Powermeter statt vom Trainer anzeigen und aufzeichnen",
             settings.preferPowerMeter) { v -> update { it.copy(preferPowerMeter = v) } }
-        SwitchRow("PowerMatch", "Die Zielleistung wird so korrigiert, dass dein Powermeter das Ziel trifft (braucht gekoppelten Powermeter)",
+        SwitchRow("PowerMatch", "Die Zielleistung wird so korrigiert, dass dein Powermeter das Ziel trifft; angezeigt und aufgezeichnet wird dann das Powermeter (braucht gekoppelten Powermeter)",
             settings.powerMatch) { v -> update { it.copy(powerMatch = v) } }
         ChoiceRow("Leistung glätten", listOf(1 to "1 s", 3 to "3 s", 5 to "5 s", 10 to "10 s"), settings.powerSmoothingSec) { v ->
             update { it.copy(powerSmoothingSec = v) }
@@ -364,12 +368,21 @@ private fun TrainingPanel(settings: AppSettings, update: ((AppSettings) -> AppSe
             settings.ergReleaseRpm,
         ) { v -> update { it.copy(ergReleaseRpm = v) } }
         Text(
-            "Fällt die Trittfrequenz 3 s lang darunter, nimmt die App das Ziel auf 40 % zurück („Spirale des Todes“). Sobald du wieder " +
-                "rund trittst, steigt es in 3 s zurück aufs Ziel – oder sofort über „Sofort volles Ziel“.",
+            "Fällt die Trittfrequenz 3 s lang darunter („Spirale des Todes“), nimmt die App das Ziel auf 40 % zurück. Trittst du 2 s lang " +
+                "wieder mindestens 10 rpm über der Schwelle, steigt das Ziel in 3 s zurück – oder sofort über „Sofort volles Ziel“. " +
+                "Bei Blöcken mit niedriger Ziel-Trittfrequenz liegt die Schwelle 10 rpm unter deren Ziel. " +
+                "Braucht eine Trittfrequenz-Messung vom Trainer oder Sensor.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         ChoiceRow("Sterne-Bewertung", StarTolerance.entries.map { it to "${it.title} (±${it.pct} %)" }, settings.starTolerance) { v -> update { it.copy(starTolerance = v) } }
+        val tol = settings.starTolerance.pct
+        Text(
+            "3 Sterne bei einer Abweichung bis ±$tol % (oder höchstens 10 W), 2 bis ±${tol * 2} %, 1 bis ±${tol * 3} %. " +
+                "Abweichung = mittlerer Abstand zum Ziel im Abschnitt.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
         ChoiceRow("Zonenschema", ZoneScheme.entries.map { it to it.title }, settings.zoneScheme) { v -> update { it.copy(zoneScheme = v) } }
         Spacer(Modifier.height(8.dp))
         Stepper(

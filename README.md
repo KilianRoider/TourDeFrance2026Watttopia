@@ -28,7 +28,9 @@ entwickelt für den **Van Rysel D100** und den **Wahoo Kickr Core 2**.
   30/30, Anaerob, Sprints, Pyramide, Tempo, Trittfrequenz-Drills, Grundlage, Regeneration), Suche, Sortieren, Filter
   nach Art und Dauer, Favoriten. Import von Zwift (.zwo) und TrainerRoad/ErgVideo (.mrc, .erg), Export als .zwo.
 - **Sensoren in den Einstellungen:** Smart-Trainer (FTMS), Pulsgurt, Trittfrequenzsensor (CSC) und Powermeter koppeln,
-  mit Verbindungsstatus und Akkustand. Automatisches Wiederverbinden.
+  mit Verbindungsstatus und Akkustand. Automatisches Wiederverbinden; Steuerbefehle an den Trainer laufen nacheinander
+  mit Bestätigung, die Steuerung wird bei Verlust automatisch neu angefordert, am Ende wird der Trainer auf „flache
+  Straße“ gestellt.
 - **Export:** FIT-Datei (geprüft mit Garmins offiziellem FIT-Decoder), Upload zu Strava, Teilen für Garmin Connect.
 
 ## Installation

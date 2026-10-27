@@ -85,7 +85,6 @@ class WorkoutEngine(
     private var lowSec = 0.0
     private var goodSec = 0.0
     private var reengageSec = 0.0
-    private var lastCadence: Int? = null
 
     var state: EngineState = compute()
         private set
@@ -93,7 +92,6 @@ class WorkoutEngine(
     /** Advances the clock by [dtSec] using the latest power and cadence readings. */
     fun tick(dtSec: Double, power: Int?, cadence: Int?): EngineState {
         val pedaling = (power ?: 0) > 15 || (cadence ?: 0) > 25
-        lastCadence = cadence
         if (pedaling) {
             started = true
             idleSec = 0.0
@@ -118,13 +116,16 @@ class WorkoutEngine(
 
     private fun updateErgState(dt: Double, power: Int?, cadence: Int?) {
         val target = currentTarget()
-        if (config.spiralRpm <= 0 || target == null || !ergActive() || !isRunning()) {
+        // Without a cadence reading there is nothing to judge the "spiral" by, so ERG stays normal.
+        if (config.spiralRpm <= 0 || target == null || cadence == null || !ergActive() || !isRunning()) {
             ergState = ErgState.NORMAL
             lowSec = 0.0; goodSec = 0.0; reengageSec = 0.0
             return
         }
-        val cad = cadence ?: 0
-        val bogged = (cad in 1 until config.spiralRpm) || ((power ?: 0) > 0 && (power ?: 0) < target * 0.5 && cad < 70)
+        // A block that prescribes a low cadence (strength drill at 55 rpm) must not count as bogging down.
+        val release = minOf(config.spiralRpm, (currentSegment()?.cadence ?: Int.MAX_VALUE) - 10).coerceAtLeast(20)
+        val recover = release + 10
+        val bogged = cadence in 1 until release
         when (ergState) {
             ErgState.NORMAL -> {
                 lowSec = if (bogged) lowSec + dt else 0.0
@@ -134,8 +135,7 @@ class WorkoutEngine(
                 }
             }
             ErgState.RELEASED -> {
-                val wanted = (currentSegment()?.cadence?.minus(10) ?: 70).coerceAtLeast(60)
-                goodSec = if (cad >= wanted) goodSec + dt else 0.0
+                goodSec = if (cadence >= recover) goodSec + dt else 0.0
                 if (goodSec >= REENGAGE_AFTER_SEC) {
                     ergState = ErgState.RE_ENGAGING
                     reengageSec = 0.0

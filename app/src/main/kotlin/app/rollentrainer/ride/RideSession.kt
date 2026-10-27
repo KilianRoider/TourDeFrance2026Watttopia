@@ -10,6 +10,7 @@ import app.rollentrainer.ble.LiveMetrics
 import app.rollentrainer.ble.SensorHub
 import app.rollentrainer.core.engine.EngineState
 import app.rollentrainer.core.engine.WorkoutEngine
+import app.rollentrainer.core.metrics.Analysis
 import app.rollentrainer.core.metrics.LiveStats
 import app.rollentrainer.core.metrics.StatsSnapshot
 import app.rollentrainer.core.model.Ride
@@ -73,6 +74,8 @@ class RideSession(
     private var startEpochSec = 0L
     private var tone: ToneGenerator? = null
     private var stats = LiveStats(200, 185)
+    /** Sample index at which each workout segment started, with its label. */
+    private val lapStarts = mutableListOf<Pair<Int, String>>()
 
     val running: Boolean get() = _state.value != null
 
@@ -85,6 +88,7 @@ class RideSession(
         samples.clear()
         startEpochSec = 0
         stats = LiveStats(s.ftp, s.maxHr)
+        lapStarts.clear()
         tone = runCatching { ToneGenerator(AudioManager.STREAM_MUSIC, 80) }.getOrNull()
         _state.value = RideState(workout, timeline, e.state, LiveMetrics(), null, emptyList(), 0, hub.trainerControl.value)
         ContextCompat.startForegroundService(context, Intent(context, RideService::class.java))
@@ -108,6 +112,9 @@ class RideSession(
             if (st.segmentIndex != lastSegment && lastSegment >= 0) stats.newLap()
             if (!st.paused) {
                 if (startEpochSec == 0L) startEpochSec = System.currentTimeMillis() / 1000
+                if (timeline != null && st.segmentIndex >= 0 && (lapStarts.isEmpty() || st.segmentIndex != lastSegment)) {
+                    lapStarts += samples.size to st.segmentLabel.ifBlank { "Abschnitt ${st.segmentIndex + 1}" }
+                }
                 samples += Sample(samples.size, m.power, st.targetWatts, m.heartRate, m.cadence, m.speedKmh)
                 stats.add(m.power, st.targetWatts, m.heartRate, m.cadence, m.speedKmh)
             }
@@ -179,6 +186,7 @@ class RideSession(
             ftp = ftp,
             samples = list,
             summary = RideSummary.of(list, ftp),
+            laps = Analysis.laps(list, lapStarts.toList()),
         )
         rides.save(ride)
         if (settings.value.stravaAutoUpload && strava.isConnected) uploadToStrava(ride)

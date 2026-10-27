@@ -249,6 +249,7 @@ fun LayoutOptions(settings: AppSettings, update: ((AppSettings) -> AppSettings) 
         }
         SectionTitle("Anzeigen")
         ToggleRow("Trainingsprofil", settings.rideShowProfile) { v -> update { it.copy(rideShowProfile = v) } }
+        ToggleRow("Zielbalken (Leistung zu Ziel)", settings.rideShowGauge) { v -> update { it.copy(rideShowGauge = v) } }
         ToggleRow("Verlaufsgraphen", settings.rideShowCharts) { v -> update { it.copy(rideShowCharts = v) } }
         if (settings.rideShowCharts) {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(start = 16.dp)) {

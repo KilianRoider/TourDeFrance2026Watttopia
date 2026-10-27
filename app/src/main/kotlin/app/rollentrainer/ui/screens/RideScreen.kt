@@ -56,6 +56,7 @@ import app.rollentrainer.ui.components.ConnectionDot
 import app.rollentrainer.ui.components.LineChart
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.Stepper
+import app.rollentrainer.ui.components.TargetGauge
 import app.rollentrainer.ui.components.WorkoutProfile
 import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.fields.FieldGrid
@@ -135,6 +136,7 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
             Banner("Tippe auf ein Feld, um es zu ersetzen. × entfernt es, die Pfeile verschieben es, „+ Feld“ fügt eines hinzu.")
         } else {
             banner?.let { Banner(it) }
+            s.engine.cue?.let { Banner("💬 $it", color = MaterialTheme.colorScheme.surfaceContainerHigh) }
         }
         s.timeline?.takeIf { settings.rideShowProfile }?.let { tl ->
             WorkoutProfile(
@@ -144,7 +146,11 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
         }
         if (wide) {
             Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Column(Modifier.weight(if (showCharts || editing) 0.45f else 1f).fillMaxHeight().verticalScroll(rememberScrollState())) {
+                Column(
+                    Modifier.weight(if (showCharts || editing) 0.45f else 1f).fillMaxHeight().verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    if (settings.rideShowGauge && s.engine.targetWatts != null) TargetGauge(s.displayPower, s.engine.targetWatts)
                     FieldGrid(s, settings, editing, onChange = { keys -> update { it.copy(rideFields = keys) } })
                 }
                 if (showCharts || editing) {
@@ -156,6 +162,7 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
                 Modifier.weight(1f).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
+                if (settings.rideShowGauge && s.engine.targetWatts != null) TargetGauge(s.displayPower, s.engine.targetWatts)
                 FieldGrid(s, settings, editing, onChange = { keys -> update { it.copy(rideFields = keys) } })
                 if (editing) {
                     Panel { LayoutOptions(settings, update) }

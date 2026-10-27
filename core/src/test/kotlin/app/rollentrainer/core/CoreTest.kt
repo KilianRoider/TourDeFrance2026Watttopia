@@ -192,3 +192,60 @@ class LiveStatsTest {
         assertEquals(167, s.avgPower)
     }
 }
+
+class AnalysisTest {
+    private fun samples(powers: List<Int>, target: Int? = null) =
+        powers.mapIndexed { i, p -> app.rollentrainer.core.model.Sample(i, p, target, 130, 90, 30.0) }
+
+    @Test fun bestAverageAndFtp() {
+        val p = List(1500) { 200 } + List(60) { 400 } + List(100) { 100 }
+        val s = samples(p)
+        assertEquals(400, app.rollentrainer.core.metrics.Analysis.bestAverage(s, 60))
+        assertEquals(300, app.rollentrainer.core.metrics.Analysis.ftpEstimate(s, rampTest = true))
+        // best 20 min contains the 400 W minute: (1140*200 + 60*400)/1200 = 210 → 95 % = 200 (199.5 rounds to 200)
+        assertEquals(200, app.rollentrainer.core.metrics.Analysis.ftpEstimate(s, rampTest = false))
+        assertNull(app.rollentrainer.core.metrics.Analysis.ftpEstimate(samples(List(100) { 200 }), rampTest = false))
+    }
+
+    @Test fun lapsAndStars() {
+        val s = samples(List(60) { 100 }, 100) + samples(List(60) { 290 }, 300).map { it.copy(t = it.t + 60) }
+        val laps = app.rollentrainer.core.metrics.Analysis.laps(s, listOf(0 to "Einfahren", 60 to "Intervall 1/1"))
+        assertEquals(2, laps.size)
+        assertEquals(100, laps[0].avgPower)
+        assertEquals(3, laps[0].stars)
+        assertEquals(290, laps[1].avgPower)
+        assertEquals(300, laps[1].targetWatts)
+        assertEquals(97, laps[1].accuracyPct)
+        assertEquals(3, laps[1].stars)
+        val zones = app.rollentrainer.core.metrics.Analysis.timeInZones(s, 250)
+        assertEquals(120, zones.sum())
+        assertEquals(60, zones[app.rollentrainer.core.metrics.PowerZone.Z1.ordinal])
+    }
+
+    @Test fun cuesAndCadenceFlowThroughTimelineAndZwo() {
+        val w = app.rollentrainer.core.model.Workout(
+            "w", "Cues",
+            blocks = listOf(
+                app.rollentrainer.core.model.Block.Steady("a", 120, app.rollentrainer.core.model.Power.pct(60), cadence = 95,
+                    cues = listOf(app.rollentrainer.core.model.Cue(0, "Locker einrollen"), app.rollentrainer.core.model.Cue(60, "Gleich geht's los"))),
+                app.rollentrainer.core.model.Block.Intervals("b", 2, 30, app.rollentrainer.core.model.Power.pct(120), 30, app.rollentrainer.core.model.Power.pct(50),
+                    cadence = 100, offCadence = 80),
+            ),
+        )
+        val tl = app.rollentrainer.core.model.Timeline(w)
+        assertEquals("Locker einrollen", tl.segments[0].cueAt(5.0)?.text)
+        assertNull(tl.segments[0].cueAt(30.0))
+        assertEquals("Gleich geht's los", tl.segments[0].cueAt(65.0)?.text)
+        assertEquals(100, tl.segments[1].cadence)
+        assertEquals(80, tl.segments[2].cadence)
+        val back = app.rollentrainer.core.zwo.Zwo.parse(app.rollentrainer.core.zwo.Zwo.write(w, 200).byteInputStream())
+        val tl2 = app.rollentrainer.core.model.Timeline(back)
+        assertEquals(95, tl2.segments[0].cadence)
+        assertEquals(2, tl2.segments[0].cues.size)
+        assertEquals(80, tl2.segments[2].cadence)
+        val e = WorkoutEngine(tl, 200)
+        repeat(3) { e.tick(1.0, true) }
+        assertEquals("Locker einrollen", e.state.cue)
+        assertEquals(95, e.state.targetCadence)
+    }
+}

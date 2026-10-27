@@ -1,5 +1,6 @@
 package app.rollentrainer.core.model
 
+import app.rollentrainer.core.metrics.LapResult
 import app.rollentrainer.core.metrics.Stats
 import kotlinx.serialization.Serializable
 import kotlin.math.roundToInt
@@ -71,4 +72,8 @@ data class Ride(
     val samples: List<Sample>,
     val summary: RideSummary,
     val stravaActivityId: Long? = null,
+    /** One entry per workout segment actually ridden; empty for free rides. */
+    val laps: List<LapResult> = emptyList(),
+    /** Set when the rider accepted the FTP suggestion from this ride. */
+    val ftpAccepted: Boolean = false,
 )

@@ -15,6 +15,10 @@ data class EngineState(
     val paused: Boolean = true,
     val autoPaused: Boolean = false,
     val finished: Boolean = false,
+    val targetCadence: Int? = null,
+    /** Coaching text for the current moment, or null. */
+    val cue: String? = null,
+    val segmentLabel: String = "",
 )
 
 /**
@@ -138,6 +142,9 @@ class WorkoutEngine(
             paused = paused,
             autoPaused = started && !userPaused && autoPause && idleSec >= AUTO_PAUSE_SEC,
             finished = finished,
+            targetCadence = seg?.cadence,
+            cue = seg?.cueAt(workoutSec - seg.startSec)?.text,
+            segmentLabel = seg?.label.orEmpty(),
         )
     }
 

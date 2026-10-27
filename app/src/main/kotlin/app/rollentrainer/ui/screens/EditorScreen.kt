@@ -55,6 +55,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
 import app.rollentrainer.core.metrics.PowerZone
 import app.rollentrainer.core.model.Block
+import app.rollentrainer.core.model.Cue
 import app.rollentrainer.core.model.Power
 import app.rollentrainer.core.model.PowerUnit
 import app.rollentrainer.core.model.Timeline
@@ -287,12 +288,14 @@ private fun BlockCard(
                     Stepper(formatDuration(block.durationSec), { onChange(block.copy(durationSec = stepDuration(block.durationSec, false))) },
                         { onChange(block.copy(durationSec = stepDuration(block.durationSec, true))) }, label = "Dauer")
                     PowerStepper("Leistung", block.power, ftp) { onChange(block.copy(power = it)) }
+                    CadenceStepper("Trittfrequenz", block.cadence) { onChange(block.copy(cadence = it)) }
                 }
                 is Block.Ramp -> {
                     Stepper(formatDuration(block.durationSec), { onChange(block.copy(durationSec = stepDuration(block.durationSec, false))) },
                         { onChange(block.copy(durationSec = stepDuration(block.durationSec, true))) }, label = "Dauer")
                     PowerStepper("Von", block.from, ftp) { onChange(block.copy(from = it)) }
                     PowerStepper("Bis", block.to, ftp) { onChange(block.copy(to = it)) }
+                    CadenceStepper("Trittfrequenz", block.cadence) { onChange(block.copy(cadence = it)) }
                 }
                 is Block.Intervals -> {
                     Stepper("${block.repeat} ×", { onChange(block.copy(repeat = (block.repeat - 1).coerceAtLeast(1))) },
@@ -300,13 +303,45 @@ private fun BlockCard(
                     Stepper(formatDuration(block.onSec), { onChange(block.copy(onSec = stepDuration(block.onSec, false))) },
                         { onChange(block.copy(onSec = stepDuration(block.onSec, true))) }, label = "Belastung")
                     PowerStepper("Leistung", block.onPower, ftp) { onChange(block.copy(onPower = it)) }
+                    CadenceStepper("Trittfrequenz", block.cadence) { onChange(block.copy(cadence = it)) }
                     Stepper(formatDuration(block.offSec), { onChange(block.copy(offSec = stepDuration(block.offSec, false))) },
                         { onChange(block.copy(offSec = stepDuration(block.offSec, true))) }, label = "Erholung")
                     PowerStepper("Leistung", block.offPower, ftp) { onChange(block.copy(offPower = it)) }
+                    CadenceStepper("Trittfr. Erholung", block.offCadence) { onChange(block.copy(offCadence = it)) }
                 }
             }
         }
+        Spacer(Modifier.height(12.dp))
+        val cue = block.cues.firstOrNull()?.text.orEmpty()
+        OutlinedTextField(
+            value = cue,
+            onValueChange = { text ->
+                val cues = if (text.isBlank()) emptyList() else listOf(Cue(0, text))
+                onChange(withCues(block, cues))
+            },
+            label = { Text("Hinweis zu Beginn (optional)") },
+            placeholder = { Text("z. B. „Ruhig atmen, Trittfrequenz hoch halten“") },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
+}
+
+private fun withCues(b: Block, cues: List<Cue>): Block = when (b) {
+    is Block.Steady -> b.copy(cues = cues)
+    is Block.Ramp -> b.copy(cues = cues)
+    is Block.Intervals -> b.copy(cues = cues)
+}
+
+/** Optional cadence target: off below 50 rpm. */
+@Composable
+private fun CadenceStepper(label: String, value: Int?, onChange: (Int?) -> Unit) {
+    Stepper(
+        value?.let { "$it rpm" } ?: "Aus",
+        onMinus = { onChange(value?.let { v -> (v - 5).takeIf { it >= 50 } }) },
+        onPlus = { onChange(((value ?: 45) + 5).coerceAtMost(130)) },
+        label = label,
+    )
 }
 
 @Composable

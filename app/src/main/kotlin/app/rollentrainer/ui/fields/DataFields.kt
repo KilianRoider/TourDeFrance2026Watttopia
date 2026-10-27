@@ -69,6 +69,7 @@ enum class DataField(
     CADENCE("cadence", "Trittfrequenz", FieldGroup.CADENCE, "Aktuelle Umdrehungen pro Minute"),
     CADENCE_AVG("cadenceAvg", "Ø Trittfrequenz", FieldGroup.CADENCE, "Durchschnitt ohne Rollphasen"),
     CADENCE_LAP("cadenceLap", "Ø Trittfr. Abschnitt", FieldGroup.CADENCE, "Durchschnitt im aktuellen Abschnitt"),
+    CADENCE_TARGET("cadenceTarget", "Ziel-Trittfrequenz", FieldGroup.CADENCE, "Vorgabe aus dem Trainingsblock, falls gesetzt"),
 
     SEGMENT_REMAINING("segRemaining", "Abschnitt verbleibend", FieldGroup.TIME, "Countdown bis zum nächsten Abschnitt"),
     SEGMENT_ELAPSED("segElapsed", "Abschnitt gefahren", FieldGroup.TIME, "Zeit im aktuellen Abschnitt"),
@@ -163,9 +164,20 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
         DataField.HR_LAP -> st.lapAvgHr?.let { FieldValue(it.toString(), "bpm") } ?: dash()
         DataField.HR_MAX -> st.maxHr?.let { FieldValue(it.toString(), "bpm") } ?: dash()
 
-        DataField.CADENCE -> FieldValue(s.live.cadence?.toString() ?: "–", "rpm", accent = Metric.Cadence)
+        DataField.CADENCE -> FieldValue(s.live.cadence?.toString() ?: "–", "rpm", s.engine.targetCadence?.let { "Ziel $it rpm" }, Metric.Cadence)
         DataField.CADENCE_AVG -> st.avgCadence?.let { FieldValue(it.toString(), "rpm") } ?: dash()
         DataField.CADENCE_LAP -> st.lapAvgCadence?.let { FieldValue(it.toString(), "rpm") } ?: dash()
+        DataField.CADENCE_TARGET -> {
+            val t = s.engine.targetCadence ?: return FieldValue("–", "", "Kein Ziel")
+            val c = s.live.cadence
+            val color = when {
+                c == null -> null
+                abs(c - t) <= 5 -> Color(0xFF22C55E)
+                abs(c - t) <= 10 -> Color(0xFFEAB308)
+                else -> Color(0xFFEF4444)
+            }
+            FieldValue(t.toString(), "rpm", c?.let { if (it < t - 5) "Schneller treten" else if (it > t + 5) "Langsamer treten" else "Passt" }, color)
+        }
 
         DataField.SEGMENT_REMAINING -> if (s.timeline == null) dash() else FieldValue(formatDuration(s.engine.segmentRemainingSec))
         DataField.SEGMENT_ELAPSED -> {

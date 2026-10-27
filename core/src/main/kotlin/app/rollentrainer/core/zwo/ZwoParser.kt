@@ -1,6 +1,7 @@
 package app.rollentrainer.core.zwo
 
 import app.rollentrainer.core.model.Block
+import app.rollentrainer.core.model.Cue
 import app.rollentrainer.core.model.Power
 import app.rollentrainer.core.model.Workout
 import org.w3c.dom.Element
@@ -29,9 +30,18 @@ object Zwo {
             fun pct(name: String): Power? =
                 el.getAttribute(name).takeIf { it.isNotBlank() }?.toDoubleOrNull()?.let { Power.pct((it * 100).roundToInt()) }
             fun int(name: String): Int = el.getAttribute(name).toDoubleOrNull()?.roundToInt() ?: 0
+            fun cad(name: String): Int? = el.getAttribute(name).toDoubleOrNull()?.roundToInt()?.takeIf { it > 0 }
+            val cues = buildList {
+                val events = el.getElementsByTagName("textevent")
+                for (k in 0 until events.length) {
+                    val ev = events.item(k) as? Element ?: continue
+                    val msg = ev.getAttribute("message").trim()
+                    if (msg.isNotEmpty()) add(Cue(ev.getAttribute("timeoffset").toDoubleOrNull()?.roundToInt() ?: 0, msg))
+                }
+            }.sortedBy { it.offsetSec }
             val id = UUID.randomUUID().toString()
             when (el.tagName) {
-                "SteadyState", "SolidState" -> blocks += Block.Steady(id, int("Duration"), pct("Power") ?: Power.pct(50))
+                "SteadyState", "SolidState" -> blocks += Block.Steady(id, int("Duration"), pct("Power") ?: Power.pct(50), cadence = cad("Cadence"), cues = cues)
                 "Warmup", "Cooldown", "Ramp" -> blocks += Block.Ramp(
                     id, int("Duration"),
                     pct("PowerLow") ?: Power.pct(50),
@@ -41,13 +51,16 @@ object Zwo {
                         "Cooldown" -> "Ausfahren"
                         else -> ""
                     },
+                    cadence = cad("Cadence"),
+                    cues = cues,
                 )
                 "IntervalsT" -> blocks += Block.Intervals(
                     id, int("Repeat").coerceAtLeast(1),
                     int("OnDuration"), pct("OnPower") ?: Power.pct(100),
                     int("OffDuration"), pct("OffPower") ?: Power.pct(50),
+                    cadence = cad("Cadence"), offCadence = cad("CadenceResting"), cues = cues,
                 )
-                "FreeRide", "MaxEffort" -> blocks += Block.Steady(id, int("Duration"), Power.pct(50), "Frei")
+                "FreeRide", "MaxEffort" -> blocks += Block.Steady(id, int("Duration"), Power.pct(50), "Frei", cadence = cad("Cadence"), cues = cues)
             }
         }
         return Workout(
@@ -67,12 +80,23 @@ object Zwo {
         appendLine("  <description>${esc(workout.description)}</description>")
         appendLine("  <sportType>bike</sportType>")
         appendLine("  <workout>")
+        fun cadAttr(name: String, v: Int?) = if (v != null) " $name=\"$v\"" else ""
+        fun body(b: Block, open: String) {
+            if (b.cues.isEmpty()) {
+                appendLine("    <$open/>")
+            } else {
+                appendLine("    <$open>")
+                for (c in b.cues) appendLine("      <textevent timeoffset=\"${c.offsetSec}\" message=\"${esc(c.text)}\"/>")
+                appendLine("    </${open.substringBefore(' ')}>")
+            }
+        }
         for (b in workout.blocks) when (b) {
-            is Block.Steady -> appendLine("    <SteadyState Duration=\"${b.durationSec}\" Power=\"${f(b.power)}\"/>")
-            is Block.Ramp -> appendLine("    <Ramp Duration=\"${b.durationSec}\" PowerLow=\"${f(b.from)}\" PowerHigh=\"${f(b.to)}\"/>")
-            is Block.Intervals -> appendLine(
-                "    <IntervalsT Repeat=\"${b.repeat}\" OnDuration=\"${b.onSec}\" OffDuration=\"${b.offSec}\" " +
-                    "OnPower=\"${f(b.onPower)}\" OffPower=\"${f(b.offPower)}\"/>"
+            is Block.Steady -> body(b, "SteadyState Duration=\"${b.durationSec}\" Power=\"${f(b.power)}\"${cadAttr("Cadence", b.cadence)}")
+            is Block.Ramp -> body(b, "Ramp Duration=\"${b.durationSec}\" PowerLow=\"${f(b.from)}\" PowerHigh=\"${f(b.to)}\"${cadAttr("Cadence", b.cadence)}")
+            is Block.Intervals -> body(
+                b,
+                "IntervalsT Repeat=\"${b.repeat}\" OnDuration=\"${b.onSec}\" OffDuration=\"${b.offSec}\" " +
+                    "OnPower=\"${f(b.onPower)}\" OffPower=\"${f(b.offPower)}\"${cadAttr("Cadence", b.cadence)}${cadAttr("CadenceResting", b.offCadence)}",
             )
         }
         appendLine("  </workout>")

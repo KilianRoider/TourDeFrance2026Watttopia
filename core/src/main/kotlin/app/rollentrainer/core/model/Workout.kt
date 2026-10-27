@@ -32,11 +32,18 @@ data class Power(val value: Int, val unit: PowerUnit = PowerUnit.PERCENT_FTP) {
 @Serializable
 enum class PowerUnit { PERCENT_FTP, WATTS }
 
+/** A coaching message shown [offsetSec] seconds into a block, like Zwift's text events. */
+@Serializable
+data class Cue(val offsetSec: Int, val text: String)
+
 /** One building block of a workout. */
 @Serializable
 sealed class Block {
     abstract val id: String
     abstract fun durationSec(): Int
+    /** Optional cadence target in rpm. */
+    abstract val cadence: Int?
+    abstract val cues: List<Cue>
 
     /** Constant power for a given time. */
     @Serializable
@@ -46,6 +53,8 @@ sealed class Block {
         val durationSec: Int,
         val power: Power,
         val label: String = "",
+        override val cadence: Int? = null,
+        override val cues: List<Cue> = emptyList(),
     ) : Block() {
         override fun durationSec() = durationSec
     }
@@ -59,6 +68,8 @@ sealed class Block {
         val from: Power,
         val to: Power,
         val label: String = "",
+        override val cadence: Int? = null,
+        override val cues: List<Cue> = emptyList(),
     ) : Block() {
         override fun durationSec() = durationSec
     }
@@ -74,6 +85,10 @@ sealed class Block {
         val offSec: Int,
         val offPower: Power,
         val label: String = "",
+        override val cadence: Int? = null,
+        /** Cadence target during the recovery part. */
+        val offCadence: Int? = null,
+        override val cues: List<Cue> = emptyList(),
     ) : Block() {
         override fun durationSec() = repeat * (onSec + offSec)
     }
@@ -98,8 +113,17 @@ data class Segment(
     val startPower: Power,
     val endPower: Power,
     val label: String,
+    val cadence: Int? = null,
+    val cues: List<Cue> = emptyList(),
 ) {
     val endSec: Int get() = startSec + durationSec
+
+    /** The cue that applies [offsetSec] into the segment, shown for [CUE_VISIBLE_SEC]. */
+    fun cueAt(offsetSec: Double): Cue? = cues.lastOrNull { it.offsetSec <= offsetSec && offsetSec < it.offsetSec + CUE_VISIBLE_SEC }
+
+    companion object {
+        const val CUE_VISIBLE_SEC = 12
+    }
     val isRamp: Boolean get() = startPower != endPower
 
     fun wattsAt(offsetSec: Double, ftp: Int): Int {
@@ -122,21 +146,23 @@ class Timeline(val workout: Workout) {
         workout.blocks.forEachIndexed { index, block ->
             when (block) {
                 is Block.Steady -> {
-                    out += Segment(index, t, block.durationSec, block.power, block.power, block.label)
+                    out += Segment(index, t, block.durationSec, block.power, block.power, block.label, block.cadence, block.cues)
                     t += block.durationSec
                 }
                 is Block.Ramp -> {
-                    out += Segment(index, t, block.durationSec, block.from, block.to, block.label)
+                    out += Segment(index, t, block.durationSec, block.from, block.to, block.label, block.cadence, block.cues)
                     t += block.durationSec
                 }
                 is Block.Intervals -> repeat(block.repeat) { r ->
                     val n = "${r + 1}/${block.repeat}"
+                    val name = block.label.ifBlank { "Intervall" }
                     if (block.onSec > 0) {
-                        out += Segment(index, t, block.onSec, block.onPower, block.onPower, "Intervall $n")
+                        // Cues belong to the first repetition only, so they are not repeated five times.
+                        out += Segment(index, t, block.onSec, block.onPower, block.onPower, "$name $n", block.cadence, if (r == 0) block.cues else emptyList())
                         t += block.onSec
                     }
                     if (block.offSec > 0) {
-                        out += Segment(index, t, block.offSec, block.offPower, block.offPower, "Erholung $n")
+                        out += Segment(index, t, block.offSec, block.offPower, block.offPower, "Erholung $n", block.offCadence)
                         t += block.offSec
                     }
                 }

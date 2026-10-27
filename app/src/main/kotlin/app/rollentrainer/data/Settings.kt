@@ -52,6 +52,8 @@ data class AppSettings(
     val rideColumns: Int = 3,
     val rideShowCharts: Boolean = true,
     val rideShowProfile: Boolean = true,
+    /** Zwift-style bar that shows how far the power is from the target. */
+    val rideShowGauge: Boolean = true,
     /** Which live charts are shown: power, hr, cadence. */
     val rideCharts: List<String> = listOf("power", "hr", "cadence"),
 )

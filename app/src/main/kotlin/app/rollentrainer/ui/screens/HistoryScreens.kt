@@ -43,7 +43,11 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
+import app.rollentrainer.core.metrics.Analysis
 import app.rollentrainer.core.model.Timeline
+import app.rollentrainer.ui.components.HrZoneBars
+import app.rollentrainer.ui.components.PowerZoneBars
+import app.rollentrainer.ui.components.Stars
 import app.rollentrainer.ride.UploadState
 import app.rollentrainer.ui.LocalWide
 import app.rollentrainer.ui.components.LineChart
@@ -183,9 +187,69 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                     if (s.distanceM > 0) Stat("Distanz", "%.1f km".format(s.distanceM / 1000))
                 }
             }
+            // FTP suggestion: 95 % of the best 20 minutes, or 75 % of the best minute after a ramp test.
+            val rampTest = ride.workoutId == "preset-ramp-test"
+            val ftpEstimate = remember(ride.id) { Analysis.ftpEstimate(ride.samples, rampTest) }
+            if (ftpEstimate != null && !ride.ftpAccepted && (rampTest || ftpEstimate > ride.ftp + 2)) {
+                Panel(Modifier.fillMaxWidth()) {
+                    Text(if (rampTest) "Rampentest ausgewertet" else "Neue FTP möglich", style = MaterialTheme.typography.titleMedium)
+                    Text(
+                        if (rampTest) "75 % deiner besten Minute ergeben eine FTP von $ftpEstimate W (bisher ${ride.ftp} W)."
+                        else "95 % deiner besten 20 Minuten ergeben $ftpEstimate W, mehr als deine FTP von ${ride.ftp} W.",
+                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Button(onClick = {
+                            container.settings.update { it.copy(ftp = ftpEstimate) }
+                            scope.launch { container.rides.save(ride.copy(ftpAccepted = true)) }
+                        }) { Text("FTP auf $ftpEstimate W setzen") }
+                        TextButton(onClick = { scope.launch { container.rides.save(ride.copy(ftpAccepted = true)) } }) { Text("Ignorieren") }
+                    }
+                }
+            }
             workout?.let { w ->
                 WorkoutProfile(Timeline(w), ride.ftp, Modifier.fillMaxWidth().height(72.dp),
                     progressSec = s.durationSec.toDouble(), samples = ride.samples)
+            }
+            if (ride.laps.isNotEmpty()) {
+                Panel(Modifier.fillMaxWidth()) {
+                    val totalStars = ride.laps.sumOf { it.stars }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Abschnitte", style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+                        Text("$totalStars von ${ride.laps.size * 3} Sternen", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    Row(Modifier.fillMaxWidth()) {
+                        Text("Abschnitt", Modifier.weight(1.6f), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        listOf("Dauer", "Ziel", "Ø W", "Ø Puls", "Ø rpm", "Genau").forEach {
+                            Text(it, Modifier.weight(1f), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
+                        Spacer(Modifier.weight(1f))
+                    }
+                    ride.laps.forEach { lap ->
+                        Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Text(lap.label, Modifier.weight(1.6f), style = MaterialTheme.typography.bodyMedium, maxLines = 1)
+                            val cells = listOf(
+                                formatDuration(lap.durationSec), lap.targetWatts?.toString() ?: "–", lap.avgPower.toString(),
+                                lap.avgHr?.toString() ?: "–", lap.avgCadence?.toString() ?: "–", lap.accuracyPct?.let { "$it %" } ?: "–",
+                            )
+                            cells.forEach { Text(it, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium.copy(fontFeatureSettings = "tnum")) }
+                            Stars(lap.stars, Modifier.weight(1f))
+                        }
+                    }
+                }
+            }
+            Panel(Modifier.fillMaxWidth()) {
+                Text("Zeit in Leistungszonen", style = MaterialTheme.typography.titleMedium)
+                Spacer(Modifier.height(8.dp))
+                PowerZoneBars(remember(ride.id) { Analysis.timeInZones(ride.samples, ride.ftp) })
+                if (s.avgHr != null) {
+                    Spacer(Modifier.height(16.dp))
+                    Text("Zeit in Pulszonen", style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    HrZoneBars(remember(ride.id, settings.maxHr) { Analysis.timeInHrZones(ride.samples, settings.maxHr) })
+                }
             }
             val chartHeight = if (LocalWide.current) 180.dp else 140.dp
             Panel(Modifier.fillMaxWidth()) {

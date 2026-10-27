@@ -103,6 +103,15 @@ class RideSession(
 
     val running: Boolean get() = _state.value != null
 
+    private val _spinningView = MutableStateFlow(false)
+    /**
+     * The ride is shown as a spinning class. Decided when the ride starts (spinning programmes and the
+     * "Spinning-Ansicht als Standard" setting), switchable during the ride; kept here so it survives
+     * turning the tablet.
+     */
+    val spinningView: StateFlow<Boolean> = _spinningView.asStateFlow()
+    fun setSpinningView(on: Boolean) { _spinningView.value = on && routeEngine == null }
+
     fun start(workout: Workout?) = begin(workout, null, emptyList())
 
     /**
@@ -118,6 +127,7 @@ class RideSession(
         val e = WorkoutEngine(timeline, EngineConfig(ftp = s.ftp, autoPauseSec = s.autoPauseSeconds, spiralRpm = s.ergReleaseRpm))
         engine = e
         routeEngine = route?.let { RouteEngine(it, RiderParams.forRider(s.weightKg), pacers) }
+        _spinningView.value = route == null && (workout?.id?.startsWith("preset-spin") == true || s.spinningByDefault)
         if (route != null) {
             e.setErg(false)
             e.setGrade(route.gradientAt(0.0) * s.trainerDifficultyPct / 100)
@@ -154,7 +164,9 @@ class RideSession(
             last = now
             val raw = hub.current()
             val cfg = settings.value
-            val st0 = e.tick(dt, raw.power, raw.cadence)
+            // On a route, rolling on (a descent, the last metres) keeps the ride from auto-pausing.
+            val rolling = (routeEngine?.state?.speedMps ?: 0.0) > 0.5
+            val st0 = e.tick(dt, raw.power, raw.cadence, moving = rolling)
             // On a virtual route the road sets the grade and the physics the speed; the ride ends at the summit.
             val rs = routeEngine?.let { re ->
                 val r = re.tick(dt, raw.power, st0.paused)
@@ -177,7 +189,9 @@ class RideSession(
             }
 
             if (st.segmentIndex != lastSegment && lastSegment >= 0) stats.newLap()
-            if (!st.paused) {
+            // The tick that crosses the summit line still moved the rider, so it is recorded although the ride is now finished.
+            val recording = !st0.paused
+            if (recording) {
                 if (startEpochSec == 0L) startEpochSec = System.currentTimeMillis() / 1000
                 if (timeline != null && st.segmentIndex >= 0 && (lapStarts.isEmpty() || st.segmentIndex != lastSegment)) {
                     val seg = timeline.segments.getOrNull(st.segmentIndex)
@@ -188,11 +202,11 @@ class RideSession(
                     lapStarts += LapBoundary(samples.size, "Weiterfahren", rated = false)
                 }
                 val target = if (st.erg) st.targetWatts else null
-                samples += Sample(samples.size, m.power, target, m.heartRate, m.cadence, m.speedKmh)
+                samples += Sample(samples.size, m.power, target, m.heartRate, m.cadence, m.speedKmh, altitudeM = rs?.elevationM)
                 stats.add(m.power, target, m.heartRate, m.cadence, m.speedKmh)
             }
             // W' recovers while standing still too, so the balance follows wall-clock time, not recorded samples.
-            wbal.update(if (st.paused) 0 else m.power, dt.coerceIn(0.0, 5.0))
+            wbal.update(if (recording) m.power else 0, dt.coerceIn(0.0, 5.0))
             audio(st, m, lastSegment, lastErgState, cfg)
             lastSegment = st.segmentIndex
             lastErgState = st.ergState
@@ -283,6 +297,9 @@ class RideSession(
     }
 
     fun togglePause() = engine?.togglePause()
+
+    /** Pauses or resumes explicitly (the button), unlike [togglePause] which only flips the rider's own pause. */
+    fun setPaused(paused: Boolean) = engine?.setPaused(paused)
     fun skip() = engine?.skip()
     fun back() = engine?.back()
     fun extend(sec: Int) = engine?.extendCurrent(sec)
@@ -315,11 +332,11 @@ class RideSession(
         val ride = Ride(
             id = UUID.randomUUID().toString(),
             startEpochSec = startEpochSec,
-            name = st.workout?.name ?: route?.route?.name ?: "Freie Fahrt",
+            name = st.workout?.name ?: route?.route?.let { r -> fractionLabel(r.fraction)?.let { "$it ${r.name}" } ?: r.name } ?: "Freie Fahrt",
             workoutId = st.workout?.id,
             routeId = route?.route?.id,
             routeFraction = route?.route?.fraction ?: 1.0,
-            routeTimeSec = route?.takeIf { it.finished }?.elapsedSec?.roundToInt(),
+            routeTimeSec = route?.takeIf { it.finished }?.let { (it.finishTimeSec ?: it.elapsedSec).roundToInt() },
             ftp = ftp,
             samples = list,
             summary = RideSummary.of(list, ftp),
@@ -341,7 +358,7 @@ class RideSession(
                 val file = rides.exportFit(ride)
                 val s = ride.summary
                 val description = buildString {
-                    append("Indoor im ERG-Modus mit Wattwerk\n")
+                    append(if (ride.routeId != null) "Virtuelle Strecke im Simulationsmodus mit Wattwerk\n" else "Indoor im ERG-Modus mit Wattwerk\n")
                     append("NP ${s.normalizedPower} W · IF ${"%.2f".format(s.intensityFactor)} · TSS ${s.tss.roundToInt()}")
                     ride.rpe?.let { append(" · RPE $it/10") }
                     if (ride.notes.isNotBlank()) append("\n").append(ride.notes)
@@ -361,4 +378,13 @@ class RideSession(
     private companion object {
         const val MIN_SAMPLES = 30
     }
+}
+
+/** "½", "¾", "¼" for a shortened route, null for the full one. */
+fun fractionLabel(fraction: Double): String? = when {
+    fraction >= 0.999 -> null
+    kotlin.math.abs(fraction - 0.75) < 0.01 -> "¾"
+    kotlin.math.abs(fraction - 0.5) < 0.01 -> "½"
+    kotlin.math.abs(fraction - 0.25) < 0.01 -> "¼"
+    else -> "${(fraction * 100).roundToInt()} %"
 }

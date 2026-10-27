@@ -9,7 +9,8 @@ import kotlin.math.sqrt
 
 /**
  * A low-poly cyclist seen from behind: bike frame, two wheels, body, arms and legs whose knees
- * follow the pedals. Local axes: x right, y up, z forward.
+ * follow the pedals. Local axes: z forward, y up and, as the world is right-handed, x to the rider's
+ * left; the drivetrain is on the right (-x).
  */
 class RiderModel(jersey: FloatArray, helmet: FloatArray) {
     private val id = FloatArray(16).also { Matrix.setIdentityM(it, 0) }
@@ -36,7 +37,8 @@ class RiderModel(jersey: FloatArray, helmet: FloatArray) {
         draw(frame, base)
         for (z in floatArrayOf(-0.5f, 0.5f)) {
             Matrix.translateM(m, 0, base, 0, 0f, WHEEL_R, z)
-            Matrix.rotateM(m, 0, -wheelAngle, 1f, 0f, 0f)
+            // Positive rotation about x turns the top of the wheel forward (+z): rolling ahead.
+            Matrix.rotateM(m, 0, wheelAngle, 1f, 0f, 0f)
             draw(wheel, m)
         }
         // Body leans forward over the bars.
@@ -55,10 +57,11 @@ class RiderModel(jersey: FloatArray, helmet: FloatArray) {
             val hy = HIP_Y; val hz = HIP_Z
             val dy = py - hy; val dz = pz - hz
             val dist = sqrt(dy * dy + dz * dz).coerceIn(0.05f, THIGH + SHIN - 0.01f)
-            // Knee from the circle intersection, bent forward (+z).
+            // Knee from the circle intersection. Angles run from +y towards +z, the pedal is below the
+            // hip, so turning back from the pedal direction puts the knee in front (+z).
             val cosA = ((THIGH * THIGH + dist * dist - SHIN * SHIN) / (2 * THIGH * dist)).coerceIn(-1f, 1f)
             val angToPedal = atan2(dz, dy)
-            val kneeAng = angToPedal + acos(cosA)
+            val kneeAng = angToPedal - acos(cosA)
             val ky = hy + THIGH * cos(kneeAng)
             val kz = hz + THIGH * sin(kneeAng)
             val x = side * 0.12f
@@ -111,7 +114,7 @@ class RiderModel(jersey: FloatArray, helmet: FloatArray) {
         m.append(Shapes.box(0.08f, 0.04f, 0.26f, 0.1f, 0.1f, 0.1f), WorldMeshes.translate(0f, 1.03f, -0.18f)) // saddle
         m.append(Shapes.cylinder(0.11f, 0.11f, 0.02f, 12, 0.3f, 0.3f, 0.32f), run {
             val mat = FloatArray(16); Matrix.setIdentityM(mat, 0)
-            Matrix.translateM(mat, 0, 0.06f, bbY, bbZ); Matrix.rotateM(mat, 0, 90f, 0f, 0f, 1f); mat
+            Matrix.translateM(mat, 0, -0.06f, bbY, bbZ); Matrix.rotateM(mat, 0, 90f, 0f, 0f, 1f); mat
         }) // chainring
         return m
     }

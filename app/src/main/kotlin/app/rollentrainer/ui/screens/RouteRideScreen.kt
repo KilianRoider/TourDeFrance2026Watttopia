@@ -36,19 +36,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
+import app.rollentrainer.ble.ConnectionState
+import app.rollentrainer.ble.SensorStatus
+import app.rollentrainer.data.SensorRole
 import app.rollentrainer.core.route.Route
 import app.rollentrainer.core.route.RouteState
 import app.rollentrainer.core.route.World
@@ -56,7 +62,9 @@ import app.rollentrainer.ride.RideState
 import app.rollentrainer.ui.LocalWide
 import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.world.FrameState
+import app.rollentrainer.ui.world.WorldCache
 import app.rollentrainer.ui.world.WorldView
+import app.rollentrainer.ui.world.supportsWorld3d
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -75,8 +83,10 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
     val rs = s.route ?: return
     val route = rs.route
     val frame = remember { FrameState() }
-    val world by produceState<World?>(initialValue = null, route.id) {
-        value = withContext(Dispatchers.Default) { World(route, route.biome) }
+    val context = LocalContext.current
+    val gl3 = remember { supportsWorld3d(context) }
+    val world by produceState<World?>(initialValue = null, route.id, route.lengthM) {
+        value = if (gl3) withContext(Dispatchers.Default) { WorldCache.get(route) } else null
     }
     LaunchedEffect(rs, s.engine.paused) {
         frame.distanceM = rs.distanceM
@@ -88,24 +98,35 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
         frame.pacerSpeedMps = p?.speedMps ?: 0.0
         frame.updatedAtMs = android.os.SystemClock.elapsedRealtime()
     }
-    var askEnd by remember { mutableStateOf(false) }
-    var finishSeen by remember { mutableStateOf(false) }
+    val status by container.sensors.status.collectAsStateWithLifecycle()
+    var askEnd by rememberSaveable { mutableStateOf(false) }
+    var finishSeen by rememberSaveable { mutableStateOf(false) }
     fun end(save: Boolean) = container.scope.launch {
         askEnd = false
         val ride = container.session.finish(save)
         onFinished(ride?.id)
     }
 
-    // Landmark sign as a short toast.
+    // Landmark sign as a short toast: shown when passed, hidden five seconds later. The passed landmark
+    // is only set for one tick, so showing and hiding are two separate effects.
     var toast by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(rs.passedLandmark) {
-        rs.passedLandmark?.let { toast = it.label; delay(5000); toast = null }
+        rs.passedLandmark?.let { toast = it.label }
+    }
+    LaunchedEffect(toast) {
+        if (toast != null) { delay(5000); toast = null }
     }
 
     val wide = LocalWide.current
     Box(Modifier.fillMaxSize()) {
-        WorldView(world, frame, Modifier.fillMaxSize())
-        if (world == null) {
+        if (!gl3) {
+            // Without OpenGL ES 3 the ride still works: a side view of the climb instead of the 3D road.
+            Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFF3A6EA5), Color(0xFF9CC3E0), Color(0xFF5E8C3A)))))
+            RouteProfile(route, rs, Modifier.fillMaxWidth().height(320.dp).align(Alignment.Center).padding(horizontal = 24.dp))
+        } else {
+            WorldView(world, frame, Modifier.fillMaxSize())
+        }
+        if (gl3 && world == null) {
             Box(Modifier.fillMaxSize().background(Color(0xFF1B2733)), contentAlignment = Alignment.Center) {
                 Text("Strecke wird aufgebaut …", color = Color.White, style = MaterialTheme.typography.titleLarge)
             }
@@ -149,7 +170,7 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
                 }
             }
             Spacer(Modifier.height(8.dp))
-            s.trainerBanner()?.let { msg ->
+            s.trainerBanner(status[SensorRole.TRAINER] ?: SensorStatus(null))?.let { msg ->
                 Box(Modifier.align(Alignment.CenterHorizontally).background(Color(0xAA000000), RoundedCornerShape(8.dp)).padding(horizontal = 16.dp, vertical = 6.dp)) {
                     Text(msg, color = Color.White, style = MaterialTheme.typography.bodyMedium)
                 }
@@ -171,10 +192,15 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
                 RouteProfile(route, rs, Modifier.fillMaxWidth().height(if (wide) 64.dp else 48.dp))
                 Spacer(Modifier.height(8.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Button(onClick = { container.session.togglePause() }) {
-                        Icon(if (s.engine.paused) Icons.Default.PlayArrow else Icons.Default.Pause, null)
-                        Spacer(Modifier.width(6.dp))
-                        Text(if (s.engine.paused) "Weiter" else "Pause")
+                    // "Weiter" only after the rider paused by hand; before the start or in an auto-pause pedalling
+                    // goes on, so the button offers a pause. At the top there is nothing to pause.
+                    if (!rs.finished) {
+                        val resume = s.engine.userPaused
+                        Button(onClick = { container.session.setPaused(!resume) }) {
+                            Icon(if (resume) Icons.Default.PlayArrow else Icons.Default.Pause, null)
+                            Spacer(Modifier.width(6.dp))
+                            Text(if (resume) "Weiter" else "Pause")
+                        }
                     }
                     FilledTonalButton(onClick = { askEnd = true }) {
                         Icon(Icons.Default.Stop, null)
@@ -200,13 +226,13 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
                 Column {
                     if (done) {
                         Text(
-                            "${route.name} in ${formatDuration(rs.elapsedSec.roundToInt())} · Ø ${s.stats.avgPower} W · " +
-                                "Ø %.1f km/h".format(route.lengthM / rs.elapsedSec.coerceAtLeast(1.0) * 3.6),
+                            "${route.name} in ${formatDuration((rs.finishTimeSec ?: rs.elapsedSec).roundToInt())} · Ø ${s.stats.avgPower} W · " +
+                                "Ø %.1f km/h".format(route.lengthM / (rs.finishTimeSec ?: rs.elapsedSec).coerceAtLeast(1.0) * 3.6),
                             style = MaterialTheme.typography.bodyLarge,
                         )
                         rs.pacers.firstOrNull()?.let { p ->
                             Spacer(Modifier.height(6.dp))
-                            Text(if (p.finished && p.gapM >= 0) "${p.name} war schneller." else "Du hast ${p.name} geschlagen!")
+                            Text(if (rs.beatenBy(p)) "${p.name} war schneller." else "Du hast ${p.name} geschlagen!")
                         }
                         Spacer(Modifier.height(8.dp))
                     }
@@ -220,15 +246,18 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
             dismissButton = {
                 Row {
                     if (s.elapsedSec >= 30) TextButton(onClick = { end(false) }) { Text("Verwerfen", color = MaterialTheme.colorScheme.error) }
-                    if (done) TextButton(onClick = { finishSeen = true }) { Text("Ansehen") }
-                    else TextButton(onClick = { askEnd = false }) { Text("Weiterfahren") }
+                    if (done) TextButton(onClick = { finishSeen = true; askEnd = false }) { Text("Ansehen") }
+                    else TextButton(onClick = { askEnd = false }) { Text(if (rs.finished) "Zurück" else "Weiterfahren") }
                 }
             },
         )
     }
 }
 
-private fun RideState.trainerBanner(): String? = when {
+private fun RideState.trainerBanner(trainer: SensorStatus): String? = when {
+    route?.finished == true || engine.finished -> "Ziel erreicht"
+    trainer.sensor == null -> "Ohne Smart-Trainer: die Steigung ist nur zu sehen, nicht zu spüren."
+    trainer.state != ConnectionState.CONNECTED -> "Verbinde mit ${trainer.sensor?.name.orEmpty()} …"
     !trainerControl -> "Warte auf Steuerung durch den Trainer …"
     engine.workoutSec == 0.0 && engine.paused -> "Tritt in die Pedale, um loszufahren."
     engine.autoPaused -> "Pausiert – tritt weiter, um fortzusetzen."

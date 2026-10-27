@@ -6,7 +6,16 @@ import kotlin.math.roundToInt
 data class Pacer(val name: String, val powerW: Int)
 
 /** Where a pacer is relative to the rider. */
-data class PacerState(val name: String, val powerW: Int, val distanceM: Double, val speedMps: Double, val gapM: Double, val finished: Boolean)
+data class PacerState(
+    val name: String,
+    val powerW: Int,
+    val distanceM: Double,
+    val speedMps: Double,
+    val gapM: Double,
+    val finished: Boolean,
+    /** Exact time in seconds at which the pacer crossed the line, or null while still riding. */
+    val finishTimeSec: Double? = null,
+)
 
 /** The rider's position on the virtual road. */
 data class RouteState(
@@ -21,7 +30,16 @@ data class RouteState(
     val pacers: List<PacerState> = emptyList(),
     /** Landmark passed in the last tick, shown as a sign. */
     val passedLandmark: Landmark? = null,
+    /** Exact time in seconds at which the rider crossed the line (interpolated within the tick). */
+    val finishTimeSec: Double? = null,
 ) {
+    /** True when this pacer reached the top before the rider (ties go to the rider). */
+    fun beatenBy(p: PacerState): Boolean {
+        val mine = finishTimeSec
+        val theirs = p.finishTimeSec ?: return false
+        return mine == null || theirs < mine
+    }
+
     val remainingM: Double get() = (route.lengthM - distanceM).coerceAtLeast(0.0)
     val progress: Double get() = if (route.lengthM > 0) (distanceM / route.lengthM).coerceIn(0.0, 1.0) else 0.0
     val speedKmh: Double get() = Physics.kmh(speedMps)
@@ -49,24 +67,41 @@ class RouteEngine(
     private val pacerList = pacers
     private val pacerDistance = DoubleArray(pacers.size)
     private val pacerSpeed = DoubleArray(pacers.size)
+    private val pacerFinish = arrayOfNulls<Double>(pacers.size)
+    private var finishTime: Double? = null
 
-    /** One tick; while [paused] nobody moves. */
+    /**
+     * One tick; while [paused] nobody moves. A pause stops the rider: speed drops to zero instead of
+     * coming back as free momentum after the break.
+     */
     fun tick(dt: Double, powerW: Int?, paused: Boolean): RouteState {
-        if (paused || dt <= 0 || state.finished) {
+        if (paused || state.finished) {
+            speed = 0.0
+            state = state.copy(speedMps = 0.0, passedLandmark = null)
+            return state
+        }
+        if (dt <= 0) {
             state = state.copy(passedLandmark = null)
             return state
         }
         val before = distance
         val grade = route.gradientAt(distance)
         speed = Physics.step(speed, (powerW ?: 0).toDouble(), grade, dt, params)
-        distance = (distance + speed * dt).coerceAtMost(route.lengthM)
+        val start = elapsed
+        // Time within this tick at which [from] + [v]·t reaches the line.
+        fun crossing(from: Double, v: Double): Double = start + if (v > 0) ((route.lengthM - from) / v).coerceIn(0.0, dt) else dt
+        val raw = distance + speed * dt
+        if (raw >= route.lengthM && finishTime == null) finishTime = crossing(distance, speed)
+        distance = raw.coerceAtMost(route.lengthM)
         elapsed += dt
         val finished = distance >= route.lengthM
         pacerList.forEachIndexed { i, p ->
             if (pacerDistance[i] < route.lengthM) {
                 val g = route.gradientAt(pacerDistance[i])
                 pacerSpeed[i] = Physics.step(pacerSpeed[i], p.powerW.toDouble(), g, dt, params)
-                pacerDistance[i] = (pacerDistance[i] + pacerSpeed[i] * dt).coerceAtMost(route.lengthM)
+                val pr = pacerDistance[i] + pacerSpeed[i] * dt
+                if (pr >= route.lengthM) pacerFinish[i] = crossing(pacerDistance[i], pacerSpeed[i])
+                pacerDistance[i] = pr.coerceAtMost(route.lengthM)
             }
         }
         val passed = route.landmarks.firstOrNull { it.distanceM > before && it.distanceM <= distance }
@@ -80,9 +115,13 @@ class RouteEngine(
             elapsedSec = elapsed,
             finished = finished,
             pacers = pacerList.mapIndexed { i, p ->
-                PacerState(p.name, p.powerW, pacerDistance[i], if (pacerDistance[i] >= route.lengthM) 0.0 else pacerSpeed[i], pacerDistance[i] - distance, pacerDistance[i] >= route.lengthM)
+                PacerState(
+                    p.name, p.powerW, pacerDistance[i], if (pacerDistance[i] >= route.lengthM) 0.0 else pacerSpeed[i],
+                    pacerDistance[i] - distance, pacerDistance[i] >= route.lengthM, pacerFinish[i],
+                )
             },
             passedLandmark = passed,
+            finishTimeSec = finishTime,
         )
         return state
     }

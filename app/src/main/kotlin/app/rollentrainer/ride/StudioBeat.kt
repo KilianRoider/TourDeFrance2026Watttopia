@@ -35,9 +35,11 @@ class StudioBeat {
     @Volatile private var stopping = false
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private val lock = Any()
+    /** The render coroutine; null once it has retired, so the next [start] builds a new one. Guarded by [lock]. */
     private var job: Job? = null
 
-    val running: Boolean get() = job?.isActive == true
+    val running: Boolean get() = synchronized(lock) { job != null }
 
     fun setBpm(value: Int) { bpm = value.coerceIn(60, 180) }
     fun setVolume(value: Float) { volume = value.coerceIn(0f, 1f) }
@@ -46,20 +48,36 @@ class StudioBeat {
     fun duck(on: Boolean) { ducked = on }
 
     fun start() {
-        stopping = false
-        if (running) return
-        job = scope.launch { render() }
+        synchronized(lock) {
+            stopping = false
+            if (job != null) return
+            val j = scope.launch {
+                try {
+                    render()
+                } finally {
+                    // Covers a failed track build or a write error; a retired loop has cleared it already.
+                    val self = coroutineContext[Job]
+                    synchronized(lock) { if (job === self) job = null }
+                }
+            }
+            job = j
+        }
     }
 
-    /** Fades out over the next chunk and parks the track; a hard cut would pop. [start] resumes it. */
+    /**
+     * Fades out, lets the fade play out and pauses the track; a hard cut would pop. [start] within a
+     * few seconds resumes the same track, after that the track is released and [start] builds a new one.
+     */
     fun stop() {
         stopping = true
     }
 
     fun release() {
-        stopping = true
-        job?.cancel()
-        job = null
+        synchronized(lock) {
+            stopping = true
+            job?.cancel()
+            job = null
+        }
     }
 
     private suspend fun CoroutineScope.render() {
@@ -84,11 +102,29 @@ class StudioBeat {
         try {
             while (isActive) {
                 if (stopping && gain <= 0f) {
-                    // Faded out: park the track until the next start() instead of tearing it down, so a
-                    // pause/resume within a second does not rebuild the audio path.
-                    runCatching { track.pause(); track.flush() }
-                    while (isActive && stopping) delay(50)
+                    // The fade and up to a buffer of audio before it are still queued in the track; a
+                    // pause()+flush() now would drop them and cut the beat. Push them out with silence.
+                    if (!drain(track, buffer)) continue
+                    runCatching { track.pause() }
+                    runCatching { track.flush() }
+                    // Park briefly, so a pause/resume within a few seconds does not rebuild the audio path.
+                    var parkedMs = 0L
+                    while (isActive && stopping && parkedMs < PARK_MS) {
+                        delay(50)
+                        parkedMs += 50
+                    }
                     if (!isActive) break
+                    // Still stopped: retire, releasing the track. The check and clearing [job] happen under the
+                    // lock, so a start() racing with this either resumes this loop or launches a new one.
+                    val retire = synchronized(lock) {
+                        if (stopping) {
+                            if (job === coroutineContext[Job]) job = null
+                            true
+                        } else {
+                            false
+                        }
+                    }
+                    if (retire) break
                     runCatching { track.play() }
                     continue
                 }
@@ -108,8 +144,27 @@ class StudioBeat {
                 if (written < 0) break
             }
         } finally {
-            runCatching { track.pause(); track.flush(); track.release() }
+            runCatching { track.pause() }
+            runCatching { track.flush() }
+            runCatching { track.release() }
         }
+    }
+
+    /**
+     * Writes one track buffer of silence, so everything queued before it has reached the speaker when
+     * this returns. Returns false when [start] was called meanwhile (the loop then fades back in).
+     */
+    private fun CoroutineScope.drain(track: AudioTrack, buffer: ShortArray): Boolean {
+        buffer.fill(0)
+        var left = runCatching { track.bufferSizeInFrames }.getOrDefault(buffer.size * 2).coerceAtLeast(buffer.size)
+        while (left > 0) {
+            if (!stopping || !isActive) return false
+            val n = minOf(left, buffer.size)
+            val written = runCatching { track.write(buffer, 0, n) }.getOrDefault(-1)
+            if (written <= 0) break
+            left -= written
+        }
+        return stopping
     }
 
     /**
@@ -263,5 +318,7 @@ class StudioBeat {
     companion object {
         const val SAMPLE_RATE = 44_100
         const val DUCK_FACTOR = 0.3f
+        /** How long a stopped beat keeps its track before releasing it. */
+        const val PARK_MS = 4_000L
     }
 }

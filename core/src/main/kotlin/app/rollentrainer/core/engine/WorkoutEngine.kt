@@ -42,6 +42,8 @@ data class EngineState(
     val intensityPct: Int = 100,
     val paused: Boolean = true,
     val autoPaused: Boolean = false,
+    /** The rider pressed pause; only then does the button say "Weiter". */
+    val userPaused: Boolean = false,
     val finished: Boolean = false,
     val targetCadence: Int? = null,
     /** Coaching text for the current moment, or null. */
@@ -89,9 +91,12 @@ class WorkoutEngine(
     var state: EngineState = compute()
         private set
 
-    /** Advances the clock by [dtSec] using the latest power and cadence readings. */
-    fun tick(dtSec: Double, power: Int?, cadence: Int?): EngineState {
-        val pedaling = (power ?: 0) > 15 || (cadence ?: 0) > 25
+    /**
+     * Advances the clock by [dtSec] using the latest power and cadence readings. [moving] counts as
+     * riding even without pedalling, e.g. rolling down a virtual descent.
+     */
+    fun tick(dtSec: Double, power: Int?, cadence: Int?, moving: Boolean = false): EngineState {
+        val pedaling = (power ?: 0) > 15 || (cadence ?: 0) > 25 || (moving && started)
         if (pedaling) {
             started = true
             idleSec = 0.0
@@ -292,6 +297,7 @@ class WorkoutEngine(
                 intensityPct = 100,
                 paused = paused,
                 autoPaused = autoPaused(),
+                userPaused = userPaused,
                 finished = finished,
                 erg = erg,
                 ergState = ergState,
@@ -318,6 +324,7 @@ class WorkoutEngine(
             intensityPct = intensity,
             paused = paused,
             autoPaused = autoPaused(),
+            userPaused = userPaused,
             finished = finished,
             targetCadence = seg?.cadence,
             cue = seg?.cueAt(workoutSec - seg.startSec)?.text,

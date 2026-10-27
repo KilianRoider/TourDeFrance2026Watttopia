@@ -14,6 +14,8 @@ data class Sample(
     val hr: Int? = null,
     val cadence: Int? = null,
     val speedKmh: Double? = null,
+    /** Height on a virtual route; null for indoor rides without a road. */
+    val altitudeM: Double? = null,
 )
 
 @Serializable

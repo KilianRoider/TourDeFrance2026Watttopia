@@ -33,6 +33,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -93,15 +94,10 @@ fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val wide = LocalConfiguration.current.screenWidthDp >= 720
-    // Spinning-class view: on for spinning workouts and when chosen as default; the rider can switch during the ride.
-    var spinning by remember { mutableStateOf(false) }
-    val rideWorkoutId = ride?.workout?.id
-    val riding = ride != null
-    LaunchedEffect(riding) {
-        if (riding) spinning = rideWorkoutId?.startsWith("preset-spin") == true || settings.spinningByDefault
-    }
+    // Spinning-class view: decided by the session when the ride starts, switchable during the ride.
+    val spinning by container.session.spinningView.collectAsStateWithLifecycle()
     // "Beenden" in the spinning view hands over to the normal view, which owns the end dialog (RPE, notes, save).
-    var endFromSpinning by remember { mutableStateOf(false) }
+    var endFromSpinning by rememberSaveable { mutableStateOf(false) }
 
     val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
         if (result.values.all { it }) container.sensors.connectSaved()
@@ -125,11 +121,17 @@ fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
                 }
                 spinning -> SpinningScreen(
                     container, container.spinningAudio,
-                    onStandardView = { spinning = false },
-                    onEnd = { endFromSpinning = true; spinning = false },
+                    onStandardView = { container.session.setSpinningView(false) },
+                    onEnd = { endFromSpinning = true; container.session.setSpinningView(false) },
                 )
                 else -> Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    RideScreen(container, onSpinningView = { spinning = true }, askEndFirst = endFromSpinning) { rideId ->
+                    RideScreen(
+                        container,
+                        onSpinningView = { container.session.setSpinningView(true) },
+                        askEndFirst = endFromSpinning,
+                        // Cancelling an end that came from the class goes back to the class.
+                        onEndCancelled = { if (endFromSpinning) { endFromSpinning = false; container.session.setSpinningView(true) } },
+                    ) { rideId ->
                         endFromSpinning = false
                         rideId?.let { nav.push(Screen.RideDetail(it)) }
                     }

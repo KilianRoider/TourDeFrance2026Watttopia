@@ -34,6 +34,8 @@ data class Route(
     /** Fraction of the original route this instance covers (1.0 = full). */
     val fraction: Double = 1.0,
     val builtIn: Boolean = true,
+    /** Where the hairpins really are (apex, metres from the start); empty = spread evenly. */
+    val hairpinsAtM: List<Double> = emptyList(),
 ) {
     val lengthM: Double get() = points.lastOrNull()?.distanceM ?: 0.0
     val lengthKm: Double get() = lengthM / 1000
@@ -120,7 +122,8 @@ data class Route(
         return copy(
             points = kept,
             landmarks = landmarks.filter { it.distanceM <= cut },
-            hairpins = (hairpins * f).roundToInt(),
+            hairpins = if (hairpinsAtM.isNotEmpty()) hairpinsAtM.count { it < cut - 60 } else (hairpins * f).roundToInt(),
+            hairpinsAtM = hairpinsAtM.filter { it < cut - 60 },
             fraction = f,
         )
     }
@@ -142,6 +145,7 @@ data class Route(
             landmarks: List<Landmark> = emptyList(),
             hairpins: Int = 0,
             biome: Biome = Biome.ALPINE,
+            hairpinsAtKm: List<Double> = emptyList(),
         ): Route {
             val pts = mutableListOf(RoutePoint(0.0, startElevationM))
             var d = 0.0
@@ -156,7 +160,12 @@ data class Route(
                 pts += RoutePoint(d, e)
             }
             if (d < totalM - 1) pts += RoutePoint(totalM, e)
-            return Route(id, name, region, description, kind, pts, landmarks, hairpins, biome)
+            return Route(
+                id, name, region, description, kind, pts, landmarks,
+                hairpins = if (hairpinsAtKm.isNotEmpty()) hairpinsAtKm.size else hairpins,
+                biome = biome,
+                hairpinsAtM = hairpinsAtKm.map { it * 1000 }.sorted(),
+            )
         }
     }
 }

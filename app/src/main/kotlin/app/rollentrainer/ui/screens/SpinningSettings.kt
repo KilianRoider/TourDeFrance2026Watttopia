@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import app.rollentrainer.AppContainer
 import app.rollentrainer.data.AppSettings
+import app.rollentrainer.ride.Coach
 import app.rollentrainer.ride.MusicPlayer
 import app.rollentrainer.ui.components.Panel
 import kotlinx.coroutines.Dispatchers
@@ -42,23 +44,31 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
     val folder = settings.musicFolder
     var folderName by remember { mutableStateOf<String?>(null) }
     var fileCount by remember { mutableStateOf<Int?>(null) }
+    // Whether the folder's read grant survives an app restart; null while checking.
+    var persisted by remember { mutableStateOf<Boolean?>(null) }
+    val coachStatus by container.spinningAudio.coachStatus.collectAsState()
 
     // Scanning touches the documents provider, so it runs off the main thread whenever the folder changes.
     LaunchedEffect(folder) {
         folderName = null
         fileCount = null
+        persisted = null
         if (folder.isBlank()) return@LaunchedEffect
         val uri = runCatching { Uri.parse(folder) }.getOrNull() ?: return@LaunchedEffect
-        val (name, count) = withContext(Dispatchers.IO) {
-            MusicPlayer.folderName(context, uri) to MusicPlayer.scan(context, uri).size
+        val (name, count, kept) = withContext(Dispatchers.IO) {
+            Triple(MusicPlayer.folderName(context, uri), MusicPlayer.scan(context, uri).size, MusicPlayer.isPersisted(context, uri))
         }
         folderName = name
         fileCount = count
+        persisted = kept
     }
 
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
         if (uri != null) {
-            MusicPlayer.persist(context, uri)
+            // Shown right away; a new folder is checked again once the settings have it.
+            persisted = MusicPlayer.persist(context, uri)
+            // Give back the old folder's grant; the system allows only a limited number per app.
+            if (folder.isNotBlank() && folder != uri.toString()) MusicPlayer.releasePersisted(context, folder)
             update { it.copy(musicFolder = uri.toString()) }
         }
     }
@@ -84,10 +94,24 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
                 },
                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+            if (persisted == false) {
+                Text(
+                    if (fileCount == 0) {
+                        "Kein Zugriff mehr auf diesen Ordner. Wähle ihn bitte noch einmal aus."
+                    } else {
+                        "Der Zugriff auf diesen Ordner ließ sich nicht dauerhaft speichern. Er gilt nur bis zum nächsten " +
+                            "Neustart der App; danach musst du ihn noch einmal wählen."
+                    },
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error,
+                )
+            }
             Spacer(Modifier.height(4.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedButton(onClick = { picker.launch(null) }) { Text("Anderen Ordner") }
-                TextButton(onClick = { update { it.copy(musicFolder = "") } }) { Text("Ordner entfernen") }
+                TextButton(onClick = {
+                    MusicPlayer.releasePersisted(context, folder)
+                    update { it.copy(musicFolder = "") }
+                }) { Text("Ordner entfernen") }
             }
         }
         Spacer(Modifier.height(8.dp))
@@ -103,6 +127,15 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
         )
         SwitchRow("Studio-Beat", "Elektronischer Beat im Takt der Ziel-Trittfrequenz, wenn kein Ordner gewählt ist", settings.studioBeat) { v -> update { it.copy(studioBeat = v) } }
         SwitchRow("Coach-Stimme", "Ansagen zu Abschnitten, Countdown und Motivation (braucht eine deutsche Sprachausgabe)", settings.coachVoice) { v -> update { it.copy(coachVoice = v) } }
+        // Tells a missing engine apart from a missing German voice; both leave the coach silent.
+        val voiceHint = when (coachStatus) {
+            Coach.Status.NO_ENGINE -> "Keine Sprachausgabe gefunden. Installiere oder aktiviere eine in den Android-Einstellungen unter Sprachausgabe und starte die App neu."
+            Coach.Status.NO_GERMAN -> "Die Sprachausgabe hat keine deutsche Stimme. Lade sie in den Android-Einstellungen unter Sprachausgabe herunter und starte die App neu."
+            else -> null
+        }
+        if (settings.coachVoice && voiceHint != null) {
+            Text(voiceHint, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+        }
         SwitchRow("Spinning-Ansicht als Standard", "Trainings starten direkt in der Spinning-Ansicht; Umschalten geht jederzeit", settings.spinningByDefault) { v -> update { it.copy(spinningByDefault = v) } }
     }
 }

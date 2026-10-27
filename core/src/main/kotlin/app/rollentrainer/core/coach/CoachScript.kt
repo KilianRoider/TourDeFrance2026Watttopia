@@ -26,7 +26,8 @@ data class CoachInput(
 /** How important a line is: the speaker drops low lines when it is busy and interrupts for high ones. */
 enum class CoachPriority { LOW, NORMAL, HIGH }
 
-data class CoachLine(val text: String, val priority: CoachPriority)
+/** [text] is shown on screen, [speech] is what the voice says (e.g. "Sprint 1 von 4" for "Sprint 1/4"). */
+data class CoachLine(val text: String, val priority: CoachPriority, val speech: String = text)
 
 /** Lines to say and show right now, plus the mood of the moment for lights and beat. */
 data class CoachOutput(val lines: List<CoachLine>, val mood: Int) {
@@ -77,7 +78,8 @@ class CoachScript(private val random: Random = Random.Default) {
         if (input.segmentIndex != lastSegment) {
             lastSegment = input.segmentIndex
             resetSegment(input)
-            lines += CoachLine(startLine(input), CoachPriority.HIGH)
+            val label = input.segmentLabel.ifBlank { "Abschnitt ${input.segmentIndex + 1}" }
+            lines += CoachLine(startLine(input, label), CoachPriority.HIGH, startLine(input, spoken(label)))
         }
 
         val cue = input.cue
@@ -96,7 +98,11 @@ class CoachScript(private val random: Random = Random.Default) {
         if (!said30 && duration >= 60 && remaining in 25..30) {
             said30 = true
             val next = input.nextLabel
-            lines += CoachLine(if (next != null && next.isNotBlank()) "Noch 30 Sekunden, dann $next" else "Noch 30 Sekunden", CoachPriority.NORMAL)
+            lines += if (next != null && next.isNotBlank()) {
+                CoachLine("Noch 30 Sekunden, dann $next", CoachPriority.NORMAL, "Noch 30 Sekunden, dann ${spoken(next)}")
+            } else {
+                CoachLine("Noch 30 Sekunden", CoachPriority.NORMAL)
+            }
         }
         if (!said10 && duration >= 20 && remaining in 8..10 && hasNext) {
             said10 = true
@@ -127,17 +133,23 @@ class CoachScript(private val random: Random = Random.Default) {
         nextMotivationSec = input.workoutSec + 25 + random.nextInt(21)
     }
 
-    /** "Jetzt: Stehender Berg – aus dem Sattel! 250 Watt, 60 Umdrehungen". */
-    private fun startLine(input: CoachInput): String {
-        val label = input.segmentLabel.ifBlank { "Abschnitt ${input.segmentIndex + 1}" }
-        val standing = isStanding(label) || (input.cue?.let { isStanding(it) } ?: false)
+    /** "Jetzt: Stehender Berg – aus dem Sattel! 250 Watt, 60 Umdrehungen" or "Jetzt: Flachstück, 180 Watt, 95 Umdrehungen". */
+    private fun startLine(input: CoachInput, label: String): String {
+        val standing = isStanding(input.segmentLabel, input.cue)
+        val details = buildList {
+            val w = input.targetWatts
+            if (w != null) add(if (input.erg) "$w Watt" else "frei, so hart du kannst")
+            input.targetCadence?.let { add("$it Umdrehungen") }
+        }.joinToString(", ")
         return buildString {
             append("Jetzt: ").append(label)
-            if (standing && !label.contains("Sattel", ignoreCase = true)) append(" – aus dem Sattel!")
-            val w = input.targetWatts
-            if (w != null && input.erg) append(", $w Watt")
-            else if (w != null) append(", frei, so hart du kannst")
-            input.targetCadence?.let { append(", $it Umdrehungen") }
+            if (standing && !label.contains("Sattel", ignoreCase = true)) {
+                // A new sentence after the call, so the voice does not run "Sattel!" into the watts.
+                append(" – aus dem Sattel!")
+                if (details.isNotEmpty()) append(' ').append(details.replaceFirstChar { it.uppercase() })
+            } else if (details.isNotEmpty()) {
+                append(", ").append(details)
+            }
         }
     }
 
@@ -190,10 +202,44 @@ class CoachScript(private val random: Random = Random.Default) {
             return (if (rpm < 60) rpm * 2 else rpm).coerceIn(60, 180)
         }
 
-        fun isStanding(text: String): Boolean {
+        /** True when [text] tells the rider to stand now; announcements and calls to sit are not. */
+        fun isStanding(text: String): Boolean = posture(text) == true
+
+        /**
+         * Whether the rider should be out of the saddle: the visible [cue] decides when it calls for
+         * sitting or standing, otherwise the segment [label] ("Stehender Berg"). Shared by the coach's
+         * start line and the animated riders, so both always agree.
+         */
+        fun isStanding(label: String, cue: String?): Boolean =
+            cue?.let { posture(it) } ?: posture(label) ?: false
+
+        /**
+         * Reads a label or cue: true for a call to stand now, false for a call to sit now, null when it
+         * says neither. Announcements ("Gleich aus dem Sattel", "…, dann aus dem Sattel") are about
+         * later and count as nothing. When both appear, the first call is the one that applies now
+         * ("8 Sekunden sitzen, 8 Sekunden stehen" starts seated).
+         */
+        private fun posture(text: String): Boolean? {
             val t = text.lowercase()
-            return t.contains("steh") || t.contains("aus dem sattel") || t.contains("wiegetritt") || t.contains("hoch!")
+            if (t.trimStart().startsWith("gleich")) return null
+            val now = t.substringBefore(" dann ")
+            val sit = SIT_WORDS.mapNotNull { w -> now.indexOf(w).takeIf { it >= 0 } }.minOrNull()
+            val stand = STAND_WORDS.mapNotNull { w -> now.indexOf(w).takeIf { it >= 0 } }.minOrNull()
+            return when {
+                sit == null && stand == null -> null
+                stand == null -> false
+                sit == null -> true
+                else -> stand < sit
+            }
         }
+
+        private val SIT_WORDS = listOf("sitz", "setz", "im sattel")
+        private val STAND_WORDS = listOf("steh", "aus dem sattel", "wiegetritt", "hoch!")
+
+        private val FRACTION = Regex("""\b(\d+)/(\d+)\b""")
+
+        /** Interval labels count repetitions as "1/4", which a German voice reads as "ein Viertel"; this says "1 von 4". */
+        fun spoken(text: String): String = FRACTION.replace(text, "\$1 von \$2")
 
         val MOTIVATION = listOf(
             "Bleib dran, das ist dein Berg!",

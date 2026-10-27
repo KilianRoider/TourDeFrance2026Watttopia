@@ -72,6 +72,8 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
     private var lastFrameMs = 0L
     private var smoothDistance = 0.0
     private var pacerCrank = 0f
+    private var pacerWheel = 0f
+    private val skylineModel = FloatArray(16)
     private val camPos = FloatArray(3)
     private var fogColor = floatArrayOf(0.72f, 0.8f, 0.9f)
     private var zenith = floatArrayOf(0.3f, 0.52f, 0.86f)
@@ -116,13 +118,24 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         val dt = if (lastFrameMs == 0L) 0.016f else ((now - lastFrameMs) / 1000f).coerceIn(0f, 0.1f)
         lastFrameMs = now
         val f = frame
-        val predicted = if (f.paused) f.distanceM else f.distanceM + f.speedMps * ((now - f.updatedAtMs) / 1000.0).coerceIn(0.0, 1.5)
-        smoothDistance += (predicted - smoothDistance) * (1 - Math.exp(-dt * 4.0))
-        if (smoothDistance > predicted + 2 || smoothDistance < predicted - 20) smoothDistance = predicted
+        // While paused the rider stays where the smoothing has got to (it runs a little ahead of the last
+        // tick), instead of being pulled back to the tick's distance.
+        val predicted = if (f.paused) maxOf(f.distanceM, smoothDistance).coerceAtMost(f.distanceM + 10)
+        else f.distanceM + f.speedMps * ((now - f.updatedAtMs) / 1000.0).coerceIn(0.0, 1.5)
+        // Follow smoothly, never roll backwards for a small overshoot; jump only for big differences.
+        val next = smoothDistance + (predicted - smoothDistance) * (1 - Math.exp(-dt * 4.0))
+        smoothDistance = when {
+            kotlin.math.abs(predicted - smoothDistance) > 20 -> predicted
+            next < smoothDistance -> smoothDistance
+            else -> next
+        }
         val d = smoothDistance.coerceIn(0.0, w.route.lengthM)
         if (!f.paused) {
             crank += (f.cadenceRpm / 60.0 * 2 * PI * dt).toFloat()
             wheel += ((f.speedMps * dt) / RiderModel.WHEEL_R * 180 / PI).toFloat()
+            // The pacer spins a steady 85 rpm and rolls at its own speed.
+            pacerCrank += (85.0 / 60.0 * 2 * PI * dt).toFloat()
+            pacerWheel += ((f.pacerSpeedMps * dt) / RiderModel.WHEEL_R * 180 / PI).toFloat()
         }
 
         val pose = w.poseAt(d)
@@ -135,13 +148,20 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         val lz = (pose.z + cos(pose.heading) * 4).toFloat()
         camPos[0] = ex; camPos[1] = eyeY; camPos[2] = ez
         Matrix.setLookAtM(view, 0, ex, eyeY, ez, lx, ly, lz, 0f, 1f, 0f)
-        Matrix.perspectiveM(proj, 0, 58f, aspect, 0.4f, 4000f)
+        Matrix.perspectiveM(proj, 0, 58f, aspect, 0.4f, WorldMeshes.FAR_PLANE)
         Matrix.multiplyMM(viewProj, 0, proj, 0, view, 0)
 
         drawSky(ly - eyeY)
         GLES30.glEnable(GLES30.GL_DEPTH_TEST)
-        drawStatic(litProgram, skyline, 0.00025f)
+        // The far mountains travel with the camera like a backdrop.
+        Matrix.setIdentityM(skylineModel, 0)
+        Matrix.translateM(skylineModel, 0, ex, eyeY - WorldMeshes.SKYLINE_DROP, ez)
+        drawStatic(litProgram, skyline, 0.0004f, skylineModel)
+        // Push the terrain back a little in depth so the road on top of it always wins.
+        GLES30.glEnable(GLES30.GL_POLYGON_OFFSET_FILL)
+        GLES30.glPolygonOffset(1f, 2f)
         drawStatic(litProgram, terrain, FOG)
+        GLES30.glDisable(GLES30.GL_POLYGON_OFFSET_FILL)
         drawStatic(roadProgram, road, FOG)
         drawProps(ex.toDouble(), ez.toDouble())
         drawSigns()
@@ -155,13 +175,8 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         signs.forEach { GLES30.glDeleteTextures(1, intArrayOf(it.texture), 0) }
         signs.clear()
         terrain = GpuMesh(WorldMeshes.terrain(w.terrain, w.biome))
-        road = GpuMesh(WorldMeshes.road(w.path))
-        val t = w.terrain
-        val cx = (t.originX + t.cols * t.cell / 2).toFloat()
-        val cz = (t.originZ + t.rows * t.cell / 2).toFloat()
-        val radius = (maxOf(t.cols, t.rows) * t.cell / 2 + 2600).toFloat()
-        val base = (w.path.minOf { it.y } - 150).toFloat()
-        skyline = GpuMesh(WorldMeshes.skyline(cx, cz, base, radius, w.route.id.hashCode() and 0xFF))
+        road = GpuMesh(WorldMeshes.road(w.path, w.terrain))
+        skyline = GpuMesh(WorldMeshes.skyline(WorldMeshes.SKYLINE_RADIUS, WorldMeshes.skylineRelief(w.biome), w.route.id.hashCode() and 0xFF))
         propBuckets.clear()
         for (p in w.props) {
             val key = bucketKey(p.x, p.z)
@@ -203,10 +218,10 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         GLES30.glUniform1f(GLES30.glGetUniformLocation(program, "uWindows"), 0f)
     }
 
-    private fun drawStatic(program: Int, mesh: GpuMesh?, fogDensity: Float) {
+    private fun drawStatic(program: Int, mesh: GpuMesh?, fogDensity: Float, modelMatrix: FloatArray? = null) {
         mesh ?: return
         setCommonUniforms(program, fogDensity)
-        Matrix.setIdentityM(model, 0)
+        if (modelMatrix != null) System.arraycopy(modelMatrix, 0, model, 0, 16) else Matrix.setIdentityM(model, 0)
         GLES30.glUniformMatrix4fv(GLES30.glGetUniformLocation(program, "uModel"), 1, false, model, 0)
         GLES30.glVertexAttrib4f(3, 0f, 0f, 0f, 1f)
         GLES30.glVertexAttrib4f(4, 0f, 1f, 1f, 1f)
@@ -292,11 +307,12 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         }
         val base = FloatArray(16)
         Matrix.setIdentityM(base, 0)
-        Matrix.translateM(base, 0, pose.x.toFloat(), pose.y.toFloat() + 0.02f, pose.z.toFloat())
+        Matrix.translateM(base, 0, pose.x.toFloat(), pose.y.toFloat() + WorldMeshes.ROAD_LIFT, pose.z.toFloat())
         Matrix.rotateM(base, 0, Math.toDegrees(pose.heading).toFloat(), 0f, 1f, 0f)
         // Lean into the grade so the bike sits on the road.
         Matrix.rotateM(base, 0, -Math.toDegrees(Math.atan(w.route.gradientAt(d) / 100)).toFloat(), 1f, 0f, 0f)
-        Matrix.translateM(base, 0, 0.9f, 0f, 0f)
+        // Ride on the right-hand side of the road.
+        Matrix.translateM(base, 0, WorldMeshes.RIDER_OFFSET, 0f, 0f)
         rider?.render(base, crank, wheel, draw)
 
         val pd = frame.pacerDistanceM
@@ -305,13 +321,12 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
             val pdist = predicted.coerceIn(0.0, w.route.lengthM)
             if (kotlin.math.abs(pdist - d) < 600) {
                 val pp = w.poseAt(pdist)
-                pacerCrank += (85.0 / 60.0 * 2 * PI * 0.016).toFloat()
                 Matrix.setIdentityM(base, 0)
-                Matrix.translateM(base, 0, pp.x.toFloat(), pp.y.toFloat() + 0.02f, pp.z.toFloat())
+                Matrix.translateM(base, 0, pp.x.toFloat(), pp.y.toFloat() + WorldMeshes.ROAD_LIFT, pp.z.toFloat())
                 Matrix.rotateM(base, 0, Math.toDegrees(pp.heading).toFloat(), 0f, 1f, 0f)
                 Matrix.rotateM(base, 0, -Math.toDegrees(Math.atan(w.route.gradientAt(pdist) / 100)).toFloat(), 1f, 0f, 0f)
-                Matrix.translateM(base, 0, -0.9f, 0f, 0f)
-                pacer?.render(base, pacerCrank, wheel, draw)
+                Matrix.translateM(base, 0, WorldMeshes.PACER_OFFSET, 0f, 0f)
+                pacer?.render(base, pacerCrank, pacerWheel, draw)
             }
         }
     }

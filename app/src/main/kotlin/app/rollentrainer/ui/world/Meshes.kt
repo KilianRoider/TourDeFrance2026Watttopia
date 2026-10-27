@@ -219,43 +219,90 @@ object WorldMeshes {
 
     /**
      * The road as a ribbon with a kerb; the colour channel carries (u along in metres / 10, v across -1..1, 0)
-     * so the fragment shader can paint lines, hence the road uses its own shader.
+     * so the fragment shader can paint lines, hence the road uses its own shader. Both edges get a skirt
+     * (v beyond ±1, painted as a stone wall) that reaches down to the terrain, so the small step to the
+     * levelled ground and the retaining walls of stacked switchbacks are closed.
      */
-    fun road(path: List<PathSample>): MeshData {
-        val m = MeshData(path.size * 2)
+    fun road(path: List<PathSample>, terrain: World.Terrain? = null): MeshData {
+        val m = MeshData(path.size * 6)
         val half = World.ROAD_HALF.toFloat()
         var prevL = -1; var prevR = -1
+        var prevLt = -1; var prevLb = -1; var prevRt = -1; var prevRb = -1
         for ((i, p) in path.withIndex()) {
-            val dx = cos(p.heading).toFloat(); val dz = -sin(p.heading).toFloat()
-            val y = p.y.toFloat() + 0.08f
+            // Right-hand vector of the heading (the world is right-handed with y up).
+            val rx = -cos(p.heading).toFloat(); val rz = sin(p.heading).toFloat()
+            val y = p.y.toFloat() + ROAD_LIFT
             val u = (p.d / 10).toFloat()
-            val l = m.vertex(p.x.toFloat() - dx * half, y, p.z.toFloat() - dz * half, 0f, 1f, 0f, u, -1f, 0f)
-            val r = m.vertex(p.x.toFloat() + dx * half, y, p.z.toFloat() + dz * half, 0f, 1f, 0f, u, 1f, 0f)
-            if (i > 0) m.quad(prevL, l, r, prevR)
-            prevL = l; prevR = r
+            val px = p.x.toFloat(); val pz = p.z.toFloat()
+            val lx = px - rx * half; val lz = pz - rz * half
+            val rxe = px + rx * half; val rze = pz + rz * half
+            val l = m.vertex(lx, y, lz, 0f, 1f, 0f, u, -1f, 0f)
+            val r = m.vertex(rxe, y, rze, 0f, 1f, 0f, u, 1f, 0f)
+            // Skirts down to the ground just outside each edge (at least a little below the asphalt).
+            fun bottom(ex: Float, ez: Float, ox: Float, oz: Float): Float {
+                val ground = terrain?.heightAt((ex + ox * 1.5f).toDouble(), (ez + oz * 1.5f).toDouble())?.toFloat() ?: (y - 1f)
+                return minOf(ground, y) - 0.6f
+            }
+            val lt = m.vertex(lx, y, lz, -rx, 0f, -rz, u, -1f, 0f)
+            val lb = m.vertex(lx, bottom(lx, lz, -rx, -rz), lz, -rx, 0f, -rz, u, -1.25f, 0f)
+            val rt = m.vertex(rxe, y, rze, rx, 0f, rz, u, 1f, 0f)
+            val rb = m.vertex(rxe, bottom(rxe, rze, rx, rz), rze, rx, 0f, rz, u, 1.25f, 0f)
+            if (i > 0) {
+                m.quad(prevR, r, l, prevL)          // surface, facing up
+                m.quad(prevRt, prevRb, rb, rt)      // right skirt, facing right
+                m.quad(prevLt, lt, lb, prevLb)      // left skirt, facing left
+            }
+            prevL = l; prevR = r; prevLt = lt; prevLb = lb; prevRt = rt; prevRb = rb
         }
         return m
     }
 
-    /** Far mountains: a ring of peaks around the world so the horizon is not empty. */
-    fun skyline(centerX: Float, centerZ: Float, baseY: Float, radius: Float, seed: Int): MeshData {
+    /**
+     * Far mountains: a ring of peaks around the origin, drawn centred on the camera like a backdrop so
+     * the horizon is never empty. [relief] scales the peak heights (high Alps vs. the Breton hills).
+     */
+    fun skyline(radius: Float, relief: Float, seed: Int): MeshData {
         val m = MeshData(512)
         val n = 180
         val top = IntArray(n); val bottom = IntArray(n)
         for (i in 0 until n) {
             val a = (2 * PI * i / n).toFloat()
-            val x = centerX + cos(a) * radius; val z = centerZ + sin(a) * radius
-            val h = (World.fbm(i * 0.11 + seed, 0.3) * 0.5 + 0.5) * radius * 0.42 + radius * 0.08
+            val x = cos(a) * radius; val z = sin(a) * radius
+            val h = ((World.fbm(i * 0.11 + seed, 0.3) * 0.5 + 0.5) * relief + 0.03) * radius
             val c = 0.62f + (World.fbm(i * 0.3 + seed, 7.0) * 0.05).toFloat()
-            top[i] = m.vertex(x, baseY + h.toFloat(), z, -cos(a), 0.3f, -sin(a), c, c + 0.03f, c + 0.1f)
-            bottom[i] = m.vertex(x, baseY - radius * 0.1f, z, -cos(a), 0.3f, -sin(a), c, c + 0.03f, c + 0.1f)
+            top[i] = m.vertex(x, h.toFloat(), z, -cos(a), 0.3f, -sin(a), c, c + 0.03f, c + 0.1f)
+            bottom[i] = m.vertex(x, -radius * 0.12f, z, -cos(a), 0.3f, -sin(a), c, c + 0.03f, c + 0.1f)
         }
         for (i in 0 until n) {
             val j = (i + 1) % n
-            m.quad(bottom[i], top[i], top[j], bottom[j])
+            // Wound to face the centre, where the camera is.
+            m.quad(bottom[i], bottom[j], top[j], top[i])
         }
         return m
     }
+
+    /** How high the far mountains rise, as a share of their distance. */
+    fun skylineRelief(biome: app.rollentrainer.core.route.Biome): Float = when (biome) {
+        app.rollentrainer.core.route.Biome.ALPINE -> 0.3f
+        app.rollentrainer.core.route.Biome.PYRENEAN -> 0.24f
+        app.rollentrainer.core.route.Biome.VENTOUX -> 0.1f
+        app.rollentrainer.core.route.Biome.VOLCANIC -> 0.07f
+        app.rollentrainer.core.route.Biome.FIELDS -> 0.025f
+        app.rollentrainer.core.route.Biome.CITY -> 0.02f
+    }
+
+    /** The asphalt sits this far above the centre line samples. */
+    const val ROAD_LIFT = 0.1f
+    /** Far clipping plane of the camera. */
+    const val FAR_PLANE = 4000f
+    /** Distance of the far-mountain ring from the camera, inside the far plane. */
+    const val SKYLINE_RADIUS = 3300f
+    /** The ring sits this far below the camera, so its peaks stay near the horizon wherever you are. */
+    const val SKYLINE_DROP = 350f
+    /** Lateral place of the rider on the road in the bike's local x (negative = right). */
+    const val RIDER_OFFSET = -1.1f
+    /** The pacer rides on the rider's left. */
+    const val PACER_OFFSET = 0.6f
 
     /** Models of the scattered props, by kind. */
     fun prop(kind: Int): MeshData {

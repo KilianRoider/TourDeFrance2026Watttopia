@@ -112,7 +112,57 @@ class RouteTest {
             assertTrue(r.name, w.terrain.cols * w.terrain.rows < 150_000)
             assertTrue(r.name, w.props.size < 60_000)
             assertTrue(r.name, w.signs.isNotEmpty())
+            // Every hairpin sign stands where the road really turns, and flat routes have none.
+            val kehren = w.signs.filter { Regex("Kehre \\d+").matches(it.text) }
+            assertEquals(r.name, if (w.hillside > 0.0001) r.hairpins else 0, kehren.size)
+            for (k in kehren) {
+                val near = w.path.minByOrNull { (it.x - k.x) * (it.x - k.x) + (it.z - k.z) * (it.z - k.z) }!!
+                val before = w.poseAt(near.d - 60).heading
+                val after = w.poseAt(near.d + 80).heading
+                var turn = abs(after - before) % (2 * Math.PI)
+                if (turn > Math.PI) turn = 2 * Math.PI - turn
+                assertTrue("${r.name} ${k.text} turn=$turn", turn > 0.8)
+            }
         }
+    }
+
+    @Test fun slowClimbingStillMovesAndTiesGoToTheRider() {
+        // 100 kg rider at 90 W on 12.5 %: slow, but moving, and it matches the steady-state estimate.
+        val p = RiderParams.forRider(100.0)
+        var v = 0.0
+        repeat(600) { v = Physics.step(v, 90.0, 12.5, 1.0, p) }
+        val steady = Physics.steadySpeed(90.0, 12.5, p)
+        assertTrue("v=$v steady=$steady", v > 0.5 && abs(v - steady) < 0.05)
+        // Starting from standstill is brisk but not instant.
+        assertTrue(Physics.step(0.0, 400.0, 0.0, 0.1, p) < 1.0)
+        // Rider and pacer at the same power reach the top in the same tick: the rider is not beaten.
+        val short = Route.fromKmGradients("t-tie", "Tie", "", "", RouteKind.CLIMB, 100.0, 1.0, listOf(8.0))
+        val e = RouteEngine(short, p, listOf(Pacer("Pacer", 250)))
+        var st = e.tick(1.0, 250, false)
+        while (!st.finished) st = e.tick(1.0, 250, false)
+        val pacer = st.pacers.first()
+        assertTrue(pacer.finished)
+        assertFalse(st.beatenBy(pacer))
+        assertTrue(st.finishTimeSec!! <= st.elapsedSec && st.finishTimeSec!! > st.elapsedSec - 1.0)
+        // A stronger pacer wins, with its own exact time.
+        val e2 = RouteEngine(short, p, listOf(Pacer("Stark", 400)))
+        var s2 = e2.tick(1.0, 250, false)
+        while (!s2.finished) s2 = e2.tick(1.0, 250, false)
+        assertTrue(s2.beatenBy(s2.pacers.first()))
+    }
+
+    @Test fun pauseStopsTheRiderInsteadOfFreezingTheSpeed() {
+        val flat = Route.fromKmGradients("t-p", "Flach", "", "", RouteKind.FLAT, 100.0, 3.0, listOf(0.0, 0.0, 0.0))
+        val e = RouteEngine(flat, RiderParams.forRider(80.0))
+        repeat(60) { e.tick(1.0, 250, false) }
+        assertTrue(e.state.speedMps > 7.0)
+        val at = e.state.distanceM
+        repeat(30) { e.tick(1.0, null, true) }
+        assertEquals(0.0, e.state.speedMps, 0.0)
+        assertEquals(at, e.state.distanceM, 0.0)
+        // After the break the rider starts from a standstill.
+        e.tick(1.0, 250, false)
+        assertTrue(e.state.speedMps < 3.0)
     }
 
     @Test fun straightClimbAndCityStayCompact() {

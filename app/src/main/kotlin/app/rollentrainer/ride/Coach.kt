@@ -5,6 +5,7 @@ import android.media.AudioAttributes
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.util.Log
 import app.rollentrainer.core.coach.CoachPriority
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,8 +19,14 @@ import java.util.concurrent.atomic.AtomicInteger
  * when to duck.
  */
 class Coach(context: Context) {
+    /** Outcome of binding the speech engine, so the settings can say why the coach is silent. */
+    enum class Status { STARTING, READY, NO_ENGINE, NO_GERMAN }
+
     private val _speaking = MutableStateFlow(false)
     val speaking: StateFlow<Boolean> = _speaking.asStateFlow()
+
+    private val _status = MutableStateFlow(Status.STARTING)
+    val status: StateFlow<Status> = _status.asStateFlow()
 
     @Volatile private var ready = false
     private var tts: TextToSpeech? = null
@@ -32,13 +39,24 @@ class Coach(context: Context) {
             // The init listener runs on the main thread once the engine is bound; until then lines are dropped.
             TextToSpeech(context.applicationContext) { status -> onInit(status) }
         }.getOrNull()
+        if (tts == null) _status.value = Status.NO_ENGINE
     }
 
     private fun onInit(status: Int) {
+        // Checked before `tts`: without any engine the constructor reports the error synchronously, before it returns.
+        if (status != TextToSpeech.SUCCESS) {
+            // No engine installed or enabled, or none visible to the app.
+            Log.w(TAG, "Text-to-speech init failed: $status")
+            _status.value = Status.NO_ENGINE
+            return
+        }
         val t = tts ?: return
-        if (status != TextToSpeech.SUCCESS) return
         val lang = runCatching { t.setLanguage(Locale.GERMANY) }.getOrDefault(TextToSpeech.LANG_NOT_SUPPORTED)
-        if (lang == TextToSpeech.LANG_MISSING_DATA || lang == TextToSpeech.LANG_NOT_SUPPORTED) return
+        if (lang == TextToSpeech.LANG_MISSING_DATA || lang == TextToSpeech.LANG_NOT_SUPPORTED) {
+            Log.w(TAG, "No German voice: $lang")
+            _status.value = Status.NO_GERMAN
+            return
+        }
         runCatching {
             t.setAudioAttributes(
                 AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build()
@@ -54,6 +72,7 @@ class Coach(context: Context) {
             })
         }
         ready = true
+        _status.value = Status.READY
     }
 
     private fun finished() {
@@ -96,5 +115,9 @@ class Coach(context: Context) {
         runCatching { tts?.shutdown() }
         tts = null
         ready = false
+    }
+
+    private companion object {
+        const val TAG = "Coach"
     }
 }

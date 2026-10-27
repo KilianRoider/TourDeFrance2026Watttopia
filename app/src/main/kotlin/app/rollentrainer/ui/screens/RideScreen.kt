@@ -86,6 +86,8 @@ fun RideScreen(
     container: AppContainer,
     onSpinningView: (() -> Unit)? = null,
     askEndFirst: Boolean = false,
+    /** The end dialog was closed without ending (only reported for a dialog opened via [askEndFirst]). */
+    onEndCancelled: () -> Unit = {},
     onFinished: (rideId: String?) -> Unit,
 ) {
     val state by container.session.state.collectAsStateWithLifecycle()
@@ -232,7 +234,7 @@ fun RideScreen(
     val done = s.engine.finished && !finishSeen
     if ((askEnd || done) && !askRpe) {
         AlertDialog(
-            onDismissRequest = { if (!done) askEnd = false },
+            onDismissRequest = { if (!done) { askEnd = false; onEndCancelled() } },
             title = { Text(if (done) "Geschafft!" else if (s.workout == null) "Fahrt beenden?" else "Training beenden?") },
             text = {
                 Column {
@@ -257,10 +259,11 @@ fun RideScreen(
                     if (done) {
                         TextButton(onClick = {
                             finishSeen = true
+                            askEnd = false
                             container.session.continueRiding((settings.ftp * 0.55).roundToInt())
                         }) { Text("Weiterfahren") }
                     } else {
-                        TextButton(onClick = { askEnd = false }) { Text("Weiterfahren") }
+                        TextButton(onClick = { askEnd = false; onEndCancelled() }) { Text("Weiterfahren") }
                     }
                 }
             },
@@ -432,10 +435,12 @@ private fun Controls(container: AppContainer, s: RideState, settings: AppSetting
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Button(onClick = { session.togglePause() }, modifier = Modifier.height(56.dp)) {
-            Icon(if (e.paused) Icons.Default.PlayArrow else Icons.Default.Pause, null)
+        // "Weiter" only after a pause by hand; before the start and in an auto-pause pedalling resumes.
+        val resume = e.userPaused
+        Button(onClick = { session.setPaused(!resume) }, modifier = Modifier.height(56.dp)) {
+            Icon(if (resume) Icons.Default.PlayArrow else Icons.Default.Pause, null)
             Spacer(Modifier.width(8.dp))
-            Text(if (e.paused) "Weiter" else "Pause")
+            Text(if (resume) "Weiter" else "Pause")
         }
         if (inWorkout) {
             FilledTonalIconButton(onClick = { session.back() }, modifier = Modifier.height(56.dp)) { Icon(Icons.Default.SkipPrevious, "Abschnitt zurück") }

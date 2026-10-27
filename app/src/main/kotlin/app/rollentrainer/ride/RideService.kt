@@ -31,7 +31,7 @@ class RideService : Service() {
         )
         val notification: Notification = NotificationCompat.Builder(this, CHANNEL)
             .setContentTitle("Training läuft")
-            .setContentText("Der Trainer wird im ERG-Modus gesteuert.")
+            .setContentText("Wattwerk steuert den Trainer.")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setOngoing(true)
             .setContentIntent(open)

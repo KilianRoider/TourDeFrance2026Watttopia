@@ -25,6 +25,9 @@ object Physics {
     /** Nobody descends faster than this indoors. */
     const val MAX_SPEED_MPS = 25.0
 
+    /** Largest pushing force at the wheel when starting, in newtons. */
+    const val MAX_DRIVE_N = 600.0
+
     /** Resistive force in N at a speed on a grade (positive = slows the rider). */
     fun resistance(speedMps: Double, gradePct: Double, p: RiderParams): Double {
         val theta = atan(gradePct / 100)
@@ -43,7 +46,9 @@ object Physics {
         var remaining = dt
         while (remaining > 0) {
             val h = minOf(0.1, remaining)
-            val drive = powerW * p.drivetrainEfficiency / maxOf(v, 0.8)
+            // Force at the wheel from the power; near standstill it is limited by what legs and tyre can
+            // push, so starting is brisk but not instant and slow crawling on steep ramps still moves.
+            val drive = minOf(powerW * p.drivetrainEfficiency / maxOf(v, 0.25), MAX_DRIVE_N)
             val a = (drive - resistance(v, gradePct, p)) / p.totalMassKg
             v = (v + a * h).coerceIn(0.0, MAX_SPEED_MPS)
             // Standing still on a climb with no power: the bike does not roll backwards.

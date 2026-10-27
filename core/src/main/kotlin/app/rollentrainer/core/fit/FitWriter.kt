@@ -28,6 +28,7 @@ object FitWriter {
 
     private const val SPORT_CYCLING = 2
     private const val SUB_SPORT_INDOOR_CYCLING = 6
+    private const val SUB_SPORT_VIRTUAL_ACTIVITY = 58
 
     private class Field(val num: Int, val size: Int, val type: Int)
 
@@ -68,6 +69,18 @@ object FitWriter {
         val end = start + samples.size
         val s = ride.summary
         val elapsedMs = samples.size * 1000L
+        // A ride on a virtual route carries its road height, so Strava and Garmin show the climb.
+        val altitudes = samples.mapNotNull { it.altitudeM }
+        val virtual = altitudes.isNotEmpty()
+        val subSport = if (virtual) SUB_SPORT_VIRTUAL_ACTIVITY else SUB_SPORT_INDOOR_CYCLING
+        var ascent = 0.0
+        var descent = 0.0
+        for (i in 1 until altitudes.size) {
+            val d = altitudes[i] - altitudes[i - 1]
+            if (d > 0) ascent += d else descent -= d
+        }
+        val totalAscent = if (virtual) ascent.roundToInt() else null
+        val totalDescent = if (virtual) descent.roundToInt() else null
 
         // file_id
         e.define(0, MSG_FILE_ID, listOf(
@@ -88,7 +101,7 @@ object FitWriter {
         // records, one per second
         e.define(2, MSG_RECORD, listOf(
             Field(253, 4, UINT32), Field(7, 2, UINT16), Field(3, 1, UINT8),
-            Field(4, 1, UINT8), Field(6, 2, UINT16), Field(5, 4, UINT32),
+            Field(4, 1, UINT8), Field(6, 2, UINT16), Field(5, 4, UINT32), Field(2, 2, UINT16),
         ))
         var distance = 0.0
         for ((i, smp) in samples.withIndex()) {
@@ -101,6 +114,8 @@ object FitWriter {
             e.u8(smp.cadence)
             e.u16(smp.speedKmh?.let { (speedMs * 1000).roundToInt() })
             e.u32((distance * 100).roundToLong())
+            // altitude: scale 5, offset 500 m
+            e.u16(smp.altitudeM?.let { ((it + 500) * 5).roundToInt() })
         }
 
         e.header(1); e.u32(end); e.enum(0); e.enum(4) // stop all
@@ -111,12 +126,14 @@ object FitWriter {
             Field(2, 4, UINT32), Field(7, 4, UINT32), Field(8, 4, UINT32), Field(9, 4, UINT32),
             Field(19, 2, UINT16), Field(20, 2, UINT16), Field(15, 1, UINT8), Field(16, 1, UINT8),
             Field(17, 1, UINT8), Field(25, 1, ENUM), Field(39, 1, ENUM),
+            Field(21, 2, UINT16), Field(22, 2, UINT16),
         ))
         e.header(3)
         e.u32(end); e.u16(0); e.enum(9); e.enum(1)
         e.u32(start); e.u32(elapsedMs); e.u32(elapsedMs); e.u32((s.distanceM * 100).roundToLong())
         e.u16(s.avgPower); e.u16(s.maxPower); e.u8(s.avgHr); e.u8(s.maxHr); e.u8(s.avgCadence)
-        e.enum(SPORT_CYCLING); e.enum(SUB_SPORT_INDOOR_CYCLING)
+        e.enum(SPORT_CYCLING); e.enum(subSport)
+        e.u16(totalAscent); e.u16(totalDescent)
 
         // session
         e.define(4, MSG_SESSION, listOf(
@@ -126,15 +143,17 @@ object FitWriter {
             Field(17, 1, UINT8), Field(18, 1, UINT8), Field(19, 1, UINT8), Field(20, 2, UINT16),
             Field(21, 2, UINT16), Field(25, 2, UINT16), Field(26, 2, UINT16), Field(28, 1, ENUM),
             Field(34, 2, UINT16), Field(35, 2, UINT16), Field(36, 2, UINT16), Field(48, 4, UINT32),
+            Field(22, 2, UINT16), Field(23, 2, UINT16),
         ))
         e.header(4)
         e.u32(end); e.u16(0); e.enum(8); e.enum(1) // event session, stop
-        e.u32(start); e.enum(SPORT_CYCLING); e.enum(SUB_SPORT_INDOOR_CYCLING)
+        e.u32(start); e.enum(SPORT_CYCLING); e.enum(subSport)
         e.u32(elapsedMs); e.u32(elapsedMs); e.u32((s.distanceM * 100).roundToLong())
         e.u16(s.calories); e.u8(s.avgHr); e.u8(s.maxHr); e.u8(s.avgCadence); e.u8(s.maxCadence)
         e.u16(s.avgPower); e.u16(s.maxPower); e.u16(0); e.u16(1); e.enum(0)
         e.u16(s.normalizedPower); e.u16((s.tss * 10).roundToInt())
         e.u16((s.intensityFactor * 1000).roundToInt()); e.u32(s.workKj * 1000L)
+        e.u16(totalAscent); e.u16(totalDescent)
 
         // activity
         e.define(5, MSG_ACTIVITY, listOf(

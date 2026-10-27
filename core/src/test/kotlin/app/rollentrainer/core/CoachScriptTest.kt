@@ -7,6 +7,7 @@ import app.rollentrainer.core.coach.CoachScript
 import app.rollentrainer.core.model.SpinningPresets
 import app.rollentrainer.core.model.Timeline
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import kotlin.random.Random
@@ -43,7 +44,64 @@ class CoachScriptTest {
         assertEquals(CoachPriority.HIGH, out.lines.single().priority)
         // Standing segments get the call to get out of the saddle.
         val standing = CoachScript(Random(1)).update(input(0, segment = 1, label = "Stehender Berg", cadence = 60))
-        assertEquals("Jetzt: Stehender Berg – aus dem Sattel!, 200 Watt, 60 Umdrehungen", standing.lines.single().text)
+        assertEquals("Jetzt: Stehender Berg – aus dem Sattel! 200 Watt, 60 Umdrehungen", standing.lines.single().text)
+        // Free segments start a new sentence after the call too.
+        val free = CoachScript(Random(1)).update(input(0, label = "Bergsprint", cue = "Bergsprint – schwerer Gang, aus dem Sattel!", erg = false))
+        assertEquals("Jetzt: Bergsprint – aus dem Sattel! Frei, so hart du kannst, 70 Umdrehungen", free.lines.first().text)
+    }
+
+    @Test fun seatedStartsAndAnnouncementsAreNotStanding() {
+        // The cue at the start of a jumps or serpentine block begins seated.
+        val jumps = CoachScript(Random(1)).update(input(0, label = "Jumps", cue = "Jumps: 8 Sekunden sitzen, 8 Sekunden stehen"))
+        assertEquals("Jetzt: Jumps, 200 Watt, 70 Umdrehungen", jumps.lines.first().text)
+        val serp = CoachScript(Random(1)).update(input(0, label = "Serpentine 1/3", cue = "Serpentinen: zwei Minuten sitzen, eine Minute stehen"))
+        assertEquals("Jetzt: Serpentine 1/3, 200 Watt, 70 Umdrehungen", serp.lines.first().text)
+
+        for (announcement in listOf("Gleich raus aus dem Sattel", "Gleich aus dem Sattel", "Gleich der Gipfel – aus dem Sattel!", "Gleich die Kehre, dann aus dem Sattel")) {
+            assertFalse(announcement, CoachScript.isStanding(announcement))
+            assertFalse(announcement, CoachScript.isStanding("Berg 2", announcement))
+        }
+        for (sit in listOf("Setzen", "Bleib sitzen, der Gipfel kommt", "Widerstand rauf, bleib im Sattel", "Letzter Jump, dann setzen", "Der lange Anstieg – setz dich, find deinen Rhythmus")) {
+            assertFalse(sit, CoachScript.isStanding(sit))
+        }
+        for (stand in listOf("Aus dem Sattel!", "Hoch!", "Letzte Minute – bleib stehen!", "Bergsprint – schwerer Gang, aus dem Sattel!", "Stehender Berg", "Kehre stehend 2/3")) {
+            assertTrue(stand, CoachScript.isStanding(stand))
+        }
+        // The visible cue wins over the label when it calls for one or the other, otherwise the label decides.
+        assertTrue(CoachScript.isStanding("Stehender Berg", null))
+        assertTrue(CoachScript.isStanding("Stehender Berg", "Gewicht über die Pedale, Rücken gerade"))
+        assertTrue(CoachScript.isStanding("Stehender Berg", "Gleich setzen"))
+        assertFalse(CoachScript.isStanding("Stehender Berg", "Setzen, locker rollen"))
+        assertTrue(CoachScript.isStanding("Gipfelangriff", "Letzte Minute – aus dem Sattel, zum Gipfel!"))
+        assertFalse(CoachScript.isStanding("Sitzender Berg", null))
+        assertFalse(CoachScript.isStanding("Flachstück", null))
+    }
+
+    @Test fun noPresetAnnouncementOrSeatedCueCountsAsStanding() {
+        for (w in SpinningPresets.all) for (b in w.blocks) for (c in b.cues) {
+            val t = c.text
+            if (t.startsWith("Gleich") || t.contains("sitzen") || t.contains("im Sattel") || t.contains("Setzen")) {
+                assertFalse("${w.name}: $t", CoachScript.isStanding(t))
+            }
+        }
+    }
+
+    @Test fun speaksIntervalCountsAsWordsButShowsThemAsWritten() {
+        assertEquals("Sprint 1 von 4", CoachScript.spoken("Sprint 1/4"))
+        assertEquals("Kehre stehend 3 von 8", CoachScript.spoken("Kehre stehend 3/8"))
+        assertEquals("Flachstück", CoachScript.spoken("Flachstück"))
+        val start = CoachScript(Random(1)).update(input(0, label = "Sprint 1/4", target = 300, cadence = 110)).lines.first()
+        assertEquals("Jetzt: Sprint 1/4, 300 Watt, 110 Umdrehungen", start.text)
+        assertEquals("Jetzt: Sprint 1 von 4, 300 Watt, 110 Umdrehungen", start.speech)
+        // The countdown names the next interval the same way.
+        val script = CoachScript(Random(1))
+        val countdown = (0..35).flatMap { s -> script.update(input(s, duration = 60, target = 120, power = 120, next = "Sprint 2/4")).lines }
+            .single { it.text.startsWith("Noch 30") }
+        assertEquals("Noch 30 Sekunden, dann Sprint 2/4", countdown.text)
+        assertEquals("Noch 30 Sekunden, dann Sprint 2 von 4", countdown.speech)
+        // Lines without a label speak exactly what they show.
+        val plain = CoachScript(Random(1)).update(input(0, cue = "Tabata: 20 Sekunden voll, 10 Sekunden locker")).lines
+        assertTrue(plain.all { it.text == it.speech || it.priority == CoachPriority.HIGH })
     }
 
     @Test fun countsDownOnceAndSaysHalfTime() {

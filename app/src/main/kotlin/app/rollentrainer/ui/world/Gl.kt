@@ -56,6 +56,8 @@ object Gl {
         val h = if (big) 192 else 128
         val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         val c = Canvas(bmp)
+        // Opaque everywhere: the corners take the border colour, the post samples the left edge.
+        c.drawColor(Color.rgb(40, 40, 40))
         val bg = Paint().apply { color = if (big) Color.rgb(250, 210, 40) else Color.WHITE }
         c.drawRoundRect(0f, 0f, w.toFloat(), h.toFloat(), 18f, 18f, bg)
         val border = Paint().apply { color = Color.rgb(40, 40, 40); style = Paint.Style.STROKE; strokeWidth = 8f }
@@ -187,7 +189,7 @@ void main() {
 """
 
     const val LIT_FS = """#version 300 es
-precision mediump float;
+precision highp float;
 in vec3 vNormal;
 in vec3 vColor;
 in vec3 vWorld;
@@ -215,7 +217,7 @@ void main() {
 """
 
     const val ROAD_FS = """#version 300 es
-precision mediump float;
+precision highp float;
 in vec3 vNormal;
 in vec3 vColor;   // x = metres / 10 along, y = across -1..1
 in vec3 vWorld;
@@ -233,6 +235,7 @@ void main() {
     if (abs(v) > 0.93) col = vec3(0.92, 0.92, 0.9);                       // edge lines
     if (abs(v) < 0.025 && fract(u / 8.0) < 0.45) col = vec3(0.9, 0.9, 0.88); // centre dashes
     if (abs(v) > 0.985) col = vec3(0.45, 0.42, 0.36);                     // kerb
+    if (abs(v) > 1.0) col = vec3(0.52, 0.5, 0.46) * (0.85 + 0.15 * fract(sin(floor(u * 2.0) * 12.9898 + floor(v * 40.0) * 78.233) * 43758.5453)); // stone wall
     vec3 n = normalize(vNormal);
     float diff = max(dot(n, uLightDir), 0.0);
     col *= (0.35 + 0.7 * diff);
@@ -249,7 +252,7 @@ void main() { vUv = aPos * 0.5 + 0.5; gl_Position = vec4(aPos, 0.999, 1.0); }
 """
 
     const val SKY_FS = """#version 300 es
-precision mediump float;
+precision highp float;
 in vec2 vUv;
 uniform vec3 uHorizon;
 uniform vec3 uZenith;
@@ -259,7 +262,8 @@ void main() {
     float t = clamp((vUv.y - uHorizonY) / max(1.0 - uHorizonY, 0.05), 0.0, 1.0);
     vec3 col = mix(uHorizon, uZenith, pow(t, 0.6));
     // Sun glow low on the right.
-    float sun = exp(-40.0 * (pow(vUv.x - 0.78, 2.0) + pow(vUv.y - uHorizonY - 0.22, 2.0)));
+    vec2 sd = vec2(vUv.x - 0.78, vUv.y - uHorizonY - 0.22);
+    float sun = exp(-40.0 * dot(sd, sd));
     col += vec3(1.0, 0.95, 0.8) * sun * 0.35;
     fragColor = vec4(col, 1.0);
 }
@@ -276,7 +280,7 @@ void main() { vec4 w = uModel * vec4(aPos, 1.0); vWorld = w.xyz; vUv = aUv; gl_P
 """
 
     const val TEX_FS = """#version 300 es
-precision mediump float;
+precision highp float;
 in vec2 vUv;
 in vec3 vWorld;
 uniform sampler2D uTex;
@@ -286,6 +290,7 @@ uniform float uFogDensity;
 out vec4 fragColor;
 void main() {
     vec4 c = texture(uTex, vUv);
+    if (c.a < 0.5) discard;
     float dist = length(vWorld - uCamPos);
     float fog = 1.0 - exp(-dist * uFogDensity);
     fragColor = vec4(mix(c.rgb, uFogColor, clamp(fog, 0.0, 1.0)), c.a);

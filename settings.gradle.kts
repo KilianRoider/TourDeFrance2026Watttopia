@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Rollentrainer"
+rootProject.name = "Wattwerk"
 include(":core", ":app")

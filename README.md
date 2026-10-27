@@ -1,4 +1,4 @@
-# Rollentrainer
+# Wattwerk
 
 Android-App (für Tablets optimiert) zum Fahren von Trainings im ERG-Modus auf Smart-Trainern mit Bluetooth FTMS,
 getestet gegen die Protokolle des **Van Rysel D100** und des **Wahoo Kickr Core 2**.
@@ -19,7 +19,7 @@ getestet gegen die Protokolle des **Van Rysel D100** und des **Wahoo Kickr Core 
 ## Installation
 
 Jeder Push auf `main` baut die App über GitHub Actions. Die fertige APK liegt unter
-**Releases → latest → `Rollentrainer.apk`**. Auf dem Tablet öffnen und die Installation aus dieser Quelle erlauben.
+**Releases → latest → `Wattwerk.apk`**. Auf dem Tablet öffnen und die Installation aus dieser Quelle erlauben.
 Spätere Builds lassen sich direkt darüber installieren, die Daten bleiben erhalten.
 
 ## Strava einrichten

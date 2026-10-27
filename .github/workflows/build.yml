@@ -25,12 +25,12 @@ jobs:
         run: ./gradlew --no-daemon :core:test :app:assembleDebug
 
       - name: Rename APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk Rollentrainer.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk Wattwerk.apk
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Rollentrainer-apk
-          path: Rollentrainer.apk
+          name: Wattwerk.apk
+          path: Wattwerk.apk
 
       # On main, publish the APK as the "latest" release so it can be downloaded directly on the tablet.
       - name: Publish latest release
@@ -39,7 +39,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete latest --yes --cleanup-tag || true
-          gh release create latest Rollentrainer.apk \
-            --title "Rollentrainer (Build ${{ github.run_number }})" \
-            --notes "Automatisch gebaut aus ${{ github.sha }}. Auf dem Tablet öffnen und Rollentrainer.apk installieren." \
+          gh release create latest Wattwerk.apk \
+            --title "Wattwerk (Build ${{ github.run_number }})" \
+            --notes "Automatisch gebaut aus ${{ github.sha }}. Auf dem Tablet öffnen und Wattwerk.apk installieren." \
             --prerelease

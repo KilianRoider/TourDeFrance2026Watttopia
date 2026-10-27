@@ -62,6 +62,7 @@ import app.rollentrainer.ui.components.ConnectionDot
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.SectionTitle
 import app.rollentrainer.ui.components.Stepper
+import app.rollentrainer.ui.fields.LayoutOptions
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 
@@ -104,6 +105,16 @@ fun SettingsScreen(container: AppContainer, stravaMessage: MutableStateFlow<Stri
         Column {
             SectionTitle("Training")
             TrainingPanel(settings, update)
+            SectionTitle("Trainingsbildschirm")
+            Panel(Modifier.fillMaxWidth()) {
+                Text(
+                    "Welche Datenfelder du während des Trainings siehst, stellst du direkt im Trainingsbildschirm über „Anpassen“ ein. " +
+                        "Vorlagen, Spalten und Graphen kannst du auch hier wählen.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                LayoutOptions(settings, update)
+            }
             SectionTitle("Strava")
             StravaPanel(container, settings, update)
             SectionTitle("Garmin Connect")

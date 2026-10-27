@@ -21,6 +21,8 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
@@ -43,18 +45,21 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
 import app.rollentrainer.ble.ConnectionState
-import app.rollentrainer.core.metrics.HeartRateZone
+import app.rollentrainer.ble.SensorStatus
+import app.rollentrainer.core.engine.EngineState
+import app.rollentrainer.data.AppSettings
 import app.rollentrainer.data.SensorRole
 import app.rollentrainer.ride.RideState
 import app.rollentrainer.ui.LocalWide
 import app.rollentrainer.ui.components.Banner
 import app.rollentrainer.ui.components.ConnectionDot
 import app.rollentrainer.ui.components.LineChart
-import app.rollentrainer.ui.components.MetricTile
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.Stepper
 import app.rollentrainer.ui.components.WorkoutProfile
 import app.rollentrainer.ui.components.formatDuration
+import app.rollentrainer.ui.fields.FieldGrid
+import app.rollentrainer.ui.fields.LayoutOptions
 import app.rollentrainer.ui.theme.Metric
 import kotlinx.coroutines.launch
 
@@ -67,6 +72,8 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val scope = rememberCoroutineScope()
     var askEnd by remember { mutableStateOf(false) }
     var fullHistory by rememberSaveable { mutableStateOf(false) }
+    var editing by rememberSaveable { mutableStateOf(false) }
+    val update: ((AppSettings) -> AppSettings) -> Unit = { container.settings.update(it) }
 
     fun end(save: Boolean) = scope.launch {
         askEnd = false
@@ -74,12 +81,12 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
         onFinished(ride?.id)
     }
 
-    val trainer = status[SensorRole.TRAINER] ?: app.rollentrainer.ble.SensorStatus(null)
+    val trainer = status[SensorRole.TRAINER] ?: SensorStatus(null)
     val banner = when {
         trainer.sensor == null -> "Kein Smart-Trainer gekoppelt. Die Leistung wird nicht vorgegeben."
         trainer.state != ConnectionState.CONNECTED -> "Verbinde mit ${trainer.sensor?.name.orEmpty()} …"
         !s.trainerControl -> "Warte auf Steuerung durch den Trainer …"
-        s.engine.elapsedOrZero() && s.engine.paused -> "Tritt in die Pedale, um zu starten."
+        s.engine.workoutSec == 0.0 && s.engine.paused -> "Tritt in die Pedale, um zu starten."
         s.engine.autoPaused -> "Pausiert – tritt weiter, um fortzusetzen."
         s.engine.paused -> "Pausiert"
         else -> null
@@ -88,30 +95,48 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val wide = LocalWide.current
     val window = if (fullHistory) Int.MAX_VALUE else 600
     val shown = s.samples.takeLast(window)
+    val chartKinds = settings.rideCharts
 
     val charts: @Composable ColumnScope.(Modifier) -> Unit = { m ->
-        LineChart(
+        if ("power" in chartKinds) LineChart(
             "Leistung", shown.map { it.power?.toFloat() }, Metric.Power, m,
             area = shown.map { it.target?.toFloat() }, areaColor = Metric.Target,
             unit = "W", current = s.displayPower?.toString(), minRange = 200f,
         )
-        LineChart(
+        if ("hr" in chartKinds) LineChart(
             "Herzfrequenz", shown.map { it.hr?.toFloat() }, Metric.HeartRate, m,
             unit = "bpm", current = s.live.heartRate?.toString(), minRange = 160f,
         )
-        LineChart(
+        if ("cadence" in chartKinds) LineChart(
             "Trittfrequenz", shown.map { it.cadence?.toFloat() }, Metric.Cadence, m,
             unit = "rpm", current = s.live.cadence?.toString(), minRange = 100f,
         )
+    }
+    val showCharts = settings.rideShowCharts && chartKinds.isNotEmpty()
+
+    val sidePanel: @Composable ColumnScope.() -> Unit = {
+        if (editing) {
+            LayoutOptions(settings, update)
+        } else if (showCharts) {
+            ChartToggle(fullHistory) { fullHistory = it }
+            Spacer(Modifier.height(8.dp))
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                charts(Modifier.fillMaxWidth().weight(1f))
+            }
+        }
     }
 
     Column(
         Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Header(s, status)
-        banner?.let { Banner(it) }
-        s.timeline?.let { tl ->
+        Header(s, status, editing, onToggleEdit = { editing = !editing })
+        if (editing) {
+            Banner("Tippe auf ein Feld, um es zu ersetzen. × entfernt es, die Pfeile verschieben es, „+ Feld“ fügt eines hinzu.")
+        } else {
+            banner?.let { Banner(it) }
+        }
+        s.timeline?.takeIf { settings.rideShowProfile }?.let { tl ->
             WorkoutProfile(
                 tl, settings.ftp, Modifier.fillMaxWidth().height(if (wide) 88.dp else 64.dp),
                 progressSec = s.engine.workoutSec, samples = s.samples, intensityPct = s.engine.intensityPct,
@@ -119,15 +144,11 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
         }
         if (wide) {
             Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Column(Modifier.weight(0.42f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Tiles(s, settings.maxHr, Modifier.weight(1f))
+                Column(Modifier.weight(if (showCharts || editing) 0.45f else 1f).fillMaxHeight().verticalScroll(rememberScrollState())) {
+                    FieldGrid(s, settings, editing, onChange = { keys -> update { it.copy(rideFields = keys) } })
                 }
-                Panel(Modifier.weight(0.58f).fillMaxHeight()) {
-                    ChartToggle(fullHistory) { fullHistory = it }
-                    Spacer(Modifier.height(8.dp))
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        charts(Modifier.fillMaxWidth().weight(1f))
-                    }
+                if (showCharts || editing) {
+                    Panel(Modifier.weight(0.55f).fillMaxHeight()) { sidePanel() }
                 }
             }
         } else {
@@ -135,11 +156,15 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
                 Modifier.weight(1f).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                Tiles(s, settings.maxHr, Modifier)
-                Panel {
-                    ChartToggle(fullHistory) { fullHistory = it }
-                    Spacer(Modifier.height(8.dp))
-                    charts(Modifier.fillMaxWidth().height(130.dp).padding(bottom = 8.dp))
+                FieldGrid(s, settings, editing, onChange = { keys -> update { it.copy(rideFields = keys) } })
+                if (editing) {
+                    Panel { LayoutOptions(settings, update) }
+                } else if (showCharts) {
+                    Panel {
+                        ChartToggle(fullHistory) { fullHistory = it }
+                        Spacer(Modifier.height(8.dp))
+                        charts(Modifier.fillMaxWidth().height(130.dp).padding(bottom = 8.dp))
+                    }
                 }
             }
         }
@@ -169,10 +194,8 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     }
 }
 
-private fun app.rollentrainer.core.engine.EngineState.elapsedOrZero() = workoutSec == 0.0
-
 @Composable
-private fun Header(s: RideState, status: Map<SensorRole, app.rollentrainer.ble.SensorStatus>) {
+private fun Header(s: RideState, status: Map<SensorRole, SensorStatus>, editing: Boolean, onToggleEdit: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
             Text(s.workout?.name ?: "Freie Fahrt", style = MaterialTheme.typography.titleLarge)
@@ -187,54 +210,24 @@ private fun Header(s: RideState, status: Map<SensorRole, app.rollentrainer.ble.S
         SensorRole.entries.forEach { role ->
             val st = status[role] ?: return@forEach
             if (st.sensor == null) return@forEach
-            Row(Modifier.padding(start = 16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.padding(end = 16.dp), verticalAlignment = Alignment.CenterVertically) {
                 ConnectionDot(st.state)
                 Spacer(Modifier.width(6.dp))
                 Text(role.title, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
-    }
-}
-
-@Composable
-private fun Tiles(s: RideState, maxHr: Int, modifier: Modifier) {
-    val target = s.engine.targetWatts
-    val power = s.displayPower
-    val diff = if (power != null && target != null) power - target else null
-    MetricTile(
-        "Leistung", power?.toString() ?: "–", "W", modifier.fillMaxWidth(), accent = Metric.Power,
-        sub = target?.let { t ->
-            "Ziel $t W" + (diff?.let { d -> if (kotlin.math.abs(d) >= 5) "  (${if (d > 0) "+" else ""}$d)" else "" } ?: "")
-        },
-        big = true,
-    )
-    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        val hr = s.live.heartRate
-        MetricTile(
-            "Herzfrequenz", hr?.toString() ?: "–", "bpm", Modifier.weight(1f).fillMaxHeight(), accent = Metric.HeartRate,
-            sub = hr?.let { val z = HeartRateZone.of(it, maxHr); "${z.name} · ${z.label}" },
-        )
-        MetricTile(
-            "Trittfrequenz", s.live.cadence?.toString() ?: "–", "rpm", Modifier.weight(1f).fillMaxHeight(), accent = Metric.Cadence,
-        )
-    }
-    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        if (s.timeline != null) {
-            val seg = s.timeline.segments.getOrNull(s.engine.segmentIndex)
-            MetricTile(
-                seg?.label?.ifBlank { null } ?: "Abschnitt", formatDuration(s.engine.segmentRemainingSec), "",
-                Modifier.weight(1f).fillMaxHeight(),
-                sub = s.engine.nextTargetWatts?.let { "Danach $it W" } ?: "Letzter Abschnitt",
-            )
-            MetricTile(
-                "Verbleibend", formatDuration((s.engine.totalSec - s.engine.workoutSec.toInt())), "",
-                Modifier.weight(1f).fillMaxHeight(),
-                sub = "Fahrzeit ${formatDuration(s.elapsedSec)}",
-            )
+        if (editing) {
+            Button(onClick = onToggleEdit) {
+                Icon(Icons.Outlined.Check, null)
+                Spacer(Modifier.width(8.dp))
+                Text("Fertig")
+            }
         } else {
-            MetricTile("Fahrzeit", formatDuration(s.elapsedSec), "", Modifier.weight(1f).fillMaxHeight())
-            val kj = s.samples.sumOf { it.power ?: 0 } / 1000
-            MetricTile("Arbeit", kj.toString(), "kJ", Modifier.weight(1f).fillMaxHeight())
+            OutlinedButton(onClick = onToggleEdit) {
+                Icon(Icons.Outlined.Tune, null)
+                Spacer(Modifier.width(8.dp))
+                Text("Anpassen")
+            }
         }
     }
 }
@@ -250,25 +243,26 @@ private fun ChartToggle(full: Boolean, onChange: (Boolean) -> Unit) {
 @Composable
 private fun Controls(container: AppContainer, s: RideState, onEnd: () -> Unit) {
     val session = container.session
+    val e: EngineState = s.engine
     Row(
         Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Button(onClick = { session.togglePause() }, modifier = Modifier.height(56.dp)) {
-            Icon(if (s.engine.paused) Icons.Default.PlayArrow else Icons.Default.Pause, null)
+            Icon(if (e.paused) Icons.Default.PlayArrow else Icons.Default.Pause, null)
             Spacer(Modifier.width(8.dp))
-            Text(if (s.engine.paused) "Weiter" else "Pause")
+            Text(if (e.paused) "Weiter" else "Pause")
         }
         if (s.timeline != null) {
-            Stepper("${s.engine.intensityPct} %", { session.adjustIntensity(-5) }, { session.adjustIntensity(5) }, label = "Intensität")
+            Stepper("${e.intensityPct} %", { session.adjustIntensity(-5) }, { session.adjustIntensity(5) }, label = "Intensität")
             FilledTonalButton(onClick = { session.skip() }, modifier = Modifier.height(56.dp)) {
                 Icon(Icons.Default.SkipNext, null)
                 Spacer(Modifier.width(8.dp))
                 Text("Überspringen")
             }
         } else {
-            Stepper("${s.engine.targetWatts ?: 0} W", { session.adjustManual(-10) }, { session.adjustManual(10) }, label = "Zielleistung")
+            Stepper("${e.targetWatts ?: 0} W", { session.adjustManual(-10) }, { session.adjustManual(10) }, label = "Zielleistung")
             OutlinedButton(onClick = { session.adjustManual(-50) }) { Text("−50") }
             OutlinedButton(onClick = { session.adjustManual(50) }) { Text("+50") }
         }

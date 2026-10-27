@@ -21,6 +21,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.math.roundToInt
 
 class CoreTest {
     private fun bytes(vararg v: Int) = ByteArray(v.size) { v[it].toByte() }
@@ -156,5 +157,38 @@ class CoreTest {
             val ids = w.blocks.map { it.id }
             assertEquals(ids.size, ids.toSet().size)
         }
+    }
+}
+
+class LiveStatsTest {
+    @Test fun matchesBatchStatistics() {
+        val stats = app.rollentrainer.core.metrics.LiveStats(ftp = 250, maxHr = 185)
+        val powers = (0 until 900).map { 150 + (it % 60) * 3 }
+        powers.forEachIndexed { i, p -> stats.add(p, 250, 120 + i % 40, 85 + i % 10, 30.0) }
+        val s = stats.snapshot()
+        val batch = app.rollentrainer.core.metrics.Stats.normalizedPower(powers.map { it.toDouble() }.toDoubleArray())
+        // Incremental NP only counts full 30 s windows, so it stays within a watt of the batch value.
+        assertEquals(batch.toDouble(), s.normalizedPower.toDouble(), 1.5)
+        assertEquals(powers.average().roundToInt(), s.avgPower)
+        assertEquals(327, s.maxPower)
+        assertEquals(900, s.seconds)
+        assertEquals(139, s.avgHr)
+        assertEquals(7500.0, s.distanceM, 0.5)
+        assertEquals(900, s.zoneSeconds.sum())
+        assertEquals(900, s.hrZoneSeconds.sum())
+        assertEquals(powers.takeLast(10).average().roundToInt(), s.power10s)
+    }
+
+    @Test fun lapResets() {
+        val stats = app.rollentrainer.core.metrics.LiveStats(ftp = 250, maxHr = 185)
+        repeat(60) { stats.add(100, 100, null, null, null) }
+        stats.newLap()
+        repeat(30) { stats.add(300, 300, 150, 90, null) }
+        val s = stats.snapshot()
+        assertEquals(30, s.lapSeconds)
+        assertEquals(300, s.lapAvgPower)
+        assertEquals(150, s.lapAvgHr)
+        assertEquals(100, s.lapAccuracyPct)
+        assertEquals(167, s.avgPower)
     }
 }

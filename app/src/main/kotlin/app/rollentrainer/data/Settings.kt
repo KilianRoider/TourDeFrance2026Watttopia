@@ -46,6 +46,14 @@ data class AppSettings(
     val stravaClientSecret: String = "",
     val strava: StravaAuth? = null,
     val stravaAutoUpload: Boolean = true,
+    /** Data fields on the ride screen, in order; the first one is shown large. */
+    val rideFields: List<String> = listOf("power", "hr", "cadence", "segRemaining", "workoutRemaining", "nextTarget", "powerLap", "tss", "work"),
+    /** Columns of the small fields: 2, 3 or 4. */
+    val rideColumns: Int = 3,
+    val rideShowCharts: Boolean = true,
+    val rideShowProfile: Boolean = true,
+    /** Which live charts are shown: power, hr, cadence. */
+    val rideCharts: List<String> = listOf("power", "hr", "cadence"),
 )
 
 class SettingsStore(context: Context) {

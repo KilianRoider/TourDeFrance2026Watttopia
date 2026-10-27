@@ -10,6 +10,8 @@ import app.rollentrainer.ble.LiveMetrics
 import app.rollentrainer.ble.SensorHub
 import app.rollentrainer.core.engine.EngineState
 import app.rollentrainer.core.engine.WorkoutEngine
+import app.rollentrainer.core.metrics.LiveStats
+import app.rollentrainer.core.metrics.StatsSnapshot
 import app.rollentrainer.core.model.Ride
 import app.rollentrainer.core.model.RideSummary
 import app.rollentrainer.core.model.Sample
@@ -39,6 +41,7 @@ data class RideState(
     val samples: List<Sample>,
     val elapsedSec: Int,
     val trainerControl: Boolean,
+    val stats: StatsSnapshot = StatsSnapshot(),
 )
 
 sealed interface UploadState {
@@ -69,6 +72,7 @@ class RideSession(
     private val samples = mutableListOf<Sample>()
     private var startEpochSec = 0L
     private var tone: ToneGenerator? = null
+    private var stats = LiveStats(200, 185)
 
     val running: Boolean get() = _state.value != null
 
@@ -80,6 +84,7 @@ class RideSession(
         engine = e
         samples.clear()
         startEpochSec = 0
+        stats = LiveStats(s.ftp, s.maxHr)
         tone = runCatching { ToneGenerator(AudioManager.STREAM_MUSIC, 80) }.getOrNull()
         _state.value = RideState(workout, timeline, e.state, LiveMetrics(), null, emptyList(), 0, hub.trainerControl.value)
         ContextCompat.startForegroundService(context, Intent(context, RideService::class.java))
@@ -100,9 +105,11 @@ class RideSession(
 
             st.targetWatts?.let { hub.setTargetPower(softened(it, m)) }
 
+            if (st.segmentIndex != lastSegment && lastSegment >= 0) stats.newLap()
             if (!st.paused) {
                 if (startEpochSec == 0L) startEpochSec = System.currentTimeMillis() / 1000
                 samples += Sample(samples.size, m.power, st.targetWatts, m.heartRate, m.cadence, m.speedKmh)
+                stats.add(m.power, st.targetWatts, m.heartRate, m.cadence, m.speedKmh)
             }
             cues(st, lastSegment)
             lastSegment = st.segmentIndex
@@ -119,6 +126,7 @@ class RideSession(
                 samples = samples.toList(),
                 elapsedSec = samples.size,
                 trainerControl = hub.trainerControl.value,
+                stats = stats.snapshot(),
             )
             if (st.finished) break
             delay(1000 - (SystemClock.elapsedRealtime() - now).coerceIn(0, 999))

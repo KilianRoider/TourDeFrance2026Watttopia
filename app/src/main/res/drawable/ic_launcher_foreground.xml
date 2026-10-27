@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A workout profile: three bars of rising power. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:fillColor="@color/icon_accent" android:pathData="M34,62h10v12h-10z" />
+    <path android:fillColor="@color/icon_accent" android:pathData="M49,50h10v24h-10z" />
+    <path android:fillColor="@color/icon_accent" android:pathData="M64,36h10v38h-10z" />
+</vector>

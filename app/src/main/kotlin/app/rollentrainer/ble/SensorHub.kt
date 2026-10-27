@@ -1,0 +1,255 @@
+package app.rollentrainer.ble
+
+import android.content.Context
+import android.os.SystemClock
+import android.util.Log
+import app.rollentrainer.core.ble.CrankCadence
+import app.rollentrainer.core.ble.Csc
+import app.rollentrainer.core.ble.CyclingPower
+import app.rollentrainer.core.ble.Ftms
+import app.rollentrainer.core.ble.HeartRate
+import app.rollentrainer.core.ble.Uuids
+import app.rollentrainer.data.SavedSensor
+import app.rollentrainer.data.SensorRole
+import app.rollentrainer.data.SettingsStore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import java.util.UUID
+
+/** A reading with the time it arrived, so stale values can be ignored. */
+data class Reading<T>(val value: T, val atMs: Long) {
+    fun fresh(nowMs: Long, maxAgeMs: Long = 4000) = nowMs - atMs <= maxAgeMs
+}
+
+data class RawReadings(
+    val trainerPower: Reading<Int>? = null,
+    val trainerCadence: Reading<Double>? = null,
+    val trainerSpeed: Reading<Double>? = null,
+    val trainerHr: Reading<Int>? = null,
+    val hr: Reading<Int>? = null,
+    val sensorCadence: Reading<Double>? = null,
+    val meterPower: Reading<Int>? = null,
+    val meterCadence: Reading<Double>? = null,
+)
+
+/** What the app shows and records: one value per metric, picked from the best source. */
+data class LiveMetrics(
+    val power: Int? = null,
+    val cadence: Int? = null,
+    val heartRate: Int? = null,
+    val speedKmh: Double? = null,
+)
+
+data class SensorStatus(
+    val sensor: SavedSensor?,
+    val state: ConnectionState = ConnectionState.DISCONNECTED,
+    val battery: Int? = null,
+)
+
+/** Owns the connections to all paired sensors and merges their data. */
+class SensorHub(
+    private val context: Context,
+    private val settings: SettingsStore,
+    private val scope: CoroutineScope,
+) {
+    private val clients = mutableMapOf<SensorRole, GattClient>()
+    private val stateJobs = mutableMapOf<SensorRole, Job>()
+
+    private val _raw = MutableStateFlow(RawReadings())
+    val raw: StateFlow<RawReadings> = _raw.asStateFlow()
+
+    private val _status = MutableStateFlow(SensorRole.entries.associateWith { SensorStatus(null) })
+    val status: StateFlow<Map<SensorRole, SensorStatus>> = _status.asStateFlow()
+
+    /** True once the trainer granted control, so ERG targets will be applied. */
+    private val _trainerControl = MutableStateFlow(false)
+    val trainerControl: StateFlow<Boolean> = _trainerControl.asStateFlow()
+
+    private val _trainerRange = MutableStateFlow<IntRange?>(null)
+    val trainerRange: StateFlow<IntRange?> = _trainerRange.asStateFlow()
+
+    private val sensorCadence = CrankCadence()
+    private val meterCadence = CrankCadence()
+    private var lastTarget: Int? = null
+    private var lastTargetSentAt = 0L
+
+    private fun now() = SystemClock.elapsedRealtime()
+
+    /** Connects every saved sensor. Safe to call repeatedly. */
+    fun connectSaved() {
+        settings.value.sensors.forEach { (role, sensor) -> connect(role, sensor) }
+    }
+
+    fun connect(role: SensorRole, sensor: SavedSensor) {
+        val existing = clients[role]
+        if (existing != null && existing.address == sensor.address) {
+            existing.connect()
+            return
+        }
+        existing?.disconnect()
+        val client = GattClient(context, sensor.address, scope, onReady = { setup(role) }) { uuid, value ->
+            handle(role, uuid, value)
+        }
+        clients[role] = client
+        stateJobs[role]?.cancel()
+        stateJobs[role] = scope.launch {
+            client.state.collect { s ->
+                _status.update { it + (role to (it[role] ?: SensorStatus(sensor)).copy(sensor = sensor, state = s)) }
+                if (role == SensorRole.TRAINER && s != ConnectionState.CONNECTED) _trainerControl.value = false
+            }
+        }
+        client.connect()
+    }
+
+    /** Saves a sensor for a role and connects it. */
+    fun pair(role: SensorRole, sensor: SavedSensor) {
+        settings.update { it.copy(sensors = it.sensors + (role to sensor)) }
+        connect(role, sensor)
+    }
+
+    fun forget(role: SensorRole) {
+        clients.remove(role)?.disconnect()
+        stateJobs.remove(role)?.cancel()
+        settings.update { it.copy(sensors = it.sensors - role) }
+        _status.update { it + (role to SensorStatus(null)) }
+        if (role == SensorRole.TRAINER) _trainerControl.value = false
+    }
+
+    fun disconnectAll() {
+        clients.values.forEach { it.disconnect() }
+    }
+
+    private suspend fun GattClient.setup(role: SensorRole) {
+        when (role) {
+            SensorRole.TRAINER -> {
+                read(Uuids.FTMS, Uuids.SUPPORTED_POWER_RANGE)?.let { _trainerRange.value = Ftms.parsePowerRange(it) }
+                subscribe(Uuids.FTMS, Uuids.INDOOR_BIKE_DATA)
+                subscribe(Uuids.FTMS, Uuids.FTMS_STATUS)
+                if (subscribe(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, indicate = true)) {
+                    write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.requestControl())
+                    // The response arrives as an indication and sets trainerControl.
+                } else {
+                    Log.w(TAG, "Trainer has no FTMS control point")
+                }
+            }
+            SensorRole.HEART_RATE -> subscribe(Uuids.HEART_RATE, Uuids.HEART_RATE_MEASUREMENT)
+            SensorRole.CADENCE -> {
+                if (!subscribe(Uuids.CSC, Uuids.CSC_MEASUREMENT)) {
+                    subscribe(Uuids.CYCLING_POWER, Uuids.CYCLING_POWER_MEASUREMENT)
+                }
+            }
+            SensorRole.POWER -> subscribe(Uuids.CYCLING_POWER, Uuids.CYCLING_POWER_MEASUREMENT)
+        }
+        read(Uuids.BATTERY, Uuids.BATTERY_LEVEL)?.firstOrNull()?.let { b ->
+            _status.update { it + (role to (it[role] ?: SensorStatus(null)).copy(battery = b.toInt() and 0xFF)) }
+        }
+    }
+
+    private fun handle(role: SensorRole, uuid: UUID, value: ByteArray) {
+        val t = now()
+        when (uuid) {
+            Uuids.INDOOR_BIKE_DATA -> Ftms.parseIndoorBikeData(value)?.let { d ->
+                _raw.update { r ->
+                    r.copy(
+                        trainerPower = d.powerW?.let { Reading(it.coerceAtLeast(0), t) } ?: r.trainerPower,
+                        trainerCadence = d.cadenceRpm?.let { Reading(it, t) } ?: r.trainerCadence,
+                        trainerSpeed = d.speedKmh?.let { Reading(it, t) } ?: r.trainerSpeed,
+                        trainerHr = d.heartRate?.let { Reading(it, t) } ?: r.trainerHr,
+                    )
+                }
+            }
+            Uuids.FTMS_CONTROL_POINT -> Ftms.parseControlResponse(value)?.let { (op, result) ->
+                if (op == Ftms.OP_REQUEST_CONTROL) {
+                    _trainerControl.value = result == Ftms.RESULT_SUCCESS
+                    if (result == Ftms.RESULT_SUCCESS) {
+                        scope.launch {
+                            clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.startOrResume())
+                            lastTarget?.let { forceTarget(it) }
+                        }
+                    }
+                }
+            }
+            Uuids.FTMS_STATUS -> {
+                // 0xFF = control permission lost (e.g. another app took over): ask again.
+                if (value.firstOrNull()?.toInt()?.and(0xFF) == 0xFF) {
+                    _trainerControl.value = false
+                    scope.launch {
+                        clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.requestControl())
+                    }
+                }
+            }
+            Uuids.HEART_RATE_MEASUREMENT -> HeartRate.parse(value)?.takeIf { it > 0 }?.let { hr ->
+                _raw.update { it.copy(hr = Reading(hr, t)) }
+            }
+            Uuids.CSC_MEASUREMENT -> Csc.parseCrank(value)?.let { (revs, time) ->
+                val rpm = sensorCadence.update(revs, time, t)
+                _raw.update { it.copy(sensorCadence = Reading(rpm, t)) }
+            }
+            Uuids.CYCLING_POWER_MEASUREMENT -> CyclingPower.parse(value)?.let { m ->
+                val rpm = m.crank?.let { (revs, time) -> meterCadence.update(revs, time, t) }
+                _raw.update { r ->
+                    if (role == SensorRole.CADENCE) {
+                        r.copy(sensorCadence = rpm?.let { Reading(it, t) } ?: r.sensorCadence)
+                    } else {
+                        r.copy(meterPower = Reading(m.powerW, t), meterCadence = rpm?.let { Reading(it, t) } ?: r.meterCadence)
+                    }
+                }
+            }
+        }
+    }
+
+    /** Merged values: dedicated sensors win over the trainer's own estimates. */
+    fun current(): LiveMetrics {
+        val r = _raw.value
+        val t = now()
+        val usePm = settings.value.preferPowerMeter && r.meterPower?.fresh(t) == true
+        val power = if (usePm) r.meterPower?.value else r.trainerPower?.takeIf { it.fresh(t) }?.value
+            ?: r.meterPower?.takeIf { it.fresh(t) }?.value
+        val cadence = r.sensorCadence?.takeIf { it.fresh(t) }?.value
+            ?: r.meterCadence?.takeIf { it.fresh(t) }?.value
+            ?: r.trainerCadence?.takeIf { it.fresh(t) }?.value
+        val hr = r.hr?.takeIf { it.fresh(t, 6000) }?.value ?: r.trainerHr?.takeIf { it.fresh(t, 6000) }?.value
+        val speed = r.trainerSpeed?.takeIf { it.fresh(t) }?.value
+        return LiveMetrics(power, cadence?.let { Math.round(it).toInt() }, hr, speed)
+    }
+
+    /** Sends an ERG target when it changed, at most twice per second. */
+    fun setTargetPower(watts: Int) {
+        val range = _trainerRange.value
+        val w = if (range != null && range.first < range.last) watts.coerceIn(range.first, range.last) else watts
+        val t = now()
+        if (w == lastTarget && t - lastTargetSentAt < RESEND_MS) return
+        if (t - lastTargetSentAt < 500 && w != lastTarget) {
+            // Too soon after the last command; the next tick sends it.
+            return
+        }
+        lastTarget = w
+        lastTargetSentAt = t
+        if (!_trainerControl.value) return
+        scope.launch { forceTarget(w) }
+    }
+
+    private suspend fun forceTarget(w: Int) {
+        clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setTargetPower(w))
+    }
+
+    /** Releases the trainer at the end of a ride so it spins freely. */
+    fun releaseTrainer() {
+        lastTarget = null
+        scope.launch {
+            clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setTargetPower(0))
+        }
+    }
+
+    companion object {
+        private const val TAG = "SensorHub"
+        /** Some trainers drop a target after a reconnect; repeating it now and then is cheap. */
+        private const val RESEND_MS = 10_000L
+    }
+}

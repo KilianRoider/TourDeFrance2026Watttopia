@@ -6,7 +6,7 @@ import kotlin.math.roundToInt
 data class Pacer(val name: String, val powerW: Int)
 
 /** Where a pacer is relative to the rider. */
-data class PacerState(val name: String, val powerW: Int, val distanceM: Double, val gapM: Double, val finished: Boolean)
+data class PacerState(val name: String, val powerW: Int, val distanceM: Double, val speedMps: Double, val gapM: Double, val finished: Boolean)
 
 /** The rider's position on the virtual road. */
 data class RouteState(
@@ -80,7 +80,7 @@ class RouteEngine(
             elapsedSec = elapsed,
             finished = finished,
             pacers = pacerList.mapIndexed { i, p ->
-                PacerState(p.name, p.powerW, pacerDistance[i], pacerDistance[i] - distance, pacerDistance[i] >= route.lengthM)
+                PacerState(p.name, p.powerW, pacerDistance[i], if (pacerDistance[i] >= route.lengthM) 0.0 else pacerSpeed[i], pacerDistance[i] - distance, pacerDistance[i] >= route.lengthM)
             },
             passedLandmark = passed,
         )

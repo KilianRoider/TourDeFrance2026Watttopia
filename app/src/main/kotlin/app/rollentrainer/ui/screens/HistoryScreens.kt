@@ -250,6 +250,32 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                 }
             }
 
+            // Virtual route: the climb, the time and the climbing speed.
+            val routeId = ride.routeId
+            val routeTime = ride.routeTimeSec
+            if (routeId != null) {
+                val route = app.rollentrainer.core.route.Routes.byId(routeId)?.shortened(ride.routeFraction)
+                Panel(Modifier.fillMaxWidth()) {
+                    Text(route?.name ?: "Virtuelle Strecke", style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(32.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        if (route != null) Stat("Strecke", "%.1f km · %.0f Hm".format(route.lengthKm, route.ascentM))
+                        Stat("Zeit bis oben", routeTime?.let { formatDuration(it) } ?: "nicht beendet")
+                        if (route != null && routeTime != null && routeTime > 0) {
+                            Stat("Ø Tempo", "%.1f km/h".format(route.lengthM / routeTime * 3.6))
+                            Stat("VAM", "${(route.ascentM / routeTime * 3600).roundToInt()} m/h")
+                        }
+                    }
+                    if (route != null) {
+                        Spacer(Modifier.height(8.dp))
+                        RouteProfile(
+                            route, null, Modifier.fillMaxWidth().height(72.dp),
+                            lineColor = MaterialTheme.colorScheme.primary, fillColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
+                        )
+                    }
+                }
+            }
+
             // FTP suggestion: depends on the kind of test the workout declared.
             val test = if (ride.test != TestKind.NONE) ride.test else if (ride.workoutId == "preset-ramp-test") TestKind.RAMP else TestKind.NONE
             val ftpEstimate = remember(ride.id) { Analysis.ftpEstimate(ride.samples, test == TestKind.RAMP) }

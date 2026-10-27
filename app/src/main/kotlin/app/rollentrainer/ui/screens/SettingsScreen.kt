@@ -110,6 +110,10 @@ fun SettingsScreen(container: AppContainer, stravaMessage: MutableStateFlow<Stri
         Column {
             SectionTitle("Training")
             TrainingPanel(settings, update)
+            SectionTitle("Spinning-Class")
+            SpinningSettingsPanel(container, settings, update)
+            SectionTitle("Virtuelle Strecken")
+            RoutesPanel(settings, update)
             SectionTitle("Trainingsbildschirm")
             Panel(Modifier.fillMaxWidth()) {
                 LayoutOptions(settings, update)
@@ -295,6 +299,24 @@ private fun ProfilePanel(container: AppContainer, settings: AppSettings, update:
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun RoutesPanel(settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
+    Panel(Modifier.fillMaxWidth()) {
+        ChoiceRow(
+            "Trainer-Schwierigkeit",
+            listOf(25 to "25 %", 50 to "50 %", 75 to "75 %", 100 to "100 %"),
+            settings.trainerDifficultyPct,
+        ) { v -> update { it.copy(trainerDifficultyPct = v) } }
+        Text(
+            "Wie viel der Steigung der Trainer wirklich simuliert. Bei 50 % fühlt sich ein 10-%-Anstieg wie 5 % an, " +
+                "dein Tempo auf der Strecke bleibt trotzdem das echte – wie bei Zwift. 100 % ist am realistischsten, " +
+                "braucht aber kleine Gänge.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
     }
 }
 

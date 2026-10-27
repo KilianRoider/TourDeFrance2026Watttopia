@@ -27,6 +27,16 @@ entwickelt für den **Van Rysel D100** und den **Wahoo Kickr Core 2**.
 - **Bibliothek:** 18 Vorlagen (Rampentest, Rampentest Lite, 20-Minuten-Test, Sweet Spot, Schwelle, Over-Under, VO2max,
   30/30, Anaerob, Sprints, Pyramide, Tempo, Trittfrequenz-Drills, Grundlage, Regeneration), Suche, Sortieren, Filter
   nach Art und Dauer, Favoriten. Import von Zwift (.zwo) und TrainerRoad/ErgVideo (.mrc, .erg), Export als .zwo.
+- **Legendäre Anstiege in 3D:** Alpe d'Huez, Mont Ventoux, Tourmalet, Galibier, Izoard, Hautacam, Madeleine, Puy de Dôme,
+  Planche des Belles Filles und weitere Berge, nachgebaut aus öffentlichen Kilometer-Profilen. Eigene OpenGL-Welt mit
+  Straße und Kehren nach dem echten Profil, Gelände mit Wald, Fels, Schnee oder Kalkwüste je nach Berg, Kilometer- und
+  Kehrenschilder, Zuschauer auf den letzten Kilometern, Fahrer von hinten mit tretenden Beinen, Pacer mit wählbarer
+  W/kg. Trainer im Simulationsmodus mit einstellbarer Schwierigkeit, Tempo aus der Fahrphysik (Leistung, Gewicht,
+  Steigung, Luftwiderstand), Strecke ganz oder verkürzt, Bestzeiten pro Berg, Distanz in FIT und Strava.
+- **Spinning-Class-Modus:** Studio-Ansicht mit Lichtshow im Takt, tretenden Fahrerfiguren, Coach-Ansagen per
+  Sprachausgabe („Aus dem Sattel!“, Countdown, Motivation, Lob und Mahnung), eigene Musik vom Tablet (Ordner wählen,
+  keine Musik eingebaut) oder ein synthetischer Studio-Beat im Takt der Ziel-Trittfrequenz, vier fertige Spinning-
+  Programme. Umschaltbar während jeder Fahrt.
 - **Sensoren in den Einstellungen:** Smart-Trainer (FTMS), Pulsgurt, Trittfrequenzsensor (CSC) und Powermeter koppeln,
   mit Verbindungsstatus und Akkustand. Automatisches Wiederverbinden; Steuerbefehle an den Trainer laufen nacheinander
   mit Bestätigung, die Steuerung wird bei Verlust automatisch neu angefordert, am Ende wird der Trainer auf „flache
@@ -55,7 +65,7 @@ Garmin nimmt derzeit keine neuen Apps in sein Connect-Entwicklerprogramm auf. De
 
 | Modul | Inhalt |
 | --- | --- |
-| `core` | Reines Kotlin ohne Android: Trainingsmodell, Workout-Engine, FTMS/HR/CSC/CPS-Parser, FIT-Encoder, ZWO, Statistik. Mit Unit-Tests. |
-| `app` | Android-App mit Jetpack Compose: Bluetooth-Verbindungen, Vordergrunddienst, Oberfläche, Strava. |
+| `core` | Reines Kotlin ohne Android: Trainingsmodell, Workout-Engine, FTMS/HR/CSC/CPS-Parser, FIT-Encoder, ZWO, Statistik, Strecken mit Fahrphysik und Weltgenerator (`route/`), Coach-Skript. Mit Unit-Tests. |
+| `app` | Android-App mit Jetpack Compose: Bluetooth-Verbindungen, Vordergrunddienst, Oberfläche, Strava, OpenGL-Welt (`ui/world`), Spinning-Audio (`ride/`). |
 
 Bauen: `./gradlew :core:test :app:assembleDebug`

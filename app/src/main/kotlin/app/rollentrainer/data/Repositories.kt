@@ -5,6 +5,7 @@ import app.rollentrainer.core.fit.FitWriter
 import app.rollentrainer.core.import.Mrc
 import app.rollentrainer.core.model.AppJson
 import app.rollentrainer.core.model.Presets
+import app.rollentrainer.core.model.SpinningPresets
 import app.rollentrainer.core.model.Ride
 import app.rollentrainer.core.model.Workout
 import app.rollentrainer.core.zwo.Zwo
@@ -23,7 +24,7 @@ import java.util.Locale
 /** Stores the user's workouts as JSON files; built-in presets are always listed first. */
 class WorkoutRepository(context: Context, scope: CoroutineScope) {
     private val dir = File(context.filesDir, "workouts").apply { mkdirs() }
-    private val _workouts = MutableStateFlow(Presets.all)
+    private val _workouts = MutableStateFlow(Presets.all + SpinningPresets.all)
     val workouts: StateFlow<List<Workout>> = _workouts.asStateFlow()
 
     init {
@@ -34,7 +35,7 @@ class WorkoutRepository(context: Context, scope: CoroutineScope) {
         val own = dir.listFiles { f -> f.extension == "json" }.orEmpty()
             .mapNotNull { runCatching { AppJson.decodeFromString(Workout.serializer(), it.readText()) }.getOrNull() }
             .sortedBy { it.name.lowercase() }
-        _workouts.value = own + Presets.all
+        _workouts.value = own + Presets.all + SpinningPresets.all
     }
 
     fun find(id: String): Workout? = _workouts.value.firstOrNull { it.id == id }

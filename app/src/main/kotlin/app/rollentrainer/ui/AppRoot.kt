@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DirectionsBike
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.ShowChart
+import androidx.compose.material.icons.outlined.Terrain
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -28,6 +29,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
@@ -42,12 +45,16 @@ import app.rollentrainer.ui.screens.EditorScreen
 import app.rollentrainer.ui.screens.HistoryScreen
 import app.rollentrainer.ui.screens.RideDetailScreen
 import app.rollentrainer.ui.screens.RideScreen
+import app.rollentrainer.ui.screens.RouteRideScreen
+import app.rollentrainer.ui.screens.RoutesScreen
+import app.rollentrainer.ui.screens.SpinningScreen
 import app.rollentrainer.ui.screens.SettingsScreen
 import app.rollentrainer.ui.screens.WorkoutsScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 
 enum class Tab(val title: String, val icon: ImageVector) {
     WORKOUTS("Trainings", Icons.Outlined.DirectionsBike),
+    ROUTES("Strecken", Icons.Outlined.Terrain),
     HISTORY("Verlauf", Icons.Outlined.ShowChart),
     SETTINGS("Einstellungen", Icons.Outlined.Settings),
 }
@@ -83,8 +90,18 @@ fun blePermissions(): Array<String> = if (Build.VERSION.SDK_INT >= 31) {
 fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
     val nav = remember { Navigator() }
     val ride by container.session.state.collectAsStateWithLifecycle()
+    val settings by container.settings.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val wide = LocalConfiguration.current.screenWidthDp >= 720
+    // Spinning-class view: on for spinning workouts and when chosen as default; the rider can switch during the ride.
+    var spinning by remember { mutableStateOf(false) }
+    val rideWorkoutId = ride?.workout?.id
+    val riding = ride != null
+    LaunchedEffect(riding) {
+        if (riding) spinning = rideWorkoutId?.startsWith("preset-spin") == true || settings.spinningByDefault
+    }
+    // "Beenden" in the spinning view hands over to the normal view, which owns the end dialog (RPE, notes, save).
+    var endFromSpinning by remember { mutableStateOf(false) }
 
     val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
         if (result.values.all { it }) container.sensors.connectSaved()
@@ -97,11 +114,26 @@ fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
     }
 
     // A running ride takes over the whole screen until it ends.
-    if (ride != null) {
+    val current = ride
+    if (current != null) {
         BackHandler { /* ignore: ending a ride needs the explicit button */ }
         androidx.compose.runtime.CompositionLocalProvider(LocalWide provides wide) {
-            Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                RideScreen(container) { rideId -> rideId?.let { nav.push(Screen.RideDetail(it)) } }
+            when {
+                // The 3D view draws behind the window, so nothing opaque may cover it.
+                current.route != null -> Box(Modifier.fillMaxSize()) {
+                    RouteRideScreen(container) { rideId -> rideId?.let { nav.push(Screen.RideDetail(it)) } }
+                }
+                spinning -> SpinningScreen(
+                    container, container.spinningAudio,
+                    onStandardView = { spinning = false },
+                    onEnd = { endFromSpinning = true; spinning = false },
+                )
+                else -> Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    RideScreen(container, onSpinningView = { spinning = true }, askEndFirst = endFromSpinning) { rideId ->
+                        endFromSpinning = false
+                        rideId?.let { nav.push(Screen.RideDetail(it)) }
+                    }
+                }
             }
         }
         return
@@ -119,6 +151,7 @@ fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
                             container,
                             onEdit = { id, copy -> nav.push(Screen.Editor(id, copy)) },
                         )
+                        Tab.ROUTES -> RoutesScreen(container)
                         Tab.HISTORY -> HistoryScreen(container, onOpen = { nav.push(Screen.RideDetail(it)) })
                         Tab.SETTINGS -> SettingsScreen(container, stravaMessage)
                     }

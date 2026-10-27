@@ -29,6 +29,8 @@ data class Route(
     val points: List<RoutePoint>,
     val landmarks: List<Landmark> = emptyList(),
     val hairpins: Int = 0,
+    /** Landscape style for the 3D world. */
+    val biome: Biome = Biome.ALPINE,
     /** Fraction of the original route this instance covers (1.0 = full). */
     val fraction: Double = 1.0,
     val builtIn: Boolean = true,
@@ -139,6 +141,7 @@ data class Route(
             kmGradients: List<Double>,
             landmarks: List<Landmark> = emptyList(),
             hairpins: Int = 0,
+            biome: Biome = Biome.ALPINE,
         ): Route {
             val pts = mutableListOf(RoutePoint(0.0, startElevationM))
             var d = 0.0
@@ -153,7 +156,7 @@ data class Route(
                 pts += RoutePoint(d, e)
             }
             if (d < totalM - 1) pts += RoutePoint(totalM, e)
-            return Route(id, name, region, description, kind, pts, landmarks, hairpins)
+            return Route(id, name, region, description, kind, pts, landmarks, hairpins, biome)
         }
     }
 }

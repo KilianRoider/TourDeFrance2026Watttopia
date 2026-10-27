@@ -7,6 +7,7 @@ import app.rollentrainer.data.RideRepository
 import app.rollentrainer.data.SettingsStore
 import app.rollentrainer.data.WorkoutRepository
 import app.rollentrainer.ride.RideSession
+import app.rollentrainer.ride.SpinningAudio
 import app.rollentrainer.strava.StravaClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,7 @@ class AppContainer(app: Application) {
     val sensors = SensorHub(app, settings, scope)
     val strava = StravaClient(settings)
     val session = RideSession(app, sensors, settings, rides, strava, scope)
+    val spinningAudio = SpinningAudio(app, settings, session, scope)
 }
 
 class RollentrainerApp : Application() {

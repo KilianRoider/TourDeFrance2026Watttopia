@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -81,12 +82,17 @@ import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 @Composable
-fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
+fun RideScreen(
+    container: AppContainer,
+    onSpinningView: (() -> Unit)? = null,
+    askEndFirst: Boolean = false,
+    onFinished: (rideId: String?) -> Unit,
+) {
     val state by container.session.state.collectAsStateWithLifecycle()
     val status by container.sensors.status.collectAsStateWithLifecycle()
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val s = state ?: return
-    var askEnd by remember { mutableStateOf(false) }
+    var askEnd by remember { mutableStateOf(askEndFirst) }
     var askRpe by remember { mutableStateOf(false) }
     var finishSeen by remember { mutableStateOf(false) }
     var fullHistory by rememberSaveable { mutableStateOf(false) }
@@ -174,7 +180,7 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
         Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Header(s, status, editing, onToggleEdit = { editing = !editing })
+        Header(s, status, editing, onToggleEdit = { editing = !editing }, onSpinningView = onSpinningView)
         if (editing) {
             Banner("Tippe auf ein Feld, um es zu wählen oder zu ersetzen. Oben wählst du das Raster und legst weitere Seiten an.")
         } else {
@@ -360,7 +366,7 @@ private fun BoxScope.CountdownOverlay(s: RideState) {
 }
 
 @Composable
-private fun Header(s: RideState, status: Map<SensorRole, SensorStatus>, editing: Boolean, onToggleEdit: () -> Unit) {
+private fun Header(s: RideState, status: Map<SensorRole, SensorStatus>, editing: Boolean, onToggleEdit: () -> Unit, onSpinningView: (() -> Unit)? = null) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
             Text(s.workout?.name ?: "Freie Fahrt", style = MaterialTheme.typography.titleLarge)
@@ -391,6 +397,13 @@ private fun Header(s: RideState, status: Map<SensorRole, SensorStatus>, editing:
                 Text("Fertig")
             }
         } else {
+            if (onSpinningView != null) {
+                OutlinedButton(onClick = onSpinningView, modifier = Modifier.padding(end = 8.dp)) {
+                    Icon(Icons.Outlined.MusicNote, null)
+                    Spacer(Modifier.width(8.dp))
+                    Text("Spinning")
+                }
+            }
             OutlinedButton(onClick = onToggleEdit) {
                 Icon(Icons.Outlined.Tune, null)
                 Spacer(Modifier.width(8.dp))

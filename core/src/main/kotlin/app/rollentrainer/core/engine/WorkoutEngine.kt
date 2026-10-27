@@ -242,6 +242,12 @@ class WorkoutEngine(
         state = compute()
     }
 
+    /** The road sets the grade on a virtual route; it is not clamped like the manual stepper. */
+    fun setGrade(pct: Double) {
+        grade = pct.coerceIn(-25.0, 25.0)
+        state = compute()
+    }
+
     /** Rider asks for the full target right now after a release. */
     fun reengage() {
         ergState = ErgState.NORMAL

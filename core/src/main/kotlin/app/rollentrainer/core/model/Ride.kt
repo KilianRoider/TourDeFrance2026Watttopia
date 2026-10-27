@@ -78,6 +78,10 @@ data class Ride(
     val ftpAccepted: Boolean = false,
     /** Best average power per window in seconds (5, 60, 300, 1200), stored so personal records are cheap to find. */
     val bests: Map<Int, Int> = emptyMap(),
+    /** Virtual route that was ridden, with the fraction of it and the time to the finish (null if not finished). */
+    val routeId: String? = null,
+    val routeFraction: Double = 1.0,
+    val routeTimeSec: Int? = null,
     /** Rate of perceived exertion 1–10, asked after the ride. */
     val rpe: Int? = null,
     val notes: String = "",

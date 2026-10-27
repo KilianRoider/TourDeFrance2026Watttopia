@@ -21,6 +21,11 @@ import app.rollentrainer.core.model.Sample
 import app.rollentrainer.core.model.TestKind
 import app.rollentrainer.core.model.Timeline
 import app.rollentrainer.core.model.Workout
+import app.rollentrainer.core.route.Pacer
+import app.rollentrainer.core.route.RiderParams
+import app.rollentrainer.core.route.Route
+import app.rollentrainer.core.route.RouteEngine
+import app.rollentrainer.core.route.RouteState
 import app.rollentrainer.data.RideRepository
 import app.rollentrainer.data.SettingsStore
 import app.rollentrainer.strava.StravaClient
@@ -52,6 +57,8 @@ data class RideState(
     val wPrimeJ: Int = 20_000,
     /** PowerMatch offset (meter minus trainer) currently applied, in watts. */
     val powerMatchW: Int? = null,
+    /** Position on a virtual route, when riding one. */
+    val route: RouteState? = null,
 )
 
 sealed interface UploadState {
@@ -78,6 +85,7 @@ class RideSession(
     val upload: StateFlow<Pair<String, UploadState>?> = _upload.asStateFlow()
 
     private var engine: WorkoutEngine? = null
+    private var routeEngine: RouteEngine? = null
     private var loop: Job? = null
     private var metronome: Job? = null
     private val samples = mutableListOf<Sample>()
@@ -95,12 +103,25 @@ class RideSession(
 
     val running: Boolean get() = _state.value != null
 
-    fun start(workout: Workout?) {
+    fun start(workout: Workout?) = begin(workout, null, emptyList())
+
+    /**
+     * Rides a virtual route: the trainer runs in simulation mode with the road's grade (scaled by the
+     * trainer-difficulty setting), speed and distance come from the physics, not from the trainer.
+     */
+    fun startRoute(route: Route, pacers: List<Pacer>) = begin(null, route, pacers)
+
+    private fun begin(workout: Workout?, route: Route?, pacers: List<Pacer>) {
         if (running) return
         val s = settings.value
         val timeline = workout?.let { Timeline(it) }
         val e = WorkoutEngine(timeline, EngineConfig(ftp = s.ftp, autoPauseSec = s.autoPauseSeconds, spiralRpm = s.ergReleaseRpm))
         engine = e
+        routeEngine = route?.let { RouteEngine(it, RiderParams.forRider(s.weightKg), pacers) }
+        if (route != null) {
+            e.setErg(false)
+            e.setGrade(route.gradientAt(0.0) * s.trainerDifficultyPct / 100)
+        }
         samples.clear()
         startEpochSec = 0
         stats = LiveStats(s.ftp, s.maxHr)
@@ -112,7 +133,10 @@ class RideSession(
         released = false
         finishedTone = false
         sounds.prepare(s.soundVolume)
-        _state.value = RideState(workout, timeline, e.state, LiveMetrics(), null, emptyList(), 0, hub.trainerControl.value, wBalJ = wbal.balanceJ, wPrimeJ = s.wPrimeKj * 1000)
+        _state.value = RideState(
+            workout, timeline, e.state, LiveMetrics(), null, emptyList(), 0, hub.trainerControl.value,
+            wBalJ = wbal.balanceJ, wPrimeJ = s.wPrimeKj * 1000, route = routeEngine?.state,
+        )
         ContextCompat.startForegroundService(context, Intent(context, RideService::class.java))
         hub.connectSaved()
         loop = scope.launch { rideLoop(e) }
@@ -128,9 +152,18 @@ class RideSession(
             val now = SystemClock.elapsedRealtime()
             val dt = (now - last) / 1000.0
             last = now
-            val m = hub.current()
+            val raw = hub.current()
             val cfg = settings.value
-            val st = e.tick(dt, m.power, m.cadence)
+            val st0 = e.tick(dt, raw.power, raw.cadence)
+            // On a virtual route the road sets the grade and the physics the speed; the ride ends at the summit.
+            val rs = routeEngine?.let { re ->
+                val r = re.tick(dt, raw.power, st0.paused)
+                e.setGrade(r.gradePct * cfg.trainerDifficultyPct / 100)
+                if (r.finished && !e.state.finished) e.finish()
+                r
+            }
+            val st = e.state
+            val m = if (rs != null) raw.copy(speedKmh = rs.speedKmh) else raw
             val timeline = e.timeline
 
             // Trainer command: ERG target (with PowerMatch) or simulation mode.
@@ -181,6 +214,7 @@ class RideSession(
                 wBalJ = wbal.balanceJ,
                 wPrimeJ = cfg.wPrimeKj * 1000,
                 powerMatchW = match,
+                route = rs,
             )
             delay(1000 - (SystemClock.elapsedRealtime() - now).coerceIn(0, 999))
         }
@@ -272,15 +306,20 @@ class RideSession(
         sounds.release()
         context.stopService(Intent(context, RideService::class.java))
         _state.value = null
+        routeEngine = null
         if (!save || samples.size < MIN_SAMPLES) return null
 
         val ftp = settings.value.ftp
         val list = samples.toList()
+        val route = st.route
         val ride = Ride(
             id = UUID.randomUUID().toString(),
             startEpochSec = startEpochSec,
-            name = st.workout?.name ?: "Freie Fahrt",
+            name = st.workout?.name ?: route?.route?.name ?: "Freie Fahrt",
             workoutId = st.workout?.id,
+            routeId = route?.route?.id,
+            routeFraction = route?.route?.fraction ?: 1.0,
+            routeTimeSec = route?.takeIf { it.finished }?.elapsedSec?.roundToInt(),
             ftp = ftp,
             samples = list,
             summary = RideSummary.of(list, ftp),

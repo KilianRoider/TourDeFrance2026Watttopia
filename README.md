@@ -10,6 +10,13 @@ entwickelt für den **Van Rysel D100** und den **Wahoo Kickr Core 2**.
 - **ERG-Modus:** Die App gibt dem Trainer für jeden Abschnitt die Zielleistung vor. Während der Fahrt: Pause, Überspringen,
   Intensität ±5 %, Countdown-Töne, Auto-Pause/Auto-Start, optionaler Schutz bei niedriger Trittfrequenz.
 - **Live-Graphen:** Leistung (mit Ziel), Herzfrequenz und Trittfrequenz, letzte 10 Minuten oder ganze Fahrt.
+- **Datenfelder wie am Garmin Edge:** 42 Felder in sechs Gruppen (Leistung 3 s/10 s/30 s, NP, IF, TSS, W/kg, Pulszone,
+  Abschnitt verbleibend, nächstes Ziel, Uhrzeit, …). Im Training über „Anpassen“ antippen, ersetzen, verschieben;
+  Vorlagen Minimal/Standard/Alles, 2 bis 4 Spalten, Zielbalken, Profil und Graphen abschaltbar.
+- **Coaching:** Trittfrequenz-Ziele und Text-Hinweise pro Block (kompatibel mit Zwift `Cadence` und `textevent`),
+  Zielbalken grün/gelb/rot, Sterne pro Abschnitt für Zielgenauigkeit.
+- **Auswertung:** Abschnitts-Tabelle, Zeit in Leistungs- und Pulszonen, FTP-Vorschlag nach Rampentest (75 % der
+  besten Minute) oder 20-Minuten-Test (95 %).
 - **Sensoren in den Einstellungen:** Smart-Trainer (FTMS), Pulsgurt, Trittfrequenzsensor (CSC) und Powermeter koppeln,
   mit Verbindungsstatus und Akkustand. Automatisches Wiederverbinden.
 - **Vorlagen:** FTP-Rampentest, Sweet Spot, VO2max, Schwelle 2 × 20, Grundlage, Regeneration. Import und Export von Zwift-Dateien (.zwo).

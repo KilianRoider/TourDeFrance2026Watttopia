@@ -2,6 +2,7 @@ package app.rollentrainer.data
 
 import android.content.Context
 import app.rollentrainer.core.fit.FitWriter
+import app.rollentrainer.core.import.Mrc
 import app.rollentrainer.core.model.AppJson
 import app.rollentrainer.core.model.Presets
 import app.rollentrainer.core.model.Ride
@@ -48,8 +49,16 @@ class WorkoutRepository(context: Context, scope: CoroutineScope) {
         reload()
     }
 
-    suspend fun import(stream: java.io.InputStream): Workout = withContext(Dispatchers.IO) {
-        val workout = Zwo.parse(stream)
+    /** Imports a Zwift (.zwo) or TrainerRoad/ErgVideo (.mrc, .erg) workout file. */
+    suspend fun import(stream: java.io.InputStream, fileName: String = ""): Workout = withContext(Dispatchers.IO) {
+        val lower = fileName.lowercase()
+        val workout = if (lower.endsWith(".mrc") || lower.endsWith(".erg")) {
+            Mrc.parse(stream.bufferedReader().readText(), fileName)
+        } else {
+            val bytes = stream.readBytes()
+            val head = String(bytes, 0, bytes.size.coerceAtMost(200)).trimStart()
+            if (head.startsWith("[")) Mrc.parse(String(bytes), fileName) else Zwo.parse(bytes.inputStream())
+        }
         save(workout)
         workout
     }
@@ -87,6 +96,6 @@ class RideRepository(private val context: Context, scope: CoroutineScope) {
     suspend fun exportFit(ride: Ride): File = withContext(Dispatchers.IO) {
         val out = File(context.cacheDir, "exports").apply { mkdirs() }
         val stamp = SimpleDateFormat("yyyy-MM-dd_HH-mm", Locale.GERMANY).format(Date(ride.startEpochSec * 1000))
-        File(out, "Rollentrainer_$stamp.fit").apply { writeBytes(FitWriter.encode(ride)) }
+        File(out, "Wattwerk_$stamp.fit").apply { writeBytes(FitWriter.encode(ride)) }
     }
 }

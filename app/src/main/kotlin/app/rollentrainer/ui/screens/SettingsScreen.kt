@@ -32,6 +32,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -53,6 +54,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
 import app.rollentrainer.ble.ConnectionState
 import app.rollentrainer.ble.ScanItem
+import app.rollentrainer.core.metrics.StarTolerance
+import app.rollentrainer.core.metrics.ZoneScheme
 import app.rollentrainer.data.AppSettings
 import app.rollentrainer.data.SavedSensor
 import app.rollentrainer.data.SensorRole
@@ -98,7 +101,9 @@ fun SettingsScreen(container: AppContainer, stravaMessage: MutableStateFlow<Stri
             SectionTitle("Sensoren")
             SensorsPanel(container, onPair = ::startPairing)
             SectionTitle("Profil")
-            ProfilePanel(settings, update)
+            ProfilePanel(container, settings, update)
+            SectionTitle("Töne")
+            SoundsPanel(settings, update)
         }
     }
     val right: @Composable () -> Unit = {
@@ -107,12 +112,6 @@ fun SettingsScreen(container: AppContainer, stravaMessage: MutableStateFlow<Stri
             TrainingPanel(settings, update)
             SectionTitle("Trainingsbildschirm")
             Panel(Modifier.fillMaxWidth()) {
-                Text(
-                    "Welche Datenfelder du während des Trainings siehst, stellst du direkt im Trainingsbildschirm über „Anpassen“ ein. " +
-                        "Vorlagen, Spalten und Graphen kannst du auch hier wählen.",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
                 LayoutOptions(settings, update)
             }
             SectionTitle("Strava")
@@ -257,11 +256,11 @@ private fun PairDialog(container: AppContainer, role: SensorRole, onDismiss: () 
 }
 
 @Composable
-private fun ProfilePanel(settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
+private fun ProfilePanel(container: AppContainer, settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
     Panel(Modifier.fillMaxWidth()) {
         Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-            Stepper("${settings.ftp} W", { update { it.copy(ftp = (it.ftp - 5).coerceAtLeast(50)) } },
-                { update { it.copy(ftp = (it.ftp + 5).coerceAtMost(600)) } }, label = "FTP")
+            Stepper("${settings.ftp} W", { container.settings.setFtp(settings.ftp - 5, "Manuell") },
+                { container.settings.setFtp(settings.ftp + 5, "Manuell") }, label = "FTP")
             Stepper("%.1f kg".format(settings.weightKg), { update { it.copy(weightKg = (it.weightKg - 0.5).coerceAtLeast(30.0)) } },
                 { update { it.copy(weightKg = (it.weightKg + 0.5).coerceAtMost(200.0)) } }, label = "Gewicht")
         }
@@ -273,13 +272,48 @@ private fun ProfilePanel(settings: AppSettings, update: ((AppSettings) -> AppSet
                 Text("Leistungsgewicht", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Text("%.2f W/kg".format(settings.ftp / settings.weightKg), style = MaterialTheme.typography.titleMedium)
             }
+            Stepper("${settings.wPrimeKj} kJ", { update { it.copy(wPrimeKj = (it.wPrimeKj - 1).coerceAtLeast(5)) } },
+                { update { it.copy(wPrimeKj = (it.wPrimeKj + 1).coerceAtMost(50)) } }, label = "W' (anaerobe Reserve)")
         }
         Spacer(Modifier.height(8.dp))
         Text(
-            "Kennst du deine FTP nicht? Fahre den „FTP-Rampentest“ und nimm 75 % deiner besten Minute.",
+            "Kennst du deine FTP nicht? Fahre den „FTP-Rampentest“ oder den „20-Minuten-FTP-Test“ – die App schlägt danach den Wert vor. " +
+                "W' liegt meist zwischen 15 und 25 kJ; es steuert nur die W'-Bilanz-Anzeige.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        if (settings.ftpHistory.isNotEmpty()) {
+            Spacer(Modifier.height(12.dp))
+            Text("FTP-Verlauf", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            val df = java.text.SimpleDateFormat("d. MMM yyyy", java.util.Locale.GERMANY)
+            settings.ftpHistory.takeLast(8).reversed().forEach { e ->
+                Row(Modifier.padding(vertical = 2.dp)) {
+                    Text(df.format(java.util.Date(e.epochSec * 1000)), Modifier.width(120.dp), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("${e.ftp} W", style = MaterialTheme.typography.bodySmall)
+                    if (e.source.isNotBlank()) Text(" · ${e.source}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SoundsPanel(settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
+    Panel(Modifier.fillMaxWidth()) {
+        SwitchRow("Töne", "Alle Signale während der Fahrt", settings.sounds) { v -> update { it.copy(sounds = v) } }
+        if (settings.sounds) {
+            Text("Lautstärke ${settings.soundVolume} %", style = MaterialTheme.typography.bodyLarge)
+            Slider(
+                value = settings.soundVolume.toFloat(),
+                onValueChange = { v -> update { it.copy(soundVolume = v.toInt()) } },
+                valueRange = 0f..100f,
+                steps = 9,
+            )
+            SwitchRow("Countdown", "Drei Töne vor jedem neuen Abschnitt", settings.soundCountdown) { v -> update { it.copy(soundCountdown = v) } }
+            SwitchRow("Abschnittswechsel", "Signal beim Start eines Abschnitts, heller wenn es härter wird", settings.soundSegment) { v -> update { it.copy(soundSegment = v) } }
+            SwitchRow("Trittfrequenz-Hinweise", "Wenn du länger als 10 s mehr als 10 rpm vom Ziel entfernt bist", settings.soundCadenceHints) { v -> update { it.copy(soundCadenceHints = v) } }
+            SwitchRow("Metronom", "Klickt im Takt der Ziel-Trittfrequenz", settings.metronome) { v -> update { it.copy(metronome = v) } }
+        }
     }
 }
 
@@ -311,24 +345,38 @@ private fun <T> ChoiceRow(title: String, options: List<Pair<T, String>>, selecte
 @Composable
 private fun TrainingPanel(settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
     Panel(Modifier.fillMaxWidth()) {
-        SwitchRow("Auto-Pause", "Pausiert, wenn du 3 Sekunden nicht trittst, und startet beim ersten Tritt",
+        SwitchRow("Auto-Pause", "Die Uhr stoppt, wenn du nicht trittst, und läuft beim ersten Tritt weiter",
             settings.autoPause) { v -> update { it.copy(autoPause = v) } }
-        SwitchRow("Töne", "Countdown vor jedem neuen Abschnitt", settings.sounds) { v -> update { it.copy(sounds = v) } }
+        if (settings.autoPause) {
+            ChoiceRow("Auto-Pause nach", listOf(3 to "3 s", 5 to "5 s", 10 to "10 s"), settings.autoPauseSec) { v -> update { it.copy(autoPauseSec = v) } }
+        }
         SwitchRow("Bildschirm anlassen", "Während des Trainings", settings.keepScreenOn) { v -> update { it.copy(keepScreenOn = v) } }
         SwitchRow("Powermeter bevorzugen", "Leistung vom Powermeter statt vom Trainer anzeigen und aufzeichnen",
             settings.preferPowerMeter) { v -> update { it.copy(preferPowerMeter = v) } }
+        SwitchRow("PowerMatch", "Die Zielleistung wird so korrigiert, dass dein Powermeter das Ziel trifft (braucht gekoppelten Powermeter)",
+            settings.powerMatch) { v -> update { it.copy(powerMatch = v) } }
         ChoiceRow("Leistung glätten", listOf(1 to "1 s", 3 to "3 s", 5 to "5 s", 10 to "10 s"), settings.powerSmoothingSec) { v ->
             update { it.copy(powerSmoothingSec = v) }
         }
         ChoiceRow(
-            "ERG-Schutz bei niedriger Trittfrequenz",
+            "ERG lösen bei niedriger Trittfrequenz",
             listOf(0 to "Aus", 50 to "< 50 rpm", 60 to "< 60 rpm", 70 to "< 70 rpm"),
-            settings.lowCadenceRpm,
-        ) { v -> update { it.copy(lowCadenceRpm = v) } }
+            settings.ergReleaseRpm,
+        ) { v -> update { it.copy(ergReleaseRpm = v) } }
         Text(
-            "Fällt die Trittfrequenz darunter, senkt die App die Zielleistung um 25 %, damit du wieder auf Touren kommst.",
+            "Fällt die Trittfrequenz 3 s lang darunter, nimmt die App das Ziel auf 40 % zurück („Spirale des Todes“). Sobald du wieder " +
+                "rund trittst, steigt es in 3 s zurück aufs Ziel – oder sofort über „Sofort volles Ziel“.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        ChoiceRow("Sterne-Bewertung", StarTolerance.entries.map { it to "${it.title} (±${it.pct} %)" }, settings.starTolerance) { v -> update { it.copy(starTolerance = v) } }
+        ChoiceRow("Zonenschema", ZoneScheme.entries.map { it to it.title }, settings.zoneScheme) { v -> update { it.copy(zoneScheme = v) } }
+        Spacer(Modifier.height(8.dp))
+        Stepper(
+            if (settings.weeklyGoalTss == 0) "Aus" else "${settings.weeklyGoalTss} TSS",
+            { update { it.copy(weeklyGoalTss = (it.weeklyGoalTss - 25).coerceAtLeast(0)) } },
+            { update { it.copy(weeklyGoalTss = (it.weeklyGoalTss + 25).coerceAtMost(1500)) } },
+            label = "Wochenziel (TSS)",
         )
     }
 }

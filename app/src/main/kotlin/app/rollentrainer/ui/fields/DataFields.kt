@@ -1,13 +1,14 @@
 package app.rollentrainer.ui.fields
 
 import androidx.compose.ui.graphics.Color
+import app.rollentrainer.core.engine.ErgState
 import app.rollentrainer.core.metrics.HeartRateZone
-import app.rollentrainer.core.metrics.PowerZone
+import app.rollentrainer.core.metrics.ZoneScheme
 import app.rollentrainer.data.AppSettings
 import app.rollentrainer.ride.RideState
 import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.theme.Metric
-import app.rollentrainer.ui.theme.zoneColor
+import app.rollentrainer.ui.theme.zoneColorAt
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -48,7 +49,7 @@ enum class DataField(
     TARGET("target", "Zielleistung", FieldGroup.POWER, "Vorgabe an den Trainer im aktuellen Abschnitt"),
     TARGET_DIFF("targetDiff", "Abweichung", FieldGroup.POWER, "Leistung minus Ziel"),
     POWER_PCT_FTP("powerPct", "% FTP", FieldGroup.POWER, "Aktuelle Leistung in Prozent deiner FTP"),
-    POWER_ZONE("powerZone", "Leistungszone", FieldGroup.POWER, "Zone 1 bis 7 nach Coggan"),
+    POWER_ZONE("powerZone", "Leistungszone", FieldGroup.POWER, "Zone nach dem gewählten Zonenschema"),
     POWER_AVG("powerAvg", "Ø Leistung", FieldGroup.POWER, "Durchschnitt der ganzen Fahrt"),
     POWER_LAP("powerLap", "Ø Abschnitt", FieldGroup.POWER, "Durchschnitt im aktuellen Abschnitt"),
     POWER_MAX("powerMax", "Max. Leistung", FieldGroup.POWER, "Höchster Wert der Fahrt"),
@@ -58,6 +59,8 @@ enum class DataField(
     WATTS_PER_KG("wkg", "W/kg", FieldGroup.POWER, "Leistung pro Kilogramm Körpergewicht"),
     WORK("work", "Arbeit", FieldGroup.POWER, "Geleistete Arbeit in Kilojoule"),
     ACCURACY("accuracy", "Trefferquote", FieldGroup.POWER, "Wie genau du im Abschnitt am Ziel liegst"),
+    WBAL("wbal", "W'-Bilanz", FieldGroup.POWER, "Verbleibende anaerobe Reserve (Skiba); sinkt über der FTP, füllt sich darunter"),
+    POWER_MATCH("powerMatch", "PowerMatch", FieldGroup.POWER, "Korrektur zwischen Powermeter und Trainer"),
 
     HR("hr", "Herzfrequenz", FieldGroup.HEART, "Aktueller Puls"),
     HR_ZONE("hrZone", "Pulszone", FieldGroup.HEART, "Zone 1 bis 5 nach maximaler Herzfrequenz"),
@@ -80,10 +83,13 @@ enum class DataField(
     ETA("eta", "Fertig um", FieldGroup.TIME, "Voraussichtliche Uhrzeit am Ende"),
 
     NEXT_TARGET("nextTarget", "Nächstes Ziel", FieldGroup.WORKOUT, "Zielleistung des folgenden Abschnitts"),
+    NEXT_SEGMENT("nextSeg", "Gleich", FieldGroup.WORKOUT, "Name, Dauer und Ziel des folgenden Abschnitts"),
     SEGMENT_NAME("segName", "Abschnitt", FieldGroup.WORKOUT, "Name und Nummer des Abschnitts"),
     PROGRESS("progress", "Fortschritt", FieldGroup.WORKOUT, "Anteil des Trainings in Prozent"),
     INTENSITY("intensity", "Intensität ±", FieldGroup.WORKOUT, "Eingestellter Intensitätsregler"),
-    TIME_IN_ZONE("tiz", "Zeit in Zone", FieldGroup.WORKOUT, "Sekunden in der aktuellen Leistungszone"),
+    TIME_IN_ZONE("tiz", "Zeit in Zone", FieldGroup.WORKOUT, "Zeit in der aktuellen Leistungszone"),
+    ERG("erg", "ERG", FieldGroup.WORKOUT, "ERG an, aus (Simulation) oder gelöst"),
+    GRADE("grade", "Steigung", FieldGroup.WORKOUT, "Simulierte Steigung, wenn ERG aus ist"),
 
     SPEED("speed", "Geschwindigkeit", FieldGroup.OTHER, "Vom Trainer geschätzt"),
     DISTANCE("distance", "Distanz", FieldGroup.OTHER, "Vom Trainer geschätzt"),
@@ -92,26 +98,22 @@ enum class DataField(
 
     companion object {
         fun byKey(key: String): DataField? = entries.firstOrNull { it.key == key }
-
-        /** Keys for the three layouts riders can pick with one tap. */
-        val PRESET_MINIMAL = listOf("power", "target", "segRemaining", "cadence")
-        val PRESET_STANDARD = listOf("power", "hr", "cadence", "segRemaining", "workoutRemaining", "nextTarget", "powerLap", "tss", "work")
-        val PRESET_FULL = listOf(
-            "power", "target", "targetDiff", "hr", "hrZone", "cadence", "segRemaining", "segElapsed",
-            "workoutRemaining", "nextTarget", "powerLap", "np", "if", "tss", "work", "wkg", "accuracy", "clock",
-        )
-        val DEFAULT = PRESET_STANDARD
     }
 }
 
 private val clockFormat = SimpleDateFormat("HH:mm", Locale.GERMANY)
+
+private val Good = Color(0xFF22C55E)
+private val Warn = Color(0xFFEAB308)
+private val Bad = Color(0xFFEF4444)
 
 /** Computes a field's value from the live ride state. */
 fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
     val st = s.stats
     val ftp = settings.ftp
     val power = s.displayPower
-    val target = s.engine.targetWatts
+    val target = if (s.engine.erg) s.engine.targetWatts else null
+    val scheme: ZoneScheme = settings.zoneScheme
     fun w(v: Int?) = FieldValue(v?.toString() ?: "–", "W")
     fun dash() = FieldValue("–")
     return when (this) {
@@ -119,15 +121,16 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
         DataField.POWER_3S -> w(s.samples.takeLast(3).mapNotNull { it.power }.takeIf { it.isNotEmpty() }?.average()?.roundToInt())
         DataField.POWER_10S -> w(st.power10s)
         DataField.POWER_30S -> w(st.power30s)
-        DataField.TARGET -> FieldValue(target?.toString() ?: "–", "W", accent = Metric.Target)
+        DataField.TARGET -> if (!s.engine.erg && s.engine.targetWatts != null) FieldValue(s.engine.targetWatts.toString(), "W", "Richtwert · ERG aus", Metric.Target)
+            else FieldValue(target?.toString() ?: "–", "W", accent = Metric.Target)
         DataField.TARGET_DIFF -> {
             if (power == null || target == null) dash()
             else {
                 val d = power - target
                 val color = when {
-                    abs(d) <= target * 0.05 -> Color(0xFF22C55E)
-                    abs(d) <= target * 0.10 -> Color(0xFFEAB308)
-                    else -> Color(0xFFEF4444)
+                    abs(d) <= target * 0.05 -> Good
+                    abs(d) <= target * 0.10 -> Warn
+                    else -> Bad
                 }
                 FieldValue((if (d > 0) "+" else "") + d, "W", accent = color)
             }
@@ -136,8 +139,8 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
         DataField.POWER_ZONE -> {
             if (power == null || ftp <= 0) dash()
             else {
-                val z = PowerZone.of(power * 100.0 / ftp)
-                FieldValue(z.name, "", z.label, zoneColor(z))
+                val z = scheme.indexOf(power * 100.0 / ftp)
+                FieldValue(scheme.name(z), "", scheme.labels[z], zoneColorAt(z))
             }
         }
         DataField.POWER_AVG -> w(st.avgPower.takeIf { st.seconds > 0 })
@@ -149,6 +152,17 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
         DataField.WATTS_PER_KG -> if (power == null) dash() else FieldValue("%.1f".format(power / settings.weightKg), "W/kg")
         DataField.WORK -> FieldValue(st.workKj.roundToInt().toString(), "kJ")
         DataField.ACCURACY -> st.lapAccuracyPct?.let { FieldValue(it.toString(), "%") } ?: dash()
+        DataField.WBAL -> {
+            val pct = (s.wBalJ / s.wPrimeJ * 100).roundToInt()
+            val color = when {
+                pct > 50 -> Good
+                pct > 20 -> Warn
+                else -> Bad
+            }
+            FieldValue("%.1f".format(s.wBalJ / 1000), "kJ", "$pct % übrig", color)
+        }
+        DataField.POWER_MATCH -> if (!settings.powerMatch) FieldValue("Aus", "", "In den Einstellungen")
+            else s.powerMatchW?.let { FieldValue((if (it > 0) "+" else "") + it, "W", "Powermeter − Trainer") } ?: FieldValue("0", "W", "Kein Powermeter-Wert")
 
         DataField.HR -> {
             val hr = s.live.heartRate
@@ -164,7 +178,17 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
         DataField.HR_LAP -> st.lapAvgHr?.let { FieldValue(it.toString(), "bpm") } ?: dash()
         DataField.HR_MAX -> st.maxHr?.let { FieldValue(it.toString(), "bpm") } ?: dash()
 
-        DataField.CADENCE -> FieldValue(s.live.cadence?.toString() ?: "–", "rpm", s.engine.targetCadence?.let { "Ziel $it rpm" }, Metric.Cadence)
+        DataField.CADENCE -> {
+            val c = s.live.cadence
+            val t = s.engine.targetCadence
+            val accent = when {
+                c == null || t == null -> Metric.Cadence
+                abs(c - t) <= 5 -> Good
+                abs(c - t) <= 10 -> Warn
+                else -> Bad
+            }
+            FieldValue(c?.toString() ?: "–", "rpm", t?.let { "Ziel $it rpm" }, accent)
+        }
         DataField.CADENCE_AVG -> st.avgCadence?.let { FieldValue(it.toString(), "rpm") } ?: dash()
         DataField.CADENCE_LAP -> st.lapAvgCadence?.let { FieldValue(it.toString(), "rpm") } ?: dash()
         DataField.CADENCE_TARGET -> {
@@ -172,47 +196,60 @@ fun DataField.value(s: RideState, settings: AppSettings): FieldValue {
             val c = s.live.cadence
             val color = when {
                 c == null -> null
-                abs(c - t) <= 5 -> Color(0xFF22C55E)
-                abs(c - t) <= 10 -> Color(0xFFEAB308)
-                else -> Color(0xFFEF4444)
+                abs(c - t) <= 5 -> Good
+                abs(c - t) <= 10 -> Warn
+                else -> Bad
             }
             FieldValue(t.toString(), "rpm", c?.let { if (it < t - 5) "Schneller treten" else if (it > t + 5) "Langsamer treten" else "Passt" }, color)
         }
 
-        DataField.SEGMENT_REMAINING -> if (s.timeline == null) dash() else FieldValue(formatDuration(s.engine.segmentRemainingSec))
+        DataField.SEGMENT_REMAINING -> if (s.timeline == null || s.engine.continuing) dash() else FieldValue(formatDuration(s.engine.segmentRemainingSec))
         DataField.SEGMENT_ELAPSED -> {
             val seg = s.timeline?.segments?.getOrNull(s.engine.segmentIndex) ?: return dash()
             FieldValue(formatDuration((s.engine.workoutSec - seg.startSec).toInt()))
         }
         DataField.WORKOUT_ELAPSED -> FieldValue(formatDuration(s.engine.workoutSec.toInt()))
-        DataField.WORKOUT_REMAINING -> if (s.timeline == null) dash() else FieldValue(formatDuration(s.engine.totalSec - s.engine.workoutSec.toInt()))
+        DataField.WORKOUT_REMAINING -> if (s.timeline == null) dash() else FieldValue(formatDuration((s.engine.totalSec - s.engine.workoutSec.toInt()).coerceAtLeast(0)))
         DataField.RIDE_TIME -> FieldValue(formatDuration(s.elapsedSec))
         DataField.CLOCK -> FieldValue(clockFormat.format(Date()))
         DataField.ETA -> {
             if (s.timeline == null) dash()
             else {
-                val remaining = s.engine.totalSec - s.engine.workoutSec.toInt()
+                val remaining = (s.engine.totalSec - s.engine.workoutSec.toInt()).coerceAtLeast(0)
                 FieldValue(clockFormat.format(Date(System.currentTimeMillis() + remaining * 1000L)))
             }
         }
 
-        DataField.NEXT_TARGET -> s.engine.nextTargetWatts?.let { FieldValue(it.toString(), "W") }
+        DataField.NEXT_TARGET -> s.engine.nextTargetWatts?.let { FieldValue(it.toString(), "W", if (s.engine.nextSegment?.erg == false) "frei" else null) }
             ?: if (s.timeline != null) FieldValue("–", "", "Letzter Abschnitt") else dash()
+        DataField.NEXT_SEGMENT -> {
+            val n = s.engine.nextSegment ?: return if (s.timeline != null) FieldValue("–", "", "Letzter Abschnitt") else dash()
+            val tgt = s.engine.nextTargetWatts
+            FieldValue(formatDuration(n.durationSec), "", (n.label.ifBlank { "Abschnitt" }) + (tgt?.let { " · $it W" } ?: "") + if (!n.erg) " · frei" else "")
+        }
         DataField.SEGMENT_NAME -> {
             val tl = s.timeline ?: return dash()
             val i = s.engine.segmentIndex
-            val seg = tl.segments.getOrNull(i) ?: return dash()
+            val seg = tl.segments.getOrNull(i) ?: return if (s.engine.continuing) FieldValue("Frei", "", "Weiterfahren") else dash()
             FieldValue("${i + 1}/${tl.segments.size}", "", seg.label.ifBlank { "Abschnitt" })
         }
-        DataField.PROGRESS -> if (s.engine.totalSec == 0) dash() else FieldValue((s.engine.workoutSec * 100 / s.engine.totalSec).roundToInt().toString(), "%")
+        DataField.PROGRESS -> if (s.engine.totalSec == 0) dash() else FieldValue((s.engine.workoutSec * 100 / s.engine.totalSec).roundToInt().coerceAtMost(100).toString(), "%")
         DataField.INTENSITY -> FieldValue(s.engine.intensityPct.toString(), "%")
         DataField.TIME_IN_ZONE -> {
             if (power == null || ftp <= 0) dash()
             else {
-                val z = PowerZone.of(power * 100.0 / ftp)
-                FieldValue(formatDuration(st.zoneSeconds[z.ordinal]), "", "in ${z.name}", zoneColor(z))
+                val z = scheme.indexOf(power * 100.0 / ftp)
+                val seconds = if (scheme == ZoneScheme.COGGAN) st.zoneSeconds else scheme.timeInZones(s.samples.map { it.power }, ftp)
+                FieldValue(formatDuration(seconds.getOrElse(z) { 0 }), "", "in ${scheme.name(z)}", zoneColorAt(z))
             }
         }
+        DataField.ERG -> when {
+            !s.engine.erg -> FieldValue("Aus", "", "Simulation ${"%.1f".format(s.engine.gradePct)} %", Metric.Target)
+            s.engine.ergState == ErgState.RELEASED -> FieldValue("Gelöst", "", "Tritt wieder an", Warn)
+            s.engine.ergState == ErgState.RE_ENGAGING -> FieldValue("Steigt", "", "Ziel kommt zurück", Warn)
+            else -> FieldValue("An", "", null, Good)
+        }
+        DataField.GRADE -> FieldValue("%.1f".format(s.engine.gradePct), "%", if (s.engine.erg) "Nur ohne ERG" else null)
 
         DataField.SPEED -> s.live.speedKmh?.let { FieldValue("%.1f".format(it), "km/h") } ?: dash()
         DataField.DISTANCE -> FieldValue("%.2f".format(st.distanceM / 1000), "km")

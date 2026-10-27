@@ -57,6 +57,7 @@ import app.rollentrainer.core.metrics.PowerZone
 import app.rollentrainer.core.model.Block
 import app.rollentrainer.core.model.Cue
 import app.rollentrainer.core.model.Power
+import app.rollentrainer.core.model.TestKind
 import app.rollentrainer.core.model.PowerUnit
 import app.rollentrainer.core.model.Timeline
 import app.rollentrainer.core.model.Workout
@@ -84,6 +85,7 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
     val id = remember { if (original == null || copy) newId() else original.id }
     var name by remember { mutableStateOf(original?.let { if (copy) "${it.name} (Kopie)" else it.name } ?: "Neues Training") }
     var description by remember { mutableStateOf(original?.description.orEmpty()) }
+    var test by remember { mutableStateOf(original?.test ?: TestKind.NONE) }
     val blocks = remember {
         mutableStateListOf<Block>().apply {
             addAll(original?.blocks ?: listOf(
@@ -96,7 +98,7 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
     var confirmDelete by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val workout = Workout(id, name.ifBlank { "Training" }, description, blocks.toList())
+    val workout = Workout(id, name.ifBlank { "Training" }, description, blocks.toList(), test = test)
     val timeline = remember(workout) { Timeline(workout) }
 
     fun save() = scope.launch {
@@ -129,6 +131,15 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
                 }
             }
             AddBlockButtons { blocks.add(it) }
+            Column {
+                Text("Auswertung als FTP-Test", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Spacer(Modifier.height(8.dp))
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(selected = test == TestKind.NONE, onClick = { test = TestKind.NONE }, label = { Text("Kein Test") })
+                    FilterChip(selected = test == TestKind.RAMP, onClick = { test = TestKind.RAMP }, label = { Text("Rampentest (75 % der besten Minute)") })
+                    FilterChip(selected = test == TestKind.TWENTY_MIN, onClick = { test = TestKind.TWENTY_MIN }, label = { Text("20-min-Test (95 %)") })
+                }
+            }
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 Button(onClick = { save() }, enabled = blocks.isNotEmpty()) { Text("Speichern") }
                 OutlinedButton(onClick = { share() }) {
@@ -209,6 +220,7 @@ private fun copyWithNewId(b: Block): Block = when (b) {
     is Block.Steady -> b.copy(id = newId())
     is Block.Ramp -> b.copy(id = newId())
     is Block.Intervals -> b.copy(id = newId())
+    is Block.FreeRide -> b.copy(id = newId())
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -222,7 +234,13 @@ private fun AddBlockButtons(onAdd: (Block) -> Unit) {
             OutlinedButton(onClick = { onAdd(Block.Intervals(newId(), 5, 60, Power.pct(120), 60, Power.pct(50))) }) { Text("Intervalle") }
             OutlinedButton(onClick = { onAdd(Block.Ramp(newId(), 600, Power.pct(45), Power.pct(75), "Einfahren")) }) { Text("Rampe hoch") }
             OutlinedButton(onClick = { onAdd(Block.Ramp(newId(), 480, Power.pct(65), Power.pct(40), "Ausfahren")) }) { Text("Rampe runter") }
+            OutlinedButton(onClick = { onAdd(Block.FreeRide(newId(), 60, "Frei", Power.pct(100))) }) { Text("Frei (ERG aus)") }
         }
+        Text(
+            "Frei: Der Trainer schaltet ERG ab und simuliert eine flache Straße – für Sprints und Tests, bei denen du die Leistung selbst wählst.",
+            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp),
+        )
     }
 }
 
@@ -262,6 +280,7 @@ private fun BlockCard(
         is Block.Steady -> "Konstant" to block.power
         is Block.Ramp -> (if (block.to.percentOfFtp(ftp) >= block.from.percentOfFtp(ftp)) "Rampe hoch" else "Rampe runter") to block.to
         is Block.Intervals -> "Intervalle" to block.onPower
+        is Block.FreeRide -> "Frei (ERG aus)" to block.guide
     }
     val zone = PowerZone.of(mainPower.percentOfFtp(ftp))
     Panel {
@@ -297,6 +316,13 @@ private fun BlockCard(
                     PowerStepper("Bis", block.to, ftp) { onChange(block.copy(to = it)) }
                     CadenceStepper("Trittfrequenz", block.cadence) { onChange(block.copy(cadence = it)) }
                 }
+                is Block.FreeRide -> {
+                    Stepper(formatDuration(block.durationSec), { onChange(block.copy(durationSec = stepDuration(block.durationSec, false))) },
+                        { onChange(block.copy(durationSec = stepDuration(block.durationSec, true))) }, label = "Dauer")
+                    PowerStepper("Richtwert (nur Anzeige)", block.guide, ftp) { onChange(block.copy(guide = it)) }
+                    CadenceStepper("Trittfrequenz", block.cadence) { onChange(block.copy(cadence = it)) }
+                    OutlinedTextField(block.label, { onChange(block.copy(label = it)) }, label = { Text("Name") }, singleLine = true)
+                }
                 is Block.Intervals -> {
                     Stepper("${block.repeat} ×", { onChange(block.copy(repeat = (block.repeat - 1).coerceAtLeast(1))) },
                         { onChange(block.copy(repeat = (block.repeat + 1).coerceAtMost(50))) }, label = "Wiederholungen")
@@ -312,18 +338,7 @@ private fun BlockCard(
             }
         }
         Spacer(Modifier.height(12.dp))
-        val cue = block.cues.firstOrNull()?.text.orEmpty()
-        OutlinedTextField(
-            value = cue,
-            onValueChange = { text ->
-                val cues = if (text.isBlank()) emptyList() else listOf(Cue(0, text))
-                onChange(withCues(block, cues))
-            },
-            label = { Text("Hinweis zu Beginn (optional)") },
-            placeholder = { Text("z. B. „Ruhig atmen, Trittfrequenz hoch halten“") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(),
-        )
+        CueEditor(block.cues, maxSec = if (block is Block.Intervals) block.onSec else block.durationSec()) { onChange(withCues(block, it)) }
     }
 }
 
@@ -331,7 +346,36 @@ private fun withCues(b: Block, cues: List<Cue>): Block = when (b) {
     is Block.Steady -> b.copy(cues = cues)
     is Block.Ramp -> b.copy(cues = cues)
     is Block.Intervals -> b.copy(cues = cues)
+    is Block.FreeRide -> b.copy(cues = cues)
 }
+
+/** Coaching texts with the moment they appear, like Zwift's text events. Intervals show them in the first repetition. */
+@Composable
+private fun CueEditor(cues: List<Cue>, maxSec: Int, onChange: (List<Cue>) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("Hinweise während des Blocks", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        cues.forEachIndexed { i, cue ->
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Stepper(
+                    formatDuration(cue.offsetSec),
+                    onMinus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec - stepFor(cue.offsetSec)).coerceAtLeast(0)) }.sortedBy { it.offsetSec }) },
+                    onPlus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec + stepFor(cue.offsetSec)).coerceAtMost((maxSec - 1).coerceAtLeast(0))) }.sortedBy { it.offsetSec }) },
+                )
+                OutlinedTextField(
+                    cue.text, { t -> onChange(cues.toMutableList().also { it[i] = cue.copy(text = t) }) },
+                    singleLine = true, modifier = Modifier.weight(1f), placeholder = { Text("z. B. „Ruhig atmen, Trittfrequenz hoch halten“") },
+                )
+                IconButton(onClick = { onChange(cues.filterIndexed { k, _ -> k != i }) }) { Icon(Icons.Outlined.Delete, "Hinweis entfernen") }
+            }
+        }
+        TextButton(onClick = {
+            val next = (cues.maxOfOrNull { it.offsetSec }?.plus(30) ?: 0).coerceAtMost((maxSec - 1).coerceAtLeast(0))
+            onChange(cues + Cue(next, ""))
+        }) { Text("+ Hinweis") }
+    }
+}
+
+private fun stepFor(sec: Int) = if (sec < 60) 5 else if (sec < 300) 15 else 30
 
 /** Optional cadence target: off below 50 rpm. */
 @Composable

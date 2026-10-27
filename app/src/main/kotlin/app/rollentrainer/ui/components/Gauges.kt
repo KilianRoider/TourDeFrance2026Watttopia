@@ -21,7 +21,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.rollentrainer.core.metrics.HeartRateZone
 import app.rollentrainer.core.metrics.PowerZone
+import app.rollentrainer.core.metrics.ZoneScheme
 import app.rollentrainer.ui.theme.zoneColor
+import app.rollentrainer.ui.theme.zoneColorAt
 import kotlin.math.abs
 
 /**
@@ -100,15 +102,25 @@ fun PowerZoneBars(seconds: IntArray, modifier: Modifier = Modifier) = ZoneBars(
     seconds, PowerZone.entries.map { "${it.name} ${it.label}" }, PowerZone.entries.map { zoneColor(it) }, modifier,
 )
 
+/** Zone bars for any scheme (Coggan 7 or Zwift 6). */
+@Composable
+fun PowerZoneBars(seconds: IntArray, scheme: ZoneScheme, modifier: Modifier = Modifier) = ZoneBars(
+    seconds, (0 until scheme.count).map { "${scheme.name(it)} ${scheme.labels[it]}" }, (0 until scheme.count).map { zoneColorAt(it) }, modifier,
+)
+
 @Composable
 fun HrZoneBars(seconds: IntArray, modifier: Modifier = Modifier) = ZoneBars(
     seconds, HeartRateZone.entries.map { "${it.name} ${it.label}" },
     listOf(Color(0xFF8A94A6), Color(0xFF3B82F6), Color(0xFF22C55E), Color(0xFFF97316), Color(0xFFEF4444)), modifier,
 )
 
-/** Three stars for interval accuracy, dimmed ones for the ones not earned. */
+/** Three stars for interval accuracy, dimmed ones for the ones not earned; a dash when the lap is not rated. */
 @Composable
-fun Stars(count: Int, modifier: Modifier = Modifier) {
+fun Stars(count: Int, modifier: Modifier = Modifier, rated: Boolean = true) {
+    if (!rated) {
+        Text("–", modifier, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.outline)
+        return
+    }
     Text(
         "★".repeat(count.coerceIn(0, 3)) + "☆".repeat(3 - count.coerceIn(0, 3)),
         modifier, style = MaterialTheme.typography.titleMedium,

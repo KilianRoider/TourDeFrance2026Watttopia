@@ -6,6 +6,7 @@ import kotlin.math.roundToInt
  * Power zone schemes. Coggan's seven zones are the head-unit default; Zwift riders know
  * the six colours from the workout graph. Zone indices are 0-based.
  */
+@kotlinx.serialization.Serializable
 enum class ZoneScheme(val title: String, val labels: List<String>, private val upperPct: IntArray) {
     COGGAN(
         "Coggan (7 Zonen)",

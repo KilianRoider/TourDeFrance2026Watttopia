@@ -20,6 +20,14 @@ object Metric {
     val Cadence = Color(0xFF38BDF8)
 }
 
+/** Zone colours by index, shared by the Coggan (7) and Zwift (6) schemes. */
+private val ZoneColors = listOf(
+    Color(0xFF8A94A6), Color(0xFF3B82F6), Color(0xFF22C55E), Color(0xFFEAB308),
+    Color(0xFFF97316), Color(0xFFEF4444), Color(0xFFA855F7),
+)
+
+fun zoneColorAt(index: Int): Color = ZoneColors[index.coerceIn(0, ZoneColors.lastIndex)]
+
 fun zoneColor(zone: PowerZone): Color = when (zone) {
     PowerZone.Z1 -> Color(0xFF8A94A6)
     PowerZone.Z2 -> Color(0xFF3B82F6)

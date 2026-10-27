@@ -1,8 +1,12 @@
 package app.rollentrainer.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -20,16 +24,20 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -41,17 +49,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
 import app.rollentrainer.ble.ConnectionState
 import app.rollentrainer.ble.SensorStatus
 import app.rollentrainer.core.engine.EngineState
+import app.rollentrainer.core.engine.ErgState
+import app.rollentrainer.core.metrics.Analysis
+import app.rollentrainer.core.model.TestKind
 import app.rollentrainer.data.AppSettings
 import app.rollentrainer.data.SensorRole
 import app.rollentrainer.ride.RideState
 import app.rollentrainer.ui.LocalWide
 import app.rollentrainer.ui.components.Banner
+import app.rollentrainer.ui.components.CardShape
 import app.rollentrainer.ui.components.ConnectionDot
 import app.rollentrainer.ui.components.LineChart
 import app.rollentrainer.ui.components.Panel
@@ -59,10 +73,12 @@ import app.rollentrainer.ui.components.Stepper
 import app.rollentrainer.ui.components.TargetGauge
 import app.rollentrainer.ui.components.WorkoutProfile
 import app.rollentrainer.ui.components.formatDuration
-import app.rollentrainer.ui.fields.FieldGrid
+import app.rollentrainer.ui.fields.DataPages
 import app.rollentrainer.ui.fields.LayoutOptions
+import app.rollentrainer.ui.fields.pages
 import app.rollentrainer.ui.theme.Metric
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 @Composable
 fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
@@ -72,13 +88,19 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val s = state ?: return
     val scope = rememberCoroutineScope()
     var askEnd by remember { mutableStateOf(false) }
+    var askRpe by remember { mutableStateOf(false) }
+    var finishSeen by remember { mutableStateOf(false) }
     var fullHistory by rememberSaveable { mutableStateOf(false) }
     var editing by rememberSaveable { mutableStateOf(false) }
     val update: ((AppSettings) -> AppSettings) -> Unit = { container.settings.update(it) }
+    val free = s.timeline == null
+    val pages = settings.pages(free)
+    val onPages: (List<app.rollentrainer.data.DataPage>) -> Unit = { p -> update { if (free) it.copy(freePages = p) else it.copy(ridePages = p) } }
 
-    fun end(save: Boolean) = scope.launch {
+    fun end(save: Boolean, rpe: Int? = null, notes: String = "") = scope.launch {
         askEnd = false
-        val ride = container.session.finish(save)
+        askRpe = false
+        val ride = container.session.finish(save, rpe, notes)
         onFinished(ride?.id)
     }
 
@@ -97,6 +119,9 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
     val window = if (fullHistory) Int.MAX_VALUE else 600
     val shown = s.samples.takeLast(window)
     val chartKinds = settings.rideCharts
+    val wbalSeries = remember(s.samples.size, settings.ftp, settings.wPrimeKj) {
+        if ("wbal" in chartKinds) Analysis.wBalSeries(s.samples, settings.ftp, settings.wPrimeKj * 1000) else DoubleArray(0)
+    }
 
     val charts: @Composable ColumnScope.(Modifier) -> Unit = { m ->
         if ("power" in chartKinds) LineChart(
@@ -112,12 +137,20 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
             "Trittfrequenz", shown.map { it.cadence?.toFloat() }, Metric.Cadence, m,
             unit = "rpm", current = s.live.cadence?.toString(), minRange = 100f,
         )
+        if ("wbal" in chartKinds) LineChart(
+            "W'-Bilanz", wbalSeries.takeLast(shown.size).map { (it / 1000).toFloat().coerceAtLeast(0f) }, Metric.Target, m,
+            unit = "kJ", current = "%.1f".format(s.wBalJ / 1000), minRange = (s.wPrimeJ / 1000f),
+        )
     }
     val showCharts = settings.rideShowCharts && chartKinds.isNotEmpty()
 
     val sidePanel: @Composable ColumnScope.() -> Unit = {
         if (editing) {
-            LayoutOptions(settings, update)
+            Text(
+                "Raster wählen, Felder antippen, Seiten hinzufügen. Jede Seite ist ein festes Raster wie beim Radcomputer.",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            LayoutOptions(settings, update, showReset = false)
         } else if (showCharts) {
             ChartToggle(fullHistory) { fullHistory = it }
             Spacer(Modifier.height(8.dp))
@@ -127,15 +160,30 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
         }
     }
 
+    val fieldsBlock: @Composable ColumnScope.(Boolean) -> Unit = { fill ->
+        if (settings.rideShowGauge && s.engine.erg && s.engine.targetWatts != null) TargetGauge(s.displayPower, s.engine.targetWatts)
+        if (!editing) NextPreview(s)
+        Box(if (fill) Modifier.fillMaxWidth().weight(1f) else Modifier.fillMaxWidth()) {
+            DataPages(s, settings, pages, editing, fill, onPages, Modifier.fillMaxSize())
+            if (!editing) CountdownOverlay(s)
+        }
+    }
+
     Column(
         Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Header(s, status, editing, onToggleEdit = { editing = !editing })
         if (editing) {
-            Banner("Tippe auf ein Feld, um es zu ersetzen. × entfernt es, die Pfeile verschieben es, „+ Feld“ fügt eines hinzu.")
+            Banner("Tippe auf ein Feld, um es zu wählen oder zu ersetzen. Oben wählst du das Raster und legst weitere Seiten an.")
         } else {
             banner?.let { Banner(it) }
+            if (s.engine.ergState == ErgState.RELEASED || s.engine.ergState == ErgState.RE_ENGAGING) {
+                ActionBanner(
+                    if (s.engine.ergState == ErgState.RELEASED) "ERG gelöst – tritt wieder an, das Ziel kommt von selbst zurück." else "ERG steigt wieder auf das Ziel …",
+                    action = "Sofort volles Ziel",
+                ) { container.session.reengage() }
+            }
             s.engine.cue?.let { Banner("💬 $it", color = MaterialTheme.colorScheme.surfaceContainerHigh) }
         }
         s.timeline?.takeIf { settings.rideShowProfile }?.let { tl ->
@@ -147,14 +195,11 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
         if (wide) {
             Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 Column(
-                    Modifier.weight(if (showCharts || editing) 0.45f else 1f).fillMaxHeight().verticalScroll(rememberScrollState()),
+                    Modifier.weight(if (showCharts || editing) 0.5f else 1f).fillMaxHeight(),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    if (settings.rideShowGauge && s.engine.targetWatts != null) TargetGauge(s.displayPower, s.engine.targetWatts)
-                    FieldGrid(s, settings, editing, onChange = { keys -> update { it.copy(rideFields = keys) } })
-                }
+                ) { fieldsBlock(true) }
                 if (showCharts || editing) {
-                    Panel(Modifier.weight(0.55f).fillMaxHeight()) { sidePanel() }
+                    Panel(Modifier.weight(0.5f).fillMaxHeight()) { sidePanel() }
                 }
             }
         } else {
@@ -162,10 +207,9 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
                 Modifier.weight(1f).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                if (settings.rideShowGauge && s.engine.targetWatts != null) TargetGauge(s.displayPower, s.engine.targetWatts)
-                FieldGrid(s, settings, editing, onChange = { keys -> update { it.copy(rideFields = keys) } })
+                fieldsBlock(false)
                 if (editing) {
-                    Panel { LayoutOptions(settings, update) }
+                    Panel { LayoutOptions(settings, update, showReset = false) }
                 } else if (showCharts) {
                     Panel {
                         ChartToggle(fullHistory) { fullHistory = it }
@@ -175,29 +219,139 @@ fun RideScreen(container: AppContainer, onFinished: (rideId: String?) -> Unit) {
                 }
             }
         }
-        Controls(container, s, onEnd = { askEnd = true })
+        Controls(container, s, settings, onEnd = { askEnd = true })
     }
 
-    if (askEnd || s.engine.finished) {
-        val done = s.engine.finished
+    val done = s.engine.finished && !finishSeen
+    if ((askEnd || done) && !askRpe) {
         AlertDialog(
             onDismissRequest = { if (!done) askEnd = false },
             title = { Text(if (done) "Geschafft!" else "Training beenden?") },
             text = {
-                Text(
-                    if (s.elapsedSec < 30) "Die Fahrt ist kürzer als 30 Sekunden und wird nicht gespeichert."
-                    else "Die Fahrt wird gespeichert" +
-                        (if (settings.strava != null && settings.stravaAutoUpload) " und zu Strava hochgeladen." else ".")
-                )
+                Column {
+                    if (done) {
+                        val st = s.stats
+                        Text("${formatDuration(st.seconds)} · ${st.avgPower} W · NP ${st.normalizedPower} W · TSS ${st.tss.roundToInt()}", style = MaterialTheme.typography.bodyLarge)
+                        Spacer(Modifier.height(8.dp))
+                    }
+                    Text(
+                        if (s.elapsedSec < 30) "Die Fahrt ist kürzer als 30 Sekunden und wird nicht gespeichert."
+                        else "Die Fahrt wird gespeichert" +
+                            (if (settings.strava != null && settings.stravaAutoUpload) " und zu Strava hochgeladen." else ".")
+                    )
+                }
             },
-            confirmButton = { Button(onClick = { end(true) }) { Text("Beenden und speichern") } },
+            confirmButton = { Button(onClick = { if (s.elapsedSec < 30) end(true) else askRpe = true }) { Text("Beenden und speichern") } },
             dismissButton = {
                 Row {
                     TextButton(onClick = { end(false) }) { Text("Verwerfen", color = MaterialTheme.colorScheme.error) }
-                    if (!done) TextButton(onClick = { askEnd = false }) { Text("Weiterfahren") }
+                    if (done) {
+                        TextButton(onClick = {
+                            finishSeen = true
+                            container.session.continueRiding((settings.ftp * 0.55).roundToInt())
+                        }) { Text("Weiterfahren") }
+                    } else {
+                        TextButton(onClick = { askEnd = false }) { Text("Weiterfahren") }
+                    }
                 }
             },
         )
+    }
+    if (askRpe) {
+        RpeDialog(
+            onSave = { rpe, notes -> end(true, rpe, notes) },
+            onSkip = { end(true) },
+            onDismiss = { askRpe = false; if (s.engine.finished) finishSeen = false },
+        )
+    }
+}
+
+/** Borg CR10 scale as every training platform asks for it after a workout. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun RpeDialog(onSave: (Int?, String) -> Unit, onSkip: () -> Unit, onDismiss: () -> Unit) {
+    var rpe by remember { mutableStateOf<Int?>(null) }
+    var notes by remember { mutableStateOf("") }
+    val labels = mapOf(1 to "sehr leicht", 2 to "leicht", 3 to "locker", 4 to "moderat", 5 to "etwas hart", 6 to "hart", 7 to "sehr hart", 8 to "sehr hart", 9 to "extrem hart", 10 to "maximal")
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Wie anstrengend war es?") },
+        text = {
+            Column {
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    (1..10).forEach { n ->
+                        FilterChip(selected = rpe == n, onClick = { rpe = n }, label = { Text(n.toString()) })
+                    }
+                }
+                Text(
+                    rpe?.let { "$it – ${labels[it]}" } ?: "1 = sehr leicht, 10 = maximal",
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 8.dp),
+                )
+                Spacer(Modifier.height(12.dp))
+                OutlinedTextField(notes, { notes = it }, label = { Text("Notiz (optional)") }, minLines = 2, modifier = Modifier.fillMaxWidth())
+            }
+        },
+        confirmButton = { Button(onClick = { onSave(rpe, notes) }) { Text("Speichern") } },
+        dismissButton = { TextButton(onClick = onSkip) { Text("Ohne Bewertung") } },
+    )
+}
+
+@Composable
+private fun ActionBanner(text: String, action: String, onAction: () -> Unit) {
+    Surface(color = MaterialTheme.colorScheme.tertiaryContainer, shape = CardShape, modifier = Modifier.fillMaxWidth()) {
+        Row(Modifier.padding(start = 16.dp, end = 8.dp, top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(text, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+            TextButton(onClick = onAction) { Text(action) }
+        }
+    }
+}
+
+/** "Gleich: …" – what comes next, shown during the last 15 seconds of a segment. */
+@Composable
+private fun NextPreview(s: RideState) {
+    val next = s.engine.nextSegment ?: return
+    if (s.engine.paused || s.engine.segmentRemainingSec > 15 || s.engine.continuing) return
+    val target = s.engine.nextTargetWatts
+    val current = s.engine.targetWatts
+    val arrow = when {
+        target == null || current == null -> ""
+        target > current -> " ▲"
+        target < current -> " ▼"
+        else -> ""
+    }
+    Surface(color = MaterialTheme.colorScheme.surfaceContainerHigh, shape = CardShape, modifier = Modifier.fillMaxWidth()) {
+        Row(Modifier.padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text("GLEICH", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.width(12.dp))
+            Text(
+                buildString {
+                    append(next.label.ifBlank { "Abschnitt" })
+                    append(" · ").append(formatDuration(next.durationSec))
+                    if (!next.erg) append(" · frei") else target?.let { append(" · $it W").append(arrow) }
+                    next.cadence?.let { append(" · $it rpm") }
+                },
+                style = MaterialTheme.typography.titleMedium,
+            )
+        }
+    }
+}
+
+/** Big 3-2-1 over the fields right before a segment change. */
+@Composable
+private fun CountdownOverlay(s: RideState) {
+    val rem = s.engine.segmentRemainingSec
+    if (s.engine.paused || s.engine.nextSegment == null || rem !in 0..2 || s.engine.continuing) return
+    Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background.copy(alpha = 0.55f), CardShape), contentAlignment = Alignment.Center) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("${rem + 1}", fontSize = 140.sp, lineHeight = 150.sp, style = MaterialTheme.typography.displayLarge, color = MaterialTheme.colorScheme.primary)
+            val next = s.engine.nextSegment
+            val target = s.engine.nextTargetWatts
+            Text(
+                (next?.label?.ifBlank { "Nächster Abschnitt" } ?: "") + (if (next?.erg == false) " · frei" else target?.let { " · $it W" } ?: ""),
+                style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 
@@ -208,8 +362,11 @@ private fun Header(s: RideState, status: Map<SensorRole, SensorStatus>, editing:
             Text(s.workout?.name ?: "Freie Fahrt", style = MaterialTheme.typography.titleLarge)
             val total = s.engine.totalSec
             Text(
-                if (total > 0) "${formatDuration(s.engine.workoutSec.toInt())} von ${formatDuration(total)}"
-                else formatDuration(s.elapsedSec),
+                when {
+                    s.engine.continuing -> "Weiterfahren · ${formatDuration(s.elapsedSec)}"
+                    total > 0 -> "${formatDuration(s.engine.workoutSec.toInt())} von ${formatDuration(total)}"
+                    else -> formatDuration(s.elapsedSec)
+                },
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -247,37 +404,81 @@ private fun ChartToggle(full: Boolean, onChange: (Boolean) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun Controls(container: AppContainer, s: RideState, onEnd: () -> Unit) {
+private fun Controls(container: AppContainer, s: RideState, settings: AppSettings, onEnd: () -> Unit) {
     val session = container.session
     val e: EngineState = s.engine
-    Row(
+    val inWorkout = s.timeline != null && !e.continuing && !e.finished
+    FlowRow(
         Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Button(onClick = { session.togglePause() }, modifier = Modifier.height(56.dp)) {
             Icon(if (e.paused) Icons.Default.PlayArrow else Icons.Default.Pause, null)
             Spacer(Modifier.width(8.dp))
             Text(if (e.paused) "Weiter" else "Pause")
         }
-        if (s.timeline != null) {
-            Stepper("${e.intensityPct} %", { session.adjustIntensity(-5) }, { session.adjustIntensity(5) }, label = "Intensität")
-            FilledTonalButton(onClick = { session.skip() }, modifier = Modifier.height(56.dp)) {
-                Icon(Icons.Default.SkipNext, null)
-                Spacer(Modifier.width(8.dp))
-                Text("Überspringen")
+        if (inWorkout) {
+            FilledTonalIconButton(onClick = { session.back() }, modifier = Modifier.height(56.dp)) { Icon(Icons.Default.SkipPrevious, "Abschnitt zurück") }
+            FilledTonalIconButton(onClick = { session.skip() }, modifier = Modifier.height(56.dp)) { Icon(Icons.Default.SkipNext, "Überspringen") }
+            OutlinedButton(onClick = { session.extend(60) }) { Text("+1 min") }
+            OutlinedButton(onClick = { session.extend(10) }) { Text("+10 s") }
+            Column {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Stepper("${e.intensityPct} %", { session.adjustIntensity(-1) }, { session.adjustIntensity(1) }, label = "Intensität")
+                    Spacer(Modifier.width(4.dp))
+                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            SmallChip("−10") { session.adjustIntensity(-10) }
+                            SmallChip("−5") { session.adjustIntensity(-5) }
+                        }
+                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            SmallChip("+5") { session.adjustIntensity(5) }
+                            SmallChip("+10") { session.adjustIntensity(10) }
+                        }
+                    }
+                    if (e.intensityPct != 100) TextButton(onClick = { session.setIntensity(100) }) { Text("100 %") }
+                }
+            }
+            if (s.workout?.test == TestKind.RAMP) {
+                Button(onClick = { session.bail() }, colors = androidx.compose.material3.ButtonDefaults.filledTonalButtonColors()) { Text("Ich bin platt") }
             }
         } else {
-            Stepper("${e.targetWatts ?: 0} W", { session.adjustManual(-10) }, { session.adjustManual(10) }, label = "Zielleistung")
-            OutlinedButton(onClick = { session.adjustManual(-50) }) { Text("−50") }
-            OutlinedButton(onClick = { session.adjustManual(50) }) { Text("+50") }
+            Stepper("${e.targetWatts ?: 0} W", { session.adjustManual(-5) }, { session.adjustManual(5) }, label = "Zielleistung")
+            SmallChip("−25") { session.adjustManual(-25) }
+            SmallChip("+25") { session.adjustManual(25) }
         }
+        ErgControls(s, onErg = { session.setErg(it) }, onGrade = { session.adjustGrade(it) })
         Spacer(Modifier.weight(1f))
         OutlinedButton(onClick = onEnd, modifier = Modifier.height(56.dp)) {
             Icon(Icons.Default.Stop, null)
             Spacer(Modifier.width(8.dp))
             Text("Beenden")
+        }
+    }
+}
+
+@Composable
+private fun SmallChip(text: String, onClick: () -> Unit) {
+    FilterChip(selected = false, onClick = onClick, label = { Text(text) }, modifier = Modifier.height(28.dp))
+}
+
+/** ERG on/off; when off, a grade stepper for the simulated road. Free-ride blocks switch ERG off by themselves. */
+@Composable
+private fun ErgControls(s: RideState, onErg: (Boolean) -> Unit, onGrade: (Double) -> Unit) {
+    val seg = s.timeline?.segments?.getOrNull(s.engine.segmentIndex)
+    val blockFree = seg?.erg == false
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        FilterChip(
+            selected = s.engine.erg,
+            onClick = { if (!blockFree) onErg(!s.engine.erg) },
+            enabled = !blockFree,
+            label = { Text(if (blockFree) "ERG aus (Block)" else if (s.engine.erg) "ERG an" else "ERG aus") },
+        )
+        if (!s.engine.erg) {
+            Stepper("%.1f %%".format(s.engine.gradePct), { onGrade(-0.5) }, { onGrade(0.5) }, label = "Steigung")
         }
     }
 }

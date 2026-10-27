@@ -44,6 +44,9 @@ data class LiveMetrics(
     val cadence: Int? = null,
     val heartRate: Int? = null,
     val speedKmh: Double? = null,
+    /** Raw sources, for PowerMatch: what the trainer and the power meter report right now. */
+    val trainerPower: Int? = null,
+    val meterPower: Int? = null,
 )
 
 data class SensorStatus(
@@ -78,6 +81,9 @@ class SensorHub(
     private val meterCadence = CrankCadence()
     private var lastTarget: Int? = null
     private var lastTargetSentAt = 0L
+    private var simulation = false
+    private var lastGrade: Double? = null
+    private var lastGradeSentAt = 0L
 
     private fun now() = SystemClock.elapsedRealtime()
 
@@ -170,7 +176,9 @@ class SensorHub(
                     if (result == Ftms.RESULT_SUCCESS) {
                         scope.launch {
                             clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.startOrResume())
-                            lastTarget?.let { forceTarget(it) }
+                            if (simulation) lastGrade?.let { g ->
+                                clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setSimulation(g))
+                            } else lastTarget?.let { forceTarget(it) }
                         }
                     }
                 }
@@ -216,7 +224,11 @@ class SensorHub(
             ?: r.trainerCadence?.takeIf { it.fresh(t) }?.value
         val hr = r.hr?.takeIf { it.fresh(t, 6000) }?.value ?: r.trainerHr?.takeIf { it.fresh(t, 6000) }?.value
         val speed = r.trainerSpeed?.takeIf { it.fresh(t) }?.value
-        return LiveMetrics(power, cadence?.let { Math.round(it).toInt() }, hr, speed)
+        return LiveMetrics(
+            power, cadence?.let { Math.round(it).toInt() }, hr, speed,
+            trainerPower = r.trainerPower?.takeIf { it.fresh(t) }?.value,
+            meterPower = r.meterPower?.takeIf { it.fresh(t) }?.value,
+        )
     }
 
     /** Sends an ERG target when it changed, at most twice per second. */
@@ -224,8 +236,10 @@ class SensorHub(
         val range = _trainerRange.value
         val w = if (range != null && range.first < range.last) watts.coerceIn(range.first, range.last) else watts
         val t = now()
-        if (w == lastTarget && t - lastTargetSentAt < RESEND_MS) return
-        if (t - lastTargetSentAt < 500 && w != lastTarget) {
+        val modeSwitch = simulation
+        simulation = false
+        if (!modeSwitch && w == lastTarget && t - lastTargetSentAt < RESEND_MS) return
+        if (!modeSwitch && t - lastTargetSentAt < 500 && w != lastTarget) {
             // Too soon after the last command; the next tick sends it.
             return
         }
@@ -235,6 +249,24 @@ class SensorHub(
         scope.launch { forceTarget(w) }
     }
 
+    /**
+     * Free ride without ERG: the trainer simulates a road with [gradePct]. Zwift calls this
+     * "ERG off"; the rider chooses the effort with gears and cadence.
+     */
+    fun setSimulation(gradePct: Double) {
+        val t = now()
+        val modeSwitch = !simulation
+        simulation = true
+        if (!modeSwitch && gradePct == lastGrade && t - lastGradeSentAt < RESEND_MS) return
+        if (!modeSwitch && t - lastGradeSentAt < 500) return
+        lastGrade = gradePct
+        lastGradeSentAt = t
+        if (!_trainerControl.value) return
+        scope.launch {
+            clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setSimulation(gradePct))
+        }
+    }
+
     private suspend fun forceTarget(w: Int) {
         clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setTargetPower(w))
     }
@@ -242,6 +274,7 @@ class SensorHub(
     /** Releases the trainer at the end of a ride so it spins freely. */
     fun releaseTrainer() {
         lastTarget = null
+        simulation = false
         scope.launch {
             clients[SensorRole.TRAINER]?.write(Uuids.FTMS, Uuids.FTMS_CONTROL_POINT, Ftms.setTargetPower(0))
         }

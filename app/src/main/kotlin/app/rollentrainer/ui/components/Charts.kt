@@ -187,7 +187,14 @@ fun WorkoutProfile(
                 lineTo(x1, size.height)
                 close()
             }
-            drawPath(path, zoneColor(PowerZone.of((a + b) / 2)))
+            val color = zoneColor(PowerZone.of((a + b) / 2))
+            if (s.erg) {
+                drawPath(path, color)
+            } else {
+                // Free ride: only a guide, so the block is drawn hollow with a dashed outline.
+                drawPath(path, color.copy(alpha = 0.25f))
+                drawPath(path, color, style = Stroke(1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(5f, 4f))))
+            }
         }
         if (progressSec != null) {
             val px = x(progressSec)

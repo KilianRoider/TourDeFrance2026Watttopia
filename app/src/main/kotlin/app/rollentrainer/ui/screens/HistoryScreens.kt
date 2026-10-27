@@ -24,10 +24,13 @@ import androidx.compose.material.icons.outlined.CloudUpload
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -38,20 +41,23 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
 import app.rollentrainer.core.metrics.Analysis
+import app.rollentrainer.core.model.Ride
+import app.rollentrainer.core.model.TestKind
 import app.rollentrainer.core.model.Timeline
-import app.rollentrainer.ui.components.HrZoneBars
-import app.rollentrainer.ui.components.PowerZoneBars
-import app.rollentrainer.ui.components.Stars
 import app.rollentrainer.ride.UploadState
 import app.rollentrainer.ui.LocalWide
+import app.rollentrainer.ui.components.HrZoneBars
 import app.rollentrainer.ui.components.LineChart
 import app.rollentrainer.ui.components.Panel
+import app.rollentrainer.ui.components.PowerZoneBars
+import app.rollentrainer.ui.components.Stars
 import app.rollentrainer.ui.components.Stat
 import app.rollentrainer.ui.components.WorkoutProfile
 import app.rollentrainer.ui.components.formatDuration
@@ -65,19 +71,38 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 private val dateFormat = SimpleDateFormat("EEE, d. MMM yyyy · HH:mm", Locale.GERMANY)
+private val shortDate = SimpleDateFormat("d. MMM", Locale.GERMANY)
 
-private fun startOfWeek(): Long = Calendar.getInstance(Locale.GERMANY).apply {
+private fun startOfWeek(offsetWeeks: Int = 0): Long = Calendar.getInstance(Locale.GERMANY).apply {
     set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
     set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+    add(Calendar.WEEK_OF_YEAR, -offsetWeeks)
 }.timeInMillis / 1000
+
+/** Consecutive weeks (including this one or last week) with at least one ride. */
+private fun streakWeeks(rides: List<Ride>): Int {
+    var streak = 0
+    var offset = 0
+    val thisWeek = rides.any { it.startEpochSec >= startOfWeek(0) }
+    if (!thisWeek) offset = 1
+    while (true) {
+        val from = startOfWeek(offset)
+        val to = startOfWeek(offset - 1)
+        if (rides.any { it.startEpochSec in from until to }) { streak++; offset++ } else break
+        if (offset > 520) break
+    }
+    return streak
+}
 
 @Composable
 fun HistoryScreen(container: AppContainer, onOpen: (String) -> Unit) {
     val rides by container.rides.rides.collectAsStateWithLifecycle()
+    val settings by container.settings.state.collectAsStateWithLifecycle()
     val week = remember(rides) {
         val from = startOfWeek()
         rides.filter { it.startEpochSec >= from }
     }
+    val streak = remember(rides) { streakWeeks(rides) }
     LazyColumn(
         Modifier.fillMaxSize(),
         contentPadding = PaddingValues(24.dp),
@@ -94,6 +119,19 @@ fun HistoryScreen(container: AppContainer, onOpen: (String) -> Unit) {
                     Stat("Zeit", formatMinutes(week.sumOf { it.summary.durationSec }))
                     Stat("TSS", week.sumOf { it.summary.tss }.roundToInt().toString())
                     Stat("Arbeit", "${week.sumOf { it.summary.workKj }} kJ")
+                    if (streak > 0) Stat("Serie", "$streak Wo.")
+                }
+                val goal = settings.weeklyGoalTss
+                if (goal > 0) {
+                    val tss = week.sumOf { it.summary.tss }
+                    Spacer(Modifier.height(12.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Wochenziel", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.weight(1f))
+                        Text("${tss.roundToInt()} / $goal TSS", style = MaterialTheme.typography.labelLarge)
+                    }
+                    Spacer(Modifier.height(6.dp))
+                    LinearProgressIndicator(progress = { (tss / goal).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
+                    if (tss >= goal) Text("Ziel erreicht!", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 4.dp))
                 }
             }
             Spacer(Modifier.height(8.dp))
@@ -109,13 +147,15 @@ fun HistoryScreen(container: AppContainer, onOpen: (String) -> Unit) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
                         Text(ride.name, style = MaterialTheme.typography.titleMedium)
-                        Text(dateFormat.format(Date(ride.startEpochSec * 1000)),
+                        Text(dateFormat.format(Date(ride.startEpochSec * 1000)) + (ride.rpe?.let { " · RPE $it" } ?: ""),
                             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                         Stat("Dauer", formatDuration(ride.summary.durationSec))
                         Stat("Ø Watt", ride.summary.avgPower.toString())
                         Stat("TSS", ride.summary.tss.roundToInt().toString())
+                        val rated = ride.laps.filter { it.rated }
+                        if (rated.isNotEmpty()) Stat("Sterne", "${rated.sumOf { it.stars(settings.starTolerance) }}/${rated.size * 3}")
                     }
                     if (ride.stravaActivityId != null) {
                         Spacer(Modifier.width(16.dp))
@@ -127,6 +167,8 @@ fun HistoryScreen(container: AppContainer, onOpen: (String) -> Unit) {
     }
 }
 
+private fun bestsOf(ride: Ride): Map<Int, Int> = ride.bests.ifEmpty { Analysis.bests(ride.samples) }
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit) {
@@ -137,6 +179,7 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var confirmDelete by remember { mutableStateOf(false) }
+    var editRpe by remember { mutableStateOf(false) }
 
     if (ride == null) {
         Column(Modifier.padding(24.dp)) {
@@ -148,6 +191,7 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
     val s = ride.summary
     val uploadState = upload?.takeIf { it.first == ride.id }?.second ?: UploadState.Idle
     val workout = ride.workoutId?.let { container.workouts.find(it) }
+    val tolerance = settings.starTolerance
 
     fun shareFit() = scope.launch {
         val file = container.rides.exportFit(ride)
@@ -158,6 +202,17 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
         context.startActivity(Intent.createChooser(intent, "FIT-Datei teilen"))
+    }
+
+    // Personal records: best power per window over the last 365 days before this ride.
+    val bests = remember(ride.id) { bestsOf(ride) }
+    val previousBests = remember(ride.id, rides.size) {
+        val from = ride.startEpochSec - 365L * 86400
+        val others = rides.filter { it.id != ride.id && it.startEpochSec in from..ride.startEpochSec }
+        Analysis.BEST_WINDOWS.associateWith { w -> others.mapNotNull { bestsOf(it)[w] }.maxOrNull() }
+    }
+    val previousSame = remember(ride.id, rides.size) {
+        ride.workoutId?.let { id -> rides.filter { it.workoutId == id && it.startEpochSec < ride.startEpochSec }.maxByOrNull { it.startEpochSec } }
     }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(bottom = 24.dp)) {
@@ -185,39 +240,115 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                     s.maxHr?.let { Stat("Max Puls", "$it bpm") }
                     s.avgCadence?.let { Stat("Ø Trittfrequenz", "$it rpm") }
                     if (s.distanceM > 0) Stat("Distanz", "%.1f km".format(s.distanceM / 1000))
+                    Stat("RPE", ride.rpe?.let { "$it/10" } ?: "–")
+                }
+                Spacer(Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (ride.notes.isNotBlank()) Text(ride.notes, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+                    else Spacer(Modifier.weight(1f))
+                    TextButton(onClick = { editRpe = true }) { Text(if (ride.rpe == null) "Anstrengung bewerten" else "Bewertung ändern") }
                 }
             }
-            // FTP suggestion: 95 % of the best 20 minutes, or 75 % of the best minute after a ramp test.
-            val rampTest = ride.workoutId == "preset-ramp-test"
-            val ftpEstimate = remember(ride.id) { Analysis.ftpEstimate(ride.samples, rampTest) }
-            if (ftpEstimate != null && !ride.ftpAccepted && (rampTest || ftpEstimate > ride.ftp + 2)) {
+
+            // FTP suggestion: depends on the kind of test the workout declared.
+            val test = if (ride.test != TestKind.NONE) ride.test else if (ride.workoutId == "preset-ramp-test") TestKind.RAMP else TestKind.NONE
+            val ftpEstimate = remember(ride.id) { Analysis.ftpEstimate(ride.samples, test == TestKind.RAMP) }
+            if (ftpEstimate != null && !ride.ftpAccepted && (test != TestKind.NONE || ftpEstimate > ride.ftp + 2)) {
                 Panel(Modifier.fillMaxWidth()) {
-                    Text(if (rampTest) "Rampentest ausgewertet" else "Neue FTP möglich", style = MaterialTheme.typography.titleMedium)
                     Text(
-                        if (rampTest) "75 % deiner besten Minute ergeben eine FTP von $ftpEstimate W (bisher ${ride.ftp} W)."
-                        else "95 % deiner besten 20 Minuten ergeben $ftpEstimate W, mehr als deine FTP von ${ride.ftp} W.",
+                        when (test) {
+                            TestKind.RAMP -> "Rampentest ausgewertet"
+                            TestKind.TWENTY_MIN -> "20-Minuten-Test ausgewertet"
+                            TestKind.NONE -> "Neue FTP möglich"
+                        },
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    Text(
+                        when (test) {
+                            TestKind.RAMP -> "75 % deiner besten Minute ergeben eine FTP von $ftpEstimate W (bisher ${ride.ftp} W)."
+                            TestKind.TWENTY_MIN -> "95 % deiner besten 20 Minuten ergeben eine FTP von $ftpEstimate W (bisher ${ride.ftp} W)."
+                            TestKind.NONE -> "95 % deiner besten 20 Minuten ergeben $ftpEstimate W, mehr als deine FTP von ${ride.ftp} W."
+                        },
                         style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                     Spacer(Modifier.height(8.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         Button(onClick = {
-                            container.settings.update { it.copy(ftp = ftpEstimate) }
+                            container.settings.setFtp(ftpEstimate, if (test == TestKind.NONE) "Fahrt" else "Test")
                             scope.launch { container.rides.save(ride.copy(ftpAccepted = true)) }
                         }) { Text("FTP auf $ftpEstimate W setzen") }
                         TextButton(onClick = { scope.launch { container.rides.save(ride.copy(ftpAccepted = true)) } }) { Text("Ignorieren") }
                     }
                 }
             }
+
+            // Best efforts with personal-record markers.
+            if (bests.isNotEmpty()) {
+                Panel(Modifier.fillMaxWidth()) {
+                    Text("Bestwerte", style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(32.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Analysis.BEST_WINDOWS.forEach { w ->
+                            val v = bests[w] ?: return@forEach
+                            val prev = previousBests[w]
+                            val label = when (w) { 5 -> "5 s"; 60 -> "1 min"; 300 -> "5 min"; else -> "20 min" }
+                            Column {
+                                Stat(label, "$v W")
+                                when {
+                                    prev == null -> Text("erster Wert", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    v > prev -> Text("Rekord (+${v - prev} W)", style = MaterialTheme.typography.labelSmall, color = Color(0xFFEAB308))
+                                    else -> Text("Rekord $prev W", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                }
+                            }
+                        }
+                    }
+                    Text("Rekorde beziehen sich auf die letzten 365 Tage.", style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
+                }
+            }
+
+            // Comparison with the last time this workout was ridden.
+            previousSame?.let { prev ->
+                Panel(Modifier.fillMaxWidth()) {
+                    Text("Vergleich mit dem letzten Mal (${shortDate.format(Date(prev.startEpochSec * 1000))})", style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    fun delta(now: Int?, before: Int?, unit: String): String {
+                        if (now == null || before == null) return "–"
+                        val d = now - before
+                        return (if (d > 0) "+" else "") + "$d $unit"
+                    }
+                    val ratedNow = ride.laps.filter { it.rated }
+                    val ratedPrev = prev.laps.filter { it.rated }
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(32.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Stat("Ø Leistung", delta(s.avgPower, prev.summary.avgPower, "W"))
+                        Stat("NP", delta(s.normalizedPower, prev.summary.normalizedPower, "W"))
+                        Stat("TSS", delta(s.tss.roundToInt(), prev.summary.tss.roundToInt(), ""))
+                        Stat("Ø Puls", delta(s.avgHr, prev.summary.avgHr, "bpm"))
+                        if (ratedNow.isNotEmpty() && ratedPrev.isNotEmpty()) {
+                            Stat("Sterne", delta(ratedNow.sumOf { it.stars(tolerance) }, ratedPrev.sumOf { it.stars(tolerance) }, ""))
+                        }
+                        Stat("RPE", delta(ride.rpe, prev.rpe, ""))
+                    }
+                    if (s.avgHr != null && prev.summary.avgHr != null && s.avgPower >= prev.summary.avgPower && s.avgHr < prev.summary.avgHr) {
+                        Text("Gleiche oder mehr Leistung bei niedrigerem Puls – ein gutes Zeichen für deine Form.",
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 8.dp))
+                    }
+                }
+            }
+
             workout?.let { w ->
                 WorkoutProfile(Timeline(w), ride.ftp, Modifier.fillMaxWidth().height(72.dp),
                     progressSec = s.durationSec.toDouble(), samples = ride.samples)
             }
             if (ride.laps.isNotEmpty()) {
                 Panel(Modifier.fillMaxWidth()) {
-                    val totalStars = ride.laps.sumOf { it.stars }
+                    val rated = ride.laps.filter { it.rated }
+                    val totalStars = rated.sumOf { it.stars(tolerance) }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text("Abschnitte", style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                        Text("$totalStars von ${ride.laps.size * 3} Sternen", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        if (rated.isNotEmpty()) {
+                            Text("$totalStars von ${rated.size * 3} Sternen · ${tolerance.title}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
                     }
                     Spacer(Modifier.height(8.dp))
                     Row(Modifier.fillMaxWidth()) {
@@ -232,18 +363,23 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                             Text(lap.label, Modifier.weight(1.6f), style = MaterialTheme.typography.bodyMedium, maxLines = 1)
                             val cells = listOf(
                                 formatDuration(lap.durationSec), lap.targetWatts?.toString() ?: "–", lap.avgPower.toString(),
-                                lap.avgHr?.toString() ?: "–", lap.avgCadence?.toString() ?: "–", lap.accuracyPct?.let { "$it %" } ?: "–",
+                                lap.avgHr?.toString() ?: "–", lap.avgCadence?.toString() ?: "–",
+                                if (lap.rated) lap.accuracyPct?.let { "$it %" } ?: "–" else "–",
                             )
                             cells.forEach { Text(it, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium.copy(fontFeatureSettings = "tnum")) }
-                            Stars(lap.stars, Modifier.weight(1f))
+                            Stars(lap.stars(tolerance), Modifier.weight(1f), rated = lap.rated)
                         }
                     }
+                    Text(
+                        "Rampen, freie Blöcke und Abschnitte unter 30 s werden nicht bewertet; die ersten 5 s jedes Abschnitts zählen nicht.",
+                        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp),
+                    )
                 }
             }
             Panel(Modifier.fillMaxWidth()) {
-                Text("Zeit in Leistungszonen", style = MaterialTheme.typography.titleMedium)
+                Text("Zeit in Leistungszonen · ${settings.zoneScheme.title}", style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.height(8.dp))
-                PowerZoneBars(remember(ride.id) { Analysis.timeInZones(ride.samples, ride.ftp) })
+                PowerZoneBars(remember(ride.id, settings.zoneScheme) { settings.zoneScheme.timeInZones(ride.samples.map { it.power }, ride.ftp) }, settings.zoneScheme)
                 if (s.avgHr != null) {
                     Spacer(Modifier.height(16.dp))
                     Text("Zeit in Pulszonen", style = MaterialTheme.typography.titleMedium)
@@ -262,6 +398,10 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                 Spacer(Modifier.height(16.dp))
                 LineChart("Trittfrequenz", ride.samples.map { it.cadence?.toFloat() }, Metric.Cadence, Modifier.fillMaxWidth().height(chartHeight),
                     unit = "rpm", current = s.avgCadence?.let { "Ø $it" }, minRange = 100f)
+                Spacer(Modifier.height(16.dp))
+                val wbal = remember(ride.id, settings.wPrimeKj) { Analysis.wBalSeries(ride.samples, ride.ftp, settings.wPrimeKj * 1000) }
+                LineChart("W'-Bilanz", wbal.map { (it / 1000).toFloat().coerceAtLeast(0f) }, Metric.Target, Modifier.fillMaxWidth().height(chartHeight),
+                    unit = "kJ", current = "min %.1f".format((wbal.minOrNull() ?: 0.0) / 1000), minRange = settings.wPrimeKj.toFloat())
             }
             FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 when {
@@ -293,6 +433,31 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
                 )
             }
         }
+    }
+
+    if (editRpe) {
+        var rpe by remember { mutableStateOf(ride.rpe) }
+        var notes by remember { mutableStateOf(ride.notes) }
+        androidx.compose.material3.AlertDialog(
+            onDismissRequest = { editRpe = false },
+            title = { Text("Anstrengung (RPE)") },
+            text = {
+                Column {
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                        (1..10).forEach { n -> FilterChip(selected = rpe == n, onClick = { rpe = n }, label = { Text(n.toString()) }) }
+                    }
+                    Spacer(Modifier.height(12.dp))
+                    OutlinedTextField(notes, { notes = it }, label = { Text("Notiz") }, minLines = 2, modifier = Modifier.fillMaxWidth())
+                }
+            },
+            confirmButton = {
+                Button(onClick = {
+                    scope.launch { container.rides.save(ride.copy(rpe = rpe, notes = notes)) }
+                    editRpe = false
+                }) { Text("Speichern") }
+            },
+            dismissButton = { TextButton(onClick = { editRpe = false }) { Text("Abbrechen") } },
+        )
     }
 
     if (confirmDelete) {

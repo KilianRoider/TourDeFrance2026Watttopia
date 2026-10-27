@@ -1,7 +1,7 @@
 # Wattwerk
 
 Android-App (für Tablets optimiert) zum Fahren von Trainings im ERG-Modus auf Smart-Trainern mit Bluetooth FTMS,
-getestet gegen die Protokolle des **Van Rysel D100** und des **Wahoo Kickr Core 2**.
+entwickelt für den **Van Rysel D100** und den **Wahoo Kickr Core 2**.
 
 ## Funktionen
 

@@ -81,6 +81,29 @@ object Ftms {
     /** Stop (1) or pause (2). */
     fun stop(pause: Boolean) = byteArrayOf(OP_STOP_PAUSE.toByte(), (if (pause) 2 else 1).toByte())
 
+    /** Resistance level 0..100 in simulation-free "level" mode (unit 0.1). */
+    fun setTargetResistance(level: Double): ByteArray {
+        val v = (level * 10).toInt().coerceIn(0, 255)
+        return byteArrayOf(OP_SET_TARGET_RESISTANCE.toByte(), v.toByte())
+    }
+
+    /**
+     * Indoor bike simulation: wind speed (m/s), grade (%), rolling resistance and wind resistance
+     * coefficients. Trainers switch from ERG to a "flat road" with this command.
+     */
+    fun setSimulation(gradePct: Double, windMps: Double = 0.0, crr: Double = 0.004, cw: Double = 0.51): ByteArray {
+        val wind = (windMps * 1000).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt())
+        val grade = (gradePct * 100).toInt().coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt())
+        val c = (crr * 10_000).toInt().coerceIn(0, 255)
+        val w = (cw * 100).toInt().coerceIn(0, 255)
+        return byteArrayOf(
+            OP_SET_SIMULATION.toByte(),
+            (wind and 0xFF).toByte(), (wind shr 8 and 0xFF).toByte(),
+            (grade and 0xFF).toByte(), (grade shr 8 and 0xFF).toByte(),
+            c.toByte(), w.toByte(),
+        )
+    }
+
     fun setTargetPower(watts: Int): ByteArray {
         val w = watts.coerceIn(0, Short.MAX_VALUE.toInt())
         return byteArrayOf(OP_SET_TARGET_POWER.toByte(), (w and 0xFF).toByte(), (w shr 8 and 0xFF).toByte())

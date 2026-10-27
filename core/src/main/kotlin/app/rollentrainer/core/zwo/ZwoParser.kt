@@ -60,7 +60,12 @@ object Zwo {
                     int("OffDuration"), pct("OffPower") ?: Power.pct(50),
                     cadence = cad("Cadence"), offCadence = cad("CadenceResting"), cues = cues,
                 )
-                "FreeRide", "MaxEffort" -> blocks += Block.Steady(id, int("Duration"), Power.pct(50), "Frei", cadence = cad("Cadence"), cues = cues)
+                "FreeRide", "MaxEffort" -> blocks += Block.FreeRide(
+                    id, int("Duration"),
+                    if (el.tagName == "MaxEffort") "Maximal" else "Frei",
+                    pct("Power") ?: Power.pct(if (el.tagName == "MaxEffort") 150 else 100),
+                    cadence = cad("Cadence"), cues = cues,
+                )
             }
         }
         return Workout(
@@ -75,7 +80,7 @@ object Zwo {
         fun f(p: Power) = String.format(java.util.Locale.US, "%.2f", p.percentOfFtp(ftp) / 100.0)
         fun esc(s: String) = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;")
         appendLine("<workout_file>")
-        appendLine("  <author>Rollentrainer</author>")
+        appendLine("  <author>Wattwerk</author>")
         appendLine("  <name>${esc(workout.name)}</name>")
         appendLine("  <description>${esc(workout.description)}</description>")
         appendLine("  <sportType>bike</sportType>")
@@ -93,6 +98,7 @@ object Zwo {
         for (b in workout.blocks) when (b) {
             is Block.Steady -> body(b, "SteadyState Duration=\"${b.durationSec}\" Power=\"${f(b.power)}\"${cadAttr("Cadence", b.cadence)}")
             is Block.Ramp -> body(b, "Ramp Duration=\"${b.durationSec}\" PowerLow=\"${f(b.from)}\" PowerHigh=\"${f(b.to)}\"${cadAttr("Cadence", b.cadence)}")
+            is Block.FreeRide -> body(b, "FreeRide Duration=\"${b.durationSec}\" FlatRoad=\"1\" Power=\"${f(b.guide)}\"${cadAttr("Cadence", b.cadence)}")
             is Block.Intervals -> body(
                 b,
                 "IntervalsT Repeat=\"${b.repeat}\" OnDuration=\"${b.onSec}\" OffDuration=\"${b.offSec}\" " +

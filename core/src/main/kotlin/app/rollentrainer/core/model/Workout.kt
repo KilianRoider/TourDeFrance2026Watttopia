@@ -92,7 +92,28 @@ sealed class Block {
     ) : Block() {
         override fun durationSec() = repeat * (onSec + offSec)
     }
+
+    /**
+     * ERG is switched off: the trainer simulates a flat road and the rider chooses the effort.
+     * Used for sprints, 20-minute tests and "go as hard as you can" blocks. [guide] is only drawn.
+     */
+    @Serializable
+    @SerialName("free")
+    data class FreeRide(
+        override val id: String,
+        val durationSec: Int,
+        val label: String = "Frei",
+        val guide: Power = Power.pct(100),
+        override val cadence: Int? = null,
+        override val cues: List<Cue> = emptyList(),
+    ) : Block() {
+        override fun durationSec() = durationSec
+    }
 }
+
+/** How the ride is evaluated afterwards: a ramp test takes 75 % of the best minute, the 20-minute test 95 %. */
+@Serializable
+enum class TestKind { NONE, RAMP, TWENTY_MIN }
 
 @Serializable
 data class Workout(
@@ -101,11 +122,32 @@ data class Workout(
     val description: String = "",
     val blocks: List<Block> = emptyList(),
     val builtIn: Boolean = false,
+    val test: TestKind = TestKind.NONE,
+    val favorite: Boolean = false,
 ) {
     fun durationSec(): Int = blocks.sumOf { it.durationSec() }
+
+    /** The zone most of the planned work happens in, for badges and filters. */
+    fun dominantPercent(ftp: Int): Int {
+        val tl = Timeline(this)
+        var best = 0
+        var bestSec = 0
+        // Buckets of 5 % keep "sweet spot" and "threshold" apart.
+        val sec = mutableMapOf<Int, Int>()
+        for (s in tl.segments) {
+            if (!s.erg) continue
+            val p = ((s.startPower.percentOfFtp(ftp) + s.endPower.percentOfFtp(ftp)) / 2).roundToInt()
+            if (p < 60) continue // warm-up and recovery don't define the workout
+            val bucket = p / 5 * 5
+            val v = (sec[bucket] ?: 0) + s.durationSec
+            sec[bucket] = v
+            if (v > bestSec) { bestSec = v; best = bucket }
+        }
+        return best
+    }
 }
 
-/** A flattened piece of a workout with a linear target from [startPct] to [endPct] of FTP. */
+/** A flattened piece of a workout with a linear target from [startPower] to [endPower]. */
 data class Segment(
     val blockIndex: Int,
     val startSec: Int,
@@ -115,16 +157,14 @@ data class Segment(
     val label: String,
     val cadence: Int? = null,
     val cues: List<Cue> = emptyList(),
+    /** False for free-ride segments: the trainer is put into simulation mode instead of ERG. */
+    val erg: Boolean = true,
 ) {
     val endSec: Int get() = startSec + durationSec
+    val isRamp: Boolean get() = startPower != endPower
 
     /** The cue that applies [offsetSec] into the segment, shown for [CUE_VISIBLE_SEC]. */
     fun cueAt(offsetSec: Double): Cue? = cues.lastOrNull { it.offsetSec <= offsetSec && offsetSec < it.offsetSec + CUE_VISIBLE_SEC }
-
-    companion object {
-        const val CUE_VISIBLE_SEC = 12
-    }
-    val isRamp: Boolean get() = startPower != endPower
 
     fun wattsAt(offsetSec: Double, ftp: Int): Int {
         val a = startPower.watts(ftp)
@@ -133,43 +173,31 @@ data class Segment(
         val f = (offsetSec / durationSec).coerceIn(0.0, 1.0)
         return (a + (b - a) * f).roundToInt()
     }
+
+    companion object {
+        const val CUE_VISIBLE_SEC = 12
+    }
 }
 
 /** Precomputed timeline of a workout, used by the ride engine and the profile chart. */
-class Timeline(val workout: Workout) {
-    val segments: List<Segment>
-    val totalSec: Int
+class Timeline private constructor(val workout: Workout, val segments: List<Segment>) {
+    val totalSec: Int = segments.lastOrNull()?.endSec ?: 0
 
-    init {
-        val out = mutableListOf<Segment>()
-        var t = 0
-        workout.blocks.forEachIndexed { index, block ->
-            when (block) {
-                is Block.Steady -> {
-                    out += Segment(index, t, block.durationSec, block.power, block.power, block.label, block.cadence, block.cues)
-                    t += block.durationSec
-                }
-                is Block.Ramp -> {
-                    out += Segment(index, t, block.durationSec, block.from, block.to, block.label, block.cadence, block.cues)
-                    t += block.durationSec
-                }
-                is Block.Intervals -> repeat(block.repeat) { r ->
-                    val n = "${r + 1}/${block.repeat}"
-                    val name = block.label.ifBlank { "Intervall" }
-                    if (block.onSec > 0) {
-                        // Cues belong to the first repetition only, so they are not repeated five times.
-                        out += Segment(index, t, block.onSec, block.onPower, block.onPower, "$name $n", block.cadence, if (r == 0) block.cues else emptyList())
-                        t += block.onSec
-                    }
-                    if (block.offSec > 0) {
-                        out += Segment(index, t, block.offSec, block.offPower, block.offPower, "Erholung $n", block.offCadence)
-                        t += block.offSec
-                    }
-                }
+    constructor(workout: Workout) : this(workout, flatten(workout))
+
+    /** A copy where segment [index] is [deltaSec] longer (or shorter, never below 5 s) and later segments move. */
+    fun withSegmentExtended(index: Int, deltaSec: Int): Timeline {
+        val seg = segments.getOrNull(index) ?: return this
+        val d = deltaSec.coerceAtLeast(5 - seg.durationSec)
+        if (d == 0) return this
+        val out = segments.mapIndexed { i, s ->
+            when {
+                i < index -> s
+                i == index -> s.copy(durationSec = s.durationSec + d)
+                else -> s.copy(startSec = s.startSec + d)
             }
         }
-        segments = out.filter { it.durationSec > 0 }
-        totalSec = t
+        return Timeline(workout, out)
     }
 
     /** Index of the segment active at [sec], or -1 once the workout is finished. */
@@ -205,5 +233,42 @@ class Timeline(val workout: Workout) {
         val intensity = np / ftp
         val tss = totalSec * np * intensity / (ftp * 3600.0) * 100.0
         return intensity to tss
+    }
+
+    companion object {
+        private fun flatten(workout: Workout): List<Segment> {
+            val out = mutableListOf<Segment>()
+            var t = 0
+            workout.blocks.forEachIndexed { index, block ->
+                when (block) {
+                    is Block.Steady -> {
+                        out += Segment(index, t, block.durationSec, block.power, block.power, block.label, block.cadence, block.cues)
+                        t += block.durationSec
+                    }
+                    is Block.Ramp -> {
+                        out += Segment(index, t, block.durationSec, block.from, block.to, block.label, block.cadence, block.cues)
+                        t += block.durationSec
+                    }
+                    is Block.FreeRide -> {
+                        out += Segment(index, t, block.durationSec, block.guide, block.guide, block.label, block.cadence, block.cues, erg = false)
+                        t += block.durationSec
+                    }
+                    is Block.Intervals -> repeat(block.repeat) { r ->
+                        val n = "${r + 1}/${block.repeat}"
+                        val name = block.label.ifBlank { "Intervall" }
+                        if (block.onSec > 0) {
+                            // Cues belong to the first repetition only, so they are not repeated five times.
+                            out += Segment(index, t, block.onSec, block.onPower, block.onPower, "$name $n", block.cadence, if (r == 0) block.cues else emptyList())
+                            t += block.onSec
+                        }
+                        if (block.offSec > 0) {
+                            out += Segment(index, t, block.offSec, block.offPower, block.offPower, "Erholung $n", block.offCadence)
+                            t += block.offSec
+                        }
+                    }
+                }
+            }
+            return out.filter { it.durationSec > 0 }
+        }
     }
 }

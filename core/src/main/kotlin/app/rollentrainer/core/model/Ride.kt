@@ -76,4 +76,11 @@ data class Ride(
     val laps: List<LapResult> = emptyList(),
     /** Set when the rider accepted the FTP suggestion from this ride. */
     val ftpAccepted: Boolean = false,
+    /** Best average power per window in seconds (5, 60, 300, 1200), stored so personal records are cheap to find. */
+    val bests: Map<Int, Int> = emptyMap(),
+    /** Rate of perceived exertion 1–10, asked after the ride. */
+    val rpe: Int? = null,
+    val notes: String = "",
+    /** Kind of FTP test this ride was, as the workout declared it. */
+    val test: TestKind = TestKind.NONE,
 )

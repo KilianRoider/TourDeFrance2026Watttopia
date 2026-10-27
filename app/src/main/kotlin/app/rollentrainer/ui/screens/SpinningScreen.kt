@@ -199,7 +199,10 @@ private fun isStandingNow(label: String, cue: String?, segment: Segment?, workou
         val inSeg = (workoutSec - segment.startSec).coerceAtLeast(0.0)
         return (inSeg / 8).toInt() % 2 == 1
     }
-    return CoachScript.isStanding(label, cue)
+    if (segment == null) return CoachScript.isStanding(label, cue)
+    // The last call so far stays in force: "Letzte Minute – aus dem Sattel" lasts the whole minute.
+    val inSeg = workoutSec - segment.startSec
+    return CoachScript.isStanding(label, segment.cues.filter { it.offsetSec <= inSeg }.map { it.text })
 }
 
 /**

@@ -94,9 +94,10 @@ fun RideScreen(
     val status by container.sensors.status.collectAsStateWithLifecycle()
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val s = state ?: return
-    var askEnd by remember { mutableStateOf(askEndFirst) }
-    var askRpe by remember { mutableStateOf(false) }
-    var finishSeen by remember { mutableStateOf(false) }
+    // Saveable, so turning the tablet keeps an open end dialog, the rating and the note.
+    var askEnd by rememberSaveable { mutableStateOf(askEndFirst) }
+    var askRpe by rememberSaveable { mutableStateOf(false) }
+    var finishSeen by rememberSaveable { mutableStateOf(false) }
     var fullHistory by rememberSaveable { mutableStateOf(false) }
     var editing by rememberSaveable { mutableStateOf(false) }
     val update: ((AppSettings) -> AppSettings) -> Unit = { container.settings.update(it) }
@@ -114,12 +115,17 @@ fun RideScreen(
     }
 
     val trainer = status[SensorRole.TRAINER] ?: SensorStatus(null)
+    // The pause comes first: with or without a trainer the rider must see that the clock stands still.
+    val beforeStart = s.engine.workoutSec == 0.0 && s.engine.paused
     val banner = when {
-        trainer.sensor == null -> "Kein Smart-Trainer gekoppelt. Die Leistung wird nicht vorgegeben."
+        s.engine.finished -> null
+        s.engine.userPaused -> "Pausiert – tippe auf Weiter."
+        s.engine.autoPaused -> "Pausiert – tritt weiter, um fortzusetzen."
+        trainer.sensor == null -> if (beforeStart) "Kein Smart-Trainer gekoppelt. Tritt in die Pedale, um zu starten."
+        else "Kein Smart-Trainer gekoppelt. Die Leistung wird nicht vorgegeben."
         trainer.state != ConnectionState.CONNECTED -> "Verbinde mit ${trainer.sensor?.name.orEmpty()} …"
         !s.trainerControl -> "Warte auf Steuerung durch den Trainer …"
-        s.engine.workoutSec == 0.0 && s.engine.paused -> "Tritt in die Pedale, um zu starten."
-        s.engine.autoPaused -> "Pausiert – tritt weiter, um fortzusetzen."
+        beforeStart -> "Tritt in die Pedale, um zu starten."
         s.engine.paused -> "Pausiert"
         else -> null
     }
@@ -261,6 +267,8 @@ fun RideScreen(
                             finishSeen = true
                             askEnd = false
                             container.session.continueRiding((settings.ftp * 0.55).roundToInt())
+                            // An end that came from the spinning class goes back to the class.
+                            onEndCancelled()
                         }) { Text("Weiterfahren") }
                     } else {
                         TextButton(onClick = { askEnd = false; onEndCancelled() }) { Text("Weiterfahren") }
@@ -282,8 +290,8 @@ fun RideScreen(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun RpeDialog(onSave: (Int?, String) -> Unit, onSkip: () -> Unit, onDismiss: () -> Unit) {
-    var rpe by remember { mutableStateOf<Int?>(null) }
-    var notes by remember { mutableStateOf("") }
+    var rpe by rememberSaveable { mutableStateOf<Int?>(null) }
+    var notes by rememberSaveable { mutableStateOf("") }
     val labels = mapOf(1 to "sehr leicht", 2 to "leicht", 3 to "locker", 4 to "moderat", 5 to "etwas hart", 6 to "hart", 7 to "sehr hart", 8 to "sehr, sehr hart", 9 to "extrem hart", 10 to "maximal")
     AlertDialog(
         onDismissRequest = onDismiss,

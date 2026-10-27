@@ -214,6 +214,7 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
         }
         out[0] = a.y + (b.y - a.y) * ty
         out[1] = pz
+        if (out.size > 2) out[2] = px
         return sqrt((x - px) * (x - px) + (z - pz) * (z - pz))
     }
 
@@ -237,7 +238,7 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
         val dist = DoubleArray(n) { Double.MAX_VALUE }
         val roadY = DoubleArray(n)
         val roadZ = DoubleArray(n)
-        val out = DoubleArray(2)
+        val out = DoubleArray(3)
         val segments = (path.size - 1).coerceAtLeast(1)
 
         // 1. Exact nearest segment for every vertex within RASTER of the road.
@@ -285,11 +286,24 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
                 val s = seg[i]
                 if (s < 0) continue
                 // Another pass: far away along the road, or running in another direction (the other leg
-                // of a hairpin).
+                // of a hairpin). The two halves of one bend are the same pass.
+                val along = abs(path[s].d - a.d)
+                if (along < HAIRPIN_LEN) continue
                 var turn = abs(path[s].heading - a.heading) % (2 * PI)
                 if (turn > PI) turn = 2 * PI - turn
-                if (abs(path[s].d - a.d) < OTHER_PASS && turn < PI / 3) continue
-                if (segmentDistance(j, t.x(c), t.z(r), out) < FLAT_R && out[0] < flatY[i]) flatY[i] = out[0]
+                if (along < OTHER_PASS && turn < PI / 3) continue
+                val vx = t.x(c)
+                val vz = t.z(r)
+                if (segmentDistance(j, vx, vz, out) >= FLAT_R || out[0] >= flatY[i]) continue
+                // Only the ground between the two passes goes down; the hillside on the far side of the
+                // vertex's own road keeps its height.
+                val ownA = path[s]
+                val ownB = path[(s + 1).coerceAtMost(path.size - 1)]
+                val dx = ownB.x - ownA.x
+                val dz = ownB.z - ownA.z
+                val sideV = dx * (vz - ownA.z) - dz * (vx - ownA.x)
+                val sideJ = dx * (out[1] - ownA.z) - dz * (out[2] - ownA.x)
+                if (sideV * sideJ > 0) flatY[i] = out[0]
             }
         }
         // 4. Deviation of the road from the mountainside plane, blurred into a smooth field.
@@ -418,7 +432,8 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
         val out = mutableListOf<Sign>()
         fun sign(p: PathSample, offset: Double, text: String, big: Boolean) {
             val (sx, sz) = beside(p, offset)
-            out += Sign(sx, terrain.heightAt(sx, sz), sz, p.heading, text, big)
+            // Where the ground drops away beside the road the board stays at road level, so it can be seen.
+            out += Sign(sx, maxOf(terrain.heightAt(sx, sz), p.y - SINK), sz, p.heading, text, big)
         }
         for (l in route.landmarks) sign(poseAt(l.distanceM), ROAD_HALF + 2.0, l.label, big = true)
         // Kilometre boards count down to the summit like the real ones.
@@ -430,9 +445,9 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
         }
         // Hairpin numbers, counted from the top down like the bends of the Alpe d'Huez; the board stands
         // just before the apex.
-        val count = hairpinApex.size
+        val top = route.firstHairpinNumber.takeIf { it > 0 } ?: hairpinApex.size
         for ((i, apex) in hairpinApex.withIndex()) {
-            sign(poseAt((apex - 25.0).coerceAtLeast(0.0)), ROAD_HALF + 2.5, "Kehre ${count - i}", big = false)
+            sign(poseAt((apex - 25.0).coerceAtLeast(0.0)), ROAD_HALF + 2.5, "Kehre ${top - i}", big = false)
         }
         return out
     }
@@ -498,8 +513,10 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
                 val p = poseAt(d)
                 val side = if (rnd.next() < 0.5) -1.0 else 1.0
                 val (fx, fz) = beside(p, side * (ROAD_HALF + 0.8 + rnd.range(0.0, 1.5)))
-                // Facing the road from either verge.
-                out += Prop(Prop.SPECTATOR, fx, t.heightAt(fx, fz), fz, rnd.range(0.9, 1.1), p.heading + if (side > 0) PI / 2 else -PI / 2)
+                // Facing the road from either verge; not where the verge falls away below the road.
+                val scale = rnd.range(0.9, 1.1)
+                val gy = t.heightAt(fx, fz)
+                if (gy > p.y - 1.0) out += Prop(Prop.SPECTATOR, fx, gy, fz, scale, p.heading + if (side > 0) PI / 2 else -PI / 2)
                 d += rnd.range(2.5, 7.0) * (1 + (route.lengthM - d) / 400)
             }
         }

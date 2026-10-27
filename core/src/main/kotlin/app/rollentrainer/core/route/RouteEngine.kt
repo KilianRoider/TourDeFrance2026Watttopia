@@ -71,13 +71,14 @@ class RouteEngine(
     private var finishTime: Double? = null
 
     /**
-     * One tick; while [paused] nobody moves. A pause stops the rider: speed drops to zero instead of
-     * coming back as free momentum after the break.
+     * One tick; while [paused] nobody moves. A pause stops the rider and the pacers alike: everybody
+     * starts again from a standstill, so a break costs nobody ground in the race.
      */
     fun tick(dt: Double, powerW: Int?, paused: Boolean): RouteState {
         if (paused || state.finished) {
             speed = 0.0
-            state = state.copy(speedMps = 0.0, passedLandmark = null)
+            pacerSpeed.fill(0.0)
+            state = state.copy(speedMps = 0.0, pacers = state.pacers.map { it.copy(speedMps = 0.0) }, passedLandmark = null)
             return state
         }
         if (dt <= 0) {
@@ -108,7 +109,9 @@ class RouteEngine(
         state = RouteState(
             route = route,
             distanceM = distance,
-            speedMps = if (finished) 0.0 else speed,
+            // On the tick that reaches the top: the average speed of the metres actually ridden, so the
+            // recorded distance ends exactly at the summit.
+            speedMps = if (finished) (distance - before) / dt else speed,
             gradePct = route.gradientAt(distance),
             elevationM = route.elevationAt(distance),
             ascentM = route.ascentUntil(distance),

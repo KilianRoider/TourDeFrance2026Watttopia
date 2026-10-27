@@ -197,4 +197,17 @@ class CoachScriptTest {
         val allBlockIds = SpinningPresets.all.flatMap { w -> w.blocks.map { it.id } }
         assertEquals(allBlockIds.toSet().size, allBlockIds.size)
     }
+
+    @Test fun postureCallsStayInForceAndOnlyTheWordGleichAnnounces() {
+        // "Gleichmäßig" and "Gleichzeitig" are not announcements, "Gleich" is.
+        assertTrue(CoachScript.isStanding("Berg", "Gleichmäßig im Stehen weitertreten"))
+        assertTrue(CoachScript.isStanding("Berg", "Gleichzeitig aus dem Sattel und schwerer schalten"))
+        assertFalse(CoachScript.isStanding("Berg", "Gleich aus dem Sattel!"))
+        assertFalse(CoachScript.isStanding("Berg", "  Gleich, aus dem Sattel"))
+        // The last call so far decides, also after its cue has left the screen.
+        assertTrue(CoachScript.isStanding("Gipfelangriff", listOf("Schwerer schalten", "Letzte Minute – aus dem Sattel, zum Gipfel!")))
+        assertFalse(CoachScript.isStanding("Stehender Berg", listOf("Setzen, Kraft sparen")))
+        assertTrue(CoachScript.isStanding("Stehender Berg", emptyList()))
+        assertFalse(CoachScript.isStanding("Gipfelangriff", emptyList()))
+    }
 }

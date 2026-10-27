@@ -197,7 +197,9 @@ class SpinningAudio(
         }
         if (source == SOURCE_NONE) {
             silence()
-            abandonFocus()
+            // During a short loss (a call, the assistant) the request stays in the focus stack: the gain
+            // still arrives, and resuming the ride does not take the speaker back from the other app.
+            if (focus != FOCUS_LOST) abandonFocus()
             return
         }
         if (focus == FOCUS_NONE) requestFocus()
@@ -270,9 +272,10 @@ class SpinningAudio(
                 applyDuck()
             }
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> {
-                // A call or an alarm: pause, the gain brings the music back.
+                // A call or an alarm: pause, the gain brings the music back. The coach stops mid-sentence.
                 if (focus == FOCUS_NONE) return
                 focus = FOCUS_LOST
+                coach.stop()
                 applySound()
             }
             AudioManager.AUDIOFOCUS_LOSS -> {
@@ -315,6 +318,11 @@ class SpinningAudio(
         newRideIfNeeded()
         // A refused focus request is tried again once a second; a delayed or transient loss waits for the callback.
         if (wanted && focus == FOCUS_NONE) applySound()
+        // The beat's track died (a write error, a failed build): build a new one.
+        if (wanted && focus == FOCUS_HELD && !usingFolder && settings.value.studioBeat && !beat.running) beat.start()
+        // A phone call also counts when no music holds focus (music off): the coach must not talk into it.
+        val inCall = callActive()
+        if (inCall && coachSpeaking) coach.stop()
         val e = st.engine
         val segment = st.timeline?.segments?.getOrNull(e.segmentIndex)
         val next = e.nextSegment
@@ -349,13 +357,16 @@ class SpinningAudio(
         )
         if (out.lines.isNotEmpty()) {
             // No talking over a call or an alarm that took the speaker from the music.
-            val voice = settings.value.coachVoice && focus != FOCUS_LOST && focus != FOCUS_WAITING
+            val voice = settings.value.coachVoice && !inCall && focus != FOCUS_LOST && focus != FOCUS_WAITING
             for (line in out.lines) if (voice) coach.say(line.speech, line.priority)
             // The screen shows the most important line of this second, HIGH before NORMAL before LOW.
             show(out.lines.maxBy { it.priority.ordinal }.text)
         }
         // When the class is over the playback collector has already stopped the music; the coach's last line still goes out.
     }
+
+    /** Ringing, in a call or in a voice chat: anything but the normal audio mode. */
+    private fun callActive(): Boolean = (audioManager?.mode ?: AudioManager.MODE_NORMAL) != AudioManager.MODE_NORMAL
 
     private fun show(text: String) {
         _coachLine.value = text

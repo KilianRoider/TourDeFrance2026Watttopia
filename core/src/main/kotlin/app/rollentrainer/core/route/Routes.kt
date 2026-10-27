@@ -150,7 +150,8 @@ object Routes {
             kind = RouteKind.CLIMB, startElevationM = 330.0, lengthKm = 9.20,
             kmGradients = listOf(2.5, 3.5, 5.0, 6.5, 7.5, 11.0, 10.5, 12.0, 11.5, 2.5),
             landmarks = listOf(Landmark(2300.0, "Steinbrücke am Barescou"), Landmark(4000.0, "In den Wald"), Landmark(5000.0, "Ab jetzt zweistellig"), Landmark(5500.0, "3 km mit 11–13 %"), Landmark(7500.0, "Steilstes Stück (13 %)"), Landmark(8900.0, "Die einzige Kehre")),
-            hairpins = 0, biome = Biome.PYRENEAN,
+            hairpins = 1, biome = Biome.PYRENEAN,
+            hairpinsAtKm = listOf(8.9),
         ),
     )
 

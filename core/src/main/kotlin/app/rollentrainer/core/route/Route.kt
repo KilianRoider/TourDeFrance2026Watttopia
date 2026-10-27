@@ -36,6 +36,8 @@ data class Route(
     val builtIn: Boolean = true,
     /** Where the hairpins really are (apex, metres from the start); empty = spread evenly. */
     val hairpinsAtM: List<Double> = emptyList(),
+    /** Number of the first bend; a shortened route keeps the full climb's numbering (0 = [hairpins]). */
+    val firstHairpinNumber: Int = 0,
 ) {
     val lengthM: Double get() = points.lastOrNull()?.distanceM ?: 0.0
     val lengthKm: Double get() = lengthM / 1000
@@ -124,6 +126,7 @@ data class Route(
             landmarks = landmarks.filter { it.distanceM <= cut },
             hairpins = if (hairpinsAtM.isNotEmpty()) hairpinsAtM.count { it < cut - 60 } else (hairpins * f).roundToInt(),
             hairpinsAtM = hairpinsAtM.filter { it < cut - 60 },
+            firstHairpinNumber = if (firstHairpinNumber > 0) firstHairpinNumber else hairpins,
             fraction = f,
         )
     }

@@ -214,6 +214,13 @@ class CoachScript(private val random: Random = Random.Default) {
             cue?.let { posture(it) } ?: posture(label) ?: false
 
         /**
+         * Like [isStanding], for the animated riders: the last call to sit or stand among the segment's
+         * cues so far stays in force after its cue has left the screen, until the next call.
+         */
+        fun isStanding(label: String, cuesSoFar: List<String>): Boolean =
+            cuesSoFar.asReversed().firstNotNullOfOrNull { posture(it) } ?: posture(label) ?: false
+
+        /**
          * Reads a label or cue: true for a call to stand now, false for a call to sit now, null when it
          * says neither. Announcements ("Gleich aus dem Sattel", "…, dann aus dem Sattel") are about
          * later and count as nothing. When both appear, the first call is the one that applies now
@@ -221,7 +228,7 @@ class CoachScript(private val random: Random = Random.Default) {
          */
         private fun posture(text: String): Boolean? {
             val t = text.lowercase()
-            if (t.trimStart().startsWith("gleich")) return null
+            if (ANNOUNCEMENT.containsMatchIn(t)) return null
             val now = t.substringBefore(" dann ")
             val sit = SIT_WORDS.mapNotNull { w -> now.indexOf(w).takeIf { it >= 0 } }.minOrNull()
             val stand = STAND_WORDS.mapNotNull { w -> now.indexOf(w).takeIf { it >= 0 } }.minOrNull()
@@ -233,6 +240,8 @@ class CoachScript(private val random: Random = Random.Default) {
             }
         }
 
+        /** "Gleich …" as a whole first word, not "Gleichmäßig" or "Gleichzeitig". */
+        private val ANNOUNCEMENT = Regex("^\\W*gleich\\b")
         private val SIT_WORDS = listOf("sitz", "setz", "im sattel")
         private val STAND_WORDS = listOf("steh", "aus dem sattel", "wiegetritt", "hoch!")
 

@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -47,9 +48,11 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
     // Whether the folder's read grant survives an app restart; null while checking.
     var persisted by remember { mutableStateOf<Boolean?>(null) }
     val coachStatus by container.spinningAudio.coachStatus.collectAsState()
+    // Picking the same folder again (to renew access) does not change the setting, so it bumps this.
+    var rescan by remember { mutableIntStateOf(0) }
 
     // Scanning touches the documents provider, so it runs off the main thread whenever the folder changes.
-    LaunchedEffect(folder) {
+    LaunchedEffect(folder, rescan) {
         folderName = null
         fileCount = null
         persisted = null
@@ -69,6 +72,7 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
             persisted = MusicPlayer.persist(context, uri)
             // Give back the old folder's grant; the system allows only a limited number per app.
             if (folder.isNotBlank() && folder != uri.toString()) MusicPlayer.releasePersisted(context, folder)
+            if (folder == uri.toString()) rescan++
             update { it.copy(musicFolder = uri.toString()) }
         }
     }

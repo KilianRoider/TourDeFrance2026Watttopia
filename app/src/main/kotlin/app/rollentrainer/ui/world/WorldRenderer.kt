@@ -71,6 +71,8 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
     private var wheel = 0f
     private var lastFrameMs = 0L
     private var smoothDistance = 0.0
+    /** How far below the eye the far-mountain ring sits; low-relief biomes need less so peaks still show. */
+    private var skylineDrop = WorldMeshes.SKYLINE_DROP
     private var pacerCrank = 0f
     private var pacerWheel = 0f
     private val skylineModel = FloatArray(16)
@@ -123,6 +125,7 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         val predicted = if (f.paused) maxOf(f.distanceM, smoothDistance).coerceAtMost(f.distanceM + 10)
         else f.distanceM + f.speedMps * ((now - f.updatedAtMs) / 1000.0).coerceIn(0.0, 1.5)
         // Follow smoothly, never roll backwards for a small overshoot; jump only for big differences.
+        val shownBefore = smoothDistance
         val next = smoothDistance + (predicted - smoothDistance) * (1 - Math.exp(-dt * 4.0))
         smoothDistance = when {
             kotlin.math.abs(predicted - smoothDistance) > 20 -> predicted
@@ -130,10 +133,15 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
             else -> next
         }
         val d = smoothDistance.coerceIn(0.0, w.route.lengthM)
-        if (!f.paused) {
+        // Wheels and cranks follow the motion on screen, so the bike never pedals on the spot while the
+        // smoothing catches up (for example right after a pause).
+        val shownMove = (smoothDistance - shownBefore).coerceIn(0.0, 5.0)
+        if (!f.paused && shownMove > 0.0005) {
             crank += (f.cadenceRpm / 60.0 * 2 * PI * dt).toFloat()
-            wheel += ((f.speedMps * dt) / RiderModel.WHEEL_R * 180 / PI).toFloat()
-            // The pacer spins a steady 85 rpm and rolls at its own speed.
+            wheel += (shownMove / RiderModel.WHEEL_R * 180 / PI).toFloat()
+        }
+        if (!f.paused && f.pacerSpeedMps > 0.3) {
+            // The pacer spins a steady 85 rpm and rolls at its own speed; at the top it stands still.
             pacerCrank += (85.0 / 60.0 * 2 * PI * dt).toFloat()
             pacerWheel += ((f.pacerSpeedMps * dt) / RiderModel.WHEEL_R * 180 / PI).toFloat()
         }
@@ -155,7 +163,7 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         GLES30.glEnable(GLES30.GL_DEPTH_TEST)
         // The far mountains travel with the camera like a backdrop.
         Matrix.setIdentityM(skylineModel, 0)
-        Matrix.translateM(skylineModel, 0, ex, eyeY - WorldMeshes.SKYLINE_DROP, ez)
+        Matrix.translateM(skylineModel, 0, ex, eyeY - skylineDrop, ez)
         drawStatic(litProgram, skyline, 0.0004f, skylineModel)
         // Push the terrain back a little in depth so the road on top of it always wins.
         GLES30.glEnable(GLES30.GL_POLYGON_OFFSET_FILL)
@@ -176,7 +184,11 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         signs.clear()
         terrain = GpuMesh(WorldMeshes.terrain(w.terrain, w.biome))
         road = GpuMesh(WorldMeshes.road(w.path, w.terrain))
-        skyline = GpuMesh(WorldMeshes.skyline(WorldMeshes.SKYLINE_RADIUS, WorldMeshes.skylineRelief(w.biome), w.route.id.hashCode() and 0xFF))
+        val relief = WorldMeshes.skylineRelief(w.biome)
+        skyline = GpuMesh(WorldMeshes.skyline(WorldMeshes.SKYLINE_RADIUS, relief, w.route.id.hashCode() and 0xFF))
+        // Paris has no mountains on the horizon; elsewhere the ring sits low enough that its peaks show.
+        skylineDrop = if (w.biome == Biome.CITY) WorldMeshes.SKYLINE_DROP
+        else minOf(WorldMeshes.SKYLINE_DROP, relief * WorldMeshes.SKYLINE_RADIUS * 0.4f)
         propBuckets.clear()
         for (p in w.props) {
             val key = bucketKey(p.x, p.z)

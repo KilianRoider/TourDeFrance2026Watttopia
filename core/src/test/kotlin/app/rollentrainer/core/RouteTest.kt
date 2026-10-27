@@ -163,6 +163,34 @@ class RouteTest {
         // After the break the rider starts from a standstill.
         e.tick(1.0, 250, false)
         assertTrue(e.state.speedMps < 3.0)
+
+        // Pacers stop as well, so a break costs no ground: rider and an equal pacer stay level.
+        val race = RouteEngine(flat, RiderParams.forRider(80.0), listOf(Pacer("Gleich", 250)))
+        repeat(60) { race.tick(1.0, 250, false) }
+        repeat(20) { race.tick(1.0, null, true) }
+        assertEquals(0.0, race.state.pacers.single().speedMps, 0.0)
+        repeat(60) { race.tick(1.0, 250, false) }
+        assertEquals(0.0, race.state.pacers.single().gapM, 0.01)
+
+        // The tick that reaches the top records the metres it rode, so the speeds add up to the route.
+        val short = Route.fromKmGradients("t-f", "Kurz", "", "", RouteKind.FLAT, 100.0, 0.5, listOf(0.0))
+        val fin = RouteEngine(short, RiderParams.forRider(80.0))
+        var ridden = 0.0
+        while (!fin.state.finished) ridden += fin.tick(1.0, 250, false).speedMps
+        assertEquals(short.lengthM, ridden, 0.01)
+    }
+
+    @Test fun shortenedClimbKeepsTheRealHairpinNumbers() {
+        val alpe = app.rollentrainer.core.route.Routes.byId("alpe-dhuez")!!
+        val full = World(alpe, alpe.biome).signs.filter { Regex("Kehre \\d+").matches(it.text) }.map { it.text }
+        assertEquals("Kehre 21", full.first())
+        assertEquals("Kehre 1", full.last())
+        val half = alpe.shortened(0.5)
+        val signs = World(half, half.biome).signs.filter { Regex("Kehre \\d+").matches(it.text) }.map { it.text }
+        // The bottom half rides the high numbers: 21 down to 9.
+        assertEquals("Kehre 21", signs.first())
+        assertEquals("Kehre ${21 - signs.size + 1}", signs.last())
+        assertTrue(signs.size in 10..14)
     }
 
     @Test fun straightClimbAndCityStayCompact() {

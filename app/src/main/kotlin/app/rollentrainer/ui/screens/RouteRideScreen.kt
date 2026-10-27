@@ -110,8 +110,10 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
     // Landmark sign as a short toast: shown when passed, hidden five seconds later. The passed landmark
     // is only set for one tick, so showing and hiding are two separate effects.
     var toast by remember { mutableStateOf<String?>(null) }
+    // The text stays while the sign fades out.
+    var toastText by remember { mutableStateOf("") }
     LaunchedEffect(rs.passedLandmark) {
-        rs.passedLandmark?.let { toast = it.label }
+        rs.passedLandmark?.let { toast = it.label; toastText = it.label }
     }
     LaunchedEffect(toast) {
         if (toast != null) { delay(5000); toast = null }
@@ -143,7 +145,8 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
                 }
                 Spacer(Modifier.weight(1f))
                 Hud(Modifier) {
-                    Text(formatDuration(rs.elapsedSec.roundToInt()), color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.SemiBold, lineHeight = 32.sp)
+                    // At the top the clock shows the exact finish time, as the result and the saved ride do.
+                    Text(formatDuration((rs.finishTimeSec ?: rs.elapsedSec).roundToInt()), color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.SemiBold, lineHeight = 32.sp)
                     val eta = rs.etaSec
                     Text(if (eta != null) "Ziel in ≈ ${formatDuration(eta)}" else "Ziel in –", color = Color.White.copy(alpha = 0.85f), style = MaterialTheme.typography.bodyMedium)
                 }
@@ -152,13 +155,15 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
             val pacer = rs.pacers.firstOrNull()
             if (pacer != null) {
                 val gap = pacer.gapM
+                val behind = if (rs.finished) rs.beatenBy(pacer) else gap > 1
                 val text = when {
-                    pacer.finished && !rs.finished -> "${pacer.name} ist oben"
+                    rs.finished -> if (behind) "${pacer.name} war schneller" else "${pacer.name} geschlagen"
+                    pacer.finished -> "${pacer.name} ist oben"
                     gap > 1 -> "${pacer.name} ${gap.roundToInt()} m voraus"
                     gap < -1 -> "${pacer.name} ${(-gap).roundToInt()} m hinter dir"
                     else -> "Rad an Rad mit ${pacer.name}"
                 }
-                val color = if (gap > 1) Color(0xFFFFB74D) else Color(0xFF81C784)
+                val color = if (behind || (pacer.finished && !rs.finished)) Color(0xFFFFB74D) else Color(0xFF81C784)
                 Hud(Modifier.align(Alignment.Start)) {
                     Text(text, color = color, style = MaterialTheme.typography.titleSmall)
                 }
@@ -166,7 +171,7 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
             Spacer(Modifier.weight(1f))
             AnimatedVisibility(toast != null, enter = fadeIn(), exit = fadeOut(), modifier = Modifier.align(Alignment.CenterHorizontally)) {
                 Box(Modifier.background(Color(0xFFFFD230), RoundedCornerShape(10.dp)).padding(horizontal = 24.dp, vertical = 10.dp)) {
-                    Text(toast.orEmpty(), color = Color(0xFF202020), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+                    Text(toastText, color = Color(0xFF202020), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
                 }
             }
             Spacer(Modifier.height(8.dp))
@@ -254,15 +259,21 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
     }
 }
 
-private fun RideState.trainerBanner(trainer: SensorStatus): String? = when {
-    route?.finished == true || engine.finished -> "Ziel erreicht"
-    trainer.sensor == null -> "Ohne Smart-Trainer: die Steigung ist nur zu sehen, nicht zu spüren."
-    trainer.state != ConnectionState.CONNECTED -> "Verbinde mit ${trainer.sensor?.name.orEmpty()} …"
-    !trainerControl -> "Warte auf Steuerung durch den Trainer …"
-    engine.workoutSec == 0.0 && engine.paused -> "Tritt in die Pedale, um loszufahren."
-    engine.autoPaused -> "Pausiert – tritt weiter, um fortzusetzen."
-    engine.paused -> "Pausiert"
-    else -> null
+/** One line above the metrics; the pause comes first, so a stopped clock is never hidden by a trainer note. */
+private fun RideState.trainerBanner(trainer: SensorStatus): String? {
+    val beforeStart = engine.workoutSec == 0.0 && engine.paused
+    return when {
+        route?.finished == true || engine.finished -> "Ziel erreicht"
+        engine.userPaused -> "Pausiert – tippe auf Weiter."
+        engine.autoPaused -> "Pausiert – tritt weiter, um fortzusetzen."
+        trainer.sensor == null -> if (beforeStart) "Ohne Smart-Trainer: tritt in die Pedale, um loszufahren. Die Steigung ist nur zu sehen."
+        else "Ohne Smart-Trainer: die Steigung ist nur zu sehen, nicht zu spüren."
+        trainer.state != ConnectionState.CONNECTED -> "Verbinde mit ${trainer.sensor?.name.orEmpty()} …"
+        !trainerControl -> "Warte auf Steuerung durch den Trainer …"
+        beforeStart -> "Tritt in die Pedale, um loszufahren."
+        engine.paused -> "Pausiert"
+        else -> null
+    }
 }
 
 private fun gradeColor(g: Double): Color = when {

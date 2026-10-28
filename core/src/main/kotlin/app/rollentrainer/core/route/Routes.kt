@@ -155,5 +155,6 @@ object Routes {
         ),
     )
 
-    fun byId(id: String): Route? = all.firstOrNull { it.id == id }
+    /** Climbs and stages. */
+    fun byId(id: String): Route? = all.firstOrNull { it.id == id } ?: Stages.all.firstOrNull { it.id == id }
 }

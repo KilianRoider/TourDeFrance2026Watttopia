@@ -46,14 +46,27 @@ jobs:
       - name: Rename APK
         run: cp app/build/outputs/apk/debug/app-debug.apk Wattwerk.apk
 
-      # On main, publish the APK as the "latest" release so it can be downloaded directly on the tablet.
-      - name: Publish latest release
+      # On main, publish every build as a numbered release (kept) and as "latest" (always the newest APK).
+      - name: Publish releases
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          {
+            echo "Build ${{ github.run_number }} aus Commit ${{ github.sha }}."
+            echo
+            echo "Auf dem Tablet Wattwerk.apk herunterladen und installieren (Installation aus unbekannten Quellen erlauben)."
+            echo
+            echo "## Änderungen"
+            echo
+            git log -1 --pretty=%B "${{ github.sha }}" | sed 's/^Co-Authored-By.*//; s/^Claude-Session.*//'
+          } > notes.md
+          gh release create "v0.1.${{ github.run_number }}" Wattwerk.apk \
+            --title "Wattwerk 0.1.${{ github.run_number }}" \
+            --notes-file notes.md \
+            --latest
           gh release delete latest --yes --cleanup-tag || true
           gh release create latest Wattwerk.apk \
-            --title "Wattwerk (Build ${{ github.run_number }})" \
-            --notes "Automatisch gebaut aus ${{ github.sha }}. Auf dem Tablet öffnen und Wattwerk.apk installieren." \
+            --title "Wattwerk (immer der neueste Build ${{ github.run_number }})" \
+            --notes-file notes.md \
             --prerelease

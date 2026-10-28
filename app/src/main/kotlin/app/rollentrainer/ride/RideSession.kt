@@ -24,7 +24,10 @@ import app.rollentrainer.core.model.Workout
 import app.rollentrainer.core.route.Pacer
 import app.rollentrainer.core.route.RiderParams
 import app.rollentrainer.core.route.Route
+import app.rollentrainer.core.route.Drivetrain
+import app.rollentrainer.core.route.Gearing
 import app.rollentrainer.core.route.RouteEngine
+import app.rollentrainer.core.route.VirtualGears
 import app.rollentrainer.core.route.RouteState
 import app.rollentrainer.data.RideRepository
 import app.rollentrainer.data.SettingsStore
@@ -86,6 +89,10 @@ class RideSession(
 
     private var engine: WorkoutEngine? = null
     private var routeEngine: RouteEngine? = null
+    private var gears: VirtualGears? = null
+    private val _gear = MutableStateFlow<String?>(null)
+    /** The virtual gear as "50 × 17 · 14/20", or null without virtual shifting. */
+    val gear: StateFlow<String?> = _gear.asStateFlow()
     private var loop: Job? = null
     private var metronome: Job? = null
     private val samples = mutableListOf<Sample>()
@@ -127,6 +134,8 @@ class RideSession(
         val e = WorkoutEngine(timeline, EngineConfig(ftp = s.ftp, autoPauseSec = s.autoPauseSeconds, spiralRpm = s.ergReleaseRpm))
         engine = e
         routeEngine = route?.let { RouteEngine(it, RiderParams.forRider(s.weightKg), pacers) }
+        gears = if (route != null && s.virtualGears) VirtualGears(Drivetrain.of(s.chainrings, s.cassette)) else null
+        _gear.value = gears?.label
         _spinningView.value = route == null && (workout?.id?.startsWith("preset-spin") == true || s.spinningByDefault)
         if (route != null) {
             e.setErg(false)
@@ -170,7 +179,15 @@ class RideSession(
             // On a virtual route the road sets the grade and the physics the speed; the ride ends at the summit.
             val rs = routeEngine?.let { re ->
                 val r = re.tick(dt, raw.power, st0.paused)
-                e.setGrade(r.gradePct * cfg.trainerDifficultyPct / 100)
+                val road = r.gradePct * cfg.trainerDifficultyPct / 100
+                val g = gears
+                if (g == null) e.setGrade(road) else {
+                    // The flywheel speed decides how the virtual gear feels: the trainer's own speed, else cadence.
+                    val fly = raw.speedKmh?.div(3.6)?.takeIf { it > 0.3 }
+                        ?: Gearing.flywheelFromCadence(raw.cadence ?: 0, VirtualGears.NEUTRAL_RATIO).takeIf { it > 0.3 }
+                        ?: r.speedMps
+                    e.setGrade(Gearing.feelGrade(road, g.gear.ratio, VirtualGears.NEUTRAL_RATIO, fly, RiderParams.forRider(cfg.weightKg)))
+                }
                 if (r.finished && !e.state.finished) e.finish()
                 r
             }
@@ -296,6 +313,9 @@ class RideSession(
         }
     }
 
+    fun shiftUp() { gears?.let { if (it.up()) _gear.value = it.label } }
+    fun shiftDown() { gears?.let { if (it.down()) _gear.value = it.label } }
+
     fun togglePause() = engine?.togglePause()
 
     /** Pauses or resumes explicitly (the button), unlike [togglePause] which only flips the rider's own pause. */
@@ -324,6 +344,8 @@ class RideSession(
         context.stopService(Intent(context, RideService::class.java))
         _state.value = null
         routeEngine = null
+        gears = null
+        _gear.value = null
         if (!save || samples.size < MIN_SAMPLES) return null
 
         val ftp = settings.value.ftp
@@ -332,10 +354,11 @@ class RideSession(
         val ride = Ride(
             id = UUID.randomUUID().toString(),
             startEpochSec = startEpochSec,
-            name = st.workout?.name ?: route?.route?.let { r -> fractionLabel(r.fraction)?.let { "$it ${r.name}" } ?: r.name } ?: "Freie Fahrt",
+            name = st.workout?.name ?: route?.route?.displayName ?: "Freie Fahrt",
             workoutId = st.workout?.id,
             routeId = route?.route?.id,
             routeFraction = route?.route?.fraction ?: 1.0,
+            routeVariant = route?.route?.variant ?: "",
             routeTimeSec = route?.takeIf { it.finished }?.let { (it.finishTimeSec ?: it.elapsedSec).roundToInt() },
             ftp = ftp,
             samples = list,
@@ -378,13 +401,4 @@ class RideSession(
     private companion object {
         const val MIN_SAMPLES = 30
     }
-}
-
-/** "½", "¾", "¼" for a shortened route, null for the full one. */
-fun fractionLabel(fraction: Double): String? = when {
-    fraction >= 0.999 -> null
-    kotlin.math.abs(fraction - 0.75) < 0.01 -> "¾"
-    kotlin.math.abs(fraction - 0.5) < 0.01 -> "½"
-    kotlin.math.abs(fraction - 0.25) < 0.01 -> "¼"
-    else -> "${(fraction * 100).roundToInt()} %"
 }

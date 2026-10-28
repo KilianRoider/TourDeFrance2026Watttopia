@@ -20,9 +20,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
@@ -82,19 +85,39 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
     val s = state ?: return
     val rs = s.route ?: return
     val route = rs.route
-    val frame = remember { FrameState() }
+    val frame = remember { FrameState().also { it.firstPerson = container.settings.state.value.firstPersonView } }
     val context = LocalContext.current
     val gl3 = remember { supportsWorld3d(context) }
-    val world by produceState<World?>(initialValue = null, route.id, route.lengthM) {
-        value = if (gl3) withContext(Dispatchers.Default) { WorldCache.get(route) } else null
+    // A long route (a stage) is built section by section: the world shows the section the rider is in,
+    // the next one is prepared in the background.
+    val sections = remember(route.id, route.lengthM) { sectionCount(route) }
+    val sectionLen = route.lengthM / sections
+    // One function for every boundary, so the prefetched section and the one built later are bit-identical
+    // (the world cache keys on the exact length and offset).
+    fun boundary(i: Int): Double = if (i >= sections) route.lengthM else i * sectionLen
+    val sectionIndex = ((rs.distanceM / sectionLen).toInt()).coerceIn(0, sections - 1)
+    val sectionStart = boundary(sectionIndex)
+    val sectionRoute = remember(route.id, route.lengthM, sectionIndex) {
+        if (sections == 1) route else route.section(sectionStart, boundary(sectionIndex + 1))
     }
-    LaunchedEffect(rs, s.engine.paused) {
-        frame.distanceM = rs.distanceM
+    val world by produceState<World?>(initialValue = null, sectionRoute.id, sectionRoute.lengthM) {
+        value = if (gl3) withContext(Dispatchers.Default) { WorldCache.get(sectionRoute) } else null
+    }
+    if (gl3 && sections > 1 && sectionIndex < sections - 1) {
+        LaunchedEffect(sectionIndex) {
+            val next = route.section(boundary(sectionIndex + 1), boundary(sectionIndex + 2))
+            withContext(Dispatchers.Default) { WorldCache.get(next) }
+        }
+    }
+    LaunchedEffect(rs, s.engine.paused, sectionStart) {
+        frame.distanceM = rs.distanceM - sectionStart
         frame.speedMps = rs.speedMps
         frame.cadenceRpm = (s.live.cadence ?: 0).toDouble()
         frame.paused = s.engine.paused || rs.finished
         val p = rs.pacers.firstOrNull()
-        frame.pacerDistanceM = p?.distanceM ?: Double.NaN
+        // A pacer in another section is out of sight.
+        val pd = p?.distanceM?.minus(sectionStart)
+        frame.pacerDistanceM = if (pd != null && pd >= -50 && pd <= sectionRoute.lengthM + 50) pd else Double.NaN
         frame.pacerSpeedMps = p?.speedMps ?: 0.0
         frame.updatedAtMs = android.os.SystemClock.elapsedRealtime()
     }
@@ -137,9 +160,10 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
             // Top: route, remaining, time.
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                 Hud(Modifier) {
-                    Text(route.name, color = Color.White, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                    Text(route.displayName, color = Color.White, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                     Text(
-                        "noch %.1f km · %.0f Hm bis oben".format(rs.remainingM / 1000, (route.summitElevationM - rs.elevationM).coerceAtLeast(0.0)),
+                        if (route.isStage) "noch %.1f km · noch %.0f Hm".format(rs.remainingM / 1000, (route.ascentM - rs.ascentM).coerceAtLeast(0.0))
+                        else "noch %.1f km · %.0f Hm bis oben".format(rs.remainingM / 1000, (route.summitElevationM - rs.elevationM).coerceAtLeast(0.0)),
                         color = Color.White.copy(alpha = 0.85f), style = MaterialTheme.typography.bodyMedium,
                     )
                 }
@@ -185,6 +209,7 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
             Hud(Modifier.fillMaxWidth()) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     Metric("Leistung", s.displayPower?.toString() ?: "–", "W", wide, Color(0xFFFF8A65))
+                    Metric("W/kg", s.displayPower?.let { "%.1f".format(it / settings.weightKg) } ?: "–", "W/kg", wide, Color(0xFFFFCC80))
                     Metric("Tempo", "%.1f".format(rs.speedKmh), "km/h", wide)
                     Metric("Steigung", "%.1f".format(rs.gradePct), "%", wide, gradeColor(rs.gradePct))
                     Metric("Trittfrequenz", s.live.cadence?.toString() ?: "–", "rpm", wide)
@@ -212,7 +237,31 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
                         Spacer(Modifier.width(6.dp))
                         Text("Beenden")
                     }
+                    // Camera: behind the bike or through the rider's eyes; the choice is kept for the next ride.
+                    if (gl3) {
+                        FilledTonalButton(onClick = {
+                            val fp = !settings.firstPersonView
+                            frame.firstPerson = fp
+                            container.settings.update { it.copy(firstPersonView = fp) }
+                        }) {
+                            Icon(Icons.Default.Videocam, null)
+                            Spacer(Modifier.width(6.dp))
+                            Text(if (settings.firstPersonView) "Ego" else "Verfolger")
+                        }
+                    }
                     Spacer(Modifier.weight(1f))
+                    val gear by container.session.gear.collectAsStateWithLifecycle()
+                    if (gear != null && !rs.finished) {
+                        // Virtual gears: down is the easier gear, up the harder one; the label shows "50 × 17 · 14/20".
+                        FilledTonalButton(onClick = { container.session.shiftDown() }) { Icon(Icons.Default.KeyboardArrowDown, "Leichterer Gang") }
+                        Text(
+                            gear ?: "",
+                            color = Color.White, style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.padding(horizontal = 8.dp),
+                        )
+                        FilledTonalButton(onClick = { container.session.shiftUp() }) { Icon(Icons.Default.KeyboardArrowUp, "Schwererer Gang") }
+                        Spacer(Modifier.width(12.dp))
+                    }
                     Text(
                         "Trainer: %d %% der Steigung".format(settings.trainerDifficultyPct),
                         color = Color.White.copy(alpha = 0.7f), style = MaterialTheme.typography.bodySmall,
@@ -275,6 +324,10 @@ private fun RideState.trainerBanner(trainer: SensorStatus): String? {
         else -> null
     }
 }
+
+/** Routes longer than a climb are built in sections of about 8 km. */
+private fun sectionCount(route: Route): Int =
+    if (route.lengthM <= 22_000) 1 else kotlin.math.ceil(route.lengthM / 8000.0).toInt().coerceAtLeast(2)
 
 private fun gradeColor(g: Double): Color = when {
     g >= 10 -> Color(0xFFEF5350)

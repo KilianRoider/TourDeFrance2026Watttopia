@@ -21,7 +21,7 @@ data class RiderParams(
 
 /** Road-bike physics: power against gravity, rolling and air resistance, with the rider's inertia. */
 object Physics {
-    private const val G = 9.81
+    const val G = 9.81
     /** Nobody descends faster than this indoors. */
     const val MAX_SPEED_MPS = 25.0
 
@@ -87,6 +87,25 @@ object Physics {
             }
         }
         return t.toInt()
+    }
+
+    /**
+     * The power a rider can hold for a route of this length, as a share of FTP: a 40-minute climb at
+     * 90 %, a five-hour stage at about 70 %.
+     */
+    fun paceShareOfFtp(route: Route, ftp: Int, p: RiderParams): Double {
+        val roughSec = estimateSeconds(route, ftp * 0.8, p)
+        return when {
+            roughSec < 3600 -> 0.9
+            roughSec < 3 * 3600 -> 0.8
+            else -> 0.7
+        }
+    }
+
+    /** Average speed in km/h over a route at constant power. */
+    fun averageKmh(route: Route, powerW: Double, p: RiderParams): Double {
+        val sec = estimateSeconds(route, powerW, p)
+        return if (sec > 0) route.lengthM / sec * 3.6 else 0.0
     }
 
     fun kmh(mps: Double) = mps * 3.6

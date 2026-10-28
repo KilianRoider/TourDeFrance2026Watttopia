@@ -83,6 +83,8 @@ data class Ride(
     /** Virtual route that was ridden, with the fraction of it and the time to the finish (null if not finished). */
     val routeId: String? = null,
     val routeFraction: Double = 1.0,
+    /** The cut of the route ("Finale 30 km"); empty for the whole route or a plain fraction. */
+    val routeVariant: String = "",
     val routeTimeSec: Int? = null,
     /** Rate of perceived exertion 1–10, asked after the ride. */
     val rpe: Int? = null,

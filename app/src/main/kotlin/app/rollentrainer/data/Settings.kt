@@ -97,12 +97,20 @@ data class AppSettings(
     val rideCharts: List<String> = listOf("power", "hr", "cadence"),
     /** How much of a virtual road's grade the trainer simulates (Zwift calls it trainer difficulty). */
     val trainerDifficultyPct: Int = 100,
+    /** Shifting in the app: the bike stays in one gear, the trainer's resistance follows the virtual gear. */
+    val virtualGears: Boolean = true,
+    val chainrings: String = "50/34",
+    val cassette: String = "11-28",
+    /** First-person view on the virtual road instead of the chase camera. */
+    val firstPersonView: Boolean = false,
     /** Default pacer on virtual routes, in W/kg; 0 = none. */
     val pacerWkg: Double = 3.0,
     /** Spinning-class view: tree URI of the music folder, or empty for the built-in beat. */
     val musicFolder: String = "",
     /** Play the synthesised studio beat when no folder is chosen (or in addition, when the folder is empty). */
     val studioBeat: Boolean = true,
+    /** The tracks that ship with the app play in the class (besides the rider's own folder). */
+    val builtInMusic: Boolean = true,
     /** Spoken coach cues in the spinning view. */
     val coachVoice: Boolean = true,
     /** Music volume 0..100 in the spinning view. */

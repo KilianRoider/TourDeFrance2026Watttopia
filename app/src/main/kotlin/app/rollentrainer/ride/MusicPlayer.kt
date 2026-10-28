@@ -25,7 +25,8 @@ import kotlinx.coroutines.withContext
  * main thread so its callbacks arrive there.
  */
 class MusicPlayer(private val context: Context, private val scope: CoroutineScope) {
-    data class Track(val uri: Uri, val name: String)
+    /** A file from the rider's folder ([uri]) or one of the built-in tracks ([resName]). */
+    data class Track(val uri: Uri?, val name: String, val resName: String? = null)
 
     private var tracks: List<Track> = emptyList()
     private var index = -1
@@ -44,6 +45,9 @@ class MusicPlayer(private val context: Context, private val scope: CoroutineScop
 
     /** Tree URI the current playlist was loaded from, or null. */
     var folder: String? = null
+        private set
+    /** Whether the built-in tracks were part of the last [load]. */
+    var builtInIncluded: Boolean = false
         private set
 
     private val _track = MutableStateFlow<String?>(null)
@@ -64,18 +68,23 @@ class MusicPlayer(private val context: Context, private val scope: CoroutineScop
      * playlist on the caller's thread. Cancelling the caller stops the scan and keeps the old playlist.
      * Returns the number found.
      */
-    suspend fun load(treeUri: String): Int {
-        val uri = runCatching { Uri.parse(treeUri) }.getOrNull()
-        val found = if (uri == null) emptyList() else withContext(Dispatchers.IO) { scan(context, uri) { isActive }.shuffled() }
+    suspend fun load(treeUri: String, builtIn: List<BuiltInTrack> = emptyList()): Int {
+        val uri = if (treeUri.isBlank()) null else runCatching { Uri.parse(treeUri) }.getOrNull()
+        val own = if (uri == null) emptyList() else withContext(Dispatchers.IO) { scan(context, uri) { isActive } }
+        val shipped = builtIn.mapNotNull { t ->
+            val id = context.resources.getIdentifier(t.resName, "raw", context.packageName)
+            if (id == 0) null else Track(null, t.title, t.resName)
+        }
         closePlayer()
-        tracks = found
+        tracks = (own + shipped).shuffled()
         index = -1
         failures = 0
         folder = treeUri
+        builtInIncluded = builtIn.isNotEmpty()
         _exhausted.value = false
         _track.value = null
         _playing.value = false
-        return found.size
+        return tracks.size
     }
 
     fun play() {
@@ -158,7 +167,10 @@ class MusicPlayer(private val context: Context, private val scope: CoroutineScop
                 index = i
                 _track.value = t.name
                 val afd = withContext(Dispatchers.IO) {
-                    runCatching { context.contentResolver.openAssetFileDescriptor(t.uri, "r") }.getOrNull()
+                    runCatching {
+                        if (t.uri != null) context.contentResolver.openAssetFileDescriptor(t.uri, "r")
+                        else context.resources.openRawResourceFd(context.resources.getIdentifier(t.resName ?: "", "raw", context.packageName))
+                    }.getOrNull()
                 }
                 if (gen != generation) {
                     // Closed, skipped or reloaded meanwhile: this file is no longer wanted.

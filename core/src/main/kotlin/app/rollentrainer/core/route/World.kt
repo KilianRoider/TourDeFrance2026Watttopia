@@ -79,6 +79,8 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
             else (route.avgGradientPct / 100 * 2.6).coerceIn(0.12, 0.35)
             RouteKind.ROLLING -> 0.06
             RouteKind.FLAT -> 0.0
+            // A whole stage is never built at once; its sections come with their own kind.
+            RouteKind.STAGE -> 0.0
         }
         path = buildPath()
         terrain = buildTerrain()
@@ -436,11 +438,15 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
             out += Sign(sx, maxOf(terrain.heightAt(sx, sz), p.y - SINK), sz, p.heading, text, big)
         }
         for (l in route.landmarks) sign(poseAt(l.distanceM), ROAD_HALF + 2.0, l.label, big = true)
-        // Kilometre boards count down to the summit like the real ones.
+        // Kilometre boards count down to the finish like the real ones; on a part of a longer route they
+        // count to the finish of the whole route.
+        val whole = route.wholeLengthM
         var km = 1.0
         while (km * 1000 < route.lengthM - 300) {
-            val remaining = (route.lengthM - km * 1000) / 1000
-            sign(poseAt(km * 1000), ROAD_HALF + 1.5, "noch %.1f km · %.0f %%".format(remaining, route.gradientAt(km * 1000 + 500)), big = false)
+            val remaining = (whole - route.offsetM - km * 1000) / 1000
+            if (remaining > 0.05) {
+                sign(poseAt(km * 1000), ROAD_HALF + 1.5, "noch %.1f km · %.0f %%".format(remaining, route.gradientAt(km * 1000 + 500)), big = false)
+            }
             km += 1.0
         }
         // Hairpin numbers, counted from the top down like the bends of the Alpe d'Huez; the board stands
@@ -506,8 +512,9 @@ class World(val route: Route, val biome: Biome, seed: Long = route.id.hashCode()
                 }
             }
         }
-        // Fans in the last two kilometres of a climb, as on a Tour stage.
-        if (route.kind == RouteKind.CLIMB) {
+        // Fans in the last two kilometres of a climb and of a stage, as on a Tour stage.
+        val finishHere = route.offsetM + route.lengthM >= route.wholeLengthM - 1
+        if (finishHere && (route.kind == RouteKind.CLIMB || route.fullLengthM > 0)) {
             var d = (route.lengthM - 2000.0).coerceAtLeast(300.0)
             while (d < route.lengthM - 30) {
                 val p = poseAt(d)

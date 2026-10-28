@@ -105,6 +105,55 @@ class SpinningAudio(
 
     val active: Boolean get() = job?.isActive == true
 
+    private var previewJob: Job? = null
+    private val _previewing = MutableStateFlow(false)
+    /** A test of the music folder from the settings is running. */
+    val previewing: StateFlow<Boolean> = _previewing.asStateFlow()
+
+    /**
+     * Plays the first track of the chosen folder (or the studio beat without one) for a few seconds,
+     * so the rider can check the music outside a ride. Pressing again stops it.
+     */
+    fun togglePreview() {
+        if (_previewing.value) { stopPreview(); return }
+        if (active) return
+        _previewing.value = true
+        previewJob = scope.launch {
+            try {
+                val folder = settings.value.musicFolder
+                val n = music.load(folder, if (settings.value.builtInMusic) BuiltInMusic.all else emptyList())
+                reloadMusic = true
+                usingFolder = n > 0
+                applyVolume(settings.value.musicVolume)
+                wanted = true
+                beat.setBpm(120)
+                beat.setIntensity(0.6f)
+                applySound()
+                // The track name is collected only as long as the preview runs; a StateFlow collector never
+                // ends by itself and would otherwise outlive the preview and keep this job from completing.
+                val names = launch { music.track.collect { if (usingFolder) _track.value = it } }
+                var waited = 0
+                while (waited < 20_000) {
+                    delay(1000)
+                    waited += 1000
+                    if (wanted && focus == FOCUS_NONE) applySound()
+                }
+                names.cancel()
+            } finally {
+                wanted = false
+                silence()
+                abandonFocus()
+                _track.value = null
+                _previewing.value = false
+            }
+        }
+    }
+
+    private fun stopPreview() {
+        previewJob?.cancel()
+        previewJob = null
+    }
+
     init {
         // Runs for the app's lifetime, so a ride that starts or ends while the normal view is open is noticed too.
         scope.launch {
@@ -122,17 +171,19 @@ class SpinningAudio(
             deactivate()
             return
         }
+        stopPreview()
         registerNoisy()
         job = scope.launch {
             if (session.state.value != null) newRideIfNeeded()
             val folder = settings.value.musicFolder
+            val shipped = if (settings.value.builtInMusic) BuiltInMusic.all else emptyList()
             usingFolder = when {
-                folder.isBlank() -> false
+                folder.isBlank() && shipped.isEmpty() -> false
                 // Coming back to the view within the same ride keeps the playlist and the position in the track.
-                !reloadMusic && folder == music.folder -> music.available
+                !reloadMusic && folder == music.folder && shipped.isNotEmpty() == music.builtInIncluded -> music.available
                 else -> {
                     // Scans on IO and takes the result on the main thread; leaving the view cancels it.
-                    val n = music.load(folder)
+                    val n = music.load(folder, shipped)
                     reloadMusic = false
                     n > 0
                 }
@@ -152,8 +203,9 @@ class SpinningAudio(
             launch { coach.speaking.collect { speaking -> coachSpeaking = speaking; applyDuck() } }
             launch { settings.state.collect { applyVolume(it.musicVolume) } }
             launch {
-                // Music follows the pause state and the on/off switch, whichever changes.
-                combine(session.state, _musicEnabled) { st, on -> st != null && !st.engine.paused && !st.engine.finished && on }
+                // Music plays as long as the class is open and not over, also before the first pedal stroke
+                // and in a break: in a studio the music never waits for the riders.
+                combine(session.state, _musicEnabled) { st, on -> st != null && !st.engine.finished && on }
                     .distinctUntilChanged()
                     .collect { play -> updatePlayback(play) }
             }

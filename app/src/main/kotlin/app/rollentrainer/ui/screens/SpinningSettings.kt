@@ -11,6 +11,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -32,6 +37,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import app.rollentrainer.AppContainer
 import app.rollentrainer.data.AppSettings
+import app.rollentrainer.ride.BuiltInMusic
 import app.rollentrainer.ride.Coach
 import app.rollentrainer.ride.MusicPlayer
 import app.rollentrainer.ui.components.Panel
@@ -77,13 +83,28 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
         }
     }
 
+    val previewing by container.spinningAudio.previewing.collectAsState()
+    val previewTrack by container.spinningAudio.track.collectAsState()
     Panel(Modifier.fillMaxWidth()) {
         Text("Musik", style = MaterialTheme.typography.bodyLarge)
         Text(
-            "Aus Lizenzgründen ist keine Musik enthalten. Wähle einen Ordner mit deinen eigenen Titeln auf dem Tablet; " +
-                "sie laufen in zufälliger Reihenfolge, Unterordner eine Ebene tief eingeschlossen. Ohne Ordner spielt der Studio-Beat.",
+            "Wattwerk bringt ${BuiltInMusic.all.size} eigene elektronische Tracks mit (frei nutzbar, für die Klasse produziert). " +
+                "Dazu kannst du einen Ordner mit deinen eigenen Titeln wählen; alles läuft gemischt in zufälliger Reihenfolge, " +
+                "Unterordner eine Ebene tief eingeschlossen.",
             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        Spacer(Modifier.height(4.dp))
+        SwitchRow("Eingebaute Tracks", "Die mitgelieferte Musik spielt in der Klasse", settings.builtInMusic) { v -> update { it.copy(builtInMusic = v) } }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            OutlinedButton(onClick = { container.spinningAudio.togglePreview() }) {
+                Icon(if (previewing) Icons.Default.Stop else Icons.Default.PlayArrow, null)
+                Spacer(Modifier.width(6.dp))
+                Text(if (previewing) "Stopp" else "Probe hören")
+            }
+            if (previewing) {
+                Text(previewTrack ?: "Studio-Beat", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
         Spacer(Modifier.height(8.dp))
         if (folder.isBlank()) {
             Button(onClick = { picker.launch(null) }) { Text("Musikordner wählen") }
@@ -92,7 +113,7 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
             Text(
                 when (val n = fileCount) {
                     null -> "Suche Titel …"
-                    0 -> "Keine Audiodateien gefunden – der Studio-Beat spielt stattdessen."
+                    0 -> "Keine Audiodateien gefunden – es spielen die eingebauten Tracks oder der Studio-Beat."
                     1 -> "1 Titel"
                     else -> "$n Titel"
                 },
@@ -129,7 +150,7 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
             valueRange = 0f..100f,
             steps = 9,
         )
-        SwitchRow("Studio-Beat", "Elektronischer Beat im Takt der Ziel-Trittfrequenz, wenn kein Ordner gewählt ist", settings.studioBeat) { v -> update { it.copy(studioBeat = v) } }
+        SwitchRow("Studio-Beat", "Elektronischer Beat im Takt der Ziel-Trittfrequenz, wenn keine Musik spielt", settings.studioBeat) { v -> update { it.copy(studioBeat = v) } }
         SwitchRow("Coach-Stimme", "Ansagen zu Abschnitten, Countdown und Motivation (braucht eine deutsche Sprachausgabe)", settings.coachVoice) { v -> update { it.copy(coachVoice = v) } }
         // Tells a missing engine apart from a missing German voice; both leave the coach silent.
         val voiceHint = when (coachStatus) {

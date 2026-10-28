@@ -2,6 +2,8 @@ package app.rollentrainer.ui.screens
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
@@ -47,6 +49,7 @@ import androidx.compose.runtime.FloatState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.withFrameNanos
@@ -55,15 +58,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontWeight
@@ -84,6 +90,7 @@ import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.theme.Metric
 import app.rollentrainer.ui.theme.zoneColorAt
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.acos
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -97,10 +104,37 @@ import kotlin.math.sqrt
 /** The studio is dark whatever the system theme; these colours never come from MaterialTheme. */
 private val StudioBlack = Color(0xFF050609)
 private val StudioText = Color(0xFFF4F6F8)
-private val StudioDim = Color(0xFF9AA3AF)
-private val StudioPanel = Color(0x14FFFFFF)
+private val StudioDim = Color(0xFFB4BCC8)
+/** Translucent dark pill behind every piece of text, so the HUD stays readable on top of the lights. */
+private val StudioPanel = Color(0x9A0A0C14)
 private val StudioAccent = Color(0xFFFF5A1F)
 private val PanelShape = RoundedCornerShape(20.dp)
+
+/**
+ * The light palettes, one per mood (recovery, steady, hard, sprint), as hue/saturation/value so the
+ * whole show can drift in hue over time. Entry 0 is the accent of the ring and the coach line, entry 1
+ * the riders' rim light; the beams, walls and washes cycle through all of them.
+ */
+private class Palette(val hues: FloatArray, val sats: FloatArray, val vals: FloatArray) {
+    val size: Int get() = hues.size
+}
+
+private val Palettes = arrayOf(
+    // Recovery: deep blue, violet, teal, indigo.
+    Palette(floatArrayOf(228f, 272f, 178f, 250f), floatArrayOf(1f, 0.95f, 1f, 1f), floatArrayOf(1f, 0.95f, 0.9f, 1f)),
+    // Steady: magenta, blue, cyan, purple.
+    Palette(floatArrayOf(312f, 222f, 188f, 280f), floatArrayOf(1f, 1f, 1f, 0.95f), floatArrayOf(1f, 1f, 1f, 1f)),
+    // Hard: orange, red, pink, amber.
+    Palette(floatArrayOf(24f, 2f, 334f, 42f), floatArrayOf(1f, 1f, 0.95f, 1f), floatArrayOf(1f, 1f, 1f, 1f)),
+    // Sprint: yellow, white, red, warm yellow.
+    Palette(floatArrayOf(54f, 50f, 358f, 44f), floatArrayOf(1f, 0.06f, 1f, 0.9f), floatArrayOf(1f, 1f, 1f, 1f)),
+)
+
+/** Hue drift: the brushes are rebuilt every [DriftStepSec] seconds, the per-frame colours drift continuously. */
+private const val DriftStepSec = 15f
+private const val DriftDegPerSec = 0.8f
+private const val DriftStepDeg = DriftStepSec * DriftDegPerSec
+private val TwoPi = (2 * PI).toFloat()
 
 /**
  * Spinning-class view of a running ride: light show, power ring, animated riders, the instructor's
@@ -134,9 +168,15 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
     val scale = settings.rideFontScale.factor
     val clock = rememberClock()
     val wide = LocalWide.current
+    // The palette accent follows the mood and drifts in hue; eased, so a mood change sweeps instead of jumping.
+    val palette = Palettes[mood.coerceIn(0, Palettes.size - 1)]
+    val drift = clock.driftStep.intValue * DriftStepDeg
+    val accent by animateColorAsState(paletteEntry(palette, 0, drift), tween(1500), label = "accent")
+    val rim by animateColorAsState(paletteEntry(palette, 1, drift), tween(1500), label = "rim")
+    val liveBpm = if (e.paused) 0 else bpm
 
     Box(Modifier.fillMaxSize().background(StudioBlack)) {
-        LightShow(clock, color, mood, if (e.paused) 0 else bpm, Modifier.fillMaxSize())
+        LightShow(clock.seconds, palette, mood, liveBpm, clock.driftStep.intValue, Modifier.fillMaxSize())
         Column(
             Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -144,37 +184,48 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
             StudioHeader(s, settings.zoneScheme, ftp, onStandardView)
             if (wide) {
                 Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Riders(s.live.cadence, e.targetCadence, color, standing, e.paused, Modifier.weight(0.28f).fillMaxHeight())
+                    Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.weight(0.28f).fillMaxHeight())
                     Column(Modifier.weight(0.4f).fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
-                        PowerRing(s.displayPower, target, color, clock, bpm, mood, scale, Modifier.weight(1f).fillMaxWidth())
+                        PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale, Modifier.weight(1f).fillMaxWidth())
                         Tiles(s, track, playing, musicEnabled, bpm)
                     }
                     SegmentCard(s, color, targetPct, scale, Modifier.weight(0.32f).fillMaxHeight())
                 }
             } else {
                 Row(Modifier.weight(0.5f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    PowerRing(s.displayPower, target, color, clock, bpm, mood, scale * 0.8f, Modifier.weight(0.55f).fillMaxHeight())
+                    PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale * 0.8f, Modifier.weight(0.55f).fillMaxHeight())
                     SegmentCard(s, color, targetPct, scale * 0.85f, Modifier.weight(0.45f).fillMaxHeight())
                 }
-                Riders(s.live.cadence, e.targetCadence, color, standing, e.paused, Modifier.fillMaxWidth().height(110.dp))
+                Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.fillMaxWidth().height(110.dp))
                 Tiles(s, track, playing, musicEnabled, bpm)
             }
-            CoachBanner(coachLine, s, scale)
+            CoachBanner(coachLine, s, accent, scale)
             Controls(container, audio, s, musicEnabled, onStandardView, onEnd)
         }
         if (e.finished) FinishedOverlay(s, onStandardView, onEnd)
     }
 }
 
-/** A frame clock in seconds, read inside draw lambdas so only the canvases redraw, nothing recomposes. */
+/** The frame clock in seconds plus the coarse hue-drift step that re-keys the cached brushes. */
+private class StudioClock {
+    val seconds = mutableFloatStateOf(0f)
+    val driftStep = mutableIntStateOf(0)
+}
+
+/** A single frame clock, read inside draw lambdas so only the canvases redraw, nothing recomposes. */
 @Composable
-private fun rememberClock(): FloatState {
-    val t = remember { mutableFloatStateOf(0f) }
+private fun rememberClock(): StudioClock {
+    val c = remember { StudioClock() }
     LaunchedEffect(Unit) {
         val start = withFrameNanos { it }
-        while (true) withFrameNanos { now -> t.floatValue = (now - start) / 1_000_000_000f }
+        while (true) withFrameNanos { now ->
+            val sec = (now - start) / 1_000_000_000f
+            c.seconds.floatValue = sec
+            // Same value, no invalidation: the step only notifies its readers every DriftStepSec seconds.
+            c.driftStep.intValue = (sec / DriftStepSec).toInt()
+        }
     }
-    return t
+    return c
 }
 
 /** Crank angle in radians that turns at [rpm], integrated per frame so cadence changes are smooth. */
@@ -205,12 +256,59 @@ private fun isStandingNow(label: String, cue: String?, segment: Segment?, workou
     return CoachScript.isStanding(label, segment.cues.filter { it.offsetSec <= inSeg }.map { it.text })
 }
 
+/** HSV to an sRGB [Color]; the hue may be any angle, saturation and value are clamped. Allocation-free. */
+private fun hsv(hue: Float, sat: Float, value: Float): Color {
+    var hh = hue % 360f
+    if (hh < 0f) hh += 360f
+    val s = sat.coerceIn(0f, 1f)
+    val v = value.coerceIn(0f, 1f)
+    val c = v * s
+    val x = c * (1f - abs((hh / 60f) % 2f - 1f))
+    val m = v - c
+    var r = 0f
+    var g = 0f
+    var b = 0f
+    when ((hh / 60f).toInt() % 6) {
+        0 -> { r = c; g = x }
+        1 -> { r = x; g = c }
+        2 -> { g = c; b = x }
+        3 -> { g = x; b = c }
+        4 -> { r = x; b = c }
+        else -> { r = c; b = x }
+    }
+    return Color((r + m).coerceIn(0f, 1f), (g + m).coerceIn(0f, 1f), (b + m).coerceIn(0f, 1f))
+}
+
+/** Palette entry [k], hue-shifted by [driftDeg]. */
+private fun paletteEntry(p: Palette, k: Int, driftDeg: Float): Color = hsv(p.hues[k] + driftDeg, p.sats[k], p.vals[k])
+
+/** The palette as a closed colour cycle: [u] runs once through all entries per unit, blending between neighbours. */
+private fun paletteColor(p: Palette, u: Float, driftDeg: Float): Color {
+    val n = p.size
+    val x = frac(u) * n
+    val k = x.toInt().coerceIn(0, n - 1)
+    val k2 = (k + 1) % n
+    val f = x - k
+    val sm = f * f * (3f - 2f * f)
+    var dh = p.hues[k2] - p.hues[k]
+    if (dh > 180f) dh -= 360f else if (dh < -180f) dh += 360f
+    return hsv(
+        p.hues[k] + dh * sm + driftDeg,
+        p.sats[k] + (p.sats[k2] - p.sats[k]) * sm,
+        p.vals[k] + (p.vals[k2] - p.vals[k]) * sm,
+    )
+}
+
+private fun frac(x: Float): Float = x - floor(x)
+
 /**
- * Spotlights, sweeping beams, particles and strobes behind everything. All of it is a function of
- * the clock, the beat and the mood, so there is no per-frame state.
+ * The studio's light show behind everything: an LED wall running colour waves, eight moving heads on
+ * a top rail and the floor with volumetric cones that sweep and cross, floor washes, a mirror-ball
+ * particle field and beat strobes. Everything is a function of the clock, the beat and the mood, so
+ * there is no per-frame state; brushes and paths are cached per size, palette and drift step.
  */
 @Composable
-private fun LightShow(clock: FloatState, color: Color, mood: Int, bpm: Int, modifier: Modifier) {
+private fun LightShow(clock: FloatState, palette: Palette, mood: Int, bpm: Int, driftStep: Int, modifier: Modifier) {
     // Its own layer, so the per-frame redraw re-records only this node and not every text and button on top.
     Spacer(
         modifier.graphicsLayer().drawWithCache {
@@ -218,62 +316,149 @@ private fun LightShow(clock: FloatState, color: Color, mood: Int, bpm: Int, modi
             val h = size.height
             val side = min(w, h)
             if (side < 1f) return@drawWithCache onDrawBehind { }
-            // Brushes and the beam path are built once per size and colour; a frame only moves, scales and fades them.
-            val spotR = side * 0.42f
-            val spot = Brush.radialGradient(listOf(color, Color.Transparent), center = Offset.Zero, radius = spotR)
-            val origins = listOf(Offset(0f, -h * 0.05f), Offset(w, -h * 0.05f))
-            val beamBrushes = origins.map { o -> Brush.linearGradient(listOf(Color.White, Color.Transparent), start = o, end = Offset(o.x, o.y + h)) }
-            val beam = Path()
-            val shade = Brush.verticalGradient(listOf(Color.Transparent, StudioBlack.copy(alpha = 0.75f)), startY = h * 0.5f, endY = h)
+            val n = palette.size
+            val drift = driftStep * DriftStepDeg
+            // One colour per palette entry; a frame picks, crossfades, moves and scales what is built here.
+            val colors = Array(n) { paletteEntry(palette, it, drift) }
+            val sparkle = Array(n) { lerp(colors[it], Color.White, 0.55f) }
+            val spill = Brush.horizontalGradient(colors.toList() + colors[0], startX = 0f, endX = w)
+            // Beam cones point down (+y) from the origin; a rotation aims them. Wide haze, coloured cone, white core.
+            val coneLen = w + h
+            fun cone(half: Float) = Path().apply {
+                moveTo(0f, 0f)
+                lineTo(-coneLen * sin(half), coneLen * cos(half))
+                lineTo(coneLen * sin(half), coneLen * cos(half))
+                close()
+            }
+            val coneWide = cone(0.13f)
+            val coneMid = cone(0.055f)
+            val coneCore = cone(0.012f)
+            val beamBrushes = Array(n) {
+                Brush.linearGradient(
+                    listOf(colors[it], colors[it].copy(alpha = 0.45f), Color.Transparent),
+                    start = Offset.Zero, end = Offset(0f, coneLen * 0.85f),
+                )
+            }
+            val coreBrush = Brush.linearGradient(listOf(Color.White, Color.White.copy(alpha = 0.3f), Color.Transparent), start = Offset.Zero, end = Offset(0f, coneLen * 0.55f))
+            val lampR = 4.dp.toPx()
+            val lamp = Brush.radialGradient(listOf(Color.White, Color.White.copy(alpha = 0.5f), Color.Transparent), center = Offset.Zero, radius = lampR * 4f)
+            // Floor washes: a unit radial disc that is translated and squashed into ellipses.
+            val washR = side * 0.45f
+            val washBrushes = Array(n) {
+                Brush.radialGradient(listOf(colors[it], colors[it].copy(alpha = 0.35f), Color.Transparent), center = Offset.Zero, radius = washR)
+            }
+            // LED wall across the back wall.
+            val cols = (w / 30.dp.toPx()).toInt().coerceIn(12, 64)
+            val rows = (h * 0.56f / 44.dp.toPx()).toInt().coerceIn(3, 9)
+            val cellW = w / cols
+            val cellH = h * 0.56f / rows
+            val cell = Size(cellW * 0.74f, cellH * 0.6f)
+            val cellDx = (cellW - cell.width) / 2
+            val cellDy = (cellH - cell.height) / 2
+            val ledAlpha = 0.40f + 0.06f * mood
             val dot = 1.5.dp.toPx()
+            val topY = h * 0.012f
+            val floorY = h * 0.985f
+            val shade = Brush.verticalGradient(listOf(Color.Transparent, StudioBlack.copy(alpha = 0.72f)), startY = h * 0.55f, endY = h)
             onDrawBehind {
                 val t = clock.floatValue
-                val beat = if (bpm > 0) t * bpm / 60f else 0f
-                val phase = beat - floor(beat)
-                val pulse = if (bpm > 0) exp(-phase * 5f) else 0.3f
-                val speed = 0.12f + 0.18f * mood
+                val live = bpm > 0
+                // Paused: a slow virtual beat keeps the colours moving while the pulse just breathes.
+                val beat = if (live) t * bpm / 60f else t * 0.25f
+                val phase = frac(beat)
+                val beatIdx = floor(beat)
+                val pulse = if (live) exp(-phase * 5f) else 0.4f + 0.3f * sin(t * 1.2f)
+                val speed = if (live) 0.3f + 0.25f * mood else 0.12f
+                val hue = t * DriftDegPerSec
 
-                // Soft spotlights drifting across the floor, pulsing with the beat.
-                for (i in 0 until 4) {
-                    val a = t * speed * (1f + 0.25f * i) + i * 1.9f
-                    val cx = w * (0.5f + 0.42f * cos(a))
-                    val cy = h * (0.4f + 0.3f * sin(a * 0.7f + i))
-                    val r = side * (0.3f + 0.12f * pulse)
+                // Colour spill over the whole room, so it is never dark between the lights.
+                drawRect(spill, alpha = 0.14f + 0.10f * pulse)
+
+                // LED wall: palette waves scroll across the width, a brightness wave and a chase hit on the beat.
+                for (c in 0 until cols) {
+                    val u = c.toFloat() / cols
+                    val ledColor = paletteColor(palette, u * 1.5f - t * 0.05f, hue)
+                    val hit = frac(c * 0.618f + beatIdx * 0.382f)
+                    val flash = if (live && hit > 0.78f && phase < 0.35f) 1f - phase / 0.35f else 0f
+                    val x = c * cellW + cellDx
+                    for (r in 0 until rows) {
+                        val wave = 0.5f + 0.5f * sin((u * 2f + r * 0.08f - beat * 0.25f) * TwoPi)
+                        val b = (0.12f + 0.6f * wave * wave + 0.6f * flash) * (0.7f + 0.3f * pulse)
+                        drawRect(ledColor, Offset(x, r * cellH + cellDy), cell, alpha = (b * ledAlpha).coerceIn(0f, 1f))
+                    }
+                }
+
+                // Floor washes: big soft ellipses drifting over the floor, each cycling through the palette.
+                val washA = 0.28f + 0.22f * pulse
+                for (i in 0 until 5) {
+                    val a = t * speed * (0.45f + 0.15f * i) + i * 1.3f
+                    val cx = w * (0.5f + 0.45f * sin(a))
+                    val cy = h * (0.74f + 0.1f * cos(a * 0.6f + i))
+                    val sel = frac(i * 0.37f + t * 0.03f + mood * 0.21f) * n
+                    val k = sel.toInt().coerceIn(0, n - 1)
+                    val xf = ((sel - k - 0.75f) * 4f).coerceIn(0f, 1f)
+                    val sx = side * (0.4f + 0.1f * pulse) / washR
                     translate(cx, cy) {
-                        scale(r / spotR, pivot = Offset.Zero) {
-                            drawCircle(spot, radius = spotR, center = Offset.Zero, alpha = 0.16f + 0.16f * pulse)
+                        scale(sx, sx * 0.38f, Offset.Zero) {
+                            drawCircle(washBrushes[k], radius = washR, center = Offset.Zero, alpha = washA * (1f - xf), blendMode = BlendMode.Plus)
+                            if (xf > 0f) drawCircle(washBrushes[(k + 1) % n], radius = washR, center = Offset.Zero, alpha = washA * xf, blendMode = BlendMode.Plus)
                         }
                     }
                 }
-                // Beams from the top corners sweeping the room, faster when it gets hard.
-                val beamAlpha = 0.05f + 0.05f * mood
-                for (i in 0 until 2) {
-                    val origin = origins[i]
-                    val base = if (i == 0) 0.25f else -0.25f
-                    val ang = PI.toFloat() / 2 + base + sin(t * (0.5f + 0.4f * mood) + i * 2.1f) * 0.55f
-                    val len = w + h
-                    val half = 0.035f
-                    beam.reset()
-                    beam.moveTo(origin.x, origin.y)
-                    beam.lineTo(origin.x + len * cos(ang - half), origin.y + len * sin(ang - half))
-                    beam.lineTo(origin.x + len * cos(ang + half), origin.y + len * sin(ang + half))
-                    beam.close()
-                    drawPath(beam, beamBrushes[i], alpha = (beamAlpha + 0.08f * pulse).coerceIn(0f, 1f))
-                }
-                // Particles rising in hard efforts; positions come from the index, so nothing needs storing.
-                if (mood >= 2) {
-                    val count = if (mood == 3) 60 else 30
-                    for (i in 0 until count) {
-                        val fx = frac(i * 0.618f)
-                        val fy = frac(i * 0.377f + t * (0.04f + 0.06f * frac(i * 0.21f)))
-                        val x = w * (fx + 0.02f * sin(t + i))
-                        val y = h * (1f - fy)
-                        drawCircle(color.copy(alpha = 0.25f + 0.35f * frac(i * 0.53f)), radius = dot + dot * frac(i * 0.71f), center = Offset(x, y))
+
+                // Moving heads: four on the top rail aiming down, four on the floor aiming up. Neighbours
+                // swing in counter-phase so the beams cross; each head cycles its own colour.
+                val beamA = (0.10f + 0.05f * mood) * (0.6f + 0.4f * pulse)
+                val swingHz = if (live) 0.55f + 0.3f * mood else 0.2f
+                val swingDeg = 26f + 12f * mood
+                for (i in 0 until 8) {
+                    val top = i < 4
+                    val j = i % 4
+                    val ox = if (top) w * (0.1f + 0.2667f * j) else w * (0.2f + 0.2f * j)
+                    val oy = if (top) topY else floorY
+                    val swing = sin(t * swingHz * (1f + 0.13f * j) + i * 1.9f) * swingDeg * (if (j % 2 == 0) 1f else -1f)
+                    val deg = (if (top) 0f else 180f) + swing
+                    val sel = frac(i * 0.31f + t * (0.06f + 0.02f * mood)) * n
+                    val k = sel.toInt().coerceIn(0, n - 1)
+                    val xf = ((sel - k - 0.75f) * 4f).coerceIn(0f, 1f)
+                    val k2 = (k + 1) % n
+                    translate(ox, oy) {
+                        rotate(deg, Offset.Zero) {
+                            drawPath(coneWide, beamBrushes[k], alpha = beamA * 0.45f * (1f - xf), blendMode = BlendMode.Plus)
+                            drawPath(coneMid, beamBrushes[k], alpha = beamA * (1f - xf), blendMode = BlendMode.Plus)
+                            if (xf > 0f) {
+                                drawPath(coneWide, beamBrushes[k2], alpha = beamA * 0.45f * xf, blendMode = BlendMode.Plus)
+                                drawPath(coneMid, beamBrushes[k2], alpha = beamA * xf, blendMode = BlendMode.Plus)
+                            }
+                            drawPath(coneCore, coreBrush, alpha = beamA * 0.7f, blendMode = BlendMode.Plus)
+                        }
+                        // The lamp itself: a coloured head with a white hot spot.
+                        drawCircle(colors[k], radius = lampR * 2.2f, center = Offset.Zero, alpha = 0.55f + 0.45f * pulse)
+                        drawCircle(lamp, radius = lampR * 4f, center = Offset.Zero, alpha = 0.5f + 0.5f * pulse, blendMode = BlendMode.Plus)
                     }
                 }
-                // Strobe on the beat during sprints; short and dim so it stays pleasant.
-                if (mood == 3 && bpm > 0 && phase < 0.08f) {
-                    drawRect(Color.White.copy(alpha = 0.10f * (1f - phase / 0.08f)))
+
+                // Mirror ball: small tinted dots drifting slowly across the room and twinkling, brighter on the beat.
+                val count = 60 + 20 * mood
+                for (i in 0 until count) {
+                    val fx = frac(i * 0.618f)
+                    val fy = frac(i * 0.377f)
+                    val x = w * frac(fx + t * (0.012f + 0.02f * frac(i * 0.21f)))
+                    val y = h * (0.04f + 0.86f * frac(fy + 0.05f * sin(t * 0.3f + i)))
+                    val tw = frac(i * 0.53f + t * (0.3f + 0.6f * frac(i * 0.77f)))
+                    val twinkle = tw * tw * tw
+                    drawCircle(
+                        sparkle[i % n], radius = dot * (0.6f + 0.9f * frac(i * 0.71f)), center = Offset(x, y),
+                        alpha = (0.2f + 0.8f * twinkle) * (0.55f + 0.45f * pulse),
+                    )
+                }
+
+                // Strobe on the beat in hard efforts (every other beat) and sprints (every beat); short and dim.
+                if (live && mood >= 2) {
+                    val every = if (mood == 3) 1 else 2
+                    if (beatIdx.toInt() % every == 0 && phase < 0.07f) {
+                        drawRect(Color.White, alpha = (if (mood == 3) 0.16f else 0.09f) * (1f - phase / 0.07f))
+                    }
                 }
                 // Darken the lower part so the controls and text stay readable.
                 drawRect(shade)
@@ -282,12 +467,10 @@ private fun LightShow(clock: FloatState, color: Color, mood: Int, bpm: Int, modi
     )
 }
 
-private fun frac(x: Float): Float = x - floor(x)
-
 @Composable
 private fun StudioHeader(s: RideState, scheme: ZoneScheme, ftp: Int, onStandardView: () -> Unit) {
     val e = s.engine
-    Column {
+    Column(Modifier.fillMaxWidth().background(StudioPanel, PanelShape).padding(horizontal = 14.dp, vertical = 8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
                 Text(s.workout?.name ?: "Freie Fahrt", color = StudioText, style = MaterialTheme.typography.titleLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -345,9 +528,12 @@ private fun ProfileBar(timeline: Timeline, ftp: Int, scheme: ZoneScheme, progres
     }
 }
 
-/** Power against the target on a 270° ring; the ring is full at 130 % of the target, the tick marks 100 %. */
+/**
+ * Power against the target on a 270° ring; the ring is full at 130 % of the target, the tick marks 100 %.
+ * The ring, its halo and the beat ripple take the palette [accent]; the target line keeps the zone colour.
+ */
 @Composable
-private fun PowerRing(power: Int?, target: Int?, color: Color, clock: FloatState, bpm: Int, mood: Int, textScale: Float, modifier: Modifier) {
+private fun PowerRing(power: Int?, target: Int?, zone: Color, accent: Color, clock: FloatState, bpm: Int, mood: Int, textScale: Float, modifier: Modifier) {
     Box(modifier, contentAlignment = Alignment.Center) {
         // Own layer and cached brush/stroke: the halo pulses every frame without re-recording the numbers.
         Spacer(
@@ -360,24 +546,32 @@ private fun PowerRing(power: Int?, target: Int?, color: Color, clock: FloatState
                 val mid = Offset(size.width / 2, size.height / 2)
                 val topLeft = Offset((size.width - arc.width) / 2, (size.height - arc.height) / 2)
                 val ringStyle = Stroke(stroke, cap = StrokeCap.Round)
+                val rippleStyle = Stroke(2.dp.toPx())
                 val haloR = d * 0.5f
-                val haloBrush = Brush.radialGradient(listOf(color, Color.Transparent), center = mid, radius = haloR)
+                val haloBrush = Brush.radialGradient(listOf(accent, accent.copy(alpha = 0.4f), Color.Transparent), center = mid, radius = haloR)
+                val arcGlow = lerp(accent, Color.White, 0.35f)
                 val tickWidth = 3.dp.toPx()
                 val start = 135f
                 val sweep = 270f
                 onDrawBehind {
                     val t = clock.floatValue
-                    val beat = t * bpm / 60f
-                    val pulse = exp(-(beat - floor(beat)) * 6f)
+                    val beat = if (bpm > 0) t * bpm / 60f else t * 0.25f
+                    val phase = frac(beat)
+                    val pulse = if (bpm > 0) exp(-phase * 6f) else 0.4f + 0.3f * sin(t * 1.2f)
                     // Halo that breathes with the beat, stronger in hard efforts.
                     val halo = d * (0.5f + 0.04f * pulse * (0.5f + 0.5f * mood))
                     scale(halo / haloR, pivot = mid) {
-                        drawCircle(haloBrush, radius = haloR, center = mid, alpha = 0.18f + 0.12f * pulse)
+                        drawCircle(haloBrush, radius = haloR, center = mid, alpha = 0.22f + 0.16f * pulse)
                     }
-                    drawArc(Color.White.copy(alpha = 0.10f), start, sweep, false, topLeft, arc, style = ringStyle)
-                    val frac = if (target != null && target > 0 && power != null) (power / (target * 1.3f)).coerceIn(0f, 1f) else 0f
-                    if (frac > 0f) {
-                        drawArc(color, start, sweep * frac, false, topLeft, arc, style = ringStyle)
+                    // A ripple that leaves the ring on every beat.
+                    if (bpm > 0) {
+                        drawCircle(accent, radius = arc.width / 2 + stroke * (0.6f + 1.6f * phase), center = mid, alpha = 0.45f * (1f - phase), style = rippleStyle)
+                    }
+                    drawArc(Color.White.copy(alpha = 0.12f), start, sweep, false, topLeft, arc, style = ringStyle)
+                    val fill = if (target != null && target > 0 && power != null) (power / (target * 1.3f)).coerceIn(0f, 1f) else 0f
+                    if (fill > 0f) {
+                        drawArc(accent, start, sweep * fill, false, topLeft, arc, style = ringStyle)
+                        drawArc(arcGlow, start, sweep * fill, false, topLeft, arc, alpha = 0.35f * pulse, style = ringStyle)
                     }
                     if (target != null && target > 0) {
                         val ang = (start + sweep / 1.3f) * PI.toFloat() / 180f
@@ -391,7 +585,10 @@ private fun PowerRing(power: Int?, target: Int?, color: Color, clock: FloatState
                 }
             }
         )
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            Modifier.background(StudioPanel, PanelShape).padding(horizontal = 20.dp, vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
             Text(
                 power?.toString() ?: "–",
                 color = StudioText, fontSize = (92f * textScale).sp, lineHeight = (96f * textScale).sp,
@@ -400,7 +597,7 @@ private fun PowerRing(power: Int?, target: Int?, color: Color, clock: FloatState
             Text("WATT", color = StudioDim, style = MaterialTheme.typography.labelLarge)
             if (target != null) {
                 Spacer(Modifier.height(4.dp))
-                Text("Ziel $target W", color = color, fontSize = (22f * textScale).sp, fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleLarge)
+                Text("Ziel $target W", color = zone, fontSize = (22f * textScale).sp, fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleLarge)
             }
         }
     }
@@ -497,10 +694,10 @@ private fun SegmentCard(s: RideState, color: Color, targetPct: Double, scale: Fl
     }
 }
 
-/** The coach's line, scaled in when it changes. */
+/** The coach's line in the palette accent on a dark pill, scaled in when it changes. */
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-private fun CoachBanner(line: String?, s: RideState, scale: Float) {
+private fun CoachBanner(line: String?, s: RideState, accent: Color, scale: Float) {
     val text = line ?: s.engine.cue
     Box(Modifier.fillMaxWidth().heightIn(min = 52.dp), contentAlignment = Alignment.Center) {
         AnimatedContent(
@@ -510,9 +707,9 @@ private fun CoachBanner(line: String?, s: RideState, scale: Float) {
         ) { t ->
             if (t != null) {
                 Text(
-                    t, color = StudioText, fontSize = (26f * scale).sp, lineHeight = (30f * scale).sp, fontWeight = FontWeight.Bold,
+                    t, color = lerp(accent, Color.White, 0.4f), fontSize = (26f * scale).sp, lineHeight = (30f * scale).sp, fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineSmall, maxLines = 2, overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(horizontal = 16.dp),
+                    modifier = Modifier.background(StudioPanel, PanelShape).padding(horizontal = 18.dp, vertical = 8.dp),
                 )
             } else {
                 Spacer(Modifier.height(1.dp))
@@ -556,7 +753,7 @@ private fun StudioButton(text: String, icon: ImageVector? = null, primary: Boole
         onClick = onClick,
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (primary) StudioAccent else Color.White.copy(alpha = 0.12f),
+            containerColor = if (primary) StudioAccent else StudioPanel,
             contentColor = Color.White,
         ),
         modifier = Modifier.height(48.dp),
@@ -596,44 +793,81 @@ private fun FinishedOverlay(s: RideState, onStandardView: () -> Unit, onEnd: () 
 /**
  * A row of stylised riders seen from the side. The instructor is in front and pedals at the target
  * cadence; the riders behind pedal at the rider's real cadence, so the picture shows at a glance
- * whether the legs keep up with the class.
+ * whether the legs keep up with the class. The silhouettes get a rim light in [rim] and a coloured
+ * floor glow in [accent] that breathes with the beat.
  */
 @Composable
-private fun Riders(cadence: Int?, targetCadence: Int?, color: Color, standing: Boolean, paused: Boolean, modifier: Modifier) {
+private fun Riders(cadence: Int?, targetCadence: Int?, accent: Color, rim: Color, standing: Boolean, paused: Boolean, clock: FloatState, bpm: Int, modifier: Modifier) {
     val riderCrank = rememberCrank(cadence ?: 0, !paused)
     val coachCrank = rememberCrank(targetCadence ?: 85, !paused, phase = 1.2f)
-    // Own layer: the cranks turn every frame without re-recording the rest of the screen.
-    Canvas(modifier.graphicsLayer()) {
-        val w = size.width
-        val h = size.height
-        // Units: one unit is the wheel radius; a bike with rider is about 4.4 units wide and 4.6 high.
-        val unitCoach = min(h / 5.2f, w / 7.5f)
-        val unitRider = unitCoach * 0.62f
-        // The wide layout can squeeze this to nothing (tall controls, split screen); nothing to draw then.
-        if (unitRider < 1f) return@Canvas
-        val ground = h * 0.95f
-        val coachAngle = coachCrank.floatValue
-        val riderAngle = riderCrank.floatValue
-        // Riders behind, slightly offset and dimmer, like the back rows of the studio.
-        for (i in 0 until 3) {
-            val ox = w * (0.12f + 0.2f * i)
-            val oy = ground - unitRider * 0.9f - unitRider * 0.25f * (2 - i)
-            drawRider(Offset(ox, oy), unitRider, riderAngle + i * 1.7f, color.copy(alpha = 0.45f + 0.12f * i), standing)
+    // Own layer and cached glow brush: the cranks turn every frame without re-recording the rest of the screen.
+    Spacer(
+        modifier.graphicsLayer().drawWithCache {
+            val w = size.width
+            val h = size.height
+            // Units: one unit is the wheel radius; a bike with rider is about 4.4 units wide and 4.6 high.
+            val unitCoach = min(h / 5.2f, w / 7.5f)
+            val unitRider = unitCoach * 0.62f
+            // The wide layout can squeeze this to nothing (tall controls, split screen); nothing to draw then.
+            if (unitRider < 1f) return@drawWithCache onDrawBehind { }
+            val ground = h * 0.95f
+            val glowR = unitCoach * 2.6f
+            val glow = Brush.radialGradient(listOf(accent, accent.copy(alpha = 0.35f), Color.Transparent), center = Offset.Zero, radius = glowR)
+            // Pale, tinted silhouettes so the coloured rim light reads as light hitting them.
+            val body = lerp(accent, Color.White, 0.6f)
+            val lineW = 2.dp.toPx()
+            onDrawBehind {
+                val t = clock.floatValue
+                val pulse = if (bpm > 0) exp(-frac(t * bpm / 60f) * 5f) else 0.4f + 0.3f * sin(t * 1.2f)
+                val coachAngle = coachCrank.floatValue
+                val riderAngle = riderCrank.floatValue
+                // Coloured floor glow under every bike, the instructor's the largest.
+                for (i in 0 until 3) {
+                    val ox = w * (0.12f + 0.2f * i)
+                    val oy = ground - unitRider * 0.25f * (2 - i)
+                    translate(ox, oy) {
+                        scale(0.62f, 0.2f, Offset.Zero) {
+                            drawCircle(glow, radius = glowR, center = Offset.Zero, alpha = 0.3f + 0.25f * pulse, blendMode = BlendMode.Plus)
+                        }
+                    }
+                }
+                translate(w * 0.72f, ground) {
+                    scale(1f, 0.26f, Offset.Zero) {
+                        drawCircle(glow, radius = glowR, center = Offset.Zero, alpha = 0.4f + 0.35f * pulse, blendMode = BlendMode.Plus)
+                    }
+                }
+                // Riders behind, slightly offset and dimmer, like the back rows of the studio.
+                for (i in 0 until 3) {
+                    val ox = w * (0.12f + 0.2f * i)
+                    val oy = ground - unitRider * 0.9f - unitRider * 0.25f * (2 - i)
+                    val fade = 0.5f + 0.12f * i
+                    drawLitRider(Offset(ox, oy), unitRider, riderAngle + i * 1.7f, body.copy(alpha = fade), rim.copy(alpha = fade), standing)
+                }
+                drawLitRider(Offset(w * 0.72f, ground), unitCoach, coachAngle, body, rim, standing, front = true)
+                // Floor line under the front row.
+                drawLine(rim.copy(alpha = 0.5f), Offset(0f, ground), Offset(w, ground), strokeWidth = lineW)
+            }
         }
-        drawRider(Offset(w * 0.72f, ground), unitCoach, coachAngle, color, standing, front = true)
-        // Floor line under the front row.
-        drawLine(color.copy(alpha = 0.35f), Offset(0f, ground), Offset(w, ground), strokeWidth = 2.dp.toPx())
-    }
+    )
+}
+
+/** A rider with a soft and a sharp rim light in [rim] behind the [body] silhouette. */
+private fun DrawScope.drawLitRider(origin: Offset, unit: Float, crank: Float, body: Color, rim: Color, standing: Boolean, front: Boolean = false) {
+    drawRider(origin, unit, crank, rim.copy(alpha = rim.alpha * 0.22f), standing, front, widen = 3.4f)
+    drawRider(origin, unit, crank, rim.copy(alpha = rim.alpha * 0.65f), standing, front, widen = 1.9f)
+    drawRider(origin, unit, crank, body, standing, front)
 }
 
 /**
  * Draws a bike and a rider as strokes. [origin] is the ground point under the bottom bracket,
- * [unit] the wheel radius in pixels; y grows upwards in bike coordinates.
+ * [unit] the wheel radius in pixels; y grows upwards in bike coordinates. [widen] thickens every
+ * stroke for the rim-light passes.
  */
-private fun DrawScope.drawRider(origin: Offset, unit: Float, crank: Float, color: Color, standing: Boolean, front: Boolean = false) {
+private fun DrawScope.drawRider(origin: Offset, unit: Float, crank: Float, color: Color, standing: Boolean, front: Boolean = false, widen: Float = 1f) {
     fun p(x: Float, y: Float) = Offset(origin.x + x * unit, origin.y - y * unit)
-    val thin = unit * 0.09f
-    val thick = unit * 0.2f
+    val extra = unit * 0.07f * (widen - 1f)
+    val thin = unit * 0.09f + extra
+    val thick = unit * 0.2f + extra
     val bike = color.copy(alpha = color.alpha * 0.7f)
     val rw = p(-1.5f, 1f)
     val fw = p(1.5f, 1f)
@@ -659,11 +893,11 @@ private fun DrawScope.drawRider(origin: Offset, unit: Float, crank: Float, color
     leg(hip, bb, unit, crank + PI.toFloat(), color.copy(alpha = color.alpha * 0.45f), thick)
     drawLine(color, hip, shoulder, thick, StrokeCap.Round)
     drawLine(color, shoulder, bar, thin * 1.3f, StrokeCap.Round)
-    drawCircle(color, unit * 0.3f, head)
+    drawCircle(color, unit * 0.3f + extra * 0.5f, head)
     leg(hip, bb, unit, crank, color, thick)
     if (front) {
         // The instructor's little podium.
-        drawLine(color.copy(alpha = 0.5f), p(-2.3f, -0.02f), p(2.3f, -0.02f), thin * 1.5f, StrokeCap.Round)
+        drawLine(color.copy(alpha = color.alpha * 0.5f), p(-2.3f, -0.02f), p(2.3f, -0.02f), thin * 1.5f, StrokeCap.Round)
     }
 }
 

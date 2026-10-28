@@ -12,7 +12,42 @@ data class RoutePoint(val distanceM: Double, val elevationM: Double)
 data class Landmark(val distanceM: Double, val label: String)
 
 @Serializable
-enum class RouteKind(val title: String) { CLIMB("Anstieg"), FLAT("Flach"), ROLLING("Wellig") }
+enum class RouteKind(val title: String) { CLIMB("Anstieg"), FLAT("Flach"), ROLLING("Wellig"), STAGE("Etappe") }
+
+/** A categorised climb of a stage. */
+@Serializable
+data class Climb(
+    val name: String,
+    val summitM: Double,
+    val summitKm: Double,
+    val lengthKm: Double,
+    val avgPct: Double,
+    /** "HC", "1", "2", "3", "4" */
+    val category: String,
+)
+
+/** What makes a route a stage of a multi-day race. */
+@Serializable
+data class StageInfo(
+    val number: Int,
+    val date: String,
+    val startTown: String,
+    val finishTown: String,
+    /** flat, hilly, mountain, itt, ttt */
+    val type: String,
+    val climbs: List<Climb> = emptyList(),
+    val winner: String = "",
+) {
+    val typeTitle: String
+        get() = when (type) {
+            "flat" -> "Flachetappe"
+            "hilly" -> "Hügeletappe"
+            "mountain" -> "Bergetappe"
+            "itt" -> "Einzelzeitfahren"
+            "ttt" -> "Mannschaftszeitfahren"
+            else -> "Etappe"
+        }
+}
 
 /**
  * A virtual road: elevation over distance. Built-in routes reproduce the profiles of famous
@@ -38,8 +73,25 @@ data class Route(
     val hairpinsAtM: List<Double> = emptyList(),
     /** Number of the first bend; a shortened route keeps the full climb's numbering (0 = [hairpins]). */
     val firstHairpinNumber: Int = 0,
+    /** Set for a stage of the tour. */
+    val stage: StageInfo? = null,
+    /** Name of the cut this instance is ("Finale 30 km"); empty for the whole route or a plain fraction. */
+    val variant: String = "",
+    /** For a part of a longer route: where it starts and how long the whole route is (0 = this is the whole route). */
+    val offsetM: Double = 0.0,
+    val fullLengthM: Double = 0.0,
 ) {
     val lengthM: Double get() = points.lastOrNull()?.distanceM ?: 0.0
+    /** Length of the whole route this is part of; the own length when it is the whole route. */
+    val wholeLengthM: Double get() = if (fullLengthM > 0) fullLengthM else lengthM
+    /** Short name with the cut: "½ Alpe d'Huez", "Etappe 5 · Finale 30 km". */
+    val displayName: String
+        get() = when {
+            variant.isNotBlank() -> "$name · $variant"
+            fraction < 0.999 -> "${fractionText(fraction)} $name"
+            else -> name
+        }
+    val isStage: Boolean get() = stage != null
     val lengthKm: Double get() = lengthM / 1000
     val startElevationM: Double get() = points.firstOrNull()?.elevationM ?: 0.0
     val summitElevationM: Double get() = points.maxOfOrNull { it.elevationM } ?: 0.0
@@ -112,6 +164,79 @@ data class Route(
     /** The next landmark ahead of [distanceM], or null. */
     fun nextLandmark(distanceM: Double): Landmark? = landmarks.firstOrNull { it.distanceM > distanceM }
 
+    /** Average elevation over the route, weighted by distance. */
+    val meanElevationM: Double
+        get() {
+            if (points.size < 2) return startElevationM
+            var sum = 0.0
+            points.zipWithNext { a, b -> sum += (a.elevationM + b.elevationM) / 2 * (b.distanceM - a.distanceM) }
+            return sum / lengthM
+        }
+
+    /**
+     * The last [km] kilometres: the finale of a stage, with the finish and the final climbs. The
+     * distances start at 0 again; [offsetM] keeps where in the whole stage this part begins.
+     */
+    fun finale(km: Double): Route {
+        val cutM = km * 1000
+        if (cutM >= lengthM - 1) return this
+        val from = lengthM - cutM
+        // The ride stores the stage's id, so the finale is found again in the history and the progress.
+        return section(from, lengthM).copy(
+            id = id,
+            fraction = cutM / lengthM,
+            variant = "Finale %.0f km".format(km),
+            offsetM = 0.0,
+            fullLengthM = 0.0,
+        )
+    }
+
+    /** The instance a ride was done on, from what the ride stored. */
+    fun cut(fraction: Double, variant: String): Route = when {
+        variant.startsWith("Finale") -> finale(variant.filter { it.isDigit() || it == '.' }.toDoubleOrNull() ?: lengthKm)
+        else -> shortened(fraction)
+    }
+
+    /**
+     * The part between two distances as a route of its own (for building the 3D world of a long
+     * route piece by piece). Kind and biome follow the terrain of that part.
+     */
+    fun section(fromM: Double, toM: Double): Route {
+        val a = fromM.coerceIn(0.0, lengthM)
+        val b = toM.coerceIn(a, lengthM)
+        val inner = points.filter { it.distanceM > a && it.distanceM < b }
+        val pts = (listOf(RoutePoint(a, elevationAt(a))) + inner + RoutePoint(b, elevationAt(b)))
+            .map { RoutePoint(it.distanceM - a, it.elevationM) }
+        val part = copy(points = pts)
+        val climbGrade = part.avgGradientPct
+        // Any part of a stage (also a part of a finale, which already carries a derived kind) gets the kind
+        // and biome of its own terrain.
+        val sectionKind = when {
+            !isStage -> kind
+            climbGrade > 3.0 -> RouteKind.CLIMB
+            part.ascentM / part.lengthM.coerceAtLeast(1.0) > 0.012 -> RouteKind.ROLLING
+            else -> RouteKind.FLAT
+        }
+        val bends = hairpinsAtM.filter { it > a + 100 && it < b - 100 }.map { it - a }
+        val sectionBiome = when {
+            !isStage || biome == Biome.CITY -> biome
+            part.meanElevationM > 1100 -> if (biome == Biome.FIELDS || biome == Biome.VOLCANIC) Biome.ALPINE else biome
+            part.meanElevationM > 600 -> if (biome == Biome.FIELDS) Biome.PYRENEAN else biome
+            else -> Biome.FIELDS
+        }
+        return part.copy(
+            id = if (a == 0.0 && b >= lengthM) id else "$id@${a.toInt()}",
+            kind = sectionKind,
+            biome = sectionBiome,
+            landmarks = landmarks.filter { it.distanceM >= a && it.distanceM <= b }.map { Landmark(it.distanceM - a, it.label) },
+            hairpins = bends.size,
+            hairpinsAtM = bends,
+            firstHairpinNumber = 0,
+            offsetM = offsetM + a,
+            fullLengthM = wholeLengthM,
+        )
+    }
+
     /**
      * The first [fraction] of the route (0.25, 0.5, 0.75); the profile keeps its gradients, so
      * a shortened Alpe d'Huez still starts with its steepest kilometres.
@@ -132,6 +257,14 @@ data class Route(
     }
 
     companion object {
+        /** "½", "¾", "¼" for a shortened route, otherwise the percentage. */
+        fun fractionText(fraction: Double): String = when {
+            kotlin.math.abs(fraction - 0.75) < 0.01 -> "¾"
+            kotlin.math.abs(fraction - 0.5) < 0.01 -> "½"
+            kotlin.math.abs(fraction - 0.25) < 0.01 -> "¼"
+            else -> "${(fraction * 100).roundToInt()} %"
+        }
+
         /**
          * Builds a route from per-kilometre average gradients, the usual way climb profiles are published.
          * The last entry covers the remaining partial kilometre so that [lengthKm] is exact.

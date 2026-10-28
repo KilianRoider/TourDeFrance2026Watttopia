@@ -254,13 +254,13 @@ fun RideDetailScreen(container: AppContainer, rideId: String, onBack: () -> Unit
             val routeId = ride.routeId
             val routeTime = ride.routeTimeSec
             if (routeId != null) {
-                val route = app.rollentrainer.core.route.Routes.byId(routeId)?.shortened(ride.routeFraction)
+                val route = app.rollentrainer.core.route.Routes.byId(routeId)?.cut(ride.routeFraction, ride.routeVariant)
                 Panel(Modifier.fillMaxWidth()) {
-                    Text(route?.name ?: "Virtuelle Strecke", style = MaterialTheme.typography.titleMedium)
+                    Text(route?.displayName ?: "Virtuelle Strecke", style = MaterialTheme.typography.titleMedium)
                     Spacer(Modifier.height(8.dp))
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(32.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         if (route != null) Stat("Strecke", "%.1f km · %.0f Hm".format(route.lengthKm, route.ascentM))
-                        Stat("Zeit bis oben", routeTime?.let { formatDuration(it) } ?: "nicht beendet")
+                        Stat(if (route?.isStage == true) "Zeit im Ziel" else "Zeit bis oben", routeTime?.let { formatDuration(it) } ?: "nicht beendet")
                         if (route != null && routeTime != null && routeTime > 0) {
                             Stat("Ø Tempo", "%.1f km/h".format(route.lengthM / routeTime * 3.6))
                             Stat("VAM", "${(route.ascentM / routeTime * 3600).roundToInt()} m/h")

@@ -1,6 +1,9 @@
 package app.rollentrainer.core
 
 import app.rollentrainer.core.route.Biome
+import app.rollentrainer.core.route.Drivetrain
+import app.rollentrainer.core.route.Gearing
+import app.rollentrainer.core.route.VirtualGears
 import app.rollentrainer.core.route.Landmark
 import app.rollentrainer.core.route.Pacer
 import app.rollentrainer.core.route.Physics
@@ -8,6 +11,9 @@ import app.rollentrainer.core.route.RiderParams
 import app.rollentrainer.core.route.Route
 import app.rollentrainer.core.route.RouteEngine
 import app.rollentrainer.core.route.RouteKind
+import app.rollentrainer.core.route.RoutePoint
+import app.rollentrainer.core.route.StageInfo
+import app.rollentrainer.core.route.Stages
 import app.rollentrainer.core.route.World
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -202,5 +208,115 @@ class RouteTest {
         val cw = World(city, Biome.CITY)
         assertTrue(cw.props.count { it.kind == app.rollentrainer.core.route.Prop.BUILDING } > 100)
         assertTrue(cw.terrain.heights.all { abs(it - 32.5) < 4.0 })
+    }
+
+    @Test fun stageSectionsAndFinaleKeepTheProfile() {
+        // A 60 km stage: flat, a 10 km climb at 7 %, a descent, flat to the finish.
+        val pts = listOf(
+            RoutePoint(0.0, 200.0), RoutePoint(20000.0, 220.0), RoutePoint(30000.0, 920.0),
+            RoutePoint(40000.0, 300.0), RoutePoint(60000.0, 180.0),
+        )
+        val stage = Route(
+            "t-stage", "Etappe 1: A – B", "Test", "", RouteKind.STAGE, pts,
+            landmarks = listOf(Landmark(25000.0, "Halber Berg"), Landmark(30000.0, "Gipfel"), Landmark(55000.0, "Letzte Stadt")),
+            biome = Biome.FIELDS, hairpinsAtM = listOf(24000.0, 27000.0),
+            stage = StageInfo(1, "4. Juli", "A", "B", "mountain"),
+        )
+        assertTrue(stage.isStage)
+        val climb = stage.section(20000.0, 30000.0)
+        assertEquals(RouteKind.CLIMB, climb.kind)
+        assertEquals(10000.0, climb.lengthM, 0.001)
+        assertEquals(7.0, climb.avgGradientPct, 0.01)
+        assertEquals(2, climb.hairpins)
+        assertEquals(listOf(4000.0, 7000.0), climb.hairpinsAtM)
+        assertEquals(listOf("Halber Berg", "Gipfel"), climb.landmarks.map { it.label })
+        assertEquals(5000.0, climb.landmarks[0].distanceM, 0.001)
+        assertEquals(20000.0, climb.offsetM, 0.001)
+        assertEquals(60000.0, climb.wholeLengthM, 0.001)
+        assertEquals(Biome.FIELDS, climb.biome)
+        val flat = stage.section(0.0, 20000.0)
+        assertEquals(RouteKind.FLAT, flat.kind)
+        val down = stage.section(30000.0, 40000.0)
+        assertEquals(RouteKind.FLAT, down.kind)
+        assertEquals(-6.2, down.avgGradientPct, 0.01)
+        // Every section builds a world, and the boards count down to the stage finish.
+        val w = World(climb, climb.biome)
+        assertTrue(w.signs.any { it.text.startsWith("noch 3") && it.text.contains("km") })
+        assertTrue(w.signs.count { Regex("Kehre \\d+").matches(it.text) } == 2)
+        // The finale is the last 30 km with the finish; its name says so and the ride stores it.
+        val finale = stage.finale(30.0)
+        assertEquals(30000.0, finale.lengthM, 0.001)
+        assertEquals(180.0, finale.points.last().elevationM, 0.001)
+        assertEquals(920.0, finale.startElevationM, 0.001)
+        assertEquals("Etappe 1: A – B · Finale 30 km", finale.displayName)
+        assertEquals(0.5, finale.fraction, 0.001)
+        assertEquals(finale.lengthM, stage.cut(finale.fraction, finale.variant).lengthM, 0.001)
+        // The ride stores the finale under the stage's id, so history and progress find it again.
+        assertEquals(stage.id, finale.id)
+        assertEquals("½ Etappe 1: A – B", stage.shortened(0.5).displayName)
+        assertEquals(stage.lengthM, stage.finale(90.0).lengthM, 0.001)
+    }
+
+    @Test fun builtInStagesAreSane() {
+        for (st in Stages.all) {
+            val info = st.stage!!
+            assertTrue(st.name, st.lengthM in 10_000.0..260_000.0)
+            assertTrue(st.name, st.points.zipWithNext().all { (a, b) -> b.distanceM > a.distanceM })
+            assertTrue("${st.name} max grade ${st.maxGradientPct}", st.maxGradientPct < 17.0)
+            assertTrue(st.name, info.climbs.all { it.summitKm * 1000 <= st.lengthM + 1 })
+            assertTrue(st.name, st.landmarks.all { it.distanceM > 0 && it.distanceM < st.lengthM })
+            // Every section of the stage builds a world within the limits of the renderer.
+            val n = kotlin.math.ceil(st.lengthM / 8000.0).toInt()
+            val len = st.lengthM / n
+            for (i in 0 until n) {
+                val part = st.section(i * len, if (i == n - 1) st.lengthM else (i + 1) * len)
+                val w = World(part, part.biome)
+                assertTrue("${st.name} section $i cells ${w.terrain.cols * w.terrain.rows}", w.terrain.cols * w.terrain.rows < 150_000)
+            }
+        }
+        assertEquals(Stages.all.size, Stages.all.map { it.id }.toSet().size)
+    }
+}
+
+class GearingTest {
+    private val p = RiderParams.forRider(78.0)
+    private val neutral = VirtualGears.NEUTRAL_RATIO
+
+    @Test fun neutralGearSendsTheRoadGrade() {
+        for (g in listOf(-5.0, 0.0, 4.0, 9.0)) for (v in listOf(3.0, 6.0, 12.0)) {
+            assertEquals(g, Gearing.feelGrade(g, neutral, neutral, v, p), 0.05)
+        }
+    }
+
+    @Test fun harderGearsFeelSteeperAndEasierGearsFlatter() {
+        val dt = Drivetrain.of("50/34", "11-28")
+        assertEquals(20, dt.gears.size)
+        val gears = VirtualGears(dt)
+        assertEquals("50 × 17", gears.gear.label)
+        val road = 6.0
+        val v = 5.0
+        val neutralGrade = Gearing.feelGrade(road, gears.gear.ratio, neutral, v, p)
+        gears.up(); gears.up()
+        val harder = Gearing.feelGrade(road, gears.gear.ratio, neutral, v, p)
+        repeat(6) { gears.down() }
+        val easier = Gearing.feelGrade(road, gears.gear.ratio, neutral, v, p)
+        assertTrue("$easier < $neutralGrade < $harder", easier < neutralGrade - 1 && harder > neutralGrade + 1)
+        // The hardest gear on a steep climb stays within what trainers accept.
+        while (gears.up()) Unit
+        assertTrue(Gearing.feelGrade(12.0, gears.gear.ratio, neutral, 2.0, p) <= Gearing.MAX_GRADE)
+        assertEquals("50 × 11 · 20/20", gears.label)
+        while (gears.down()) Unit
+        assertTrue(Gearing.feelGrade(-6.0, gears.gear.ratio, neutral, 12.0, p) >= Gearing.MIN_GRADE)
+    }
+
+    @Test fun pedalPowerMatchesBetweenVirtualAndSentGrade() {
+        // Riding 34 × 28 virtually on 8 % at 90 rpm must take the same pedal power as the trainer at the sent grade.
+        val gear = Drivetrain.Gear(34, 28)
+        val vFly = Gearing.flywheelFromCadence(90, neutral)
+        val sent = Gearing.feelGrade(8.0, gear.ratio, neutral, vFly, p)
+        val k = gear.ratio / neutral
+        val wantedPower = Physics.resistance(vFly * k, 8.0, p) * vFly * k
+        val trainerPower = Physics.resistance(vFly, sent, p) * vFly
+        assertEquals(wantedPower, trainerPower, wantedPower * 0.03)
     }
 }

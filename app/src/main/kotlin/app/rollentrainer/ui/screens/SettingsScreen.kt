@@ -56,6 +56,7 @@ import app.rollentrainer.ble.ConnectionState
 import app.rollentrainer.ble.ScanItem
 import app.rollentrainer.core.metrics.StarTolerance
 import app.rollentrainer.core.metrics.ZoneScheme
+import app.rollentrainer.core.route.Drivetrain
 import app.rollentrainer.data.AppSettings
 import app.rollentrainer.data.SavedSensor
 import app.rollentrainer.data.SensorRole
@@ -317,6 +318,35 @@ private fun RoutesPanel(settings: AppSettings, update: ((AppSettings) -> AppSett
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        Spacer(Modifier.height(8.dp))
+        ChoiceRow(
+            "Kamera",
+            listOf(false to "Hinter dem Rad", true to "Ego-Perspektive"),
+            settings.firstPersonView,
+        ) { v -> update { it.copy(firstPersonView = v) } }
+        Text(
+            "Lässt sich während der Fahrt jederzeit umschalten.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(8.dp))
+        SwitchRow(
+            "Virtuelle Schaltung",
+            "In der Fahrt schaltest du mit zwei Tasten; der Trainer stellt den Widerstand zum Gang",
+            settings.virtualGears,
+        ) { v -> update { it.copy(virtualGears = v) } }
+        if (settings.virtualGears) {
+            ChoiceRow("Kettenblätter", Drivetrain.CHAINRINGS.keys.map { it to it }, settings.chainrings) { v -> update { it.copy(chainrings = v) } }
+            ChoiceRow("Kassette", Drivetrain.CASSETTES.keys.map { it to it }, settings.cassette) { v -> update { it.copy(cassette = v) } }
+            val gears = Drivetrain.of(settings.chainrings, settings.cassette).gears
+            Text(
+                "${gears.size} Gänge von ${gears.first().label} bis ${gears.last().label}. Schalte dein echtes Rad in einen mittleren Gang " +
+                    "(etwa 50 × 17) und lass es dort: geschaltet wird in der App, der Trainer macht den Gang über den Widerstand fühlbar. " +
+                    "Mit einem leichteren Gang wird die Steigung flacher, mit einem schwereren steiler – wie auf der Straße.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
     }
 }
 

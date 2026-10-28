@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -45,15 +46,20 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
 import app.rollentrainer.core.metrics.PowerZone
+import app.rollentrainer.core.model.AppJson
 import app.rollentrainer.core.model.Block
 import app.rollentrainer.core.model.Cue
 import app.rollentrainer.core.model.Power
@@ -62,7 +68,6 @@ import app.rollentrainer.core.model.PowerUnit
 import app.rollentrainer.core.model.Timeline
 import app.rollentrainer.core.model.Workout
 import app.rollentrainer.core.zwo.Zwo
-import app.rollentrainer.ui.LocalWide
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.Stat
 import app.rollentrainer.ui.components.Stepper
@@ -71,10 +76,20 @@ import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.components.formatMinutes
 import app.rollentrainer.ui.theme.zoneColor
 import kotlinx.coroutines.launch
+import kotlinx.serialization.builtins.ListSerializer
 import java.util.UUID
 import kotlin.math.roundToInt
 
 private fun newId() = UUID.randomUUID().toString()
+
+private val BlockList = ListSerializer(Block.serializer())
+
+/** Keeps the blocks of the draft as JSON, which every saved-state bundle can hold; a workout is a few kB. */
+private val BlocksSaver: Saver<SnapshotStateList<Block>, String> = Saver(
+    save = { AppJson.encodeToString(BlockList, it.toList()) },
+    // Unreadable state starts the editor afresh rather than crashing it.
+    restore = { json -> runCatching { mutableStateListOf<Block>().apply { addAll(AppJson.decodeFromString(BlockList, json)) } }.getOrNull() },
+)
 
 /** Builds a workout from blocks. Built-in workouts are copied before editing. */
 @OptIn(ExperimentalLayoutApi::class)
@@ -83,11 +98,16 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val ftp = settings.ftp
     val original = remember(workoutId) { workoutId?.let { container.workouts.find(it) } }
-    val id = remember { if (original == null || copy) newId() else original.id }
-    var name by remember { mutableStateOf(original?.let { if (copy) "${it.name} (Kopie)" else it.name } ?: "Neues Training") }
-    var description by remember { mutableStateOf(original?.description.orEmpty()) }
-    var test by remember { mutableStateOf(original?.test ?: TestKind.NONE) }
-    val blocks = remember {
+    // The draft is saveable: turning the device brings the editor back (the back stack is kept),
+    // and it must come back with the edits, not with the workout as it was last saved. Named keys,
+    // not the position: turning a phone switches AppRoot between the bottom bar and the rail, which
+    // moves this screen to another place in the tree, and the position-based keys would miss.
+    val draft = "editor:$copy:${workoutId.orEmpty()}"
+    val id = rememberSaveable(key = "$draft:id") { if (original == null || copy) newId() else original.id }
+    var name by rememberSaveable(key = "$draft:name") { mutableStateOf(original?.let { if (copy) "${it.name} (Kopie)" else it.name } ?: "Neues Training") }
+    var description by rememberSaveable(key = "$draft:description") { mutableStateOf(original?.description.orEmpty()) }
+    var test by rememberSaveable(key = "$draft:test") { mutableStateOf(original?.test ?: TestKind.NONE) }
+    val blocks = rememberSaveable(saver = BlocksSaver, key = "$draft:blocks") {
         mutableStateListOf<Block>().apply {
             addAll(original?.blocks ?: listOf(
                 Block.Ramp(newId(), 600, Power.pct(45), Power.pct(70), "Einfahren"),
@@ -96,7 +116,7 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
             ))
         }
     }
-    var confirmDelete by remember { mutableStateOf(false) }
+    var confirmDelete by rememberSaveable(key = "$draft:confirmDelete") { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val workout = Workout(id, name.ifBlank { "Training" }, description, blocks.toList(), test = test)
@@ -125,7 +145,7 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
                 WorkoutProfile(timeline, ftp, Modifier.fillMaxWidth().height(120.dp))
                 Spacer(Modifier.height(16.dp))
                 val (intensity, tss) = timeline.plannedStress(ftp)
-                Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Stat("Dauer", formatMinutes(timeline.totalSec))
                     Stat("IF", "%.2f".format(intensity))
                     Stat("TSS", tss.roundToInt().toString())
@@ -142,7 +162,7 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
                     FilterChip(selected = test == TestKind.TWENTY_MIN, onClick = { test = TestKind.TWENTY_MIN }, label = { Text("20-Minuten-Test (95 %)") })
                 }
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(onClick = { save() }, enabled = blocks.isNotEmpty()) { Text("Speichern") }
                 OutlinedButton(onClick = { share() }) {
                     Icon(Icons.Outlined.Share, null)
@@ -174,29 +194,39 @@ fun EditorScreen(container: AppContainer, workoutId: String?, copy: Boolean, onD
         }
     }
 
-    Column(Modifier.fillMaxSize()) {
-        Row(Modifier.padding(start = 8.dp, top = 8.dp, end = 24.dp), verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = onDone) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Zurück") }
-            Text(if (original == null || copy) "Training erstellen" else "Training bearbeiten", style = MaterialTheme.typography.headlineMedium)
-        }
-        if (LocalWide.current) {
-            Row(Modifier.fillMaxSize().padding(horizontal = 24.dp), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                Box(Modifier.width(420.dp).fillMaxHeight().verticalScroll(rememberScrollState()).padding(vertical = 16.dp)) { overview() }
-                LazyColumn(
-                    Modifier.weight(1f).fillMaxHeight(),
-                    contentPadding = PaddingValues(vertical = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                    content = blockItems,
+    // Two panes only where the 420 dp overview and a usable block list both fit; a phone in landscape
+    // counts as wide for the app but would leave the blocks a sliver.
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val twoPane = maxWidth >= 760.dp
+        val compact = maxWidth < 600.dp
+        Column(Modifier.fillMaxSize()) {
+            Row(Modifier.padding(start = if (compact) 4.dp else 8.dp, top = 8.dp, end = if (compact) 16.dp else 24.dp), verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onDone) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Zurück") }
+                Text(
+                    if (original == null || copy) "Training erstellen" else "Training bearbeiten",
+                    style = if (compact) MaterialTheme.typography.titleLarge else MaterialTheme.typography.headlineMedium,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
             }
-        } else {
-            LazyColumn(
-                Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-            ) {
-                item { overview() }
-                blockItems()
+            if (twoPane) {
+                Row(Modifier.fillMaxSize().padding(horizontal = 24.dp), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+                    Box(Modifier.width(420.dp).fillMaxHeight().verticalScroll(rememberScrollState()).padding(vertical = 16.dp)) { overview() }
+                    LazyColumn(
+                        Modifier.weight(1f).fillMaxHeight(),
+                        contentPadding = PaddingValues(vertical = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        content = blockItems,
+                    )
+                }
+            } else {
+                LazyColumn(
+                    Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    item { overview() }
+                    blockItems()
+                }
             }
         }
     }
@@ -286,21 +316,33 @@ private fun BlockCard(
     }
     val zone = PowerZone.of(mainPower.percentOfFtp(ftp))
     Panel {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.size(width = 6.dp, height = 28.dp).clip(RoundedCornerShape(3.dp)).background(zoneColor(zone)))
-            Spacer(Modifier.width(12.dp))
-            Column(Modifier.weight(1f)) {
-                Text(title, style = MaterialTheme.typography.titleMedium)
-                Text(
-                    "${formatDuration(block.durationSec())} · ${zone.name} ${zone.label}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+        // On a phone the four actions get their own line; beside the title they would leave it a few letters.
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val narrow = maxWidth < 380.dp
+            val actions: @Composable () -> Unit = {
+                IconButton(onClick = { onMove(-1) }, enabled = canUp) { Icon(Icons.Outlined.KeyboardArrowUp, "Nach oben") }
+                IconButton(onClick = { onMove(1) }, enabled = canDown) { Icon(Icons.Outlined.KeyboardArrowDown, "Nach unten") }
+                IconButton(onClick = onDuplicate) { Icon(Icons.Outlined.ContentCopy, "Duplizieren") }
+                IconButton(onClick = onDelete) { Icon(Icons.Outlined.Delete, "Entfernen") }
             }
-            IconButton(onClick = { onMove(-1) }, enabled = canUp) { Icon(Icons.Outlined.KeyboardArrowUp, "Nach oben") }
-            IconButton(onClick = { onMove(1) }, enabled = canDown) { Icon(Icons.Outlined.KeyboardArrowDown, "Nach unten") }
-            IconButton(onClick = onDuplicate) { Icon(Icons.Outlined.ContentCopy, "Duplizieren") }
-            IconButton(onClick = onDelete) { Icon(Icons.Outlined.Delete, "Entfernen") }
+            Column {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(Modifier.size(width = 6.dp, height = 28.dp).clip(RoundedCornerShape(3.dp)).background(zoneColor(zone)))
+                    Spacer(Modifier.width(12.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text(title, style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            "${formatDuration(block.durationSec())} · ${zone.name} ${zone.label}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    if (!narrow) actions()
+                }
+                if (narrow) {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { actions() }
+                }
+            }
         }
         Spacer(Modifier.height(12.dp))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -356,18 +398,44 @@ private fun withCues(b: Block, cues: List<Cue>): Block = when (b) {
 private fun CueEditor(cues: List<Cue>, maxSec: Int, onChange: (List<Cue>) -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("Hinweise während des Blocks", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        cues.forEachIndexed { i, cue ->
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Stepper(
-                    formatDuration(cue.offsetSec),
-                    onMinus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec - stepFor(cue.offsetSec)).coerceAtLeast(0)) }) },
-                    onPlus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec + stepFor(cue.offsetSec)).coerceAtMost((maxSec - 1).coerceAtLeast(0))) }) },
-                )
-                OutlinedTextField(
-                    cue.text, { t -> onChange(cues.toMutableList().also { it[i] = cue.copy(text = t) }) },
-                    singleLine = true, modifier = Modifier.weight(1f), placeholder = { Text("z. B. „Ruhig atmen, Trittfrequenz hoch halten“") },
-                )
-                IconButton(onClick = { onChange(cues.filterIndexed { k, _ -> k != i }) }) { Icon(Icons.Outlined.Delete, "Hinweis entfernen") }
+        // Under 480 dp the text field gets its own line; next to the time stepper it would be a sliver.
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val narrow = maxWidth < 480.dp
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                cues.forEachIndexed { i, cue ->
+                    val time: @Composable () -> Unit = {
+                        Stepper(
+                            formatDuration(cue.offsetSec),
+                            onMinus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec - stepFor(cue.offsetSec)).coerceAtLeast(0)) }) },
+                            onPlus = { onChange(cues.toMutableList().also { it[i] = cue.copy(offsetSec = (cue.offsetSec + stepFor(cue.offsetSec)).coerceAtMost((maxSec - 1).coerceAtLeast(0))) }) },
+                        )
+                    }
+                    val remove: @Composable () -> Unit = {
+                        IconButton(onClick = { onChange(cues.filterIndexed { k, _ -> k != i }) }) { Icon(Icons.Outlined.Delete, "Hinweis entfernen") }
+                    }
+                    if (narrow) {
+                        Column {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                time()
+                                Spacer(Modifier.weight(1f))
+                                remove()
+                            }
+                            OutlinedTextField(
+                                cue.text, { t -> onChange(cues.toMutableList().also { it[i] = cue.copy(text = t) }) },
+                                singleLine = true, modifier = Modifier.fillMaxWidth(), placeholder = { Text("z. B. „Ruhig atmen, Trittfrequenz hoch halten“") },
+                            )
+                        }
+                    } else {
+                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            time()
+                            OutlinedTextField(
+                                cue.text, { t -> onChange(cues.toMutableList().also { it[i] = cue.copy(text = t) }) },
+                                singleLine = true, modifier = Modifier.weight(1f), placeholder = { Text("z. B. „Ruhig atmen, Trittfrequenz hoch halten“") },
+                            )
+                            remove()
+                        }
+                    }
+                }
             }
         }
         TextButton(onClick = {

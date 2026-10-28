@@ -1,0 +1,40 @@
+{
+ "name": "race_roadpaint",
+ "kind": "atlas",
+ "category": "race",
+ "file": "race_roadpaint.webp",
+ "size_px": [
+  1024,
+  1024
+ ],
+ "alpha": true,
+ "source": "procedural (scratchpad/b14/w3/tex/gen_race_textures.py)",
+ "cols": 2,
+ "rows": 8,
+ "cell_px": [
+  512,
+  128
+ ],
+ "words": [
+  "ALLEZ",
+  "VAS-Y",
+  "ALLEZ KILI",
+  "AUPA",
+  "FORZA",
+  "HOP HOP",
+  "COURAGE",
+  "BRAVO",
+  "GO GO GO",
+  "ALLEZ ALLEZ",
+  "<hearts>",
+  "<stars>",
+  "<chevrons>",
+  "KILI",
+  "HUP",
+  "VAMOS"
+ ],
+ "size_m": [
+  4.0,
+  2.0
+ ]
+}

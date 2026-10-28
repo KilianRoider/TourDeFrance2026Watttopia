@@ -1,0 +1,488 @@
+{
+ "id": "tour26-05",
+ "lengthKm": 158.3,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Lannemezan – départ réel (D929, before Uglas)",
+   "lat": 43.1364,
+   "lon": 0.42115,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 1.0,
+   "name": "Uglas (près)",
+   "lat": 43.14442,
+   "lon": 0.42536,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 6.1,
+   "name": "Tajan (près)",
+   "lat": 43.1853,
+   "lon": 0.44688,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 9.3,
+   "name": "Monlong",
+   "lat": 43.20694,
+   "lon": 0.46558,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D929"
+  },
+  {
+   "km": 12.8,
+   "name": "Gaussan (près)",
+   "lat": 43.23311,
+   "lon": 0.48884,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 16.4,
+   "name": "Cantaou (Cizos)",
+   "lat": 43.2627,
+   "lon": 0.50464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 20.3,
+   "name": "Castelnau-Magnoac – D929 (Rue des Quatre Vallées) → D632 (Rue de Tarbes)",
+   "lat": 43.2942,
+   "lon": 0.50516,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D632",
+   "radius": 15
+  },
+  {
+   "km": 22.2,
+   "name": "Lac du Magnoac (Larroque)",
+   "lat": 43.29995,
+   "lon": 0.4902,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D632"
+  },
+  {
+   "km": 24.4,
+   "name": "Puntous",
+   "lat": 43.30387,
+   "lon": 0.46978,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D632"
+  },
+  {
+   "km": 29.8,
+   "name": "Lac de Puydarrieux (près)",
+   "lat": 43.30017,
+   "lon": 0.41178,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D632"
+  },
+  {
+   "km": 35.1,
+   "name": "Trie-sur-Baïse – onto the D939 northbound",
+   "lat": 43.32236,
+   "lon": 0.37204,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D939",
+   "radius": 12
+  },
+  {
+   "km": 40.1,
+   "name": "Montagnan (Barcugnan)",
+   "lat": 43.36407,
+   "lon": 0.38545,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D939"
+  },
+  {
+   "km": 42.7,
+   "name": "La Carrère (Barcugnan)",
+   "lat": 43.3868,
+   "lon": 0.39279,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D939"
+  },
+  {
+   "km": 48.1,
+   "name": "Saint-Michel (Gers)",
+   "lat": 43.43004,
+   "lon": 0.41542,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D939"
+  },
+  {
+   "km": 54.6,
+   "name": "Berdoues",
+   "lat": 43.48673,
+   "lon": 0.40627,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D939"
+  },
+  {
+   "km": 57.8,
+   "name": "Mirande",
+   "lat": 43.51542,
+   "lon": 0.40423,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D137"
+  },
+  {
+   "km": 62.8,
+   "name": "Le Couy (Estipouy)",
+   "lat": 43.54209,
+   "lon": 0.37926,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D137"
+  },
+  {
+   "km": 69.5,
+   "name": "Montesquiou",
+   "lat": 43.57802,
+   "lon": 0.32917,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D943"
+  },
+  {
+   "km": 76.8,
+   "name": "Bassoues",
+   "lat": 43.57992,
+   "lon": 0.24611,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 82.6,
+   "name": "Mascaras (Gers)",
+   "lat": 43.54535,
+   "lon": 0.23256,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 86.2,
+   "name": "Laveraët",
+   "lat": 43.53041,
+   "lon": 0.21395,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 90.8,
+   "name": "Marciac",
+   "lat": 43.52426,
+   "lon": 0.1611,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D3"
+  },
+  {
+   "km": 97.4,
+   "name": "Armentieux (près)",
+   "lat": 43.51137,
+   "lon": 0.08125,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 103.1,
+   "name": "Maubourguet",
+   "lat": 43.47103,
+   "lon": 0.03773,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D935"
+  },
+  {
+   "km": 109.5,
+   "name": "Nouilhan",
+   "lat": 43.41872,
+   "lon": 0.05087,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D935"
+  },
+  {
+   "km": 112.9,
+   "name": "Vic-en-Bigorre (entrée)",
+   "lat": 43.39083,
+   "lon": 0.05317,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D835"
+  },
+  {
+   "km": 113.5,
+   "name": "Vic-en-Bigorre – intermediate sprint",
+   "lat": 43.3862,
+   "lon": 0.05509,
+   "kind": "sprint",
+   "confidence": "high",
+   "road": "D6"
+  },
+  {
+   "km": 118.7,
+   "name": "Sanous (près)",
+   "lat": 43.3834,
+   "lon": -0.00686,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D6"
+  },
+  {
+   "km": 119.9,
+   "name": "Casteide-Doat",
+   "lat": 43.37803,
+   "lon": -0.01966,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D7"
+  },
+  {
+   "km": 122.2,
+   "name": "Lamayou (près)",
+   "lat": 43.37089,
+   "lon": -0.04292,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 125.0,
+   "name": "Viellepinte (près) – Côte de Flancart (uncategorised)",
+   "lat": 43.37022,
+   "lon": -0.06933,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 128.9,
+   "name": "Castelnau (Momy) (près)",
+   "lat": 43.37269,
+   "lon": -0.10616,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 131.4,
+   "name": "Baleix (foot of Côte de Baleix)",
+   "lat": 43.37765,
+   "lon": -0.13122,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D7"
+  },
+  {
+   "km": 132.7,
+   "name": "Côte de Baleix (cat. 3) summit",
+   "lat": 43.3768,
+   "lon": -0.14721,
+   "kind": "summit",
+   "confidence": "medium"
+  },
+  {
+   "km": 138.2,
+   "name": "Gabaston",
+   "lat": 43.36362,
+   "lon": -0.21275,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D7"
+  },
+  {
+   "km": 141.4,
+   "name": "Saint-Jammes (D7 → D943)",
+   "lat": 43.35803,
+   "lon": -0.25153,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D943"
+  },
+  {
+   "km": 142.6,
+   "name": "Morlaàs, Rond-Point du 11 Novembre 1918 (D943 bypass)",
+   "lat": 43.35063,
+   "lon": -0.25721,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 143.5,
+   "name": "Morlaàs (D943 east bypass)",
+   "lat": 43.34478,
+   "lon": -0.25312,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 144.3,
+   "name": "Morlaàs, Rond-Point du 8 Mai 1945 → Av. de la Résistance",
+   "lat": 43.33886,
+   "lon": -0.25186,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 146.6,
+   "name": "Quartier Haute-Vue",
+   "lat": 43.33602,
+   "lon": -0.27567,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 147.3,
+   "name": "Av. de la Résistance (bend)",
+   "lat": 43.33057,
+   "lon": -0.276,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 147.9,
+   "name": "Av. de la Résistance",
+   "lat": 43.33202,
+   "lon": -0.28212,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 148.7,
+   "name": "Quartier Berlanne",
+   "lat": 43.32886,
+   "lon": -0.2866,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D943"
+  },
+  {
+   "km": 150.4,
+   "name": "Pau (entrée), D943 / Av. Alfred Nobel",
+   "lat": 43.3224,
+   "lon": -0.30072,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Avenue Alfred Nobel"
+  },
+  {
+   "km": 151.78,
+   "name": "Av. Alfred Nobel (A64 overpass area)",
+   "lat": 43.31549,
+   "lon": -0.31476,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue Alfred Nobel"
+  },
+  {
+   "km": 152.63,
+   "name": "Av. Alfred Nobel → Bd de la Paix",
+   "lat": 43.31137,
+   "lon": -0.32347,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de la Paix"
+  },
+  {
+   "km": 152.94,
+   "name": "Bd de la Paix → Av. Péboué",
+   "lat": 43.31237,
+   "lon": -0.32693,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue Péboué"
+  },
+  {
+   "km": 153.97,
+   "name": "Av. Péboué → Bd Tourasse (roundabout)",
+   "lat": 43.30826,
+   "lon": -0.33821,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard Tourasse"
+  },
+  {
+   "km": 154.97,
+   "name": "Bd Tourasse",
+   "lat": 43.31092,
+   "lon": -0.34989,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard Tourasse"
+  },
+  {
+   "km": 156.61,
+   "name": "Bd du Recteur Jean Sarrailh",
+   "lat": 43.30964,
+   "lon": -0.37006,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard du Recteur Jean Sarrailh"
+  },
+  {
+   "km": 157.2,
+   "name": "Bd Sarrailh → Av. Jean Mermoz",
+   "lat": 43.3081,
+   "lon": -0.37661,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue Jean Mermoz"
+  },
+  {
+   "km": 157.72,
+   "name": "Bd Champetier de Ribes → Rue Michelet",
+   "lat": 43.30359,
+   "lon": -0.37816,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Michelet"
+  },
+  {
+   "km": 158.3,
+   "name": "Pau – finish, Rue du Maquis du Béarn (Place de Verdun)",
+   "lat": 43.29864,
+   "lon": -0.3768,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "km 0 = départ réel on the D929 north-east of Lannemezan, on the straight about 1 km before Uglas (official itinéraire horaire: départ fictif 14:05 place de la République, real start ~5.5 km from the gathering point; neutral section via rue Alsace-Lorraine, D939/D817/D10 and the D10/D929 junction, not included). Km values are from the official itinéraire horaire (Hautes-Pyrénées PDF, total 158.3 km). Town coordinates are Overture/OSM locality points snapped to the race road; hamlets marked medium were positioned along the routed road at their itinerary km. Route: D929 to Castelnau-Magnoac, D632 to Trie-sur-Baïse, D939 to Mirande, D137 to Montesquiou, D943 to Bassoues, then a voie communale via Mascaras and Laveraët to Marciac, D3/D3B/D943 to Maubourguet, D935 to Vic-en-Bigorre (sprint km 113.5), D6/D7 via Casteide-Doat to Baleix (Côte de Baleix cat. 3, summit km 132.7), Gabaston, Saint-Jammes, D943 around the east side of Morlaàs (bypass between the 11-Novembre and 8-Mai roundabouts, which matches the itinerary distances; the old road through the centre would be ~2 km too short) and along Avenue de la Résistance into Pau. Pau finale (from the route map description): Av. Alfred Nobel (over the A64), right onto Bd de la Paix, left Av. Péboué, Bd Tourasse, Bd du Recteur Jean Sarrailh, left Av. Jean Mermoz, right Bd Champetier de Ribes, left Rue Michelet, finish on rue du Maquis du Béarn by Place de Verdun at the end of a 560 m straight; routed distance Pau commune boundary→finish = 7.97 km vs 7.9 km official. Pau street km values are computed from routed distance, so medium. Points named 'via …' only keep a shortest-path router on the race road; Pau street and Morlaàs bypass km values are derived from routed distance (medium). [geodata G: Castelnau-Magnoac and Trie-sur-Baïse: the town points lay off the race road (east of the D929/D632 junction; south-west of where the race joins the D939), so the route rode 30 m and 195 m spurs to reach them; moved to the junctions on the race road]",
+ "sources": [
+  "https://www.hautespyrenees.fr/wp-content/uploads/2026/06/TOUR-DE-FRANCE_LANNEMEZAN_2026.pdf",
+  "https://tourdefranceparcours.fr/tour-de-france-2026/etape-5-2026/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-5-times.htm",
+  "https://hedgehogcycling.co.uk/stage-5-tour-de-france-2026.html",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-5-tdf-2026",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments"
+ ]
+}

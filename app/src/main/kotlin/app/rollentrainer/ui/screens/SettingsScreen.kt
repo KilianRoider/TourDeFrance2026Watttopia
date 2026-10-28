@@ -7,6 +7,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -18,7 +19,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -45,7 +45,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -60,8 +62,8 @@ import app.rollentrainer.core.route.Drivetrain
 import app.rollentrainer.data.AppSettings
 import app.rollentrainer.data.SavedSensor
 import app.rollentrainer.data.SensorRole
-import app.rollentrainer.ui.LocalWide
 import app.rollentrainer.ui.blePermissions
+import app.rollentrainer.ui.components.CameraSwitch
 import app.rollentrainer.ui.components.ConnectionDot
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.SectionTitle
@@ -97,54 +99,75 @@ fun SettingsScreen(container: AppContainer, stravaMessage: MutableStateFlow<Stri
     }
 
     val update: ((AppSettings) -> AppSettings) -> Unit = { container.settings.update(it) }
-    val left: @Composable () -> Unit = {
-        Column {
-            SectionTitle("Sensoren")
-            SensorsPanel(container, onPair = ::startPairing)
-            SectionTitle("Profil")
-            ProfilePanel(container, settings, update)
-            SectionTitle("Töne")
-            SoundsPanel(settings, update)
-        }
-    }
-    val right: @Composable () -> Unit = {
-        Column {
-            SectionTitle("Training")
-            TrainingPanel(settings, update)
-            SectionTitle("Spinning-Class")
-            SpinningSettingsPanel(container, settings, update)
-            SectionTitle("Virtuelle Strecken")
-            RoutesPanel(settings, update)
-            SectionTitle("Trainingsbildschirm")
-            Panel(Modifier.fillMaxWidth()) {
-                LayoutOptions(settings, update)
-            }
-            SectionTitle("Strava")
-            StravaPanel(container, settings, update)
-            SectionTitle("Garmin Connect")
-            Panel(Modifier.fillMaxWidth()) {
-                Text(
-                    "Garmin lässt derzeit keine neuen Apps an die Connect-Schnittstelle. " +
-                        "Teile die FIT-Datei einer Fahrt (Verlauf → Fahrt → „FIT-Datei teilen“) und lade sie auf " +
-                        "connect.garmin.com unter „Daten importieren“ hoch. Training Load und Trainingszustand werden dann übernommen.",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
-    }
 
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp)) {
-        Text("Einstellungen", style = MaterialTheme.typography.headlineLarge)
-        Spacer(Modifier.height(8.dp))
-        if (LocalWide.current) {
-            Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                Column(Modifier.weight(1f)) { left() }
-                Column(Modifier.weight(1f)) { right() }
+    // The decision is made on the space this screen really gets (after the navigation rail and
+    // system bars), not on LocalWide: a phone in landscape counts as "wide" there but two 300 dp
+    // columns of settings would be cramped, and on a short screen a smaller margin wins rows.
+    // The height comes from the configuration, which the keyboard leaves alone: the content
+    // height shrinks while it is open, and the page would jump to the smaller margin as you type.
+    val shortScreen = LocalConfiguration.current.screenHeightDp < 480
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val compact = maxWidth < 600.dp
+        val twoColumns = maxWidth >= 760.dp
+        val pad = if (compact || shortScreen) 16.dp else 24.dp
+        val left: @Composable () -> Unit = {
+            Column {
+                SectionTitle("Sensoren")
+                SensorsPanel(container, onPair = ::startPairing)
+                SectionTitle("Profil")
+                ProfilePanel(container, settings, update)
+                SectionTitle("Töne")
+                SoundsPanel(settings, update)
             }
-        } else {
-            left()
-            right()
+        }
+        val right: @Composable () -> Unit = {
+            Column {
+                SectionTitle("Training")
+                TrainingPanel(settings, update)
+                SectionTitle("Spinning-Class")
+                SpinningSettingsPanel(container, settings, update)
+                SectionTitle("Virtuelle Strecken")
+                RoutesPanel(settings, update)
+                SectionTitle("Trainingsbildschirm")
+                Panel(Modifier.fillMaxWidth()) {
+                    LayoutOptions(settings, update)
+                }
+                SectionTitle("Strava")
+                StravaPanel(container, settings, update)
+                SectionTitle("Garmin Connect")
+                Panel(Modifier.fillMaxWidth()) {
+                    Text(
+                        "Garmin lässt derzeit keine neuen Apps an die Connect-Schnittstelle. " +
+                            "Teile die FIT-Datei einer Fahrt (Verlauf → Fahrt → „FIT-Datei teilen“) und lade sie auf " +
+                            "connect.garmin.com unter „Daten importieren“ hoch. Training Load und Trainingszustand werden dann übernommen.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                // The licences of the geodata packs ask for this attribution (see tools/geodata/README.md).
+                SectionTitle("Kartendaten")
+                Panel(Modifier.fillMaxWidth()) {
+                    Text(
+                        DATA_SOURCES.joinToString("\n\n"),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
+
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(pad)) {
+            Text("Einstellungen", style = if (compact) MaterialTheme.typography.headlineMedium else MaterialTheme.typography.headlineLarge)
+            Spacer(Modifier.height(8.dp))
+            if (twoColumns) {
+                Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+                    Column(Modifier.weight(1f)) { left() }
+                    Column(Modifier.weight(1f)) { right() }
+                }
+            } else {
+                left()
+                right()
+            }
         }
     }
 
@@ -156,39 +179,51 @@ fun SettingsScreen(container: AppContainer, stravaMessage: MutableStateFlow<Stri
 @Composable
 private fun SensorsPanel(container: AppContainer, onPair: (SensorRole) -> Unit) {
     val status by container.sensors.status.collectAsStateWithLifecycle()
-    Panel(Modifier.fillMaxWidth(), padding = 0.dp) {
-        SensorRole.entries.forEachIndexed { i, role ->
-            if (i > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-            val st = status[role]
-            val sensor = st?.sensor
-            val state = st?.state ?: ConnectionState.DISCONNECTED
-            Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                ConnectionDot(state)
-                Spacer(Modifier.width(12.dp))
-                Column(Modifier.weight(1f)) {
-                    Text(role.title, style = MaterialTheme.typography.titleMedium)
-                    val detail = when {
-                        sensor == null -> role.hint
-                        else -> buildString {
-                            append(sensor.name)
-                            append(" · ")
-                            append(
-                                when (state) {
-                                    ConnectionState.CONNECTED -> "verbunden"
-                                    ConnectionState.CONNECTING -> "verbinde …"
-                                    ConnectionState.DISCONNECTED -> "getrennt"
-                                }
-                            )
-                            st?.battery?.let { append(" · Akku $it %") }
+    // On a narrow panel the two text buttons go under the name; beside it they would squeeze it to a
+    // few letters per line. Measured on the panel, not the screen: a column of the two-column layout
+    // is no wider than a phone. A large font needs the room sooner.
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val buttonsBelow = maxWidth < 440.dp * LocalDensity.current.fontScale.coerceAtLeast(1f)
+        Panel(Modifier.fillMaxWidth(), padding = 0.dp) {
+            SensorRole.entries.forEachIndexed { i, role ->
+                if (i > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                val st = status[role]
+                val sensor = st?.sensor
+                val state = st?.state ?: ConnectionState.DISCONNECTED
+                Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                    ConnectionDot(state)
+                    Spacer(Modifier.width(12.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text(role.title, style = MaterialTheme.typography.titleMedium)
+                        val detail = when {
+                            sensor == null -> role.hint
+                            else -> buildString {
+                                append(sensor.name)
+                                append(" · ")
+                                append(
+                                    when (state) {
+                                        ConnectionState.CONNECTED -> "verbunden"
+                                        ConnectionState.CONNECTING -> "verbinde …"
+                                        ConnectionState.DISCONNECTED -> "getrennt"
+                                    }
+                                )
+                                st?.battery?.let { append(" · Akku $it %") }
+                            }
+                        }
+                        Text(detail, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        if (sensor != null && buttonsBelow) {
+                            Row {
+                                TextButton(onClick = { onPair(role) }) { Text("Ändern") }
+                                TextButton(onClick = { container.sensors.forget(role) }) { Text("Entfernen") }
+                            }
                         }
                     }
-                    Text(detail, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-                if (sensor == null) {
-                    Button(onClick = { onPair(role) }) { Text("Koppeln") }
-                } else {
-                    TextButton(onClick = { onPair(role) }) { Text("Ändern") }
-                    TextButton(onClick = { container.sensors.forget(role) }) { Text("Entfernen") }
+                    if (sensor == null) {
+                        Button(onClick = { onPair(role) }) { Text("Koppeln") }
+                    } else if (!buttonsBelow) {
+                        TextButton(onClick = { onPair(role) }) { Text("Ändern") }
+                        TextButton(onClick = { container.sensors.forget(role) }) { Text("Entfernen") }
+                    }
                 }
             }
         }
@@ -220,7 +255,7 @@ private fun PairDialog(container: AppContainer, role: SensorRole, onDismiss: () 
         onDismissRequest = onDismiss,
         title = { Text("${role.title} koppeln") },
         text = {
-            Column(Modifier.widthIn(min = 320.dp)) {
+            Column(Modifier.fillMaxWidth()) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     CircularProgressIndicator(Modifier.height(16.dp).width(16.dp), strokeWidth = 2.dp)
                     Spacer(Modifier.width(12.dp))
@@ -228,7 +263,9 @@ private fun PairDialog(container: AppContainer, role: SensorRole, onDismiss: () 
                 }
                 error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
                 Spacer(Modifier.height(12.dp))
-                LazyColumn(Modifier.heightIn(max = 320.dp)) {
+                // weight(fill = false): on a phone in landscape the list shrinks and scrolls instead of
+                // pushing the "show all devices" switch out of the dialog.
+                LazyColumn(Modifier.weight(1f, fill = false).heightIn(max = 320.dp)) {
                     items(list, key = { it.address }) { item ->
                         Row(
                             Modifier.fillMaxWidth().clickable {
@@ -319,11 +356,13 @@ private fun RoutesPanel(settings: AppSettings, update: ((AppSettings) -> AppSett
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         Spacer(Modifier.height(8.dp))
-        ChoiceRow(
-            "Kamera",
-            listOf(false to "Hinter dem Rad", true to "Ego-Perspektive"),
-            settings.firstPersonView,
-        ) { v -> update { it.copy(firstPersonView = v) } }
+        Text("Kamera", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(top = 8.dp))
+        Spacer(Modifier.height(8.dp))
+        CameraSwitch(
+            firstPerson = settings.firstPersonView,
+            onChange = { v -> update { it.copy(firstPersonView = v) } },
+        )
+        Spacer(Modifier.height(4.dp))
         Text(
             "Lässt sich während der Fahrt jederzeit umschalten.",
             style = MaterialTheme.typography.bodySmall,
@@ -369,6 +408,23 @@ private fun SoundsPanel(settings: AppSettings, update: ((AppSettings) -> AppSett
             SwitchRow("Abschnittswechsel", "Signal beim Start eines Abschnitts, heller wenn es härter wird", settings.soundSegment) { v -> update { it.copy(soundSegment = v) } }
             SwitchRow("Trittfrequenz-Hinweise", "Wenn du länger als 10 s mehr als 10 rpm vom Ziel entfernt bist", settings.soundCadenceHints) { v -> update { it.copy(soundCadenceHints = v) } }
             SwitchRow("Metronom", "Klickt im Takt der Ziel-Trittfrequenz", settings.metronome) { v -> update { it.copy(metronome = v) } }
+        }
+        // Not a signal: the race sounds have their own switch and level, independent of the tones above.
+        SwitchRow(
+            "Streckenatmosphäre",
+            "Fahrtwind, Reifen, Zuschauer und das Peloton auf virtuellen Strecken – am Berg mit Kuhglocken, im Ziel mit Sprecher",
+            settings.ambience,
+        ) { v -> update { it.copy(ambience = v) } }
+        if (settings.ambience) {
+            var level by remember(settings.ambienceVolume) { mutableStateOf(settings.ambienceVolume.toFloat()) }
+            Text("Lautstärke Atmosphäre ${level.toInt()} %", style = MaterialTheme.typography.bodyLarge)
+            Slider(
+                value = level,
+                onValueChange = { v -> level = v },
+                onValueChangeFinished = { update { it.copy(ambienceVolume = level.toInt()) } },
+                valueRange = 0f..100f,
+                steps = 9,
+            )
         }
     }
 }
@@ -446,6 +502,7 @@ private fun TrainingPanel(settings: AppSettings, update: ((AppSettings) -> AppSe
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun StravaPanel(container: AppContainer, settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
     val context = LocalContext.current
@@ -473,7 +530,7 @@ private fun StravaPanel(container: AppContainer, settings: AppSettings, update: 
             OutlinedTextField(secret, { secret = it.trim() }, label = { Text("Client-Secret") }, singleLine = true,
                 visualTransformation = PasswordVisualTransformation(), modifier = Modifier.fillMaxWidth())
             Spacer(Modifier.height(12.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 Button(
                     enabled = id.isNotBlank() && secret.isNotBlank(),
                     onClick = {
@@ -488,3 +545,16 @@ private fun StravaPanel(container: AppContainer, settings: AppSettings, update: 
         }
     }
 }
+
+/** Where the landscape of the real routes comes from, with the attribution their licences require. */
+private val DATA_SOURCES = listOf(
+    "Die Strecken mit echter Landschaft beruhen auf offenen Geodaten. Die daraus gebauten Kartenpakete stehen unter der " +
+        "Open Database License (ODbL 1.0).",
+    "Straßen, Gebäude und Gewässer: © OpenStreetMap-Mitwirkende (ODbL), bereitgestellt von der Overture Maps Foundation " +
+        "(CDLA Permissive 2.0 und ODbL).",
+    "Höhenmodell: Copernicus DEM GLO-30, © DLR e.V. 2010–2014 und © Airbus Defence and Space GmbH 2014–2018, " +
+        "bereitgestellt unter COPERNICUS von der Europäischen Union und der ESA.",
+    "Landbedeckung und Satellitenbild: ESA WorldCover 2021 und sein Sentinel-2-Mosaik (CC BY 4.0), enthält veränderte " +
+        "Copernicus-Sentinel-Daten 2021.",
+    "Baumhöhen: Meta und World Resources Institute, High Resolution Canopy Height Maps (CC BY 4.0).",
+)

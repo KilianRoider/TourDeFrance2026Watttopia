@@ -1,0 +1,303 @@
+{
+ "id": "aubisque",
+ "lengthKm": 16.7,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Laruns (south) – D934 Rue de Gerp at the Vieille Route des Eaux-Bonnes junction, foot of the climb (~518 m)",
+   "lat": 42.97889,
+   "lon": -0.41897,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D934"
+  },
+  {
+   "km": 0.22,
+   "name": "Roundabout D934 / D918 (Villa Caprice) – turn sharp left onto the D918",
+   "lat": 42.97795,
+   "lon": -0.42066,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 0.55,
+   "name": "D918 lacets above Laruns (bridge)",
+   "lat": 42.97868,
+   "lon": -0.41713,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 0.82,
+   "name": "First hairpin of the D918 (junction Vieille Route des Eaux-Bonnes)",
+   "lat": 42.98003,
+   "lon": -0.41464,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 1.2,
+   "name": "D918 lacets",
+   "lat": 42.97766,
+   "lon": -0.41764,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 1.55,
+   "name": "Second hairpin of the D918 (~595 m)",
+   "lat": 42.97573,
+   "lon": -0.42084,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 2.11,
+   "name": "D918 Route de Laruns",
+   "lat": 42.9774,
+   "lon": -0.41496,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 2.48,
+   "name": "D918 Route de Laruns (not the parallel Route de Castellane)",
+   "lat": 42.97836,
+   "lon": -0.41065,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 3.28,
+   "name": "D918 bridge",
+   "lat": 42.9747,
+   "lon": -0.40298,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 3.51,
+   "name": "D918 Route de Laruns (not the parallel Route d'Assouste)",
+   "lat": 42.97443,
+   "lon": -0.40021,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 15
+  },
+  {
+   "km": 3.97,
+   "name": "Eaux-Bonnes – entry, D918 / Route d'Assouste (~714 m)",
+   "lat": 42.97405,
+   "lon": -0.39494,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 4.11,
+   "name": "Eaux-Bonnes – Rue Louis Barthou (Jardin Darralde)",
+   "lat": 42.97357,
+   "lon": -0.39343,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D918",
+   "radius": 20
+  },
+  {
+   "km": 4.51,
+   "name": "D918 Route de Gourette leaving Eaux-Bonnes",
+   "lat": 42.97262,
+   "lon": -0.38944,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 5.38,
+   "name": "Hairpin above Eaux-Bonnes (~815 m)",
+   "lat": 42.96968,
+   "lon": -0.38085,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 5.77,
+   "name": "Hairpin (~830 m)",
+   "lat": 42.96869,
+   "lon": -0.38074,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 6.23,
+   "name": "Bridge over the Valentin torrent (~845 m) – 13 % ramp follows",
+   "lat": 42.96768,
+   "lon": -0.37628,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 7.02,
+   "name": "D918 (Pont d'Iscoo area)",
+   "lat": 42.9688,
+   "lon": -0.37045,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 8.03,
+   "name": "D918 Route de Gourette",
+   "lat": 42.96625,
+   "lon": -0.35891,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 9.23,
+   "name": "Bridge / hairpin (~1095 m) (Pont de Goua area)",
+   "lat": 42.96392,
+   "lon": -0.34613,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 9.6,
+   "name": "Hairpin (~1130 m)",
+   "lat": 42.96223,
+   "lon": -0.34959,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 10.26,
+   "name": "Bridge (~1170 m)",
+   "lat": 42.96344,
+   "lon": -0.34208,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 10.94,
+   "name": "Hairpin (~1225 m)",
+   "lat": 42.96492,
+   "lon": -0.34345,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 11.54,
+   "name": "D918 below Gourette",
+   "lat": 42.96438,
+   "lon": -0.33646,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 11.82,
+   "name": "Avalanche gallery before Gourette",
+   "lat": 42.96325,
+   "lon": -0.33345,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 12.44,
+   "name": "Gourette (~1350 m) – hairpin in the resort",
+   "lat": 42.9581,
+   "lon": -0.33267,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 13.04,
+   "name": "D918 Route du Gabizos above Gourette",
+   "lat": 42.96261,
+   "lon": -0.33044,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 14.04,
+   "name": "D918 Route du Gabizos",
+   "lat": 42.96884,
+   "lon": -0.33707,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 14.98,
+   "name": "Hairpin at the Crêtes Blanches (~1565 m)",
+   "lat": 42.97176,
+   "lon": -0.34679,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 15.55,
+   "name": "D918 final kilometre and a half",
+   "lat": 42.97494,
+   "lon": -0.34463,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 16.16,
+   "name": "Last hairpin (~1665 m)",
+   "lat": 42.97897,
+   "lon": -0.34287,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 16.7,
+   "name": "Col d'Aubisque – summit (1709 m)",
+   "lat": 42.97662,
+   "lon": -0.3397,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D918"
+  }
+ ],
+ "notes": "West side of the Col d'Aubisque from Laruns (app: start 519 m, 16.7 km, Eaux-Bonnes km 4.0, Gourette km 12.5). km 0 = Rue de Gerp (D934) south of Laruns at the junction with the Vieille Route des Eaux-Bonnes (~518 m DEM), about 0.2 km before the D934/D918 roundabout; this point reproduces the app's length and landmarks (routed 16.65 km; Eaux-Bonnes entry 3.96, Gourette 12.40, DEM 520 m → 1709 m). Laruns centre (Place de la Mairie) is ~0.9 km before it and lower (the road dips to the Gave bridge), so it is not used. Route: D934 to the roundabout, then the D918 'lacets' above Laruns (NE to a hairpin at the Vieille Route junction, back SW to a second hairpin, then east along the Route de Laruns) to Eaux-Bonnes; through Eaux-Bonnes on Rue Louis Barthou (one-way loop round the Jardin Darralde; the parallel Avenue Castellane is the other half), D918 Route de Gourette with the Valentin bridge, Gourette, and the D918 Route du Gabizos to the col. Two older, shorter roads (Route de Castellane and Route d'Assouste, unclassified/tertiary) run parallel within 40-90 m of the D918 between km 2.4 and 3.9; a shortest-path router takes them (~0.5 km shorter) unless forced, so waypoints there carry a small explicit 'radius' (15-20 m). Coordinates are on the Overture/OSM road geometry, km are routed distances from the foot. 'Pont d'Iscoo' and 'Pont de Goua' (app landmarks) are not named in the map data; their km come from the app and are marked medium.",
+ "sources": [
+  "https://www.cols-cyclisme.com/pyrenees-centrales/france/col-d-aubisque-depuis-laruns-c13.htm",
+  "https://en.wikipedia.org/wiki/Col_d%27Aubisque",
+  "https://pjammcycling.com/climb/508.Col%20d'Aubisque%20-%20Eaux-Bonnes;mode=Profile",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions (Laruns, Villa Caprice, Eaux-Bonnes, Gourette), Copernicus GLO-30 DEM"
+ ]
+}

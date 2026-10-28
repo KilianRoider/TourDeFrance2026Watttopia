@@ -1,0 +1,282 @@
+{
+ "id": "alpe-dhuez",
+ "lengthKm": 13.8,
+ "notes": "Classic Tour de France side (D211, 21 numbered hairpins, 21 at the bottom to 1 at the top). km 0 = the official foot of the climb, not the D1091 roundabout: the timed climb starts at the 'km 0' marker where the D211 Route de l'Alpe d'Huez turns onto the first ramp by Camping La Cascade (~735-737 m, app start elevation 735 m), about 0.7 km after the south roundabout of the D211 on the D1091 east of Le Bourg-d'Oisans (the roundabout itself is 45.0596, 6.0378; the Tour's stage itineraries count the climb from there or from the town, e.g. 2026 stage 19: Le Bourg d'Oisans km 114.2, Huez-village 122.2, finish 127.9 = 13.7 km). Route: D211 via La Garde (hairpin 16) and Huez (the D211 loop of Avenue des Jardins/Avenue des Fontaines, not the village streets); at the fork above Huez the race stays on the old road (Route d'Huez, hairpins 3-2-1) and does NOT take the Route de l'Alpe bypass to the Rond-Point de l'Europe that the provisional file used; through Vieil Alpe to Place Paganon (tourist office), sharp left through the Route de la Poste tunnel, Route du Signal (one more hairpin, flamme rouge by the Le Camigane chalet, 45 route du Signal), right into Avenue de l'Étendard over the Place Jean Moulin roundabout to the Rond-point de l'Étendard (Overture: 'Rond-Point du Tour de France'), left into Avenue du Rif Nel; finish line on the upper Avenue du Rif Nel above that roundabout, ~0.23 km up, by the car park next to the pistes (descriptions: 'en haut de l'avenue du Rif Nel, au-dessus du rond-point de l'Étendard'; 'turn left onto the Rif Nel, the finish is a bit further up'; '~300 m along it'; 'by a car park next to the ski slopes'). The exact line position along Rif Nel is uncertain by about ±100 m. Routed on Overture roads: foot→finish 13.86 km (app/Tour 13.8 km), D1091 roundabout→finish 14.55 km (cf. the resort's 14.454 km); the old provisional route via the Route de l'Alpe bypass would be only ~13.45 km from the foot and gives a too-steep finish, while this one reproduces the flatter last 2 km of the app profile. km values are routed distances scaled by 13.8/13.856. Hairpin numbers were assigned by counting the 21 hairpins on the routed road from the bottom (medium confidence); hairpin 14 = Agostinho memorial and hairpin 7 = Dutch corner by the Saint-Ferréol church per climb guides. Kind 'other' points at hairpins are on the road (Overture geometry).",
+ "sources": [
+  "https://www.alpes-isere.com/?p=20949",
+  "https://geotrek.auvergnerhonealpes-tourisme.com/api/fr/treks/4843/alpe-dhuez-la-montee-mythique.pdf?portal=4",
+  "https://www.sport-passion.fr/parcours/alpe-huez/ascension-alpe-huez.php",
+  "https://forum.bikeradar.com/discussion/comment/15566374/",
+  "https://www.epicroadrides.com/cycling-france/alpe-dhuez-region/alpe-d-huez/",
+  "https://www.alpedhuez.com/en/le-camigane/",
+  "https://www.campercontact.com/en/md/59925",
+  "https://www.alpedhuez.com/wp-content/uploads/2026/07/TDF26-Complement-information-routes.pdf",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-19-times.htm",
+  "https://en.wikipedia.org/wiki/Alpe_d%27Huez",
+  "https://climbfinder.com/en/climbs/alpe-d-huez",
+  "Overture Maps 2026-10-21.0 transportation segments (road names, Route de la Poste tunnel flag) and divisions (La Garde, Huez, Vieil Alpe)"
+ ],
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Le Bourg-d'Oisans – foot of the climb: D211 (Route de l'Alpe d'Huez) at the turn onto the first ramp, by the 'km 0' start marker near Camping La Cascade (~735 m), 0.7 km from the D1091 roundabout",
+   "lat": 45.06486,
+   "lon": 6.03985,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D211"
+  },
+  {
+   "km": 0.81,
+   "name": "Hairpin 21",
+   "lat": 45.07187,
+   "lon": 6.0392,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 1.96,
+   "name": "Hairpin 18",
+   "lat": 45.06594,
+   "lon": 6.0432,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 2.53,
+   "name": "Hairpin 16 – La Garde (lower end of the village)",
+   "lat": 45.06718,
+   "lon": 6.04383,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 2.77,
+   "name": "La Garde-en-Oisans (D211 Avenue des Jardins through the village)",
+   "lat": 45.06903,
+   "lon": 6.04516,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D211"
+  },
+  {
+   "km": 3.53,
+   "name": "Hairpin 14 (Joaquim Agostinho memorial)",
+   "lat": 45.07089,
+   "lon": 6.04431,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 4.76,
+   "name": "Hairpin 12 (above the Le Ribot hamlets)",
+   "lat": 45.07486,
+   "lon": 6.0476,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 5.84,
+   "name": "Hairpin 10",
+   "lat": 45.0766,
+   "lon": 6.04728,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 6.98,
+   "name": "Hairpin 8",
+   "lat": 45.07787,
+   "lon": 6.0478,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 7.96,
+   "name": "Hairpin 7 ('Dutch corner', Saint-Ferréol church)",
+   "lat": 45.08075,
+   "lon": 6.05552,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 8.62,
+   "name": "Hairpin 6 (D211 Avenue des Jardins loop below Huez – not through the village streets)",
+   "lat": 45.08234,
+   "lon": 6.06225,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 8.84,
+   "name": "Huez (village) – D211 Avenue des Fontaines at the Avenue du Moulin junction",
+   "lat": 45.0822,
+   "lon": 6.05964,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D211"
+  },
+  {
+   "km": 9.13,
+   "name": "Hairpin 5",
+   "lat": 45.08367,
+   "lon": 6.05752,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 9.59,
+   "name": "Hairpin 4",
+   "lat": 45.08364,
+   "lon": 6.0626,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 10.23,
+   "name": "Fork above Huez: keep left/straight on the old road (Route d'Huez); the Route de l'Alpe bypass to the east is NOT used",
+   "lat": 45.0877,
+   "lon": 6.05781,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route d'Huez"
+  },
+  {
+   "km": 10.53,
+   "name": "Hairpin 3",
+   "lat": 45.08899,
+   "lon": 6.05648,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route d'Huez"
+  },
+  {
+   "km": 10.85,
+   "name": "Hairpin 2",
+   "lat": 45.08868,
+   "lon": 6.06045,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route d'Huez"
+  },
+  {
+   "km": 11.39,
+   "name": "Hairpin 1",
+   "lat": 45.09139,
+   "lon": 6.05536,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route d'Huez"
+  },
+  {
+   "km": 12.02,
+   "name": "Vieil Alpe (Route d'Huez entering the resort)",
+   "lat": 45.09078,
+   "lon": 6.06298,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route d'Huez"
+  },
+  {
+   "km": 12.2,
+   "name": "Place Joseph Paganon (tourist office) – sharp left into the Route de la Poste tunnel",
+   "lat": 45.09043,
+   "lon": 6.06513,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route de la Poste"
+  },
+  {
+   "km": 12.28,
+   "name": "Route de la Poste tunnel (north portal)",
+   "lat": 45.09098,
+   "lon": 6.06531,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route de la Poste"
+  },
+  {
+   "km": 12.49,
+   "name": "Route de la Poste / Route du Signal junction",
+   "lat": 45.09181,
+   "lon": 6.06303,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route du Signal"
+  },
+  {
+   "km": 12.68,
+   "name": "Route du Signal hairpin",
+   "lat": 45.09279,
+   "lon": 6.06121,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Signal"
+  },
+  {
+   "km": 12.95,
+   "name": "Route du Signal (~flamme rouge, by the Le Camigane chalet)",
+   "lat": 45.09268,
+   "lon": 6.06463,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Signal"
+  },
+  {
+   "km": 13.19,
+   "name": "Turn right from Route du Signal into Avenue de l'Étendard",
+   "lat": 45.09331,
+   "lon": 6.06753,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue de l'Étendard"
+  },
+  {
+   "km": 13.27,
+   "name": "Place Jean Moulin roundabout",
+   "lat": 45.093,
+   "lon": 6.06831,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue de l'Étendard"
+  },
+  {
+   "km": 13.42,
+   "name": "Avenue de l'Étendard (L'Alpe d'Huez centre)",
+   "lat": 45.09243,
+   "lon": 6.06997,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Avenue de l'Étendard"
+  },
+  {
+   "km": 13.58,
+   "name": "Rond-point de l'Étendard ('Rond-Point du Tour de France') – left into Avenue du Rif Nel",
+   "lat": 45.0927,
+   "lon": 6.07185,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue du Rif Nel"
+  },
+  {
+   "km": 13.8,
+   "name": "Alpe d'Huez – Tour de France finish line, upper Avenue du Rif Nel by the car park (~1850 m)",
+   "lat": 45.09459,
+   "lon": 6.0709,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Avenue du Rif Nel"
+  }
+ ]
+}

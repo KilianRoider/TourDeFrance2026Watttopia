@@ -1,0 +1,920 @@
+{
+ "id": "tour26-11",
+ "lengthKm": 161.3,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Creuzier-le-Vieux (Vichy) – km 0 départ réel, D174 Rue de l'Industrie",
+   "lat": 46.15882,
+   "lon": 3.41335,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D174"
+  },
+  {
+   "km": 1.1,
+   "name": "Rhue (Creuzier-le-Vieux) – D174 → D258",
+   "lat": 46.1671,
+   "lon": 3.42054,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D258"
+  },
+  {
+   "km": 1.7,
+   "name": "D258 (Rue de Bourzat)",
+   "lat": 46.17139,
+   "lon": 3.41741,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D258"
+  },
+  {
+   "km": 3.2,
+   "name": "Bourzat (Saint-Germain-des-Fossés), D258",
+   "lat": 46.18414,
+   "lon": 3.4226,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D258"
+  },
+  {
+   "km": 5.2,
+   "name": "Saint-Germain-des-Fossés – D258 → D258E Avenue Fernand Raynaud",
+   "lat": 46.19787,
+   "lon": 3.43336,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D258E"
+  },
+  {
+   "km": 5.5,
+   "name": "Saint-Germain-des-Fossés – D258E → D77 Rue de Vichy",
+   "lat": 46.19799,
+   "lon": 3.43648,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D77"
+  },
+  {
+   "km": 6.6,
+   "name": "D77 Rue de Vichy (Saint-Germain-des-Fossés)",
+   "lat": 46.19022,
+   "lon": 3.4443,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D77"
+  },
+  {
+   "km": 7.2,
+   "name": "Carrefour D77 / N209",
+   "lat": 46.18975,
+   "lon": 3.45171,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "N209"
+  },
+  {
+   "km": 9.1,
+   "name": "Champ Rosier (Seuillet), N209",
+   "lat": 46.20588,
+   "lon": 3.44496,
+   "kind": "other",
+   "confidence": "high",
+   "road": "N209"
+  },
+  {
+   "km": 11.5,
+   "name": "Fougerat (Billy), N209",
+   "lat": 46.22487,
+   "lon": 3.4322,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N209"
+  },
+  {
+   "km": 12.7,
+   "name": "Billy – N209 → D130 Route de Marcenat",
+   "lat": 46.23504,
+   "lon": 3.431,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D130"
+  },
+  {
+   "km": 14.2,
+   "name": "La Boire Henon (Marcenat), D130 after the Allier bridge",
+   "lat": 46.23556,
+   "lon": 3.4125,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D130"
+  },
+  {
+   "km": 15.5,
+   "name": "Marcenat – D130 / D142",
+   "lat": 46.23483,
+   "lon": 3.39686,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D130"
+  },
+  {
+   "km": 18.1,
+   "name": "D130 Route de Saint-Pourçain",
+   "lat": 46.24572,
+   "lon": 3.36689,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D130"
+  },
+  {
+   "km": 21.2,
+   "name": "Loriges (près), D130",
+   "lat": 46.26904,
+   "lon": 3.34707,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D130"
+  },
+  {
+   "km": 23.9,
+   "name": "Les Noix (Saint-Pourçain-sur-Sioule), D130",
+   "lat": 46.2853,
+   "lon": 3.32117,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D130"
+  },
+  {
+   "km": 26.3,
+   "name": "Saint-Pourçain-sur-Sioule (entrée), D130 Route de Loriges",
+   "lat": 46.29866,
+   "lon": 3.30166,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D130"
+  },
+  {
+   "km": 27.1,
+   "name": "Saint-Pourçain-sur-Sioule – D130 → D2009 (Avenue Paul Doumer / Faubourg Paluet)",
+   "lat": 46.3048,
+   "lon": 3.29821,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D2009"
+  },
+  {
+   "km": 27.5,
+   "name": "Saint-Pourçain-sur-Sioule – Pont Charles de Gaulle (Sioule)",
+   "lat": 46.30675,
+   "lon": 3.29403,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 27.8,
+   "name": "Saint-Pourçain-sur-Sioule – intermediate sprint, Boulevard Ledru-Rollin (D2009)",
+   "lat": 46.30849,
+   "lon": 3.2916,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 28.3,
+   "name": "Saint-Pourçain-sur-Sioule – Faubourg de Paris / Route de Moulins (D2009)",
+   "lat": 46.31189,
+   "lon": 3.2874,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 29.5,
+   "name": "Bouteresse (Saulcet), D2009",
+   "lat": 46.32222,
+   "lon": 3.28584,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D2009"
+  },
+  {
+   "km": 31.7,
+   "name": "Foot Côte de Billonnière (D2009, La Commanderie)",
+   "lat": 46.34182,
+   "lon": 3.28697,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 32.9,
+   "name": "Côte de Billonnière (cat. 4) summit – D2009 at Rue de Billonnière",
+   "lat": 46.35227,
+   "lon": 3.28393,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D2009"
+  },
+  {
+   "km": 33.5,
+   "name": "La Pierre Corbe (Contigny), D2009",
+   "lat": 46.35761,
+   "lon": 3.2851,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 34.6,
+   "name": "Montigny (près, Monétay-sur-Allier), D2009",
+   "lat": 46.36739,
+   "lon": 3.28725,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 36.1,
+   "name": "Monétay-sur-Allier (près), D2009",
+   "lat": 46.37984,
+   "lon": 3.29388,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 38.7,
+   "name": "Châtel-de-Neuvre (entrée), D2009",
+   "lat": 46.3999,
+   "lon": 3.30978,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 39.3,
+   "name": "Châtel-de-Neuvre, D2009 Rue de Saint-Pourçain",
+   "lat": 46.40509,
+   "lon": 3.31181,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 42.3,
+   "name": "Route du Val d'Allier (near Les Mayots)",
+   "lat": 46.43186,
+   "lon": 3.31552,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 45.3,
+   "name": "Route de Châtel de Neuvre (near Les Meillats)",
+   "lat": 46.45878,
+   "lon": 3.31671,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 48.3,
+   "name": "Chemilly, D2009",
+   "lat": 46.48556,
+   "lon": 3.31556,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D2009"
+  },
+  {
+   "km": 51.1,
+   "name": "Les Guénaudins-Longvé (près, Bressolles), D2009",
+   "lat": 46.51066,
+   "lon": 3.31706,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D2009"
+  },
+  {
+   "km": 52.8,
+   "name": "Les Bassets (Bressolles), D2009",
+   "lat": 46.52593,
+   "lon": 3.31838,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D2009"
+  },
+  {
+   "km": 56.0,
+   "name": "Moulins – D2009 Route de Clermont (La Madeleine), railway bridge",
+   "lat": 46.55386,
+   "lon": 3.32092,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D2009"
+  },
+  {
+   "km": 57.0,
+   "name": "Moulins – Pont Régemortes (Allier), east end; D2009 → VC",
+   "lat": 46.56229,
+   "lon": 3.3246,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 57.7,
+   "name": "Moulins – Place des Halles / Rue de Pont",
+   "lat": 46.56428,
+   "lon": 3.33221,
+   "kind": "other",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 57.9,
+   "name": "Moulins – Avenue Théodore de Banville → Rue des Tanneries",
+   "lat": 46.56494,
+   "lon": 3.33452,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 58.5,
+   "name": "Moulins – Rue des Tanneries level crossing (assumed PN n°136)",
+   "lat": 46.56658,
+   "lon": 3.34112,
+   "kind": "other",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 59.1,
+   "name": "Yzeure – Avenue Émile Zola",
+   "lat": 46.56637,
+   "lon": 3.34816,
+   "kind": "other",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 59.7,
+   "name": "Yzeure – Place Jules Ferry: VC → D493 Rue de Grillet",
+   "lat": 46.56733,
+   "lon": 3.35482,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D493"
+  },
+  {
+   "km": 60.3,
+   "name": "Yzeure – D493 Rue de Grillet / Route de Bourgogne crossing",
+   "lat": 46.57266,
+   "lon": 3.35377,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D493"
+  },
+  {
+   "km": 61.6,
+   "name": "Yzeure – D493 Rue Claude Debussy",
+   "lat": 46.58337,
+   "lon": 3.35036,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D493"
+  },
+  {
+   "km": 62.7,
+   "name": "L'Épine (Avermes) – D493 → D979A Route de Decize",
+   "lat": 46.59244,
+   "lon": 3.34875,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D979A"
+  },
+  {
+   "km": 63.8,
+   "name": "Le Champ des Balais (Yzeure), D979A",
+   "lat": 46.60072,
+   "lon": 3.35624,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D979A"
+  },
+  {
+   "km": 65.9,
+   "name": "La Barbizenne (Gennetines), D979A",
+   "lat": 46.61751,
+   "lon": 3.36881,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979A"
+  },
+  {
+   "km": 69.7,
+   "name": "Route de Moulins (near Les Pinsards)",
+   "lat": 46.64609,
+   "lon": 3.39454,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979A"
+  },
+  {
+   "km": 73.3,
+   "name": "Saint-Ennemond, D979A",
+   "lat": 46.67344,
+   "lon": 3.41892,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D979A"
+  },
+  {
+   "km": 75.1,
+   "name": "Les Galmins (Saint-Ennemond), D979A",
+   "lat": 46.68868,
+   "lon": 3.42474,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979A"
+  },
+  {
+   "km": 77.7,
+   "name": "Banville (Lucenay-lès-Aix) – entry into the Nièvre, D979A",
+   "lat": 46.71018,
+   "lon": 3.43563,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979A"
+  },
+  {
+   "km": 80.4,
+   "name": "La Poulecaude (Toury-Lurcy), D979A",
+   "lat": 46.73347,
+   "lon": 3.43786,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D979A"
+  },
+  {
+   "km": 83.1,
+   "name": "Les Oudilles (Toury-Lurcy), D979A",
+   "lat": 46.75749,
+   "lon": 3.43489,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979A"
+  },
+  {
+   "km": 84.2,
+   "name": "Les Oudilles (Saint-Germain-Chassenay), D979A",
+   "lat": 46.76704,
+   "lon": 3.43691,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979A"
+  },
+  {
+   "km": 86.6,
+   "name": "Carrefour D979A / D978A (Boudrillon)",
+   "lat": 46.78787,
+   "lon": 3.43438,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D978A"
+  },
+  {
+   "km": 90.1,
+   "name": "Decize – Route de Moulins (Saint-Maurice), D978A",
+   "lat": 46.81699,
+   "lon": 3.45024,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 91.5,
+   "name": "Decize – Pont du 152e R.I.",
+   "lat": 46.82795,
+   "lon": 3.45797,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 92.0,
+   "name": "Decize – Place du Champ de Foire",
+   "lat": 46.83,
+   "lon": 3.4627,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 92.4,
+   "name": "Decize – Quai de Loire / Avenue du 14 Juillet (D978A → D981)",
+   "lat": 46.8305,
+   "lon": 3.46692,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D981"
+  },
+  {
+   "km": 93.0,
+   "name": "D981 Avenue du 14 Juillet (Loire bridge)",
+   "lat": 46.83486,
+   "lon": 3.46654,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 94.0,
+   "name": "Saint-Léger-des-Vignes – D981 → D34 Route de la Machine",
+   "lat": 46.83859,
+   "lon": 3.45712,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 97.0,
+   "name": "Route de la Machine",
+   "lat": 46.86397,
+   "lon": 3.45916,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D34"
+  },
+  {
+   "km": 100.1,
+   "name": "La Machine, D34",
+   "lat": 46.88995,
+   "lon": 3.46576,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 103.9,
+   "name": "Le Bois Vieux (Thianges), D34",
+   "lat": 46.91771,
+   "lon": 3.48456,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D34"
+  },
+  {
+   "km": 106.1,
+   "name": "La Chapelle (Ville-Langy), D34",
+   "lat": 46.93521,
+   "lon": 3.49703,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 107.0,
+   "name": "Ville-Langy, D34",
+   "lat": 46.94271,
+   "lon": 3.49958,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 108.7,
+   "name": "Anlezy, D34",
+   "lat": 46.95733,
+   "lon": 3.50581,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 111.1,
+   "name": "Route de Rouy (near Petit-Sauvigny)",
+   "lat": 46.97748,
+   "lon": 3.51177,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D34"
+  },
+  {
+   "km": 113.4,
+   "name": "Frasnay-Reugny, D34",
+   "lat": 46.99767,
+   "lon": 3.51025,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 116.3,
+   "name": "Carrefour D34 / D978",
+   "lat": 47.02018,
+   "lon": 3.52439,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D978"
+  },
+  {
+   "km": 117.5,
+   "name": "Conseuille (Rouy), D978",
+   "lat": 47.01629,
+   "lon": 3.50963,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D978"
+  },
+  {
+   "km": 119.1,
+   "name": "D978 (Domaine Bleu)",
+   "lat": 47.01155,
+   "lon": 3.48971,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978"
+  },
+  {
+   "km": 121.5,
+   "name": "Billy-Chevannes, D978 Route de Châtillon",
+   "lat": 47.01145,
+   "lon": 3.45878,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D978"
+  },
+  {
+   "km": 122.0,
+   "name": "Foot Côte de Billy-Chevannes (D978)",
+   "lat": 47.01197,
+   "lon": 3.45224,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D978"
+  },
+  {
+   "km": 123.4,
+   "name": "Côte de Billy-Chevannes (cat. 4) summit, D978",
+   "lat": 47.00458,
+   "lon": 3.4377,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D978"
+  },
+  {
+   "km": 125.0,
+   "name": "D978 (descent to Saint-Benin-d'Azy)",
+   "lat": 47.00386,
+   "lon": 3.41646,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978"
+  },
+  {
+   "km": 126.3,
+   "name": "Saint-Benin-d'Azy, D978 Rue François Mitterrand",
+   "lat": 47.00546,
+   "lon": 3.40105,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D978"
+  },
+  {
+   "km": 130.0,
+   "name": "Cougny (Saint-Jean-aux-Amognes) – D978 → D26",
+   "lat": 47.00348,
+   "lon": 3.35294,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D26"
+  },
+  {
+   "km": 130.7,
+   "name": "Trélaigues (Saint-Jean-aux-Amognes), D26",
+   "lat": 47.00841,
+   "lon": 3.34796,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D26"
+  },
+  {
+   "km": 131.9,
+   "name": "Saint-Jean-aux-Amognes, D26",
+   "lat": 47.01455,
+   "lon": 3.33559,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D26"
+  },
+  {
+   "km": 134.7,
+   "name": "D26",
+   "lat": 47.03755,
+   "lon": 3.32284,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26"
+  },
+  {
+   "km": 137.6,
+   "name": "Ourouër (Vaux-d'Amognes), D26",
+   "lat": 47.06004,
+   "lon": 3.30557,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D26"
+  },
+  {
+   "km": 140.2,
+   "name": "Balleray (Vaux-d'Amognes), D26",
+   "lat": 47.07383,
+   "lon": 3.27863,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D26"
+  },
+  {
+   "km": 140.9,
+   "name": "La Forêt Ronde (Vaux-d'Amognes), D26",
+   "lat": 47.07504,
+   "lon": 3.26985,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26"
+  },
+  {
+   "km": 143.4,
+   "name": "D26 (near Sauvage)",
+   "lat": 47.07648,
+   "lon": 3.23763,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26"
+  },
+  {
+   "km": 146.1,
+   "name": "Guérigny (entrée) – Rue de Balleray (D26)",
+   "lat": 47.08605,
+   "lon": 3.20557,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D26"
+  },
+  {
+   "km": 146.8,
+   "name": "Guérigny – D26 → D977",
+   "lat": 47.08749,
+   "lon": 3.19758,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D977"
+  },
+  {
+   "km": 147.3,
+   "name": "Guérigny – Grande Rue (D977)",
+   "lat": 47.08549,
+   "lon": 3.19285,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 148.8,
+   "name": "Demeurs (Urzy), D977 Route de Demeurs",
+   "lat": 47.07282,
+   "lon": 3.19706,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 149.9,
+   "name": "D977 Route du Greux",
+   "lat": 47.06572,
+   "lon": 3.2053,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 151.4,
+   "name": "Urzy (près), D977",
+   "lat": 47.05344,
+   "lon": 3.21011,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 153.8,
+   "name": "D977 (Le Champ du Charme)",
+   "lat": 47.03385,
+   "lon": 3.21233,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 155.0,
+   "name": "La Pacauderie (Saint-Martin-d'Heuille) – D977 → D176",
+   "lat": 47.0241,
+   "lon": 3.2128,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D176"
+  },
+  {
+   "km": 155.9,
+   "name": "La Grippe (près), D176",
+   "lat": 47.01978,
+   "lon": 3.22042,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D176"
+  },
+  {
+   "km": 156.7,
+   "name": "D176 Route de Chaluzy",
+   "lat": 47.01268,
+   "lon": 3.22074,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D176"
+  },
+  {
+   "km": 157.7,
+   "name": "Trangy (près, Saint-Éloi), D176",
+   "lat": 47.00667,
+   "lon": 3.21063,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D176"
+  },
+  {
+   "km": 159.0,
+   "name": "Chaluzy (Saint-Éloi), D176",
+   "lat": 46.99899,
+   "lon": 3.20028,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D176"
+  },
+  {
+   "km": 159.6,
+   "name": "Nevers (entrée) – Route de Chaluzy, D176 → VC (railway crossing)",
+   "lat": 46.99564,
+   "lon": 3.19542,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 160.3,
+   "name": "Nevers – level crossing PN n°5",
+   "lat": 46.99121,
+   "lon": 3.19299,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 160.8,
+   "name": "Nevers – Rue des Sablons → Rue de l'Amiral Jacquinot",
+   "lat": 46.98885,
+   "lon": 3.18827,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 161.3,
+   "name": "Nevers – finish, Rue de l'Amiral Jacquinot (La Baratte)",
+   "lat": 46.98497,
+   "lon": 3.18503,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "VC"
+  }
+ ],
+ "notes": "km 0 = départ réel on the D174 Rue de l'Industrie in Creuzier-le-Vieux, just north of the D27/D6e roundabout at Pont Boutiron (neutralised start in Vichy, not included). Its exact spot is medium confidence; it is put where the routed distance to the D174/D258 junction at Rhue is the official 1.1 km, and the following official points (Bourzat 3.1, D77/N209 7.2, Champ Rosier 9.0) then match within 0.2 km. Sources for km: the official itinéraire horaire (Allier prefecture order, avermes.fr SE_2026_12410_T.pdf; total 161.3 km, every locality with road changes) and the Nièvre traffic order D-2026 (nievre.fr shared-files 57266) with road sections and PR: RD979A PR 10.231→0, RD978A 32.076→38.359, RD981 33.568→32.069, RD34 74.989→52.994, RD978 29.717→15.419, RD26 17.022→0, RD977 13.424→5.548, RD176 5.412→0, then rue Amiral Jacquinot. The routed lengths of these sections match the PR differences within 0.1-0.5 km. Route: D174 → Rhue (D174-D258) → D258 Bourzat → Saint-Germain-des-Fossés (D258, D258E Av. Fernand Raynaud, D77 Rue de Vichy) → N209 north at the D77/N209 junction (7.2) → Champ Rosier → Fougerat → Billy (N209-D130) → D130 over the Allier → La Boire Henon → Marcenat → Loriges → Les Noix → Saint-Pourçain-sur-Sioule (entry 26.3 on the D130; D130→D2009 at Faubourg Paluet; Pont Charles de Gaulle; intermediate sprint 27.8 on Boulevard Ledru-Rollin, coordinate ±150 m from the itinerary km) → D2009 north: Bouteresse → Côte de Billonnière (cat. 4, 1.0 km at 5.8%; DEM low point 234 m at km 31.7-31.9 and top at km 32.9 at the Rue de Billonnière junction match the official foot/summit) → La Pierre Corbe → Montigny (près) → Monétay-sur-Allier (près) → Châtel-de-Neuvre (official km 38.7 = south entry, the village centre is 0.6 km further) → Chemilly → Les Guénaudins → Les Bassets → Moulins (55.7 = Route de Clermont in La Madeleine) → Pont Régemortes → VC through the centre → level crossing PN 136 (59.1) → Yzeure (VC-D493, 59.6) → D493 Rue de Grillet / Rue Claude Debussy → L'Épine, Avermes (D493-D979A, 62.5) → D979A Route de Decize/Route de Moulins: Le Champ des Balais → La Barbizenne → Saint-Ennemond → Les Galmins → Banville (Nièvre border at about km 76.4) → La Poulecaude → Les Oudilles → Boudrillon (D979A-D978A, 86.4) → D978A into Decize (Route de Moulins, Pont du 152e R.I., Place du Champ de Foire, Quai de Loire; official 90.3 = town entry) → D981 Avenue du 14 Juillet over the Loire → Saint-Léger-des-Vignes (official 93.5 = commune entry; D981→D34 at km 94.0) → D34 La Machine → Le Bois Vieux (Thianges) → La Chapelle → Ville-Langy → Anlezy → Frasnay-Reugny → D34/D978 junction (116.3) → D978 west: Conseuille → Billy-Chevannes → Côte de Billy-Chevannes (cat. 4, 1.4 km at 5%; foot 122.0, top 123.4 confirmed with the DEM) → Saint-Benin-d'Azy → Cougny (D978-D26) → D26 Trélaigues → Saint-Jean-aux-Amognes → Ourouër → Balleray → La Forêt Ronde → Guérigny (official 146.0 = entry on Rue de Balleray; D26→D977 in the centre) → D977 south: Demeurs → Urzy (près) → La Pacauderie (D977-D176) → D176 La Grippe (près) → Trangy (près) → Chaluzy → Nevers entry (D176-VC, 159.6) → level crossing PN 5 (160.3) → Rue des Sablons → finish on Rue de l'Amiral Jacquinot (161.3), placed 1.0 km after PN 5, in the La Baratte area near Nevers Agora (the town says the finish is in front of Nevers Agora). Waypoint km: official km where the routed position is within 0.3 km; otherwise routed km scaled between the anchors 0, 32.9, 62.5, 86.4, 116.3, 123.4, 146.0 and 161.3. Routed length on Overture 2026-10-21.0 = 160.6 km (pipeline check 160.9 km, no bad legs). Known differences from the official km: Cougny about 130.0 (official 129.6; the official Saint-Benin 126.3 → Cougny 129.6 is shorter than the straight line, so both cannot hold), Demeurs and Urzy (près) 0.7-1.0 km after their official 148.1/150.4. Between Guérigny entry (146.0) and the finish the road is 14.5 km against the official 15.3, so km there are stretched by 5.6% (La Pacauderie, Nevers entry and PN 5 then match). The D977 matches its PR length 7.9 km. Saint-Germain-des-Fossés: the official 4.4 is the commune entry; the D258/D258E junction in the centre is at 5.2. Billy: the official 12.2 is the village; the N209→D130 junction is at 12.6. LOW CONFIDENCE: the street route through Moulins and Yzeure (km 57.0-59.6). The itinerary only gives 'D2009-VC', 'PN 136', 'VC-D493'. Used here: Pont Régemortes → Rue Régemortes → Place des Halles → Rue de Pont → Av. Théodore de Banville → Rue des Tanneries (level crossing, taken as PN 136, routed 58.4 vs official 59.1) → Avenue Émile Zola → Place Jules Ferry, Yzeure (59.6 matches). A plausible alternative is Cours Jean Jaurès → Rue de Bourgogne (level crossing at 46.5682,3.3411) → Route de Bourgogne → Rue Claude Debussy. It is 0.4 km shorter and gives PN 58.7, Yzeure 59.8 and L'Épine 62.1. Medium: identification of PN 5 (the second crossing on the Route de Chaluzy line, 46.9912,3.1930) and so the finish spot (±150 m along Rue de l'Amiral Jacquinot).",
+ "sources": [
+  "https://www.avermes.fr/images/SE_2026_12410_T.pdf (official itinéraire horaire, Allier: km and road changes for the whole stage)",
+  "https://nievre.fr/shared-files/57266/ (Nièvre traffic order for stage 11: road sections with PR)",
+  "https://nievre.fr/parcours-des-11e-et-12e-etapes-du-tour-de-france-2026/ (Nièvre commune list with road changes; finish rue de l'Amiral Jacquinot after PN 5)",
+  "https://www.nevers.fr/actualites/autour-du-tour (finish in front of Nevers Agora)",
+  "https://www.avermes.fr/images/261%202026%20-%20Reglementation%20de%20circulation%20et%20de%20stationnement%20-%20Tour%20de%20France%202026%201.pdf (RD979A route de Decize, chemin de l'Epine)",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-11-tdf-2026/",
+  "https://hedgehogcycling.co.uk/stage-11-tour-de-france-2026.html",
+  "https://www.intervals.icu/tour-de-france-2026/stage-11/",
+  "https://www.vichy-communaute.fr/wp-content/uploads/2026/07/DOSSIER-DE-PRESSE-TDF-29-juin-mini.pdf",
+  "https://www.tour-magazin.de/en/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-11-a-day-for-the-sprinters-between-the-loire-and-the-allier/",
+  "Overture Maps 2026-10-21.0 (transportation incl. rail, divisions, addresses); Copernicus GLO-30 DEM"
+ ]
+}

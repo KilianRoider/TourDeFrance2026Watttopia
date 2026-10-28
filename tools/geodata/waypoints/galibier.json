@@ -1,0 +1,194 @@
+{
+ "id": "galibier",
+ "lengthKm": 18.1,
+ "notes": "North side (Nordrampe) from Valloire as in the app: km 0 = Valloire, D902 Rue des Grandes Alpes by the church Notre-Dame-de-l'Assomption, where the classic 'from Valloire' climb starts (fountain opposite the church; ~1401-1405 m; 18.1 km / 1245 m / 6.9 %). Route: D902 Rue des Grandes Alpes – Rond-Point de la Vache – Route du Galibier through the south end of Valloire (Rond-Point du Cerf), up the Valloirette valley via Les Verneys and Bonnenuit (two hairpins), Plan Lachat (hairpin where the road switches sides, ~7.9-8.3 km from the top), hairpins at Les Granges du Galibier (~4 km from the top), the fork at the north tunnel portal (2556 m, ~1 km below the top) and the summit road (riders never use the tunnel) to the col at 2642 m. Routed on Overture roads: 18.05 km (app 18.1); km values = routed distance scaled by 18.1/18.049. The Desgrange monument stands at the SOUTH portal of the tunnel (Lautaret side), i.e. it is passed only on the descent, not on this climb (the app's landmark at 17 km is therefore approximate). The 2026 Tour stage 20 itinerary gives Valloire 92.8 → summit 110.5 = 17.7 km, measured from a point further south in Valloire; the app's 18.1 km matches the church start. Les Granges du Galibier position is approximate (medium).",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Col_du_Galibier",
+  "https://www.sport-passion.fr/parcours/galibier/ascension-galibier-valloire.htm",
+  "https://www.cols-cyclisme.com/arves-et-grandes-rousses/france/col-du-galibier-depuis-saint-michel-de-maurienne-c37.htm",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-20-times.htm",
+  "Overture Maps 2026-10-21.0 transportation segments (D902 Route du Galibier, Tunnel du Galibier) and divisions (Valloire, Les Verneys, La Rivine, Bonnenuit)"
+ ],
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Valloire – foot: D902 Rue des Grandes Alpes at the church Notre-Dame-de-l'Assomption (fountain opposite the church, ~1401 m)",
+   "lat": 45.16559,
+   "lon": 6.42931,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 0.44,
+   "name": "Valloire – Rond-Point de la Vache (D902 continues as Route du Galibier)",
+   "lat": 45.16423,
+   "lon": 6.4246,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 1.05,
+   "name": "Valloire – Rond-Point du Cerf (south end of the resort)",
+   "lat": 45.16007,
+   "lon": 6.42162,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 1.85,
+   "name": "La Ruaz (beside the road)",
+   "lat": 45.15305,
+   "lon": 6.42069,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 2.38,
+   "name": "Les Verneys",
+   "lat": 45.14841,
+   "lon": 6.42054,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 3.66,
+   "name": "La Rivine",
+   "lat": 45.13705,
+   "lon": 6.41963,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 5.19,
+   "name": "First of the two hairpins up to Bonnenuit",
+   "lat": 45.12374,
+   "lon": 6.41765,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 5.51,
+   "name": "Second hairpin below Bonnenuit",
+   "lat": 45.12235,
+   "lon": 6.4179,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 5.71,
+   "name": "Bonnenuit (D902 passes ~0.3 km west of the hamlet)",
+   "lat": 45.12056,
+   "lon": 6.41791,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 7.02,
+   "name": "D902 up the Valloirette valley",
+   "lat": 45.11063,
+   "lon": 6.42477,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 8.52,
+   "name": "D902 up the Valloirette valley (below Plan Lachat)",
+   "lat": 45.09878,
+   "lon": 6.42949,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 10.17,
+   "name": "Plan Lachat – hairpin where the road changes side of the valley (~1960-1990 m)",
+   "lat": 45.086,
+   "lon": 6.43739,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 11.34,
+   "name": "Hairpin above Plan Lachat",
+   "lat": 45.09056,
+   "lon": 6.42993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 12.28,
+   "name": "Hairpin above Plan Lachat",
+   "lat": 45.08669,
+   "lon": 6.42948,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 13.79,
+   "name": "Hairpins at Les Granges du Galibier (~2300 m)",
+   "lat": 45.07963,
+   "lon": 6.42186,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 15.24,
+   "name": "Long straight below the summit hairpins",
+   "lat": 45.07607,
+   "lon": 6.41192,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 16.42,
+   "name": "Hairpin below the tunnel",
+   "lat": 45.06817,
+   "lon": 6.41089,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 17.05,
+   "name": "Fork at the north portal of the Galibier tunnel (2556 m): take the summit road, not the tunnel",
+   "lat": 45.0669,
+   "lon": 6.40916,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 17.65,
+   "name": "Summit road hairpin",
+   "lat": 45.06615,
+   "lon": 6.41199,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 18.1,
+   "name": "Col du Galibier summit (2642 m)",
+   "lat": 45.06399,
+   "lon": 6.40799,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D902"
+  }
+ ]
+}

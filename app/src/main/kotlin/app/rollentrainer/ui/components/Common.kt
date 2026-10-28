@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -109,13 +110,17 @@ fun Stepper(
         if (label != null) {
             Text(label, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
+        // 40 dp buttons (Compose widens their touch area to the 48 dp minimum when there is room around them).
+        // The value keeps 76 dp so the buttons don't jump while stepping, and grows with a large system font
+        // instead of being cut off.
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-            FilledTonalIconButton(onClick = onMinus, modifier = Modifier.size(36.dp)) {
+            FilledTonalIconButton(onClick = onMinus, modifier = Modifier.size(40.dp)) {
                 Icon(Icons.Default.Remove, contentDescription = "Weniger")
             }
             Text(value, style = MaterialTheme.typography.titleMedium.copy(fontFeatureSettings = "tnum"),
-                modifier = Modifier.width(76.dp), maxLines = 1, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
-            FilledTonalIconButton(onClick = onPlus, modifier = Modifier.size(36.dp)) {
+                modifier = Modifier.widthIn(min = 76.dp), maxLines = 1, softWrap = false,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+            FilledTonalIconButton(onClick = onPlus, modifier = Modifier.size(40.dp)) {
                 Icon(Icons.Default.Add, contentDescription = "Mehr")
             }
         }

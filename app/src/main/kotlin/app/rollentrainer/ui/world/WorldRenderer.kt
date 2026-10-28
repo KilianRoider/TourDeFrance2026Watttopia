@@ -4,6 +4,7 @@ import android.opengl.GLES30
 import android.opengl.GLSurfaceView
 import android.opengl.Matrix
 import android.os.SystemClock
+import android.util.Log
 import app.rollentrainer.core.route.Biome
 import app.rollentrainer.core.route.PathSample
 import app.rollentrainer.core.route.Prop
@@ -32,6 +33,24 @@ class FrameState {
      * head. The screen flips it from its camera toggle; the renderer resets its smoothing on a change.
      */
     @Volatile var firstPerson = false
+    /**
+     * Offset of the rider from the road's centre line, metres (+ = left); NaN = the renderer's default lane.
+     * Only the geodata renderer uses it (a race moves the rider across the road).
+     */
+    @Volatile var lateralM = Double.NaN
+    /**
+     * Other riders of a race simulation (null = none), replaced as a whole on every tick of the ride loop,
+     * with [pelotonUpdatedAtMs] the SystemClock time of that tick. Only the geodata renderer draws them.
+     */
+    @Volatile var peloton: List<app.rollentrainer.ui.world.geo.RaceRider>? = null
+    @Volatile var pelotonUpdatedAtMs = 0L
+    /**
+     * Kit of the player's rider in the geodata renderer: 0 = the Wattwerk kit (default), in pro mode the
+     * team kit of the chosen pro (RaceFeed.kitOf), the same index the other riders of the race use.
+     */
+    @Volatile var playerKit = 0
+    /** Local clock time (CEST) for the sun of the geodata renderer; Tour stages finish mid-afternoon. */
+    @Volatile var timeOfDayH = 16.0
 }
 
 /**
@@ -326,6 +345,8 @@ class WorldRenderer(val frame: FrameState) : GLSurfaceView.Renderer {
         building = null
         smoothDistance = frame.distanceM
         camValid = false
+        // The emulator screenshot workflow waits for this line before it takes a picture.
+        Log.i("WorldView", "world ready: ${w.route.id}")
     }
 
     private fun bucketKey(x: Double, z: Double): Long = floor(x / BUCKET).toLong() * 100_003L + floor(z / BUCKET).toLong()

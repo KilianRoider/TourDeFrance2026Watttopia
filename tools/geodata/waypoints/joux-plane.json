@@ -1,0 +1,185 @@
+{
+ "id": "joux-plane",
+ "lengthKm": 11.6,
+ "notes": "Samoëns side (south), the side the Tour always climbs (1978-2023). Route: D354 Route de la Piaz from the Avenue des Glaciers (D907) junction by the Place des Sept Monts in Samoëns, Route de Plampraz from the Sous le Crêt junction (Route des Pleignes), Route de Vigny, Route de Cessonnex, and from the Mévoutier junction the Route du Col de Joux Plane to the col. The routed km of the junctions match cols-cyclisme (Sous le Crêt 1.2, La Combe aux Flés 3.2, Mévoutier 5.38 km) and the app landmarks; the routed GLO-30 profile matches the app's km gradients (701 m at the foot, ~1120 m at Mévoutier, 1687 m at the top). Finish: the road high point on the D354 (GLO-30 1687 m, IGN 1690/1691 m) at 11.61 km, just before the road dips past the Lac de Joux Plane and the restaurant; Wikipedia's col coordinate (46.1328, 6.7114) lies ~350 m north of the road on tracks and is not used. cols-cyclisme gives 11.5 km in its summary and 11.64 km for the variant from the town centre. Routed on Overture 11.61 km; km values scaled by 11.6/11.61. Hairpin numbers are not signposted, so hairpins are named by position.",
+ "sources": [
+  "https://www.cols-cyclisme.com/giffre-chablais/france/col-de-joux-plane-depuis-samoens-c59.htm",
+  "https://en.wikipedia.org/wiki/Col_de_Joux_Plane",
+  "https://pjammcycling.com/climb/124.Col%20de%20Joux%20Plane%20Samoens",
+  "Overture Maps 2026-10-21.0 transportation segments (Route de la Piaz, Route de Plampraz, Route de Vigny, Route de Cessonnex, Route du Col de Joux Plane) and base/water (Lac de Joux Plane)",
+  "Copernicus GLO-30 DEM (road high point and profile check)"
+ ],
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Samoëns – foot of the D354 at the Avenue des Glaciers (D907) / Route de la Piaz junction by the Place des Sept Monts (~700 m)",
+   "lat": 46.08429,
+   "lon": 6.72388,
+   "kind": "start",
+   "confidence": "high",
+   "road": "Route de la Piaz (D354)"
+  },
+  {
+   "km": 0.75,
+   "name": "La Piaz – first steep kilometre above Samoëns",
+   "lat": 46.08864,
+   "lon": 6.71727,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route de la Piaz (D354)"
+  },
+  {
+   "km": 1.21,
+   "name": "Sous le Crêt – junction with the Route des Pleignes (~820 m)",
+   "lat": 46.09135,
+   "lon": 6.71315,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route de Plampraz (D354)"
+  },
+  {
+   "km": 1.58,
+   "name": "Plan Praz – hairpin onto the Route de Vigny",
+   "lat": 46.09186,
+   "lon": 6.7088,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Plampraz (D354)"
+  },
+  {
+   "km": 2.24,
+   "name": "Vigny",
+   "lat": 46.09512,
+   "lon": 6.70818,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route de Vigny (D354)"
+  },
+  {
+   "km": 2.73,
+   "name": "Hairpin above Vigny",
+   "lat": 46.09665,
+   "lon": 6.71001,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Vigny (D354)"
+  },
+  {
+   "km": 3.24,
+   "name": "La Combe aux Flés – short flat section (~980 m)",
+   "lat": 46.09883,
+   "lon": 6.70739,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route de Cessonnex (D354)"
+  },
+  {
+   "km": 3.93,
+   "name": "Cessonex",
+   "lat": 46.10338,
+   "lon": 6.70226,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route de Cessonnex (D354)"
+  },
+  {
+   "km": 4.61,
+   "name": "Hairpin above Cessonex",
+   "lat": 46.10435,
+   "lon": 6.7054,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Cessonnex (D354)"
+  },
+  {
+   "km": 5.38,
+   "name": "Mévoutier – junction where the Route du Col de Joux Plane begins (~1120 m); 6 km at 9 % follow",
+   "lat": 46.10241,
+   "lon": 6.71333,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 6.18,
+   "name": "Combe Emeru – hairpin in the steepest section (13 %)",
+   "lat": 46.10613,
+   "lon": 6.71082,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 6.81,
+   "name": "Hairpin above the Combe Emeru",
+   "lat": 46.10816,
+   "lon": 6.70989,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 7.07,
+   "name": "Hairpin where the road enters the forest",
+   "lat": 46.10844,
+   "lon": 6.71307,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 8.03,
+   "name": "Western hairpin in the forest (~1370 m)",
+   "lat": 46.10918,
+   "lon": 6.70153,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 8.87,
+   "name": "Hairpin in the forest (~1450 m)",
+   "lat": 46.11398,
+   "lon": 6.70697,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 9.59,
+   "name": "Leaving the forest – view of Mont Blanc",
+   "lat": 46.11342,
+   "lon": 6.7103,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 10.49,
+   "name": "Open alpine pasture, straight final ramp",
+   "lat": 46.1209,
+   "lon": 6.71095,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 10.99,
+   "name": "Last kilometre (6-7 %)",
+   "lat": 46.12534,
+   "lon": 6.71093,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Route du Col de Joux Plane (D354)"
+  },
+  {
+   "km": 11.6,
+   "name": "Col de Joux Plane summit (1691 m), road high point before the Lac de Joux Plane",
+   "lat": 46.12964,
+   "lon": 6.71266,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "Route du Col de Joux Plane (D354)"
+  }
+ ]
+}

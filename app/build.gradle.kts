@@ -47,6 +47,12 @@ android {
     buildFeatures {
         compose = true
     }
+
+    // Geodata packs (assets/geo/<route>.wwgeo) stay uncompressed in the APK: the renderer reads them
+    // with ranged reads through AssetManager.openFd, which only works on stored (uncompressed) assets.
+    androidResources {
+        noCompress += "wwgeo"
+    }
 }
 
 kotlin {

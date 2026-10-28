@@ -1,0 +1,175 @@
+{
+ "id": "planche",
+ "lengthKm": 7.0,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Plancher-les-Mines, Quartier de Saint-Antoine – foot (~532 m)",
+   "lat": 47.77163,
+   "lon": 6.74731,
+   "kind": "start",
+   "confidence": "high",
+   "road": "Quartier de Saint-Antoine"
+  },
+  {
+   "km": 0.34,
+   "name": "Junction D16 (to Belfahy) / D16E – right onto the Route de la Planche des Belles Filles",
+   "lat": 47.77262,
+   "lon": 6.75155,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 1.0,
+   "name": "D16E through the forest",
+   "lat": 47.77422,
+   "lon": 6.75993,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 1.9,
+   "name": "Hairpin 1 (short easing)",
+   "lat": 47.77919,
+   "lon": 6.7689,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 2.8,
+   "name": "Hairpin 2",
+   "lat": 47.77292,
+   "lon": 6.76291,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 3.3,
+   "name": "D16E in the beech forest",
+   "lat": 47.77373,
+   "lon": 6.7686,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 3.7,
+   "name": "Hairpin 3",
+   "lat": 47.77537,
+   "lon": 6.77211,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 4.2,
+   "name": "D16E",
+   "lat": 47.77173,
+   "lon": 6.76952,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 4.59,
+   "name": "Hairpin 4 (forest-road junction)",
+   "lat": 47.7699,
+   "lon": 6.7662,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 5.2,
+   "name": "Short dip before the final ramps",
+   "lat": 47.77173,
+   "lon": 6.77359,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 5.65,
+   "name": "Last hairpin – entry to the ski station",
+   "lat": 47.77439,
+   "lon": 6.778,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 5.9,
+   "name": "La Planche des Belles Filles ski station – old finish line (1035 m)",
+   "lat": 47.77235,
+   "lon": 6.77746,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D16E"
+  },
+  {
+   "km": 6.05,
+   "name": "Station car park, west side",
+   "lat": 47.77124,
+   "lon": 6.7763,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "D16E"
+  },
+  {
+   "km": 6.18,
+   "name": "Start of the gravel 'Super Planche' track",
+   "lat": 47.77047,
+   "lon": 6.77705,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "track (La Super Planche, gravel)"
+  },
+  {
+   "km": 6.42,
+   "name": "Super Planche gravel track on the ski slope",
+   "lat": 47.76957,
+   "lon": 6.77416,
+   "kind": "via",
+   "confidence": "high",
+   "road": "track (La Super Planche, gravel)"
+  },
+  {
+   "km": 6.78,
+   "name": "Super Planche – bend at the bottom of the last ramps",
+   "lat": 47.7676,
+   "lon": 6.77051,
+   "kind": "via",
+   "confidence": "high",
+   "road": "track (La Super Planche, gravel)"
+  },
+  {
+   "km": 6.95,
+   "name": "Super Planche – final ramps (up to 24 %)",
+   "lat": 47.76645,
+   "lon": 6.77204,
+   "kind": "via",
+   "confidence": "high",
+   "road": "track (La Super Planche, gravel)"
+  },
+  {
+   "km": 7.13,
+   "name": "La Super Planche des Belles Filles – finish (~1140 m)",
+   "lat": 47.76721,
+   "lon": 6.77384,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "track (La Super Planche, gravel)"
+  }
+ ],
+ "notes": "La (Super) Planche des Belles Filles from Plancher-les-Mines, as used by the Tour in 2019 and 2022 (and the app profile). km 0 = foot of the classic 5.9 km climb (Wikipedia: 5.9 km, +503 m, i.e. from ~532 m; app startElevationM 531) in the Quartier de Saint-Antoine at the north end of Plancher-les-Mines, 0.34 km before the D16/D16E fork (DEM 534 m). Route: D16E (Overture class 'unclassified', no name) with 4 hairpins to the ski station; old finish line at the station at routed km 5.89 (app 5.9); then the station car-park loop and the Overture track 'La Super Planche' (gravel, with two short paved/concrete bits) up the ski slope to its end at ~1145 m (DEM), which is the Super Planche finish. Routed length 7.13 km vs official/app 7.0 km (+1.8 %); the difference sits in the gravel part (app gravel from 6.1, routed from 6.2) - the official '7 km' is rounded. The waypoint 'road' says 'track' so the pipeline unlocks the track class (needed for the gravel). The short dip at app km 5.3 ('kurzes Gefälle') is visible in the DEM at routed km 5.1-5.3, which confirms the foot. Note: Wikipedia's coordinate (47.7722 N 6.7778 E) is the ski station/old finish, not the Super Planche top. The paved forest road from the south side of Plancher-les-Mines (Overture 'track', 5.56 km) joins the D16E at hairpin 4 and is NOT the race road.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/La_Planche_des_Belles_Filles",
+  "https://pjammcycling.com/climb/5716.La-Super-Planche-Des-Belles-Filles",
+  "Overture Maps 2026-10-21.0 transportation segments (track 'La Super Planche')",
+  "Copernicus GLO-30 DEM (profile check)"
+ ]
+}

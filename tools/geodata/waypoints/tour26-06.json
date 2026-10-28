@@ -1,0 +1,1205 @@
+{
+ "id": "tour26-06",
+ "lengthKm": 186.2,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Mazères-Lezons – km 0 (D37 → D802)",
+   "lat": 43.27838,
+   "lon": -0.35497,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D802"
+  },
+  {
+   "km": 0.6,
+   "name": "D802 rocade (départ réel point of the itinéraire horaire)",
+   "lat": 43.28299,
+   "lon": -0.35573,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D802"
+  },
+  {
+   "km": 1.7,
+   "name": "Tunnel de Franqueville (Bizanos)",
+   "lat": 43.28511,
+   "lon": -0.3432,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D802"
+  },
+  {
+   "km": 2.6,
+   "name": "Bizanos – roundabout D802/D938",
+   "lat": 43.28742,
+   "lon": -0.33259,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D938"
+  },
+  {
+   "km": 3.6,
+   "name": "Idron (près)",
+   "lat": 43.28477,
+   "lon": -0.32093,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 5.4,
+   "name": "Meillon (près)",
+   "lat": 43.27323,
+   "lon": -0.30747,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 7.8,
+   "name": "Assat (près)",
+   "lat": 43.25743,
+   "lon": -0.28769,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 10.1,
+   "name": "Bordes (près)",
+   "lat": 43.24343,
+   "lon": -0.26802,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 12.6,
+   "name": "Boeil-Bezing (près)",
+   "lat": 43.22598,
+   "lon": -0.25078,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 16.2,
+   "name": "Mirepeix (près)",
+   "lat": 43.19533,
+   "lon": -0.24109,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 17.22,
+   "name": "via D938",
+   "lat": 43.1862,
+   "lon": -0.24043,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 17.8,
+   "name": "Coarraze – itinerary point",
+   "lat": 43.18112,
+   "lon": -0.24048,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 19.48,
+   "name": "Coarraze – centre",
+   "lat": 43.16778,
+   "lon": -0.23462,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 21.4,
+   "name": "Igon (près) – end of D938, joins D937",
+   "lat": 43.15236,
+   "lon": -0.22543,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 23.5,
+   "name": "Lestelle-Bétharram – itinerary point",
+   "lat": 43.13555,
+   "lon": -0.21403,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 24.15,
+   "name": "Lestelle-Bétharram centre (Rue Henri IV)",
+   "lat": 43.13087,
+   "lon": -0.20952,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 25.1,
+   "name": "Montaut (village across the Gave)",
+   "lat": 43.12317,
+   "lon": -0.20591,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 27.7,
+   "name": "Level crossing PN 192",
+   "lat": 43.10702,
+   "lon": -0.18577,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 28.7,
+   "name": "Saint-Pé-de-Bigorre – itinerary point",
+   "lat": 43.10378,
+   "lon": -0.17446,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 30.01,
+   "name": "Saint-Pé-de-Bigorre centre",
+   "lat": 43.10333,
+   "lon": -0.1592,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 33.5,
+   "name": "Peyrouse",
+   "lat": 43.10319,
+   "lon": -0.12013,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 37.2,
+   "name": "Carrefour D937/D13 (west of Lourdes)",
+   "lat": 43.0991,
+   "lon": -0.07641,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D13"
+  },
+  {
+   "km": 38.1,
+   "name": "Lourdes (D13 → VC → D937)",
+   "lat": 43.10063,
+   "lon": -0.0658,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D13 Route de Pau"
+  },
+  {
+   "km": 39.46,
+   "name": "Lourdes, Rue de Pau",
+   "lat": 43.09893,
+   "lon": -0.04929,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Pau"
+  },
+  {
+   "km": 39.93,
+   "name": "Lourdes, rond-point Michel Crauste → Av. Gén. Baron Maransin",
+   "lat": 43.09801,
+   "lon": -0.04565,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue Général Baron Maransin"
+  },
+  {
+   "km": 40.26,
+   "name": "Lourdes, Place du Marcadal",
+   "lat": 43.09519,
+   "lon": -0.04622,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Rue de Bagnères"
+  },
+  {
+   "km": 40.49,
+   "name": "Lourdes, Rue de Bagnères",
+   "lat": 43.09585,
+   "lon": -0.044,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Bagnères"
+  },
+  {
+   "km": 41.23,
+   "name": "Lourdes, Boulevard du Lapacca",
+   "lat": 43.09589,
+   "lon": -0.03652,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 42.32,
+   "name": "Lourdes exit, Route de Bagnères (D937)",
+   "lat": 43.09623,
+   "lon": -0.0235,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 44.3,
+   "name": "Lézignan (près)",
+   "lat": 43.09464,
+   "lon": 0.0007,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 44.8,
+   "name": "Arcizac-ez-Angles",
+   "lat": 43.09458,
+   "lon": 0.00679,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 47.1,
+   "name": "Escoubès-Pouts",
+   "lat": 43.1048,
+   "lon": 0.03085,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 49.0,
+   "name": "Le Hameau (Orincles) – foot of Côte de Loucrup",
+   "lat": 43.11372,
+   "lon": 0.05046,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 50.9,
+   "name": "Loucrup – Côte de Loucrup (cat. 4) summit",
+   "lat": 43.11801,
+   "lon": 0.07119,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D937"
+  },
+  {
+   "km": 54.0,
+   "name": "Montgaillard",
+   "lat": 43.11666,
+   "lon": 0.10196,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 54.8,
+   "name": "Carrefour D937/D935 (Montgaillard)",
+   "lat": 43.1167,
+   "lon": 0.1103,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D935"
+  },
+  {
+   "km": 55.8,
+   "name": "Trébons – itinerary point",
+   "lat": 43.10859,
+   "lon": 0.11549,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D935"
+  },
+  {
+   "km": 56.72,
+   "name": "Trébons centre",
+   "lat": 43.10157,
+   "lon": 0.12128,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D935"
+  },
+  {
+   "km": 57.9,
+   "name": "Pouzac (entrée)",
+   "lat": 43.09355,
+   "lon": 0.13074,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D935"
+  },
+  {
+   "km": 59.1,
+   "name": "Pouzac – intermediate sprint",
+   "lat": 43.08398,
+   "lon": 0.13745,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D935"
+  },
+  {
+   "km": 60.1,
+   "name": "Bagnères-de-Bigorre (D935 → VC → D935 → D938)",
+   "lat": 43.07578,
+   "lon": 0.14237,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D935 Av. du Général Leclerc"
+  },
+  {
+   "km": 61.1,
+   "name": "Bagnères-de-Bigorre, Av. du Général Leclerc / Rue de la République",
+   "lat": 43.06759,
+   "lon": 0.14729,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de la République"
+  },
+  {
+   "km": 61.43,
+   "name": "Bagnères-de-Bigorre, Place Lafayette (centre)",
+   "lat": 43.06501,
+   "lon": 0.1492,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Rue Maréchal Foch (against the one-way)"
+  },
+  {
+   "km": 61.61,
+   "name": "Bagnères-de-Bigorre, Rue Maréchal Foch",
+   "lat": 43.06552,
+   "lon": 0.1512,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue du Général de Gaulle"
+  },
+  {
+   "km": 62.29,
+   "name": "Bagnères-de-Bigorre, start of Route de Toulouse (D938)",
+   "lat": 43.07011,
+   "lon": 0.15662,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 63.8,
+   "name": "Quartier Haut de la Côte (Bagnères)",
+   "lat": 43.08126,
+   "lon": 0.16428,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 65.4,
+   "name": "La Coume (près), Mérilheu",
+   "lat": 43.09085,
+   "lon": 0.17858,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 67.3,
+   "name": "Cieutat – itinerary point",
+   "lat": 43.10311,
+   "lon": 0.19405,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 68.39,
+   "name": "D938 at the turn-off into Cieutat village",
+   "lat": 43.1111,
+   "lon": 0.2018,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 70.24,
+   "name": "Cieutat – closest point to the village",
+   "lat": 43.11576,
+   "lon": 0.2222,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 73.9,
+   "name": "Abbaye de l'Escaladieu (Bonnemazon)",
+   "lat": 43.10962,
+   "lon": 0.25782,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 74.3,
+   "name": "L'Escaladieu (Mauvezin) – foot of Côte de Mauvezin",
+   "lat": 43.10999,
+   "lon": 0.26266,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 74.64,
+   "name": "via Route Saint-Jacques de Compostelle",
+   "lat": 43.10842,
+   "lon": 0.26565,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 74.97,
+   "name": "via Route Saint-Jacques de Compostelle",
+   "lat": 43.10916,
+   "lon": 0.26686,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 75.65,
+   "name": "via Route Saint-Jacques de Compostelle",
+   "lat": 43.11321,
+   "lon": 0.26863,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 77.0,
+   "name": "Mauvezin",
+   "lat": 43.11619,
+   "lon": 0.27903,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 77.3,
+   "name": "Côte de Mauvezin (cat. 3) summit",
+   "lat": 43.11599,
+   "lon": 0.28168,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 79.8,
+   "name": "Capvern – itinerary point",
+   "lat": 43.1051,
+   "lon": 0.30691,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 80.62,
+   "name": "Capvern",
+   "lat": 43.10224,
+   "lon": 0.31621,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 81.66,
+   "name": "via Route de la Gare",
+   "lat": 43.10451,
+   "lon": 0.32759,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D938"
+  },
+  {
+   "km": 85.0,
+   "name": "Avezac-Gare – D938 → D929A",
+   "lat": 43.08161,
+   "lon": 0.35125,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D929A"
+  },
+  {
+   "km": 85.5,
+   "name": "Level crossing (Avezac)",
+   "lat": 43.08019,
+   "lon": 0.35702,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929A"
+  },
+  {
+   "km": 88.95,
+   "name": "via D929A",
+   "lat": 43.05351,
+   "lon": 0.36137,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929A"
+  },
+  {
+   "km": 91.7,
+   "name": "Carrefour D929A/D929",
+   "lat": 43.0293,
+   "lon": 0.36793,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 92.2,
+   "name": "Hèches – itinerary point",
+   "lat": 43.02573,
+   "lon": 0.37137,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 93.17,
+   "name": "Hèches",
+   "lat": 43.01742,
+   "lon": 0.37406,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 94.8,
+   "name": "Rebouc – itinerary point",
+   "lat": 43.00414,
+   "lon": 0.37864,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 96.11,
+   "name": "Rebouc – centre",
+   "lat": 42.99387,
+   "lon": 0.3745,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 98.0,
+   "name": "Sarrancolin – itinerary point",
+   "lat": 42.97699,
+   "lon": 0.37615,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 99.18,
+   "name": "Sarrancolin",
+   "lat": 42.96645,
+   "lon": 0.377,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 99.8,
+   "name": "Beyrède (Beyrède-Jumet-Camous)",
+   "lat": 42.96117,
+   "lon": 0.37934,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 101.0,
+   "name": "Escalère (Beyrède-Jumet-Camous)",
+   "lat": 42.95093,
+   "lon": 0.37494,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D929"
+  },
+  {
+   "km": 106.0,
+   "name": "Arreau – D929/D918 junction, foot of Col d'Aspin",
+   "lat": 42.90934,
+   "lon": 0.35998,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 108.1,
+   "name": "Le Plagnou (près), Aspin-Aure",
+   "lat": 42.91991,
+   "lon": 0.34711,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 109.57,
+   "name": "via Route du Col",
+   "lat": 42.92232,
+   "lon": 0.35941,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 109.94,
+   "name": "via Route du Col",
+   "lat": 42.92386,
+   "lon": 0.35918,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 110.31,
+   "name": "via Route du Col",
+   "lat": 42.9207,
+   "lon": 0.35808,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 111.04,
+   "name": "via Route du Col",
+   "lat": 42.92256,
+   "lon": 0.35197,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 111.92,
+   "name": "via Route du Col",
+   "lat": 42.92641,
+   "lon": 0.3451,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 112.81,
+   "name": "via Route du Col",
+   "lat": 42.92549,
+   "lon": 0.35188,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 114.57,
+   "name": "via Route du Col",
+   "lat": 42.93649,
+   "lon": 0.34438,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 115.45,
+   "name": "via Route du Col",
+   "lat": 42.94031,
+   "lon": 0.33674,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 115.89,
+   "name": "via Route du Col",
+   "lat": 42.94019,
+   "lon": 0.33809,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 116.34,
+   "name": "via Route du Col",
+   "lat": 42.94039,
+   "lon": 0.34317,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 118.1,
+   "name": "Col d'Aspin (1489 m, cat. 1)",
+   "lat": 42.94233,
+   "lon": 0.3274,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 122.9,
+   "name": "Payolle (Campan)",
+   "lat": 42.94372,
+   "lon": 0.28732,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 126.6,
+   "name": "La Séoube (Campan)",
+   "lat": 42.96166,
+   "lon": 0.25167,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 127.6,
+   "name": "Hountmelouse (Campan)",
+   "lat": 42.96882,
+   "lon": 0.24432,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 128.3,
+   "name": "Mariouse Daban (Campan)",
+   "lat": 42.97501,
+   "lon": 0.24318,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 129.2,
+   "name": "Trassouet (Campan)",
+   "lat": 42.98154,
+   "lon": 0.23678,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 130.2,
+   "name": "Sainte-Marie-de-Campan – D918 junction, foot of Col du Tourmalet",
+   "lat": 42.98459,
+   "lon": 0.22754,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 131.0,
+   "name": "Les Bulanettes (Campan)",
+   "lat": 42.97803,
+   "lon": 0.22818,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 132.5,
+   "name": "Las Basses (Campan)",
+   "lat": 42.96568,
+   "lon": 0.2304,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 132.9,
+   "name": "Pas de la Barane (Campan)",
+   "lat": 42.96222,
+   "lon": 0.23035,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 134.8,
+   "name": "Gripp (Campan)",
+   "lat": 42.94706,
+   "lon": 0.22329,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 137.2,
+   "name": "Artigues (Campan)",
+   "lat": 42.93247,
+   "lon": 0.20469,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 138.67,
+   "name": "via Route du Col du Tourmalet",
+   "lat": 42.92455,
+   "lon": 0.20137,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 139.41,
+   "name": "via Route du Col du Tourmalet",
+   "lat": 42.92044,
+   "lon": 0.2073,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 139.78,
+   "name": "via Route du Col du Tourmalet",
+   "lat": 42.91763,
+   "lon": 0.20913,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 140.15,
+   "name": "via Route du Col du Tourmalet",
+   "lat": 42.91875,
+   "lon": 0.20746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 143.1,
+   "name": "La Mongie",
+   "lat": 42.91086,
+   "lon": 0.18228,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 147.8,
+   "name": "Col du Tourmalet (2115 m, HC)",
+   "lat": 42.9082,
+   "lon": 0.14511,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 148.09,
+   "name": "via D918",
+   "lat": 42.90588,
+   "lon": 0.1463,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 148.38,
+   "name": "via D918",
+   "lat": 42.90622,
+   "lon": 0.1448,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 148.95,
+   "name": "via D918",
+   "lat": 42.90881,
+   "lon": 0.13961,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 149.53,
+   "name": "via D918",
+   "lat": 42.91329,
+   "lon": 0.13722,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 150.1,
+   "name": "via D918",
+   "lat": 42.90915,
+   "lon": 0.1379,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 151.25,
+   "name": "via D918",
+   "lat": 42.90226,
+   "lon": 0.13234,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 151.82,
+   "name": "via D918",
+   "lat": 42.90398,
+   "lon": 0.12643,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 152.4,
+   "name": "Super Barèges",
+   "lat": 42.9065,
+   "lon": 0.13125,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 155.12,
+   "name": "via D918",
+   "lat": 42.90606,
+   "lon": 0.10327,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 155.56,
+   "name": "via D918",
+   "lat": 42.90528,
+   "lon": 0.10168,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 156.0,
+   "name": "Tournaboup (Barèges)",
+   "lat": 42.90328,
+   "lon": 0.10138,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 158.7,
+   "name": "Barèges – itinerary point",
+   "lat": 42.89799,
+   "lon": 0.06917,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 159.31,
+   "name": "Barèges",
+   "lat": 42.89615,
+   "lon": 0.06222,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 162.8,
+   "name": "Betpouey (près)",
+   "lat": 42.88283,
+   "lon": 0.03503,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 164.3,
+   "name": "Lonquere Garets (Viella)",
+   "lat": 42.87841,
+   "lon": 0.01898,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 165.5,
+   "name": "Esterre",
+   "lat": 42.87449,
+   "lon": 0.00562,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 166.3,
+   "name": "Luz-Saint-Sauveur – D918 → D921",
+   "lat": 42.87323,
+   "lon": -0.00327,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D921"
+  },
+  {
+   "km": 167.5,
+   "name": "Foot of the final climb to Gavarnie (18.7 km at 3.7 %)",
+   "lat": 42.86487,
+   "lon": -0.00851,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 171.0,
+   "name": "Sia",
+   "lat": 42.83684,
+   "lon": -0.00347,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 173.4,
+   "name": "Pragnères",
+   "lat": 42.8194,
+   "lon": 0.01015,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 177.2,
+   "name": "Gèdre",
+   "lat": 42.78994,
+   "lon": 0.01841,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 177.9,
+   "name": "via Route des Trois Cirques",
+   "lat": 42.78506,
+   "lon": 0.02026,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 178.25,
+   "name": "via Route des Trois Cirques",
+   "lat": 42.78343,
+   "lon": 0.01897,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 178.6,
+   "name": "via Route des Trois Cirques",
+   "lat": 42.78546,
+   "lon": 0.02221,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 180.0,
+   "name": "Biroulet",
+   "lat": 42.77686,
+   "lon": 0.01541,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 181.4,
+   "name": "Chaos de Coumély",
+   "lat": 42.76722,
+   "lon": 0.00605,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 182.6,
+   "name": "Couret",
+   "lat": 42.75722,
+   "lon": 0.00168,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 184.36,
+   "name": "via Route de Gavarnie",
+   "lat": 42.74325,
+   "lon": -0.00483,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D921"
+  },
+  {
+   "km": 185.5,
+   "name": "Gavarnie (entrée) – D921 → D128 at Place Henry Russell",
+   "lat": 42.73511,
+   "lon": -0.01012,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D128"
+  },
+  {
+   "km": 186.2,
+   "name": "Gavarnie-Gèdre – finish, D128 route des Espécières (1380 m)",
+   "lat": 42.73958,
+   "lon": -0.01488,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "Official length 186.2 km (letour.fr / cyclingstage: Côte de Loucrup 50.9, sprint Pouzac 59.1, Côte de Mauvezin 77.3, Col d'Aspin 118.1, Col du Tourmalet 147.8). The Hautes-Pyrénées itinéraire horaire (185.6 km) lists every point exactly 0.6 km lower, so itinerary km + 0.6 is used throughout. km 0 (départ réel) is placed at the D37/D802 junction in Mazères-Lezons (43.2784, -0.3550), 0.6 km before the itinerary's own départ-réel point on the D802 rocade ('à 7,7 km du lieu de rassemblement'); the neutralised section from Pau via Jurançon and Gelos is not included. Route: D802 rocade (Franqueville tunnel), D938 expressway past Idron, Meillon, Assat, Bordes, Boeil-Bezing and Mirepeix (all 'près'), through Coarraze, D937 from Igon (près) via Lestelle-Bétharram, Saint-Pé-de-Bigorre and Peyrouse; D13 into Lourdes (Route/Rue de Pau, rond-point Michel Crauste, Av. Gén. Baron Maransin, Place du Marcadal, Rue de Bagnères, Bd du Lapacca); D937 via Lézignan, Arcizac-ez-Angles, Escoubès-Pouts and the Côte de Loucrup (cat. 4) to Montgaillard (Route de Lourdes Prolongée); D935 via Trébons and Pouzac (intermediate sprint) into Bagnères-de-Bigorre (Av. du Général Leclerc, Place Lafayette, Rue Maréchal Foch against the one-way as given in the town's road-closure notice, Rue du Général de Gaulle); D938 Route de Toulouse past Haut de la Côte, La Coume and Cieutat (the D938 passes south of the village), l'Escaladieu, Côte de Mauvezin (cat. 3), Capvern; D929A from Avezac-Gare, D929 via Hèches, Rebouc and Sarrancolin to Arreau; D918 over the Col d'Aspin (cat. 1), Payolle, Sainte-Marie-de-Campan, Col du Tourmalet (HC), Barèges, Luz-Saint-Sauveur; D921 via Gèdre to Gavarnie; the finish is 0.7 km up the D128 route des Espécières. Placement: itinerary points sit on the routed road at their official km, interpolated between firmly located anchors (km 0, junctions, summits, finish). In several villages the itinerary km falls 0.6-1.7 km before the centre (the timing schedule appears to use the village entry). There the official point is named '… – itinerary point', and a separate town point at the centre carries a km derived from routed distance (medium confidence). Points named 'via …' only keep a shortest-path router on the race road (hairpins, parallel streets); their km is derived. Routed length through all waypoints on Overture 2026-10-21.0 roads is about 187.4 km (+0.6 %). Uncertain: between Bagnères and l'Escaladieu the itinerary splits (Bagnères→Cieutat 7.2 km, Cieutat→l'Escaladieu 7.0 km) fit the map poorly. The D938 south of Cieutat was assumed; the loop through the village (Marque Dessus / Era Coustéta) would add about 0.8 km. No sprint-line coordinate is published, so the Pouzac sprint is placed by km.",
+ "sources": [
+  "https://cdt65.media.tourinsoft.eu/upload/Horaires-TDF26.pdf",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-6-times.htm",
+  "https://www.hautespyrenees.fr/wp-content/uploads/2026/06/TOUR-DE-FRANCE_GAVARNIE_2026_FR-2.pdf",
+  "https://info.fr/tour-de-france-2026-bagneres-de-bigorre-circulation-coupee/",
+  "https://hedgehogcycling.co.uk/stage-6-tour-de-france-2026.html",
+  "https://en.lourdes-infotourisme.com/lourdes-the-natural-side/cycling-in-the-pyrenees/the-2026-tour-de-france-in-the-pyrenees/",
+  "https://en.wikipedia.org/wiki/Col_d%27Aspin",
+  "https://en.wikipedia.org/wiki/Col_du_Tourmalet",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments"
+ ]
+}

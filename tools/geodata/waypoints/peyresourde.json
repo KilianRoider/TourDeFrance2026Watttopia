@@ -1,0 +1,238 @@
+{
+ "id": "peyresourde",
+ "lengthKm": 13.7,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Bagnères-de-Luchon – Place du Comminges (north end of Avenue Carnot / Allées d'Étigny), foot of the climb (~633 m)",
+   "lat": 42.79196,
+   "lon": 0.59135,
+   "kind": "start",
+   "confidence": "high",
+   "road": "Rue Nérée Boubée"
+  },
+  {
+   "km": 0.22,
+   "name": "Luchon – start of the D618 Avenue Jean Moulin (junction Cours de la Casseyde)",
+   "lat": 42.79373,
+   "lon": 0.59116,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 1.16,
+   "name": "D618 leaving Luchon (end of Avenue Jean Moulin)",
+   "lat": 42.79439,
+   "lon": 0.57995,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 2.0,
+   "name": "D618 above Luchon",
+   "lat": 42.79622,
+   "lon": 0.57054,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 2.42,
+   "name": "Payssas (Cazarilh-Laspènes)",
+   "lat": 42.79819,
+   "lon": 0.56661,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 3.0,
+   "name": "D618 below Trébons-de-Luchon – flat section by the One stream",
+   "lat": 42.8026,
+   "lon": 0.56316,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 3.48,
+   "name": "D618 / Rue Pierre Caussette junction (Artigaou)",
+   "lat": 42.80633,
+   "lon": 0.56084,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 3.71,
+   "name": "Hairpin (~815 m)",
+   "lat": 42.80464,
+   "lon": 0.56023,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 3.96,
+   "name": "Hairpin at the junction with the Route de la Vallée d'Oueil (to Port de Balès)",
+   "lat": 42.80657,
+   "lon": 0.55979,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 4.6,
+   "name": "D618 below Saint-Aventin",
+   "lat": 42.80594,
+   "lon": 0.55313,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 5.19,
+   "name": "Saint-Aventin (~925 m)",
+   "lat": 42.80652,
+   "lon": 0.54604,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 5.75,
+   "name": "Plan Redon",
+   "lat": 42.80639,
+   "lon": 0.53939,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 6.21,
+   "name": "Castillon-de-Larboust (below the village)",
+   "lat": 42.80683,
+   "lon": 0.53384,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 6.52,
+   "name": "Cazeaux-de-Larboust (below the village)",
+   "lat": 42.80736,
+   "lon": 0.53016,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 7.07,
+   "name": "D618 Route de Peyresourde",
+   "lat": 42.80606,
+   "lon": 0.52375,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 7.61,
+   "name": "Garin (~1115 m)",
+   "lat": 42.80841,
+   "lon": 0.51927,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 8.05,
+   "name": "Saint-Tritous (below the road)",
+   "lat": 42.80806,
+   "lon": 0.51448,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 8.89,
+   "name": "D618 above Garin",
+   "lat": 42.80675,
+   "lon": 0.50453,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 9.81,
+   "name": "D618 Route de Peyresourde",
+   "lat": 42.80652,
+   "lon": 0.49455,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 10.81,
+   "name": "D618 Route de Peyresourde",
+   "lat": 42.80704,
+   "lon": 0.4827,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 11.87,
+   "name": "D618 below the final hairpins",
+   "lat": 42.8016,
+   "lon": 0.47238,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 12.4,
+   "name": "Hairpin (~1460 m)",
+   "lat": 42.8039,
+   "lon": 0.46944,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 12.74,
+   "name": "Hairpin (~1485 m)",
+   "lat": 42.80164,
+   "lon": 0.46703,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 13.14,
+   "name": "Last hairpin (~1515 m)",
+   "lat": 42.80474,
+   "lon": 0.46863,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 13.7,
+   "name": "Col de Peyresourde – summit (1569 m)",
+   "lat": 42.8023,
+   "lon": 0.46297,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D618"
+  }
+ ],
+ "notes": "East side of the Col de Peyresourde from Bagnères-de-Luchon (app: start 625 m, 13.7 km; Saint-Aventin km 5.2, Castillon 6.5, Garin 8.0). km 0 = Place du Comminges in the centre of Luchon (north end of Avenue Carnot), from where the route takes Rue Nérée Boubée for 200 m to the start of the D618 (Avenue Jean Moulin); this foot reproduces the app length (routed 13.69 km) and village positions (Saint-Aventin 5.2, Castillon 6.2, Garin 7.6). Route: D618 only — out of Luchon on Avenue Jean Moulin, Payssas, the flat section below Trébons, two hairpins at the junction with the Vallée d'Oueil road (Port de Balès), Saint-Aventin, below Castillon- and Cazeaux-de-Larboust, Garin, then the long open drag and three final hairpins to the col. The summit is the high point of the D618 (DEM ~1570 m), ~300 m before the roundabout where the Peyragudes road branches off (the Wikipedia/Geohack point 42.7969, 0.4533 lies on that Peyragudes road, not on the D618). Coordinates are on the Overture/OSM road geometry; km are routed distances from the foot. Note: in the Tour 2021 (stage 17) the race entered Luchon from the D125 and its itinerary gives Luchon→col 15.7 km with Saint-Aventin at 6.7 km — a different start inside Luchon, not used here.",
+ "sources": [
+  "https://www.hautespyrenees.fr/wp-content/uploads/2021/07/Fiche-horaire_etape-17-IH.pdf",
+  "https://en.wikipedia.org/wiki/Col_de_Peyresourde",
+  "https://www.quaeldich.de/paesse/col-de-peyresourde/",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions (Bagnères-de-Luchon, Payssas, Saint-Aventin, Castillon/Cazeaux-de-Larboust, Garin), Copernicus GLO-30 DEM"
+ ]
+}

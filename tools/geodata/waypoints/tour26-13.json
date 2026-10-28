@@ -1,0 +1,1066 @@
+{
+ "id": "tour26-13",
+ "lengthKm": 205.8,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Dole – départ réel on the D244 (1.4 km before Falletans)",
+   "lat": 47.0981,
+   "lon": 5.54832,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D244"
+  },
+  {
+   "km": 1.4,
+   "name": "Falletans",
+   "lat": 47.10265,
+   "lon": 5.56348,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D244"
+  },
+  {
+   "km": 3.3,
+   "name": "Gros-Buisson (près) (Rochefort-sur-Nenon)",
+   "lat": 47.11443,
+   "lon": 5.57359,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D244"
+  },
+  {
+   "km": 4.8,
+   "name": "Carrefour D244 / D76 (Rochefort-sur-Nenon)",
+   "lat": 47.12302,
+   "lon": 5.56875,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D76"
+  },
+  {
+   "km": 6.0,
+   "name": "Nenon (Éclans-Nenon)",
+   "lat": 47.12551,
+   "lon": 5.58677,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D76"
+  },
+  {
+   "km": 7.4,
+   "name": "Éclans (Éclans-Nenon)",
+   "lat": 47.12714,
+   "lon": 5.60312,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D76"
+  },
+  {
+   "km": 11.4,
+   "name": "Our",
+   "lat": 47.13219,
+   "lon": 5.64979,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D76"
+  },
+  {
+   "km": 12.4,
+   "name": "Carrefour D76 / D12 (Our)",
+   "lat": 47.14091,
+   "lon": 5.65524,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D12"
+  },
+  {
+   "km": 13.2,
+   "name": "Orchamps (D12 / D673)",
+   "lat": 47.14827,
+   "lon": 5.65886,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D673"
+  },
+  {
+   "km": 15.5,
+   "name": "La Barre (près)",
+   "lat": 47.14432,
+   "lon": 5.68378,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D673"
+  },
+  {
+   "km": 18.1,
+   "name": "Monteplain (près)",
+   "lat": 47.15118,
+   "lon": 5.7131,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D673"
+  },
+  {
+   "km": 18.8,
+   "name": "Ranchot",
+   "lat": 47.15111,
+   "lon": 5.72154,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D673"
+  },
+  {
+   "km": 20.2,
+   "name": "Dampierre",
+   "lat": 47.15416,
+   "lon": 5.74048,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D673"
+  },
+  {
+   "km": 22.0,
+   "name": "Châteauneuf (Évans)",
+   "lat": 47.16217,
+   "lon": 5.76057,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D673"
+  },
+  {
+   "km": 23.0,
+   "name": "Évans (près)",
+   "lat": 47.16716,
+   "lon": 5.7713,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D673"
+  },
+  {
+   "km": 25.0,
+   "name": "Saint-Vit (D673 / D13), entrée",
+   "lat": 47.1769,
+   "lon": 5.79291,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D673"
+  },
+  {
+   "km": 26.7,
+   "name": "Saint-Vit centre, Avenue de Dole → Rue de Marnay (D13)",
+   "lat": 47.18267,
+   "lon": 5.81112,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D13"
+  },
+  {
+   "km": 29.3,
+   "name": "Ferrières-les-Bois",
+   "lat": 47.20322,
+   "lon": 5.80354,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D13"
+  },
+  {
+   "km": 32.2,
+   "name": "Corcelles-Ferrières (D13 / D11 / D13)",
+   "lat": 47.22695,
+   "lon": 5.80961,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D13"
+  },
+  {
+   "km": 34.5,
+   "name": "Lavernay",
+   "lat": 47.24643,
+   "lon": 5.81797,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D13"
+  },
+  {
+   "km": 36.5,
+   "name": "Franey",
+   "lat": 47.26151,
+   "lon": 5.81724,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D13"
+  },
+  {
+   "km": 37.9,
+   "name": "Recologne (près) – carrefour D13 / D5 / D67",
+   "lat": 47.27171,
+   "lon": 5.82199,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D67"
+  },
+  {
+   "km": 40.8,
+   "name": "Carrefour D67 / D279 (Marnay est)",
+   "lat": 47.2852,
+   "lon": 5.7895,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D279"
+  },
+  {
+   "km": 41.8,
+   "name": "Marnay (D29A / D29 / D15)",
+   "lat": 47.28887,
+   "lon": 5.77889,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 42.2,
+   "name": "Marnay, Grande Rue → Avenue de la Gare (D15)",
+   "lat": 47.2906,
+   "lon": 5.77351,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 42.5,
+   "name": "Marnay, Avenue de la Gare → Route de Brussey",
+   "lat": 47.29229,
+   "lon": 5.77659,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 44.6,
+   "name": "Brussey",
+   "lat": 47.30026,
+   "lon": 5.81022,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 47.7,
+   "name": "Beaumotte-lès-Pin (près)",
+   "lat": 47.31083,
+   "lon": 5.84701,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 49.9,
+   "name": "Pin",
+   "lat": 47.32275,
+   "lon": 5.86367,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 53.0,
+   "name": "Vregille (près)",
+   "lat": 47.33451,
+   "lon": 5.8993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 53.6,
+   "name": "Chambornay-lès-Pin",
+   "lat": 47.33658,
+   "lon": 5.90751,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 56.9,
+   "name": "Étuz (D15 / D3 / D15)",
+   "lat": 47.34966,
+   "lon": 5.94,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 58.4,
+   "name": "Boulot",
+   "lat": 47.34775,
+   "lon": 5.96054,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 61.4,
+   "name": "Fusier",
+   "lat": 47.36831,
+   "lon": 5.97956,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 63.8,
+   "name": "Boult",
+   "lat": 47.38154,
+   "lon": 6.00073,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 67.5,
+   "name": "Breurey (près) (Sorans-lès-Breurey)",
+   "lat": 47.39121,
+   "lon": 6.03928,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 68.8,
+   "name": "Sorans (près) (Sorans-lès-Breurey)",
+   "lat": 47.3985,
+   "lon": 6.04938,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 71.5,
+   "name": "Le Verjoulot (Neuvelle-lès-Cromary), échangeur N57 (D15 / D232)",
+   "lat": 47.41623,
+   "lon": 6.06735,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D232"
+  },
+  {
+   "km": 71.7,
+   "name": "Rioz (D232 / D15)",
+   "lat": 47.41697,
+   "lon": 6.06972,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 72.4,
+   "name": "Rioz centre, Rue Charles de Gaulle → Rue du Pays Neuf (D15)",
+   "lat": 47.422,
+   "lon": 6.0712,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15",
+   "radius": 15
+  },
+  {
+   "km": 75.5,
+   "name": "Anthon",
+   "lat": 47.43374,
+   "lon": 6.11045,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 77.8,
+   "name": "Marloz",
+   "lat": 47.43259,
+   "lon": 6.13536,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 83.4,
+   "name": "Loulans-Verchamp",
+   "lat": 47.44632,
+   "lon": 6.20443,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D15"
+  },
+  {
+   "km": 85.9,
+   "name": "Le Poirier (près)",
+   "lat": 47.45716,
+   "lon": 6.23209,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 88.2,
+   "name": "Montbozon (D15 / D49)",
+   "lat": 47.46657,
+   "lon": 6.25912,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D49"
+  },
+  {
+   "km": 88.8,
+   "name": "Montbozon, D49 north-east exit",
+   "lat": 47.46944,
+   "lon": 6.2631,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D49"
+  },
+  {
+   "km": 90.1,
+   "name": "Thiénans (près)",
+   "lat": 47.47451,
+   "lon": 6.27389,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D49"
+  },
+  {
+   "km": 91.8,
+   "name": "Bouhans-lès-Montbozon (près)",
+   "lat": 47.48051,
+   "lon": 6.28833,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D49"
+  },
+  {
+   "km": 92.7,
+   "name": "Cognières (près) – carrefour D49 / D76",
+   "lat": 47.48579,
+   "lon": 6.29461,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D29"
+  },
+  {
+   "km": 93.3,
+   "name": "Montagney-Servigney, Rue de la Gare (D29)",
+   "lat": 47.48722,
+   "lon": 6.30227,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D29"
+  },
+  {
+   "km": 93.9,
+   "name": "La Forge (près) (Montagney-Servigney)",
+   "lat": 47.48536,
+   "lon": 6.31046,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D29"
+  },
+  {
+   "km": 94.0,
+   "name": "D29 east of Montagney (La Forge)",
+   "lat": 47.48474,
+   "lon": 6.31123,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D29"
+  },
+  {
+   "km": 95.8,
+   "name": "Montferney",
+   "lat": 47.47885,
+   "lon": 6.33473,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D29"
+  },
+  {
+   "km": 97.3,
+   "name": "Rougemont (D29 / D486)",
+   "lat": 47.4801,
+   "lon": 6.35482,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 100.0,
+   "name": "Le Pré Rond (Cuse-et-Adrisans) – D486 / D50",
+   "lat": 47.48168,
+   "lon": 6.3828,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D50"
+  },
+  {
+   "km": 102.3,
+   "name": "Cubrial",
+   "lat": 47.49525,
+   "lon": 6.40687,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D50"
+  },
+  {
+   "km": 105.4,
+   "name": "Ferme de la Pâture (près)",
+   "lat": 47.52177,
+   "lon": 6.41846,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 106.5,
+   "name": "Rullet (près) (Les Magny)",
+   "lat": 47.53221,
+   "lon": 6.41885,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 109.3,
+   "name": "Moimay (près) – Villersexel bypass",
+   "lat": 47.55661,
+   "lon": 6.41954,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 110.3,
+   "name": "Villersexel (près)",
+   "lat": 47.5637,
+   "lon": 6.42853,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 114.1,
+   "name": "Aillevans (près)",
+   "lat": 47.59754,
+   "lon": 6.42841,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 117.8,
+   "name": "La Tuilerie (Arpenans / Les Aynans)",
+   "lat": 47.63085,
+   "lon": 6.44048,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 120.1,
+   "name": "Vy-lès-Lure",
+   "lat": 47.64965,
+   "lon": 6.4524,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 123.2,
+   "name": "Magny-Vernois",
+   "lat": 47.66601,
+   "lon": 6.47197,
+   "kind": "town",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 124.1,
+   "name": "Lure-ouest roundabout, Rue de la Venode / Rue Jean Jaurès (D486)",
+   "lat": 47.65981,
+   "lon": 6.48104,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 124.4,
+   "name": "Tuilerie (Lure)",
+   "lat": 47.66172,
+   "lon": 6.48503,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D486"
+  },
+  {
+   "km": 126.1,
+   "name": "Lure (Rue Jean Jaurès / Rue Robespierre)",
+   "lat": 47.6748,
+   "lon": 6.50223,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 126.5,
+   "name": "Lure, Rue Jean Jaurès",
+   "lat": 47.67842,
+   "lon": 6.50016,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 127.3,
+   "name": "Lure, level crossing PN 225",
+   "lat": 47.68448,
+   "lon": 6.49573,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D486B"
+  },
+  {
+   "km": 127.7,
+   "name": "Lure, Avenue de la République → Rue des Vosges (D486B)",
+   "lat": 47.68816,
+   "lon": 6.49418,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D486B"
+  },
+  {
+   "km": 129.0,
+   "name": "Lure, D486 bridge over the N19",
+   "lat": 47.69545,
+   "lon": 6.50477,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 130.9,
+   "name": "Froideterre (près)",
+   "lat": 47.70871,
+   "lon": 6.52099,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 131.8,
+   "name": "Le Mont de Saint-Germain",
+   "lat": 47.71646,
+   "lon": 6.52459,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 132.4,
+   "name": "Saint-Germain",
+   "lat": 47.72112,
+   "lon": 6.5285,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 136.2,
+   "name": "Mélisey (entrée)",
+   "lat": 47.74782,
+   "lon": 6.56061,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 137.8,
+   "name": "Mélisey – intermediate sprint",
+   "lat": 47.75373,
+   "lon": 6.58036,
+   "kind": "sprint",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 140.4,
+   "name": "Belonchamp",
+   "lat": 47.76568,
+   "lon": 6.60762,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 143.4,
+   "name": "Ternuay",
+   "lat": 47.78472,
+   "lon": 6.62996,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 145.5,
+   "name": "Les Champs Journet",
+   "lat": 47.7963,
+   "lon": 6.64814,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 147.0,
+   "name": "Le Ru-Jeannot",
+   "lat": 47.79988,
+   "lon": 6.66475,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 149.0,
+   "name": "Servance",
+   "lat": 47.81087,
+   "lon": 6.68091,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 150.8,
+   "name": "Le Them",
+   "lat": 47.82191,
+   "lon": 6.6948,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 151.7,
+   "name": "Les Grands Champs",
+   "lat": 47.82683,
+   "lon": 6.70389,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 152.2,
+   "name": "Col des Croix – foot of the climb (cat. 3, 5.2 km at 4.8 %)",
+   "lat": 47.83047,
+   "lon": 6.70748,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 153.7,
+   "name": "Haut-du-Them (près)",
+   "lat": 47.84131,
+   "lon": 6.71809,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 154.5,
+   "name": "Route du Col des Croix (D486)",
+   "lat": 47.84719,
+   "lon": 6.72285,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 155.9,
+   "name": "Route du Col des Croix (D486), upper",
+   "lat": 47.85552,
+   "lon": 6.73449,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D486"
+  },
+  {
+   "km": 157.4,
+   "name": "Col des Croix (cat. 3) summit",
+   "lat": 47.8589,
+   "lon": 6.74653,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D486"
+  },
+  {
+   "km": 160.1,
+   "name": "Le Thillot (D486 / N66)",
+   "lat": 47.87886,
+   "lon": 6.76556,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "N66"
+  },
+  {
+   "km": 161.9,
+   "name": "Fresse-sur-Moselle",
+   "lat": 47.87435,
+   "lon": 6.78635,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N66"
+  },
+  {
+   "km": 164.6,
+   "name": "Le Pont Jean (N66)",
+   "lat": 47.86108,
+   "lon": 6.80913,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N66"
+  },
+  {
+   "km": 165.3,
+   "name": "Le Pont Jean",
+   "lat": 47.85557,
+   "lon": 6.81175,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N66"
+  },
+  {
+   "km": 166.0,
+   "name": "Saint-Maurice-sur-Moselle (N66 / D465)",
+   "lat": 47.85498,
+   "lon": 6.8191,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 166.1,
+   "name": "Saint-Maurice-sur-Moselle, N66 → D465 (Rue du Ballon d'Alsace)",
+   "lat": 47.85537,
+   "lon": 6.81958,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 167.1,
+   "name": "Ballon d'Alsace – foot of the climb (cat. 1, 8.8 km at 6.9 %)",
+   "lat": 47.85514,
+   "lon": 6.82488,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 170.5,
+   "name": "D465, Ballon d'Alsace climb",
+   "lat": 47.83677,
+   "lon": 6.82629,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 174.2,
+   "name": "La Jumenterie",
+   "lat": 47.83315,
+   "lon": 6.84015,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 175.9,
+   "name": "Ballon d'Alsace (cat. 1) summit",
+   "lat": 47.82036,
+   "lon": 6.835,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D465"
+  },
+  {
+   "km": 177.0,
+   "name": "Les Sapins",
+   "lat": 47.81375,
+   "lon": 6.84154,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 178.1,
+   "name": "La Chaumière",
+   "lat": 47.8091,
+   "lon": 6.84702,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 181.5,
+   "name": "D465, Ballon d'Alsace descent",
+   "lat": 47.8043,
+   "lon": 6.84166,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 185.0,
+   "name": "Saut de la Truite",
+   "lat": 47.79588,
+   "lon": 6.83125,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 187.0,
+   "name": "Malvaux",
+   "lat": 47.77867,
+   "lon": 6.83426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 190.0,
+   "name": "Lepuix",
+   "lat": 47.75441,
+   "lon": 6.81908,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 191.4,
+   "name": "Giromagny",
+   "lat": 47.74201,
+   "lon": 6.82533,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D465"
+  },
+  {
+   "km": 194.3,
+   "name": "Chaux",
+   "lat": 47.71689,
+   "lon": 6.83372,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 197.6,
+   "name": "Sermamagny (D465 / D5)",
+   "lat": 47.68799,
+   "lon": 6.83668,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D5"
+  },
+  {
+   "km": 199.6,
+   "name": "Valdoie, Rue du Vicomte de Turenne (D5)",
+   "lat": 47.67353,
+   "lon": 6.84355,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D5"
+  },
+  {
+   "km": 200.6,
+   "name": "Valdoie (D5 / D13)",
+   "lat": 47.66633,
+   "lon": 6.84289,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D13"
+  },
+  {
+   "km": 202.0,
+   "name": "Offemont, Rue du Martinet (D13)",
+   "lat": 47.661,
+   "lon": 6.85537,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D13"
+  },
+  {
+   "km": 202.7,
+   "name": "Offemont (D13)",
+   "lat": 47.65824,
+   "lon": 6.8613,
+   "kind": "town",
+   "confidence": "low",
+   "road": "D13"
+  },
+  {
+   "km": 203.0,
+   "name": "Avenue Jean Moulin / Avenue des Commandos d'Afrique",
+   "lat": 47.65666,
+   "lon": 6.8637,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue Jean Moulin"
+  },
+  {
+   "km": 203.7,
+   "name": "Belfort (entrée), Avenue Jean Moulin",
+   "lat": 47.65173,
+   "lon": 6.86231,
+   "kind": "other",
+   "confidence": "low",
+   "road": "Avenue Jean Moulin"
+  },
+  {
+   "km": 204.0,
+   "name": "Avenue Jean Moulin (Étang des Forges)",
+   "lat": 47.64991,
+   "lon": 6.86286,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue Jean Moulin"
+  },
+  {
+   "km": 205.3,
+   "name": "Quai Vauban → Pont Georges Clemenceau (right turn)",
+   "lat": 47.64088,
+   "lon": 6.85924,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Georges Clemenceau"
+  },
+  {
+   "km": 205.8,
+   "name": "Belfort – finish, Boulevard du Maréchal Joffre (n° 15)",
+   "lat": 47.64141,
+   "lon": 6.8545,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "Km values are the official itinéraire horaire (ASO, 'TDF26-IH-Etape-13', reproduced by the Département du Doubs; total 205.8 km). Km 0 = départ réel on the D244 west of Falletans (the itinerary gives Falletans at km 1.4; the neutralised start runs 12.5 km from the Esplanade du Champ de Fêtes in Dole and is not included). Route: D244 Falletans, D76 via Nenon/Éclans/Our, D12 to Orchamps, D673 (old N73) via Ranchot, Dampierre and Évans to Saint-Vit, D13 north via Ferrières-les-Bois, Corcelles-Ferrières, Lavernay, Franey, D67/D279 into Marnay, D15 along the Ognon via Brussey, Pin, Chambornay, Étuz, Boulot, Boult, Sorans, the Rioz-south N57 interchange (Le Verjoulot, D232) and through Rioz, D15 via Anthon, Marloz, Loulans-Verchamp to Montbozon, D49 past Thiénans/Bouhans/Cognières, D29 via Montagney and Montferney to Rougemont, D486/D50 via Cubrial, D486 on the Villersexel west bypass (past Moimay) and north via Aillevans, La Tuilerie, Vy-lès-Lure, a loop through Magny-Vernois, Rue Jean Jaurès / Avenue Carnot / Avenue de la République / Rue des Vosges through Lure, D486 via Saint-Germain, Mélisey (intermediate sprint km 137.8), Belonchamp, Ternuay, Servance, Le Them and Haut-du-Them to the Col des Croix (cat. 3, km 157.4), N66 Le Thillot–Fresse–Saint-Maurice-sur-Moselle, D465 Ballon d'Alsace (cat. 1, km 175.9), D465 descent via Malvaux, Lepuix, Giromagny, Chaux to Sermamagny, D5 (Rue de Turenne) to Valdoie, D13 (Av. du Général de Gaulle, Rue du Martinet) up to Offemont, Avenue Jean-Moulin into Belfort, Quai Vauban, right over Pont Georges-Clemenceau, finish on Boulevard du Maréchal-Joffre (line at n° 15, end of a 420 m straight). Waypoint types: 'high' = official km at a town centre/junction on the route; places marked (près) are bypassed hamlets whose km is official but whose point was placed on the routed road at that km (medium); 'via'-type junction points without an official km got their km from routed distance between the neighbouring official points (medium). Known mismatches between official km and Overture routed distances (route itself not in doubt): Boult→Rioz −0.8 km / Rioz→Anthon +0.6 km (sum consistent), Montbozon→Cognières −0.8 km, Col des Croix→Le Thillot +1.3 km (D486 hairpins), Fresse→Ballon −1.1 km and Ballon→Giromagny +1.0 km (the Ballon summit is placed at the D465 pass point from Wikipedia; the official km suggests a point up to ~0.8 km further south), Sermamagny→finish −1.2 km (Valdoie/Offemont run-in; exact streets between Valdoie and Avenue Jean-Moulin are low confidence). The Magny-Vernois loop (km 123.2, the itinerary detours into the village between Vy-lès-Lure and the Tuilerie roundabout) and the Lure level crossing PN 225 are low confidence. Total routed (shortest path through these points) ≈ 207.5 km vs 205.8 official. [geodata G: Rioz: the centre point sat 90 m north of the D15 junction (Rue Charles de Gaulle / Rue du Pays Neuf), so the route went on north and came back over the Rue de la Faïencerie, a 1.1 km loop; moved to just before the junction (the itinerary's 0.7 km from the D232 junction and 3.1 km to Anthon fit the junction)]",
+ "sources": [
+  "https://www.doubs.fr/app/uploads/2026/07/TDF26-IH-Etape-13-Sans-R_ZC_fiche_horaire.pdf",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-13-times.htm",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-13-tdf-2026/",
+  "https://hedgehogcycling.co.uk/stage-13-tour-de-france-2026.html",
+  "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/17/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-13e-etape-dole-belfort-2058-km-Z5XQUQP6WZCGHJVYTSF47DBIDQ/",
+  "https://www.macommune.info/tout-ce-que-vous-devez-savoir-sur-le-passage-du-tour-de-france-2026-en-franche-comte/",
+  "https://www.macommune.info/tour-de-france-les-horaires-de-passage-et-les-perturbations-de-circulation-dans-le-doubs/",
+  "https://www.jura-nord.com/uploads/actualites/91e9c0d1e0a9c3d6579879e722079b0f.pdf",
+  "https://www.belfort.fr/fileadmin/documents/Espace_presse/2026/DP_Tour_de_France_%C3%A0_Belfort_17_juillet.pdf",
+  "https://info.fr/tour-de-france-2026-belfort-fermetures-routes-17/",
+  "https://letrois.info/sports/tour-de-france-le-parcours-de-larrivee-dans-belfort/",
+  "https://en.wikipedia.org/wiki/Col_du_Ballon_d%27Alsace",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments"
+ ]
+}

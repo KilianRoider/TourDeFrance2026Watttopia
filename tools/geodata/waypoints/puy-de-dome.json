@@ -1,0 +1,104 @@
+{
+ "id": "puy-de-dome",
+ "lengthKm": 4.0,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Puy de Dôme – foot: old toll barrier (ancien péage) beside the Panoramique des Dômes base station (~930 m)",
+   "lat": 45.7703,
+   "lon": 2.97998,
+   "kind": "start",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 0.52,
+   "name": "Toll road along the rack railway, east flank",
+   "lat": 45.76907,
+   "lon": 2.97428,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 1.02,
+   "name": "Toll road, south-east flank",
+   "lat": 45.76675,
+   "lon": 2.96882,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 1.52,
+   "name": "Toll road, south flank",
+   "lat": 45.7662,
+   "lon": 2.96261,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 2.02,
+   "name": "Toll road, south-west flank",
+   "lat": 45.76786,
+   "lon": 2.95726,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 2.52,
+   "name": "Toll road, west flank (ramp to 15 %)",
+   "lat": 45.77226,
+   "lon": 2.95656,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 3.02,
+   "name": "Toll road, north flank",
+   "lat": 45.77506,
+   "lon": 2.96078,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 3.52,
+   "name": "Toll road, east flank above the start",
+   "lat": 45.77342,
+   "lon": 2.96631,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 3.82,
+   "name": "Final ramp (up to 17 %)",
+   "lat": 45.77099,
+   "lon": 2.96605,
+   "kind": "via",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  },
+  {
+   "km": 4.05,
+   "name": "Puy de Dôme – summit plateau, end of the road (~1412 m)",
+   "lat": 45.77087,
+   "lon": 2.96323,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "toll road to the summit (Overture class service)"
+  }
+ ],
+ "notes": "Puy de Dôme by the closed toll road (route à péage), the climb of the app profile ('ab der Schranke rund vier Kilometer'): cols-cyclisme gives 4.00 km, +478 m, 11.95 %, from the old toll barrier at the Panoramique des Dômes (~925-934 m) to 1412 m. The toll road leaves the D68 'Route du Puy de Dôme' (the road from Royat/La Font de l'Arbre to the Col de Ceyssat; the Royat - Col de Ceyssat climb shares the road up to the Panoramique station) on the east side of the cone and spirals 1.25 times round it beside the rack railway; the Col de Ceyssat itself (1078 m) is further along the D68 on the south-west side and is not on this route. km 0 = start of the restricted road (Overture class changes from unclassified to service, 0.48 km west of the D68 junction at the base station; DEM 930 m, app startElevationM 935). Finish = end of the road on the summit plateau (DEM 1415 m). Routed length 4.05 km vs app 4.0 km; DEM per-km grades 11.0-12.5 % match the app's 11.5/12.0/12.5/12.0. The 2023 Tour approached from Clermont-Ferrand via the D68 and then took this road. The road has no real hairpins; waypoints every 0.5 km keep the path on the spiral (it is the only road on the cone).",
+ "sources": [
+  "https://www.cols-cyclisme.com/chaine-des-puys-monts-dore/france/puy-de-dome-depuis-panoramique-des-domes-c71.htm",
+  "https://www.cols-cyclisme.com/chaine-des-puys-monts-dore/france/col-de-ceyssat-depuis-royat-c1045.htm",
+  "https://hedgehogcycling.co.uk/stage-9-tour-de-france-2023.html",
+  "Overture Maps 2026-10-21.0 transportation segments",
+  "Copernicus GLO-30 DEM (profile check)"
+ ]
+}

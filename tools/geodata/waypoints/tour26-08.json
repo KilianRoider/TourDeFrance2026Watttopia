@@ -1,0 +1,1091 @@
+{
+ "id": "tour26-08",
+ "lengthKm": 180.4,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Périgueux – départ réel (N221, avenue des Droits de l'Enfant)",
+   "lat": 45.16393,
+   "lon": 0.77172,
+   "kind": "start",
+   "confidence": "high",
+   "road": "N221"
+  },
+  {
+   "km": 1.3,
+   "name": "Place du 19 Mars 1962 (près)",
+   "lat": 45.15468,
+   "lon": 0.78182,
+   "kind": "other",
+   "confidence": "high",
+   "road": "N221"
+  },
+  {
+   "km": 2.7,
+   "name": "Saint-Laurent-sur-Manoire – roundabout N221 → D6089",
+   "lat": 45.15007,
+   "lon": 0.79614,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 4.9,
+   "name": "Niversac (D6089)",
+   "lat": 45.13491,
+   "lon": 0.8117,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 5.0,
+   "name": "Niversac – level crossing PN 294",
+   "lat": 45.13437,
+   "lon": 0.81265,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 6.3,
+   "name": "Sainte-Marie-de-Chignac",
+   "lat": 45.13094,
+   "lon": 0.82842,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 8.9,
+   "name": "Saint-Pierre-de-Chignac",
+   "lat": 45.12268,
+   "lon": 0.85718,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 11.6,
+   "name": "Saint-Crépin-d'Auberoche",
+   "lat": 45.12402,
+   "lon": 0.89025,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 14.1,
+   "name": "Milhac Gare (Milhac-d'Auberoche)",
+   "lat": 45.12826,
+   "lon": 0.92029,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 17.5,
+   "name": "La Chènevrière",
+   "lat": 45.11856,
+   "lon": 0.95915,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 19.9,
+   "name": "Fossemagne",
+   "lat": 45.12689,
+   "lon": 0.98474,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 23.5,
+   "name": "via Route des Dames",
+   "lat": 45.13646,
+   "lon": 1.02839,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D6089"
+  },
+  {
+   "km": 27.2,
+   "name": "Thenon (D6089 → D67)",
+   "lat": 45.14081,
+   "lon": 1.06994,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D67"
+  },
+  {
+   "km": 31.5,
+   "name": "La Rivière (D67)",
+   "lat": 45.11973,
+   "lon": 1.09933,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D67"
+  },
+  {
+   "km": 34.8,
+   "name": "Auriac-du-Périgord",
+   "lat": 45.10635,
+   "lon": 1.13613,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D67"
+  },
+  {
+   "km": 37.3,
+   "name": "Laudigerie (près)",
+   "lat": 45.09236,
+   "lon": 1.1561,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D67"
+  },
+  {
+   "km": 39.7,
+   "name": "Carrefour D67/D704 (Montignac, roundabout)",
+   "lat": 45.07679,
+   "lon": 1.17248,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D704 (Montignac: D704-D704E2-D704-D704E1-VC-D704)"
+  },
+  {
+   "km": 40.0,
+   "name": "Montignac-Lascaux (D704)",
+   "lat": 45.07424,
+   "lon": 1.17153,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D704 (Montignac: D704-D704E2-D704-D704E1-VC-D704)"
+  },
+  {
+   "km": 41.0,
+   "name": "Montignac-Lascaux, Avenue Alsace-Lorraine",
+   "lat": 45.06743,
+   "lon": 1.16629,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D704 (Montignac: D704-D704E2-D704-D704E1-VC-D704)"
+  },
+  {
+   "km": 41.9,
+   "name": "Montignac-Lascaux – Avenue de Lascaux (D704) southbound, to the roundabout",
+   "lat": 45.05984,
+   "lon": 1.16909,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D704 (Montignac: D704-D704E2-D704-D704E1-VC-D704)",
+   "radius": 15
+  },
+  {
+   "km": 42.4,
+   "name": "Montignac-Lascaux – Rue du Barry northbound, back into town",
+   "lat": 45.05919,
+   "lon": 1.16689,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D704 (Montignac: D704-D704E2-D704-D704E1-VC-D704)",
+   "radius": 15
+  },
+  {
+   "km": 42.9,
+   "name": "Montignac – town centre loop (D704E2 / D704E1 / VC)",
+   "lat": 45.06275,
+   "lon": 1.16453,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D704 (Montignac: D704-D704E2-D704-D704E1-VC-D704)"
+  },
+  {
+   "km": 44.1,
+   "name": "Lacoste (près)",
+   "lat": 45.05796,
+   "lon": 1.15766,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D65"
+  },
+  {
+   "km": 45.4,
+   "name": "Brenac, Route de Valojoulx",
+   "lat": 45.04819,
+   "lon": 1.15036,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D65"
+  },
+  {
+   "km": 47.9,
+   "name": "Les Bories (Valojoulx) (près)",
+   "lat": 45.03236,
+   "lon": 1.13003,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D65"
+  },
+  {
+   "km": 50.3,
+   "name": "Carrefour D65/D65E (Route du Pont, Vézère bridge)",
+   "lat": 45.02029,
+   "lon": 1.11849,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D65E"
+  },
+  {
+   "km": 50.7,
+   "name": "Thonac (D65E → D706)",
+   "lat": 45.02219,
+   "lon": 1.1157,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 52.5,
+   "name": "Saint-Léon-sur-Vézère (près)",
+   "lat": 45.01362,
+   "lon": 1.10335,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 53.0,
+   "name": "Sergeac (près)",
+   "lat": 45.00968,
+   "lon": 1.10307,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 53.4,
+   "name": "Saint-Léon-sur-Vézère (près)",
+   "lat": 45.0094,
+   "lon": 1.09808,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 54.3,
+   "name": "Saint-Léon-sur-Vézère (près)",
+   "lat": 45.01585,
+   "lon": 1.09141,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 56.8,
+   "name": "Place de l'Église Saint-Léonce (près)",
+   "lat": 45.00896,
+   "lon": 1.07212,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 59.3,
+   "name": "Le Moustier (Peyzac-le-Moustier)",
+   "lat": 44.9933,
+   "lon": 1.06172,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 59.9,
+   "name": "Roche Morel",
+   "lat": 44.98868,
+   "lon": 1.06298,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 61.4,
+   "name": "Maison Forte de Reignac",
+   "lat": 44.97991,
+   "lon": 1.05487,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 63.3,
+   "name": "Tursac",
+   "lat": 44.96872,
+   "lon": 1.04451,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 66.0,
+   "name": "Les Cugnes",
+   "lat": 44.95245,
+   "lon": 1.0375,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D706"
+  },
+  {
+   "km": 68.6,
+   "name": "Les Eyzies – Av. du Moustier → Av. de la Forge (D706 → D47)",
+   "lat": 44.9362,
+   "lon": 1.02107,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D47"
+  },
+  {
+   "km": 70.7,
+   "name": "Grotte des Combarelles (D47)",
+   "lat": 44.94471,
+   "lon": 1.04256,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D47"
+  },
+  {
+   "km": 72.6,
+   "name": "Roc de Cazelle",
+   "lat": 44.94055,
+   "lon": 1.06321,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D47"
+  },
+  {
+   "km": 74.1,
+   "name": "Grotte de Bernifal",
+   "lat": 44.93043,
+   "lon": 1.07375,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D47"
+  },
+  {
+   "km": 77.3,
+   "name": "Benivès (près)",
+   "lat": 44.91742,
+   "lon": 1.1074,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D47"
+  },
+  {
+   "km": 79.2,
+   "name": "Allas-l'Évêque (Saint-André-d'Allas) (près)",
+   "lat": 44.90609,
+   "lon": 1.12143,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D47"
+  },
+  {
+   "km": 82.4,
+   "name": "Les Endrevies (près)",
+   "lat": 44.91271,
+   "lon": 1.15747,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D47"
+  },
+  {
+   "km": 85.7,
+   "name": "Carrefour D47/D6 (Route de Marquay junction)",
+   "lat": 44.9056,
+   "lon": 1.1897,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D6 (Av. du Colonel Kauffmann)"
+  },
+  {
+   "km": 86.4,
+   "name": "Sarlat – Av. du Colonel Kauffmann roundabout",
+   "lat": 44.90315,
+   "lon": 1.19676,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D6 (Av. du Colonel Kauffmann)"
+  },
+  {
+   "km": 87.2,
+   "name": "Le Perrier, Avenue du Colonel Kauffmann",
+   "lat": 44.90303,
+   "lon": 1.20446,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D6 (Av. du Colonel Kauffmann)"
+  },
+  {
+   "km": 87.9,
+   "name": "Sarlat-la-Canéda (D6 → D704, Av. de Selves)",
+   "lat": 44.89936,
+   "lon": 1.21194,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D704 (Av. de Selves, Av. Gambetta, Rue de la République, Av. Thiers, Av. Aristide Briand)"
+  },
+  {
+   "km": 88.6,
+   "name": "Le Colombier, Avenue de Selves",
+   "lat": 44.89432,
+   "lon": 1.21496,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D704 (Av. de Selves, Av. Gambetta, Rue de la République, Av. Thiers, Av. Aristide Briand)"
+  },
+  {
+   "km": 89.2,
+   "name": "Sarlat – Rue de la République",
+   "lat": 44.88896,
+   "lon": 1.21601,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D704 (Av. de Selves, Av. Gambetta, Rue de la République, Av. Thiers, Av. Aristide Briand)"
+  },
+  {
+   "km": 89.8,
+   "name": "Le Moulin à Vent, Avenue Thiers",
+   "lat": 44.88412,
+   "lon": 1.21751,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D704 (Av. de Selves, Av. Gambetta, Rue de la République, Av. Thiers, Av. Aristide Briand)"
+  },
+  {
+   "km": 90.4,
+   "name": "Sarlat – Place du Maréchal de Lattre de Tassigny (D704 → VC Av. de la Dordogne)",
+   "lat": 44.8787,
+   "lon": 1.2162,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "VC (Av. de la Dordogne)"
+  },
+  {
+   "km": 91.0,
+   "name": "Place de la Gare des Voyageurs (près)",
+   "lat": 44.8752,
+   "lon": 1.21245,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Av. de la Dordogne)"
+  },
+  {
+   "km": 91.6,
+   "name": "Sarlat – Av. de la Dordogne → D46 Route de Vitrac",
+   "lat": 44.87103,
+   "lon": 1.20982,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D46 (Route de Vitrac, Route de la Cuze)"
+  },
+  {
+   "km": 94.3,
+   "name": "via Route de la Cuze",
+   "lat": 44.84899,
+   "lon": 1.21498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D46 (Route de Vitrac, Route de la Cuze)"
+  },
+  {
+   "km": 97.0,
+   "name": "Vitrac-Port (D46 → D703 → D46E bridge)",
+   "lat": 44.82707,
+   "lon": 1.22235,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D46E (Route des Gabarriers, Vitrac bridge)"
+  },
+  {
+   "km": 98.0,
+   "name": "Carrefour D46E/D50/D46E3",
+   "lat": 44.82046,
+   "lon": 1.22916,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D46E3 (Route des Remparts, Route de la Justice)"
+  },
+  {
+   "km": 98.9,
+   "name": "Côte de Domme (cat. 4) – foot, La Roche (D46E3 Route des Remparts)",
+   "lat": 44.81476,
+   "lon": 1.23238,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D46E3 (Route des Remparts, Route de la Justice)"
+  },
+  {
+   "km": 99.7,
+   "name": "HLM du Pradal (près)",
+   "lat": 44.80798,
+   "lon": 1.22773,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D46E3 (Route des Remparts, Route de la Justice)"
+  },
+  {
+   "km": 100.6,
+   "name": "HLM du Pradal (près)",
+   "lat": 44.80497,
+   "lon": 1.22968,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D46E3 (Route des Remparts, Route de la Justice)"
+  },
+  {
+   "km": 101.4,
+   "name": "HLM du Pradal, Route des Remparts",
+   "lat": 44.80329,
+   "lon": 1.22485,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D46E3 (Route des Remparts, Route de la Justice)"
+  },
+  {
+   "km": 102.2,
+   "name": "Domme – Porte des Tours (D46E3 → VC)",
+   "lat": 44.80155,
+   "lon": 1.21624,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC (Domme: Porte des Tours, Rue Geoffroy de Vivans, Place de la Halle, Rue de l'Esquirol, Porte del Bos)"
+  },
+  {
+   "km": 102.6,
+   "name": "Côte de Domme (cat. 4) – summit, Place de la Halle",
+   "lat": 44.8029,
+   "lon": 1.21389,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "VC (Domme: Porte des Tours, Rue Geoffroy de Vivans, Place de la Halle, Rue de l'Esquirol, Porte del Bos)"
+  },
+  {
+   "km": 102.8,
+   "name": "Domme – Rue de l'Esquirol (VC)",
+   "lat": 44.80146,
+   "lon": 1.21291,
+   "kind": "other",
+   "confidence": "low",
+   "road": "VC (Domme: Porte des Tours, Rue Geoffroy de Vivans, Place de la Halle, Rue de l'Esquirol, Porte del Bos)",
+   "radius": 10
+  },
+  {
+   "km": 102.9,
+   "name": "Domme – Porte del Bos (VC → D49)",
+   "lat": 44.80096,
+   "lon": 1.21346,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "D49 (Route de la Bastide)"
+  },
+  {
+   "km": 103.9,
+   "name": "Le Capiol, Route de la Bastide",
+   "lat": 44.80284,
+   "lon": 1.20761,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D49 (Route de la Bastide)"
+  },
+  {
+   "km": 104.8,
+   "name": "Cénac-et-Saint-Julien (D49 → D46)",
+   "lat": 44.80215,
+   "lon": 1.20363,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D46 (Route des Résistants, Cénac bridge)"
+  },
+  {
+   "km": 105.6,
+   "name": "Le Port de Domme (D46 → D703)",
+   "lat": 44.80864,
+   "lon": 1.20567,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D703"
+  },
+  {
+   "km": 106.2,
+   "name": "Les Campagnes",
+   "lat": 44.8093,
+   "lon": 1.19794,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 107.7,
+   "name": "Les Écoles",
+   "lat": 44.82102,
+   "lon": 1.18908,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 108.4,
+   "name": "La Roque-Gageac",
+   "lat": 44.8254,
+   "lon": 1.18343,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D703"
+  },
+  {
+   "km": 109.3,
+   "name": "La Malartrie",
+   "lat": 44.82522,
+   "lon": 1.17348,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 110.3,
+   "name": "Nineyrol",
+   "lat": 44.82182,
+   "lon": 1.16165,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 112.0,
+   "name": "Vézac (près)",
+   "lat": 44.83358,
+   "lon": 1.15395,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 112.6,
+   "name": "Place Sol de Bonela, Route des Gabarriers",
+   "lat": 44.83754,
+   "lon": 1.1505,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 113.1,
+   "name": "Beynac-et-Cazenac",
+   "lat": 44.83936,
+   "lon": 1.1442,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D703"
+  },
+  {
+   "km": 115.5,
+   "name": "Saint-Vincent-de-Cosse (près)",
+   "lat": 44.8367,
+   "lon": 1.11571,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 118.0,
+   "name": "Bézenac, Route de Beynac",
+   "lat": 44.84106,
+   "lon": 1.0867,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 120.5,
+   "name": "Argentonnesse",
+   "lat": 44.85795,
+   "lon": 1.06683,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 121.9,
+   "name": "Castels et Bézenac",
+   "lat": 44.86412,
+   "lon": 1.05175,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 122.2,
+   "name": "Saint-Cyprien (entrée)",
+   "lat": 44.86476,
+   "lon": 1.04815,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 122.8,
+   "name": "Saint-Cyprien – intermediate sprint (D703)",
+   "lat": 44.86276,
+   "lon": 1.04119,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 126.4,
+   "name": "Marnac (près)",
+   "lat": 44.83596,
+   "lon": 1.02044,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 129.9,
+   "name": "Siorac-en-Périgord (D703 → D25)",
+   "lat": 44.82206,
+   "lon": 0.98676,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D25"
+  },
+  {
+   "km": 133.1,
+   "name": "Font Bélure, Voie de la Vallée",
+   "lat": 44.82715,
+   "lon": 0.94838,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D25"
+  },
+  {
+   "km": 136.3,
+   "name": "Le Buisson-de-Cadouin (D25 → D29E)",
+   "lat": 44.84524,
+   "lon": 0.91866,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D29E (Av. d'Aquitaine)"
+  },
+  {
+   "km": 136.9,
+   "name": "Le Buisson – level crossing PN 326",
+   "lat": 44.84612,
+   "lon": 0.91164,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D29E (Av. d'Aquitaine)"
+  },
+  {
+   "km": 137.7,
+   "name": "Le Buisson – Av. d'Aquitaine → D29 Route de Bergerac",
+   "lat": 44.84816,
+   "lon": 0.90189,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 138.2,
+   "name": "Côte du Buisson-de-Cadouin (cat. 4) – foot",
+   "lat": 44.84593,
+   "lon": 0.89699,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 140.4,
+   "name": "Côte du Buisson-de-Cadouin (cat. 4) – summit",
+   "lat": 44.8425,
+   "lon": 0.8727,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 143.5,
+   "name": "La Filolie (près)",
+   "lat": 44.84633,
+   "lon": 0.84087,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 146.6,
+   "name": "Calès (près)",
+   "lat": 44.85381,
+   "lon": 0.81064,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 148.8,
+   "name": "Badefols-sur-Dordogne",
+   "lat": 44.84281,
+   "lon": 0.79012,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 151.1,
+   "name": "Pontours",
+   "lat": 44.83681,
+   "lon": 0.7625,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D29 (Route de Bergerac)"
+  },
+  {
+   "km": 152.9,
+   "name": "Saint-Front-de-Colubri (près) – D29 → D8E4 (Lalinde bridge)",
+   "lat": 44.8336,
+   "lon": 0.74058,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D8E4 (Lalinde bridge)"
+  },
+  {
+   "km": 153.2,
+   "name": "Lalinde (D8E4 → D703)",
+   "lat": 44.83599,
+   "lon": 0.73956,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D703"
+  },
+  {
+   "km": 154.2,
+   "name": "Clos de la Roque, Avenue Paul Langevin",
+   "lat": 44.83533,
+   "lon": 0.72779,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 155.1,
+   "name": "La Roche, Avenue d'Aquitaine",
+   "lat": 44.83467,
+   "lon": 0.71602,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D703"
+  },
+  {
+   "km": 156.0,
+   "name": "Port de Couze (D703 → D660)",
+   "lat": 44.83375,
+   "lon": 0.70466,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D660"
+  },
+  {
+   "km": 158.3,
+   "name": "La Borie Basse (Baneuil)",
+   "lat": 44.83848,
+   "lon": 0.67708,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D660"
+  },
+  {
+   "km": 160.1,
+   "name": "Saint-Capraise-de-Lalinde",
+   "lat": 44.84184,
+   "lon": 0.65469,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D660"
+  },
+  {
+   "km": 162.3,
+   "name": "Tuilières (barrage)",
+   "lat": 44.84823,
+   "lon": 0.62936,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D660"
+  },
+  {
+   "km": 165.2,
+   "name": "Mouleydier",
+   "lat": 44.85489,
+   "lon": 0.59463,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D660"
+  },
+  {
+   "km": 167.4,
+   "name": "Creysse",
+   "lat": 44.85544,
+   "lon": 0.56698,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D660"
+  },
+  {
+   "km": 170.0,
+   "name": "La Nauve – roundabout D660 → N21",
+   "lat": 44.84977,
+   "lon": 0.53489,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "N21"
+  },
+  {
+   "km": 170.7,
+   "name": "Les Rivachauds (près)",
+   "lat": 44.8442,
+   "lon": 0.53523,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N21"
+  },
+  {
+   "km": 171.3,
+   "name": "Bergerac – N21 Dordogne bridge (south bank roundabout)",
+   "lat": 44.83943,
+   "lon": 0.53366,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N21"
+  },
+  {
+   "km": 172.1,
+   "name": "Les Rivachauds (près)",
+   "lat": 44.83422,
+   "lon": 0.52756,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N21"
+  },
+  {
+   "km": 172.9,
+   "name": "via road",
+   "lat": 44.82999,
+   "lon": 0.51987,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N21"
+  },
+  {
+   "km": 173.7,
+   "name": "Saint-Christophe (près)",
+   "lat": 44.82717,
+   "lon": 0.51074,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N21"
+  },
+  {
+   "km": 174.5,
+   "name": "Carrefour N21/D936E1 (Route d'Agen roundabout)",
+   "lat": 44.82713,
+   "lon": 0.50172,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D936E1 (Route d'Agen, Av. Paul Painlevé)",
+   "radius": 8
+  },
+  {
+   "km": 175.3,
+   "name": "via Route d'Agen",
+   "lat": 44.83344,
+   "lon": 0.49621,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D936E1 (Route d'Agen, Av. Paul Painlevé)"
+  },
+  {
+   "km": 176.2,
+   "name": "Bergerac (entrée) – D936E1 → VC",
+   "lat": 44.83884,
+   "lon": 0.48901,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "VC (Av. Paul Painlevé, Bd Louis Pimont, Dordogne bridge, Bd Katherine Traissac)"
+  },
+  {
+   "km": 177.2,
+   "name": "Place du Docteur André Mary, Boulevard Louis Pimont",
+   "lat": 44.84506,
+   "lon": 0.48825,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Av. Paul Painlevé, Bd Louis Pimont, Dordogne bridge, Bd Katherine Traissac)"
+  },
+  {
+   "km": 178.1,
+   "name": "Bergerac – Rue du Professeur Calmette",
+   "lat": 44.85106,
+   "lon": 0.49502,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Rue du Professeur Calmette, Rue / Bd Albert Claveille)"
+  },
+  {
+   "km": 179.0,
+   "name": "Bergerac – Rue Albert Claveille",
+   "lat": 44.85278,
+   "lon": 0.50634,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Rue du Professeur Calmette, Rue / Bd Albert Claveille)"
+  },
+  {
+   "km": 179.3,
+   "name": "Bergerac – right turn into Allée des Grands Ducs",
+   "lat": 44.85343,
+   "lon": 0.50973,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "VC (Allée des Grands Ducs)"
+  },
+  {
+   "km": 179.9,
+   "name": "Bergerac – right turn into Allée Fernand Cousteille (500 m to go)",
+   "lat": 44.84826,
+   "lon": 0.50997,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "VC (Allée Fernand Cousteille, Allée Lucien Videau)"
+  },
+  {
+   "km": 180.4,
+   "name": "Bergerac – finish, Allée Lucien Videau (Picquecailloux, Poudrerie)",
+   "lat": 44.84697,
+   "lon": 0.50388,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "VC (Allée Fernand Cousteille, Allée Lucien Videau)"
+  }
+ ],
+ "notes": "km 0 = départ réel on the N221 (avenue des Droits de l'Enfant) at the south-east edge of Périgueux, 2.4 km before the Saint-Laurent-sur-Manoire roundabout (neutral section from cours Tourny via rue Saint-Front, bd Georges-Saumande, cours Saint-Georges and route de Lyon not included). Km 0–74 (to the D47 between Roc de Cazelle and Bernifal): coordinates from the official route track (cyclingstage stage-8 KML, ASO data; the KML is cut off by the fetch limit there), map-matched onto the Overture road network (one out-and-back artefact near Saint-Léon removed). Km 74–180.4: route rebuilt from the official itinéraire horaire (road number at every junction) with shortest-path routing on Overture roads between hand-checked junctions. Route: N221, D6089 via Niversac (PN 294), Chignac, Saint-Crépin, Fossemagne to Thenon; D67 via Auriac to Montignac; D704 and a loop through Montignac (D704E2/D704E1/VC, from the track); D65 via Valojoulx; D65E over the Vézère into Thonac; D706 down the Vézère valley (Saint-Léon, Le Moustier, Tursac) to Les Eyzies; D47 (Av. de la Forge, Av. des Grottes) via Combarelles, Cazelle, Bernifal, Benivès, Allas-l'Évêque; D6 Av. du Colonel Kauffmann into Sarlat (the D47/D6 junction is taken as the Route de Marquay junction, which fits the itinerary km); D704 Av. de Selves, Av. Gambetta, Rue de la République, Av. Thiers, Av. Aristide Briand; VC Av. de la Dordogne; D46 Route de Vitrac / Route de la Cuze to Vitrac-Port; D46E over the Dordogne; D46E3 Route des Remparts up to Domme (Côte de Domme, cat. 4, 3.7 km at 3.3 %: foot 98.9 at La Roche, summit 102.6); through the bastide (Porte des Tours, Place de la Halle, Porte del Bos); D49 Route de la Bastide down to Cénac; D46 over the Cénac bridge to Le Port de Domme; D703 via La Roque-Gageac, Beynac, Castels, Saint-Cyprien (intermediate sprint 122.8 on the D703 Voie de la Vallée), over the Dordogne to Siorac; D25 to Le Buisson-de-Cadouin; D29E Av. d'Aquitaine (PN 326); D29 Route de Bergerac (Côte du Buisson-de-Cadouin, cat. 4: foot 138.2, summit 140.4, confirmed by the DEM: 67 m → 197 m), Calès, Badefols, Pontours; D8E4 bridge into Lalinde; D703 Av. Paul Langevin / Av. Jean Moulin / Av. d'Aquitaine to Port de Couze; D660 via Saint-Capraise, Tuilières, Mouleydier, Creysse to La Nauve; N21 east bypass of Bergerac over the Dordogne to the Route d'Agen roundabout; D936E1 Route d'Agen / Av. Paul Painlevé; VC over the Dordogne (Bd Louis Pimont, Bd Katherine Traissac), Rue du Professeur Calmette, Rue / Bd Albert Claveille, right into Allée des Grands Ducs, right into Allée Fernand Cousteille 500 m before the line, finish on Allée Lucien Videau (plaine des jeux de Picquecailloux, Poudrerie). km values: distance along that path, calibrated piecewise to itinerary junctions (PN 294 5.0, D67/D704 39.7, D65/D65E 50.3, D47/D6 85.7, D46E/D50/D46E3 98.0, Cénac 104.8, PN 326 136.9, D29/D8E4 152.9, N21/D936E1 174.5, finish 180.4); the uncalibrated path is 179.6 km. Town points sit at the town centre or at the junction named in the itinerary, so their km can differ from the itinerary value by up to ~1 km (Thenon +1.0, Mouleydier +1.0, Siorac +0.7). Lower confidence: the street sequence inside Sarlat (D704 town traverse assumed), the loop through the bastide of Domme (Porte des Tours → Place de la Halle → Porte del Bos; streets guessed, the itinerary needs ~0.5 km more than the direct route and the summit is at 102.6), the Lalinde street sequence (D703/D8E3), and the Bergerac streets between Av. Paul Painlevé and Rue du Professeur Calmette. [geodata G: the Montignac loop (Avenue de Lascaux south to the roundabout at 45.0576,1.1684, back north on the Rue du Barry): both near-points get a 15 m radius; with the default radius the second one snapped next to the first, and the route turned round on the Avenue de Lascaux] [geodata G: Domme: the Rue de l'Esquirol point gets a 10 m radius (with the default it snapped onto the Route de la Bastide outside the Porte del Bos, a 100 m spur ridden in and out); Bergerac: the Route d'Agen roundabout point gets an 8 m radius, so the route goes round the west side of the ring as a race does instead of a 50 m spur into it]",
+ "sources": [
+  "https://www.boulazacislemanoire.fr/wp-content/uploads/2026/04/TDF26-IH-Etape-8-1-1.pdf",
+  "https://cdn.cyclingstage.com/images/tour-de-france/2026/stage-8-parcours.kml",
+  "https://www.bergerac.fr/agenda/le-tour-de-france-a-bergerac/",
+  "https://www.tour-magazin.de/fr/etapes-et-profils-d-altitude/tour-de-france-2026-presentation-de-la-8e-etape-a-la-recherche-du-successeur-de-kittel/",
+  "https://projets.perigueux.fr/wp-content/uploads/2026/06/plan-circulation-TDF_2026_OK.pdf",
+  "https://www.dordogne-perigord-tourisme.fr/preparer-son-sejour/agenda-des-animations/a-ne-pas-manquer/tour-de-france-2026-dordogne-etape-perigueux-bergerac-parcours-infos/",
+  "Overture Maps 2026-10-21.0 transportation segments, divisions, water; Copernicus DEM GLO-30 (climb check)"
+ ]
+}

@@ -1,0 +1,250 @@
+{
+ "id": "champs-elysees",
+ "lengthKm": 6.8,
+ "sources": [
+  "https://rouleur.cc/blogs/the-rouleur-journal/tour-de-france-2022-stage-21-preview-champs-elysees-sprint-showdown",
+  "https://en.wikipedia.org/wiki/Champs-%C3%89lys%C3%A9es_stage_in_the_Tour_de_France",
+  "https://www.paris-friendly.fr/arrivee-du-tour-de-france-2016-champs-elysees.html",
+  "https://zwiftinsider.com/route/champs-elysees/",
+  "Overture Maps 2026-10-21.0 transportation segments",
+  "Copernicus GLO-30 DEM (profile check)",
+  "tools/geodata/waypoints/tour26-21.json (Champs lap 2)"
+ ],
+ "notes": "One lap of the Paris finishing circuit in the race direction, taken from tour26-21 (its second Champs lap, waypoints 120-145, finish line to finish line): up the Champs-Élysées, round the Arc de Triomphe on Place Charles de Gaulle, down the Champs-Élysées to Place de la Concorde, across its north side into the Rue de Rivoli EASTBOUND, right at Place des Pyramides into the Avenue du Général-Lemonnier and through the tunnel under the Tuileries, out at the Pont Royal onto the Quai Aimé-Césaire / Quai des Tuileries WESTBOUND along the Seine, across the south side of Place de la Concorde and up the Champs-Élysées to the line. km 0 = the finish line on the uphill side, ~0.7 km above Concorde (tour26-21's line position). Overture maps the Champs-Élysées as one centre line, so up and down share it (validate.py allows that for this route). [geodata G: rebuilt by the pipeline from tour26-21 on the coordinator's instruction; the earlier file (researcher, kept in wp_backup) ran the Tuileries loop the other way round (quai eastbound, Lemonnier, Rivoli westbound) and started at Place Clemenceau.]",
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Champs-Élysées – finish line area, uphill side (lap start)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 0.09,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up)",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 0.73,
+   "name": "Champs-Élysées at Rue de Berri (up)",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 1.09,
+   "name": "Champs-Élysées – upper part (up)",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 1.27,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 1.33,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-east)",
+   "lat": 48.87411,
+   "lon": 2.29586,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 1.48,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west)",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 1.59,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west)",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 1.66,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 1.97,
+   "name": "Champs-Élysées – upper part (down)",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 2.23,
+   "name": "Champs-Élysées at Rue de Berri (down)",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 2.87,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down)",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 3.21,
+   "name": "Champs-Élysées at Place Clemenceau (down)",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 3.67,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down)",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 3.92,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 4.05,
+   "name": "Rue de Rivoli (from Concorde)",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 4.3,
+   "name": "Rue de Rivoli at Rue de Castiglione",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 4.53,
+   "name": "Rue de Rivoli (Rue du 29-Juillet)",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 4.7,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 4.87,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel)",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 5.05,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound)",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 5.38,
+   "name": "Quai Aimé-Césaire (Tuileries)",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 5.71,
+   "name": "Quai des Tuileries",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 5.96,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 6.29,
+   "name": "Champs-Élysées – lower part (up, final straight)",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 6.8,
+   "name": "Champs-Élysées – finish line, uphill side (end of the lap)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  }
+ ]
+}

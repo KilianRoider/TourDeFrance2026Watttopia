@@ -10,8 +10,10 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -27,7 +29,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Pause
@@ -72,9 +76,11 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -177,30 +183,79 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
 
     Box(Modifier.fillMaxSize().background(StudioBlack)) {
         LightShow(clock.seconds, palette, mood, liveBpm, clock.driftStep.intValue, Modifier.fillMaxSize())
-        Column(
-            Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            StudioHeader(s, settings.zoneScheme, ftp, onStandardView)
-            if (wide) {
-                Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.weight(0.28f).fillMaxHeight())
-                    Column(Modifier.weight(0.4f).fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
+        // Decided on the space the HUD really gets: a phone in landscape is "wide" for the app but only
+        // about 330 dp tall, a phone in portrait is narrow. Both get their own arrangement.
+        BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            val landscapePhone = maxHeight < 480.dp && maxWidth > maxHeight * 1.3f
+            val narrow = maxWidth < 600.dp
+            val ridersBesideRing = maxHeight >= 380.dp
+            val ridersInPortrait = maxHeight >= 700.dp
+            when {
+                landscapePhone -> Row(
+                    Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    // Ring and coach on the left, everything to read and press on the right; the right
+                    // column scrolls on the smallest phones instead of cutting the buttons off.
+                    Column(Modifier.weight(0.42f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                         PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale, Modifier.weight(1f).fillMaxWidth())
-                        Tiles(s, track, playing, musicEnabled, bpm)
+                        if (ridersBesideRing) {
+                            Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.fillMaxWidth().height(72.dp))
+                        }
+                        CoachBanner(coachLine, s, accent, scale * 0.7f, minHeight = 40.dp)
                     }
-                    SegmentCard(s, color, targetPct, scale, Modifier.weight(0.32f).fillMaxHeight())
+                    Column(
+                        Modifier.weight(0.58f).fillMaxHeight().verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        StudioHeader(s, settings.zoneScheme, ftp, onStandardView, compact = true)
+                        SegmentCard(s, color, targetPct, scale * 0.8f, Modifier.fillMaxWidth(), compact = true)
+                        Tiles(s, track, playing, musicEnabled, bpm, compact = true)
+                        Controls(container, audio, s, musicEnabled, onStandardView, onEnd, compact = true)
+                    }
                 }
-            } else {
-                Row(Modifier.weight(0.5f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale * 0.8f, Modifier.weight(0.55f).fillMaxHeight())
-                    SegmentCard(s, color, targetPct, scale * 0.85f, Modifier.weight(0.45f).fillMaxHeight())
+                narrow -> Column(
+                    Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    // Phone in portrait: the ring is the hero, the segment reads as one wide card, the
+                    // riders only come along when the phone is tall enough.
+                    StudioHeader(s, settings.zoneScheme, ftp, onStandardView, compact = true)
+                    PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale, Modifier.weight(1f).fillMaxWidth())
+                    SegmentCard(s, color, targetPct, scale * 0.85f, Modifier.fillMaxWidth(), compact = true)
+                    if (ridersInPortrait) {
+                        Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.fillMaxWidth().height(90.dp))
+                    }
+                    Tiles(s, track, playing, musicEnabled, bpm, compact = true)
+                    CoachBanner(coachLine, s, accent, scale * 0.8f, minHeight = 44.dp)
+                    Controls(container, audio, s, musicEnabled, onStandardView, onEnd, compact = true)
                 }
-                Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.fillMaxWidth().height(110.dp))
-                Tiles(s, track, playing, musicEnabled, bpm)
+                else -> Column(
+                    Modifier.fillMaxSize().padding(horizontal = 16.dp, vertical = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    StudioHeader(s, settings.zoneScheme, ftp, onStandardView, compact = false)
+                    if (wide) {
+                        Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                            Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.weight(0.28f).fillMaxHeight())
+                            Column(Modifier.weight(0.4f).fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
+                                PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale, Modifier.weight(1f).fillMaxWidth())
+                                Tiles(s, track, playing, musicEnabled, bpm, compact = false)
+                            }
+                            SegmentCard(s, color, targetPct, scale, Modifier.weight(0.32f).fillMaxHeight(), compact = false)
+                        }
+                    } else {
+                        Row(Modifier.weight(0.5f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                            PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale * 0.8f, Modifier.weight(0.55f).fillMaxHeight())
+                            SegmentCard(s, color, targetPct, scale * 0.85f, Modifier.weight(0.45f).fillMaxHeight(), compact = false)
+                        }
+                        Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.fillMaxWidth().height(110.dp))
+                        Tiles(s, track, playing, musicEnabled, bpm, compact = false)
+                    }
+                    CoachBanner(coachLine, s, accent, scale)
+                    Controls(container, audio, s, musicEnabled, onStandardView, onEnd, compact = false)
+                }
             }
-            CoachBanner(coachLine, s, accent, scale)
-            Controls(container, audio, s, musicEnabled, onStandardView, onEnd)
         }
         if (e.finished) FinishedOverlay(s, onStandardView, onEnd)
     }
@@ -468,32 +523,47 @@ private fun LightShow(clock: FloatState, palette: Palette, mood: Int, bpm: Int, 
 }
 
 @Composable
-private fun StudioHeader(s: RideState, scheme: ZoneScheme, ftp: Int, onStandardView: () -> Unit) {
+private fun StudioHeader(s: RideState, scheme: ZoneScheme, ftp: Int, onStandardView: () -> Unit, compact: Boolean) {
     val e = s.engine
-    Column(Modifier.fillMaxWidth().background(StudioPanel, PanelShape).padding(horizontal = 14.dp, vertical = 8.dp)) {
+    val status = when {
+        e.workoutSec == 0.0 && e.paused -> "Tritt in die Pedale, dann geht's los"
+        e.autoPaused -> "Pausiert – tritt weiter"
+        e.paused -> "Pausiert"
+        else -> ""
+    }
+    Column(
+        Modifier.fillMaxWidth().background(StudioPanel, PanelShape)
+            .padding(horizontal = if (compact) 12.dp else 14.dp, vertical = if (compact) 6.dp else 8.dp),
+    ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                Text(s.workout?.name ?: "Freie Fahrt", color = StudioText, style = MaterialTheme.typography.titleLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(
+                    s.workout?.name ?: "Freie Fahrt", color = StudioText,
+                    style = if (compact) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis,
+                )
                 val total = e.totalSec
                 Text(
                     if (total > 0) "${formatDuration(e.workoutSec.toInt())} von ${formatDuration(total)}" else formatDuration(s.elapsedSec),
-                    color = StudioDim, style = MaterialTheme.typography.bodyMedium,
+                    color = StudioDim, style = if (compact) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium,
+                    maxLines = 1,
+                )
+                // On a phone the status goes under the time; beside it, it would squeeze the name away.
+                if (compact && status.isNotEmpty()) {
+                    Text(status, color = StudioAccent, style = MaterialTheme.typography.labelLarge, maxLines = 2)
+                }
+            }
+            if (!compact && status.isNotEmpty()) {
+                Text(
+                    status, color = StudioAccent, style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.End,
+                    maxLines = 2, modifier = Modifier.weight(1f, fill = false).padding(start = 12.dp),
                 )
             }
-            Text(
-                when {
-                    e.workoutSec == 0.0 && e.paused -> "Tritt in die Pedale, dann geht's los"
-                    e.autoPaused -> "Pausiert – tritt weiter"
-                    e.paused -> "Pausiert"
-                    else -> ""
-                },
-                color = StudioAccent, style = MaterialTheme.typography.titleMedium,
-            )
         }
         val tl = s.timeline
         if (tl != null) {
-            Spacer(Modifier.height(6.dp))
-            ProfileBar(tl, ftp, scheme, e.workoutSec, e.intensityPct, Modifier.fillMaxWidth().height(26.dp))
+            Spacer(Modifier.height(if (compact) 4.dp else 6.dp))
+            ProfileBar(tl, ftp, scheme, e.workoutSec, e.intensityPct, Modifier.fillMaxWidth().height(if (compact) 16.dp else 26.dp))
         }
     }
 }
@@ -534,7 +604,14 @@ private fun ProfileBar(timeline: Timeline, ftp: Int, scheme: ZoneScheme, progres
  */
 @Composable
 private fun PowerRing(power: Int?, target: Int?, zone: Color, accent: Color, clock: FloatState, bpm: Int, mood: Int, textScale: Float, modifier: Modifier) {
-    Box(modifier, contentAlignment = Alignment.Center) {
+    val fontScale = LocalDensity.current.fontScale
+    BoxWithConstraints(modifier, contentAlignment = Alignment.Center) {
+        // The number is capped at about a third of the ring's diameter, so the smaller ring of a phone
+        // keeps "245" and the target inside it (sizes are sp, the ring is dp: the font scale converts).
+        val side = minOf(maxWidth, maxHeight).value.coerceAtMost(4000f)
+        val powerSp = minOf(92f * textScale, side * 0.3f / fontScale).coerceAtLeast(24f)
+        val targetSp = minOf(22f * textScale, maxOf(14f, powerSp * 0.3f))
+        val padH = if (side < 240f) 12.dp else 20.dp
         // Own layer and cached brush/stroke: the halo pulses every frame without re-recording the numbers.
         Spacer(
             Modifier.fillMaxSize().graphicsLayer().drawWithCache {
@@ -586,18 +663,21 @@ private fun PowerRing(power: Int?, target: Int?, zone: Color, accent: Color, clo
             }
         )
         Column(
-            Modifier.background(StudioPanel, PanelShape).padding(horizontal = 20.dp, vertical = 8.dp),
+            Modifier.background(StudioPanel, PanelShape).padding(horizontal = padH, vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 power?.toString() ?: "–",
-                color = StudioText, fontSize = (92f * textScale).sp, lineHeight = (96f * textScale).sp,
-                fontWeight = FontWeight.Black, style = MaterialTheme.typography.displayLarge, maxLines = 1,
+                color = StudioText, fontSize = powerSp.sp, lineHeight = (powerSp * 1.04f).sp,
+                fontWeight = FontWeight.Black, style = MaterialTheme.typography.displayLarge, maxLines = 1, softWrap = false,
             )
             Text("WATT", color = StudioDim, style = MaterialTheme.typography.labelLarge)
             if (target != null) {
                 Spacer(Modifier.height(4.dp))
-                Text("Ziel $target W", color = zone, fontSize = (22f * textScale).sp, fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleLarge)
+                Text(
+                    "Ziel $target W", color = zone, fontSize = targetSp.sp, fontWeight = FontWeight.SemiBold,
+                    style = MaterialTheme.typography.titleLarge, maxLines = 1, softWrap = false,
+                )
             }
         }
     }
@@ -605,14 +685,18 @@ private fun PowerRing(power: Int?, target: Int?, zone: Color, accent: Color, clo
 
 /** Heart rate, cadence and what is playing, under the ring. */
 @Composable
-private fun Tiles(s: RideState, track: String?, playing: Boolean, musicEnabled: Boolean, bpm: Int) {
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        Tile("Puls", s.live.heartRate?.toString() ?: "–", "bpm", Metric.HeartRate, Modifier.weight(1f))
-        Tile("Trittfrequenz", s.live.cadence?.toString() ?: "–", "rpm", Metric.Cadence, Modifier.weight(1f))
-        Box(Modifier.weight(1.4f).background(StudioPanel, PanelShape).padding(horizontal = 12.dp, vertical = 8.dp)) {
+private fun Tiles(s: RideState, track: String?, playing: Boolean, musicEnabled: Boolean, bpm: Int, compact: Boolean) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 10.dp)) {
+        // Short captions on a phone: "TRITTFREQUENZ" alone is wider than a third of the screen.
+        Tile("Puls", s.live.heartRate?.toString() ?: "–", "bpm", Metric.HeartRate, compact, Modifier.weight(1f))
+        Tile(if (compact) "Tritt" else "Trittfrequenz", s.live.cadence?.toString() ?: "–", "rpm", Metric.Cadence, compact, Modifier.weight(1f))
+        Box(
+            Modifier.weight(1.4f).background(StudioPanel, PanelShape)
+                .padding(horizontal = if (compact) 10.dp else 12.dp, vertical = 8.dp),
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(if (musicEnabled) Icons.Default.MusicNote else Icons.Default.VolumeOff, null, tint = if (playing) StudioAccent else StudioDim)
-                Spacer(Modifier.width(8.dp))
+                Spacer(Modifier.width(if (compact) 6.dp else 8.dp))
                 Column {
                     Text(
                         when {
@@ -621,9 +705,13 @@ private fun Tiles(s: RideState, track: String?, playing: Boolean, musicEnabled: 
                             playing -> "Studio-Beat · $bpm BPM"
                             else -> "Musik pausiert"
                         },
-                        color = StudioText, style = MaterialTheme.typography.bodyLarge, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        color = StudioText, style = if (compact) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodyLarge,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis,
                     )
-                    Text(if (track != null) "Eigene Musik" else "Takt folgt der Trittfrequenz", color = StudioDim, style = MaterialTheme.typography.labelMedium, maxLines = 1)
+                    Text(
+                        if (track != null) "Eigene Musik" else "Takt folgt der Trittfrequenz", color = StudioDim,
+                        style = MaterialTheme.typography.labelMedium, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                    )
                 }
             }
         }
@@ -631,20 +719,31 @@ private fun Tiles(s: RideState, track: String?, playing: Boolean, musicEnabled: 
 }
 
 @Composable
-private fun Tile(label: String, value: String, unit: String, accent: Color, modifier: Modifier) {
-    Column(modifier.background(StudioPanel, PanelShape).padding(horizontal = 12.dp, vertical = 8.dp)) {
-        Text(label.uppercase(), color = accent, style = MaterialTheme.typography.labelMedium)
+private fun Tile(label: String, value: String, unit: String, accent: Color, compact: Boolean, modifier: Modifier) {
+    Column(modifier.background(StudioPanel, PanelShape).padding(horizontal = if (compact) 10.dp else 12.dp, vertical = 8.dp)) {
+        Text(label.uppercase(), color = accent, style = MaterialTheme.typography.labelMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
         Row(verticalAlignment = Alignment.Bottom) {
-            Text(value, color = StudioText, style = MaterialTheme.typography.headlineMedium, maxLines = 1)
+            Text(
+                value, color = StudioText, maxLines = 1, softWrap = false,
+                style = if (compact) MaterialTheme.typography.titleLarge else MaterialTheme.typography.headlineMedium,
+            )
             Spacer(Modifier.width(4.dp))
-            Text(unit, color = StudioDim, style = MaterialTheme.typography.labelLarge, modifier = Modifier.padding(bottom = 4.dp))
+            Text(
+                unit, color = StudioDim, maxLines = 1, softWrap = false,
+                style = if (compact) MaterialTheme.typography.labelMedium else MaterialTheme.typography.labelLarge,
+                modifier = Modifier.padding(bottom = if (compact) 3.dp else 4.dp),
+            )
         }
     }
 }
 
 /** What to do right now: label, target, cadence, the remaining time big, and what follows. */
 @Composable
-private fun SegmentCard(s: RideState, color: Color, targetPct: Double, scale: Float, modifier: Modifier) {
+private fun SegmentCard(s: RideState, color: Color, targetPct: Double, scale: Float, modifier: Modifier, compact: Boolean) {
+    if (compact) {
+        CompactSegmentCard(s, color, targetPct, scale, modifier)
+        return
+    }
     val e = s.engine
     val next = e.nextSegment
     Column(modifier.background(StudioPanel, PanelShape).padding(16.dp), verticalArrangement = Arrangement.Center) {
@@ -694,12 +793,71 @@ private fun SegmentCard(s: RideState, color: Color, targetPct: Double, scale: Fl
     }
 }
 
+/**
+ * The segment card of a phone: one wide card, what to do on the left and the remaining time on
+ * the right, then one line for what follows. The stacked tablet card would need 300 dp of height.
+ */
+@Composable
+private fun CompactSegmentCard(s: RideState, color: Color, targetPct: Double, scale: Float, modifier: Modifier) {
+    val e = s.engine
+    val next = e.nextSegment
+    Column(modifier.background(StudioPanel, PanelShape).padding(horizontal = 14.dp, vertical = 10.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text("JETZT", color = color, style = MaterialTheme.typography.labelMedium)
+                Text(
+                    e.segmentLabel.ifBlank { if (s.timeline == null) "Freie Fahrt" else "Abschnitt ${e.segmentIndex + 1}" },
+                    color = StudioText, fontSize = (24f * scale).sp, lineHeight = (28f * scale).sp, fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineSmall, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                )
+                val target = e.targetWatts
+                val line = buildString {
+                    if (target != null) append(if (e.erg) "$target W · ${targetPct.roundToInt()} %" else "frei · so hart du kannst")
+                    e.targetCadence?.let { if (isNotEmpty()) append(" · "); append("$it rpm") }
+                }
+                if (line.isNotEmpty()) {
+                    Text(line, color = StudioText, fontSize = (18f * scale).sp, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                }
+            }
+            if (s.timeline != null && !e.finished) {
+                val rem = e.segmentRemainingSec
+                val countdown = next != null && rem in 0..2 && !e.paused
+                Column(Modifier.padding(start = 12.dp), horizontalAlignment = Alignment.End) {
+                    Text(
+                        if (countdown) "${rem + 1}" else formatDuration(rem),
+                        color = if (countdown) StudioAccent else StudioText, fontSize = (40f * scale).sp, lineHeight = (44f * scale).sp,
+                        fontWeight = FontWeight.Black, style = MaterialTheme.typography.displayMedium, maxLines = 1, softWrap = false,
+                    )
+                    Text("verbleibend", color = StudioDim, style = MaterialTheme.typography.labelMedium)
+                }
+            }
+        }
+        if (next != null || e.intensityPct != 100) {
+            Spacer(Modifier.height(4.dp))
+            Text(
+                buildString {
+                    if (next != null) {
+                        append("Gleich: ").append(next.label.ifBlank { "Abschnitt" })
+                        append(" · ").append(formatDuration(next.durationSec))
+                        if (!next.erg) append(" · frei") else e.nextTargetWatts?.let { append(" · $it W") }
+                    }
+                    if (e.intensityPct != 100) {
+                        if (isNotEmpty()) append(" · ")
+                        append("Intensität ${e.intensityPct} %")
+                    }
+                },
+                color = StudioDim, style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis,
+            )
+        }
+    }
+}
+
 /** The coach's line in the palette accent on a dark pill, scaled in when it changes. */
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-private fun CoachBanner(line: String?, s: RideState, accent: Color, scale: Float) {
+private fun CoachBanner(line: String?, s: RideState, accent: Color, scale: Float, minHeight: Dp = 52.dp) {
     val text = line ?: s.engine.cue
-    Box(Modifier.fillMaxWidth().heightIn(min = 52.dp), contentAlignment = Alignment.Center) {
+    Box(Modifier.fillMaxWidth().heightIn(min = minHeight), contentAlignment = Alignment.Center) {
         AnimatedContent(
             targetState = text,
             transitionSpec = { (fadeIn() + scaleIn(initialScale = 0.7f)).togetherWith(fadeOut()) },
@@ -709,7 +867,8 @@ private fun CoachBanner(line: String?, s: RideState, accent: Color, scale: Float
                 Text(
                     t, color = lerp(accent, Color.White, 0.4f), fontSize = (26f * scale).sp, lineHeight = (30f * scale).sp, fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineSmall, maxLines = 2, overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.background(StudioPanel, PanelShape).padding(horizontal = 18.dp, vertical = 8.dp),
+                    modifier = Modifier.background(StudioPanel, PanelShape)
+                        .padding(horizontal = if (minHeight < 52.dp) 12.dp else 18.dp, vertical = if (minHeight < 52.dp) 6.dp else 8.dp),
                 )
             } else {
                 Spacer(Modifier.height(1.dp))
@@ -720,19 +879,23 @@ private fun CoachBanner(line: String?, s: RideState, accent: Color, scale: Float
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun Controls(container: AppContainer, audio: SpinningAudio, s: RideState, musicEnabled: Boolean, onStandardView: () -> Unit, onEnd: () -> Unit) {
+private fun Controls(
+    container: AppContainer,
+    audio: SpinningAudio,
+    s: RideState,
+    musicEnabled: Boolean,
+    onStandardView: () -> Unit,
+    onEnd: () -> Unit,
+    compact: Boolean,
+) {
     val session = container.session
     val e = s.engine
     val inWorkout = s.timeline != null && !e.continuing && !e.finished
     // Under the finished overlay nothing here may react, not even through the keyboard or TalkBack.
     val on = !e.finished
-    FlowRow(
-        Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        // "Weiter" only after a pause by hand; before the start or in an auto-pause pedalling goes on.
-        val resume = e.userPaused
+    // "Weiter" only after a pause by hand; before the start or in an auto-pause pedalling goes on.
+    val resume = e.userPaused
+    val buttons: @Composable () -> Unit = {
         StudioButton(if (resume) "Weiter" else "Pause", if (resume) Icons.Default.PlayArrow else Icons.Default.Pause, primary = true, enabled = on) { session.setPaused(!resume) }
         if (inWorkout) {
             StudioButton("Abschnitt", Icons.Default.SkipPrevious, enabled = on) { session.back() }
@@ -744,6 +907,19 @@ private fun Controls(container: AppContainer, audio: SpinningAudio, s: RideState
         StudioButton(if (musicEnabled) "Musik aus" else "Musik an", if (musicEnabled) Icons.Default.VolumeOff else Icons.Default.VolumeUp, enabled = on) { audio.toggleMusic() }
         StudioButton("Normale Ansicht", Icons.Outlined.GridView, enabled = on, onClick = onStandardView)
         StudioButton("Beenden", Icons.Default.Stop, enabled = on, onClick = onEnd)
+    }
+    if (compact) {
+        // One line that scrolls sideways: wrapped, the nine buttons would take four lines of a phone.
+        Row(
+            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) { buttons() }
+    } else {
+        FlowRow(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) { buttons() }
     }
 }
 
@@ -766,23 +942,33 @@ private fun StudioButton(text: String, icon: ImageVector? = null, primary: Boole
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun FinishedOverlay(s: RideState, onStandardView: () -> Unit, onEnd: () -> Unit) {
     // The pointer input makes the overlay a hit target, so taps on the dimmed area stop here instead of
     // reaching the controls underneath; its own buttons still work.
-    Box(
-        Modifier.fillMaxSize().background(StudioBlack.copy(alpha = 0.8f)).pointerInput(Unit) { },
+    BoxWithConstraints(
+        Modifier.fillMaxSize().background(StudioBlack.copy(alpha = 0.8f)).pointerInput(Unit) { }
+            .windowInsetsPadding(WindowInsets.safeDrawing),
         contentAlignment = Alignment.Center,
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(24.dp)) {
-            Text("Geschafft!", color = StudioText, fontSize = 64.sp, fontWeight = FontWeight.Black, style = MaterialTheme.typography.displayLarge)
+        // "Geschafft!" at 64 sp is wider than a phone in portrait.
+        val titleSp = if (maxWidth < 600.dp || maxHeight < 480.dp) 44f else 64f
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.verticalScroll(rememberScrollState()).padding(24.dp),
+        ) {
+            Text("Geschafft!", color = StudioText, fontSize = titleSp.sp, fontWeight = FontWeight.Black, style = MaterialTheme.typography.displayLarge, maxLines = 1)
             val st = s.stats
             Text(
                 "${formatDuration(st.seconds)} · ${st.avgPower} W · NP ${st.normalizedPower} W · TSS ${st.tss.roundToInt()}",
                 color = StudioDim, style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center,
             )
             Spacer(Modifier.height(24.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
                 StudioButton("Beenden und speichern", Icons.Default.Stop, primary = true, onClick = onEnd)
                 StudioButton("Normale Ansicht", Icons.Outlined.GridView, onClick = onStandardView)
             }

@@ -1,0 +1,5985 @@
+{
+ "schema": "wattwerk-tex/1",
+ "generated": "2026-10-28",
+ "producer": "work package T (Build 14): local procedural asset factory, no photo sources yet",
+ "conventions": {
+  "units": "metres",
+  "colour_space": "albedo, sprites, decals and skies are sRGB; _n and _m maps are linear data",
+  "tile": "size_m = metres covered by one repeat [u, v]; seamless in both directions (facades and kerb: u only, v spans the storey)",
+  "normal_map": "<name>_n.webp, tangent space, OpenGL convention (+Y up, green = up)",
+  "material_map": "<name>_m.webp at half resolution: R = cavity AO, G = roughness, B = height (0.5 = mean)",
+  "sprite": "straight (non-premultiplied) alpha, colour bled into transparent texels (safe for mipmaps/linear filtering); size_m = quad size in metres; pivot_uv = [u, v] measured from the top-left corner = the ground/foot point",
+  "tiles_x": "true: the sprite repeats horizontally, size_m[0] is the period",
+  "frames": "spectators and crowd strips come as _a/_b frames of the same size and pivot; alternate them for a cheering loop",
+  "decal": "alpha-blended overlay; road decals: size_m = [across, along] the road, top of the image points away from the approaching rider",
+  "sky": "equirectangular upper hemisphere: u = azimuth 0..360 deg (wraps), v = 0 at the zenith .. 1 at the horizon; sun disk not drawn",
+  "leafcard": "foliage card for 3D instanced trees; twig base at bottom centre unless pivot_uv says otherwise"
+ },
+ "counts": {
+  "tile/bark": 3,
+  "tile/building": 17,
+  "tile/ground": 14,
+  "tile/race": 1,
+  "tile/road": 7,
+  "tile/rock": 4,
+  "tile/roof": 4,
+  "decal/flag": 16,
+  "decal/road_paint": 10,
+  "decal/road_repair": 4,
+  "sprite/crowd_strip": 6,
+  "sprite/ground_plant": 7,
+  "sprite/leafcard": 44,
+  "sprite/prop": 1,
+  "sprite/race": 11,
+  "sprite/row": 3,
+  "sprite/shrub": 3,
+  "sprite/spectator": 54,
+  "sprite/tree": 30,
+  "sprite/vehicle": 4,
+  "sky/sky": 4
+ },
+ "total_bytes": 61628744,
+ "assets": [
+  {
+   "name": "bark_oak",
+   "kind": "tile",
+   "category": "bark",
+   "file": "bark_oak.webp",
+   "normal": "bark_oak_n.webp",
+   "material": "bark_oak_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.0,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#565047",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.08,
+    1.05
+   ],
+   "lowfreq": 0.016,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "oak/chestnut bark: vertical ridges broken into blocks (y = up the trunk), 1 m x 1 m",
+   "bytes_total": 1139484
+  },
+  {
+   "name": "bark_pine",
+   "kind": "tile",
+   "category": "bark",
+   "file": "bark_pine.webp",
+   "normal": "bark_pine_n.webp",
+   "material": "bark_pine_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.0,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#794e3a",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.7,
+    3.03
+   ],
+   "lowfreq": 0.044,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Scots/black pine bark: reddish flaking plates with dark fissures (y = up), 1 m x 1 m",
+   "bytes_total": 449770
+  },
+  {
+   "name": "bark_plane",
+   "kind": "tile",
+   "category": "bark",
+   "file": "bark_plane.webp",
+   "normal": "bark_plane_n.webp",
+   "material": "bark_plane_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.0,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#a29e88",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.96,
+    0.98
+   ],
+   "lowfreq": 0.039,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "plane tree bark: smooth puzzle patches of cream, olive and grey (y = up), 1 m x 1 m",
+   "bytes_total": 1100618
+  },
+  {
+   "name": "facade_barn",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_barn.webp",
+   "normal": "facade_barn_n.webp",
+   "material": "facade_barn_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#90826f",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.47,
+    3.83
+   ],
+   "lowfreq": 0.288,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "stone farm barn wall with large plank door and small vents (also usable as a farm wall)",
+   "bytes_total": 220420
+  },
+  {
+   "name": "facade_basque",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_basque.webp",
+   "normal": "facade_basque_n.webp",
+   "material": "facade_basque_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c2b5b0",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.28,
+    0.33
+   ],
+   "lowfreq": 0.232,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Basque (Lapurdi) house: white render, oxblood timber framing and shutters",
+   "bytes_total": 223988
+  },
+  {
+   "name": "facade_chalet",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_chalet.webp",
+   "normal": "facade_chalet_n.webp",
+   "material": "facade_chalet_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#825a41",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.59,
+    1.19
+   ],
+   "lowfreq": 0.197,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Alpine chalet storey: horizontal larch boarding, red plank shutters, carved balcony with geraniums",
+   "bytes_total": 212876
+  },
+  {
+   "name": "facade_church",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_church.webp",
+   "normal": "facade_church_n.webp",
+   "material": "facade_church_m.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "size_m": [
+    4.0,
+    8.0
+   ],
+   "alpha": false,
+   "avg_colour": "#b7ad99",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.02,
+    0.0
+   ],
+   "lowfreq": 0.283,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Romanesque/Gothic church wall bay: ashlar, buttresses at the tile edges, lancet window; 4 m x 8 m",
+   "bytes_total": 310286
+  },
+  {
+   "name": "facade_eixample",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_eixample.webp",
+   "normal": "facade_eixample_n.webp",
+   "material": "facade_eixample_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.3
+   ],
+   "alpha": false,
+   "avg_colour": "#9b8e76",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.7,
+    3.14
+   ],
+   "lowfreq": 0.465,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Barcelona Eixample storey: warm stucco, tall balcony doors with green persianas, stone balconies with iron railing; 6 m x 3.3 m",
+   "bytes_total": 195530
+  },
+  {
+   "name": "facade_haussmann",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_haussmann.webp",
+   "normal": "facade_haussmann_n.webp",
+   "material": "facade_haussmann_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.4
+   ],
+   "alpha": false,
+   "avg_colour": "#c6beab",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.16,
+    1.12
+   ],
+   "lowfreq": 0.217,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Paris Haussmann storey: cream ashlar, tall French windows with wrought-iron railings, string course; 6 m x 3.4 m",
+   "bytes_total": 272998
+  },
+  {
+   "name": "facade_modern",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_modern.webp",
+   "normal": "facade_modern_n.webp",
+   "material": "facade_modern_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#9d9d9b",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.0,
+    19.89
+   ],
+   "lowfreq": 0.518,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "modern apartment storey: white render panels, large aluminium windows, glass balustrades",
+   "bytes_total": 136014
+  },
+  {
+   "name": "facade_plaster_cream",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_plaster_cream.webp",
+   "normal": "facade_plaster_cream_n.webp",
+   "material": "facade_plaster_cream_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c7bca1",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.18,
+    1.24
+   ],
+   "lowfreq": 0.247,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "cream plaster village house, sage-green louvred shutters, plaster flaking to rubble in places",
+   "bytes_total": 278908
+  },
+  {
+   "name": "facade_plaster_cream_door",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_plaster_cream_door.webp",
+   "normal": "facade_plaster_cream_door_n.webp",
+   "material": "facade_plaster_cream_door_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c6bb9f",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.3,
+    2.03
+   ],
+   "lowfreq": 0.276,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "cream plaster village house with door",
+   "bytes_total": 268780
+  },
+  {
+   "name": "facade_plaster_ochre",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_plaster_ochre.webp",
+   "normal": "facade_plaster_ochre_n.webp",
+   "material": "facade_plaster_ochre_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#bb926e",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.28,
+    1.17
+   ],
+   "lowfreq": 0.107,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Provencal ochre render with blue-grey louvred shutters",
+   "bytes_total": 261526
+  },
+  {
+   "name": "facade_plaster_pink",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_plaster_pink.webp",
+   "normal": "facade_plaster_pink_n.webp",
+   "material": "facade_plaster_pink_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c5a191",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.22,
+    1.21
+   ],
+   "lowfreq": 0.2,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Riviera / Provence pink render with teal louvred shutters",
+   "bytes_total": 269636
+  },
+  {
+   "name": "facade_plaster_white",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_plaster_white.webp",
+   "normal": "facade_plaster_white_n.webp",
+   "material": "facade_plaster_white_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#d4d3cc",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.28,
+    1.13
+   ],
+   "lowfreq": 0.23,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "white render with pale grey-blue louvred shutters",
+   "bytes_total": 281822
+  },
+  {
+   "name": "facade_plaster_white_door",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_plaster_white_door.webp",
+   "normal": "facade_plaster_white_door_n.webp",
+   "material": "facade_plaster_white_door_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#d4d3cc",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.35,
+    2.5
+   ],
+   "lowfreq": 0.241,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "white render house with door",
+   "bytes_total": 268024
+  },
+  {
+   "name": "facade_pyrenean",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_pyrenean.webp",
+   "normal": "facade_pyrenean_n.webp",
+   "material": "facade_pyrenean_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#7c7974",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.08,
+    1.2
+   ],
+   "lowfreq": 0.146,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Pyrenean grey granite/schist rubble, small windows with granite surrounds, dark plank shutters (pair with roof_slate)",
+   "bytes_total": 321472
+  },
+  {
+   "name": "facade_shop",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_shop.webp",
+   "normal": "facade_shop_n.webp",
+   "material": "facade_shop_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.5
+   ],
+   "alpha": false,
+   "avg_colour": "#968e88",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    8.66,
+    16.14
+   ],
+   "lowfreq": 0.3,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "generic village shop ground floor, blank fascia (no text), red/white striped awning; 6 m x 3.5 m",
+   "bytes_total": 120976
+  },
+  {
+   "name": "facade_stone_village",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_stone_village.webp",
+   "normal": "facade_stone_village_n.webp",
+   "material": "facade_stone_village_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#978d7c",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.14,
+    1.3
+   ],
+   "lowfreq": 0.124,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "French village house, warm rubble limestone, dressed surrounds, plank shutters; 6 m x 3 m storey, 2 bays",
+   "bytes_total": 280270
+  },
+  {
+   "name": "facade_stone_village_door",
+   "kind": "tile",
+   "category": "building",
+   "file": "facade_stone_village_door.webp",
+   "normal": "facade_stone_village_door_n.webp",
+   "material": "facade_stone_village_door_m.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#978b79",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.17,
+    2.16
+   ],
+   "lowfreq": 0.164,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "French village house, warm rubble limestone, dressed surrounds, plank shutters; 6 m x 3 m storey, 2 bays",
+   "bytes_total": 272896
+  },
+  {
+   "name": "cereal_green",
+   "kind": "tile",
+   "category": "ground",
+   "file": "cereal_green.webp",
+   "normal": "cereal_green_n.webp",
+   "material": "cereal_green_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#566b32",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.98,
+    1.03
+   ],
+   "lowfreq": 0.009,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "green cereal (wheat/barley, May-June) from above: leaves and green ears",
+   "bytes_total": 1182296
+  },
+  {
+   "name": "field_ploughed",
+   "kind": "tile",
+   "category": "ground",
+   "file": "field_ploughed.webp",
+   "normal": "field_ploughed_n.webp",
+   "material": "field_ploughed_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "alpha": false,
+   "avg_colour": "#564332",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.97,
+    1.08
+   ],
+   "lowfreq": 0.006,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "ploughed field, furrows run along x every 0.33 m, clods; rotate UVs to follow field direction",
+   "bytes_total": 1095452
+  },
+  {
+   "name": "forest_floor",
+   "kind": "tile",
+   "category": "ground",
+   "file": "forest_floor.webp",
+   "normal": "forest_floor_n.webp",
+   "material": "forest_floor_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.5,
+    2.5
+   ],
+   "alpha": false,
+   "avg_colour": "#694a2c",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.94,
+    1.02
+   ],
+   "lowfreq": 0.017,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "broadleaf litter (beech, oak, chestnut leaves), twigs, moss",
+   "bytes_total": 879628
+  },
+  {
+   "name": "grass_alpine",
+   "kind": "tile",
+   "category": "ground",
+   "file": "grass_alpine.webp",
+   "normal": "grass_alpine_n.webp",
+   "material": "grass_alpine_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#354821",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.99,
+    1.01
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "short alpine pasture with clover and small flowers (white, yellow, purple, blue, pink)",
+   "bytes_total": 1380152
+  },
+  {
+   "name": "grass_dry",
+   "kind": "tile",
+   "category": "ground",
+   "file": "grass_dry.webp",
+   "normal": "grass_dry_n.webp",
+   "material": "grass_dry_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#786947",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.98,
+    1.03
+   ],
+   "lowfreq": 0.004,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "dry yellow Mediterranean grass on pale soil with stones and aromatic shrubs",
+   "bytes_total": 1394350
+  },
+  {
+   "name": "grass_meadow",
+   "kind": "tile",
+   "category": "ground",
+   "file": "grass_meadow.webp",
+   "normal": "grass_meadow_n.webp",
+   "material": "grass_meadow_m.webp",
+   "size_px": [
+    2048,
+    2048
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#425423",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.02,
+    0.99
+   ],
+   "lowfreq": 0.004,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "lush green meadow, top-down, 5-8 cm sward with clover and dead blades",
+   "bytes_total": 5604672
+  },
+  {
+   "name": "maize_rows",
+   "kind": "tile",
+   "category": "ground",
+   "file": "maize_rows.webp",
+   "normal": "maize_rows_n.webp",
+   "material": "maize_rows_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#385621",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.08,
+    0.98
+   ],
+   "lowfreq": 0.044,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "maize field from above, 4 rows along y at 0.75 m spacing (x = across rows); use with maize sprites at field edges",
+   "bytes_total": 408570
+  },
+  {
+   "name": "mud_wetland",
+   "kind": "tile",
+   "category": "ground",
+   "file": "mud_wetland.webp",
+   "normal": "mud_wetland_n.webp",
+   "material": "mud_wetland_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#4b472f",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.99,
+    1.07
+   ],
+   "lowfreq": 0.013,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "dark wet mud with shallow puddles (roughness ~0.1 in puddles) and reeds/grass",
+   "bytes_total": 1367146
+  },
+  {
+   "name": "pine_needles",
+   "kind": "tile",
+   "category": "ground",
+   "file": "pine_needles.webp",
+   "normal": "pine_needles_n.webp",
+   "material": "pine_needles_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.5,
+    1.5
+   ],
+   "alpha": false,
+   "avg_colour": "#5e412b",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.05,
+    1.03
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "pine needle litter with twigs and scale fragments",
+   "bytes_total": 1131386
+  },
+  {
+   "name": "sand_beach",
+   "kind": "tile",
+   "category": "ground",
+   "file": "sand_beach.webp",
+   "normal": "sand_beach_n.webp",
+   "material": "sand_beach_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.5,
+    1.5
+   ],
+   "alpha": false,
+   "avg_colour": "#c9b691",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.0,
+    1.04
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "dry beach sand with wind ripples (crests along y) and shell fragments",
+   "bytes_total": 384164
+  },
+  {
+   "name": "snow",
+   "kind": "tile",
+   "category": "ground",
+   "file": "snow.webp",
+   "normal": "snow_n.webp",
+   "material": "snow_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#ecf0f5",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.97,
+    1.0
+   ],
+   "lowfreq": 0.0,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "wind-packed snow with soft ripples (cold blue in hollows)",
+   "bytes_total": 1009318
+  },
+  {
+   "name": "soil_dirt",
+   "kind": "tile",
+   "category": "ground",
+   "file": "soil_dirt.webp",
+   "normal": "soil_dirt_n.webp",
+   "material": "soil_dirt_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#614c39",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.03,
+    0.98
+   ],
+   "lowfreq": 0.002,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "bare brown soil with clods and pebbles",
+   "bytes_total": 1213040
+  },
+  {
+   "name": "vineyard_soil",
+   "kind": "tile",
+   "category": "ground",
+   "file": "vineyard_soil.webp",
+   "normal": "vineyard_soil_n.webp",
+   "material": "vineyard_soil_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#ac8f70",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.99,
+    0.88
+   ],
+   "lowfreq": 0.012,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "dry calcareous vineyard soil with limestone stones and sparse weeds",
+   "bytes_total": 1189002
+  },
+  {
+   "name": "wheat_ripe",
+   "kind": "tile",
+   "category": "ground",
+   "file": "wheat_ripe.webp",
+   "normal": "wheat_ripe_n.webp",
+   "material": "wheat_ripe_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#927b4a",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.03,
+    0.97
+   ],
+   "lowfreq": 0.006,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "ripe wheat field from above (ears + straw, July), golden",
+   "bytes_total": 1299802
+  },
+  {
+   "name": "fabric_inflatable_red",
+   "kind": "tile",
+   "category": "race",
+   "file": "fabric_inflatable_red.webp",
+   "normal": "fabric_inflatable_red_n.webp",
+   "material": "fabric_inflatable_red_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.0,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c60d0d",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.46,
+    0.93
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Inflatable arch nylon; seams run along v every 0.5 m (u). Wrap u around the tube's length, v around its circumference.",
+   "bytes_total": 122458
+  },
+  {
+   "name": "asphalt_fresh",
+   "kind": "tile",
+   "category": "road",
+   "file": "asphalt_fresh.webp",
+   "normal": "asphalt_fresh_n.webp",
+   "material": "asphalt_fresh_m.webp",
+   "size_px": [
+    2048,
+    2048
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#242424",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.04,
+    1.02
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "dark fresh asphalt, AC 0/11 dense mix, chips still coated by bitumen",
+   "bytes_total": 3759094
+  },
+  {
+   "name": "asphalt_polish",
+   "kind": "tile",
+   "category": "road",
+   "file": "asphalt_polish.webp",
+   "normal": "asphalt_polish_n.webp",
+   "material": "asphalt_polish_m.webp",
+   "size_px": [
+    2048,
+    2048
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#282828",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.04,
+    0.98
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "tyre-polished wheel-track variant of fresh asphalt (flattened chip tops, lower roughness); blend into the wheel paths",
+   "bytes_total": 4155258
+  },
+  {
+   "name": "asphalt_worn",
+   "kind": "tile",
+   "category": "road",
+   "file": "asphalt_worn.webp",
+   "normal": "asphalt_worn_n.webp",
+   "material": "asphalt_worn_m.webp",
+   "size_px": [
+    2048,
+    2048
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#525251",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.0,
+    0.97
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "older oxidised grey asphalt, exposed aggregate, ravelling pits and hairline cracks; scatter decal_asphalt_patch_* and decal_crack_seal_* on top for repairs",
+   "bytes_total": 4205674
+  },
+  {
+   "name": "cobbles_pave",
+   "kind": "tile",
+   "category": "road",
+   "file": "cobbles_pave.webp",
+   "normal": "cobbles_pave_n.webp",
+   "material": "cobbles_pave_m.webp",
+   "size_px": [
+    2048,
+    2048
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#6a645c",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.01,
+    1.52
+   ],
+   "lowfreq": 0.048,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Paris-Roubaix style granite setts, rows across the road (x = across, y = along), wide dirt/moss joints, uneven tilt",
+   "bytes_total": 3694334
+  },
+  {
+   "name": "gravel_shoulder",
+   "kind": "tile",
+   "category": "road",
+   "file": "gravel_shoulder.webp",
+   "normal": "gravel_shoulder_n.webp",
+   "material": "gravel_shoulder_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    1.5,
+    1.5
+   ],
+   "alpha": false,
+   "avg_colour": "#918676",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.98,
+    0.95
+   ],
+   "lowfreq": 0.005,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "loose limestone/granite gravel 3-30 mm on dusty soil",
+   "bytes_total": 1161980
+  },
+  {
+   "name": "kerb_concrete",
+   "kind": "tile",
+   "category": "road",
+   "file": "kerb_concrete.webp",
+   "normal": "kerb_concrete_n.webp",
+   "material": "kerb_concrete_m.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "size_m": [
+    2.0,
+    0.5
+   ],
+   "alpha": false,
+   "avg_colour": "#989690",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.45,
+    2.07
+   ],
+   "lowfreq": 0.091,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "precast concrete kerb, joints every 1 m (x along the road); top arris line at v~0.28, gutter grime towards v=1",
+   "bytes_total": 179810
+  },
+  {
+   "name": "pavers_stone",
+   "kind": "tile",
+   "category": "road",
+   "file": "pavers_stone.webp",
+   "normal": "pavers_stone_n.webp",
+   "material": "pavers_stone_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.4,
+    2.4
+   ],
+   "alpha": false,
+   "avg_colour": "#aca699",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.0,
+    1.12
+   ],
+   "lowfreq": 0.051,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "limestone sidewalk slabs 40 x ~60 cm, running bond, mortar joints",
+   "bytes_total": 982140
+  },
+  {
+   "name": "rock_granite",
+   "kind": "tile",
+   "category": "rock",
+   "file": "rock_granite.webp",
+   "normal": "rock_granite_n.webp",
+   "material": "rock_granite_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#a89f9a",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.99,
+    1.03
+   ],
+   "lowfreq": 0.003,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "weathered pink-grey granite with joints and lichen (Pyrenees/Alps)",
+   "bytes_total": 1468426
+  },
+  {
+   "name": "rock_limestone",
+   "kind": "tile",
+   "category": "rock",
+   "file": "rock_limestone.webp",
+   "normal": "rock_limestone_n.webp",
+   "material": "rock_limestone_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#ada99d",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    0.99,
+    1.0
+   ],
+   "lowfreq": 0.029,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "pale limestone cliff/outcrop: horizontal bedding along x, vertical joints, rain streaks running down -y, lichen",
+   "bytes_total": 1365998
+  },
+  {
+   "name": "rock_schist",
+   "kind": "tile",
+   "category": "rock",
+   "file": "rock_schist.webp",
+   "normal": "rock_schist_n.webp",
+   "material": "rock_schist_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#4d4e51",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.03,
+    1.02
+   ],
+   "lowfreq": 0.007,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "dark foliated schist with mica sheen and rust stains (foliation near vertical, tilted 15 deg)",
+   "bytes_total": 1288066
+  },
+  {
+   "name": "scree",
+   "kind": "tile",
+   "category": "rock",
+   "file": "scree.webp",
+   "normal": "scree_n.webp",
+   "material": "scree_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "alpha": false,
+   "avg_colour": "#858380",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.26,
+    1.28
+   ],
+   "lowfreq": 0.035,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "grey limestone scree, angular fragments 2-10 cm on grit",
+   "bytes_total": 948874
+  },
+  {
+   "name": "roof_flat_tiles",
+   "kind": "tile",
+   "category": "roof",
+   "file": "roof_flat_tiles.webp",
+   "normal": "roof_flat_tiles_n.webp",
+   "material": "roof_flat_tiles_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    2.5,
+    2.5
+   ],
+   "alpha": false,
+   "avg_colour": "#8f4f36",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.51,
+    7.8
+   ],
+   "lowfreq": 0.027,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "small flat clay tiles (Burgundy/Alsace), weathered with moss, slope down = +y",
+   "bytes_total": 709454
+  },
+  {
+   "name": "roof_roman_tiles",
+   "kind": "tile",
+   "category": "roof",
+   "file": "roof_roman_tiles.webp",
+   "normal": "roof_roman_tiles_n.webp",
+   "material": "roof_roman_tiles_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#9e5c3d",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    2.54,
+    1.0
+   ],
+   "lowfreq": 0.04,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "terracotta canal (Roman) tiles, channels run along y (down the slope = +y), 0.42 m channel pitch",
+   "bytes_total": 137020
+  },
+  {
+   "name": "roof_slate",
+   "kind": "tile",
+   "category": "roof",
+   "file": "roof_slate.webp",
+   "normal": "roof_slate_n.webp",
+   "material": "roof_slate_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#4a4e55",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    1.37,
+    7.13
+   ],
+   "lowfreq": 0.028,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "natural slate, 30 cm wide, 16 cm exposed courses, slope down = +y",
+   "bytes_total": 727662
+  },
+  {
+   "name": "roof_zinc",
+   "kind": "tile",
+   "category": "roof",
+   "file": "roof_zinc.webp",
+   "normal": "roof_zinc_n.webp",
+   "material": "roof_zinc_m.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "size_m": [
+    3.0,
+    3.0
+   ],
+   "alpha": false,
+   "avg_colour": "#848c92",
+   "normal_convention": "tangent space, OpenGL (+Y up / green = up)",
+   "material_channels": "R=cavity AO, G=roughness, B=height (0.5 = mean)",
+   "seam_ratio": [
+    18.32,
+    0.98
+   ],
+   "lowfreq": 0.065,
+   "source": "procedural (scratchpad/textures/scripts)",
+   "notes": "Paris standing-seam zinc, seams every 0.5 m along y, cross joints; metallic-ish (roughness ~0.5)",
+   "bytes_total": 52556
+  },
+  {
+   "name": "flag_be",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_be.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#cd882c",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Belgium; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 15676
+  },
+  {
+   "name": "flag_co",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_co.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#d09c51",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Colombia; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 18448
+  },
+  {
+   "name": "flag_de",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_de.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c77e08",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Germany; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 11932
+  },
+  {
+   "name": "flag_dk",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_dk.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#da969a",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Denmark; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 14788
+  },
+  {
+   "name": "flag_es",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_es.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#d28d11",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Spain; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 18910
+  },
+  {
+   "name": "flag_eus",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_eus.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c59785",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Basque Ikurrina; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 23850
+  },
+  {
+   "name": "flag_fr",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_fr.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#cc9da3",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "France; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 13814
+  },
+  {
+   "name": "flag_gb",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_gb.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c89fa7",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "United Kingdom; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 23442
+  },
+  {
+   "name": "flag_green",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_green.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#009640",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "plain green fan flag; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 12416
+  },
+  {
+   "name": "flag_it",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_it.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#c1afa1",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Italy; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 17990
+  },
+  {
+   "name": "flag_nl",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_nl.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#b69fad",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Netherlands; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 14536
+  },
+  {
+   "name": "flag_nl_orange",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_nl_orange.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#fc7800",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Dutch orange fan flag; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 17390
+  },
+  {
+   "name": "flag_no",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_no.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#b7747e",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Norway; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 12484
+  },
+  {
+   "name": "flag_polka",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_polka.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#e7b0b0",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "red polka dots on white (fan flag, generic); hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 44450
+  },
+  {
+   "name": "flag_si",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_si.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#ca9eb0",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "Slovenia (simplified arms); hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 18194
+  },
+  {
+   "name": "flag_yellow",
+   "kind": "decal",
+   "category": "flag",
+   "file": "flag_yellow.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "size_m": [
+    1.5,
+    1.0
+   ],
+   "alpha": false,
+   "avg_colour": "#fcd400",
+   "source": "drawn (scratchpad/textures/scripts/decals.py)",
+   "notes": "plain yellow fan flag; hoist on the left (u=0). For waving flags on poles, banners and spectator hand flags. Stored at 512x256 (power of two); map it onto a quad of size_m (3:2), the horizontal squeeze is only resampling.",
+   "bytes_total": 27872
+  },
+  {
+   "name": "decal_road_allez",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_allez.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    3.2,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 73576
+  },
+  {
+   "name": "decal_road_allez_kili",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_allez_kili.webp",
+   "size_px": [
+    2048,
+    512
+   ],
+   "size_m": [
+    3.4,
+    1.7
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 165032
+  },
+  {
+   "name": "decal_road_arrow",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_arrow.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "size_m": [
+    1.6,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 53920
+  },
+  {
+   "name": "decal_road_arrows_triple",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_arrows_triple.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "size_m": [
+    1.6,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 52300
+  },
+  {
+   "name": "decal_road_aupa",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_aupa.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    3.2,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 87186
+  },
+  {
+   "name": "decal_road_forza",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_forza.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    3.2,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 71534
+  },
+  {
+   "name": "decal_road_heart",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_heart.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "size_m": [
+    1.6,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 91022
+  },
+  {
+   "name": "decal_road_heart_outline",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_heart_outline.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "size_m": [
+    1.6,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 47632
+  },
+  {
+   "name": "decal_road_hup",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_hup.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    3.2,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 124992
+  },
+  {
+   "name": "decal_road_vasy",
+   "kind": "decal",
+   "category": "road_paint",
+   "file": "decal_road_vasy.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    3.2,
+    3.2
+   ],
+   "alpha": true,
+   "avg_colour": "#e9e9e1",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "white road paint on transparent; u = across the road, v = along it with the TOP of the image pointing away from the approaching rider. size_m is [across, along]: the texture is meant to be stretched ~2x along the road (anamorphic, as fans paint it) so it reads from the saddle.",
+   "bytes_total": 72216
+  },
+  {
+   "name": "decal_asphalt_patch_1",
+   "kind": "decal",
+   "category": "road_repair",
+   "file": "decal_asphalt_patch_1.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "size_m": [
+    2.0,
+    1.0
+   ],
+   "alpha": true,
+   "avg_colour": "#202020",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "repair patch: fresher darker asphalt with sealed (bitumen) edges; lay over asphalt_worn, normal = flat",
+   "bytes_total": 108110
+  },
+  {
+   "name": "decal_asphalt_patch_2",
+   "kind": "decal",
+   "category": "road_repair",
+   "file": "decal_asphalt_patch_2.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "size_m": [
+    1.0,
+    1.0
+   ],
+   "alpha": true,
+   "avg_colour": "#1f1f1f",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "repair patch: fresher darker asphalt with sealed (bitumen) edges; lay over asphalt_worn, normal = flat",
+   "bytes_total": 59988
+  },
+  {
+   "name": "decal_crack_seal_1",
+   "kind": "decal",
+   "category": "road_repair",
+   "file": "decal_crack_seal_1.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "size_m": [
+    4.0,
+    1.0
+   ],
+   "alpha": true,
+   "avg_colour": "#0c0c0c",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "bitumen crack sealing ('tar snake'), glossy: roughness ~0.3; long axis along u",
+   "bytes_total": 9166
+  },
+  {
+   "name": "decal_crack_seal_2",
+   "kind": "decal",
+   "category": "road_repair",
+   "file": "decal_crack_seal_2.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "size_m": [
+    4.0,
+    1.0
+   ],
+   "alpha": true,
+   "avg_colour": "#0c0c0c",
+   "source": "procedural (scratchpad/textures/scripts/decals.py)",
+   "notes": "bitumen crack sealing ('tar snake'), glossy: roughness ~0.3; long axis along u",
+   "bytes_total": 9492
+  },
+  {
+   "name": "crowd_strip_calm_a",
+   "kind": "sprite",
+   "category": "crowd_strip",
+   "file": "crowd_strip_calm_a.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#867a7b",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Crowd strip two rows deep, tiles horizontally (period = size_m[0] = 6 m, 3 m tall so raised arms and flags fit). Frames _a/_b alternate; about 20 % of people are deliberately out of phase. Place with the bottom edge on the verge.",
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "tiles_x": true,
+   "frame": "a",
+   "bytes_total": 86132
+  },
+  {
+   "name": "crowd_strip_calm_b",
+   "kind": "sprite",
+   "category": "crowd_strip",
+   "file": "crowd_strip_calm_b.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#85797a",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Crowd strip two rows deep, tiles horizontally (period = size_m[0] = 6 m, 3 m tall so raised arms and flags fit). Frames _a/_b alternate; about 20 % of people are deliberately out of phase. Place with the bottom edge on the verge.",
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "tiles_x": true,
+   "frame": "b",
+   "bytes_total": 85968
+  },
+  {
+   "name": "crowd_strip_flags_a",
+   "kind": "sprite",
+   "category": "crowd_strip",
+   "file": "crowd_strip_flags_a.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a67d6c",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Crowd strip two rows deep, tiles horizontally (period = size_m[0] = 6 m, 3 m tall so raised arms and flags fit). Frames _a/_b alternate; about 20 % of people are deliberately out of phase. Place with the bottom edge on the verge.",
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "tiles_x": true,
+   "frame": "a",
+   "bytes_total": 116410
+  },
+  {
+   "name": "crowd_strip_flags_b",
+   "kind": "sprite",
+   "category": "crowd_strip",
+   "file": "crowd_strip_flags_b.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a57d6c",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Crowd strip two rows deep, tiles horizontally (period = size_m[0] = 6 m, 3 m tall so raised arms and flags fit). Frames _a/_b alternate; about 20 % of people are deliberately out of phase. Place with the bottom edge on the verge.",
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "tiles_x": true,
+   "frame": "b",
+   "bytes_total": 112648
+  },
+  {
+   "name": "crowd_strip_mixed_a",
+   "kind": "sprite",
+   "category": "crowd_strip",
+   "file": "crowd_strip_mixed_a.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#9d7b77",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Crowd strip two rows deep, tiles horizontally (period = size_m[0] = 6 m, 3 m tall so raised arms and flags fit). Frames _a/_b alternate; about 20 % of people are deliberately out of phase. Place with the bottom edge on the verge.",
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "tiles_x": true,
+   "frame": "a",
+   "bytes_total": 125542
+  },
+  {
+   "name": "crowd_strip_mixed_b",
+   "kind": "sprite",
+   "category": "crowd_strip",
+   "file": "crowd_strip_mixed_b.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#9c7975",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Crowd strip two rows deep, tiles horizontally (period = size_m[0] = 6 m, 3 m tall so raised arms and flags fit). Frames _a/_b alternate; about 20 % of people are deliberately out of phase. Place with the bottom edge on the verge.",
+   "size_m": [
+    6.0,
+    3.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "tiles_x": true,
+   "frame": "b",
+   "bytes_total": 122766
+  },
+  {
+   "name": "veg_sunflower",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_sunflower.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#75753c",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "single sunflower. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    1.277,
+    2.553
+   ],
+   "bytes_total": 7194
+  },
+  {
+   "name": "veg_tuft_fern",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_tuft_fern.webp",
+   "size_px": [
+    512,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#3c5c2e",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "bracken/fern clump. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    2.128,
+    1.064
+   ],
+   "bytes_total": 25244
+  },
+  {
+   "name": "veg_tuft_flowers_meadow",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_tuft_flowers_meadow.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#556a49",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "grass with daisies and cornflowers. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    1.064,
+    1.064
+   ],
+   "bytes_total": 19262
+  },
+  {
+   "name": "veg_tuft_flowers_poppy",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_tuft_flowers_poppy.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#888259",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "grass with poppies. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    1.064,
+    1.064
+   ],
+   "bytes_total": 24312
+  },
+  {
+   "name": "veg_tuft_grass_dry",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_tuft_grass_dry.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#91855d",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "dry grass tuft. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    1.064,
+    1.064
+   ],
+   "bytes_total": 19068
+  },
+  {
+   "name": "veg_tuft_grass_green",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_tuft_grass_green.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#41592d",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "green grass tuft. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    1.064,
+    1.064
+   ],
+   "bytes_total": 10632
+  },
+  {
+   "name": "veg_tuft_grass_mixed",
+   "kind": "sprite",
+   "category": "ground_plant",
+   "file": "veg_tuft_grass_mixed.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#7e7c52",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "mixed grass tuft. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    1.064,
+    1.064
+   ],
+   "bytes_total": 21228
+  },
+  {
+   "name": "card_fern_frond",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_fern_frond.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#3e642b",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.5,
+    1.0
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 187148
+  },
+  {
+   "name": "card_flower_cornflower",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_flower_cornflower.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#435ec5",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.08,
+    0.08
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 7454
+  },
+  {
+   "name": "card_flower_daisy",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_flower_daisy.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#e4dfd1",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.08,
+    0.08
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 10978
+  },
+  {
+   "name": "card_flower_poppy",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_flower_poppy.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#c11c1c",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.08,
+    0.08
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 5352
+  },
+  {
+   "name": "card_flower_sunflower",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_flower_sunflower.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#cca320",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.08,
+    0.08
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 17610
+  },
+  {
+   "name": "card_grapes",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_grapes.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#3b2142",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.2,
+    0.2
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 8044
+  },
+  {
+   "name": "card_grass_dry",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_grass_dry.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#998b5e",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.6,
+    0.6
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 59422
+  },
+  {
+   "name": "card_grass_green",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_grass_green.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#405c26",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.6,
+    0.6
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 56500
+  },
+  {
+   "name": "card_grass_mixed",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_grass_mixed.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#858252",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.6,
+    0.6
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 64024
+  },
+  {
+   "name": "card_leaf_beech_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_beech_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4b6a2b",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 29780
+  },
+  {
+   "name": "card_leaf_beech_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_beech_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4b692c",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 36540
+  },
+  {
+   "name": "card_leaf_birch_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_birch_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#5b7835",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 27402
+  },
+  {
+   "name": "card_leaf_birch_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_birch_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#587634",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 32010
+  },
+  {
+   "name": "card_leaf_chestnut_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_chestnut_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#436029",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 23986
+  },
+  {
+   "name": "card_leaf_chestnut_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_chestnut_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#425e28",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 27670
+  },
+  {
+   "name": "card_leaf_laurel_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_laurel_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#304522",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 26222
+  },
+  {
+   "name": "card_leaf_laurel_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_laurel_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#314523",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 32194
+  },
+  {
+   "name": "card_leaf_lentisk_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_lentisk_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4a5434",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.45,
+    0.45
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 28172
+  },
+  {
+   "name": "card_leaf_lentisk_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_lentisk_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#495333",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.45,
+    0.45
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 27420
+  },
+  {
+   "name": "card_leaf_oak_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_oak_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#445b2a",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 33010
+  },
+  {
+   "name": "card_leaf_oak_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_oak_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#445c2a",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 26302
+  },
+  {
+   "name": "card_leaf_olive_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_olive_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#616852",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 25024
+  },
+  {
+   "name": "card_leaf_olive_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_olive_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#697059",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 27436
+  },
+  {
+   "name": "card_leaf_plane_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_plane_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4c6b30",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 19086
+  },
+  {
+   "name": "card_leaf_plane_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_plane_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#49682e",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 24438
+  },
+  {
+   "name": "card_leaf_poplar_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_poplar_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4c6930",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 29808
+  },
+  {
+   "name": "card_leaf_poplar_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_poplar_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4b682f",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 24598
+  },
+  {
+   "name": "card_leaf_shrub_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_shrub_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#3b5527",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.45,
+    0.45
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 20482
+  },
+  {
+   "name": "card_leaf_shrub_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_shrub_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#3b5427",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.45,
+    0.45
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 28570
+  },
+  {
+   "name": "card_leaf_sunflower_single",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_sunflower_single.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#436428",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.26,
+    0.26
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 3556
+  },
+  {
+   "name": "card_leaf_vine_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_vine_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#507231",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 23160
+  },
+  {
+   "name": "card_leaf_vine_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_leaf_vine_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#4c6d2f",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    0.9,
+    0.9
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 22840
+  },
+  {
+   "name": "card_needle_cypress_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_cypress_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#233b23",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 29768
+  },
+  {
+   "name": "card_needle_cypress_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_cypress_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#243b23",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 28154
+  },
+  {
+   "name": "card_needle_fir_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_fir_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#1f3826",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 30694
+  },
+  {
+   "name": "card_needle_fir_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_fir_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#1f3826",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 28916
+  },
+  {
+   "name": "card_needle_larch_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_larch_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#597b39",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 69002
+  },
+  {
+   "name": "card_needle_larch_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_larch_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#597a39",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 75648
+  },
+  {
+   "name": "card_needle_pine_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_pine_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#405934",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 53278
+  },
+  {
+   "name": "card_needle_pine_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_pine_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#3f5733",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.5,
+    1.0
+   ],
+   "bytes_total": 61154
+  },
+  {
+   "name": "card_needle_spruce_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_spruce_0.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#264028",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 35350
+  },
+  {
+   "name": "card_needle_spruce_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_needle_spruce_1.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#263f28",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    1.2,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 35340
+  },
+  {
+   "name": "card_palm_frond_0",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_palm_frond_0.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#57723b",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    4.8,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 65448
+  },
+  {
+   "name": "card_palm_frond_1",
+   "kind": "sprite",
+   "category": "leafcard",
+   "file": "card_palm_frond_1.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#56703a",
+   "source": "procedural 2D (scripts/leaftex.py)",
+   "notes": "Foliage card, base of the twig at bottom centre (needle sprays: main axis along +u from the left edge; palm frond: rachis along u, centre line v=0.5). Suggested world size in size_m. Used by the veg_* billboards.",
+   "size_m": [
+    4.8,
+    1.2
+   ],
+   "pivot_uv": [
+    0.0,
+    0.5
+   ],
+   "bytes_total": 64906
+  },
+  {
+   "name": "prop_picnic_parasol",
+   "kind": "sprite",
+   "category": "prop",
+   "file": "prop_picnic_parasol.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#7e8d9d",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Folding table with tablecloth, parasol, chairs and cool box (roadside picnic).",
+   "size_m": [
+    2.711,
+    2.711
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9889
+   ],
+   "bytes_total": 14752
+  },
+  {
+   "name": "arch_flamme_rouge",
+   "kind": "sprite",
+   "category": "race",
+   "file": "arch_flamme_rouge.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#ac1d1c",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Inflatable arch with the flamme rouge pennant (1 km to go), blank panel.",
+   "size_m": [
+    15.1,
+    7.55
+   ],
+   "pivot_uv": [
+    0.5,
+    0.996
+   ],
+   "bytes_total": 22184
+  },
+  {
+   "name": "arch_inflatable_red",
+   "kind": "sprite",
+   "category": "race",
+   "file": "arch_inflatable_red.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#ab1d1c",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Red inflatable arch, 13 m span, blank top panel (no brand). Front view billboard for distance; build a 3D arch from fabric_inflatable_red for drive-through.",
+   "size_m": [
+    15.1,
+    7.55
+   ],
+   "pivot_uv": [
+    0.5,
+    0.996
+   ],
+   "bytes_total": 20786
+  },
+  {
+   "name": "barrier_bare",
+   "kind": "sprite",
+   "category": "race",
+   "file": "barrier_bare.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#777778",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Bare steel crowd barrier (Vauban type), tiles horizontally (period 2.5 m).",
+   "size_m": [
+    2.5,
+    1.25
+   ],
+   "pivot_uv": [
+    0.5,
+    0.976
+   ],
+   "tiles_x": true,
+   "bytes_total": 6520
+  },
+  {
+   "name": "barrier_blue",
+   "kind": "sprite",
+   "category": "race",
+   "file": "barrier_blue.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#30458b",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Crowd-control barrier strip with a blank cover (no text/logos), tiles horizontally (period = size_m[0], one 2.5 m section).",
+   "size_m": [
+    2.5,
+    1.25
+   ],
+   "pivot_uv": [
+    0.5,
+    0.976
+   ],
+   "tiles_x": true,
+   "bytes_total": 10274
+  },
+  {
+   "name": "barrier_green",
+   "kind": "sprite",
+   "category": "race",
+   "file": "barrier_green.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#327d44",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Crowd-control barrier strip with a blank cover (no text/logos), tiles horizontally (period = size_m[0], one 2.5 m section).",
+   "size_m": [
+    2.5,
+    1.25
+   ],
+   "pivot_uv": [
+    0.5,
+    0.976
+   ],
+   "tiles_x": true,
+   "bytes_total": 10142
+  },
+  {
+   "name": "barrier_polka",
+   "kind": "sprite",
+   "category": "race",
+   "file": "barrier_polka.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#ccb9b5",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Crowd-control barrier strip with a blank cover (no text/logos), tiles horizontally (period = size_m[0], one 2.5 m section). Polka-dot cover for mountain finishes.",
+   "size_m": [
+    2.5,
+    1.25
+   ],
+   "pivot_uv": [
+    0.5,
+    0.976
+   ],
+   "tiles_x": true,
+   "bytes_total": 33130
+  },
+  {
+   "name": "barrier_yellow",
+   "kind": "sprite",
+   "category": "race",
+   "file": "barrier_yellow.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#d8b52f",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Crowd-control barrier strip with a blank cover (no text/logos), tiles horizontally (period = size_m[0], one 2.5 m section).",
+   "size_m": [
+    2.5,
+    1.25
+   ],
+   "pivot_uv": [
+    0.5,
+    0.976
+   ],
+   "tiles_x": true,
+   "bytes_total": 15742
+  },
+  {
+   "name": "board_km_blank",
+   "kind": "sprite",
+   "category": "race",
+   "file": "board_km_blank.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#bbbbb7",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Roadside km board on posts with a blank white panel (1.6 x 1.0 m at 1.5-2.5 m) for text drawn by the engine.",
+   "size_m": [
+    1.78,
+    3.56
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9916
+   ],
+   "bytes_total": 1106
+  },
+  {
+   "name": "bunting_multi",
+   "kind": "sprite",
+   "category": "race",
+   "file": "bunting_multi.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#be9080",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Bunting across the road or along facades; tiles horizontally, one 4 m sag per period.",
+   "size_m": [
+    4.0,
+    1.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "tiles_x": true,
+   "bytes_total": 19006
+  },
+  {
+   "name": "bunting_tricolore",
+   "kind": "sprite",
+   "category": "race",
+   "file": "bunting_tricolore.webp",
+   "size_px": [
+    1024,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#ae8d9f",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "French tricolour bunting; tiles horizontally, one 4 m sag per period.",
+   "size_m": [
+    4.0,
+    1.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "tiles_x": true,
+   "bytes_total": 18326
+  },
+  {
+   "name": "flamme_rouge",
+   "kind": "sprite",
+   "category": "race",
+   "file": "flamme_rouge.webp",
+   "size_px": [
+    256,
+    256
+   ],
+   "alpha": true,
+   "avg_colour": "#be1d1d",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Flamme rouge pennant hanging from a cord; pivot is the bottom margin, hang it by the top edge.",
+   "size_m": [
+    2.1,
+    2.1
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9857
+   ],
+   "bytes_total": 2942
+  },
+  {
+   "name": "veg_hedge",
+   "kind": "sprite",
+   "category": "row",
+   "file": "veg_hedge.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#304220",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Field hedge ~1.5 m. Tiles horizontally: size_m[0] is the period. Place the quad with its bottom edge on the ground (pivot_uv).",
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "size_m": [
+    4.0,
+    2.0
+   ],
+   "tiles_x": true,
+   "bytes_total": 197342
+  },
+  {
+   "name": "veg_sunflower_row",
+   "kind": "sprite",
+   "category": "row",
+   "file": "veg_sunflower_row.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#79753d",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Sunflower field edge, three staggered rows deep, heads facing the viewer. Tiles horizontally: size_m[0] is the period. Place the quad with its bottom edge on the ground (pivot_uv).",
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "tiles_x": true,
+   "bytes_total": 161020
+  },
+  {
+   "name": "veg_vine_row",
+   "kind": "sprite",
+   "category": "row",
+   "file": "veg_vine_row.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#3f5626",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Vineyard row on a trellis with grapes, 4 vines per period. Tiles horizontally: size_m[0] is the period. Place the quad with its bottom edge on the ground (pivot_uv).",
+   "pivot_uv": [
+    0.5,
+    0.99
+   ],
+   "size_m": [
+    4.0,
+    2.0
+   ],
+   "tiles_x": true,
+   "bytes_total": 157716
+  },
+  {
+   "name": "veg_shrub_green",
+   "kind": "sprite",
+   "category": "shrub",
+   "file": "veg_shrub_green.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#2e3f1f",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "deciduous shrub. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    3.723,
+    3.723
+   ],
+   "bytes_total": 131304
+  },
+  {
+   "name": "veg_shrub_laurel",
+   "kind": "sprite",
+   "category": "shrub",
+   "file": "veg_shrub_laurel.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#25331d",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "laurel / evergreen shrub. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    3.744,
+    3.744
+   ],
+   "bytes_total": 128378
+  },
+  {
+   "name": "veg_shrub_maquis",
+   "kind": "sprite",
+   "category": "shrub",
+   "file": "veg_shrub_maquis.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#3d4429",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Mediterranean maquis (lentisk). Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    3.638,
+    3.638
+   ],
+   "bytes_total": 175226
+  },
+  {
+   "name": "spec_be_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_be_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b3823a",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_be",
+   "bytes_total": 27718
+  },
+  {
+   "name": "spec_be_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_be_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b47f3b",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_be",
+   "bytes_total": 26962
+  },
+  {
+   "name": "spec_bell_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_bell_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#925a42",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_bell",
+   "bytes_total": 14514
+  },
+  {
+   "name": "spec_bell_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_bell_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#925a42",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_bell",
+   "bytes_total": 14354
+  },
+  {
+   "name": "spec_breton_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_breton_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#787378",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_breton",
+   "bytes_total": 15086
+  },
+  {
+   "name": "spec_breton_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_breton_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#787378",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_breton",
+   "bytes_total": 15114
+  },
+  {
+   "name": "spec_co_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_co_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#af874e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_co",
+   "bytes_total": 28094
+  },
+  {
+   "name": "spec_co_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_co_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b1894e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_co",
+   "bytes_total": 26792
+  },
+  {
+   "name": "spec_de_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_de_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#705c4f",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_de",
+   "bytes_total": 18680
+  },
+  {
+   "name": "spec_de_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_de_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#715c4f",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_de",
+   "bytes_total": 16944
+  },
+  {
+   "name": "spec_devil_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_devil_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a43c35",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_devil",
+   "bytes_total": 16788
+  },
+  {
+   "name": "spec_devil_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_devil_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a53c35",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_devil",
+   "bytes_total": 17584
+  },
+  {
+   "name": "spec_dk_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_dk_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b47f7f",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_dk",
+   "bytes_total": 28706
+  },
+  {
+   "name": "spec_dk_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_dk_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b67e7f",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_dk",
+   "bytes_total": 27406
+  },
+  {
+   "name": "spec_es_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_es_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b07432",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_es",
+   "bytes_total": 27394
+  },
+  {
+   "name": "spec_es_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_es_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b27632",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_es",
+   "bytes_total": 26174
+  },
+  {
+   "name": "spec_eus_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_eus_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a57a6d",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_eus",
+   "bytes_total": 30600
+  },
+  {
+   "name": "spec_eus_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_eus_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a6796c",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_eus",
+   "bytes_total": 29654
+  },
+  {
+   "name": "spec_fr_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_fr_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a88a92",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_fr",
+   "bytes_total": 27754
+  },
+  {
+   "name": "spec_fr_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_fr_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#aa868e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_fr",
+   "bytes_total": 26618
+  },
+  {
+   "name": "spec_gb_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_gb_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b4a098",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_gb",
+   "bytes_total": 23688
+  },
+  {
+   "name": "spec_gb_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_gb_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#b4a099",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_gb",
+   "bytes_total": 23048
+  },
+  {
+   "name": "spec_green_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_green_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#857c55",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_green",
+   "bytes_total": 14776
+  },
+  {
+   "name": "spec_green_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_green_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#867c55",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_green",
+   "bytes_total": 14760
+  },
+  {
+   "name": "spec_hero_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_hero_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#843b5e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_hero",
+   "bytes_total": 14098
+  },
+  {
+   "name": "spec_hero_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_hero_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#853b5e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_hero",
+   "bytes_total": 13578
+  },
+  {
+   "name": "spec_it_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_it_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#ad968d",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_it",
+   "bytes_total": 27496
+  },
+  {
+   "name": "spec_it_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_it_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#ad9389",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_it",
+   "bytes_total": 26588
+  },
+  {
+   "name": "spec_kid_cheer_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_kid_cheer_a.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a0855e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "a",
+   "character": "kid_cheer",
+   "bytes_total": 10176
+  },
+  {
+   "name": "spec_kid_cheer_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_kid_cheer_b.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a0855e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "b",
+   "character": "kid_cheer",
+   "bytes_total": 10314
+  },
+  {
+   "name": "spec_kid_flag_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_kid_flag_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#ae8e89",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "kid_flag",
+   "bytes_total": 14210
+  },
+  {
+   "name": "spec_kid_flag_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_kid_flag_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#af8c87",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "kid_flag",
+   "bytes_total": 13582
+  },
+  {
+   "name": "spec_nl_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_nl_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#be6232",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_nl",
+   "bytes_total": 21584
+  },
+  {
+   "name": "spec_nl_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_nl_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#be6232",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_nl",
+   "bytes_total": 20842
+  },
+  {
+   "name": "spec_no_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_no_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#8f616b",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_no",
+   "bytes_total": 29330
+  },
+  {
+   "name": "spec_no_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_no_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#92626b",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_no",
+   "bytes_total": 27682
+  },
+  {
+   "name": "spec_phone_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_phone_a.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#5a636e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "a",
+   "character": "fan_phone",
+   "bytes_total": 11384
+  },
+  {
+   "name": "spec_phone_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_phone_b.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#5b636e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "b",
+   "character": "fan_phone",
+   "bytes_total": 11510
+  },
+  {
+   "name": "spec_polka_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_polka_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#bba19b",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_polka",
+   "bytes_total": 29830
+  },
+  {
+   "name": "spec_polka_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_polka_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#bba19c",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_polka",
+   "bytes_total": 29072
+  },
+  {
+   "name": "spec_shoulders_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_shoulders_a.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#937362",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_shoulders",
+   "bytes_total": 19170
+  },
+  {
+   "name": "spec_shoulders_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_shoulders_b.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#937361",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_shoulders",
+   "bytes_total": 19830
+  },
+  {
+   "name": "spec_shout_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_shout_a.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#7f675a",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_shout",
+   "bytes_total": 12234
+  },
+  {
+   "name": "spec_shout_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_shout_b.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#826a5d",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_shout",
+   "bytes_total": 13214
+  },
+  {
+   "name": "spec_si_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_si_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a1888e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "a",
+   "character": "fan_si",
+   "bytes_total": 28986
+  },
+  {
+   "name": "spec_si_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_si_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#a4898f",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    4.0,
+    4.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9925
+   ],
+   "frame": "b",
+   "character": "fan_si",
+   "bytes_total": 27780
+  },
+  {
+   "name": "spec_sit_man_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_sit_man_a.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#b1a39e",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "a",
+   "character": "fan_sit_man",
+   "bytes_total": 11662
+  },
+  {
+   "name": "spec_sit_man_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_sit_man_b.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#b0a29c",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "b",
+   "character": "fan_sit_man",
+   "bytes_total": 13092
+  },
+  {
+   "name": "spec_sit_woman_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_sit_woman_a.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#92837d",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "a",
+   "character": "fan_sit_woman",
+   "bytes_total": 10590
+  },
+  {
+   "name": "spec_sit_woman_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_sit_woman_b.webp",
+   "size_px": [
+    512,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#93847d",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    2.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "b",
+   "character": "fan_sit_woman",
+   "bytes_total": 12028
+  },
+  {
+   "name": "spec_sunhat_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_sunhat_a.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a4abb5",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "a",
+   "character": "fan_sunhat",
+   "bytes_total": 12020
+  },
+  {
+   "name": "spec_sunhat_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_sunhat_b.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a4adb8",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "b",
+   "character": "fan_sunhat",
+   "bytes_total": 11716
+  },
+  {
+   "name": "spec_yellow_a",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_yellow_a.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#b49157",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "a",
+   "character": "fan_yellow",
+   "bytes_total": 12300
+  },
+  {
+   "name": "spec_yellow_b",
+   "kind": "sprite",
+   "category": "spectator",
+   "file": "spec_yellow_b.webp",
+   "size_px": [
+    256,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#b39052",
+   "source": "procedural 3D (scripts/people.py + spectators.py, three.js offline render)",
+   "notes": "Spectator billboard, 256 px per metre, frames _a/_b alternate for a cheering loop (swap every 0.3-0.6 s with a random phase per instance). pivot_uv (from top-left) is the point between the feet; size_m is the quad size.",
+   "size_m": [
+    1.0,
+    2.0
+   ],
+   "pivot_uv": [
+    0.5,
+    0.985
+   ],
+   "frame": "b",
+   "character": "fan_yellow",
+   "bytes_total": 12326
+  },
+  {
+   "name": "veg_beech_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_beech_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#364823",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "European beech. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    13.908,
+    27.816
+   ],
+   "bytes_total": 136796
+  },
+  {
+   "name": "veg_beech_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_beech_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#354722",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "European beech. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    12.923,
+    25.847
+   ],
+   "bytes_total": 146170
+  },
+  {
+   "name": "veg_birch_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_birch_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#455631",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "silver birch. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    8.931,
+    17.863
+   ],
+   "bytes_total": 195172
+  },
+  {
+   "name": "veg_birch_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_birch_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#465732",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "silver birch. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    8.971,
+    17.942
+   ],
+   "bytes_total": 186092
+  },
+  {
+   "name": "veg_black_pine_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_black_pine_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#2b3620",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Austrian/Corsican black pine. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    11.63,
+    23.26
+   ],
+   "bytes_total": 55140
+  },
+  {
+   "name": "veg_black_pine_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_black_pine_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#2b3520",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Austrian/Corsican black pine. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    10.993,
+    21.986
+   ],
+   "bytes_total": 58658
+  },
+  {
+   "name": "veg_chestnut_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_chestnut_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#31421f",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "sweet chestnut. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    16.455,
+    16.455
+   ],
+   "bytes_total": 191016
+  },
+  {
+   "name": "veg_chestnut_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_chestnut_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#31421f",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "sweet chestnut. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    17.066,
+    17.066
+   ],
+   "bytes_total": 174784
+  },
+  {
+   "name": "veg_conifer_fir_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_conifer_fir_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#1b251a",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "silver fir. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    13.477,
+    26.953
+   ],
+   "bytes_total": 100160
+  },
+  {
+   "name": "veg_conifer_fir_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_conifer_fir_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#1b241a",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "silver fir. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    10.557,
+    21.115
+   ],
+   "bytes_total": 102140
+  },
+  {
+   "name": "veg_conifer_larch_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_conifer_larch_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#3f4f27",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "European larch. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    11.354,
+    22.707
+   ],
+   "bytes_total": 139834
+  },
+  {
+   "name": "veg_conifer_larch_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_conifer_larch_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#3e4f27",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "European larch. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    10.741,
+    21.482
+   ],
+   "bytes_total": 124998
+  },
+  {
+   "name": "veg_conifer_spruce_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_conifer_spruce_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#1b271a",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Norway spruce. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    12.531,
+    25.061
+   ],
+   "bytes_total": 101006
+  },
+  {
+   "name": "veg_conifer_spruce_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_conifer_spruce_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#1a2619",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Norway spruce. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    11.124,
+    22.248
+   ],
+   "bytes_total": 100596
+  },
+  {
+   "name": "veg_cypress_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_cypress_a.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#21311e",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Italian cypress. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    4.636,
+    18.545
+   ],
+   "bytes_total": 23012
+  },
+  {
+   "name": "veg_cypress_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_cypress_b.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#22321f",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Italian cypress. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    4.179,
+    16.715
+   ],
+   "bytes_total": 27356
+  },
+  {
+   "name": "veg_oak_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_oak_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#324021",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "pedunculate oak. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    16.68,
+    16.68
+   ],
+   "bytes_total": 197236
+  },
+  {
+   "name": "veg_oak_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_oak_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#303f20",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "pedunculate oak. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    14.854,
+    14.854
+   ],
+   "bytes_total": 220980
+  },
+  {
+   "name": "veg_olive_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_olive_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#434738",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "olive tree. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    9.14,
+    9.14
+   ],
+   "bytes_total": 228064
+  },
+  {
+   "name": "veg_olive_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_olive_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#424738",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "olive tree. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    7.966,
+    7.966
+   ],
+   "bytes_total": 281766
+  },
+  {
+   "name": "veg_palm_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_palm_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#4b5637",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Canary Island date palm (Riviera). Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    13.152,
+    13.152
+   ],
+   "bytes_total": 115716
+  },
+  {
+   "name": "veg_palm_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_palm_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#4d5a38",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Canary Island date palm (Riviera). Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    13.156,
+    13.156
+   ],
+   "bytes_total": 113306
+  },
+  {
+   "name": "veg_plane_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_plane_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#3c4e28",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "London plane / platane, avenue tree of French roads. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    19.828,
+    19.828
+   ],
+   "bytes_total": 151194
+  },
+  {
+   "name": "veg_plane_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_plane_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#3c4e28",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "London plane / platane, avenue tree of French roads. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    20.146,
+    20.146
+   ],
+   "bytes_total": 145290
+  },
+  {
+   "name": "veg_poplar_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_poplar_a.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#354722",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Lombardy poplar. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    5.98,
+    23.922
+   ],
+   "bytes_total": 56754
+  },
+  {
+   "name": "veg_poplar_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_poplar_b.webp",
+   "size_px": [
+    256,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#364823",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Lombardy poplar. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    6.11,
+    24.442
+   ],
+   "bytes_total": 56324
+  },
+  {
+   "name": "veg_scots_pine_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_scots_pine_a.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#363c24",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Scots pine, orange upper bark. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    11.115,
+    22.229
+   ],
+   "bytes_total": 44676
+  },
+  {
+   "name": "veg_scots_pine_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_scots_pine_b.webp",
+   "size_px": [
+    512,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#383d25",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Scots pine, orange upper bark. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    10.818,
+    21.636
+   ],
+   "bytes_total": 49788
+  },
+  {
+   "name": "veg_stone_pine_a",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_stone_pine_a.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#374327",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Mediterranean stone (umbrella) pine. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    17.723,
+    17.723
+   ],
+   "bytes_total": 91078
+  },
+  {
+   "name": "veg_stone_pine_b",
+   "kind": "sprite",
+   "category": "tree",
+   "file": "veg_stone_pine_b.webp",
+   "size_px": [
+    1024,
+    1024
+   ],
+   "alpha": true,
+   "avg_colour": "#354126",
+   "source": "procedural 3D (scripts/trees.py, three.js offline render)",
+   "notes": "Mediterranean stone (umbrella) pine. Billboard rendered orthographically from the side (elev 0) under a soft overcast rig; size_m is the quad size in metres, pivot_uv (from top-left) is the trunk foot. Straight alpha, colour bled into transparent pixels.",
+   "pivot_uv": [
+    0.5,
+    0.97
+   ],
+   "size_m": [
+    15.868,
+    15.868
+   ],
+   "bytes_total": 104864
+  },
+  {
+   "name": "vehicle_camper_q34",
+   "kind": "sprite",
+   "category": "vehicle",
+   "file": "vehicle_camper_q34.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#a7a6a1",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Camper van, 3/4 front view.",
+   "size_m": [
+    6.85,
+    3.425
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9912
+   ],
+   "bytes_total": 20328
+  },
+  {
+   "name": "vehicle_camper_side",
+   "kind": "sprite",
+   "category": "vehicle",
+   "file": "vehicle_camper_side.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#bfbeba",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Camper van (alcove type), side view, plain white; fans park these along mountain roads.",
+   "size_m": [
+    6.7,
+    3.35
+   ],
+   "pivot_uv": [
+    0.5,
+    0.991
+   ],
+   "bytes_total": 13052
+  },
+  {
+   "name": "vehicle_team_car_q34",
+   "kind": "sprite",
+   "category": "vehicle",
+   "file": "vehicle_team_car_q34.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#322c28",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Team car, dark variant, 3/4 front view.",
+   "size_m": [
+    5.07,
+    2.535
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9882
+   ],
+   "bytes_total": 52434
+  },
+  {
+   "name": "vehicle_team_car_side",
+   "kind": "sprite",
+   "category": "vehicle",
+   "file": "vehicle_team_car_side.webp",
+   "size_px": [
+    1024,
+    512
+   ],
+   "alpha": true,
+   "avg_colour": "#929095",
+   "source": "procedural 3D (scripts/furniture.py, three.js offline render)",
+   "notes": "Team estate car with bikes on the roof, no logos, side view (front to the right).",
+   "size_m": [
+    5.07,
+    2.535
+   ],
+   "pivot_uv": [
+    0.5,
+    0.9882
+   ],
+   "bytes_total": 36240
+  },
+  {
+   "name": "sky_broken_cumulus",
+   "kind": "sky",
+   "category": "sky",
+   "file": "sky_broken_cumulus.webp",
+   "size_px": [
+    4096,
+    1024
+   ],
+   "alpha": false,
+   "projection": "equirectangular upper hemisphere: u = azimuth 0..360 deg (wraps), v = 0 zenith .. 1 horizon",
+   "sun_azimuth_deg": 140,
+   "sun_elevation_deg": 48,
+   "avg_colour": "#96a6c5",
+   "horizon_colour": "#c0cad6",
+   "seam_ratio": [
+    1.03,
+    null
+   ],
+   "source": "procedural ray-marched cumulus (scratchpad/textures/scripts/sky.py)",
+   "notes": "broken cumulus, typical changeable summer day. Sun disk is NOT drawn; draw it in the shader at the given direction.",
+   "bytes_total": 168444
+  },
+  {
+   "name": "sky_clear_cumulus",
+   "kind": "sky",
+   "category": "sky",
+   "file": "sky_clear_cumulus.webp",
+   "size_px": [
+    4096,
+    1024
+   ],
+   "alpha": false,
+   "projection": "equirectangular upper hemisphere: u = azimuth 0..360 deg (wraps), v = 0 zenith .. 1 horizon",
+   "sun_azimuth_deg": 200,
+   "sun_elevation_deg": 58,
+   "avg_colour": "#8ca3cd",
+   "horizon_colour": "#bfcddc",
+   "seam_ratio": [
+    1.73,
+    null
+   ],
+   "source": "procedural ray-marched cumulus (scratchpad/textures/scripts/sky.py)",
+   "notes": "clear summer blue with a few fair-weather cumulus. Sun disk is NOT drawn; draw it in the shader at the given direction.",
+   "bytes_total": 129292
+  },
+  {
+   "name": "sky_hazy_hot",
+   "kind": "sky",
+   "category": "sky",
+   "file": "sky_hazy_hot.webp",
+   "size_px": [
+    4096,
+    1024
+   ],
+   "alpha": false,
+   "projection": "equirectangular upper hemisphere: u = azimuth 0..360 deg (wraps), v = 0 zenith .. 1 horizon",
+   "sun_azimuth_deg": 180,
+   "sun_elevation_deg": 64,
+   "avg_colour": "#9fb2cf",
+   "horizon_colour": "#d1d5d8",
+   "seam_ratio": [
+    1.03,
+    null
+   ],
+   "source": "procedural ray-marched cumulus (scratchpad/textures/scripts/sky.py)",
+   "notes": "hazy hot Mediterranean day, milky horizon, thin cirrus. Sun disk is NOT drawn; draw it in the shader at the given direction.",
+   "bytes_total": 96570
+  },
+  {
+   "name": "sky_late_afternoon",
+   "kind": "sky",
+   "category": "sky",
+   "file": "sky_late_afternoon.webp",
+   "size_px": [
+    4096,
+    1024
+   ],
+   "alpha": false,
+   "projection": "equirectangular upper hemisphere: u = azimuth 0..360 deg (wraps), v = 0 zenith .. 1 horizon",
+   "sun_azimuth_deg": 255,
+   "sun_elevation_deg": 13,
+   "avg_colour": "#9a96ad",
+   "horizon_colour": "#e3c7a7",
+   "seam_ratio": [
+    1.3,
+    null
+   ],
+   "source": "procedural ray-marched cumulus (scratchpad/textures/scripts/sky.py)",
+   "notes": "warm late afternoon, low sun at azimuth 255 deg, golden horizon. Sun disk is NOT drawn; draw it in the shader at the given direction.",
+   "bytes_total": 112354
+  }
+ ]
+}

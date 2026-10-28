@@ -1,0 +1,6448 @@
+[
+ {
+  "id": "tour26-01",
+  "kind": "stage",
+  "number": 1,
+  "date": "2026-07-04",
+  "start": "Barcelona (Parc del Fòrum)",
+  "finish": "Barcelona (Montjuïc, Estadi Olímpic)",
+  "lengthKm": 19.6,
+  "type": "ttt",
+  "startElevationM": 8,
+  "finishElevationM": 104,
+  "totalAscentM": 200,
+  "places": [
+   {
+    "km": 0,
+    "m": 8,
+    "place": "Parc del Fòrum"
+   },
+   {
+    "km": 1.2,
+    "m": 6,
+    "place": "Avinguda del Litoral"
+   },
+   {
+    "km": 2.5,
+    "m": 5,
+    "place": "Port Olímpic (Wendepunkt)"
+   },
+   {
+    "km": 4,
+    "m": 6,
+    "place": "Avinguda d'Icària"
+   },
+   {
+    "km": 5.1,
+    "m": 8,
+    "place": "Carrer de Llull"
+   },
+   {
+    "km": 6.3,
+    "m": 18,
+    "place": "Carrer de Josep Pla"
+   },
+   {
+    "km": 7.5,
+    "m": 28,
+    "place": "Rambla de Guipúscoa"
+   },
+   {
+    "km": 9,
+    "m": 34,
+    "place": "Carrer d'Aragó"
+   },
+   {
+    "km": 10.5,
+    "m": 42,
+    "place": "Sagrada Família"
+   },
+   {
+    "km": 11.5,
+    "m": 44,
+    "place": "Carrer de Pau Claris"
+   },
+   {
+    "km": 12.5,
+    "m": 40,
+    "place": "Carrer d'Aragó"
+   },
+   {
+    "km": 13.5,
+    "m": 36,
+    "place": "Parc Joan Miró"
+   },
+   {
+    "km": 14.6,
+    "m": 30,
+    "place": "Plaça d'Espanya"
+   },
+   {
+    "km": 15.3,
+    "m": 40,
+    "place": "Font Màgica"
+   },
+   {
+    "km": 15.9,
+    "m": 44,
+    "place": "Passeig de Santa Madrona"
+   },
+   {
+    "km": 17,
+    "m": 100,
+    "place": "Côte de Montjuïc (Kuppe)"
+   },
+   {
+    "km": 17.5,
+    "m": 74,
+    "place": "Avinguda de l'Estadi"
+   },
+   {
+    "km": 18,
+    "m": 48,
+    "place": "Carrer del Foc"
+   },
+   {
+    "km": 18.8,
+    "m": 48,
+    "place": "Fuß Schlussanstieg"
+   },
+   {
+    "km": 19.2,
+    "m": 76,
+    "place": "Passeig Olímpic"
+   },
+   {
+    "km": 19.6,
+    "m": 104,
+    "place": "Estadi Olímpic Lluís Companys"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Montjuïc (Passeig de Santa Madrona)",
+    "summitKm": 17,
+    "summitM": 100,
+    "lengthKm": 1.1,
+    "avgPct": 5.1,
+    "category": "unkategorisiert",
+    "hairpins": 0
+   },
+   {
+    "name": "Côte du Stade Olympique de Montjuïc",
+    "summitKm": 19.6,
+    "summitM": 104,
+    "lengthKm": 0.8,
+    "avgPct": 7,
+    "category": "4",
+    "hairpins": 0
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Parc del Fòrum"
+   },
+   {
+    "km": 1.2,
+    "label": "Strandpromenade"
+   },
+   {
+    "km": 2.5,
+    "label": "Port Olímpic, Wende"
+   },
+   {
+    "km": 5.1,
+    "label": "Zwischenzeit 1 Carrer Llull"
+   },
+   {
+    "km": 7.5,
+    "label": "Rambla de Guipúscoa"
+   },
+   {
+    "km": 10.5,
+    "label": "Zwischenzeit 2 Sagrada Família"
+   },
+   {
+    "km": 13.5,
+    "label": "Parc Joan Miró"
+   },
+   {
+    "km": 14.6,
+    "label": "Plaça d'Espanya"
+   },
+   {
+    "km": 15.3,
+    "label": "Font Màgica"
+   },
+   {
+    "km": 15.9,
+    "label": "Zwischenzeit 3, Anstieg Montjuïc"
+   },
+   {
+    "km": 17,
+    "label": "Kuppe Côte de Montjuïc"
+   },
+   {
+    "km": 18.8,
+    "label": "Fuß Schlussanstieg 7%"
+   },
+   {
+    "km": 19.6,
+    "label": "Ziel Olympiastadion"
+   }
+  ],
+  "region": "Katalonien",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-1-tdf-2026/",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/grand-depart-route-tdf-2026",
+   "https://hedgehogcycling.co.uk/stage-1-tour-de-france-2026.html",
+   "https://www.cyclingoracle.com/en/blog/tour-de-france-2026-prediction-stage-1",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-1-a-flying-start/",
+   "https://www.wielerflits.nl/wielerkalender/tour-de-france-2026/stage-1",
+   "https://www.intervals.icu/tour-de-france-2026/stage-1/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-01.html",
+   "https://en.wikipedia.org/wiki/2026_Tour_de_France",
+   "https://en.wikipedia.org/wiki/Montju%C3%AFc",
+   "https://cyclinguptodate.com/cycling/results-tour-de-france-2026-stage-1-jonas-vingegaard-takes-yellow-as-visma-beat-ineos-and-uae-in-barcelona-team-time-trial-thriller",
+   "https://en.brujulabike.com/caja-rural-is-first-and-uae-is-last-schedules-route-and-favorites-for-an-unprecedented-team-time-trial-in-the-tour/"
+  ]
+ },
+ {
+  "id": "tour26-02",
+  "kind": "stage",
+  "number": 2,
+  "date": "2026-07-05",
+  "start": "Tarragona",
+  "finish": "Barcelona (Montjuïc, Olympiastadion)",
+  "lengthKm": 168.5,
+  "type": "hilly",
+  "startElevationM": 18,
+  "finishElevationM": 107,
+  "totalAscentM": 2500,
+  "places": [
+   {
+    "km": 0,
+    "m": 18,
+    "place": "Tarragona"
+   },
+   {
+    "km": 5,
+    "m": 25,
+    "place": "La Móra"
+   },
+   {
+    "km": 7.5,
+    "m": 55,
+    "place": "Tamarit"
+   },
+   {
+    "km": 9.5,
+    "m": 15,
+    "place": "Altafulla"
+   },
+   {
+    "km": 12,
+    "m": 12,
+    "place": "Torredembarra"
+   },
+   {
+    "km": 15,
+    "m": 10,
+    "place": "Creixell"
+   },
+   {
+    "km": 18,
+    "m": 45,
+    "place": "Roda de Berà"
+   },
+   {
+    "km": 25,
+    "m": 50,
+    "place": "El Vendrell"
+   },
+   {
+    "km": 27.5,
+    "m": 15,
+    "place": "Coma-ruga"
+   },
+   {
+    "km": 30,
+    "m": 10,
+    "place": "Calafell"
+   },
+   {
+    "km": 32,
+    "m": 55,
+    "place": "Segur de Calafell"
+   },
+   {
+    "km": 34,
+    "m": 20,
+    "place": "Cunit"
+   },
+   {
+    "km": 38,
+    "m": 10,
+    "place": "Cubelles"
+   },
+   {
+    "km": 43,
+    "m": 20,
+    "place": "Vilanova i la Geltrú"
+   },
+   {
+    "km": 46,
+    "m": 85,
+    "place": "Coll de Vilanova"
+   },
+   {
+    "km": 52,
+    "m": 10,
+    "place": "Sitges"
+   },
+   {
+    "km": 56,
+    "m": 95,
+    "place": "Garraf-Küstenstraße"
+   },
+   {
+    "km": 60,
+    "m": 10,
+    "place": "Garraf"
+   },
+   {
+    "km": 63,
+    "m": 120,
+    "place": "Les Costes del Garraf"
+   },
+   {
+    "km": 66,
+    "m": 15,
+    "place": "Ratpenat"
+   },
+   {
+    "km": 70,
+    "m": 110,
+    "place": "Port Ginesta (oben)"
+   },
+   {
+    "km": 75,
+    "m": 5,
+    "place": "Castelldefels"
+   },
+   {
+    "km": 80,
+    "m": 10,
+    "place": "Gavà"
+   },
+   {
+    "km": 85.6,
+    "m": 18,
+    "place": "Viladecans (Sprint)"
+   },
+   {
+    "km": 88.1,
+    "m": 55,
+    "place": "Fuß Côte de Begues"
+   },
+   {
+    "km": 94.2,
+    "m": 395,
+    "place": "Côte de Begues"
+   },
+   {
+    "km": 97,
+    "m": 385,
+    "place": "Begues"
+   },
+   {
+    "km": 104,
+    "m": 265,
+    "place": "Olesa de Bonesvalls"
+   },
+   {
+    "km": 108.7,
+    "m": 425,
+    "place": "Pla de Pèlag"
+   },
+   {
+    "km": 114,
+    "m": 177,
+    "place": "Vallirana"
+   },
+   {
+    "km": 118,
+    "m": 110,
+    "place": "Cervelló"
+   },
+   {
+    "km": 123.4,
+    "m": 37,
+    "place": "Molins de Rei"
+   },
+   {
+    "km": 127,
+    "m": 35,
+    "place": "Sant Feliu de Llobregat"
+   },
+   {
+    "km": 131,
+    "m": 110,
+    "place": "Sant Just Desvern"
+   },
+   {
+    "km": 134,
+    "m": 100,
+    "place": "Esplugues de Llobregat"
+   },
+   {
+    "km": 138,
+    "m": 30,
+    "place": "Plaça d'Espanya"
+   },
+   {
+    "km": 140,
+    "m": 25,
+    "place": "Fuß Montjuïc"
+   },
+   {
+    "km": 141.6,
+    "m": 170,
+    "place": "Château de Montjuïc"
+   },
+   {
+    "km": 143.4,
+    "m": 65,
+    "place": "Fuß Stade Olympique"
+   },
+   {
+    "km": 144.1,
+    "m": 107,
+    "place": "Zieldurchfahrt 1"
+   },
+   {
+    "km": 148,
+    "m": 30,
+    "place": "Plaça d'Espanya"
+   },
+   {
+    "km": 152.2,
+    "m": 25,
+    "place": "Fuß Montjuïc"
+   },
+   {
+    "km": 153.8,
+    "m": 170,
+    "place": "Château de Montjuïc"
+   },
+   {
+    "km": 156.3,
+    "m": 107,
+    "place": "Zieldurchfahrt 2"
+   },
+   {
+    "km": 160.2,
+    "m": 30,
+    "place": "Plaça d'Espanya"
+   },
+   {
+    "km": 164.4,
+    "m": 25,
+    "place": "Fuß Montjuïc"
+   },
+   {
+    "km": 166,
+    "m": 170,
+    "place": "Château de Montjuïc"
+   },
+   {
+    "km": 168.5,
+    "m": 107,
+    "place": "Ziel Olympiastadion"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Begues",
+    "summitKm": 94.2,
+    "summitM": 395,
+    "lengthKm": 6.1,
+    "avgPct": 6.5,
+    "category": "2"
+   },
+   {
+    "name": "Côte du Château de Montjuïc (1. Passage)",
+    "summitKm": 141.6,
+    "summitM": 170,
+    "lengthKm": 1.6,
+    "avgPct": 9.3,
+    "category": "3"
+   },
+   {
+    "name": "Côte du Château de Montjuïc (2. Passage)",
+    "summitKm": 153.8,
+    "summitM": 170,
+    "lengthKm": 1.6,
+    "avgPct": 9.3,
+    "category": "3"
+   },
+   {
+    "name": "Côte du Château de Montjuïc (3. Passage)",
+    "summitKm": 166,
+    "summitM": 170,
+    "lengthKm": 1.6,
+    "avgPct": 9.3,
+    "category": "3"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Tarragona"
+   },
+   {
+    "km": 25,
+    "label": "El Vendrell"
+   },
+   {
+    "km": 43,
+    "label": "Vilanova i la Geltrú"
+   },
+   {
+    "km": 52,
+    "label": "Sitges"
+   },
+   {
+    "km": 75,
+    "label": "Castelldefels"
+   },
+   {
+    "km": 85.6,
+    "label": "Zwischensprint Viladecans"
+   },
+   {
+    "km": 94.2,
+    "label": "Côte de Begues (Kat. 2)"
+   },
+   {
+    "km": 108.7,
+    "label": "Pla de Pèlag"
+   },
+   {
+    "km": 114,
+    "label": "Vallirana"
+   },
+   {
+    "km": 123.4,
+    "label": "Molins de Rei"
+   },
+   {
+    "km": 138,
+    "label": "Plaça d'Espanya"
+   },
+   {
+    "km": 141.6,
+    "label": "Montjuïc 1. Passage (Kat. 3)"
+   },
+   {
+    "km": 153.8,
+    "label": "Montjuïc 2. Passage (Kat. 3)"
+   },
+   {
+    "km": 166,
+    "label": "Montjuïc 3. Passage (Kat. 3)"
+   },
+   {
+    "km": 168.5,
+    "label": "Ziel Olympiastadion"
+   }
+  ],
+  "region": "Katalonien",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-2-tdf-2026/",
+   "https://www.cyclingstage.com/images/tour-de-france/2026/stage-2-climbs.htm",
+   "https://www.cyclingstage.com/images/tour-de-france/2026/stage-2-times.htm",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-2-results-tdf-2026",
+   "https://hedgehogcycling.co.uk/stage-2-tour-de-france-2026.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-2/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-2-a-taste-of-the-mediterranean-with-a-finish-at-montjuic/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-02.html",
+   "https://bikeclimbs.com/climb/spain/catalonia/baix-llobregat/gava/begues"
+  ]
+ },
+ {
+  "id": "tour26-03",
+  "kind": "stage",
+  "number": 3,
+  "date": "2026-07-06",
+  "start": "Granollers",
+  "finish": "Les Angles",
+  "lengthKm": 195.9,
+  "type": "mountain",
+  "startElevationM": 160,
+  "finishElevationM": 1794,
+  "totalAscentM": 3850,
+  "places": [
+   {
+    "km": 0,
+    "m": 160,
+    "place": "Granollers"
+   },
+   {
+    "km": 9.6,
+    "m": 190,
+    "place": "Fuß Côte de Sant Feliu"
+   },
+   {
+    "km": 17.2,
+    "m": 530,
+    "place": "Côte de Sant Feliu de Codines"
+   },
+   {
+    "km": 22,
+    "m": 640,
+    "place": "Sant Quirze Safaja"
+   },
+   {
+    "km": 28,
+    "m": 700,
+    "place": "Les Comes"
+   },
+   {
+    "km": 39,
+    "m": 498,
+    "place": "Centelles"
+   },
+   {
+    "km": 44,
+    "m": 585,
+    "place": "Tona"
+   },
+   {
+    "km": 56,
+    "m": 484,
+    "place": "Vic"
+   },
+   {
+    "km": 62,
+    "m": 465,
+    "place": "Manlleu"
+   },
+   {
+    "km": 68,
+    "m": 500,
+    "place": "Torelló"
+   },
+   {
+    "km": 75,
+    "m": 590,
+    "place": "Sant Quirze de Besora"
+   },
+   {
+    "km": 82,
+    "m": 630,
+    "place": "Montesquiu"
+   },
+   {
+    "km": 92,
+    "m": 682,
+    "place": "Ripoll"
+   },
+   {
+    "km": 98.4,
+    "m": 738,
+    "place": "Campdevànol (Sprint)"
+   },
+   {
+    "km": 108.5,
+    "m": 912,
+    "place": "Ribes de Freser"
+   },
+   {
+    "km": 118.4,
+    "m": 1175,
+    "place": "Planoles (Fuß Toses)"
+   },
+   {
+    "km": 127.7,
+    "m": 1785,
+    "place": "Collada de Toses"
+   },
+   {
+    "km": 136,
+    "m": 1450,
+    "place": "La Molina"
+   },
+   {
+    "km": 143,
+    "m": 1160,
+    "place": "Alp"
+   },
+   {
+    "km": 154,
+    "m": 1200,
+    "place": "Puigcerdà"
+   },
+   {
+    "km": 158,
+    "m": 1225,
+    "place": "Llívia"
+   },
+   {
+    "km": 160.9,
+    "m": 1370,
+    "place": "Fuß Col du Calvaire"
+   },
+   {
+    "km": 170,
+    "m": 1790,
+    "place": "Font-Romeu"
+   },
+   {
+    "km": 172.3,
+    "m": 1836,
+    "place": "Col du Calvaire"
+   },
+   {
+    "km": 176,
+    "m": 1660,
+    "place": "Bolquère"
+   },
+   {
+    "km": 179.3,
+    "m": 1605,
+    "place": "Mont-Louis"
+   },
+   {
+    "km": 181.5,
+    "m": 1650,
+    "place": "La Llagonne"
+   },
+   {
+    "km": 183.5,
+    "m": 1714,
+    "place": "Col de la Quillane"
+   },
+   {
+    "km": 188,
+    "m": 1545,
+    "place": "Matemale"
+   },
+   {
+    "km": 191.2,
+    "m": 1585,
+    "place": "Lac de Matemale"
+   },
+   {
+    "km": 194.2,
+    "m": 1685,
+    "place": "Les Angles Dorf"
+   },
+   {
+    "km": 195.9,
+    "m": 1794,
+    "place": "Les Angles Pla del Mir"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Sant Feliu de Codines",
+    "summitKm": 17.2,
+    "summitM": 530,
+    "lengthKm": 7.6,
+    "avgPct": 4.5,
+    "category": "3"
+   },
+   {
+    "name": "Col de Toses (Collada de Toses)",
+    "summitKm": 127.7,
+    "summitM": 1785,
+    "lengthKm": 9.3,
+    "avgPct": 6.5,
+    "category": "1",
+    "hairpins": 17
+   },
+   {
+    "name": "Col du Calvaire",
+    "summitKm": 172.3,
+    "summitM": 1836,
+    "lengthKm": 11.4,
+    "avgPct": 4.1,
+    "category": "3",
+    "hairpins": 8
+   },
+   {
+    "name": "Les Angles (Pla del Mir)",
+    "summitKm": 195.9,
+    "summitM": 1794,
+    "lengthKm": 1.7,
+    "avgPct": 6.5,
+    "category": "3"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Granollers"
+   },
+   {
+    "km": 17.2,
+    "label": "Côte de Sant Feliu (Kat. 3)"
+   },
+   {
+    "km": 39,
+    "label": "Centelles"
+   },
+   {
+    "km": 56,
+    "label": "Vic"
+   },
+   {
+    "km": 92,
+    "label": "Ripoll"
+   },
+   {
+    "km": 98.4,
+    "label": "Zwischensprint Campdevànol"
+   },
+   {
+    "km": 108.5,
+    "label": "Ribes de Freser"
+   },
+   {
+    "km": 118.4,
+    "label": "Planoles – Fuß Toses"
+   },
+   {
+    "km": 127.7,
+    "label": "Collada de Toses (Kat. 1)"
+   },
+   {
+    "km": 136,
+    "label": "La Molina"
+   },
+   {
+    "km": 154,
+    "label": "Puigcerdà"
+   },
+   {
+    "km": 158,
+    "label": "Llívia – Grenze Frankreich"
+   },
+   {
+    "km": 170,
+    "label": "Font-Romeu"
+   },
+   {
+    "km": 172.3,
+    "label": "Col du Calvaire (Kat. 3)"
+   },
+   {
+    "km": 179.3,
+    "label": "Mont-Louis"
+   },
+   {
+    "km": 183.5,
+    "label": "Col de la Quillane"
+   },
+   {
+    "km": 191.2,
+    "label": "Lac de Matemale"
+   },
+   {
+    "km": 195.9,
+    "label": "Ziel Les Angles (Kat. 3)"
+   }
+  ],
+  "region": "Pyrenäen (Katalonien / Cerdagne)",
+  "sources": [
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-03.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-3/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-3-france-welcomes-the-tour-with-a-short-mountain-finish/",
+   "https://www.radsport-news.com/sport/sportnews_vorschau_146002.htm",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-3-tdf-2026",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-3-results-tdf-2026/",
+   "https://hedgehogcycling.co.uk/stage-3-tour-de-france-2026.html",
+   "https://www.wielerflits.nl/wielerkalender/tour-de-france-2026/stage-3",
+   "https://www.domestiquecycling.com/en/live-cycling/tour-de-france/men/2026/stage-3/",
+   "https://procyclinguk.com/tour-de-france-2026-stage-3-preview/",
+   "https://en.brujulabike.com/departure-expected-arrival-time-and-key-points-of-stage-3-of-the-tour-france-2026/",
+   "https://www.ledepartement66.fr/media/2026/06/Classeur3.pdf"
+  ]
+ },
+ {
+  "id": "tour26-04",
+  "kind": "stage",
+  "number": 4,
+  "date": "2026-07-07",
+  "start": "Carcassonne",
+  "finish": "Foix",
+  "lengthKm": 181.9,
+  "type": "hilly",
+  "startElevationM": 103,
+  "finishElevationM": 390,
+  "totalAscentM": 2700,
+  "places": [
+   {
+    "km": 0,
+    "m": 103,
+    "place": "Carcassonne"
+   },
+   {
+    "km": 5,
+    "m": 80,
+    "place": "Trèbes"
+   },
+   {
+    "km": 10,
+    "m": 130,
+    "place": "Fontiès-d'Aude"
+   },
+   {
+    "km": 14,
+    "m": 160,
+    "place": "Monze"
+   },
+   {
+    "km": 18,
+    "m": 200,
+    "place": "Pradelles-en-Val"
+   },
+   {
+    "km": 22,
+    "m": 290,
+    "place": "Montagne d'Alaric"
+   },
+   {
+    "km": 29,
+    "m": 110,
+    "place": "Lagrasse"
+   },
+   {
+    "km": 32,
+    "m": 140,
+    "place": "Saint-Pierre-des-Champs"
+   },
+   {
+    "km": 40.6,
+    "m": 404,
+    "place": "Col de Villerouge"
+   },
+   {
+    "km": 43.8,
+    "m": 345,
+    "place": "Villerouge-Termenès"
+   },
+   {
+    "km": 48.2,
+    "m": 485,
+    "place": "Col de Bedos"
+   },
+   {
+    "km": 52,
+    "m": 450,
+    "place": "Laroque-de-Fa"
+   },
+   {
+    "km": 56,
+    "m": 545,
+    "place": "Mouthoumet"
+   },
+   {
+    "km": 64.9,
+    "m": 622,
+    "place": "Col du Paradis"
+   },
+   {
+    "km": 75,
+    "m": 365,
+    "place": "Arques"
+   },
+   {
+    "km": 86.5,
+    "m": 235,
+    "place": "Couiza"
+   },
+   {
+    "km": 90,
+    "m": 250,
+    "place": "Espéraza"
+   },
+   {
+    "km": 93.4,
+    "m": 290,
+    "place": "Quillan"
+   },
+   {
+    "km": 104.9,
+    "m": 883,
+    "place": "Col de Coudons"
+   },
+   {
+    "km": 110,
+    "m": 880,
+    "place": "Espezel"
+   },
+   {
+    "km": 115,
+    "m": 905,
+    "place": "Plateau de Sault"
+   },
+   {
+    "km": 122.5,
+    "m": 899,
+    "place": "Col de la Croix des Morts"
+   },
+   {
+    "km": 132.3,
+    "m": 496,
+    "place": "Bélesta"
+   },
+   {
+    "km": 139.8,
+    "m": 605,
+    "place": "Fougax-et-Barrineuf"
+   },
+   {
+    "km": 146.7,
+    "m": 1059,
+    "place": "Col de Montségur"
+   },
+   {
+    "km": 150,
+    "m": 820,
+    "place": "Montferrier"
+   },
+   {
+    "km": 155.9,
+    "m": 500,
+    "place": "Lavelanet"
+   },
+   {
+    "km": 163.5,
+    "m": 590,
+    "place": "Nalzen"
+   },
+   {
+    "km": 181.9,
+    "m": 390,
+    "place": "Foix"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Col de Bedos",
+    "summitKm": 48.2,
+    "summitM": 485,
+    "lengthKm": 3.3,
+    "avgPct": 4.4,
+    "category": "4"
+   },
+   {
+    "name": "Col du Paradis",
+    "summitKm": 64.9,
+    "summitM": 622,
+    "lengthKm": 5.8,
+    "avgPct": 4.1,
+    "category": "3"
+   },
+   {
+    "name": "Col de Coudons",
+    "summitKm": 104.9,
+    "summitM": 883,
+    "lengthKm": 10.7,
+    "avgPct": 5.5,
+    "category": "2",
+    "hairpins": 11
+   },
+   {
+    "name": "Col de Montségur",
+    "summitKm": 146.7,
+    "summitM": 1059,
+    "lengthKm": 6.9,
+    "avgPct": 6.6,
+    "category": "2",
+    "hairpins": 10
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Carcassonne"
+   },
+   {
+    "km": 29,
+    "label": "Lagrasse"
+   },
+   {
+    "km": 40.6,
+    "label": "Col de Villerouge (o. Kat.)"
+   },
+   {
+    "km": 48.2,
+    "label": "Col de Bedos (Kat. 4)"
+   },
+   {
+    "km": 56,
+    "label": "Mouthoumet"
+   },
+   {
+    "km": 64.9,
+    "label": "Col du Paradis (Kat. 3)"
+   },
+   {
+    "km": 75,
+    "label": "Arques (Verpflegung ca.)"
+   },
+   {
+    "km": 86.5,
+    "label": "Couiza"
+   },
+   {
+    "km": 93.4,
+    "label": "Zwischensprint Quillan"
+   },
+   {
+    "km": 104.9,
+    "label": "Col de Coudons (Kat. 2)"
+   },
+   {
+    "km": 122.5,
+    "label": "Col de la Croix des Morts"
+   },
+   {
+    "km": 132.3,
+    "label": "Bélesta"
+   },
+   {
+    "km": 146.7,
+    "label": "Col de Montségur (Kat. 2)"
+   },
+   {
+    "km": 155.9,
+    "label": "Lavelanet"
+   },
+   {
+    "km": 181.9,
+    "label": "Ziel Foix"
+   }
+  ],
+  "region": "Pyrenäen-Vorland (Corbières / Ariège)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-4-tdf-2026",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-04.html",
+   "https://hedgehogcycling.co.uk/stage-4-tour-de-france-2026.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-4/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-4-the-stage-is-set-for-the-breakaway-riders/",
+   "https://www.domestiquecycling.com/en/news/tour-de-france-2026-stage-4-what-time-to-watch-key-moments-and-tv-guide/",
+   "https://www.cyclingstage.com/mads-pedersen/stage-4-results-tdf-2026",
+   "https://en.wikipedia.org/wiki/2026_Tour_de_France,_Stage_1_to_Stage_11",
+   "https://climbfinder.com/en/climbs/col-de-montsegur-belesta",
+   "https://climbfinder.com/us/climbs/col-des-coudons-ginoles-les-bains",
+   "https://www.cols-cyclisme.com/pyrenees-est/france/col-des-coudons-depuis-quillan-c3240.htm",
+   "https://www.cols-cyclisme.com/pyrenees-est/france/col-de-montsegur-depuis-belesta-c1776.htm"
+  ]
+ },
+ {
+  "id": "tour26-05",
+  "kind": "stage",
+  "number": 5,
+  "date": "2026-07-08",
+  "start": "Lannemezan",
+  "finish": "Pau",
+  "lengthKm": 158.3,
+  "type": "flat",
+  "startElevationM": 590,
+  "finishElevationM": 207,
+  "totalAscentM": 1600,
+  "places": [
+   {
+    "km": 0,
+    "m": 590,
+    "place": "Lannemezan"
+   },
+   {
+    "km": 6.1,
+    "m": 490,
+    "place": "Tajan"
+   },
+   {
+    "km": 9.3,
+    "m": 420,
+    "place": "Monlong"
+   },
+   {
+    "km": 11.5,
+    "m": 395,
+    "place": "La Plaine"
+   },
+   {
+    "km": 12.8,
+    "m": 370,
+    "place": "Gaussan"
+   },
+   {
+    "km": 14.8,
+    "m": 345,
+    "place": "Monléon-Magnoac"
+   },
+   {
+    "km": 16.4,
+    "m": 330,
+    "place": "Cizos"
+   },
+   {
+    "km": 20.3,
+    "m": 300,
+    "place": "Castelnau-Magnoac"
+   },
+   {
+    "km": 22.2,
+    "m": 262,
+    "place": "Lac du Magnoac"
+   },
+   {
+    "km": 24.4,
+    "m": 330,
+    "place": "Puntous"
+   },
+   {
+    "km": 25.9,
+    "m": 285,
+    "place": "La Rivière"
+   },
+   {
+    "km": 29.8,
+    "m": 260,
+    "place": "Lac de Puydarrieux"
+   },
+   {
+    "km": 35.1,
+    "m": 243,
+    "place": "Trie-sur-Baïse"
+   },
+   {
+    "km": 37.7,
+    "m": 292,
+    "place": "Fontrailles"
+   },
+   {
+    "km": 40.1,
+    "m": 312,
+    "place": "Barcugnan"
+   },
+   {
+    "km": 42.7,
+    "m": 268,
+    "place": "La Carrère"
+   },
+   {
+    "km": 48.1,
+    "m": 205,
+    "place": "Saint-Michel"
+   },
+   {
+    "km": 54.6,
+    "m": 182,
+    "place": "Berdoues"
+   },
+   {
+    "km": 57.8,
+    "m": 168,
+    "place": "Mirande"
+   },
+   {
+    "km": 62.8,
+    "m": 208,
+    "place": "Estipouy"
+   },
+   {
+    "km": 69.5,
+    "m": 232,
+    "place": "Montesquiou"
+   },
+   {
+    "km": 76.8,
+    "m": 232,
+    "place": "Bassoues"
+   },
+   {
+    "km": 82.6,
+    "m": 202,
+    "place": "Mascaras"
+   },
+   {
+    "km": 84.1,
+    "m": 215,
+    "place": "Saint-Christaud"
+   },
+   {
+    "km": 86.2,
+    "m": 190,
+    "place": "Laveraët"
+   },
+   {
+    "km": 90.8,
+    "m": 153,
+    "place": "Marciac"
+   },
+   {
+    "km": 97.4,
+    "m": 176,
+    "place": "Armentieux"
+   },
+   {
+    "km": 103.1,
+    "m": 182,
+    "place": "Maubourguet"
+   },
+   {
+    "km": 109.5,
+    "m": 197,
+    "place": "Nouilhan"
+   },
+   {
+    "km": 113.5,
+    "m": 216,
+    "place": "Vic-en-Bigorre"
+   },
+   {
+    "km": 118.4,
+    "m": 236,
+    "place": "Sanous"
+   },
+   {
+    "km": 119.9,
+    "m": 313,
+    "place": "Casteide-Doat"
+   },
+   {
+    "km": 122.2,
+    "m": 256,
+    "place": "Lamayou"
+   },
+   {
+    "km": 125,
+    "m": 310,
+    "place": "Côte de Flancart"
+   },
+   {
+    "km": 127.1,
+    "m": 266,
+    "place": "Maure"
+   },
+   {
+    "km": 128.9,
+    "m": 252,
+    "place": "Momy"
+   },
+   {
+    "km": 131.7,
+    "m": 238,
+    "place": "Baleix"
+   },
+   {
+    "km": 132.7,
+    "m": 326,
+    "place": "Côte de Baleix"
+   },
+   {
+    "km": 138.2,
+    "m": 272,
+    "place": "Gabaston"
+   },
+   {
+    "km": 141.4,
+    "m": 296,
+    "place": "Saint-Jammes"
+   },
+   {
+    "km": 143.4,
+    "m": 290,
+    "place": "Morlaàs"
+   },
+   {
+    "km": 146.6,
+    "m": 280,
+    "place": "Haute-Vue"
+   },
+   {
+    "km": 148.7,
+    "m": 252,
+    "place": "Berlanne"
+   },
+   {
+    "km": 150.4,
+    "m": 226,
+    "place": "Pau Einfahrt"
+   },
+   {
+    "km": 158.3,
+    "m": 207,
+    "place": "Pau"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Baleix",
+    "summitKm": 132.7,
+    "summitM": 326,
+    "lengthKm": 1,
+    "avgPct": 8.8,
+    "category": "3",
+    "hairpins": 0
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Lannemezan"
+   },
+   {
+    "km": 20.3,
+    "label": "Castelnau-Magnoac"
+   },
+   {
+    "km": 29.8,
+    "label": "Lac de Puydarrieux"
+   },
+   {
+    "km": 35.1,
+    "label": "Trie-sur-Baïse"
+   },
+   {
+    "km": 57.8,
+    "label": "Mirande"
+   },
+   {
+    "km": 69.5,
+    "label": "Montesquiou"
+   },
+   {
+    "km": 76.8,
+    "label": "Bassoues"
+   },
+   {
+    "km": 90.8,
+    "label": "Marciac"
+   },
+   {
+    "km": 103.1,
+    "label": "Maubourguet"
+   },
+   {
+    "km": 113.5,
+    "label": "Zwischensprint Vic-en-Bigorre"
+   },
+   {
+    "km": 119.9,
+    "label": "Côte de Casteide-Doat"
+   },
+   {
+    "km": 125,
+    "label": "Côte de Flancart"
+   },
+   {
+    "km": 132.7,
+    "label": "Côte de Baleix (Kat. 3)"
+   },
+   {
+    "km": 143.4,
+    "label": "Morlaàs"
+   },
+   {
+    "km": 158.3,
+    "label": "Ziel Pau, Place de Verdun"
+   }
+  ],
+  "region": "Pyrenäen-Vorland / Gascogne",
+  "sources": [
+   "https://www.hautespyrenees.fr/wp-content/uploads/2026/06/TOUR-DE-FRANCE_LANNEMEZAN_2026.pdf",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-5-tdf-2026",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-5-results-tdf-2026/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-5/",
+   "https://www.tour-magazin.de/profi-radsport/tour-de-france/tour-de-france-2026-vorschau-5-etappe-sprinter/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-5-a-sigh-of-relief-for-the-sprinters/",
+   "https://www.hedgehogcycling.co.uk/stage-5-tour-de-france-2026.html",
+   "https://www.cyclingoracle.com/en/blog/tour-de-france-2026-stage-5-prediction",
+   "https://www.wielerflits.nl/wielerkalender/tour-de-france-2026/stage-5",
+   "https://procyclinguk.com/tour-de-france-2026-stage-5-preview-lannemezan-to-pau/",
+   "https://www.radsport-news.com/sport/sportnews_145942.htm",
+   "https://sports.orange.fr/cyclisme/tour-de-france/parcours/article/tour-de-france-2026-le-profil-de-la-5e-etape-exclu-CNT000002qfYsx.html"
+  ]
+ },
+ {
+  "id": "tour26-06",
+  "kind": "stage",
+  "number": 6,
+  "date": "2026-07-09",
+  "start": "Pau",
+  "finish": "Gavarnie-Gèdre",
+  "lengthKm": 186.2,
+  "type": "mountain",
+  "startElevationM": 186,
+  "finishElevationM": 1379,
+  "totalAscentM": 4100,
+  "places": [
+   {
+    "km": 0,
+    "m": 186,
+    "place": "Pau"
+   },
+   {
+    "km": 3,
+    "m": 192,
+    "place": "Mazères-Lezons"
+   },
+   {
+    "km": 20,
+    "m": 265,
+    "place": "Nay"
+   },
+   {
+    "km": 24,
+    "m": 285,
+    "place": "Coarraze"
+   },
+   {
+    "km": 30,
+    "m": 320,
+    "place": "Lestelle-Bétharram"
+   },
+   {
+    "km": 36,
+    "m": 365,
+    "place": "Saint-Pé-de-Bigorre"
+   },
+   {
+    "km": 43,
+    "m": 410,
+    "place": "Lourdes"
+   },
+   {
+    "km": 49,
+    "m": 440,
+    "place": "Fuß Côte de Loucrup"
+   },
+   {
+    "km": 50.9,
+    "m": 575,
+    "place": "Côte de Loucrup"
+   },
+   {
+    "km": 59.1,
+    "m": 510,
+    "place": "Pouzac (Sprint)"
+   },
+   {
+    "km": 62,
+    "m": 550,
+    "place": "Bagnères-de-Bigorre"
+   },
+   {
+    "km": 69,
+    "m": 430,
+    "place": "Orignac"
+   },
+   {
+    "km": 74.3,
+    "m": 331,
+    "place": "Bourg-de-Bigorre"
+   },
+   {
+    "km": 77.3,
+    "m": 518,
+    "place": "Côte de Mauvezin"
+   },
+   {
+    "km": 82,
+    "m": 500,
+    "place": "Capvern"
+   },
+   {
+    "km": 88,
+    "m": 560,
+    "place": "La Barthe-de-Neste"
+   },
+   {
+    "km": 93,
+    "m": 600,
+    "place": "Hèches"
+   },
+   {
+    "km": 99,
+    "m": 640,
+    "place": "Sarrancolin"
+   },
+   {
+    "km": 106.1,
+    "m": 704,
+    "place": "Arreau"
+   },
+   {
+    "km": 118.1,
+    "m": 1489,
+    "place": "Col d'Aspin"
+   },
+   {
+    "km": 124,
+    "m": 1130,
+    "place": "Lac de Payolle"
+   },
+   {
+    "km": 130.7,
+    "m": 866,
+    "place": "Sainte-Marie-de-Campan"
+   },
+   {
+    "km": 135.2,
+    "m": 1035,
+    "place": "Gripp"
+   },
+   {
+    "km": 144.2,
+    "m": 1790,
+    "place": "La Mongie"
+   },
+   {
+    "km": 147.8,
+    "m": 2115,
+    "place": "Col du Tourmalet"
+   },
+   {
+    "km": 154.3,
+    "m": 1450,
+    "place": "Tournaboup"
+   },
+   {
+    "km": 158,
+    "m": 1250,
+    "place": "Barèges"
+   },
+   {
+    "km": 165,
+    "m": 820,
+    "place": "Esterre"
+   },
+   {
+    "km": 167.5,
+    "m": 706,
+    "place": "Luz-Saint-Sauveur"
+   },
+   {
+    "km": 172,
+    "m": 870,
+    "place": "Pragnères"
+   },
+   {
+    "km": 176,
+    "m": 1011,
+    "place": "Gèdre"
+   },
+   {
+    "km": 186.2,
+    "m": 1379,
+    "place": "Gavarnie-Gèdre"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Loucrup",
+    "summitKm": 50.9,
+    "summitM": 575,
+    "lengthKm": 1.9,
+    "avgPct": 7.1,
+    "category": "4"
+   },
+   {
+    "name": "Côte de Mauvezin",
+    "summitKm": 77.3,
+    "summitM": 518,
+    "lengthKm": 3,
+    "avgPct": 6.8,
+    "category": "3"
+   },
+   {
+    "name": "Col d'Aspin",
+    "summitKm": 118.1,
+    "summitM": 1489,
+    "lengthKm": 12,
+    "avgPct": 6.5,
+    "category": "1",
+    "hairpins": 6
+   },
+   {
+    "name": "Col du Tourmalet",
+    "summitKm": 147.8,
+    "summitM": 2115,
+    "lengthKm": 17.1,
+    "avgPct": 7.3,
+    "category": "HC"
+   },
+   {
+    "name": "Gavarnie-Gèdre",
+    "summitKm": 186.2,
+    "summitM": 1379,
+    "lengthKm": 18.7,
+    "avgPct": 3.7,
+    "category": "2"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Pau"
+   },
+   {
+    "km": 24,
+    "label": "Coarraze"
+   },
+   {
+    "km": 43,
+    "label": "Lourdes"
+   },
+   {
+    "km": 50.9,
+    "label": "Côte de Loucrup (Kat. 4)"
+   },
+   {
+    "km": 59.1,
+    "label": "Zwischensprint Pouzac"
+   },
+   {
+    "km": 62,
+    "label": "Bagnères-de-Bigorre"
+   },
+   {
+    "km": 77.3,
+    "label": "Côte de Mauvezin (Kat. 3)"
+   },
+   {
+    "km": 99,
+    "label": "Sarrancolin"
+   },
+   {
+    "km": 106.1,
+    "label": "Arreau – Fuß Aspin"
+   },
+   {
+    "km": 118.1,
+    "label": "Col d'Aspin 1489 m (Kat. 1)"
+   },
+   {
+    "km": 130.7,
+    "label": "Sainte-Marie-de-Campan"
+   },
+   {
+    "km": 144.2,
+    "label": "La Mongie"
+   },
+   {
+    "km": 147.8,
+    "label": "Col du Tourmalet 2115 m (HC)"
+   },
+   {
+    "km": 158,
+    "label": "Barèges"
+   },
+   {
+    "km": 167.5,
+    "label": "Luz-Saint-Sauveur"
+   },
+   {
+    "km": 176,
+    "label": "Gèdre"
+   },
+   {
+    "km": 186.2,
+    "label": "Ziel Gavarnie-Gèdre 1379 m"
+   }
+  ],
+  "region": "Pyrenäen",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-6-tdf-2026",
+   "https://hedgehogcycling.co.uk/stage-6-tour-de-france-2026.html",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-06.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-6/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-6-tourmalet-no-drama-in-store/",
+   "https://www.wielerflits.nl/wielerkalender/tour-de-france-2026/stage-6",
+   "https://www.hautespyrenees.fr/wp-content/uploads/2026/06/TOUR-DE-FRANCE_GAVARNIE_2026_FR-2.pdf",
+   "https://climbfinder.com/us/climbs/col-d-aspin-arreau-aspin-aure",
+   "https://pjammcycling.com/climb/141.Col%20du%20Tourmalet%20East",
+   "https://en.wikipedia.org/wiki/Col_du_Tourmalet",
+   "https://kirolakeitb.eus/en/cycling/tour-de-france/2026/06/24/frantziako-tourra-2026-6-etapa-profila-ibilbidea-%7C-kirolak-eitb/",
+   "https://www.cyclingstage.com/cycling/tour-de-france-2026-stage-6/"
+  ]
+ },
+ {
+  "id": "tour26-07",
+  "kind": "stage",
+  "number": 7,
+  "date": "2026-07-10",
+  "start": "Hagetmau",
+  "finish": "Bordeaux",
+  "lengthKm": 175.1,
+  "type": "flat",
+  "startElevationM": 131,
+  "finishElevationM": 6,
+  "totalAscentM": 850,
+  "places": [
+   {
+    "km": 0,
+    "m": 131,
+    "place": "Hagetmau"
+   },
+   {
+    "km": 11,
+    "m": 95,
+    "place": "Saint-Sever"
+   },
+   {
+    "km": 12.2,
+    "m": 25,
+    "place": "Adour / Péré"
+   },
+   {
+    "km": 29,
+    "m": 47,
+    "place": "Mont-de-Marsan"
+   },
+   {
+    "km": 57,
+    "m": 80,
+    "place": "Labrit"
+   },
+   {
+    "km": 69,
+    "m": 84,
+    "place": "Luxey"
+   },
+   {
+    "km": 79,
+    "m": 60,
+    "place": "Sore"
+   },
+   {
+    "km": 98.3,
+    "m": 56,
+    "place": "Saint-Symphorien"
+   },
+   {
+    "km": 107.3,
+    "m": 48,
+    "place": "Origne"
+   },
+   {
+    "km": 113.4,
+    "m": 44,
+    "place": "Guillos"
+   },
+   {
+    "km": 120.2,
+    "m": 30,
+    "place": "Landiras"
+   },
+   {
+    "km": 123.1,
+    "m": 34,
+    "place": "Artigues"
+   },
+   {
+    "km": 125.5,
+    "m": 32,
+    "place": "Illats"
+   },
+   {
+    "km": 131.1,
+    "m": 12,
+    "place": "Cérons"
+   },
+   {
+    "km": 133.9,
+    "m": 8,
+    "place": "Cadillac-sur-Garonne"
+   },
+   {
+    "km": 134.3,
+    "m": 10,
+    "place": "Béguey"
+   },
+   {
+    "km": 136.1,
+    "m": 8,
+    "place": "Fuß Côte de Béguey"
+   },
+   {
+    "km": 137.3,
+    "m": 61,
+    "place": "Côte de Béguey"
+   },
+   {
+    "km": 139.1,
+    "m": 85,
+    "place": "Cardan"
+   },
+   {
+    "km": 144.1,
+    "m": 98,
+    "place": "Capian"
+   },
+   {
+    "km": 150.6,
+    "m": 10,
+    "place": "Langoiran"
+   },
+   {
+    "km": 151.5,
+    "m": 8,
+    "place": "Le Tourne"
+   },
+   {
+    "km": 153.4,
+    "m": 24,
+    "place": "Tabanac"
+   },
+   {
+    "km": 155.1,
+    "m": 8,
+    "place": "Baurech"
+   },
+   {
+    "km": 157,
+    "m": 14,
+    "place": "Cambes"
+   },
+   {
+    "km": 162,
+    "m": 14,
+    "place": "Quinsac"
+   },
+   {
+    "km": 163.3,
+    "m": 32,
+    "place": "Camblanes-et-Meynac"
+   },
+   {
+    "km": 166.9,
+    "m": 6,
+    "place": "Latresne"
+   },
+   {
+    "km": 169.1,
+    "m": 16,
+    "place": "Bouliac"
+   },
+   {
+    "km": 169.6,
+    "m": 8,
+    "place": "Floirac"
+   },
+   {
+    "km": 170.6,
+    "m": 14,
+    "place": "Pont Simone-Veil"
+   },
+   {
+    "km": 175.1,
+    "m": 6,
+    "place": "Bordeaux"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Béguey",
+    "summitKm": 137.3,
+    "summitM": 61,
+    "lengthKm": 1.2,
+    "avgPct": 4.4,
+    "category": "4",
+    "hairpins": 0
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Hagetmau"
+   },
+   {
+    "km": 12.2,
+    "label": "Saint-Sever / Adour"
+   },
+   {
+    "km": 29,
+    "label": "Mont-de-Marsan"
+   },
+   {
+    "km": 57,
+    "label": "Labrit (Landes-Wald)"
+   },
+   {
+    "km": 79,
+    "label": "Sore"
+   },
+   {
+    "km": 98.3,
+    "label": "Saint-Symphorien"
+   },
+   {
+    "km": 120.2,
+    "label": "Zwischensprint Landiras"
+   },
+   {
+    "km": 131.1,
+    "label": "Cérons (Garonne-Tal)"
+   },
+   {
+    "km": 133.9,
+    "label": "Cadillac-sur-Garonne"
+   },
+   {
+    "km": 137.3,
+    "label": "Côte de Béguey (Kat. 4)"
+   },
+   {
+    "km": 144.1,
+    "label": "Capian (Plateau)"
+   },
+   {
+    "km": 150.6,
+    "label": "Langoiran (Garonne-Ufer)"
+   },
+   {
+    "km": 166.9,
+    "label": "Latresne"
+   },
+   {
+    "km": 170.6,
+    "label": "Pont Simone-Veil"
+   },
+   {
+    "km": 175.1,
+    "label": "Ziel Bordeaux Quinconces"
+   }
+  ],
+  "region": "Landes und Gironde (Aquitanien)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-7-tdf-2026",
+   "https://www.tour-magazin.de/en/2026-tour-de-france-preview-of-stage-7-a-classic-sprint-finish-in-bordeaux/",
+   "https://hedgehogcycling.co.uk/stage-7-tour-de-france-2026.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-7/",
+   "https://www.prefectures-regions.gouv.fr/nouvelle-aquitaine/irecontenu/telechargement/139203/1015098/file/DP_Tour de France_Gironde Vdef.pdf",
+   "https://procyclinguk.com/tour-de-france-2026-stage-7-preview-hagetmau-to-bordeaux/",
+   "https://www.radsport-news.com/sport/sportnews_vorschau_145945.htm",
+   "https://sports.orange.fr/cyclisme/tour-de-france/parcours/article/tour-de-france-2026-le-profil-de-la-7e-etape-exclu-CNT000002qfYvs.html",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-7-results-tdf-2026",
+   "https://en.brujulabike.com/bordeaux-awaits-the-sprinters-schedule-and-route-of-stage-7-of-the-tour/",
+   "https://www.wielerflits.nl/wielerkalender/tour-de-france-2026/stage-7",
+   "https://fr.wikipedia.org/wiki/Hagetmau"
+  ]
+ },
+ {
+  "id": "tour26-08",
+  "kind": "stage",
+  "number": 8,
+  "date": "2026-07-11",
+  "start": "Périgueux",
+  "finish": "Bergerac",
+  "lengthKm": 180.4,
+  "type": "flat",
+  "startElevationM": 102,
+  "finishElevationM": 33,
+  "totalAscentM": 1150,
+  "places": [
+   {
+    "km": 0,
+    "m": 102,
+    "place": "Périgueux"
+   },
+   {
+    "km": 7,
+    "m": 100,
+    "place": "Saint-Laurent-sur-Manoire"
+   },
+   {
+    "km": 11,
+    "m": 115,
+    "place": "Sainte-Marie-de-Chignac"
+   },
+   {
+    "km": 14,
+    "m": 122,
+    "place": "Saint-Pierre-de-Chignac"
+   },
+   {
+    "km": 19,
+    "m": 165,
+    "place": "Saint-Crépin-d'Auberoche"
+   },
+   {
+    "km": 25,
+    "m": 185,
+    "place": "Fossemagne"
+   },
+   {
+    "km": 32,
+    "m": 255,
+    "place": "Thenon"
+   },
+   {
+    "km": 40,
+    "m": 250,
+    "place": "Auriac-de-Périgord"
+   },
+   {
+    "km": 50,
+    "m": 77,
+    "place": "Montignac"
+   },
+   {
+    "km": 56,
+    "m": 72,
+    "place": "Thonac"
+   },
+   {
+    "km": 60,
+    "m": 66,
+    "place": "Saint-Léon-sur-Vézère"
+   },
+   {
+    "km": 64,
+    "m": 78,
+    "place": "Peyzac-le-Moustier"
+   },
+   {
+    "km": 68,
+    "m": 66,
+    "place": "Tursac"
+   },
+   {
+    "km": 73,
+    "m": 68,
+    "place": "Les Eyzies"
+   },
+   {
+    "km": 93,
+    "m": 145,
+    "place": "Sarlat-la-Canéda"
+   },
+   {
+    "km": 98.9,
+    "m": 75,
+    "place": "Fuß Côte de Domme"
+   },
+   {
+    "km": 102.6,
+    "m": 190,
+    "place": "Côte de Domme"
+   },
+   {
+    "km": 108,
+    "m": 62,
+    "place": "La Roque-Gageac"
+   },
+   {
+    "km": 113,
+    "m": 60,
+    "place": "Beynac-et-Cazenac"
+   },
+   {
+    "km": 122.8,
+    "m": 62,
+    "place": "Saint-Cyprien (Sprint)"
+   },
+   {
+    "km": 138.2,
+    "m": 60,
+    "place": "Le Buisson-de-Cadouin"
+   },
+   {
+    "km": 140.4,
+    "m": 165,
+    "place": "Côte du Buisson-de-Cadouin"
+   },
+   {
+    "km": 145.5,
+    "m": 150,
+    "place": "Calès"
+   },
+   {
+    "km": 150.5,
+    "m": 50,
+    "place": "Badefols-sur-Dordogne"
+   },
+   {
+    "km": 156,
+    "m": 45,
+    "place": "Lalinde"
+   },
+   {
+    "km": 164,
+    "m": 40,
+    "place": "Mouleydier"
+   },
+   {
+    "km": 170,
+    "m": 36,
+    "place": "Creysse"
+   },
+   {
+    "km": 174,
+    "m": 42,
+    "place": "Cours-de-Pile"
+   },
+   {
+    "km": 177,
+    "m": 50,
+    "place": "Flughafen Bergerac"
+   },
+   {
+    "km": 180.4,
+    "m": 33,
+    "place": "Bergerac"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Domme",
+    "summitKm": 102.6,
+    "summitM": 190,
+    "lengthKm": 3.7,
+    "avgPct": 3.3,
+    "category": "4"
+   },
+   {
+    "name": "Côte du Buisson-de-Cadouin",
+    "summitKm": 140.4,
+    "summitM": 165,
+    "lengthKm": 2.2,
+    "avgPct": 5.3,
+    "category": "4"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Périgueux (Start)"
+   },
+   {
+    "km": 14,
+    "label": "Saint-Pierre-de-Chignac"
+   },
+   {
+    "km": 32,
+    "label": "Thenon"
+   },
+   {
+    "km": 50,
+    "label": "Montignac-Lascaux"
+   },
+   {
+    "km": 60,
+    "label": "Saint-Léon-sur-Vézère"
+   },
+   {
+    "km": 73,
+    "label": "Les Eyzies"
+   },
+   {
+    "km": 93,
+    "label": "Sarlat-la-Canéda"
+   },
+   {
+    "km": 102.6,
+    "label": "Côte de Domme (Kat. 4)"
+   },
+   {
+    "km": 108,
+    "label": "La Roque-Gageac"
+   },
+   {
+    "km": 113,
+    "label": "Beynac"
+   },
+   {
+    "km": 122.8,
+    "label": "Zwischensprint St-Cyprien"
+   },
+   {
+    "km": 140.4,
+    "label": "Côte du Buisson (Kat. 4)"
+   },
+   {
+    "km": 156,
+    "label": "Lalinde"
+   },
+   {
+    "km": 170,
+    "label": "Creysse"
+   },
+   {
+    "km": 180.4,
+    "label": "Bergerac (Ziel)"
+   }
+  ],
+  "region": "Périgord (Dordogne)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-8-tdf-2026",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-08.html",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-8-the-search-is-on-for-kittel-s-successor/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-8/",
+   "https://www.hedgehogcycling.co.uk/stage-8-tour-de-france-2026.html",
+   "https://www.cyclingstage.com/tour-de-france-2026-kom-classification/stage-8-polka-dot-tdf-2026/",
+   "https://www.dordogne-perigord-tourisme.fr/preparer-son-sejour/agenda-des-animations/a-ne-pas-manquer/tour-de-france-2026-dordogne-etape-perigueux-bergerac-parcours-infos/",
+   "https://procyclinguk.com/tour-de-france-2026-stage-8-tim-merlier-storms-to-back-to-back-wins-in-bergerac/",
+   "https://www.domestiquecycling.com/en/features/tour-de-france-stage-8-preview-a-new-chance-for-the-fast-men/",
+   "https://www.lascaux-dordogne.com/en/?p=40904",
+   "https://en.sarlat-tourisme.com/2026-tour-de-france-in-sarlat-la-caneda/"
+  ]
+ },
+ {
+  "id": "tour26-09",
+  "kind": "stage",
+  "number": 9,
+  "date": "2026-07-12",
+  "start": "Malemort",
+  "finish": "Ussel",
+  "lengthKm": 185.5,
+  "type": "hilly",
+  "startElevationM": 209,
+  "finishElevationM": 636,
+  "totalAscentM": 3300,
+  "places": [
+   {
+    "km": 0,
+    "m": 209,
+    "place": "Malemort"
+   },
+   {
+    "km": 4,
+    "m": 145,
+    "place": "Brive-la-Gaillarde"
+   },
+   {
+    "km": 12.3,
+    "m": 330,
+    "place": "Puy Boubou"
+   },
+   {
+    "km": 15,
+    "m": 300,
+    "place": "Jugeals-Nazareth"
+   },
+   {
+    "km": 21.5,
+    "m": 290,
+    "place": "Turenne"
+   },
+   {
+    "km": 27,
+    "m": 235,
+    "place": "Collonges-la-Rouge"
+   },
+   {
+    "km": 29.5,
+    "m": 250,
+    "place": "Meyssac"
+   },
+   {
+    "km": 34.5,
+    "m": 450,
+    "place": "Côte de Lagleygeolle"
+   },
+   {
+    "km": 37.7,
+    "m": 235,
+    "place": "Lanteuil"
+   },
+   {
+    "km": 44.6,
+    "m": 492,
+    "place": "Côte de Miel"
+   },
+   {
+    "km": 44.9,
+    "m": 490,
+    "place": "Beynat"
+   },
+   {
+    "km": 55.5,
+    "m": 480,
+    "place": "Sainte-Fortunade"
+   },
+   {
+    "km": 66,
+    "m": 215,
+    "place": "Tulle"
+   },
+   {
+    "km": 77,
+    "m": 430,
+    "place": "Côte de Naves"
+   },
+   {
+    "km": 79,
+    "m": 380,
+    "place": "Vimbelle"
+   },
+   {
+    "km": 86,
+    "m": 598,
+    "place": "Puy de Lachaud"
+   },
+   {
+    "km": 90,
+    "m": 620,
+    "place": "Saint-Augustin"
+   },
+   {
+    "km": 99,
+    "m": 600,
+    "place": "Chaumeil"
+   },
+   {
+    "km": 105,
+    "m": 905,
+    "place": "Suc au May"
+   },
+   {
+    "km": 113,
+    "m": 640,
+    "place": "Madranges"
+   },
+   {
+    "km": 121,
+    "m": 475,
+    "place": "Treignac"
+   },
+   {
+    "km": 129.4,
+    "m": 827,
+    "place": "Croix du Pey"
+   },
+   {
+    "km": 134.5,
+    "m": 770,
+    "place": "Gourdon-Murat"
+   },
+   {
+    "km": 145,
+    "m": 700,
+    "place": "Bugeat"
+   },
+   {
+    "km": 161,
+    "m": 977,
+    "place": "Mont Bessou"
+   },
+   {
+    "km": 167.5,
+    "m": 700,
+    "place": "Meymac"
+   },
+   {
+    "km": 171.5,
+    "m": 800,
+    "place": "Côte des Gardes"
+   },
+   {
+    "km": 175,
+    "m": 710,
+    "place": "Saint-Angel"
+   },
+   {
+    "km": 185.5,
+    "m": 636,
+    "place": "Ussel"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Naves",
+    "summitKm": 77,
+    "summitM": 430,
+    "lengthKm": 2.3,
+    "avgPct": 7.4,
+    "category": "3"
+   },
+   {
+    "name": "Suc au May",
+    "summitKm": 105,
+    "summitM": 905,
+    "lengthKm": 3.8,
+    "avgPct": 7.7,
+    "category": "2"
+   },
+   {
+    "name": "Côte de la Croix du Pey",
+    "summitKm": 129.4,
+    "summitM": 827,
+    "lengthKm": 4.8,
+    "avgPct": 6,
+    "category": "3"
+   },
+   {
+    "name": "Mont Bessou",
+    "summitKm": 161,
+    "summitM": 977,
+    "lengthKm": 0.9,
+    "avgPct": 7.3,
+    "category": "4"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Malemort"
+   },
+   {
+    "km": 4,
+    "label": "Brive-la-Gaillarde"
+   },
+   {
+    "km": 12.3,
+    "label": "Puy Boubou (unkat.)"
+   },
+   {
+    "km": 21.5,
+    "label": "Turenne"
+   },
+   {
+    "km": 27,
+    "label": "Collonges-la-Rouge"
+   },
+   {
+    "km": 34.5,
+    "label": "Côte de Lagleygeolle"
+   },
+   {
+    "km": 37.7,
+    "label": "Lanteuil"
+   },
+   {
+    "km": 44.9,
+    "label": "Zwischensprint Beynat"
+   },
+   {
+    "km": 55.5,
+    "label": "Sainte-Fortunade"
+   },
+   {
+    "km": 66,
+    "label": "Tulle"
+   },
+   {
+    "km": 77,
+    "label": "Côte de Naves (Kat. 3)"
+   },
+   {
+    "km": 86,
+    "label": "Puy de Lachaud (unkat.)"
+   },
+   {
+    "km": 99,
+    "label": "Chaumeil"
+   },
+   {
+    "km": 105,
+    "label": "Suc au May (Kat. 2)"
+   },
+   {
+    "km": 121,
+    "label": "Treignac"
+   },
+   {
+    "km": 129.4,
+    "label": "Croix du Pey (Kat. 3)"
+   },
+   {
+    "km": 145,
+    "label": "Bugeat"
+   },
+   {
+    "km": 161,
+    "label": "Mont Bessou (Kat. 4)"
+   },
+   {
+    "km": 167.5,
+    "label": "Meymac"
+   },
+   {
+    "km": 171.5,
+    "label": "Côte des Gardes"
+   },
+   {
+    "km": 175,
+    "label": "Saint-Angel"
+   },
+   {
+    "km": 185.5,
+    "label": "Ziel Ussel"
+   }
+  ],
+  "region": "Massif Central (Corrèze / Limousin)",
+  "sources": [
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-9-a-rollercoaster-ride-before-the-rest-day/",
+   "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/2026-tour-de-france-stage-9-van-der-poel-wins-a-nail-biting-finish-on-a-shortened-stage/",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-9-tdf-2026/",
+   "https://www.domestiquecycling.com/en/features/tour-de-france-stage-9-preview-a-classic-breakaway-stage/",
+   "https://www.domestiquecycling.com/en/news/tour-de-france-stage-9-schedule-key-times-for-todays-stage-to-ussel/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-9/",
+   "https://cyclingweekly.com/racing/tour-de-france/tour-de-france-stage-nine-shortened-due-to-exceptionally-intense-heatwave",
+   "https://biketips.com/tour-de-france-2026-stage-9-heatwave-shortened/",
+   "https://mesinfos.fr/nouvelle-aquitaine/en-attendant-le-tour-on-a-reconnu-les-185-km-de-l-etape-100-percent-correze-ca-va-etre-grandiose-332672.html",
+   "https://www.discoverfrance.com/bike-travel-guide/stage-9-tour-de-france-2026-malemort-ussel-map-date",
+   "https://www.jds.fr/ussel/sports/9e-etape-du-tour-de-france-2026-malemort-ussel-1240716_A",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-09.html"
+  ]
+ },
+ {
+  "id": "tour26-10",
+  "kind": "stage",
+  "number": 10,
+  "date": "2026-07-14",
+  "start": "Aurillac",
+  "finish": "Le Lioran",
+  "lengthKm": 166.6,
+  "type": "mountain",
+  "startElevationM": 640,
+  "finishElevationM": 1250,
+  "totalAscentM": 3800,
+  "places": [
+   {
+    "km": 0,
+    "m": 640,
+    "place": "Aurillac (D617, départ réel)"
+   },
+   {
+    "km": 3.4,
+    "m": 620,
+    "place": "Roannes-Saint-Mary"
+   },
+   {
+    "km": 15,
+    "m": 712,
+    "place": "La Loudière"
+   },
+   {
+    "km": 15.2,
+    "m": 710,
+    "place": "Marcolès"
+   },
+   {
+    "km": 23.9,
+    "m": 790,
+    "place": "Le Garric"
+   },
+   {
+    "km": 25.5,
+    "m": 800,
+    "place": "Lacapelle-del-Fraisse"
+   },
+   {
+    "km": 26.9,
+    "m": 795,
+    "place": "Lafeuillade-en-Vézie"
+   },
+   {
+    "km": 31.7,
+    "m": 760,
+    "place": "Prunet"
+   },
+   {
+    "km": 35.7,
+    "m": 750,
+    "place": "La Joyeuse"
+   },
+   {
+    "km": 42.8,
+    "m": 700,
+    "place": "Lachaux"
+   },
+   {
+    "km": 48.3,
+    "m": 700,
+    "place": "Carlat"
+   },
+   {
+    "km": 54.4,
+    "m": 740,
+    "place": "Loubéjac"
+   },
+   {
+    "km": 60.7,
+    "m": 700,
+    "place": "Cropières (Raulhac)"
+   },
+   {
+    "km": 62.7,
+    "m": 760,
+    "place": "Jou-sous-Monjou"
+   },
+   {
+    "km": 65.5,
+    "m": 827,
+    "place": "Cassagne"
+   },
+   {
+    "km": 68,
+    "m": 1043,
+    "place": "Côte de Pailherols"
+   },
+   {
+    "km": 68.5,
+    "m": 1040,
+    "place": "Pailherols"
+   },
+   {
+    "km": 73.4,
+    "m": 1000,
+    "place": "Lacapelle-Barrès"
+   },
+   {
+    "km": 76.1,
+    "m": 880,
+    "place": "Pont la Vieille"
+   },
+   {
+    "km": 81.3,
+    "m": 920,
+    "place": "Vigouroux"
+   },
+   {
+    "km": 85,
+    "m": 930,
+    "place": "Brezons"
+   },
+   {
+    "km": 91.5,
+    "m": 941,
+    "place": "Le Bourguet"
+   },
+   {
+    "km": 95.5,
+    "m": 1215,
+    "place": "La Griffoul"
+   },
+   {
+    "km": 97.3,
+    "m": 1336,
+    "place": "Col de la Griffoul"
+   },
+   {
+    "km": 100.7,
+    "m": 1200,
+    "place": "La Sagnette"
+   },
+   {
+    "km": 103.8,
+    "m": 1392,
+    "place": "Col de Prat de Bouc"
+   },
+   {
+    "km": 108.4,
+    "m": 1050,
+    "place": "Albepierre"
+   },
+   {
+    "km": 112.7,
+    "m": 920,
+    "place": "Murat"
+   },
+   {
+    "km": 118.8,
+    "m": 1200,
+    "place": "Côte de Murat"
+   },
+   {
+    "km": 123.5,
+    "m": 1055,
+    "place": "Dienne"
+   },
+   {
+    "km": 127.7,
+    "m": 1118,
+    "place": "Lavigerie"
+   },
+   {
+    "km": 131.5,
+    "m": 1335,
+    "place": "Col de Serre"
+   },
+   {
+    "km": 134.2,
+    "m": 1450,
+    "place": "Col d'Eylac"
+   },
+   {
+    "km": 135.7,
+    "m": 1589,
+    "place": "Puy Mary - Pas de Peyrol"
+   },
+   {
+    "km": 137.5,
+    "m": 1529,
+    "place": "Col de Redondet"
+   },
+   {
+    "km": 144.4,
+    "m": 1070,
+    "place": "Rudez"
+   },
+   {
+    "km": 147,
+    "m": 935,
+    "place": "Mandailles-Saint-Julien"
+   },
+   {
+    "km": 152.1,
+    "m": 1309,
+    "place": "Col de Pertus"
+   },
+   {
+    "km": 157.5,
+    "m": 1000,
+    "place": "Saint-Jacques-des-Blats"
+   },
+   {
+    "km": 163.9,
+    "m": 1294,
+    "place": "Col de Font de Cère"
+   },
+   {
+    "km": 166,
+    "m": 1215,
+    "place": "Font d'Alagnon"
+   },
+   {
+    "km": 166.6,
+    "m": 1250,
+    "place": "Le Lioran (Super Lioran)"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Pailherols",
+    "summitKm": 68,
+    "summitM": 1043,
+    "lengthKm": 3,
+    "avgPct": 7.2,
+    "category": "3"
+   },
+   {
+    "name": "Col de la Griffoul",
+    "summitKm": 97.3,
+    "summitM": 1336,
+    "lengthKm": 5.9,
+    "avgPct": 6.7,
+    "category": "2"
+   },
+   {
+    "name": "Col de Prat de Bouc",
+    "summitKm": 103.8,
+    "summitM": 1392,
+    "lengthKm": 3.1,
+    "avgPct": 6.5,
+    "category": "3"
+   },
+   {
+    "name": "Côte de Murat",
+    "summitKm": 118.8,
+    "summitM": 1200,
+    "lengthKm": 5.2,
+    "avgPct": 5.3,
+    "category": "3",
+    "hairpins": 1
+   },
+   {
+    "name": "Puy Mary - Pas de Peyrol",
+    "summitKm": 135.7,
+    "summitM": 1589,
+    "lengthKm": 7.8,
+    "avgPct": 6,
+    "category": "1"
+   },
+   {
+    "name": "Col de Pertus",
+    "summitKm": 152.1,
+    "summitM": 1309,
+    "lengthKm": 4.4,
+    "avgPct": 8.5,
+    "category": "1",
+    "hairpins": 10
+   },
+   {
+    "name": "Col de Font de Cère",
+    "summitKm": 163.9,
+    "summitM": 1294,
+    "lengthKm": 3.1,
+    "avgPct": 5.8,
+    "category": "3"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Aurillac"
+   },
+   {
+    "km": 15.2,
+    "label": "Marcolès"
+   },
+   {
+    "km": 25.5,
+    "label": "Sprint Lacapelle-del-Fraisse"
+   },
+   {
+    "km": 48.3,
+    "label": "Carlat"
+   },
+   {
+    "km": 62.7,
+    "label": "Jou-sous-Monjou"
+   },
+   {
+    "km": 68,
+    "label": "Côte de Pailherols (3)"
+   },
+   {
+    "km": 97.3,
+    "label": "Col de la Griffoul (2)"
+   },
+   {
+    "km": 103.8,
+    "label": "Col de Prat de Bouc (3)"
+   },
+   {
+    "km": 112.7,
+    "label": "Murat"
+   },
+   {
+    "km": 118.8,
+    "label": "Côte de Murat (3)"
+   },
+   {
+    "km": 135.7,
+    "label": "Puy Mary-Pas de Peyrol (1)"
+   },
+   {
+    "km": 147,
+    "label": "Mandailles-Saint-Julien"
+   },
+   {
+    "km": 152.1,
+    "label": "Col de Pertus (1)"
+   },
+   {
+    "km": 157.5,
+    "label": "Saint-Jacques-des-Blats"
+   },
+   {
+    "km": 163.9,
+    "label": "Col de Font de Cère (3)"
+   },
+   {
+    "km": 166.6,
+    "label": "Ziel Le Lioran"
+   }
+  ],
+  "region": "Massif Central (Cantal)",
+  "sources": [
+   "https://www.cantal.fr/wp-content/uploads/2025/10/tdf26-ih-etape-10-sans-r-zc.pdf",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-10-tdf-2026/",
+   "https://www.hedgehogcycling.co.uk/stage-10-tour-de-france-2026.html",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-10.html",
+   "https://www.tour-magazin.de/profi-radsport/tour-de-france/tour-de-france-2026-vorschau-10-etappe-schlagabtausch-im-zentralmassiv/",
+   "https://en.brujulabike.com/almost-100-kilometers-linking-climbs-schedules-and-key-points-of-stage-10-of-the-tour/",
+   "https://procyclinguk.com/tour-de-france-2026-stage-10-preview/",
+   "https://en.wikipedia.org/wiki/Pas_de_Peyrol",
+   "https://en.wikipedia.org/wiki/Le_Lioran",
+   "https://en.wikipedia.org/wiki/Aurillac",
+   "https://en.wikipedia.org/wiki/Marcol%C3%A8s",
+   "https://en.wikipedia.org/wiki/Roannes-Saint-Mary"
+  ]
+ },
+ {
+  "id": "tour26-11",
+  "kind": "stage",
+  "number": 11,
+  "date": "2026-07-15",
+  "start": "Vichy",
+  "finish": "Nevers",
+  "lengthKm": 161.3,
+  "type": "flat",
+  "startElevationM": 251,
+  "finishElevationM": 175,
+  "totalAscentM": 1400,
+  "places": [
+   {
+    "km": 0,
+    "m": 251,
+    "place": "Vichy (Creuzier-le-Vieux)"
+   },
+   {
+    "km": 1.1,
+    "m": 269,
+    "place": "Rhue"
+   },
+   {
+    "km": 3.1,
+    "m": 265,
+    "place": "Bourzat"
+   },
+   {
+    "km": 4.4,
+    "m": 254,
+    "place": "Saint-Germain-des-Fossés"
+   },
+   {
+    "km": 7.2,
+    "m": 246,
+    "place": "Carrefour D77-N209"
+   },
+   {
+    "km": 9,
+    "m": 269,
+    "place": "Seuillet"
+   },
+   {
+    "km": 11,
+    "m": 265,
+    "place": "Fougerat"
+   },
+   {
+    "km": 12.2,
+    "m": 243,
+    "place": "Billy"
+   },
+   {
+    "km": 14.1,
+    "m": 243,
+    "place": "La Boire Henon"
+   },
+   {
+    "km": 15.1,
+    "m": 255,
+    "place": "Marcenat"
+   },
+   {
+    "km": 20.9,
+    "m": 253,
+    "place": "Lorigès"
+   },
+   {
+    "km": 23.9,
+    "m": 255,
+    "place": "Les Noix"
+   },
+   {
+    "km": 26.3,
+    "m": 237,
+    "place": "Saint-Pourçain-sur-Sioule"
+   },
+   {
+    "km": 27.8,
+    "m": 236,
+    "place": "Zwischensprint"
+   },
+   {
+    "km": 29.5,
+    "m": 240,
+    "place": "Saulcet"
+   },
+   {
+    "km": 31.9,
+    "m": 234,
+    "place": "Fuß Côte de Billonnière"
+   },
+   {
+    "km": 32.9,
+    "m": 290,
+    "place": "Côte de Billonnière"
+   },
+   {
+    "km": 33.5,
+    "m": 278,
+    "place": "La Pierre Corbe"
+   },
+   {
+    "km": 34.6,
+    "m": 258,
+    "place": "Montigny"
+   },
+   {
+    "km": 36.1,
+    "m": 233,
+    "place": "Monétay-sur-Allier"
+   },
+   {
+    "km": 38.7,
+    "m": 232,
+    "place": "Châtel-de-Neuvre"
+   },
+   {
+    "km": 48.3,
+    "m": 237,
+    "place": "Chemilly"
+   },
+   {
+    "km": 51.1,
+    "m": 239,
+    "place": "Bressolles"
+   },
+   {
+    "km": 52.8,
+    "m": 265,
+    "place": "Les Bassets"
+   },
+   {
+    "km": 55.7,
+    "m": 222,
+    "place": "Moulins"
+   },
+   {
+    "km": 59.6,
+    "m": 235,
+    "place": "Yzeure"
+   },
+   {
+    "km": 62.5,
+    "m": 233,
+    "place": "L'Épine (Avermes)"
+   },
+   {
+    "km": 63.6,
+    "m": 248,
+    "place": "Avermes"
+   },
+   {
+    "km": 65.7,
+    "m": 269,
+    "place": "Gennetines"
+   },
+   {
+    "km": 73.2,
+    "m": 228,
+    "place": "Saint-Ennemond"
+   },
+   {
+    "km": 75.1,
+    "m": 253,
+    "place": "Les Galmins"
+   },
+   {
+    "km": 77.7,
+    "m": 251,
+    "place": "Lucenay-lès-Aix"
+   },
+   {
+    "km": 80.4,
+    "m": 249,
+    "place": "Toury-Lurcy"
+   },
+   {
+    "km": 83.1,
+    "m": 245,
+    "place": "Les Oudilles"
+   },
+   {
+    "km": 86.4,
+    "m": 243,
+    "place": "Carrefour D979A"
+   },
+   {
+    "km": 90.3,
+    "m": 198,
+    "place": "Decize (Loire)"
+   },
+   {
+    "km": 93.5,
+    "m": 200,
+    "place": "Saint-Léger-des-Vignes"
+   },
+   {
+    "km": 99.5,
+    "m": 275,
+    "place": "La Machine"
+   },
+   {
+    "km": 104.2,
+    "m": 243,
+    "place": "Thianges"
+   },
+   {
+    "km": 106.6,
+    "m": 236,
+    "place": "Ville-Langy"
+   },
+   {
+    "km": 108.5,
+    "m": 232,
+    "place": "Anlezy"
+   },
+   {
+    "km": 113.4,
+    "m": 263,
+    "place": "Frasnay-Reugny"
+   },
+   {
+    "km": 116.3,
+    "m": 265,
+    "place": "Carrefour D34-D978"
+   },
+   {
+    "km": 117.5,
+    "m": 246,
+    "place": "Rouy"
+   },
+   {
+    "km": 121.5,
+    "m": 254,
+    "place": "Billy-Chevannes"
+   },
+   {
+    "km": 122,
+    "m": 255,
+    "place": "Fuß Côte de Billy-Chevannes"
+   },
+   {
+    "km": 123.4,
+    "m": 321,
+    "place": "Côte de Billy-Chevannes"
+   },
+   {
+    "km": 126.3,
+    "m": 228,
+    "place": "Saint-Benin-d'Azy"
+   },
+   {
+    "km": 129.6,
+    "m": 237,
+    "place": "Cougny"
+   },
+   {
+    "km": 130.7,
+    "m": 263,
+    "place": "Trélaigues"
+   },
+   {
+    "km": 131.6,
+    "m": 250,
+    "place": "Saint-Jean-aux-Amognes"
+   },
+   {
+    "km": 137.3,
+    "m": 263,
+    "place": "Ourouër"
+   },
+   {
+    "km": 140.1,
+    "m": 253,
+    "place": "Balleray"
+   },
+   {
+    "km": 140.7,
+    "m": 273,
+    "place": "La Forêt Ronde"
+   },
+   {
+    "km": 146,
+    "m": 205,
+    "place": "Guérigny"
+   },
+   {
+    "km": 148.1,
+    "m": 229,
+    "place": "Demeurs"
+   },
+   {
+    "km": 150.4,
+    "m": 196,
+    "place": "Urzy"
+   },
+   {
+    "km": 155,
+    "m": 206,
+    "place": "La Pacauderie"
+   },
+   {
+    "km": 157.7,
+    "m": 208,
+    "place": "Trangy"
+   },
+   {
+    "km": 159,
+    "m": 186,
+    "place": "Chaluzy"
+   },
+   {
+    "km": 159.6,
+    "m": 199,
+    "place": "Nevers (Ortseingang)"
+   },
+   {
+    "km": 161.3,
+    "m": 175,
+    "place": "Nevers"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Billonnière",
+    "summitKm": 32.9,
+    "summitM": 290,
+    "lengthKm": 1,
+    "avgPct": 5.8,
+    "category": "4",
+    "hairpins": 0
+   },
+   {
+    "name": "Côte de Billy-Chevannes",
+    "summitKm": 123.4,
+    "summitM": 321,
+    "lengthKm": 1.4,
+    "avgPct": 5,
+    "category": "4",
+    "hairpins": 0
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Vichy"
+   },
+   {
+    "km": 4.4,
+    "label": "Saint-Germain-des-Fossés"
+   },
+   {
+    "km": 12.2,
+    "label": "Billy"
+   },
+   {
+    "km": 27.8,
+    "label": "Zwischensprint St-Pourçain"
+   },
+   {
+    "km": 32.9,
+    "label": "Côte de Billonnière (4)"
+   },
+   {
+    "km": 38.7,
+    "label": "Châtel-de-Neuvre"
+   },
+   {
+    "km": 55.7,
+    "label": "Moulins (Tour-Halbzeit)"
+   },
+   {
+    "km": 73.2,
+    "label": "Saint-Ennemond"
+   },
+   {
+    "km": 90.3,
+    "label": "Decize (Loire)"
+   },
+   {
+    "km": 99.5,
+    "label": "La Machine"
+   },
+   {
+    "km": 108.5,
+    "label": "Anlezy"
+   },
+   {
+    "km": 117.5,
+    "label": "Rouy"
+   },
+   {
+    "km": 123.4,
+    "label": "Côte de Billy-Chevannes (4)"
+   },
+   {
+    "km": 131.6,
+    "label": "Saint-Jean-aux-Amognes"
+   },
+   {
+    "km": 146,
+    "label": "Guérigny"
+   },
+   {
+    "km": 150.4,
+    "label": "Urzy"
+   },
+   {
+    "km": 161.3,
+    "label": "Ziel Nevers"
+   }
+  ],
+  "region": "Bourbonnais / Nivernais (Auvergne und Burgund)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-11-tdf-2026/",
+   "https://hedgehogcycling.co.uk/stage-11-tour-de-france-2026.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-11/",
+   "https://www.avermes.fr/images/SE_2026_12410_T.pdf",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-11-a-day-for-the-sprinters-between-the-loire-and-the-allier/",
+   "https://ctyeh.com/articles/14006?lang=en",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-11.html",
+   "https://www.radsport-news.com/sport/sportnews_vorschau_145958.htm",
+   "https://www.cyclingoracle.com/en/blog/tour-de-france-2026-stage-11-prediction",
+   "https://www.vichy-communaute.fr/wp-content/uploads/2026/07/DOSSIER-DE-PRESSE-TDF-29-juin-mini.pdf",
+   "https://fr.wikipedia.org/wiki/Billy-Chevannes",
+   "https://fr.wikipedia.org/wiki/Contigny"
+  ]
+ },
+ {
+  "id": "tour26-12",
+  "kind": "stage",
+  "number": 12,
+  "date": "2026-07-16",
+  "start": "Circuit de Nevers Magny-Cours",
+  "finish": "Chalon-sur-Saône",
+  "lengthKm": 179.1,
+  "type": "flat",
+  "startElevationM": 235,
+  "finishElevationM": 179,
+  "totalAscentM": 1800,
+  "places": [
+   {
+    "km": 0,
+    "m": 235,
+    "place": "Circuit de Nevers Magny-Cours"
+   },
+   {
+    "km": 5,
+    "m": 240,
+    "place": "Saint-Parize-le-Châtel"
+   },
+   {
+    "km": 11,
+    "m": 232,
+    "place": "Saint-Pierre-le-Moûtier"
+   },
+   {
+    "km": 45.8,
+    "m": 198,
+    "place": "Decize (Zwischensprint, Loire)"
+   },
+   {
+    "km": 62,
+    "m": 225,
+    "place": "Fours"
+   },
+   {
+    "km": 74.5,
+    "m": 265,
+    "place": "Fuß Côte de Lanty"
+   },
+   {
+    "km": 76.5,
+    "m": 345,
+    "place": "Côte de Lanty"
+   },
+   {
+    "km": 86.4,
+    "m": 272,
+    "place": "Luzy"
+   },
+   {
+    "km": 95.4,
+    "m": 300,
+    "place": "Fuß Côte de Cuzy"
+   },
+   {
+    "km": 97.8,
+    "m": 405,
+    "place": "Côte de Cuzy"
+   },
+   {
+    "km": 108,
+    "m": 255,
+    "place": "Toulon-sur-Arroux"
+   },
+   {
+    "km": 120,
+    "m": 305,
+    "place": "Sanvignes-les-Mines"
+   },
+   {
+    "km": 126.5,
+    "m": 290,
+    "place": "Montceau-les-Mines"
+   },
+   {
+    "km": 130,
+    "m": 300,
+    "place": "Blanzy"
+   },
+   {
+    "km": 140,
+    "m": 345,
+    "place": "Montchanin-le-Haut"
+   },
+   {
+    "km": 146,
+    "m": 400,
+    "place": "Hochfläche Saint-Micaud"
+   },
+   {
+    "km": 156.8,
+    "m": 270,
+    "place": "Germagny (Fuß)"
+   },
+   {
+    "km": 159.4,
+    "m": 375,
+    "place": "Côte de Montagny-lès-Buxy"
+   },
+   {
+    "km": 165,
+    "m": 230,
+    "place": "Buxy"
+   },
+   {
+    "km": 173,
+    "m": 190,
+    "place": "Saint-Rémy"
+   },
+   {
+    "km": 179.1,
+    "m": 179,
+    "place": "Chalon-sur-Saône"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Lanty",
+    "summitKm": 76.5,
+    "summitM": 345,
+    "lengthKm": 2,
+    "avgPct": 4,
+    "category": "4",
+    "hairpins": 0
+   },
+   {
+    "name": "Côte de Cuzy",
+    "summitKm": 97.8,
+    "summitM": 405,
+    "lengthKm": 2.4,
+    "avgPct": 4.5,
+    "category": "4",
+    "hairpins": 0
+   },
+   {
+    "name": "Côte de Montagny-lès-Buxy",
+    "summitKm": 159.4,
+    "summitM": 375,
+    "lengthKm": 2.6,
+    "avgPct": 4.3,
+    "category": "4",
+    "hairpins": 0
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Magny-Cours (F1-Kurs)"
+   },
+   {
+    "km": 5,
+    "label": "Saint-Parize-le-Châtel"
+   },
+   {
+    "km": 11,
+    "label": "Saint-Pierre-le-Moûtier"
+   },
+   {
+    "km": 45.8,
+    "label": "Decize – Zwischensprint"
+   },
+   {
+    "km": 62,
+    "label": "Fours"
+   },
+   {
+    "km": 76.5,
+    "label": "Côte de Lanty (Kat. 4)"
+   },
+   {
+    "km": 86.4,
+    "label": "Luzy"
+   },
+   {
+    "km": 97.8,
+    "label": "Côte de Cuzy (Kat. 4)"
+   },
+   {
+    "km": 108,
+    "label": "Toulon-sur-Arroux"
+   },
+   {
+    "km": 126.5,
+    "label": "Montceau-les-Mines"
+   },
+   {
+    "km": 130,
+    "label": "Blanzy"
+   },
+   {
+    "km": 140,
+    "label": "Montchanin-le-Haut"
+   },
+   {
+    "km": 146,
+    "label": "Hochfläche Saint-Micaud"
+   },
+   {
+    "km": 159.4,
+    "label": "Côte de Montagny-lès-Buxy"
+   },
+   {
+    "km": 165,
+    "label": "Buxy"
+   },
+   {
+    "km": 173,
+    "label": "Saint-Rémy"
+   },
+   {
+    "km": 179.1,
+    "label": "Ziel Chalon-sur-Saône"
+   }
+  ],
+  "region": "Burgund (Nivernais / Saône-et-Loire)",
+  "sources": [
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-12.html",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-12-tdf-2026/",
+   "https://www.cyclingstage.com/tour-de-france-2026-kom-classification/stage-12-polka-dot-tdf-2026",
+   "https://hedgehogcycling.co.uk/stage-12-tour-de-france-2026.html",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-12-at-f1-speed-into-the-penultimate-sprint-finish/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-12/",
+   "https://en.brujulabike.com/stage-12-of-the-tour-could-break-the-script-wind-steep-slopes-and-another-sprint-battle/",
+   "https://escapecollective.com/merlier-takes-his-third-win-of-this-tour-on-stage-12/",
+   "https://en.wikipedia.org/wiki/2026_Tour_de_France,_Stage_12_to_Stage_21",
+   "https://climbfinder.com/en/climbs/montagny-les-buxy-germagny",
+   "https://www.cyclingoracle.com/en/blog/tour-de-france-2026-stage-12-prediction",
+   "https://www.radsport-news.com/sport/sportnews_145959.htm"
+  ]
+ },
+ {
+  "id": "tour26-13",
+  "kind": "stage",
+  "number": 13,
+  "date": "2026-07-17",
+  "start": "Dole",
+  "finish": "Belfort",
+  "lengthKm": 205.8,
+  "type": "hilly",
+  "startElevationM": 203,
+  "finishElevationM": 362,
+  "totalAscentM": 2400,
+  "places": [
+   {
+    "km": 0,
+    "m": 203,
+    "place": "Dole"
+   },
+   {
+    "km": 20,
+    "m": 215,
+    "place": "Orchamps"
+   },
+   {
+    "km": 28,
+    "m": 222,
+    "place": "Dampierre"
+   },
+   {
+    "km": 36,
+    "m": 238,
+    "place": "Saint-Vit"
+   },
+   {
+    "km": 50,
+    "m": 225,
+    "place": "Ruffey-le-Château"
+   },
+   {
+    "km": 52,
+    "m": 215,
+    "place": "Marnay"
+   },
+   {
+    "km": 60,
+    "m": 255,
+    "place": "Pin"
+   },
+   {
+    "km": 77,
+    "m": 300,
+    "place": "Rioz"
+   },
+   {
+    "km": 91,
+    "m": 270,
+    "place": "Montbozon"
+   },
+   {
+    "km": 101,
+    "m": 300,
+    "place": "Rougemont"
+   },
+   {
+    "km": 113,
+    "m": 265,
+    "place": "Villersexel"
+   },
+   {
+    "km": 127,
+    "m": 295,
+    "place": "Lure"
+   },
+   {
+    "km": 137.8,
+    "m": 322,
+    "place": "Mélisey"
+   },
+   {
+    "km": 143,
+    "m": 360,
+    "place": "Belonchamp"
+   },
+   {
+    "km": 148,
+    "m": 430,
+    "place": "Servance"
+   },
+   {
+    "km": 152.2,
+    "m": 440,
+    "place": "Fuß Col des Croix"
+   },
+   {
+    "km": 156.2,
+    "m": 635,
+    "place": "Château-Lambert"
+   },
+   {
+    "km": 157.4,
+    "m": 678,
+    "place": "Col des Croix"
+   },
+   {
+    "km": 161.5,
+    "m": 495,
+    "place": "Le Thillot"
+   },
+   {
+    "km": 167.1,
+    "m": 570,
+    "place": "Saint-Maurice-sur-Moselle"
+   },
+   {
+    "km": 175.9,
+    "m": 1173,
+    "place": "Ballon d'Alsace"
+   },
+   {
+    "km": 187,
+    "m": 560,
+    "place": "Lepuix"
+   },
+   {
+    "km": 190,
+    "m": 480,
+    "place": "Giromagny"
+   },
+   {
+    "km": 196,
+    "m": 400,
+    "place": "Sermamagny"
+   },
+   {
+    "km": 199.5,
+    "m": 375,
+    "place": "Valdoie"
+   },
+   {
+    "km": 200.3,
+    "m": 438,
+    "place": "Offemont"
+   },
+   {
+    "km": 205.8,
+    "m": 362,
+    "place": "Belfort"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Col des Croix",
+    "summitKm": 157.4,
+    "summitM": 678,
+    "lengthKm": 5.2,
+    "avgPct": 4.8,
+    "category": "3"
+   },
+   {
+    "name": "Ballon d'Alsace",
+    "summitKm": 175.9,
+    "summitM": 1173,
+    "lengthKm": 8.8,
+    "avgPct": 6.9,
+    "category": "1"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Dole – Start"
+   },
+   {
+    "km": 20,
+    "label": "Orchamps"
+   },
+   {
+    "km": 36,
+    "label": "Saint-Vit"
+   },
+   {
+    "km": 52,
+    "label": "Marnay (Ognon)"
+   },
+   {
+    "km": 77,
+    "label": "Rioz"
+   },
+   {
+    "km": 113,
+    "label": "Villersexel"
+   },
+   {
+    "km": 127,
+    "label": "Lure"
+   },
+   {
+    "km": 137.8,
+    "label": "Mélisey – Zwischensprint"
+   },
+   {
+    "km": 148,
+    "label": "Servance"
+   },
+   {
+    "km": 157.4,
+    "label": "Col des Croix (Kat. 3)"
+   },
+   {
+    "km": 161.5,
+    "label": "Le Thillot (Moseltal)"
+   },
+   {
+    "km": 167.1,
+    "label": "St-Maurice – Fuß Ballon"
+   },
+   {
+    "km": 175.9,
+    "label": "Ballon d'Alsace (Kat. 1)"
+   },
+   {
+    "km": 190,
+    "label": "Giromagny"
+   },
+   {
+    "km": 205.8,
+    "label": "Belfort – Ziel"
+   }
+  ],
+  "region": "Franche-Comté / Vogesen",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-13-tdf-2026/",
+   "https://www.cyclingstage.com/tour-de-france-2026-favourites/stage-13-contenders-tdf-2026/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-13-the-vosges-lie-ahead/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-13/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-13.html",
+   "https://www.cyclingoracle.com/en/blog/tour-de-france-2026-stage-13-prediction",
+   "https://ctyeh.com/articles/14014?lang=en",
+   "https://www.cyclingwest.com/?p=42498",
+   "https://www.macommune.info/tout-ce-que-vous-devez-savoir-sur-le-passage-du-tour-de-france-2026-en-franche-comte/",
+   "https://www.belfort.fr/fileadmin/documents/Espace_presse/2026/DP_Tour_de_France_%C3%A0_Belfort_17_juillet.pdf",
+   "https://www.jura-nord.com/uploads/actualites/91e9c0d1e0a9c3d6579879e722079b0f.pdf",
+   "https://www.radsport-news.com/sport/sportnews_vorschau_145960.htm"
+  ]
+ },
+ {
+  "id": "tour26-14",
+  "kind": "stage",
+  "number": 14,
+  "date": "2026-07-18",
+  "start": "Mulhouse",
+  "finish": "Le Markstein Fellering",
+  "lengthKm": 155.3,
+  "type": "mountain",
+  "startElevationM": 235,
+  "finishElevationM": 1192,
+  "totalAscentM": 3800,
+  "places": [
+   {
+    "km": 0,
+    "m": 235,
+    "place": "Mulhouse"
+   },
+   {
+    "km": 5,
+    "m": 230,
+    "place": "Pulversheim"
+   },
+   {
+    "km": 7.5,
+    "m": 240,
+    "place": "Bollwiller"
+   },
+   {
+    "km": 10.5,
+    "m": 270,
+    "place": "Berrwiller"
+   },
+   {
+    "km": 12.6,
+    "m": 330,
+    "place": "Wattwiller"
+   },
+   {
+    "km": 15,
+    "m": 300,
+    "place": "Uffholtz"
+   },
+   {
+    "km": 23.5,
+    "m": 880,
+    "place": "Vieil Armand"
+   },
+   {
+    "km": 30.1,
+    "m": 825,
+    "place": "Col Amic"
+   },
+   {
+    "km": 36.6,
+    "m": 1336,
+    "place": "Grand Ballon"
+   },
+   {
+    "km": 42.5,
+    "m": 1192,
+    "place": "Le Markstein (1. Passage)"
+   },
+   {
+    "km": 55,
+    "m": 620,
+    "place": "Wildenstein"
+   },
+   {
+    "km": 58,
+    "m": 550,
+    "place": "Lac de Kruth-Wildenstein"
+   },
+   {
+    "km": 61.5,
+    "m": 500,
+    "place": "Kruth"
+   },
+   {
+    "km": 68.3,
+    "m": 884,
+    "place": "Col d'Oderen"
+   },
+   {
+    "km": 71.3,
+    "m": 959,
+    "place": "Col du Page"
+   },
+   {
+    "km": 79.5,
+    "m": 600,
+    "place": "Bussang"
+   },
+   {
+    "km": 84,
+    "m": 555,
+    "place": "Saint-Maurice-sur-Moselle"
+   },
+   {
+    "km": 94.4,
+    "m": 1173,
+    "place": "Ballon d'Alsace"
+   },
+   {
+    "km": 101.5,
+    "m": 630,
+    "place": "Lac d'Alfeld"
+   },
+   {
+    "km": 104,
+    "m": 505,
+    "place": "Sewen"
+   },
+   {
+    "km": 107.5,
+    "m": 455,
+    "place": "Oberbruck"
+   },
+   {
+    "km": 112,
+    "m": 405,
+    "place": "Masevaux"
+   },
+   {
+    "km": 115.7,
+    "m": 605,
+    "place": "Col du Schirm"
+   },
+   {
+    "km": 116.9,
+    "m": 560,
+    "place": "Bourbach-le-Haut"
+   },
+   {
+    "km": 120.5,
+    "m": 748,
+    "place": "Col du Hundsruck"
+   },
+   {
+    "km": 127.5,
+    "m": 360,
+    "place": "Bitschwiller-lès-Thann"
+   },
+   {
+    "km": 130,
+    "m": 380,
+    "place": "Willer-sur-Thur"
+   },
+   {
+    "km": 133,
+    "m": 395,
+    "place": "Moosch"
+   },
+   {
+    "km": 137.5,
+    "m": 408,
+    "place": "Saint-Amarin"
+   },
+   {
+    "km": 142.2,
+    "m": 760,
+    "place": "Geishouse"
+   },
+   {
+    "km": 149.4,
+    "m": 1233,
+    "place": "Col du Haag"
+   },
+   {
+    "km": 155.3,
+    "m": 1192,
+    "place": "Le Markstein"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Grand Ballon",
+    "summitKm": 36.6,
+    "summitM": 1336,
+    "lengthKm": 21.6,
+    "avgPct": 4.8,
+    "category": "1"
+   },
+   {
+    "name": "Col du Page (über Col d'Oderen)",
+    "summitKm": 71.3,
+    "summitM": 959,
+    "lengthKm": 9.8,
+    "avgPct": 4.7,
+    "category": "2",
+    "hairpins": 6
+   },
+   {
+    "name": "Ballon d'Alsace",
+    "summitKm": 94.4,
+    "summitM": 1173,
+    "lengthKm": 8.9,
+    "avgPct": 6.9,
+    "category": "1"
+   },
+   {
+    "name": "Col du Haag",
+    "summitKm": 149.4,
+    "summitM": 1233,
+    "lengthKm": 11.2,
+    "avgPct": 7.3,
+    "category": "1",
+    "hairpins": 6
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Mulhouse"
+   },
+   {
+    "km": 12.6,
+    "label": "Zwischensprint Wattwiller"
+   },
+   {
+    "km": 15,
+    "label": "Uffholtz, Fuß Grand Ballon"
+   },
+   {
+    "km": 36.6,
+    "label": "Grand Ballon 1336 m (Kat. 1)"
+   },
+   {
+    "km": 42.5,
+    "label": "Le Markstein, 1. Passage"
+   },
+   {
+    "km": 61.5,
+    "label": "Kruth, Fuß Col du Page"
+   },
+   {
+    "km": 68.3,
+    "label": "Col d'Oderen 884 m"
+   },
+   {
+    "km": 71.3,
+    "label": "Col du Page 959 m (Kat. 2)"
+   },
+   {
+    "km": 79.5,
+    "label": "Bussang"
+   },
+   {
+    "km": 94.4,
+    "label": "Ballon d'Alsace 1173 m (K1)"
+   },
+   {
+    "km": 112,
+    "label": "Masevaux"
+   },
+   {
+    "km": 120.5,
+    "label": "Col du Hundsruck 748 m"
+   },
+   {
+    "km": 137.5,
+    "label": "Saint-Amarin, Fuß Haag"
+   },
+   {
+    "km": 149.4,
+    "label": "Col du Haag 1233 m (Kat. 1)"
+   },
+   {
+    "km": 155.3,
+    "label": "Ziel Le Markstein 1192 m"
+   }
+  ],
+  "region": "Vogesen (Elsass)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-14-tdf-2026/",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-14-results-tdf-2026/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-14.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-14/",
+   "https://hedgehogcycling.co.uk/stage-14-tour-de-france-2026.html",
+   "https://www.radsport-news.com/sport/sportnews_145962.htm",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-14-a-gruelling-challenge-in-the-vosges/",
+   "https://radsport-seite.de/fileadmin/user_upload/planer/tour-2026-planer.pdf",
+   "https://ctyeh.com/articles/14015?lang=en",
+   "https://procyclinguk.com/tour-de-france-2026-stage-14-tadej-pogacar-attacks-on-col-du-haag-to-win-at-le-markstein/",
+   "https://inrng.com/2026/06/roads-to-ride-col-du-haag/",
+   "https://climbfinder.com/en/climbs/col-du-haag-saint-amarin"
+  ]
+ },
+ {
+  "id": "tour26-15",
+  "kind": "stage",
+  "number": 15,
+  "date": "2026-07-19",
+  "start": "Champagnole",
+  "finish": "Plateau de Solaison",
+  "lengthKm": 183.9,
+  "type": "mountain",
+  "startElevationM": 569,
+  "finishElevationM": 1508,
+  "totalAscentM": 3950,
+  "places": [
+   {
+    "km": 0,
+    "m": 569,
+    "place": "Champagnole"
+   },
+   {
+    "km": 5,
+    "m": 600,
+    "place": "Syam"
+   },
+   {
+    "km": 17.3,
+    "m": 900,
+    "place": "Saint-Laurent-en-Grandvaux"
+   },
+   {
+    "km": 22,
+    "m": 991,
+    "place": "Col de la Savine"
+   },
+   {
+    "km": 26,
+    "m": 880,
+    "place": "Morbier"
+   },
+   {
+    "km": 29,
+    "m": 705,
+    "place": "Morez"
+   },
+   {
+    "km": 36.8,
+    "m": 1097,
+    "place": "Côte des Rousses"
+   },
+   {
+    "km": 40,
+    "m": 1140,
+    "place": "Les Rousses"
+   },
+   {
+    "km": 44.5,
+    "m": 1245,
+    "place": "Le Tabagnoz"
+   },
+   {
+    "km": 48,
+    "m": 1155,
+    "place": "La Cure"
+   },
+   {
+    "km": 55,
+    "m": 1000,
+    "place": "Mijoux"
+   },
+   {
+    "km": 62,
+    "m": 900,
+    "place": "Lélex"
+   },
+   {
+    "km": 71,
+    "m": 590,
+    "place": "Chézery-Forens"
+   },
+   {
+    "km": 74.5,
+    "m": 740,
+    "place": "Forens / Côte de la Mulaz"
+   },
+   {
+    "km": 82,
+    "m": 460,
+    "place": "Confort"
+   },
+   {
+    "km": 90,
+    "m": 375,
+    "place": "Valserhône (Bellegarde)"
+   },
+   {
+    "km": 96.9,
+    "m": 450,
+    "place": "Léaz"
+   },
+   {
+    "km": 100.7,
+    "m": 400,
+    "place": "Fort l'Écluse"
+   },
+   {
+    "km": 104.5,
+    "m": 350,
+    "place": "Rhône-Brücke"
+   },
+   {
+    "km": 107,
+    "m": 440,
+    "place": "Vulbens"
+   },
+   {
+    "km": 111.9,
+    "m": 500,
+    "place": "Chênex"
+   },
+   {
+    "km": 115.8,
+    "m": 505,
+    "place": "Viry"
+   },
+   {
+    "km": 119.1,
+    "m": 600,
+    "place": "Feigères"
+   },
+   {
+    "km": 121,
+    "m": 645,
+    "place": "Présilly"
+   },
+   {
+    "km": 122.4,
+    "m": 620,
+    "place": "Le Châble"
+   },
+   {
+    "km": 125.4,
+    "m": 545,
+    "place": "Neydens"
+   },
+   {
+    "km": 127.6,
+    "m": 505,
+    "place": "Archamps"
+   },
+   {
+    "km": 131.3,
+    "m": 649,
+    "place": "Le Coin"
+   },
+   {
+    "km": 136,
+    "m": 1175,
+    "place": "Col de la Croisette"
+   },
+   {
+    "km": 142.3,
+    "m": 690,
+    "place": "La Muraz"
+   },
+   {
+    "km": 146,
+    "m": 823,
+    "place": "Côte du Mont"
+   },
+   {
+    "km": 148.5,
+    "m": 795,
+    "place": "Arbusigny"
+   },
+   {
+    "km": 152,
+    "m": 700,
+    "place": "Moussy"
+   },
+   {
+    "km": 154.5,
+    "m": 625,
+    "place": "Pers-Jussy"
+   },
+   {
+    "km": 159.5,
+    "m": 550,
+    "place": "La Roche-sur-Foron"
+   },
+   {
+    "km": 165,
+    "m": 475,
+    "place": "Saint-Pierre-en-Faucigny"
+   },
+   {
+    "km": 168.5,
+    "m": 455,
+    "place": "Bonneville"
+   },
+   {
+    "km": 172.6,
+    "m": 506,
+    "place": "Thuet"
+   },
+   {
+    "km": 177.2,
+    "m": 965,
+    "place": "Brison"
+   },
+   {
+    "km": 183.9,
+    "m": 1508,
+    "place": "Plateau de Solaison"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte des Rousses",
+    "summitKm": 36.8,
+    "summitM": 1097,
+    "lengthKm": 6.6,
+    "avgPct": 5.1,
+    "category": "3"
+   },
+   {
+    "name": "Le Salève – Col de la Croisette",
+    "summitKm": 136,
+    "summitM": 1175,
+    "lengthKm": 4.7,
+    "avgPct": 11.2,
+    "category": "1"
+   },
+   {
+    "name": "Côte du Mont",
+    "summitKm": 146,
+    "summitM": 823,
+    "lengthKm": 2.1,
+    "avgPct": 8.3,
+    "category": "3"
+   },
+   {
+    "name": "Plateau de Solaison (Brison)",
+    "summitKm": 183.9,
+    "summitM": 1508,
+    "lengthKm": 11.3,
+    "avgPct": 9,
+    "category": "HC",
+    "hairpins": 11
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Champagnole"
+   },
+   {
+    "km": 17.3,
+    "label": "Zwischensprint St-Laurent"
+   },
+   {
+    "km": 22,
+    "label": "Col de la Savine (991 m)"
+   },
+   {
+    "km": 29,
+    "label": "Morez"
+   },
+   {
+    "km": 36.8,
+    "label": "Côte des Rousses (Kat. 3)"
+   },
+   {
+    "km": 40,
+    "label": "Les Rousses"
+   },
+   {
+    "km": 55,
+    "label": "Mijoux (Valserine-Tal)"
+   },
+   {
+    "km": 71,
+    "label": "Chézery-Forens"
+   },
+   {
+    "km": 90,
+    "label": "Valserhône / Bellegarde"
+   },
+   {
+    "km": 100.7,
+    "label": "Fort l'Écluse (Tunnel)"
+   },
+   {
+    "km": 106.5,
+    "label": "Verpflegung Chevrier/Vulbens"
+   },
+   {
+    "km": 115.8,
+    "label": "Viry"
+   },
+   {
+    "km": 127.6,
+    "label": "Archamps"
+   },
+   {
+    "km": 136,
+    "label": "Col de la Croisette (Kat. 1)"
+   },
+   {
+    "km": 146,
+    "label": "Côte du Mont (Kat. 3)"
+   },
+   {
+    "km": 159.5,
+    "label": "La Roche-sur-Foron"
+   },
+   {
+    "km": 168.5,
+    "label": "Bonneville"
+   },
+   {
+    "km": 172.6,
+    "label": "Thuet – Schlussanstieg"
+   },
+   {
+    "km": 177.2,
+    "label": "Brison"
+   },
+   {
+    "km": 183.9,
+    "label": "Ziel Plateau de Solaison"
+   }
+  ],
+  "region": "Jura / Savoyer Voralpen (Haute-Savoie)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-15-tdf-2026/",
+   "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-15-the-first-mountain-finish-in-the-alps-before-the-rest-day/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-15.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-15/",
+   "https://www.montsdugenevois.com/en/the-2026-tour-de-france-in-the-monts-du-genevois/the-major-mountain-passes-of-stage-15/",
+   "https://www.montsdugenevois.com/en/the-2026-tour-de-france-in-the-monts-du-genevois/2026-mens-tour-de-france-stage-15-preview/schedule-for-the-2026-tour-de-frances-passage-through-the-monts-du-genevois/",
+   "https://www.hedgehogcycling.co.uk/stage-15-tour-de-france-2026.html",
+   "https://climbfinder.com/en/climbs/col-de-solaison-thuet",
+   "https://www.cols-cyclisme.com/aravis/france/plateau-de-solaison-col-de-solaizon-depuis-thuet-c1408.htm",
+   "https://www.tourisme-haute-savoie.com/actualites-de-haute-savoie/tour-de-france-2026-les-meilleurs-spots-pour-voir-passer-les-coureurs-en-haute-savoie-ce-dimanche/",
+   "https://valleiry.fr/wp-content/uploads/2026/07/ARP0722_2026_TDF_Etape_15.pdf",
+   "https://www.lyoncapitale.fr/actualite/tour-de-france-les-coureurs-debarquent-en-auvergne-rhone-alpes-ce-dimanche"
+  ]
+ },
+ {
+  "id": "tour26-16",
+  "kind": "stage",
+  "number": 16,
+  "date": "2026-07-21",
+  "start": "Évian-les-Bains",
+  "finish": "Thonon-les-Bains",
+  "lengthKm": 26.1,
+  "type": "itt",
+  "startElevationM": 380,
+  "finishElevationM": 375,
+  "totalAscentM": 500,
+  "places": [
+   {
+    "km": 0,
+    "m": 380,
+    "place": "Évian-les-Bains"
+   },
+   {
+    "km": 1.5,
+    "m": 470,
+    "place": "Neuvecelle"
+   },
+   {
+    "km": 3,
+    "m": 555,
+    "place": "Milly / Corniche"
+   },
+   {
+    "km": 4.8,
+    "m": 630,
+    "place": "Darbon (Zwischenzeit 1)"
+   },
+   {
+    "km": 6.5,
+    "m": 705,
+    "place": "Champanges"
+   },
+   {
+    "km": 9.7,
+    "m": 799,
+    "place": "Côte de Larringes"
+   },
+   {
+    "km": 10.7,
+    "m": 790,
+    "place": "Plateau Gavot"
+   },
+   {
+    "km": 12.5,
+    "m": 700,
+    "place": "Féternes"
+   },
+   {
+    "km": 16.5,
+    "m": 450,
+    "place": "Marin"
+   },
+   {
+    "km": 18.1,
+    "m": 388,
+    "place": "Pont de la Douceur (Zwischenzeit 3)"
+   },
+   {
+    "km": 19.5,
+    "m": 400,
+    "place": "Thonon, Av. de la Dranse"
+   },
+   {
+    "km": 21,
+    "m": 430,
+    "place": "Thonon Ville Haute"
+   },
+   {
+    "km": 22.5,
+    "m": 428,
+    "place": "Corzent"
+   },
+   {
+    "km": 23.5,
+    "m": 380,
+    "place": "Rives / Hafen"
+   },
+   {
+    "km": 24.5,
+    "m": 376,
+    "place": "Quai de Ripaille"
+   },
+   {
+    "km": 26.1,
+    "m": 375,
+    "place": "Thonon-les-Bains (Ziel)"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Larringes",
+    "summitKm": 9.7,
+    "summitM": 799,
+    "lengthKm": 9.7,
+    "avgPct": 4.3,
+    "category": "2",
+    "hairpins": 4
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Évian-les-Bains"
+   },
+   {
+    "km": 1.5,
+    "label": "Neuvecelle"
+   },
+   {
+    "km": 4.8,
+    "label": "Zwischenzeit 1"
+   },
+   {
+    "km": 6.5,
+    "label": "Champanges"
+   },
+   {
+    "km": 9.7,
+    "label": "Côte de Larringes (Kat. 2)"
+   },
+   {
+    "km": 12.5,
+    "label": "Féternes"
+   },
+   {
+    "km": 16.5,
+    "label": "Marin"
+   },
+   {
+    "km": 18.1,
+    "label": "Pont de la Douceur / ZZ 3"
+   },
+   {
+    "km": 21,
+    "label": "Thonon Ville Haute"
+   },
+   {
+    "km": 23.5,
+    "label": "Hafen Rives"
+   },
+   {
+    "km": 26.1,
+    "label": "Ziel Thonon (Ripaille)"
+   }
+  ],
+  "region": "Savoyen / Chablais (Genfer See)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-16-tdf-2026/",
+   "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-16-time-trial-on-lake-geneva/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-16/",
+   "https://hedgehogcycling.co.uk/stage-16-tour-de-france-2026.html",
+   "https://info.fr/tour-france-2026-contre-montre-evian-thonon-etape-16-haute-savoie/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-16.html",
+   "https://cyclinguptodate.com/cycling/results-tour-de-france-2026-stage-16-remco-evenepoel-beats-tadej-pogacar-in-time-trial-as-florian-lipowitz-crashes-out",
+   "https://fr.wikipedia.org/wiki/Évian-les-Bains",
+   "https://fr.wikipedia.org/wiki/Thonon-les-Bains",
+   "https://fr.wikipedia.org/wiki/Larringes",
+   "https://fr.wikipedia.org/wiki/Champanges",
+   "https://fr.wikipedia.org/wiki/Féternes"
+  ]
+ },
+ {
+  "id": "tour26-17",
+  "kind": "stage",
+  "number": 17,
+  "date": "2026-07-22",
+  "start": "Chambéry",
+  "finish": "Voiron",
+  "lengthKm": 174.7,
+  "type": "flat",
+  "startElevationM": 278,
+  "finishElevationM": 294,
+  "totalAscentM": 2200,
+  "places": [
+   {
+    "km": 0,
+    "m": 278,
+    "place": "Chambéry"
+   },
+   {
+    "km": 1.2,
+    "m": 240,
+    "place": "Viviers-du-Lac"
+   },
+   {
+    "km": 4,
+    "m": 232,
+    "place": "Lac du Bourget"
+   },
+   {
+    "km": 8.2,
+    "m": 255,
+    "place": "Aix-les-Bains"
+   },
+   {
+    "km": 11.9,
+    "m": 300,
+    "place": "Grésy-sur-Aix"
+   },
+   {
+    "km": 17.7,
+    "m": 400,
+    "place": "Fuß Côte de Bassa"
+   },
+   {
+    "km": 19.2,
+    "m": 481,
+    "place": "Côte de Bassa"
+   },
+   {
+    "km": 22.4,
+    "m": 540,
+    "place": "Cusy"
+   },
+   {
+    "km": 29.2,
+    "m": 620,
+    "place": "Pont de Banges"
+   },
+   {
+    "km": 33.8,
+    "m": 600,
+    "place": "Lescheraines"
+   },
+   {
+    "km": 35.5,
+    "m": 686,
+    "place": "Côte de Rossillon"
+   },
+   {
+    "km": 39,
+    "m": 740,
+    "place": "Le Châtelard"
+   },
+   {
+    "km": 42.5,
+    "m": 830,
+    "place": "Aillon-le-Vieux"
+   },
+   {
+    "km": 45.7,
+    "m": 890,
+    "place": "Aillon-le-Jeune"
+   },
+   {
+    "km": 46.1,
+    "m": 897,
+    "place": "Fuß Col des Prés"
+   },
+   {
+    "km": 49.6,
+    "m": 1135,
+    "place": "Col des Prés"
+   },
+   {
+    "km": 55.5,
+    "m": 760,
+    "place": "Thoiry"
+   },
+   {
+    "km": 58.4,
+    "m": 547,
+    "place": "Fuß Côte de St-Jean-d'Arvey"
+   },
+   {
+    "km": 59.5,
+    "m": 610,
+    "place": "Côte de Saint-Jean-d'Arvey"
+   },
+   {
+    "km": 64.8,
+    "m": 310,
+    "place": "Saint-Alban-Leysse"
+   },
+   {
+    "km": 67.7,
+    "m": 275,
+    "place": "Chambéry"
+   },
+   {
+    "km": 71.4,
+    "m": 300,
+    "place": "Cognin"
+   },
+   {
+    "km": 74,
+    "m": 320,
+    "place": "Vimines (Fuß Col de Couz)"
+   },
+   {
+    "km": 79.5,
+    "m": 500,
+    "place": "Saint-Thibaud-de-Couz"
+   },
+   {
+    "km": 84,
+    "m": 626,
+    "place": "Col de Couz"
+   },
+   {
+    "km": 91.2,
+    "m": 385,
+    "place": "Les Échelles"
+   },
+   {
+    "km": 96,
+    "m": 360,
+    "place": "Saint-Franc"
+   },
+   {
+    "km": 100.7,
+    "m": 305,
+    "place": "Saint-Béron"
+   },
+   {
+    "km": 105.2,
+    "m": 245,
+    "place": "Le Pont-de-Beauvoisin"
+   },
+   {
+    "km": 109.7,
+    "m": 330,
+    "place": "Saint-Albin-de-Vaulserre"
+   },
+   {
+    "km": 117.6,
+    "m": 460,
+    "place": "Saint-Geoire-en-Valdaine"
+   },
+   {
+    "km": 126.6,
+    "m": 500,
+    "place": "Chirens"
+   },
+   {
+    "km": 133.2,
+    "m": 500,
+    "place": "Charavines"
+   },
+   {
+    "km": 141.3,
+    "m": 560,
+    "place": "Oyeu"
+   },
+   {
+    "km": 147.5,
+    "m": 470,
+    "place": "Colombe (Sprint)"
+   },
+   {
+    "km": 152.5,
+    "m": 450,
+    "place": "Le Grand-Lemps"
+   },
+   {
+    "km": 157.3,
+    "m": 390,
+    "place": "Beaucroissant"
+   },
+   {
+    "km": 159.6,
+    "m": 340,
+    "place": "Rives"
+   },
+   {
+    "km": 164.3,
+    "m": 230,
+    "place": "Moirans"
+   },
+   {
+    "km": 169.4,
+    "m": 232,
+    "place": "La Buisse"
+   },
+   {
+    "km": 171.9,
+    "m": 332,
+    "place": "Letzter Anstieg"
+   },
+   {
+    "km": 174.7,
+    "m": 294,
+    "place": "Voiron"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte de Bassa",
+    "summitKm": 19.2,
+    "summitM": 481,
+    "lengthKm": 1.5,
+    "avgPct": 5.5,
+    "category": "4"
+   },
+   {
+    "name": "Côte de Rossillon",
+    "summitKm": 35.5,
+    "summitM": 686,
+    "lengthKm": 1.7,
+    "avgPct": 5.3,
+    "category": "4"
+   },
+   {
+    "name": "Col des Prés",
+    "summitKm": 49.6,
+    "summitM": 1135,
+    "lengthKm": 3.5,
+    "avgPct": 6.8,
+    "category": "3"
+   },
+   {
+    "name": "Côte de Saint-Jean-d'Arvey",
+    "summitKm": 59.5,
+    "summitM": 610,
+    "lengthKm": 1.1,
+    "avgPct": 5.7,
+    "category": "4"
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Chambéry"
+   },
+   {
+    "km": 8.2,
+    "label": "Aix-les-Bains"
+   },
+   {
+    "km": 19.2,
+    "label": "Côte de Bassa (Kat. 4)"
+   },
+   {
+    "km": 35.5,
+    "label": "Côte de Rossillon (Kat. 4)"
+   },
+   {
+    "km": 45.7,
+    "label": "Aillon-le-Jeune"
+   },
+   {
+    "km": 49.6,
+    "label": "Col des Prés (Kat. 3)"
+   },
+   {
+    "km": 59.5,
+    "label": "Côte de St-Jean-d'Arvey (4)"
+   },
+   {
+    "km": 67.7,
+    "label": "Chambéry (Durchfahrt)"
+   },
+   {
+    "km": 84,
+    "label": "Col de Couz (ohne Kat.)"
+   },
+   {
+    "km": 105.2,
+    "label": "Le Pont-de-Beauvoisin"
+   },
+   {
+    "km": 109.7,
+    "label": "Verpflegung (geschätzt)"
+   },
+   {
+    "km": 133.2,
+    "label": "Charavines (Lac Paladru)"
+   },
+   {
+    "km": 147.5,
+    "label": "Zwischensprint Colombe"
+   },
+   {
+    "km": 164.3,
+    "label": "Moirans"
+   },
+   {
+    "km": 171.9,
+    "label": "Letzter Anstieg (2,5 km, 4 %)"
+   },
+   {
+    "km": 174.7,
+    "label": "Ziel Voiron"
+   }
+  ],
+  "region": "Savoyer Voralpen (Bauges, Chartreuse)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-17-tdf-2026/",
+   "https://www.tour-magazin.de/profi-radsport/tour-de-france/tour-de-france-2026-vorschau-17-etappe-hoechstens-fuer-die-haertesten-sprinter/",
+   "https://hedgehogcycling.co.uk/stage-17-tour-de-france-2026.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-17/",
+   "https://www.radsport-news.com/sport/sportnews_vorschau_145967.htm",
+   "https://www.idlprocycling.com/cycling/2026-tour-de-france-stage-17-preview-high-stakes-showdown-sprinters-vs-attackers",
+   "https://www.voiron.fr/uploads/Epublication/epb_file/e9/694_919_AVOIRON_TDF-HORS-SERIE.pdf_web.pdf",
+   "https://www.wielerflits.nl/wielerkalender/tour-de-france-2026/stage-17",
+   "https://escapecollective.com/philipsen-gets-his-win-on-stage-17-of-the-tour-de-france/",
+   "https://www.domestiquecycling.com/en/news/philipsen-strikes-from-breakaway-sprint-to-keep-green-ambitions-alive-on-tour-de-france-stage-17/",
+   "https://www.parismatch.be/actualites/sport/2026/07/22/nouvelle-victoire-belge-sur-le-tour-de-france-jasper-philipsen-simpose-au-sprint-apres-une-17e-etape-decousue-MQRPM6LPDBCSFKTTQEXFMZCNI4/",
+   "https://fr.wikipedia.org/wiki/Col_des_Pr%C3%A9s"
+  ]
+ },
+ {
+  "id": "tour26-18",
+  "kind": "stage",
+  "number": 18,
+  "date": "2026-07-23",
+  "start": "Voiron",
+  "finish": "Orcières-Merlette",
+  "lengthKm": 185.2,
+  "type": "mountain",
+  "startElevationM": 200,
+  "finishElevationM": 1825,
+  "totalAscentM": 3900,
+  "places": [
+   {
+    "km": 0,
+    "m": 200,
+    "place": "Voiron"
+   },
+   {
+    "km": 5,
+    "m": 200,
+    "place": "Vourey"
+   },
+   {
+    "km": 10,
+    "m": 190,
+    "place": "Saint-Quentin-sur-Isère"
+   },
+   {
+    "km": 15,
+    "m": 190,
+    "place": "Veurey-Voroize"
+   },
+   {
+    "km": 20,
+    "m": 200,
+    "place": "Noyarey"
+   },
+   {
+    "km": 25.2,
+    "m": 215,
+    "place": "Sassenage (Fuß Côte d'Engins)"
+   },
+   {
+    "km": 30,
+    "m": 480,
+    "place": "Gorges d'Engins"
+   },
+   {
+    "km": 36.7,
+    "m": 854,
+    "place": "Côte d'Engins"
+   },
+   {
+    "km": 42,
+    "m": 1020,
+    "place": "Lans-en-Vercors"
+   },
+   {
+    "km": 52.4,
+    "m": 1170,
+    "place": "Saint-Nizier-du-Moucherotte"
+   },
+   {
+    "km": 63.5,
+    "m": 260,
+    "place": "Seyssins"
+   },
+   {
+    "km": 67.5,
+    "m": 300,
+    "place": "Claix"
+   },
+   {
+    "km": 70.5,
+    "m": 310,
+    "place": "Vif"
+   },
+   {
+    "km": 76,
+    "m": 300,
+    "place": "Saint-Georges-de-Commiers"
+   },
+   {
+    "km": 82.5,
+    "m": 350,
+    "place": "Fuß Côte de Monteynard"
+   },
+   {
+    "km": 86,
+    "m": 560,
+    "place": "Notre-Dame-de-Commiers"
+   },
+   {
+    "km": 92.2,
+    "m": 830,
+    "place": "Côte de Monteynard"
+   },
+   {
+    "km": 96.8,
+    "m": 918,
+    "place": "La Motte-d'Aveillans"
+   },
+   {
+    "km": 97.7,
+    "m": 967,
+    "place": "Col de la Festinière"
+   },
+   {
+    "km": 101,
+    "m": 900,
+    "place": "Pierre-Châtel"
+   },
+   {
+    "km": 104,
+    "m": 880,
+    "place": "La Mure"
+   },
+   {
+    "km": 109.4,
+    "m": 650,
+    "place": "Pont-Haut (Fuß Terrasses)"
+   },
+   {
+    "km": 112.8,
+    "m": 865,
+    "place": "Côte des Terrasses"
+   },
+   {
+    "km": 117,
+    "m": 780,
+    "place": "La Salle-en-Beaumont"
+   },
+   {
+    "km": 123,
+    "m": 770,
+    "place": "Lac du Sautet"
+   },
+   {
+    "km": 129,
+    "m": 939,
+    "place": "Corps"
+   },
+   {
+    "km": 133,
+    "m": 790,
+    "place": "Pont du Sautet"
+   },
+   {
+    "km": 138,
+    "m": 900,
+    "place": "Les Costes"
+   },
+   {
+    "km": 142,
+    "m": 910,
+    "place": "Chauffayer"
+   },
+   {
+    "km": 147,
+    "m": 905,
+    "place": "Saint-Firmin"
+   },
+   {
+    "km": 150.5,
+    "m": 1025,
+    "place": "Saint-Bonnet-en-Champsaur"
+   },
+   {
+    "km": 153,
+    "m": 1000,
+    "place": "La Fare-en-Champsaur"
+   },
+   {
+    "km": 158,
+    "m": 1090,
+    "place": "Forest-Saint-Julien"
+   },
+   {
+    "km": 161,
+    "m": 1075,
+    "place": "Chabottes"
+   },
+   {
+    "km": 163.7,
+    "m": 1094,
+    "place": "Fuß Côte de Saint-Léger"
+   },
+   {
+    "km": 166.2,
+    "m": 1260,
+    "place": "Saint-Léger-les-Mélèzes"
+   },
+   {
+    "km": 169.5,
+    "m": 1220,
+    "place": "Pont-du-Fossé"
+   },
+   {
+    "km": 178.1,
+    "m": 1365,
+    "place": "Orcières (Fuß Schlussanstieg)"
+   },
+   {
+    "km": 185.2,
+    "m": 1825,
+    "place": "Orcières-Merlette"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte d'Engins",
+    "summitKm": 36.7,
+    "summitM": 854,
+    "lengthKm": 11.4,
+    "avgPct": 5.4,
+    "category": "1"
+   },
+   {
+    "name": "Côte de Monteynard",
+    "summitKm": 92.2,
+    "summitM": 830,
+    "lengthKm": 9.7,
+    "avgPct": 5,
+    "category": "2"
+   },
+   {
+    "name": "Côte des Terrasses",
+    "summitKm": 112.8,
+    "summitM": 865,
+    "lengthKm": 3.4,
+    "avgPct": 6.6,
+    "category": "3"
+   },
+   {
+    "name": "Côte de Saint-Léger-les-Mélèzes",
+    "summitKm": 166.2,
+    "summitM": 1260,
+    "lengthKm": 2.5,
+    "avgPct": 6.9,
+    "category": "3"
+   },
+   {
+    "name": "Orcières-Merlette",
+    "summitKm": 185.2,
+    "summitM": 1825,
+    "lengthKm": 7.1,
+    "avgPct": 6.7,
+    "category": "1",
+    "hairpins": 10
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Voiron"
+   },
+   {
+    "km": 10,
+    "label": "Saint-Quentin-sur-Isère"
+   },
+   {
+    "km": 25.2,
+    "label": "Sassenage, Fuß Engins"
+   },
+   {
+    "km": 36.7,
+    "label": "Côte d'Engins (Kat. 1)"
+   },
+   {
+    "km": 52.4,
+    "label": "Saint-Nizier-du-Moucherotte"
+   },
+   {
+    "km": 70.5,
+    "label": "Vif"
+   },
+   {
+    "km": 92.2,
+    "label": "Côte de Monteynard (Kat. 2)"
+   },
+   {
+    "km": 97.7,
+    "label": "Col de la Festinière"
+   },
+   {
+    "km": 104,
+    "label": "La Mure"
+   },
+   {
+    "km": 112.8,
+    "label": "Côte des Terrasses (Kat. 3)"
+   },
+   {
+    "km": 129,
+    "label": "Zwischensprint Corps"
+   },
+   {
+    "km": 150.5,
+    "label": "Saint-Bonnet-en-Champsaur"
+   },
+   {
+    "km": 166.2,
+    "label": "Côte de St-Léger (Kat. 3)"
+   },
+   {
+    "km": 178.1,
+    "label": "Orcières, Fuß Schlussanstieg"
+   },
+   {
+    "km": 185.2,
+    "label": "Ziel Orcières-Merlette"
+   }
+  ],
+  "region": "Alpen (Vercors, Matheysine, Champsaur)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-18-tdf-2026",
+   "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-18-the-start-of-the-triple-in-the-high-alps/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-18/",
+   "https://hedgehogcycling.co.uk/stage-18-tour-de-france-2026.html",
+   "https://www.domestiquecycling.com/en/features/tour-de-france-stage-18-preview-a-warm-up-for-whats-to-come/",
+   "https://procyclinguk.com/tour-de-france-2026-stage-18-preview-orcieres-merlette-opens-the-final-battle-for-the-podium/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-18.html",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-18-results-tdf-2026",
+   "https://www.cyclingwest.com/?p=42528",
+   "https://fr.wikipedia.org/wiki/Col_de_la_Festinière",
+   "https://fr.wikipedia.org/wiki/La_Salle-en-Beaumont",
+   "https://fr.wikipedia.org/wiki/Monteynard"
+  ]
+ },
+ {
+  "id": "tour26-19",
+  "kind": "stage",
+  "number": 19,
+  "date": "2026-07-24",
+  "start": "Gap",
+  "finish": "Alpe d'Huez",
+  "lengthKm": 127.9,
+  "type": "mountain",
+  "startElevationM": 905,
+  "finishElevationM": 1850,
+  "totalAscentM": 3500,
+  "places": [
+   {
+    "km": 0,
+    "m": 905,
+    "place": "Gap (Start réel, Fuß Col Bayard)"
+   },
+   {
+    "km": 4.8,
+    "m": 1246,
+    "place": "Col Bayard"
+   },
+   {
+    "km": 11,
+    "m": 1080,
+    "place": "La Fare-en-Champsaur"
+   },
+   {
+    "km": 14,
+    "m": 1050,
+    "place": "Poligny"
+   },
+   {
+    "km": 18,
+    "m": 1055,
+    "place": "Fuß Col du Noyer"
+   },
+   {
+    "km": 19.1,
+    "m": 1130,
+    "place": "Le Noyer"
+   },
+   {
+    "km": 25.2,
+    "m": 1664,
+    "place": "Col du Noyer"
+   },
+   {
+    "km": 35.3,
+    "m": 1257,
+    "place": "Saint-Étienne-en-Dévoluy"
+   },
+   {
+    "km": 40,
+    "m": 1100,
+    "place": "Défilé des Étroits"
+   },
+   {
+    "km": 42,
+    "m": 1030,
+    "place": "Saint-Disdier"
+   },
+   {
+    "km": 50,
+    "m": 790,
+    "place": "La Posterle / Lac du Sautet"
+   },
+   {
+    "km": 52,
+    "m": 785,
+    "place": "Barrage du Sautet"
+   },
+   {
+    "km": 55.4,
+    "m": 937,
+    "place": "Corps"
+   },
+   {
+    "km": 60,
+    "m": 900,
+    "place": "Les Côtes-de-Corps"
+   },
+   {
+    "km": 65,
+    "m": 850,
+    "place": "Quet-en-Beaumont"
+   },
+   {
+    "km": 70,
+    "m": 790,
+    "place": "La Salle-en-Beaumont"
+   },
+   {
+    "km": 78,
+    "m": 750,
+    "place": "Valbonnais"
+   },
+   {
+    "km": 84.1,
+    "m": 804,
+    "place": "Entraigues"
+   },
+   {
+    "km": 89.4,
+    "m": 900,
+    "place": "Le Périer"
+   },
+   {
+    "km": 93.8,
+    "m": 1025,
+    "place": "Fuß Col d'Ornon"
+   },
+   {
+    "km": 99.2,
+    "m": 1371,
+    "place": "Col d'Ornon"
+   },
+   {
+    "km": 111.6,
+    "m": 720,
+    "place": "Le Bourg-d'Oisans"
+   },
+   {
+    "km": 114.1,
+    "m": 725,
+    "place": "Fuß Alpe d'Huez"
+   },
+   {
+    "km": 118.1,
+    "m": 1101,
+    "place": "La Garde"
+   },
+   {
+    "km": 122.2,
+    "m": 1454,
+    "place": "Huez"
+   },
+   {
+    "km": 127.9,
+    "m": 1850,
+    "place": "Alpe d'Huez"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Col Bayard",
+    "summitKm": 4.8,
+    "summitM": 1246,
+    "lengthKm": 4.7,
+    "avgPct": 7.2,
+    "category": "2"
+   },
+   {
+    "name": "Col du Noyer",
+    "summitKm": 25.2,
+    "summitM": 1664,
+    "lengthKm": 7.2,
+    "avgPct": 8.5,
+    "category": "1"
+   },
+   {
+    "name": "Col d'Ornon",
+    "summitKm": 99.2,
+    "summitM": 1371,
+    "lengthKm": 5.4,
+    "avgPct": 6.4,
+    "category": "2"
+   },
+   {
+    "name": "Alpe d'Huez",
+    "summitKm": 127.9,
+    "summitM": 1850,
+    "lengthKm": 13.8,
+    "avgPct": 8.1,
+    "category": "HC",
+    "hairpins": 21
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Gap (Start)"
+   },
+   {
+    "km": 4.8,
+    "label": "Col Bayard (Kat. 2)"
+   },
+   {
+    "km": 11,
+    "label": "La Fare-en-Champsaur"
+   },
+   {
+    "km": 19.1,
+    "label": "Le Noyer"
+   },
+   {
+    "km": 25.2,
+    "label": "Col du Noyer (Kat. 1)"
+   },
+   {
+    "km": 35.3,
+    "label": "St-Étienne-en-Dévoluy"
+   },
+   {
+    "km": 42,
+    "label": "Saint-Disdier"
+   },
+   {
+    "km": 52,
+    "label": "Lac du Sautet (Staudamm)"
+   },
+   {
+    "km": 55.4,
+    "label": "Corps"
+   },
+   {
+    "km": 70,
+    "label": "La Salle-en-Beaumont"
+   },
+   {
+    "km": 78,
+    "label": "Valbonnais"
+   },
+   {
+    "km": 84.1,
+    "label": "Entraigues"
+   },
+   {
+    "km": 89.4,
+    "label": "Le Périer (Zwischensprint)"
+   },
+   {
+    "km": 99.2,
+    "label": "Col d'Ornon (Kat. 2)"
+   },
+   {
+    "km": 111.6,
+    "label": "Le Bourg-d'Oisans"
+   },
+   {
+    "km": 114.1,
+    "label": "Fuß Alpe d'Huez"
+   },
+   {
+    "km": 122.2,
+    "label": "Huez (Dorf)"
+   },
+   {
+    "km": 127.9,
+    "label": "Alpe d'Huez (Ziel)"
+   }
+  ],
+  "region": "Alpen (Hautes-Alpes / Isère, Oisans)",
+  "sources": [
+   "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-19-alpe-d-huez-act-one/",
+   "https://hedgehogcycling.co.uk/stage-19-tour-de-france-2026.html",
+   "https://www.intervals.icu/tour-de-france-2026/stage-19/",
+   "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-19.html",
+   "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/24/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-19e-etape-gap-alpe-dhuez-1279-km-VBE762R3M5CWZE3SXLTYBI6M4A/",
+   "https://www.cyclingstage.com/tour-de-france-2026-results/stage-19-results-tdf-2026/",
+   "https://procyclinguk.com/tour-de-france-2026-stage-19-preview-alpe-dhuez-begins-the-final-battle-for-the-podium/",
+   "https://pouletips.nl/tour-de-france-2026/etappe/19/",
+   "https://climbfinder.com/en/climbs/col-du-noyer",
+   "https://climbfinder.com/en/climbs/col-du-noyer-saint-etienne-en-devoluy",
+   "https://climbfinder.com/en/climbs/col-d-ornon-entraigues",
+   "https://www.cols-cyclisme.com/ecrins/france/col-d-ornon-depuis-entraigues-c203.htm"
+  ]
+ },
+ {
+  "id": "tour26-20",
+  "kind": "stage",
+  "number": 20,
+  "date": "2026-07-25",
+  "start": "Le Bourg-d'Oisans",
+  "finish": "Alpe d'Huez",
+  "lengthKm": 170.9,
+  "type": "mountain",
+  "startElevationM": 720,
+  "finishElevationM": 1850,
+  "totalAscentM": 5450,
+  "places": [
+   {
+    "km": 0,
+    "m": 720,
+    "place": "Le Bourg-d'Oisans"
+   },
+   {
+    "km": 6,
+    "m": 715,
+    "place": "Rochetaillée"
+   },
+   {
+    "km": 9.7,
+    "m": 790,
+    "place": "Allemond / Lac du Verney"
+   },
+   {
+    "km": 12,
+    "m": 900,
+    "place": "Défilé de Maupas"
+   },
+   {
+    "km": 17,
+    "m": 1250,
+    "place": "Le Rivier-d'Allemond"
+   },
+   {
+    "km": 23.5,
+    "m": 1690,
+    "place": "Barrage de Grand Maison"
+   },
+   {
+    "km": 26,
+    "m": 1750,
+    "place": "Lac de Grand Maison"
+   },
+   {
+    "km": 31.3,
+    "m": 1900,
+    "place": "Abzweig Col du Glandon"
+   },
+   {
+    "km": 33.7,
+    "m": 2067,
+    "place": "Col de la Croix de Fer"
+   },
+   {
+    "km": 41,
+    "m": 1550,
+    "place": "Saint-Sorlin-d'Arves"
+   },
+   {
+    "km": 45,
+    "m": 1500,
+    "place": "Saint-Jean-d'Arves"
+   },
+   {
+    "km": 63.2,
+    "m": 560,
+    "place": "Saint-Jean-de-Maurienne"
+   },
+   {
+    "km": 66.5,
+    "m": 600,
+    "place": "Saint-Julien-Montdenis"
+   },
+   {
+    "km": 75.7,
+    "m": 720,
+    "place": "Saint-Michel-de-Maurienne"
+   },
+   {
+    "km": 87.6,
+    "m": 1566,
+    "place": "Col du Télégraphe"
+   },
+   {
+    "km": 92.8,
+    "m": 1430,
+    "place": "Valloire"
+   },
+   {
+    "km": 97,
+    "m": 1650,
+    "place": "Les Verneys"
+   },
+   {
+    "km": 102.5,
+    "m": 1960,
+    "place": "Plan Lachat"
+   },
+   {
+    "km": 110.5,
+    "m": 2642,
+    "place": "Col du Galibier"
+   },
+   {
+    "km": 119,
+    "m": 2058,
+    "place": "Col du Lautaret"
+   },
+   {
+    "km": 126,
+    "m": 1650,
+    "place": "Villar-d'Arêne"
+   },
+   {
+    "km": 130,
+    "m": 1450,
+    "place": "La Grave"
+   },
+   {
+    "km": 142,
+    "m": 1050,
+    "place": "Barrage du Chambon"
+   },
+   {
+    "km": 143.7,
+    "m": 1069,
+    "place": "Fuß Col de Sarenne"
+   },
+   {
+    "km": 144.7,
+    "m": 1150,
+    "place": "Mizoën"
+   },
+   {
+    "km": 150.5,
+    "m": 1490,
+    "place": "Clavans-le-Bas"
+   },
+   {
+    "km": 152.5,
+    "m": 1640,
+    "place": "Waldgrenze"
+   },
+   {
+    "km": 156.5,
+    "m": 1999,
+    "place": "Col de Sarenne"
+   },
+   {
+    "km": 160,
+    "m": 1760,
+    "place": "Sarenne"
+   },
+   {
+    "km": 162.5,
+    "m": 1860,
+    "place": "Altiport"
+   },
+   {
+    "km": 164.5,
+    "m": 1800,
+    "place": "Alpe d'Huez Ost"
+   },
+   {
+    "km": 167.2,
+    "m": 1620,
+    "place": "Huez / Kehre 3"
+   },
+   {
+    "km": 170.9,
+    "m": 1850,
+    "place": "Alpe d'Huez"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Col de la Croix de Fer",
+    "summitKm": 33.7,
+    "summitM": 2067,
+    "lengthKm": 24,
+    "avgPct": 5.2,
+    "category": "HC"
+   },
+   {
+    "name": "Col du Télégraphe",
+    "summitKm": 87.6,
+    "summitM": 1566,
+    "lengthKm": 11.9,
+    "avgPct": 7.1,
+    "category": "1"
+   },
+   {
+    "name": "Col du Galibier",
+    "summitKm": 110.5,
+    "summitM": 2642,
+    "lengthKm": 17.7,
+    "avgPct": 6.9,
+    "category": "HC"
+   },
+   {
+    "name": "Col de Sarenne",
+    "summitKm": 156.5,
+    "summitM": 1999,
+    "lengthKm": 12.8,
+    "avgPct": 7.3,
+    "category": "HC",
+    "hairpins": 10
+   },
+   {
+    "name": "Alpe d'Huez (Schlussanstieg, unkategorisiert)",
+    "summitKm": 170.9,
+    "summitM": 1850,
+    "lengthKm": 3.7,
+    "avgPct": 6.2,
+    "category": "4",
+    "hairpins": 3
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Le Bourg-d'Oisans"
+   },
+   {
+    "km": 9.7,
+    "label": "Allemond, Fuß Croix de Fer"
+   },
+   {
+    "km": 17,
+    "label": "Le Rivier-d'Allemond"
+   },
+   {
+    "km": 23.5,
+    "label": "Barrage de Grand Maison"
+   },
+   {
+    "km": 33.7,
+    "label": "Col de la Croix de Fer (HC)"
+   },
+   {
+    "km": 41,
+    "label": "Saint-Sorlin-d'Arves"
+   },
+   {
+    "km": 63.2,
+    "label": "Saint-Jean-de-Maurienne"
+   },
+   {
+    "km": 66.5,
+    "label": "Sprint St-Julien-Montdenis"
+   },
+   {
+    "km": 75.7,
+    "label": "St-Michel, Fuß Télégraphe"
+   },
+   {
+    "km": 87.6,
+    "label": "Col du Télégraphe (1. Kat.)"
+   },
+   {
+    "km": 92.8,
+    "label": "Valloire, Fuß Galibier"
+   },
+   {
+    "km": 102.5,
+    "label": "Plan Lachat"
+   },
+   {
+    "km": 110.5,
+    "label": "Col du Galibier (HC) 2642 m"
+   },
+   {
+    "km": 119,
+    "label": "Col du Lautaret"
+   },
+   {
+    "km": 130,
+    "label": "La Grave"
+   },
+   {
+    "km": 143.7,
+    "label": "Lac du Chambon, Fuß Sarenne"
+   },
+   {
+    "km": 144.7,
+    "label": "Mizoën"
+   },
+   {
+    "km": 156.5,
+    "label": "Col de Sarenne (HC)"
+   },
+   {
+    "km": 162.5,
+    "label": "Altiport Alpe d'Huez"
+   },
+   {
+    "km": 167.2,
+    "label": "Huez, Fuß Schlussanstieg"
+   },
+   {
+    "km": 170.9,
+    "label": "Ziel Alpe d'Huez"
+   }
+  ],
+  "region": "Alpen (Oisans / Maurienne)",
+  "sources": [
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-20-tdf-2026/",
+   "https://www.tour-magazin.de/profi-radsport/tour-de-france/tour-de-france-2026-vorschau-20-etappe-mehr-koenigsetappe-geht-nicht/",
+   "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/tour-de-france-2026-preview-of-stage-20-it-doesn-t-get-any-more-queen-stage-than-this/",
+   "https://hedgehogcycling.co.uk/stage-20-tour-de-france-2026.html",
+   "https://procyclinguk.com/tour-de-france-2026-stage-20-preview-galibier-sarenne-and-the-final-fight-at-alpe-dhuez/",
+   "https://www.domestiquecycling.com/en/features/tour-de-france-stage-20-preview-the-cherry-on-top",
+   "https://www.domestiquecycling.com/en/live-cycling/tour-de-france/men/2026/stage-20/",
+   "https://ctyeh.com/articles/14012?lang=en",
+   "https://www.cyclingnews.com/cycling-culture/i-rode-the-col-de-sarenne-to-see-what-the-newest-tour-de-france-climb-is-really-like-heres-whats-in-store-for-the-queen-stage/",
+   "https://pjammcycling.com/climb/1103.Col-de-Sarenne-Barrage-du-Chambon",
+   "https://cyclinguptodate.com/cycling/results-tour-de-france-2026-stage-20-richard-carapaz-wins-on-alpe-dhuez-as-sepp-kuss-suffers-late-crash-pogacar-defends-yellow-jersey",
+   "https://www.alpedhuez.com/?p=51434"
+  ]
+ },
+ {
+  "id": "tour26-21",
+  "kind": "stage",
+  "number": 21,
+  "date": "2026-07-26",
+  "start": "Thoiry",
+  "finish": "Paris (Champs-Élysées)",
+  "lengthKm": 133,
+  "type": "flat",
+  "startElevationM": 120,
+  "finishElevationM": 57,
+  "totalAscentM": 1000,
+  "places": [
+   {
+    "km": 0,
+    "m": 120,
+    "place": "Thoiry"
+   },
+   {
+    "km": 2.7,
+    "m": 112,
+    "place": "Garancières"
+   },
+   {
+    "km": 5.3,
+    "m": 130,
+    "place": "Le Breuil"
+   },
+   {
+    "km": 5.9,
+    "m": 128,
+    "place": "Boissy-sans-Avoir"
+   },
+   {
+    "km": 9.2,
+    "m": 78,
+    "place": "Vicq"
+   },
+   {
+    "km": 9.7,
+    "m": 85,
+    "place": "Le Mesnil Piquet"
+   },
+   {
+    "km": 11.6,
+    "m": 62,
+    "place": "Neauphle-le-Vieux"
+   },
+   {
+    "km": 13.7,
+    "m": 72,
+    "place": "Villiers-Saint-Frédéric"
+   },
+   {
+    "km": 15,
+    "m": 80,
+    "place": "Pontchartrain"
+   },
+   {
+    "km": 18.4,
+    "m": 120,
+    "place": "Sainte-Apolline"
+   },
+   {
+    "km": 20.4,
+    "m": 150,
+    "place": "Élancourt"
+   },
+   {
+    "km": 21.3,
+    "m": 165,
+    "place": "Trappes"
+   },
+   {
+    "km": 25.5,
+    "m": 162,
+    "place": "Montigny-le-Bretonneux"
+   },
+   {
+    "km": 28.9,
+    "m": 162,
+    "place": "Guyancourt"
+   },
+   {
+    "km": 30,
+    "m": 130,
+    "place": "Saint-Cyr-l'École"
+   },
+   {
+    "km": 35.1,
+    "m": 132,
+    "place": "Château de Versailles"
+   },
+   {
+    "km": 35.3,
+    "m": 134,
+    "place": "Versailles"
+   },
+   {
+    "km": 37.5,
+    "m": 112,
+    "place": "Versailles-Porchefontaine"
+   },
+   {
+    "km": 39.2,
+    "m": 108,
+    "place": "Viroflay"
+   },
+   {
+    "km": 40.4,
+    "m": 114,
+    "place": "Vélizy-Villacoublay"
+   },
+   {
+    "km": 41.4,
+    "m": 104,
+    "place": "Chaville"
+   },
+   {
+    "km": 42.4,
+    "m": 112,
+    "place": "Fuß Pavé des Gardes"
+   },
+   {
+    "km": 43.1,
+    "m": 180,
+    "place": "Côte du Pavé des Gardes"
+   },
+   {
+    "km": 44,
+    "m": 172,
+    "place": "Meudon"
+   },
+   {
+    "km": 46.4,
+    "m": 40,
+    "place": "Issy-les-Moulineaux"
+   },
+   {
+    "km": 49,
+    "m": 35,
+    "place": "Paris"
+   },
+   {
+    "km": 51.7,
+    "m": 33,
+    "place": "Eiffelturm"
+   },
+   {
+    "km": 55.7,
+    "m": 35,
+    "place": "Louvre"
+   },
+   {
+    "km": 57,
+    "m": 36,
+    "place": "Place de la Concorde"
+   },
+   {
+    "km": 57.9,
+    "m": 57,
+    "place": "Ziellinie 1"
+   },
+   {
+    "km": 58.6,
+    "m": 68,
+    "place": "Étoile"
+   },
+   {
+    "km": 60.5,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 61.6,
+    "m": 35,
+    "place": "Tuilerien"
+   },
+   {
+    "km": 62.7,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 64.7,
+    "m": 57,
+    "place": "Ziellinie 2"
+   },
+   {
+    "km": 65.4,
+    "m": 68,
+    "place": "Étoile"
+   },
+   {
+    "km": 67.3,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 68.4,
+    "m": 35,
+    "place": "Tuilerien"
+   },
+   {
+    "km": 69.5,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 71.5,
+    "m": 57,
+    "place": "Ziellinie 3"
+   },
+   {
+    "km": 72.2,
+    "m": 68,
+    "place": "Zwischensprint Étoile"
+   },
+   {
+    "km": 74.1,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 75.3,
+    "m": 35,
+    "place": "Tuilerien"
+   },
+   {
+    "km": 76.4,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 78.4,
+    "m": 57,
+    "place": "Ziellinie 4"
+   },
+   {
+    "km": 79.1,
+    "m": 68,
+    "place": "Étoile"
+   },
+   {
+    "km": 81,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 82.1,
+    "m": 35,
+    "place": "Tuilerien"
+   },
+   {
+    "km": 83.2,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 84.5,
+    "m": 40,
+    "place": "Opéra"
+   },
+   {
+    "km": 86.5,
+    "m": 45,
+    "place": "Grands Boulevards"
+   },
+   {
+    "km": 88.5,
+    "m": 58,
+    "place": "Pigalle"
+   },
+   {
+    "km": 89.8,
+    "m": 63,
+    "place": "Fuß Rue Lepic"
+   },
+   {
+    "km": 90.8,
+    "m": 128,
+    "place": "Butte Montmartre 1"
+   },
+   {
+    "km": 92.5,
+    "m": 60,
+    "place": "Place de Clichy"
+   },
+   {
+    "km": 96.5,
+    "m": 40,
+    "place": "Madeleine"
+   },
+   {
+    "km": 99.1,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 101.1,
+    "m": 57,
+    "place": "Ziellinie 5"
+   },
+   {
+    "km": 101.8,
+    "m": 68,
+    "place": "Étoile"
+   },
+   {
+    "km": 103.5,
+    "m": 42,
+    "place": "Bd Haussmann"
+   },
+   {
+    "km": 105,
+    "m": 52,
+    "place": "Trinité"
+   },
+   {
+    "km": 105.7,
+    "m": 63,
+    "place": "Fuß Rue Lepic"
+   },
+   {
+    "km": 106.7,
+    "m": 128,
+    "place": "Butte Montmartre 2"
+   },
+   {
+    "km": 108.4,
+    "m": 60,
+    "place": "Place de Clichy"
+   },
+   {
+    "km": 112.4,
+    "m": 40,
+    "place": "Madeleine"
+   },
+   {
+    "km": 115,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 117,
+    "m": 57,
+    "place": "Ziellinie 6"
+   },
+   {
+    "km": 117.7,
+    "m": 68,
+    "place": "Étoile"
+   },
+   {
+    "km": 119.5,
+    "m": 42,
+    "place": "Bd Haussmann"
+   },
+   {
+    "km": 121,
+    "m": 52,
+    "place": "Trinité"
+   },
+   {
+    "km": 121.7,
+    "m": 63,
+    "place": "Fuß Rue Lepic"
+   },
+   {
+    "km": 122.7,
+    "m": 128,
+    "place": "Butte Montmartre 3"
+   },
+   {
+    "km": 124.4,
+    "m": 60,
+    "place": "Place de Clichy"
+   },
+   {
+    "km": 128.4,
+    "m": 40,
+    "place": "Madeleine"
+   },
+   {
+    "km": 131,
+    "m": 36,
+    "place": "Concorde"
+   },
+   {
+    "km": 133,
+    "m": 57,
+    "place": "Ziel Champs-Élysées"
+   }
+  ],
+  "climbs": [
+   {
+    "name": "Côte du Pavé des Gardes",
+    "summitKm": 43.1,
+    "summitM": 180,
+    "lengthKm": 0.7,
+    "avgPct": 9.7,
+    "category": "4",
+    "hairpins": 0
+   },
+   {
+    "name": "Côte de la Butte Montmartre (1. Passage)",
+    "summitKm": 90.8,
+    "summitM": 128,
+    "lengthKm": 1,
+    "avgPct": 6.5,
+    "category": "4",
+    "hairpins": 2
+   },
+   {
+    "name": "Côte de la Butte Montmartre (2. Passage)",
+    "summitKm": 106.7,
+    "summitM": 128,
+    "lengthKm": 1,
+    "avgPct": 6.5,
+    "category": "4",
+    "hairpins": 2
+   },
+   {
+    "name": "Côte de la Butte Montmartre (3. Passage)",
+    "summitKm": 122.7,
+    "summitM": 128,
+    "lengthKm": 1,
+    "avgPct": 6.5,
+    "category": "4",
+    "hairpins": 2
+   }
+  ],
+  "landmarks": [
+   {
+    "km": 0,
+    "label": "Start Thoiry"
+   },
+   {
+    "km": 11.6,
+    "label": "Neauphle-le-Vieux"
+   },
+   {
+    "km": 21.3,
+    "label": "Trappes"
+   },
+   {
+    "km": 25.5,
+    "label": "Montigny-le-Bretonneux"
+   },
+   {
+    "km": 35.1,
+    "label": "Schloss Versailles"
+   },
+   {
+    "km": 39.2,
+    "label": "Viroflay"
+   },
+   {
+    "km": 43.1,
+    "label": "Côte du Pavé des Gardes"
+   },
+   {
+    "km": 46.4,
+    "label": "Issy-les-Moulineaux"
+   },
+   {
+    "km": 51.7,
+    "label": "Eiffelturm"
+   },
+   {
+    "km": 57.9,
+    "label": "1. Zieldurchfahrt"
+   },
+   {
+    "km": 72.2,
+    "label": "Zwischensprint Étoile"
+   },
+   {
+    "km": 90.8,
+    "label": "Montmartre 1"
+   },
+   {
+    "km": 106.7,
+    "label": "Montmartre 2"
+   },
+   {
+    "km": 122.7,
+    "label": "Montmartre 3"
+   },
+   {
+    "km": 133,
+    "label": "Ziel Champs-Élysées"
+   }
+  ],
+  "region": "Île-de-France / Paris",
+  "sources": [
+   "https://www.villepreux.fr/wp-content/uploads/2026/07/TDF26-Itineraire-Horaire-Etape-21_Yvelines.pdf",
+   "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-21-four-kilometres-more-for-a-sprint-finish/",
+   "https://www.hedgehogcycling.co.uk/stage-21-tour-de-france-2026.html",
+   "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/26/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-21e-etape-thoiry-paris-champs-elysees-133-km-UDZDYSKPBZDDLGHLEHC2BBVHTU/",
+   "https://www.intervals.icu/tour-de-france-2026/stage-21/",
+   "https://www.cyclingstage.com/tour-de-france-2026-route/stage-21-tdf-2026/",
+   "https://www.radsport-news.com/sport/sportnews_vorschau_145971.htm",
+   "https://procyclinguk.com/tour-de-france-2026-stage-21-mathieu-van-der-poel-wins-in-paris-as-tadej-pogacar-seals-fifth-tour-title/",
+   "https://www.domestiquecycling.com/en/news/van-der-poel-masters-montmartre-in-thrilling-tour-finale-as-pogacar-joins-five-time-champions/",
+   "https://www.sortiraparis.com/en/what-to-do-in-paris/sport-wellness/articles/348649-tour-de-france-2026-through-which-towns-in-yvelines-and-hauts-de-seine-will-the-final-stage-pass"
+  ]
+ }
+]

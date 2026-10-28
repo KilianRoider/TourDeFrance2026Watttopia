@@ -12,12 +12,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import app.rollentrainer.core.route.Route
 import app.rollentrainer.core.route.World
+import app.rollentrainer.ui.world.geo.GeoScene
+import app.rollentrainer.ui.world.geo.GeoWorldRenderer
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.egl.EGLDisplay
@@ -29,8 +32,39 @@ import javax.microedition.khronos.egl.EGLDisplay
 @Composable
 fun WorldView(world: World?, frame: FrameState, modifier: Modifier = Modifier) {
     val renderer = remember { WorldRenderer(frame) }
-    var surface by remember { mutableStateOf<GLSurfaceView?>(null) }
     LaunchedEffect(world) { renderer.pendingWorld = world }
+    WorldSurface(renderer, modifier)
+}
+
+/**
+ * The real terrain of a route from its geodata pack ([GeoWorldRenderer]). The scene's listener hears when
+ * the first complete frame is on screen (hide the loading text then) or when loading failed (fall back
+ * to [WorldView]). The streaming worker stops when this leaves the composition; the caller closes the scene.
+ */
+@Composable
+fun GeoWorldView(scene: GeoScene, frame: FrameState, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    val renderer = remember { GeoWorldRenderer(frame, context.applicationContext) }
+    LaunchedEffect(scene) { renderer.pendingScene = scene }
+    DisposableEffect(renderer) { onDispose { renderer.release() } }
+    WorldSurface(renderer, modifier, maxPixels = GEO_MAX_PIXELS)
+}
+
+/**
+ * The geodata world renders at most this many pixels; larger views get a smaller surface that the
+ * compositor scales up (a 2560x1600 tablet renders ~1960x1225). Textured terrain, thousands of trees
+ * and 4x MSAA at the full 4 MP would not hold 30 fps on a mid-range tablet GPU, and the broadcast
+ * look is soft anyway.
+ */
+private const val GEO_MAX_PIXELS = 2_400_000
+
+/**
+ * A GL surface for [renderer] that pauses and resumes with the lifecycle. With [maxPixels] the
+ * surface is scaled down (same aspect) when the view is larger.
+ */
+@Composable
+private fun WorldSurface(renderer: GLSurfaceView.Renderer, modifier: Modifier, maxPixels: Int = 0) {
+    var surface by remember { mutableStateOf<GLSurfaceView?>(null) }
     val lifecycleOwner = LocalLifecycleOwner.current
     DisposableEffect(lifecycleOwner, surface) {
         val observer = LifecycleEventObserver { _, event ->
@@ -47,9 +81,19 @@ fun WorldView(world: World?, frame: FrameState, modifier: Modifier = Modifier) {
         factory = { ctx ->
             GLSurfaceView(ctx).apply {
                 setEGLContextClientVersion(3)
-                // Multisampled when the device offers it; see FallbackConfigChooser. The surface keeps
-                // the view's own size (no holder.setFixedSize), so it renders at the native resolution.
+                // Multisampled when the device offers it; see FallbackConfigChooser. Without maxPixels the
+                // surface keeps the view's own size, so it renders at the native resolution.
                 setEGLConfigChooser(FallbackConfigChooser())
+                if (maxPixels > 0) {
+                    addOnLayoutChangeListener { v, l, t, r, b, _, _, _, _ ->
+                        val w = r - l; val h = b - t
+                        val gl = v as GLSurfaceView
+                        if (w > 0 && h > 0 && w.toLong() * h > maxPixels) {
+                            val s = Math.sqrt(maxPixels.toDouble() / (w.toLong() * h))
+                            gl.holder.setFixedSize((w * s).toInt(), (h * s).toInt())
+                        } else gl.holder.setSizeFromLayout()
+                    }
+                }
                 preserveEGLContextOnPause = true
                 setRenderer(renderer)
                 renderMode = GLSurfaceView.RENDERMODE_CONTINUOUSLY

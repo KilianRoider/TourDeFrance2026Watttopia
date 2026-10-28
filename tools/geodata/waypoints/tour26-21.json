@@ -1,0 +1,3386 @@
+{
+ "id": "tour26-21",
+ "lengthKm": 133,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Départ réel – start of the Route de Garancières at the junction with the road from Villiers-le-Mahieu (3.1 km from the Thoiry gathering point)",
+   "lat": 48.85183,
+   "lon": 1.77045,
+   "kind": "start",
+   "confidence": "medium"
+  },
+  {
+   "km": 1.16,
+   "name": "Route de Garancières (VC)",
+   "lat": 48.84163,
+   "lon": 1.7677,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Garancieres"
+  },
+  {
+   "km": 2.7,
+   "name": "Garancières (village entry on the Route de Garancières; itinerary km 2.7)",
+   "lat": 48.82909,
+   "lon": 1.76016,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 3.35,
+   "name": "Garancières – Route de Villiers-le-Mahieu / Rue Montguichet",
+   "lat": 48.82383,
+   "lon": 1.7577,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 3.63,
+   "name": "Garancières – Rue Montguichet joins the D42 (Rue du Général Leclerc / Rue Louis Bellan)",
+   "lat": 48.82139,
+   "lon": 1.75807,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 4.63,
+   "name": "D42 Route du Breuil",
+   "lat": 48.82208,
+   "lon": 1.77133,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 5.19,
+   "name": "Le Breuil (D42 Rue des Lierres)",
+   "lat": 48.82292,
+   "lon": 1.77887,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 6.09,
+   "name": "D42 Rue des Lierres (Le Breuil)",
+   "lat": 48.82212,
+   "lon": 1.78886,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 6.63,
+   "name": "Boissy-sans-Avoir (D42 Rue de la Mairie)",
+   "lat": 48.81973,
+   "lon": 1.79513,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 7.8,
+   "name": "D42 Rue de la Mairie (Boissy-sans-Avoir – Vicq)",
+   "lat": 48.81861,
+   "lon": 1.81051,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 8.41,
+   "name": "D42 / D76 junction (Vicq)",
+   "lat": 48.81636,
+   "lon": 1.81784,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 9.74,
+   "name": "Vicq (D42 Grande Rue)",
+   "lat": 48.81334,
+   "lon": 1.83545,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 10.14,
+   "name": "Le Mesnil Piquet (Méré), D42",
+   "lat": 48.81263,
+   "lon": 1.84065,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 10.89,
+   "name": "D42 Rue du Moulin Muid (Méré)",
+   "lat": 48.81257,
+   "lon": 1.851,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D42"
+  },
+  {
+   "km": 11.6,
+   "name": "Carrefour D42 / D34 near Neauphle-le-Vieux",
+   "lat": 48.81262,
+   "lon": 1.86059,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D34"
+  },
+  {
+   "km": 11.96,
+   "name": "D34 (Neauphle-le-Vieux)",
+   "lat": 48.81068,
+   "lon": 1.86466,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D34"
+  },
+  {
+   "km": 12.7,
+   "name": "Carrefour D34 / D912",
+   "lat": 48.80456,
+   "lon": 1.8676,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D912"
+  },
+  {
+   "km": 13.71,
+   "name": "D912 near Villiers-Saint-Frédéric",
+   "lat": 48.80925,
+   "lon": 1.87951,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 14.77,
+   "name": "D912 Route du Pontel",
+   "lat": 48.80567,
+   "lon": 1.89243,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 15.43,
+   "name": "Pontchartrain (Jouars-Pontchartrain), D912 Route de Paris",
+   "lat": 48.80264,
+   "lon": 1.90017,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 16.53,
+   "name": "D912 Route de Paris",
+   "lat": 48.79806,
+   "lon": 1.91298,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 17.27,
+   "name": "D912 Route de Paris (Plaisir)",
+   "lat": 48.79763,
+   "lon": 1.92299,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 17.79,
+   "name": "Sainte-Apolline (Plaisir), D912",
+   "lat": 48.7973,
+   "lon": 1.92965,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 18.64,
+   "name": "D912 Avenue d'Armorique",
+   "lat": 48.79682,
+   "lon": 1.94124,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 19.76,
+   "name": "Élancourt – D912 Avenue de Dreux",
+   "lat": 48.79489,
+   "lon": 1.95592,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 20.99,
+   "name": "D912 Avenue Marcel Dassault",
+   "lat": 48.79042,
+   "lon": 1.97105,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 21.88,
+   "name": "Trappes – D912 Route de Dreux",
+   "lat": 48.787,
+   "lon": 1.9817,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 22.43,
+   "name": "D912 Route de Dreux (Trappes)",
+   "lat": 48.78498,
+   "lon": 1.9885,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 22.8,
+   "name": "Trappes – Rond-Point Éric Tabarly: D912 → D36 (Avenue Eugène Delacroix)",
+   "lat": 48.78343,
+   "lon": 1.99289,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D36"
+  },
+  {
+   "km": 23.09,
+   "name": "Trappes – Avenue Eugène Delacroix (D36)",
+   "lat": 48.78106,
+   "lon": 1.99114,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D36"
+  },
+  {
+   "km": 23.49,
+   "name": "Trappes – Rue Maurice Thorez (D36)",
+   "lat": 48.77911,
+   "lon": 1.99404,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D36"
+  },
+  {
+   "km": 24.01,
+   "name": "Trappes – Rue de Port-Royal (D36), town centre",
+   "lat": 48.77577,
+   "lon": 1.99862,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D36"
+  },
+  {
+   "km": 24.42,
+   "name": "Trappes – Rue de Port-Royal (D36)",
+   "lat": 48.77235,
+   "lon": 2.00027,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D36"
+  },
+  {
+   "km": 24.7,
+   "name": "Trappes – Carrefour de la Mare Savin: D36 → D38 (Rue Gaston Monmousseau)",
+   "lat": 48.77062,
+   "lon": 2.00258,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D38"
+  },
+  {
+   "km": 25.06,
+   "name": "Trappes – Rue Gaston Monmousseau (D38)",
+   "lat": 48.77102,
+   "lon": 2.00752,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D38"
+  },
+  {
+   "km": 25.52,
+   "name": "Montigny-le-Bretonneux – Avenue des Prés (D38)",
+   "lat": 48.77257,
+   "lon": 2.01315,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D38"
+  },
+  {
+   "km": 26.38,
+   "name": "Avenue des Prés (D38)",
+   "lat": 48.77832,
+   "lon": 2.02075,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D38"
+  },
+  {
+   "km": 27.28,
+   "name": "Avenue des Prés (D38) – Gare de Saint-Quentin-en-Yvelines",
+   "lat": 48.7815,
+   "lon": 2.03215,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D38"
+  },
+  {
+   "km": 28.54,
+   "name": "Avenue du Centre (D38), Saint-Quentin-en-Yvelines centre",
+   "lat": 48.78538,
+   "lon": 2.04607,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D38"
+  },
+  {
+   "km": 28.9,
+   "name": "Guyancourt – Avenue du Centre (D38) joins the D127",
+   "lat": 48.7873,
+   "lon": 2.0501,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D127"
+  },
+  {
+   "km": 29.43,
+   "name": "Montigny-le-Bretonneux – D127 (Avenue des Frères Lumière) → D10",
+   "lat": 48.79037,
+   "lon": 2.04874,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 30.95,
+   "name": "Saint-Cyr-l'École – D10 Avenue Pierre Curie",
+   "lat": 48.79812,
+   "lon": 2.064,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 31.88,
+   "name": "D10 Avenue de la Division Leclerc (Saint-Cyr-l'École)",
+   "lat": 48.80074,
+   "lon": 2.07598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 32.9,
+   "name": "D10 Route de Saint-Cyr",
+   "lat": 48.80213,
+   "lon": 2.09008,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 34.14,
+   "name": "D10 Route de Saint-Cyr",
+   "lat": 48.80324,
+   "lon": 2.10716,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 34.74,
+   "name": "D10 Route de Saint-Cyr (Pièce d'eau des Suisses)",
+   "lat": 48.80212,
+   "lon": 2.11543,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 35.1,
+   "name": "Château de Versailles – Route de Saint-Cyr at the Orangerie, left into Rue de l'Indépendance Américaine (VC)",
+   "lat": 48.80088,
+   "lon": 2.12003,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 35.26,
+   "name": "Versailles – Rue de l'Indépendance Américaine (VC)",
+   "lat": 48.80214,
+   "lon": 2.12082,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 35.55,
+   "name": "Versailles – Place d'Armes in front of the château (Rue Pierre de Nolhac)",
+   "lat": 48.80321,
+   "lon": 2.12315,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 36.04,
+   "name": "Versailles – Avenue de Paris (D186 → D10)",
+   "lat": 48.80275,
+   "lon": 2.12789,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 36.83,
+   "name": "D10 Avenue de Paris (Versailles)",
+   "lat": 48.80023,
+   "lon": 2.13765,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 37.74,
+   "name": "D10 Avenue de Paris (Versailles)",
+   "lat": 48.79832,
+   "lon": 2.14906,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 38.49,
+   "name": "Versailles-Porchefontaine – D10 Avenue de Paris",
+   "lat": 48.79941,
+   "lon": 2.15976,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 38.77,
+   "name": "D56 Avenue Louvois / Avenue de Versailles (Porchefontaine – Viroflay)",
+   "lat": 48.79852,
+   "lon": 2.16214,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D56"
+  },
+  {
+   "km": 39.08,
+   "name": "Viroflay – D56 → VC Route du Pavé de Meudon",
+   "lat": 48.79868,
+   "lon": 2.16613,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 39.59,
+   "name": "Route du Pavé de Meudon (VC), Viroflay",
+   "lat": 48.79742,
+   "lon": 2.17257,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 39.79,
+   "name": "Vélizy-Villacoublay – Avenue de Vélizy (VC)",
+   "lat": 48.79689,
+   "lon": 2.17512,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 40.29,
+   "name": "Avenue de Vélizy → D53 (Rue de Dietzenbach / Rue Louis Gaubert)",
+   "lat": 48.79601,
+   "lon": 2.18146,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D53"
+  },
+  {
+   "km": 40.67,
+   "name": "D53 Rue de Jouy",
+   "lat": 48.79858,
+   "lon": 2.1845,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D53"
+  },
+  {
+   "km": 41.16,
+   "name": "D53 Rue de Jouy / Rue Anatole France (Chaville)",
+   "lat": 48.80208,
+   "lon": 2.18829,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D53"
+  },
+  {
+   "km": 41.76,
+   "name": "Chaville – D53 Rue Anatole France → D181 Rue du Pavé des Gardes",
+   "lat": 48.80727,
+   "lon": 2.1879,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 42.4,
+   "name": "Foot of the Côte du Pavé des Gardes (Route du Pavé des Gardes, 0.7 km at 9.7 %)",
+   "lat": 48.80852,
+   "lon": 2.19605,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 43.1,
+   "name": "Côte du Pavé des Gardes (cat. 4) – summit",
+   "lat": 48.80916,
+   "lon": 2.2056,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 43.37,
+   "name": "Sèvres – D181 Route du Pavé des Gardes",
+   "lat": 48.8106,
+   "lon": 2.20852,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 43.98,
+   "name": "Meudon – D181 Route du Pavé des Gardes",
+   "lat": 48.81273,
+   "lon": 2.21576,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 44.79,
+   "name": "D181 Route des Gardes (descent)",
+   "lat": 48.81585,
+   "lon": 2.22511,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 45.41,
+   "name": "D181 Route des Gardes (descent)",
+   "lat": 48.81881,
+   "lon": 2.23177,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D181"
+  },
+  {
+   "km": 46.23,
+   "name": "Bas-Meudon – D181 → D989 Rue de Vaugirard → D7",
+   "lat": 48.81903,
+   "lon": 2.24265,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D7"
+  },
+  {
+   "km": 46.4,
+   "name": "Issy-les-Moulineaux – D7 Quai de la Bataille de Stalingrad",
+   "lat": 48.82009,
+   "lon": 2.24371,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D7"
+  },
+  {
+   "km": 47.17,
+   "name": "D7 Quai de la Bataille de Stalingrad",
+   "lat": 48.8225,
+   "lon": 2.2526,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D7"
+  },
+  {
+   "km": 48.05,
+   "name": "D7 Quai de la Bataille de Stalingrad",
+   "lat": 48.82745,
+   "lon": 2.26049,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D7"
+  },
+  {
+   "km": 48.45,
+   "name": "Carrefour D7 / VC – Quai du Président Roosevelt (Issy)",
+   "lat": 48.83062,
+   "lon": 2.26172,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai du Président Roosevelt"
+  },
+  {
+   "km": 49.0,
+   "name": "Paris – entry on the Quai d'Issy-les-Moulineaux",
+   "lat": 48.83451,
+   "lon": 2.26529,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Quai d'Issy-les-Moulineaux"
+  },
+  {
+   "km": 49.57,
+   "name": "Quai d'Issy-les-Moulineaux (Pont du Garigliano)",
+   "lat": 48.83899,
+   "lon": 2.26951,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai d'Issy-les-Moulineaux"
+  },
+  {
+   "km": 50.06,
+   "name": "Quai André Citroën (Parc André-Citroën)",
+   "lat": 48.84237,
+   "lon": 2.27375,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai André Citroën"
+  },
+  {
+   "km": 50.54,
+   "name": "Quai André Citroën (Pont Mirabeau)",
+   "lat": 48.84622,
+   "lon": 2.27717,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai André Citroën"
+  },
+  {
+   "km": 51.06,
+   "name": "Quai de Grenelle (Pont de Grenelle)",
+   "lat": 48.84977,
+   "lon": 2.28218,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai de Grenelle"
+  },
+  {
+   "km": 51.7,
+   "name": "Quai de Grenelle / Pont de Bir-Hakeim – Tour Eiffel section (itinerary 'Tour Eiffel')",
+   "lat": 48.85411,
+   "lon": 2.28827,
+   "kind": "other",
+   "confidence": "low",
+   "road": "Quai Jacques Chirac"
+  },
+  {
+   "km": 52.4,
+   "name": "Quai Jacques Chirac – Tour Eiffel (Pont d'Iéna)",
+   "lat": 48.85921,
+   "lon": 2.29334,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Jacques Chirac"
+  },
+  {
+   "km": 52.86,
+   "name": "Quai Branly (Musée du quai Branly)",
+   "lat": 48.86182,
+   "lon": 2.2984,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Branly"
+  },
+  {
+   "km": 53.1,
+   "name": "Place de la Résistance (Pont de l'Alma, left bank)",
+   "lat": 48.86209,
+   "lon": 2.30169,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai d'Orsay"
+  },
+  {
+   "km": 53.75,
+   "name": "Quai d'Orsay (Pont des Invalides)",
+   "lat": 48.86258,
+   "lon": 2.31042,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai d'Orsay"
+  },
+  {
+   "km": 54.01,
+   "name": "Quai d'Orsay (Pont Alexandre III)",
+   "lat": 48.86285,
+   "lon": 2.314,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai d'Orsay"
+  },
+  {
+   "km": 54.5,
+   "name": "Quai Anatole France (Pont de la Concorde / Assemblée nationale)",
+   "lat": 48.86222,
+   "lon": 2.32047,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Valéry Giscard d'Estaing"
+  },
+  {
+   "km": 54.96,
+   "name": "Quai Valéry Giscard d'Estaing (Musée d'Orsay)",
+   "lat": 48.8605,
+   "lon": 2.32623,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Pont Royal"
+  },
+  {
+   "km": 55.29,
+   "name": "Pont Royal (crossing to the right bank)",
+   "lat": 48.8601,
+   "lon": 2.3299,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Quai François Mitterrand"
+  },
+  {
+   "km": 55.48,
+   "name": "Quai François Mitterrand (Louvre, Pavillon de Flore)",
+   "lat": 48.8604,
+   "lon": 2.33199,
+   "kind": "other",
+   "confidence": "low",
+   "road": "Place du Carrousel"
+  },
+  {
+   "km": 55.7,
+   "name": "Louvre – Place du Carrousel (through the Guichets du Carrousel)",
+   "lat": 48.86114,
+   "lon": 2.33408,
+   "kind": "other",
+   "confidence": "low",
+   "road": "Place du Carrousel"
+  },
+  {
+   "km": 55.93,
+   "name": "Place du Carrousel → Rue de Rivoli",
+   "lat": 48.8628,
+   "lon": 2.33521,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 56.18,
+   "name": "Rue de Rivoli westbound (Place des Pyramides)",
+   "lat": 48.86404,
+   "lon": 2.33137,
+   "kind": "other",
+   "confidence": "low",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 56.57,
+   "name": "Rue de Rivoli westbound (Rue de Castiglione)",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "low",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 56.87,
+   "name": "Place de la Concorde (from Rue de Rivoli)",
+   "lat": 48.86641,
+   "lon": 2.32349,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 56.94,
+   "name": "Place de la Concorde – north side",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 57.2,
+   "name": "Place de la Concorde – onto the Champs-Élysées",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 57.4,
+   "name": "Champs-Élysées – lower part (up)",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 57.9,
+   "name": "Champs-Élysées – finish line, 1st passage",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 57.99,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Champs lap 1]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 58.63,
+   "name": "Champs-Élysées at Rue de Berri (up) [Champs lap 1]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 58.99,
+   "name": "Champs-Élysées – upper part (up) [Champs lap 1]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 59.17,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Champs lap 1]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 59.23,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-east) [Champs lap 1]",
+   "lat": 48.87411,
+   "lon": 2.29586,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 59.38,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Champs lap 1]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 59.49,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Champs lap 1]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 59.56,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Champs lap 1]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 59.87,
+   "name": "Champs-Élysées – upper part (down) [Champs lap 1]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 60.13,
+   "name": "Champs-Élysées at Rue de Berri (down) [Champs lap 1]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 60.77,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Champs lap 1]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 61.11,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Champs lap 1]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 61.57,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Champs lap 1]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 61.82,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Champs lap 1]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 61.95,
+   "name": "Rue de Rivoli (from Concorde) [Champs lap 1]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 62.2,
+   "name": "Rue de Rivoli at Rue de Castiglione [Champs lap 1]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 62.43,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Champs lap 1]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 62.6,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Champs lap 1]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 62.77,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Champs lap 1]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 62.95,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Champs lap 1]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 63.28,
+   "name": "Quai Aimé-Césaire (Tuileries) [Champs lap 1]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 63.61,
+   "name": "Quai des Tuileries [Champs lap 1]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 63.86,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Champs lap 1]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 64.19,
+   "name": "Champs-Élysées – lower part (up, final straight) [Champs lap 1]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 64.7,
+   "name": "Champs-Élysées – finish line, 2nd passage (end of Champs lap 1)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 64.79,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Champs lap 2]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 65.43,
+   "name": "Champs-Élysées at Rue de Berri (up) [Champs lap 2]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 65.79,
+   "name": "Champs-Élysées – upper part (up) [Champs lap 2]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 65.97,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Champs lap 2]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 66.03,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-east) [Champs lap 2]",
+   "lat": 48.87411,
+   "lon": 2.29586,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 66.18,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Champs lap 2]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 66.29,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Champs lap 2]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 66.36,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Champs lap 2]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 66.67,
+   "name": "Champs-Élysées – upper part (down) [Champs lap 2]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 66.93,
+   "name": "Champs-Élysées at Rue de Berri (down) [Champs lap 2]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 67.57,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Champs lap 2]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 67.91,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Champs lap 2]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 68.37,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Champs lap 2]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 68.62,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Champs lap 2]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 68.75,
+   "name": "Rue de Rivoli (from Concorde) [Champs lap 2]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 69.0,
+   "name": "Rue de Rivoli at Rue de Castiglione [Champs lap 2]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 69.23,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Champs lap 2]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 69.4,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Champs lap 2]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 69.57,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Champs lap 2]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 69.75,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Champs lap 2]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 70.08,
+   "name": "Quai Aimé-Césaire (Tuileries) [Champs lap 2]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 70.41,
+   "name": "Quai des Tuileries [Champs lap 2]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 70.66,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Champs lap 2]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 70.99,
+   "name": "Champs-Élysées – lower part (up, final straight) [Champs lap 2]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 71.5,
+   "name": "Champs-Élysées – finish line, 3rd passage (end of Champs lap 2)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 71.59,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Champs lap 3]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 72.2,
+   "name": "Intermediate sprint – Champs-Élysées (haut des Champs, 3rd passage; placed at the official km)",
+   "lat": 48.87126,
+   "lon": 2.30295,
+   "kind": "sprint",
+   "confidence": "low",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 72.24,
+   "name": "Champs-Élysées at Rue de Berri (up) [Champs lap 3]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 72.6,
+   "name": "Champs-Élysées – upper part (up) [Champs lap 3]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 72.78,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Champs lap 3]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 72.85,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-east) [Champs lap 3]",
+   "lat": 48.87411,
+   "lon": 2.29586,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 73.0,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Champs lap 3]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 73.11,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Champs lap 3]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 73.18,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Champs lap 3]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 73.5,
+   "name": "Champs-Élysées – upper part (down) [Champs lap 3]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 73.76,
+   "name": "Champs-Élysées at Rue de Berri (down) [Champs lap 3]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 74.41,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Champs lap 3]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 74.75,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Champs lap 3]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 75.22,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Champs lap 3]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 75.48,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Champs lap 3]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 75.61,
+   "name": "Rue de Rivoli (from Concorde) [Champs lap 3]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 75.86,
+   "name": "Rue de Rivoli at Rue de Castiglione [Champs lap 3]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 76.1,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Champs lap 3]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 76.26,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Champs lap 3]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 76.44,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Champs lap 3]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 76.62,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Champs lap 3]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 76.96,
+   "name": "Quai Aimé-Césaire (Tuileries) [Champs lap 3]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 77.3,
+   "name": "Quai des Tuileries [Champs lap 3]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 77.54,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Champs lap 3]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 77.89,
+   "name": "Champs-Élysées – lower part (up, final straight) [Champs lap 3]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 78.4,
+   "name": "Champs-Élysées – finish line, 4th passage (end of Champs lap 3)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 78.49,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Champs lap 4]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 79.13,
+   "name": "Champs-Élysées at Rue de Berri (up) [Champs lap 4]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 79.49,
+   "name": "Champs-Élysées – upper part (up) [Champs lap 4]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 79.67,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Champs lap 4]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 79.73,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-east) [Champs lap 4]",
+   "lat": 48.87411,
+   "lon": 2.29586,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 79.88,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Champs lap 4]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 79.99,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Champs lap 4]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 80.06,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Champs lap 4]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 80.37,
+   "name": "Champs-Élysées – upper part (down) [Champs lap 4]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 80.63,
+   "name": "Champs-Élysées at Rue de Berri (down) [Champs lap 4]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 81.27,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Champs lap 4]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 81.61,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Champs lap 4]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 82.07,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Champs lap 4]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 82.32,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Champs lap 4]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 82.45,
+   "name": "Rue de Rivoli (from Concorde) [Champs lap 4]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 82.7,
+   "name": "Rue de Rivoli at Rue de Castiglione [Champs lap 4]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 82.93,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Champs lap 4]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 83.1,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Champs lap 4]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 83.27,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Champs lap 4]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 83.45,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Champs lap 4]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 83.78,
+   "name": "Quai Aimé-Césaire (Tuileries) [Champs lap 4]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 84.11,
+   "name": "Quai des Tuileries [Champs lap 4]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 84.36,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Champs lap 4]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 84.69,
+   "name": "Champs-Élysées – lower part (up, final straight) [Champs lap 4]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 85.2,
+   "name": "Champs-Élysées – finish line, 5th passage (end of Champs lap 4)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 85.29,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Montmartre lap 1]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 85.95,
+   "name": "Champs-Élysées at Rue de Berri (up) [Montmartre lap 1]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 86.31,
+   "name": "Champs-Élysées – upper part (up) [Montmartre lap 1]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 86.49,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Montmartre lap 1]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 86.61,
+   "name": "Place Charles de Gaulle → Avenue de Wagram [Montmartre lap 1]",
+   "lat": 48.87434,
+   "lon": 2.29544,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 86.85,
+   "name": "Avenue de Wagram [Montmartre lap 1]",
+   "lat": 48.87631,
+   "lon": 2.29687,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 87.14,
+   "name": "Place des Ternes – right into Boulevard de Courcelles [Montmartre lap 1]",
+   "lat": 48.87825,
+   "lon": 2.29895,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 87.62,
+   "name": "Boulevard de Courcelles (Parc Monceau) [Montmartre lap 1]",
+   "lat": 48.87955,
+   "lon": 2.30498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 88.2,
+   "name": "Boulevard de Courcelles [Montmartre lap 1]",
+   "lat": 48.88085,
+   "lon": 2.31254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 88.91,
+   "name": "Boulevard des Batignolles (eastbound) [Montmartre lap 1]",
+   "lat": 48.88224,
+   "lon": 2.32173,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 89.38,
+   "name": "Place de Clichy [Montmartre lap 1]",
+   "lat": 48.88344,
+   "lon": 2.32765,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 89.66,
+   "name": "Boulevard de Clichy (eastbound) [Montmartre lap 1]",
+   "lat": 48.88409,
+   "lon": 2.33082,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 89.83,
+   "name": "Place Blanche – left into Rue Lepic (foot of the Butte Montmartre) [Montmartre lap 1]",
+   "lat": 48.88388,
+   "lon": 2.33279,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 89.9,
+   "name": "Rue Lepic (lower, pedestrianised part above Place Blanche) [Montmartre lap 1]",
+   "lat": 48.88436,
+   "lon": 2.33328,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic",
+   "radius": 12
+  },
+  {
+   "km": 90.03,
+   "name": "Rue Lepic [Montmartre lap 1]",
+   "lat": 48.88529,
+   "lon": 2.33424,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 90.22,
+   "name": "Rue Lepic [Montmartre lap 1]",
+   "lat": 48.88664,
+   "lon": 2.3341,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 90.38,
+   "name": "Rue Lepic (hairpin, Moulin de la Galette) [Montmartre lap 1]",
+   "lat": 48.88748,
+   "lon": 2.3347,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 90.49,
+   "name": "Rue Lepic (upper part) [Montmartre lap 1]",
+   "lat": 48.88738,
+   "lon": 2.3362,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 90.57,
+   "name": "Rue Lepic → Rue Girardon [Montmartre lap 1]",
+   "lat": 48.88726,
+   "lon": 2.33722,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Girardon"
+  },
+  {
+   "km": 90.62,
+   "name": "Rue Girardon → Rue Norvins (Place Jean-Baptiste Clément) [Montmartre lap 1]",
+   "lat": 48.88765,
+   "lon": 2.33749,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Norvins"
+  },
+  {
+   "km": 90.8,
+   "name": "Côte de la Butte Montmartre (cat. 4, 1st passage) – top of the climb on Rue Norvins",
+   "lat": 48.88702,
+   "lon": 2.33969,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Rue Norvins"
+  },
+  {
+   "km": 90.93,
+   "name": "Rue Norvins – Place du Tertre, right into Rue du Mont-Cenis [Montmartre lap 1]",
+   "lat": 48.88666,
+   "lon": 2.34137,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue du Mont-Cenis"
+  },
+  {
+   "km": 90.99,
+   "name": "Rue du Mont-Cenis → Rue Saint-Eleuthère [Montmartre lap 1]",
+   "lat": 48.88619,
+   "lon": 2.34138,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Saint-Eleuthère"
+  },
+  {
+   "km": 91.09,
+   "name": "Rue Azaïs, in front of the Sacré-Cœur [Montmartre lap 1]",
+   "lat": 48.88575,
+   "lon": 2.3424,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Azaïs"
+  },
+  {
+   "km": 91.32,
+   "name": "Rue du Cardinal Dubois [Montmartre lap 1]",
+   "lat": 48.88697,
+   "lon": 2.34449,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue du Cardinal Dubois"
+  },
+  {
+   "km": 91.38,
+   "name": "Rue du Cardinal Dubois → Rue Lamarck (descent) [Montmartre lap 1]",
+   "lat": 48.88753,
+   "lon": 2.34454,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Lamarck"
+  },
+  {
+   "km": 91.64,
+   "name": "Rue Lamarck (descent) [Montmartre lap 1]",
+   "lat": 48.88918,
+   "lon": 2.34249,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lamarck"
+  },
+  {
+   "km": 91.86,
+   "name": "Rue Lamarck → Rue Caulaincourt [Montmartre lap 1]",
+   "lat": 48.88967,
+   "lon": 2.33977,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 92.06,
+   "name": "Rue Caulaincourt (descent) [Montmartre lap 1]",
+   "lat": 48.88955,
+   "lon": 2.33704,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 92.45,
+   "name": "Rue Caulaincourt (descent) [Montmartre lap 1]",
+   "lat": 48.88749,
+   "lon": 2.33338,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 92.65,
+   "name": "Rue Caulaincourt (bridge over the Montmartre cemetery) [Montmartre lap 1]",
+   "lat": 48.886,
+   "lon": 2.3317,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 92.86,
+   "name": "Rue Caulaincourt → Boulevard de Clichy (bottom of the descent) [Montmartre lap 1]",
+   "lat": 48.88471,
+   "lon": 2.3297,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 93.12,
+   "name": "Place de Clichy → Boulevard des Batignolles (westbound) [Montmartre lap 1]",
+   "lat": 48.8835,
+   "lon": 2.3267,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 93.56,
+   "name": "Boulevard des Batignolles (westbound) [Montmartre lap 1]",
+   "lat": 48.88233,
+   "lon": 2.32096,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 94.19,
+   "name": "Boulevard de Courcelles (westbound) [Montmartre lap 1]",
+   "lat": 48.88085,
+   "lon": 2.31254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 94.76,
+   "name": "Boulevard de Courcelles (Parc Monceau, westbound) [Montmartre lap 1]",
+   "lat": 48.87955,
+   "lon": 2.30498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 95.31,
+   "name": "Place des Ternes – left into Avenue de Wagram [Montmartre lap 1]",
+   "lat": 48.87779,
+   "lon": 2.29807,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 95.49,
+   "name": "Avenue de Wagram (towards the Étoile) [Montmartre lap 1]",
+   "lat": 48.87631,
+   "lon": 2.29687,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 95.73,
+   "name": "Place Charles de Gaulle – from Avenue de Wagram [Montmartre lap 1]",
+   "lat": 48.87434,
+   "lon": 2.29544,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 95.84,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Montmartre lap 1]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 95.95,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Montmartre lap 1]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 96.02,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Montmartre lap 1]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 96.33,
+   "name": "Champs-Élysées – upper part (down) [Montmartre lap 1]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 96.58,
+   "name": "Champs-Élysées at Rue de Berri (down) [Montmartre lap 1]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 97.22,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Montmartre lap 1]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 97.55,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Montmartre lap 1]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 98.0,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Montmartre lap 1]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 98.25,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Montmartre lap 1]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 98.38,
+   "name": "Rue de Rivoli (from Concorde) [Montmartre lap 1]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 98.63,
+   "name": "Rue de Rivoli at Rue de Castiglione [Montmartre lap 1]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 98.86,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Montmartre lap 1]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 99.02,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Montmartre lap 1]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 99.19,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Montmartre lap 1]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 99.37,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Montmartre lap 1]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 99.7,
+   "name": "Quai Aimé-Césaire (Tuileries) [Montmartre lap 1]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 100.03,
+   "name": "Quai des Tuileries [Montmartre lap 1]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 100.27,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Montmartre lap 1]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 100.6,
+   "name": "Champs-Élysées – lower part (up, final straight) [Montmartre lap 1]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 101.1,
+   "name": "Champs-Élysées – finish line, 6th passage (end of Montmartre lap 1)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 101.19,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Montmartre lap 2]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 101.85,
+   "name": "Champs-Élysées at Rue de Berri (up) [Montmartre lap 2]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 102.21,
+   "name": "Champs-Élysées – upper part (up) [Montmartre lap 2]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 102.39,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Montmartre lap 2]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 102.51,
+   "name": "Place Charles de Gaulle → Avenue de Wagram [Montmartre lap 2]",
+   "lat": 48.87434,
+   "lon": 2.29544,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 102.75,
+   "name": "Avenue de Wagram [Montmartre lap 2]",
+   "lat": 48.87631,
+   "lon": 2.29687,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 103.04,
+   "name": "Place des Ternes – right into Boulevard de Courcelles [Montmartre lap 2]",
+   "lat": 48.87825,
+   "lon": 2.29895,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 103.52,
+   "name": "Boulevard de Courcelles (Parc Monceau) [Montmartre lap 2]",
+   "lat": 48.87955,
+   "lon": 2.30498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 104.1,
+   "name": "Boulevard de Courcelles [Montmartre lap 2]",
+   "lat": 48.88085,
+   "lon": 2.31254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 104.81,
+   "name": "Boulevard des Batignolles (eastbound) [Montmartre lap 2]",
+   "lat": 48.88224,
+   "lon": 2.32173,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 105.28,
+   "name": "Place de Clichy [Montmartre lap 2]",
+   "lat": 48.88344,
+   "lon": 2.32765,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 105.56,
+   "name": "Boulevard de Clichy (eastbound) [Montmartre lap 2]",
+   "lat": 48.88409,
+   "lon": 2.33082,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 105.73,
+   "name": "Place Blanche – left into Rue Lepic (foot of the Butte Montmartre) [Montmartre lap 2]",
+   "lat": 48.88388,
+   "lon": 2.33279,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 105.8,
+   "name": "Rue Lepic (lower, pedestrianised part above Place Blanche) [Montmartre lap 2]",
+   "lat": 48.88436,
+   "lon": 2.33328,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic",
+   "radius": 12
+  },
+  {
+   "km": 105.93,
+   "name": "Rue Lepic [Montmartre lap 2]",
+   "lat": 48.88529,
+   "lon": 2.33424,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 106.12,
+   "name": "Rue Lepic [Montmartre lap 2]",
+   "lat": 48.88664,
+   "lon": 2.3341,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 106.28,
+   "name": "Rue Lepic (hairpin, Moulin de la Galette) [Montmartre lap 2]",
+   "lat": 48.88748,
+   "lon": 2.3347,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 106.39,
+   "name": "Rue Lepic (upper part) [Montmartre lap 2]",
+   "lat": 48.88738,
+   "lon": 2.3362,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 106.47,
+   "name": "Rue Lepic → Rue Girardon [Montmartre lap 2]",
+   "lat": 48.88726,
+   "lon": 2.33722,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Girardon"
+  },
+  {
+   "km": 106.52,
+   "name": "Rue Girardon → Rue Norvins (Place Jean-Baptiste Clément) [Montmartre lap 2]",
+   "lat": 48.88765,
+   "lon": 2.33749,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Norvins"
+  },
+  {
+   "km": 106.7,
+   "name": "Côte de la Butte Montmartre (cat. 4, 2nd passage) – top of the climb on Rue Norvins",
+   "lat": 48.88702,
+   "lon": 2.33969,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Rue Norvins"
+  },
+  {
+   "km": 106.83,
+   "name": "Rue Norvins – Place du Tertre, right into Rue du Mont-Cenis [Montmartre lap 2]",
+   "lat": 48.88666,
+   "lon": 2.34137,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue du Mont-Cenis"
+  },
+  {
+   "km": 106.89,
+   "name": "Rue du Mont-Cenis → Rue Saint-Eleuthère [Montmartre lap 2]",
+   "lat": 48.88619,
+   "lon": 2.34138,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Saint-Eleuthère"
+  },
+  {
+   "km": 106.99,
+   "name": "Rue Azaïs, in front of the Sacré-Cœur [Montmartre lap 2]",
+   "lat": 48.88575,
+   "lon": 2.3424,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Azaïs"
+  },
+  {
+   "km": 107.22,
+   "name": "Rue du Cardinal Dubois [Montmartre lap 2]",
+   "lat": 48.88697,
+   "lon": 2.34449,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue du Cardinal Dubois"
+  },
+  {
+   "km": 107.28,
+   "name": "Rue du Cardinal Dubois → Rue Lamarck (descent) [Montmartre lap 2]",
+   "lat": 48.88753,
+   "lon": 2.34454,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Lamarck"
+  },
+  {
+   "km": 107.54,
+   "name": "Rue Lamarck (descent) [Montmartre lap 2]",
+   "lat": 48.88918,
+   "lon": 2.34249,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lamarck"
+  },
+  {
+   "km": 107.76,
+   "name": "Rue Lamarck → Rue Caulaincourt [Montmartre lap 2]",
+   "lat": 48.88967,
+   "lon": 2.33977,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 107.96,
+   "name": "Rue Caulaincourt (descent) [Montmartre lap 2]",
+   "lat": 48.88955,
+   "lon": 2.33704,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 108.35,
+   "name": "Rue Caulaincourt (descent) [Montmartre lap 2]",
+   "lat": 48.88749,
+   "lon": 2.33338,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 108.55,
+   "name": "Rue Caulaincourt (bridge over the Montmartre cemetery) [Montmartre lap 2]",
+   "lat": 48.886,
+   "lon": 2.3317,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 108.76,
+   "name": "Rue Caulaincourt → Boulevard de Clichy (bottom of the descent) [Montmartre lap 2]",
+   "lat": 48.88471,
+   "lon": 2.3297,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 109.02,
+   "name": "Place de Clichy → Boulevard des Batignolles (westbound) [Montmartre lap 2]",
+   "lat": 48.8835,
+   "lon": 2.3267,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 109.46,
+   "name": "Boulevard des Batignolles (westbound) [Montmartre lap 2]",
+   "lat": 48.88233,
+   "lon": 2.32096,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 110.09,
+   "name": "Boulevard de Courcelles (westbound) [Montmartre lap 2]",
+   "lat": 48.88085,
+   "lon": 2.31254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 110.66,
+   "name": "Boulevard de Courcelles (Parc Monceau, westbound) [Montmartre lap 2]",
+   "lat": 48.87955,
+   "lon": 2.30498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 111.21,
+   "name": "Place des Ternes – left into Avenue de Wagram [Montmartre lap 2]",
+   "lat": 48.87779,
+   "lon": 2.29807,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 111.39,
+   "name": "Avenue de Wagram (towards the Étoile) [Montmartre lap 2]",
+   "lat": 48.87631,
+   "lon": 2.29687,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 111.63,
+   "name": "Place Charles de Gaulle – from Avenue de Wagram [Montmartre lap 2]",
+   "lat": 48.87434,
+   "lon": 2.29544,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 111.74,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Montmartre lap 2]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 111.85,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Montmartre lap 2]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 111.92,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Montmartre lap 2]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 112.23,
+   "name": "Champs-Élysées – upper part (down) [Montmartre lap 2]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 112.48,
+   "name": "Champs-Élysées at Rue de Berri (down) [Montmartre lap 2]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 113.12,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Montmartre lap 2]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 113.45,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Montmartre lap 2]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 113.9,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Montmartre lap 2]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 114.15,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Montmartre lap 2]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 114.28,
+   "name": "Rue de Rivoli (from Concorde) [Montmartre lap 2]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 114.53,
+   "name": "Rue de Rivoli at Rue de Castiglione [Montmartre lap 2]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 114.76,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Montmartre lap 2]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 114.92,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Montmartre lap 2]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 115.09,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Montmartre lap 2]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 115.27,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Montmartre lap 2]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 115.6,
+   "name": "Quai Aimé-Césaire (Tuileries) [Montmartre lap 2]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 115.93,
+   "name": "Quai des Tuileries [Montmartre lap 2]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 116.17,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Montmartre lap 2]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 116.5,
+   "name": "Champs-Élysées – lower part (up, final straight) [Montmartre lap 2]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 117.0,
+   "name": "Champs-Élysées – finish line, 7th passage (end of Montmartre lap 2)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 117.09,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (up) [Montmartre lap 3]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 117.76,
+   "name": "Champs-Élysées at Rue de Berri (up) [Montmartre lap 3]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 118.13,
+   "name": "Champs-Élysées – upper part (up) [Montmartre lap 3]",
+   "lat": 48.87281,
+   "lon": 2.29807,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 118.32,
+   "name": "Place Charles de Gaulle (Étoile) – entry from the Champs-Élysées [Montmartre lap 3]",
+   "lat": 48.87351,
+   "lon": 2.29589,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 118.43,
+   "name": "Place Charles de Gaulle → Avenue de Wagram [Montmartre lap 3]",
+   "lat": 48.87434,
+   "lon": 2.29544,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 118.68,
+   "name": "Avenue de Wagram [Montmartre lap 3]",
+   "lat": 48.87631,
+   "lon": 2.29687,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 118.98,
+   "name": "Place des Ternes – right into Boulevard de Courcelles [Montmartre lap 3]",
+   "lat": 48.87825,
+   "lon": 2.29895,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 119.46,
+   "name": "Boulevard de Courcelles (Parc Monceau) [Montmartre lap 3]",
+   "lat": 48.87955,
+   "lon": 2.30498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 120.06,
+   "name": "Boulevard de Courcelles [Montmartre lap 3]",
+   "lat": 48.88085,
+   "lon": 2.31254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 120.78,
+   "name": "Boulevard des Batignolles (eastbound) [Montmartre lap 3]",
+   "lat": 48.88224,
+   "lon": 2.32173,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 121.25,
+   "name": "Place de Clichy [Montmartre lap 3]",
+   "lat": 48.88344,
+   "lon": 2.32765,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 121.54,
+   "name": "Boulevard de Clichy (eastbound) [Montmartre lap 3]",
+   "lat": 48.88409,
+   "lon": 2.33082,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 121.72,
+   "name": "Place Blanche – left into Rue Lepic (foot of the Butte Montmartre) [Montmartre lap 3]",
+   "lat": 48.88388,
+   "lon": 2.33279,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 121.78,
+   "name": "Rue Lepic (lower, pedestrianised part above Place Blanche) [Montmartre lap 3]",
+   "lat": 48.88436,
+   "lon": 2.33328,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic",
+   "radius": 12
+  },
+  {
+   "km": 121.91,
+   "name": "Rue Lepic [Montmartre lap 3]",
+   "lat": 48.88529,
+   "lon": 2.33424,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 122.11,
+   "name": "Rue Lepic [Montmartre lap 3]",
+   "lat": 48.88664,
+   "lon": 2.3341,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 122.28,
+   "name": "Rue Lepic (hairpin, Moulin de la Galette) [Montmartre lap 3]",
+   "lat": 48.88748,
+   "lon": 2.3347,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 122.39,
+   "name": "Rue Lepic (upper part) [Montmartre lap 3]",
+   "lat": 48.88738,
+   "lon": 2.3362,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lepic"
+  },
+  {
+   "km": 122.47,
+   "name": "Rue Lepic → Rue Girardon [Montmartre lap 3]",
+   "lat": 48.88726,
+   "lon": 2.33722,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Girardon"
+  },
+  {
+   "km": 122.52,
+   "name": "Rue Girardon → Rue Norvins (Place Jean-Baptiste Clément) [Montmartre lap 3]",
+   "lat": 48.88765,
+   "lon": 2.33749,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Norvins"
+  },
+  {
+   "km": 122.7,
+   "name": "Côte de la Butte Montmartre (cat. 4, 3rd passage) – top of the climb on Rue Norvins",
+   "lat": 48.88702,
+   "lon": 2.33969,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Rue Norvins"
+  },
+  {
+   "km": 122.83,
+   "name": "Rue Norvins – Place du Tertre, right into Rue du Mont-Cenis [Montmartre lap 3]",
+   "lat": 48.88666,
+   "lon": 2.34137,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue du Mont-Cenis"
+  },
+  {
+   "km": 122.89,
+   "name": "Rue du Mont-Cenis → Rue Saint-Eleuthère [Montmartre lap 3]",
+   "lat": 48.88619,
+   "lon": 2.34138,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Saint-Eleuthère"
+  },
+  {
+   "km": 122.99,
+   "name": "Rue Azaïs, in front of the Sacré-Cœur [Montmartre lap 3]",
+   "lat": 48.88575,
+   "lon": 2.3424,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Azaïs"
+  },
+  {
+   "km": 123.22,
+   "name": "Rue du Cardinal Dubois [Montmartre lap 3]",
+   "lat": 48.88697,
+   "lon": 2.34449,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue du Cardinal Dubois"
+  },
+  {
+   "km": 123.28,
+   "name": "Rue du Cardinal Dubois → Rue Lamarck (descent) [Montmartre lap 3]",
+   "lat": 48.88753,
+   "lon": 2.34454,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Lamarck"
+  },
+  {
+   "km": 123.54,
+   "name": "Rue Lamarck (descent) [Montmartre lap 3]",
+   "lat": 48.88918,
+   "lon": 2.34249,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Lamarck"
+  },
+  {
+   "km": 123.76,
+   "name": "Rue Lamarck → Rue Caulaincourt [Montmartre lap 3]",
+   "lat": 48.88967,
+   "lon": 2.33977,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 123.96,
+   "name": "Rue Caulaincourt (descent) [Montmartre lap 3]",
+   "lat": 48.88955,
+   "lon": 2.33704,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 124.35,
+   "name": "Rue Caulaincourt (descent) [Montmartre lap 3]",
+   "lat": 48.88749,
+   "lon": 2.33338,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 124.55,
+   "name": "Rue Caulaincourt (bridge over the Montmartre cemetery) [Montmartre lap 3]",
+   "lat": 48.886,
+   "lon": 2.3317,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Caulaincourt"
+  },
+  {
+   "km": 124.76,
+   "name": "Rue Caulaincourt → Boulevard de Clichy (bottom of the descent) [Montmartre lap 3]",
+   "lat": 48.88471,
+   "lon": 2.3297,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard de Clichy"
+  },
+  {
+   "km": 125.02,
+   "name": "Place de Clichy → Boulevard des Batignolles (westbound) [Montmartre lap 3]",
+   "lat": 48.8835,
+   "lon": 2.3267,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 125.46,
+   "name": "Boulevard des Batignolles (westbound) [Montmartre lap 3]",
+   "lat": 48.88233,
+   "lon": 2.32096,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard des Batignolles"
+  },
+  {
+   "km": 126.09,
+   "name": "Boulevard de Courcelles (westbound) [Montmartre lap 3]",
+   "lat": 48.88085,
+   "lon": 2.31254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 126.66,
+   "name": "Boulevard de Courcelles (Parc Monceau, westbound) [Montmartre lap 3]",
+   "lat": 48.87955,
+   "lon": 2.30498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard de Courcelles"
+  },
+  {
+   "km": 127.21,
+   "name": "Place des Ternes – left into Avenue de Wagram [Montmartre lap 3]",
+   "lat": 48.87779,
+   "lon": 2.29807,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 127.39,
+   "name": "Avenue de Wagram (towards the Étoile) [Montmartre lap 3]",
+   "lat": 48.87631,
+   "lon": 2.29687,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Wagram"
+  },
+  {
+   "km": 127.63,
+   "name": "Place Charles de Gaulle – from Avenue de Wagram [Montmartre lap 3]",
+   "lat": 48.87434,
+   "lon": 2.29544,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 127.74,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (north-west) [Montmartre lap 3]",
+   "lat": 48.87405,
+   "lon": 2.2942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 127.85,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-west) [Montmartre lap 3]",
+   "lat": 48.87323,
+   "lon": 2.29464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place Charles de Gaulle"
+  },
+  {
+   "km": 127.92,
+   "name": "Place Charles de Gaulle – round the Arc de Triomphe (south-east), onto the Champs-Élysées [Montmartre lap 3]",
+   "lat": 48.87326,
+   "lon": 2.29556,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 128.23,
+   "name": "Champs-Élysées – upper part (down) [Montmartre lap 3]",
+   "lat": 48.87242,
+   "lon": 2.2993,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 128.48,
+   "name": "Champs-Élysées at Rue de Berri (down) [Montmartre lap 3]",
+   "lat": 48.87143,
+   "lon": 2.30242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 129.12,
+   "name": "Champs-Élysées – Rond-Point des Champs-Élysées (down) [Montmartre lap 3]",
+   "lat": 48.86898,
+   "lon": 2.31012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 129.45,
+   "name": "Champs-Élysées at Place Clemenceau (down) [Montmartre lap 3]",
+   "lat": 48.86766,
+   "lon": 2.31426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 129.9,
+   "name": "Place de la Concorde – end of the Champs-Élysées (down) [Montmartre lap 3]",
+   "lat": 48.86587,
+   "lon": 2.31992,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 130.15,
+   "name": "Place de la Concorde – north side, towards Rue de Rivoli [Montmartre lap 3]",
+   "lat": 48.86652,
+   "lon": 2.32255,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 130.28,
+   "name": "Rue de Rivoli (from Concorde) [Montmartre lap 3]",
+   "lat": 48.86635,
+   "lon": 2.32419,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 130.53,
+   "name": "Rue de Rivoli at Rue de Castiglione [Montmartre lap 3]",
+   "lat": 48.86535,
+   "lon": 2.32731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 130.76,
+   "name": "Rue de Rivoli (Rue du 29-Juillet) [Montmartre lap 3]",
+   "lat": 48.86444,
+   "lon": 2.33014,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Rivoli"
+  },
+  {
+   "km": 130.92,
+   "name": "Place des Pyramides – right into Avenue du Général-Lemonnier [Montmartre lap 3]",
+   "lat": 48.86375,
+   "lon": 2.33209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 131.09,
+   "name": "Avenue du Général-Lemonnier (Tuileries tunnel) [Montmartre lap 3]",
+   "lat": 48.86232,
+   "lon": 2.33108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Lemonnier"
+  },
+  {
+   "km": 131.27,
+   "name": "Pont Royal – out of the tunnel onto the Quai Aimé-Césaire (westbound) [Montmartre lap 3]",
+   "lat": 48.8609,
+   "lon": 2.33007,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 131.6,
+   "name": "Quai Aimé-Césaire (Tuileries) [Montmartre lap 3]",
+   "lat": 48.86222,
+   "lon": 2.32598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Aimé Césaire"
+  },
+  {
+   "km": 131.93,
+   "name": "Quai des Tuileries [Montmartre lap 3]",
+   "lat": 48.86355,
+   "lon": 2.32189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai des Tuileries"
+  },
+  {
+   "km": 132.17,
+   "name": "Place de la Concorde – south side, back onto the Champs-Élysées [Montmartre lap 3]",
+   "lat": 48.86495,
+   "lon": 2.32058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Place de la Concorde"
+  },
+  {
+   "km": 132.5,
+   "name": "Champs-Élysées – lower part (up, final straight) [Montmartre lap 3]",
+   "lat": 48.86664,
+   "lon": 2.31746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  },
+  {
+   "km": 133.0,
+   "name": "Paris, Champs-Élysées – finish line (after a 700 m final straight)",
+   "lat": 48.8686,
+   "lon": 2.3112,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Avenue des Champs-Élysées"
+  }
+ ],
+ "notes": "Planned stage of 133.0 km, as published in the official itinerary (lengthKm = 133). On the day (26 July 2026) the stage was shortened by 44 km to 88.7 km (the Yvelines/Hauts-de-Seine run-in from Thoiry was dropped; the race started on the Champs-Élysées, rode 6 Champs laps with the sprint at km 27.9, then the 3 Montmartre laps); this file describes the planned route. Km 0 (départ réel) is on the Route de Garancières at its junction with the road from Villiers-le-Mahieu (Rue du Pont d'Aulne), north of Garancières, 3.1 km after the gathering point in Thoiry; the neutralised section (Thoiry Rue du Pavillon de Montreuil → D11 → D45 Route des Bruyères → Villiers-le-Mahieu Rue du Centre → Rue du Pont d'Aulne) is not included. The km 0 coordinate is derived from that neutral distance (routed 3.07 km), and the official km downstream then match the road graph closely (Garancières 2.7, D42/D34 11.6 routed 11.61, D34/D912 12.7 routed 12.75). Official km used as anchors (Yvelines itinéraire horaire, cyclingstage timetable, tour-magazin/dhnet): Garancières 2.7, carrefour D42/D34 (Neauphle-le-Vieux) 11.6, carrefour D34/D912 12.7, Trappes Rond-Point Éric Tabarly 22.8, Mare Savin 24.7, Guyancourt 28.9, Château de Versailles 35.1, foot/summit of the Côte du Pavé des Gardes 42.4/43.1, Issy-les-Moulineaux 46.4, Paris 49.0, Tour Eiffel 51.7, Louvre 55.7, finish line passages 57.9, 64.7, 71.5, 78.4, 85.2, 101.1, 117.0, finish 133.0, intermediate sprint 72.2, Côte de la Butte Montmartre 90.8/106.7/122.7. Other km are interpolated from routed distances and given to 0.01 km only so that the closely spaced circuit points stay strictly increasing; they are not more precise than about ±0.1 km. Anchor stretches route within ±4 % except Issy 46.4 → Paris 49.0 (routed 2.41 km, -7 %: the itinerary's 'Paris' point is probably counted a little further than the city limit on the quai). Route: Route de Garancières, Garancières (Route de Villiers-le-Mahieu, Rue Montguichet), D42 via Le Breuil, Boissy-sans-Avoir, Vicq, Le Mesnil-Piquet (Méré), D34 at Neauphle-le-Vieux, D912 (Route du Pontel, Jouars-Pontchartrain, Sainte-Apolline/Plaisir, Avenue d'Armorique, Élancourt Avenue de Dreux, Avenue Marcel Dassault, Trappes Route de Dreux), D36 through Trappes (Avenue Eugène Delacroix, Rue Maurice Thorez, Pont Marcel Cachin, Rue de Port-Royal), D38 through Saint-Quentin-en-Yvelines (Rue Gaston Monmousseau, Avenue des Prés past the station, Avenue du Centre; streets identified from the IDFM bus diversions and the itinerary distances), D127 Avenue des Frères Lumière, D10 through Saint-Cyr-l'École (Avenue Pierre Curie, Avenue de la Division Leclerc, Route de Saint-Cyr past the Pièce d'eau des Suisses). The 'Château de Versailles' km 35.1 is placed where the route leaves the Route de Saint-Cyr at the Orangerie into Rue de l'Indépendance Américaine, then Place d'Armes in front of the château and Avenue de Paris (D10) to Porchefontaine, D56 (Avenue Louvois, Avenue de Versailles) into Viroflay, then Route du Pavé de Meudon and Avenue de Vélizy (Vélizy-Villacoublay), D53 (Rue de Dietzenbach/Louis Gaubert, Rue de Jouy, Rue Anatole France) to Chaville, D181 Rue/Route du Pavé des Gardes (Côte du Pavé des Gardes, 0.7 km at about 9.5 %, 109 → 175 m in Copernicus GLO-30) over the Sèvres/Meudon ridge, Route des Gardes down to Bas-Meudon, a few metres of the D989 Rue de Vaugirard, D7 Quai de la Bataille de Stalingrad and Quai du Président Roosevelt (Issy) into Paris. The Viroflay → Vélizy → Chaville back-road sequence is read from the road-closure lists; Versailles → foot of the climb routes 7.09 km for an official 7.3, so a slightly longer variant in Vélizy/Chaville is possible (medium confidence). Paris: left-bank quays (Quai d'Issy, Quai André Citroën, Quai de Grenelle; the itinerary 'Tour Eiffel' km 51.7 is taken at the Pont de Bir-Hakeim, low confidence), Quai Jacques Chirac, Quai Branly, Quai d'Orsay, Quai Anatole France, then Pont Royal, the Guichets du Carrousel / Place du Carrousel, Rue de Rivoli westbound and Place de la Concorde onto the Champs-Élysées (km ~55.2–56.9, low confidence: the published sources name the Louvre and Rivoli but not the exact crossing). Finish circuit: the line is on the Champs-Élysées 700 m above the Place de la Concorde (just below the Rond-Point; position derived from the 700 m final straight, medium). Champs lap (6.8 km, ridden 4 times after the first line crossing at 57.9; the 85.2 line passage is inferred, it is not listed in the timetable): up the Champs-Élysées, once round the Arc de Triomphe (Place Charles de Gaulle, anticlockwise), down the Champs-Élysées, Place de la Concorde, Rue de Rivoli eastbound, Place des Pyramides, Avenue du Général-Lemonnier (Tuileries underpass), Quai Aimé-Césaire / Quai des Tuileries westbound, Place de la Concorde and up the Champs again. Montmartre lap (about 15.9 km, ridden 3 times): up the Champs-Élysées, Place Charles de Gaulle, Avenue de Wagram, Place des Ternes, Boulevard de Courcelles, Boulevard des Batignolles, Place de Clichy, Boulevard de Clichy, Place Blanche, Rue Lepic (the climb; the lower pedestrian part of Rue Lepic carries 'radius': 12 so the router does not take Rue Puget/Rue Coustou), Rue Girardon, Rue Norvins (top of the Côte de la Butte Montmartre placed at Rue Norvins/Rue des Saules), Place du Tertre, Rue du Mont-Cenis, Rue Saint-Eleuthère, Rue Azaïs in front of the Sacré-Cœur, Rue du Cardinal Dubois, Rue Lamarck, Rue Caulaincourt down to Boulevard de Clichy, back along the same boulevards and Avenue de Wagram to the Étoile, down the Champs-Élysées, the Rivoli/Tuileries loop and up the final 700 m. Each lap's points are listed in order for every lap ('[Champs lap N]', '[Montmartre lap N]'). The intermediate sprint (km 72.2, third passage, top of the Champs-Élysées) is placed at its official km on the upper Champs (low). Map notes: Overture has a single centreline for the Champs-Élysées and for the Wagram/Courcelles/Batignolles boulevards, so the up and down legs share one line (an intended out-and-back for the double-back check, as for the champs-elysees route). In Overture Rue Saint-Eleuthère, Rue Azaïs and Rue du Cardinal Dubois are part of one 'Rue Lamarck' segment round the Sacré-Cœur, and Rue Norvins east of Rue des Saules, Place du Tertre and Rue du Mont-Cenis are pedestrian; the routed path was checked to use them.",
+ "sources": [
+  "https://www.villepreux.fr/wp-content/uploads/2026/07/TDF26-Itineraire-Horaire-Etape-21_Yvelines.pdf",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-21-tdf-2026/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-21-times.htm",
+  "https://www.infosyvelines.fr/articles/tour-de-france-2026-le-peloton-selance-de-thoiry-dimanche-horaires-et-routes-coupees-dans-les-yvelines",
+  "https://www.sortiraparis.com/en/what-to-do-in-paris/sport-wellness/articles/348649-tour-de-france-2026-through-which-towns-in-yvelines-and-hauts-de-seine-will-the-final-stage-pass",
+  "https://www.sortiraparis.com/actualites/a-paris/articles/330822-arrivee-du-tour-de-france-2026-a-paris-les-restrictions-de-stationnement-et-de-circulation",
+  "https://www.sortiraparis.com/loisirs/sport/articles/278753-tour-de-france-2026-le-parcours-et-les-horaires-de-la-derniere-etape-des-yvelines-a-paris",
+  "https://www.iledefrance-mobilites.fr/en/actualites/locales/detail/tour-de-france-a-saint-quentin-26-juillet-2026",
+  "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/26/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-21e-etape-thoiry-paris-champs-elysees-133-km-UDZDYSKPBZDDLGHLEHC2BBVHTU/",
+  "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-21-four-kilometres-more-for-a-sprint-finish/",
+  "https://www.hedgehogcycling.co.uk/stage-21-tour-de-france-2026.html",
+  "https://www.velofute.com/post/tour-de-france-2026-%C3%A9tape-21-parcours-et-favoris-au-sommet-aux-champs-elys%C3%A9es",
+  "https://www.montmartre-addict.com/article/ce-quil-faut-savoir-sur-le-passage-du-tour-de-france-a-montmartre/",
+  "https://www.paris.fr/en/pages/the-2026-tour-de-france-returns-to-montmartre-35828",
+  "https://www.lalibre.be/dernieres-depeches/2026/07/25/tour-de-france-la-derniere-etape-vers-les-champs-elysees-raccourcie-de-44-kilometres-AG2B4KTE3ND5RFIR6LQISP6UTY/",
+  "https://www.domestiquecycling.com/en/news/van-der-poel-masters-montmartre-in-thrilling-tour-finale-as-pogacar-joins-five-time-champions/",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions; Copernicus GLO-30 DEM"
+ ]
+}

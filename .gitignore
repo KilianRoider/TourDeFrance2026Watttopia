@@ -7,3 +7,5 @@ local.properties
 captures/
 *.keystore
 !debug.keystore
+__pycache__/
+*.pyc

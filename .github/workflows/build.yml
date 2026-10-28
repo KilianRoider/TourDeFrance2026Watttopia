@@ -21,6 +21,10 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      # The private repository this one continues from ended at build 13; numbers go on from there.
+      - name: Build number
+        run: echo "WATTWERK_BUILD=$((GITHUB_RUN_NUMBER + 13))" >> "$GITHUB_ENV"
+
       - name: Test and build APK
         run: |
           set -o pipefail
@@ -35,7 +39,7 @@ jobs:
           grep -E "^e: |What went wrong|^> Task .* FAILED|^\* What|tests completed" build.log | head -200 > errors.txt || true
           head -10 errors.txt | while IFS= read -r line; do echo "::error::${line}"; done
           {
-            echo "Build ${{ github.run_number }} fehlgeschlagen (Run ${{ github.run_id }})."
+            echo "Build ${{ env.WATTWERK_BUILD }} fehlgeschlagen (Run ${{ github.run_id }})."
             echo
             echo '```'
             cat errors.txt
@@ -53,7 +57,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           {
-            echo "Build ${{ github.run_number }} aus Commit ${{ github.sha }}."
+            echo "Build ${{ env.WATTWERK_BUILD }} aus Commit ${{ github.sha }}."
             echo
             echo "Auf dem Tablet Wattwerk.apk herunterladen und installieren (Installation aus unbekannten Quellen erlauben)."
             echo
@@ -61,12 +65,12 @@ jobs:
             echo
             git log -1 --pretty=%B "${{ github.sha }}" | sed 's/^Co-Authored-By.*//; s/^Claude-Session.*//'
           } > notes.md
-          gh release create "v0.1.${{ github.run_number }}" Wattwerk.apk \
-            --title "Wattwerk 0.1.${{ github.run_number }}" \
+          gh release create "v0.1.${{ env.WATTWERK_BUILD }}" Wattwerk.apk \
+            --title "Wattwerk 0.1.${{ env.WATTWERK_BUILD }}" \
             --notes-file notes.md \
             --latest
           gh release delete latest --yes --cleanup-tag || true
           gh release create latest Wattwerk.apk \
-            --title "Wattwerk (immer der neueste Build ${{ github.run_number }})" \
+            --title "Wattwerk (immer der neueste Build ${{ env.WATTWERK_BUILD }})" \
             --notes-file notes.md \
             --prerelease

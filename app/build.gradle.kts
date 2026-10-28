@@ -15,8 +15,11 @@ android {
         applicationId = "app.rollentrainer"
         minSdk = 26
         targetSdk = 35
-        versionCode = (System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull() ?: 1)
-        versionName = "0.1.${System.getenv("GITHUB_RUN_NUMBER") ?: "0"}"
+        // CI sets WATTWERK_BUILD (see .github/workflows/build.yml): the build number keeps counting on from
+        // the earlier private repository, so an installed app takes every new APK as an update.
+        val build = System.getenv("WATTWERK_BUILD")?.toIntOrNull()
+        versionCode = build ?: 1
+        versionName = "0.1.${build ?: 0}"
     }
 
     signingConfigs {

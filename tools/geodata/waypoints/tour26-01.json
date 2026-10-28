@@ -1,0 +1,383 @@
+{
+ "id": "tour26-01",
+ "lengthKm": 19.6,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Start (km 0) – Avinguda del Litoral at the Parc del Fòrum / Diagonal Mar end",
+   "lat": 41.40722,
+   "lon": 2.2206,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "Avinguda del Litoral"
+  },
+  {
+   "km": 0.87,
+   "name": "Avinguda del Litoral (between Start (km 0) – Avinguda del Litoral at the Parc del Fòrum / Diagonal Mar end and Port Olímpic – turn from Avinguda del Litoral into Carrer de l'Arquitecte Sert)",
+   "lat": 41.40172,
+   "lon": 2.21336,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 1.78,
+   "name": "Avinguda del Litoral (between Start (km 0) – Avinguda del Litoral at the Parc del Fòrum / Diagonal Mar end and Port Olímpic – turn from Avinguda del Litoral into Carrer de l'Arquitecte Sert)",
+   "lat": 41.39534,
+   "lon": 2.20671,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 2.59,
+   "name": "Port Olímpic – turn from Avinguda del Litoral into Carrer de l'Arquitecte Sert",
+   "lat": 41.39016,
+   "lon": 2.20016,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de l'Arquitecte Sert"
+  },
+  {
+   "km": 2.65,
+   "name": "Carrer de l'Arquitecte Sert → Carrer de Salvador Espriu",
+   "lat": 41.39044,
+   "lon": 2.19977,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Salvador Espriu"
+  },
+  {
+   "km": 3.05,
+   "name": "Carrer de Salvador Espriu → Carrer de Jaume Vicens i Vives",
+   "lat": 41.39307,
+   "lon": 2.20273,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Jaume Vicens i Vives"
+  },
+  {
+   "km": 3.15,
+   "name": "Carrer de Jaume Vicens i Vives → Carrer Carmen Amaya",
+   "lat": 41.39359,
+   "lon": 2.20205,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer Carmen Amaya"
+  },
+  {
+   "km": 3.54,
+   "name": "Carrer Carmen Amaya → Passeig de Calvell",
+   "lat": 41.39624,
+   "lon": 2.20489,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig de Calvell"
+  },
+  {
+   "km": 3.96,
+   "name": "Passeig de Calvell → Passeig de Garcia Fària",
+   "lat": 41.39901,
+   "lon": 2.20804,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Passeig de Garcia Fària"
+  },
+  {
+   "km": 4.39,
+   "name": "Passeig de Garcia Fària → Carrer de Bac de Roda",
+   "lat": 41.40188,
+   "lon": 2.21146,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Bac de Roda"
+  },
+  {
+   "km": 4.86,
+   "name": "Carrer de Bac de Roda → Carrer de Llull",
+   "lat": 41.40482,
+   "lon": 2.2076,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Llull"
+  },
+  {
+   "km": 5.16,
+   "name": "Intermediate time check 1 (Carrer de Llull; official km 5.1, exact spot not published)",
+   "lat": 41.40674,
+   "lon": 2.20973,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Carrer de Llull"
+  },
+  {
+   "km": 5.68,
+   "name": "Carrer de Llull → Carrer de Josep Pla (tram level crossing)",
+   "lat": 41.410001,
+   "lon": 2.21407,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Josep Pla"
+  },
+  {
+   "km": 6.2,
+   "name": "Carrer de Josep Pla (between Carrer de Llull → Carrer de Josep Pla (tram level crossing) and Carrer de Josep Pla → Carrer de Cantàbria)",
+   "lat": 41.41333,
+   "lon": 2.2099,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 6.83,
+   "name": "Carrer de Josep Pla → Carrer de Cantàbria",
+   "lat": 41.41728,
+   "lon": 2.20467,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de Cantàbria"
+  },
+  {
+   "km": 7.22,
+   "name": "Carrer de Cantàbria → Rambla de Guipúscoa",
+   "lat": 41.41971,
+   "lon": 2.20145,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Rambla de Guipúscoa"
+  },
+  {
+   "km": 7.77,
+   "name": "Rambla de Guipúscoa (between Carrer de Cantàbria → Rambla de Guipúscoa and Rambla de Guipúscoa → Carrer d'Aragó)",
+   "lat": 41.41633,
+   "lon": 2.19687,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 8.31,
+   "name": "Rambla de Guipúscoa → Carrer d'Aragó",
+   "lat": 41.4129,
+   "lon": 2.19236,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer d'Aragó"
+  },
+  {
+   "km": 9.11,
+   "name": "Carrer d'Aragó (between Rambla de Guipúscoa → Carrer d'Aragó and Carrer d'Aragó → Carrer de Lepant)",
+   "lat": 41.40787,
+   "lon": 2.18583,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 9.93,
+   "name": "Carrer d'Aragó → Carrer de Lepant",
+   "lat": 41.40278,
+   "lon": 2.17886,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de Lepant"
+  },
+  {
+   "km": 10.2,
+   "name": "Carrer de Lepant → Carrer de Mallorca",
+   "lat": 41.40444,
+   "lon": 2.17668,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Mallorca"
+  },
+  {
+   "km": 10.43,
+   "name": "Sagrada Família (Carrer de Mallorca)",
+   "lat": 41.40301,
+   "lon": 2.17479,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Carrer de Mallorca"
+  },
+  {
+   "km": 10.66,
+   "name": "Intermediate time check 2 (Sagrada Família, Carrer de Mallorca; official km 10.5, exact spot not published)",
+   "lat": 41.40166,
+   "lon": 2.17297,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Carrer de Mallorca"
+  },
+  {
+   "km": 11.01,
+   "name": "Plaça de Mossèn Jacint Verdaguer (Carrer de Mallorca × Avinguda Diagonal)",
+   "lat": 41.39949,
+   "lon": 2.17007,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Mallorca"
+  },
+  {
+   "km": 11.9,
+   "name": "Carrer de Mallorca → Passeig de Gràcia",
+   "lat": 41.39392,
+   "lon": 2.16274,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Passeig de Gràcia"
+  },
+  {
+   "km": 12.17,
+   "name": "Passeig de Gràcia → Carrer d'Aragó",
+   "lat": 41.39219,
+   "lon": 2.16487,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer d'Aragó"
+  },
+  {
+   "km": 12.94,
+   "name": "Carrer d'Aragó (between Passeig de Gràcia → Carrer d'Aragó and Carrer d'Aragó → Carrer de Tarragona)",
+   "lat": 41.38735,
+   "lon": 2.15847,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 13.72,
+   "name": "Carrer d'Aragó (between Passeig de Gràcia → Carrer d'Aragó and Carrer d'Aragó → Carrer de Tarragona)",
+   "lat": 41.38239,
+   "lon": 2.1519,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 14.4,
+   "name": "Carrer d'Aragó → Carrer de Tarragona",
+   "lat": 41.37818,
+   "lon": 2.14623,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer de Tarragona"
+  },
+  {
+   "km": 14.81,
+   "name": "Plaça d'Espanya",
+   "lat": 41.37529,
+   "lon": 2.14858,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de la Reina Maria Cristina"
+  },
+  {
+   "km": 15.32,
+   "name": "Avinguda de la Reina Maria Cristina → Avinguda de Rius i Taulet",
+   "lat": 41.37172,
+   "lon": 2.15148,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Rius i Taulet"
+  },
+  {
+   "km": 15.67,
+   "name": "Avinguda de Rius i Taulet → Carrer de Lleida",
+   "lat": 41.37293,
+   "lon": 2.15517,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de Lleida"
+  },
+  {
+   "km": 15.98,
+   "name": "Carrer de Lleida → Passeig de Santa Madrona – intermediate time check 3, foot of the Montjuïc climb",
+   "lat": 41.37042,
+   "lon": 2.15644,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "Passeig de Santa Madrona"
+  },
+  {
+   "km": 16.19,
+   "name": "Passeig de Santa Madrona",
+   "lat": 41.36957,
+   "lon": 2.15832,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 16.39,
+   "name": "Passeig de Santa Madrona",
+   "lat": 41.36877,
+   "lon": 2.15689,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 16.54,
+   "name": "Passeig de Santa Madrona",
+   "lat": 41.36809,
+   "lon": 2.15668,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 16.76,
+   "name": "Passeig de Santa Madrona → Avinguda de l'Estadi (Avinguda de Miramar junction)",
+   "lat": 41.36749,
+   "lon": 2.15897,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avinguda de l'Estadi"
+  },
+  {
+   "km": 17.0,
+   "name": "Côte de Montjuïc – top (Avinguda de l'Estadi, 'Pujada de Montjuïc' in the itinerary)",
+   "lat": 41.36636,
+   "lon": 2.15677,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Avinguda de l'Estadi"
+  },
+  {
+   "km": 17.95,
+   "name": "Avinguda de l'Estadi → Carrer dels Jocs del 92",
+   "lat": 41.36537,
+   "lon": 2.14576,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Carrer dels Jocs del 92"
+  },
+  {
+   "km": 18.67,
+   "name": "Carrer dels Jocs del 92 → Carrer del Foc",
+   "lat": 41.35969,
+   "lon": 2.14932,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Foc"
+  },
+  {
+   "km": 18.88,
+   "name": "Carrer del Foc → Passeig Olímpic – foot of the final climb",
+   "lat": 41.36034,
+   "lon": 2.15157,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "Passeig Olímpic"
+  },
+  {
+   "km": 19.6,
+   "name": "Finish – Passeig Olímpic, Estadi Olímpic Lluís Companys",
+   "lat": 41.3647,
+   "lon": 2.15764,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  }
+ ],
+ "notes": "Team time trial, 19.6 km, ridden once, point to point from the Fòrum (Sant Martí) to the Estadi Olímpic on Montjuïc. km 0 is placed on Avinguda del Litoral at the Parc del Fòrum / Diagonal Mar end (41.40722, 2.22060), medium confidence: the start ramp has no published coordinates, and this point makes the first itinerary row (2.6 km, Port Olímpic turn into Carrer de l'Arquitecte Sert) match the routed path exactly. Itinerary from the PIMEC timetable (kms to 0.1 km): 2.6 Litoral -> Arquitecte Sert, 2.7 Salvador Espriu, 3.0 Jaume Vicens i Vives, 3.1 Carmen Amaya, 3.5 Passeig de Calvell, 4.0 Passeig de Garcia Fària, 4.4 Bac de Roda, 4.9 Llull, 5.1 intermediate time check 1, 5.6 tram level crossing / Josep Pla, 6.7 Cantàbria, 7.2 Rambla de Guipúscoa, 8.2 Aragó, 9.8 Lepant, 10.1 Mallorca, 10.3 Sagrada Família, 10.5 time check 2, 10.9 Plaça de Mossèn Jacint Verdaguer, 11.8 Passeig de Gràcia, 12.0 Aragó, 14.3 Tarragona, 14.6 Plaça d'Espanya, 15.2 Avinguda de Rius i Taulet, 15.5 Carrer de Lleida, 15.9 Passeig de Santa Madrona (time check 3, foot of the climb), 16.8 Avinguda de l'Estadi, 17.0 'Pujada de Montjuïc' (top), 17.9 Jocs del 92, 18.8 Carrer del Foc, 18.9 Passeig Olímpic, 19.6 finish. The beteve closure list gives the same street sequence. Routed on Overture streets the course measures 19.75-19.86 km (about 1 % longer than 19.6). To keep every straight-line distance <= km difference, the km of each junction was re-derived from the routed path between km 0 and the finish; all stay within 0.2 km of the itinerary values (confidence 'high' only where the difference is <= 0.12 km, otherwise 'medium'). The time checks have no published spot and sit at their path-derived km. Avinguda del Litoral is ridden south-westwards on closed roads, partly against the mapped one-way direction, so one-way restrictions were ignored except on motorways/trunks. From Avinguda de la Reina Maria Cristina the course goes over Avinguda de Rius i Taulet and Carrer de Lleida to Passeig de Santa Madrona; its hairpins up to Avinguda de l'Estadi have extra points (straight/km ratio below 0.6 there is expected). Finish: Passeig Olímpic in front of the Estadi Olímpic Lluís Companys (41.36470, 2.15764), at the top of the ~700 m rise from Carrer del Foc; the same finish point is used for stage 2. Points named '(between ...)' are routing fill points about 1 km apart.",
+ "sources": [
+  "https://pimec.org/wp-content/uploads/2026/07/20260616-_PPT-Tour_horaris.pdf",
+  "https://beteve.cat/mobilitat/carrers-tallats-barcelona-grand-depart-tour-franca-2026-transport/",
+  "https://www.3cat.cat/esport3/restriccions-de-mobilitat-pel-pas-del-tour-de-franca-dia-a-dia/noticia/3415515/",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-1-tdf-2026/",
+  "Overture Maps transportation segments, release 2026-10-21.0 (routing and road names)",
+  "Copernicus GLO-30 DEM (elevation checks)"
+ ]
+}

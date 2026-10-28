@@ -1,0 +1,257 @@
+{
+ "id": "ventoux",
+ "lengthKm": 21.8,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Bédoin – foot, Avenue Barral des Baux (D974) at the Chemin de Crillon-le-Brave junction (~297 m)",
+   "lat": 44.12209,
+   "lon": 5.17867,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 0.44,
+   "name": "Bédoin – roundabout D19 (Route de Malaucène) / D974 Route du Mont-Ventoux",
+   "lat": 44.12528,
+   "lon": 5.1804,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 1.3,
+   "name": "D974 bend below Chapelle du Moustier",
+   "lat": 44.12234,
+   "lon": 5.18995,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 2.2,
+   "name": "D974 through the vineyards (Les Héritiers)",
+   "lat": 44.11853,
+   "lon": 5.19979,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 3.2,
+   "name": "D974 before Sainte-Colombe",
+   "lat": 44.12024,
+   "lon": 5.21113,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 4.25,
+   "name": "Sainte-Colombe",
+   "lat": 44.12034,
+   "lon": 5.2229,
+   "kind": "village",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 5.45,
+   "name": "Les Bruns",
+   "lat": 44.1175,
+   "lon": 5.2361,
+   "kind": "village",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 6.1,
+   "name": "Virage de Saint-Estève (left-hand bend, start of the forest)",
+   "lat": 44.11366,
+   "lon": 5.23967,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 7.0,
+   "name": "D974 in the forest",
+   "lat": 44.1178,
+   "lon": 5.24701,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 8.0,
+   "name": "D974 in the forest",
+   "lat": 44.12468,
+   "lon": 5.25358,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 9.0,
+   "name": "D974 in the forest",
+   "lat": 44.1241,
+   "lon": 5.26529,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 10.0,
+   "name": "D974 in the forest (mid-forest)",
+   "lat": 44.12577,
+   "lon": 5.27646,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 11.0,
+   "name": "D974 in the forest",
+   "lat": 44.1289,
+   "lon": 5.28573,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 12.0,
+   "name": "D974 in the forest",
+   "lat": 44.1337,
+   "lon": 5.29585,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 13.0,
+   "name": "D974 in the forest",
+   "lat": 44.136,
+   "lon": 5.30726,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 14.0,
+   "name": "D974 in the forest",
+   "lat": 44.14076,
+   "lon": 5.31739,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 15.0,
+   "name": "D974 below Chalet Reynard",
+   "lat": 44.14725,
+   "lon": 5.31569,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 15.6,
+   "name": "Chalet Reynard (1419 m) – junction with the D164 from Sault",
+   "lat": 44.15197,
+   "lon": 5.31886,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 16.5,
+   "name": "D974 above Chalet Reynard (lunar landscape)",
+   "lat": 44.15474,
+   "lon": 5.31541,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 17.5,
+   "name": "D974",
+   "lat": 44.1579,
+   "lon": 5.30879,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 18.5,
+   "name": "D974",
+   "lat": 44.16188,
+   "lon": 5.3008,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 19.5,
+   "name": "D974",
+   "lat": 44.1676,
+   "lon": 5.29535,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 20.5,
+   "name": "Tom Simpson memorial",
+   "lat": 44.16964,
+   "lon": 5.28604,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 21.1,
+   "name": "Col des Tempêtes (~1829 m)",
+   "lat": 44.17423,
+   "lon": 5.28325,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 21.5,
+   "name": "D974 on the south face below the observatory",
+   "lat": 44.17296,
+   "lon": 5.27866,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 21.65,
+   "name": "Summit hairpin west of the observatory",
+   "lat": 44.17343,
+   "lon": 5.27703,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D974"
+  },
+  {
+   "km": 21.83,
+   "name": "Mont Ventoux – summit, D974 beside the observatory (~1909 m)",
+   "lat": 44.1736,
+   "lon": 5.27915,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D974"
+  }
+ ],
+ "notes": "Mont Ventoux from Bédoin (south side, D974). km 0 = foot of the app profile in Bédoin village on Avenue Barral des Baux (D974) at the junction with the Chemin de Crillon-le-Brave, ~297 m (app startElevationM 295). From there the routed D974 to the summit is 21.83 km (app 21.8 km) and the DEM per-km grades along the routed road match the app's kmGradients within ~0.5 % for every km (2.0/3.0/3.8/5.9/5.7/3.4/9.1/9.6/10.1/9.9/8.4/10.4/9.2/9.1/8.4/6.8/6.5/6.7/7.2/8.3/8.8/8.1 vs app 1.9/2.8/3.8/5.9/5.7/3.1/8.7/9.5/10.6/10.2/9.4/10.2/9.3/9.5/8.9/7.0/6.7/6.9/7.5/8.4/9.2/8.3), which confirms the foot. The common 21.4 km figure starts at the D19/D974 roundabout (km 0.44 here). Route: Avenue Barral des Baux, roundabout, D974 Route du Mont-Ventoux via Sainte-Colombe, Les Bruns, the Saint-Estève bend (km 6.1), the forest to Chalet Reynard (D164 junction, km 15.6), the Simpson memorial (km 20.5, Wikipedia coordinates 44.16964 N 5.28602 E), Col des Tempêtes (km 21.1), along the south face to the summit hairpin and up beside the observatory to the summit (top of the road; the D974 continues down to Malaucène). km values are routed distances on the Overture road graph; positions are Overture road vertices / locality points snapped to the D974. App landmarks are slightly off the real positions (Sainte-Colombe is at km 4.25 not 3.5, Simpson memorial at 20.5 not 20.3, Col des Tempêtes at 21.1 not 20.8).",
+ "sources": [
+  "https://di.ulb.ac.be/ssd/ldoyen/e/ventoux.html",
+  "https://www.cols-cyclisme.com/provence/france/mont-ventoux-depuis-bedoin-c34.htm",
+  "https://en.wikipedia.org/wiki/Death_of_Tom_Simpson",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions",
+  "Copernicus GLO-30 DEM (profile check)"
+ ]
+}

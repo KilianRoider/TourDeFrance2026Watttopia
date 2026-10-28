@@ -1,0 +1,53 @@
+{
+ "name": "race_flags",
+ "kind": "atlas",
+ "category": "race",
+ "file": "race_flags.webp",
+ "size_px": [
+  1024,
+  512
+ ],
+ "alpha": false,
+ "source": "procedural (scratchpad/b14/w3/tex/gen_race_textures.py)",
+ "cols": 8,
+ "rows": 4,
+ "cell_px": 128,
+ "cells": [
+  "FR",
+  "ES",
+  "CAT",
+  "EUS",
+  "BZH",
+  "BE",
+  "VLA",
+  "NL",
+  "DK",
+  "NO",
+  "SI",
+  "CO",
+  "DE",
+  "IT",
+  "GB",
+  "CH",
+  "LU",
+  "AT",
+  "IE",
+  "PT",
+  "US",
+  "AU",
+  "ER",
+  "CZ",
+  "PL",
+  "CA",
+  "SAV",
+  "OCC",
+  "KOM",
+  "YEL",
+  "ORA",
+  "ALLEZ"
+ ],
+ "size_m": [
+  0.9,
+  0.6
+ ]
+}

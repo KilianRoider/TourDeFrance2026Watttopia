@@ -1,0 +1,688 @@
+{
+ "id": "tour26-14",
+ "lengthKm": 155.3,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Pulversheim – départ réel (D429 / D2 crossroads)",
+   "lat": 47.83395,
+   "lon": 7.30109,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D429"
+  },
+  {
+   "km": 1.2,
+   "name": "Alex-Thur (Pulversheim) – D429 bridge",
+   "lat": 47.84054,
+   "lon": 7.28975,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D429"
+  },
+  {
+   "km": 2.9,
+   "name": "Cité Alex (Feldkirch)",
+   "lat": 47.85152,
+   "lon": 7.27423,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D429"
+  },
+  {
+   "km": 4.4,
+   "name": "Bollwiller",
+   "lat": 47.85997,
+   "lon": 7.26242,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D44"
+  },
+  {
+   "km": 8.5,
+   "name": "Berrwiller",
+   "lat": 47.84792,
+   "lon": 7.21687,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D44I"
+  },
+  {
+   "km": 12.1,
+   "name": "Wattwiller",
+   "lat": 47.83623,
+   "lon": 7.18076,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D505"
+  },
+  {
+   "km": 12.6,
+   "name": "Wattwiller – intermediate sprint",
+   "lat": 47.83267,
+   "lon": 7.18365,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D505"
+  },
+  {
+   "km": 14.4,
+   "name": "Uffholtz (D505 / D431)",
+   "lat": 47.81806,
+   "lon": 7.1805,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D431"
+  },
+  {
+   "km": 15.1,
+   "name": "Grand Ballon – foot of the climb (cat. 1, 21.5 km at 4.8 %)",
+   "lat": 47.82131,
+   "lon": 7.17339,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D431"
+  },
+  {
+   "km": 20.0,
+   "name": "D431 (Rue du Ballon / Route des Crêtes), Grand Ballon climb",
+   "lat": 47.83814,
+   "lon": 7.15224,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D431"
+  },
+  {
+   "km": 25.5,
+   "name": "Hartmannswillerkopf – Vieil-Armand",
+   "lat": 47.85809,
+   "lon": 7.14874,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D431"
+  },
+  {
+   "km": 28.2,
+   "name": "Freundstein (Willer-sur-Thur)",
+   "lat": 47.86404,
+   "lon": 7.12393,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D431"
+  },
+  {
+   "km": 30.1,
+   "name": "Col Amic",
+   "lat": 47.87549,
+   "lon": 7.12735,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D431"
+  },
+  {
+   "km": 36.6,
+   "name": "Grand Ballon (cat. 1) summit – Col du Grand Ballon",
+   "lat": 47.9038,
+   "lon": 7.10327,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D431"
+  },
+  {
+   "km": 38.1,
+   "name": "Le Haag (Col du Haag, 1st passage)",
+   "lat": 47.905,
+   "lon": 7.09049,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D431"
+  },
+  {
+   "km": 43.5,
+   "name": "Le Markstein, D431 / D731",
+   "lat": 47.92269,
+   "lon": 7.0343,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D430"
+  },
+  {
+   "km": 43.7,
+   "name": "Le Markstein, D430 / D27",
+   "lat": 47.92308,
+   "lon": 7.03209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D27"
+  },
+  {
+   "km": 43.9,
+   "name": "Le Markstein – finish line, 1st passage",
+   "lat": 47.92327,
+   "lon": 7.02979,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D27"
+  },
+  {
+   "km": 46.0,
+   "name": "Le Treh (Ranspach)",
+   "lat": 47.92605,
+   "lon": 7.00721,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D27"
+  },
+  {
+   "km": 51.0,
+   "name": "D27, descent to Lac de Kruth-Wildenstein",
+   "lat": 47.94952,
+   "lon": 6.99924,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D27"
+  },
+  {
+   "km": 58.1,
+   "name": "Lac de Kruth-Wildenstein (D27 / D13B)",
+   "lat": 47.9555,
+   "lon": 6.96209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D13B"
+  },
+  {
+   "km": 61.4,
+   "name": "Kruth (D13B / D13BI)",
+   "lat": 47.92993,
+   "lon": 6.96113,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D13BI"
+  },
+  {
+   "km": 61.5,
+   "name": "Col du Page – foot of the climb (cat. 2, 9.8 km at 4.7 %)",
+   "lat": 47.92995,
+   "lon": 6.96018,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D13BI"
+  },
+  {
+   "km": 65.1,
+   "name": "Werschmatt (Oderen)",
+   "lat": 47.92082,
+   "lon": 6.94947,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D13BI"
+  },
+  {
+   "km": 68.3,
+   "name": "Col d'Oderen",
+   "lat": 47.92338,
+   "lon": 6.91637,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D43"
+  },
+  {
+   "km": 69.5,
+   "name": "D43 / Rue de Larcenaire",
+   "lat": 47.92631,
+   "lon": 6.90143,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue de Larcenaire"
+  },
+  {
+   "km": 71.3,
+   "name": "Col du Page (cat. 2) summit",
+   "lat": 47.91524,
+   "lon": 6.89064,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Rue de Larcenaire"
+  },
+  {
+   "km": 74.5,
+   "name": "Larcenaire (Bussang)",
+   "lat": 47.90616,
+   "lon": 6.86646,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de Larcenaire"
+  },
+  {
+   "km": 77.7,
+   "name": "La Hutte (Route du Chaix Barbe / Route de la Hutte)",
+   "lat": 47.90261,
+   "lon": 6.88317,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Route de la Hutte"
+  },
+  {
+   "km": 80.5,
+   "name": "Bussang, Rue Lutenbacher / N66",
+   "lat": 47.88664,
+   "lon": 6.85777,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "N66"
+  },
+  {
+   "km": 80.8,
+   "name": "Bussang",
+   "lat": 47.88562,
+   "lon": 6.8543,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N66"
+  },
+  {
+   "km": 84.0,
+   "name": "Saint-Maurice-sur-Moselle",
+   "lat": 47.86518,
+   "lon": 6.82786,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N66"
+  },
+  {
+   "km": 85.3,
+   "name": "Saint-Maurice-sur-Moselle, N66 / D465",
+   "lat": 47.85537,
+   "lon": 6.81958,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 85.5,
+   "name": "Ballon d'Alsace – foot of the climb (cat. 1, 8.9 km at 6.9 %)",
+   "lat": 47.85532,
+   "lon": 6.82231,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 89.5,
+   "name": "D465, Ballon d'Alsace climb",
+   "lat": 47.83594,
+   "lon": 6.82668,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 92.7,
+   "name": "La Jumenterie",
+   "lat": 47.83352,
+   "lon": 6.83863,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 94.4,
+   "name": "Ballon d'Alsace (cat. 1) summit",
+   "lat": 47.82036,
+   "lon": 6.835,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D465"
+  },
+  {
+   "km": 95.5,
+   "name": "Les Sapins (Lepuix)",
+   "lat": 47.81365,
+   "lon": 6.84144,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D465"
+  },
+  {
+   "km": 96.7,
+   "name": "La Chaumière (Lepuix) – D465 / D466 fork",
+   "lat": 47.80933,
+   "lon": 6.84784,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 103.8,
+   "name": "Lac d'Alfeld",
+   "lat": 47.81647,
+   "lon": 6.87389,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 106.9,
+   "name": "Sewen",
+   "lat": 47.80799,
+   "lon": 6.90478,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D466"
+  },
+  {
+   "km": 109.2,
+   "name": "Dolleren",
+   "lat": 47.80567,
+   "lon": 6.93276,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 110.1,
+   "name": "Oberbruck",
+   "lat": 47.80873,
+   "lon": 6.94196,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 111.6,
+   "name": "Wegscheid",
+   "lat": 47.80117,
+   "lon": 6.95667,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 112.4,
+   "name": "Kirchberg (D466)",
+   "lat": 47.79609,
+   "lon": 6.96209,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 114.9,
+   "name": "Sickert",
+   "lat": 47.78273,
+   "lon": 6.97902,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D466"
+  },
+  {
+   "km": 117.0,
+   "name": "Masevaux (Masevaux-Niederbruck)",
+   "lat": 47.77463,
+   "lon": 6.99758,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D14BIV"
+  },
+  {
+   "km": 118.5,
+   "name": "Houppach",
+   "lat": 47.78335,
+   "lon": 7.01163,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D14BIV"
+  },
+  {
+   "km": 120.8,
+   "name": "Col du Schirm",
+   "lat": 47.78944,
+   "lon": 7.0248,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D14BIV"
+  },
+  {
+   "km": 121.9,
+   "name": "Bourbach-le-Haut",
+   "lat": 47.79589,
+   "lon": 7.02937,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D14BIV"
+  },
+  {
+   "km": 125.2,
+   "name": "Col du Hundsruck",
+   "lat": 47.80655,
+   "lon": 7.04273,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14BIV"
+  },
+  {
+   "km": 130.8,
+   "name": "Bitschwiller-lès-Thann (Rue Joffre / D1066)",
+   "lat": 47.82905,
+   "lon": 7.0797,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1066"
+  },
+  {
+   "km": 132.6,
+   "name": "Willer-sur-Thur",
+   "lat": 47.84367,
+   "lon": 7.07057,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1066"
+  },
+  {
+   "km": 134.0,
+   "name": "Gehren",
+   "lat": 47.85311,
+   "lon": 7.05887,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1066"
+  },
+  {
+   "km": 135.1,
+   "name": "Moosch",
+   "lat": 47.86039,
+   "lon": 7.04916,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1066"
+  },
+  {
+   "km": 136.2,
+   "name": "Giratoire D1066 / D741 (Malmerspach, près)",
+   "lat": 47.86636,
+   "lon": 7.03907,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D741"
+  },
+  {
+   "km": 137.1,
+   "name": "Saint-Amarin",
+   "lat": 47.87323,
+   "lon": 7.03221,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D741"
+  },
+  {
+   "km": 137.6,
+   "name": "Saint-Amarin, Rue Georges Clemenceau",
+   "lat": 47.8758,
+   "lon": 7.03032,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Georges Clemenceau"
+  },
+  {
+   "km": 137.8,
+   "name": "Saint-Amarin, Vogelbach / Rue du Fistelhaeuser",
+   "lat": 47.87698,
+   "lon": 7.03277,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue du Fistelhaeuser"
+  },
+  {
+   "km": 138.2,
+   "name": "Col du Haag – foot of the climb (cat. 1, 11.2 km at 7.3 %)",
+   "lat": 47.87921,
+   "lon": 7.03657,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Rue du Fistelhaeuser"
+  },
+  {
+   "km": 142.3,
+   "name": "Geishouse (village entry, Rue des Champs)",
+   "lat": 47.88445,
+   "lon": 7.05435,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Rue des Champs"
+  },
+  {
+   "km": 143.1,
+   "name": "Geishouse, Rue du Ballon",
+   "lat": 47.88532,
+   "lon": 7.0597,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue du Ballon"
+  },
+  {
+   "km": 143.6,
+   "name": "Geishouse – start of the Voie Verte du Haag",
+   "lat": 47.88564,
+   "lon": 7.06477,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "path"
+  },
+  {
+   "km": 144.6,
+   "name": "Voie Verte du Haag",
+   "lat": 47.89302,
+   "lon": 7.06959,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "path"
+  },
+  {
+   "km": 145.7,
+   "name": "Voie Verte du Haag",
+   "lat": 47.89363,
+   "lon": 7.07898,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "path"
+  },
+  {
+   "km": 146.8,
+   "name": "Voie Verte du Haag",
+   "lat": 47.89962,
+   "lon": 7.08793,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "path"
+  },
+  {
+   "km": 147.7,
+   "name": "Virage du Hibou",
+   "lat": 47.89245,
+   "lon": 7.0907,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "path"
+  },
+  {
+   "km": 148.8,
+   "name": "Voie Verte du Haag",
+   "lat": 47.90063,
+   "lon": 7.09102,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "path"
+  },
+  {
+   "km": 149.2,
+   "name": "Col du Haag, top of the Voie Verte",
+   "lat": 47.9042,
+   "lon": 7.08867,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "service"
+  },
+  {
+   "km": 149.4,
+   "name": "Col du Haag (cat. 1) summit – D431",
+   "lat": 47.905,
+   "lon": 7.09049,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D431"
+  },
+  {
+   "km": 154.9,
+   "name": "Le Markstein, D431 / D731",
+   "lat": 47.92269,
+   "lon": 7.0343,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D430"
+  },
+  {
+   "km": 155.1,
+   "name": "Le Markstein, D430 / D27",
+   "lat": 47.92308,
+   "lon": 7.03209,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D27"
+  },
+  {
+   "km": 155.3,
+   "name": "Le Markstein Fellering – finish",
+   "lat": 47.92327,
+   "lon": 7.02979,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "D27"
+  }
+ ],
+ "notes": "Km values are the official itinerary times/kms (ASO horaire as published by DH/Les Sports+ and cyclingstage: Wattwiller sprint 12.6, Uffholtz 14.4, Col Amic 30.1, Grand Ballon 36.6, Le Markstein 43.9 = first crossing of the finish line, Col d'Oderen 68.3, Col du Page 71.3, Saint-Maurice-sur-Moselle 84.0, Ballon d'Alsace 94.4, La Chaumière 96.7, Sewen 106.9, Col du Hundsruck 125.2, Moosch 135.1, Saint-Amarin 137.1, Geishouse 142.3, Col du Haag 149.4, finish 155.3). Km 0 = départ réel at the Pulversheim crossroads D429 (Rue de Mulhouse / Rue de Guebwiller) x D2; it is not published as a point, it is derived: the routed distance from this crossroads to the D505/D431 junction in Uffholtz is 14.42 km vs 14.4 official, consistent with reports of the real start 'near Pulversheim'. The neutralised section from Mulhouse via Bourtzwiller, Wittenheim and Schoenensteinbach (about 1.2 km before km 0) is not included. Road numbers in Haut-Rhin come from the Collectivité européenne d'Alsace traffic order 2026-0438 (closed sections D429, D44, D44I, D505, D431, D27, D13B, D13BI, D466, D14BIV, D1066, D741). Route: D429 Pulversheim–Bollwiller (Alex-Thur, Cité Alex), D44/D44I via Berrwiller, D505 Wattwiller–Uffholtz, D431 Route des Crêtes via the Hartmannswillerkopf / Vieil-Armand, Freundstein, Col Amic, Grand Ballon and Le Haag to Le Markstein; D27 via Le Treh down to the Lac de Kruth-Wildenstein; D13B to Kruth; D13BI via Werschmatt to the Col d'Oderen; about 1.2 km of D43 descent, then left onto the narrow Rue de Larcenaire over the Col du Page and down via Larcenaire, Route du Chaix Barbe, La Hutte, Route de la Hutte and Rue Lutenbacher to the N66 in Bussang; N66 to Saint-Maurice-sur-Moselle; D465 over the Ballon d'Alsace and down past Les Sapins to the D465/D466 fork at La Chaumière; D466 via the Lac d'Alfeld, Sewen, Dolleren, Oberbruck, Wegscheid, Kirchberg and Sickert to Masevaux; D14BIV Route Joffre via Houppach, Col du Schirm, Bourbach-le-Haut and Col du Hundsruck to Bitschwiller-lès-Thann; D1066 (ex-N66) via Willer-sur-Thur, Gehren and Moosch to the Malmerspach roundabout; D741 into Saint-Amarin; communal streets (Rue Georges Clemenceau, Place du Maréchal-Foch, Vogelbach, Rue du Fistelhaeuser, Rue de Saint-Amarin, Rue des Champs, Rue du Ballon) up to Geishouse; then the car-free Voie Verte du Haag (5.4 km, Overture class 'path', which is why those waypoints carry road='path') via the Virage du Hibou to the D431 at the Col du Haag (the last 160 m is a service road), and the D431 back to Le Markstein. Climbs (cyclingstage): Grand Ballon cat. 1, 21.5 km at 4.8 % (foot km 15.1); Col du Page cat. 2, 9.8 km at 4.7 % from Kruth over the Col d'Oderen (foot 61.5); Ballon d'Alsace cat. 1, 8.9 km at 6.9 % (foot 85.5); Col du Haag cat. 1, 11.2 km at 7.3 % (foot 138.2); foot km = summit km minus climb length. Col positions: Col Amic = D431 / Hameau Blanschen / Route du Col Amic junction (Copernicus DEM 830 m vs 828 m); Grand Ballon = Route des Crêtes high point at the hotel junctions (DEM 1342 m); Col du Haag = D431 junction where the Voie Verte arrives (DEM 1231 m vs 1233 m); Col d'Oderen = D13BI/D43 crest beside the col shelter (refuges.info); Col du Page = crest of the Rue de Larcenaire 1.7 km from the D43, matching the published 1.6 km at 8.4 % from the D43 (DEM); Col du Hundsruck from Wikipedia/Géoportail (DEM 750 m); Col du Schirm (uncategorised, no official km) = DEM crest of the Route Joffre. Finish: both official kms put the line about 0.2 km beyond the D430/D27 junction at Le Markstein (Grand Ballon -> line 7.3 km official vs 7.12 km routed to the junction; Col du Haag -> line 5.9 km vs 5.64 km). The point is therefore placed 0.22 km down the D27 (towards Le Treh), which also makes the first passage a straight run over the line; exact line position ±0.3 km (medium). Points marked as junctions or places without an official km took their km from the routed distance between official neighbours. Points placed by official km on the routed road: Wattwiller sprint (12.6), Saint-Maurice-sur-Moselle (84.0, the town entry from Bussang, about 1.3 km before the D465 junction), La Chaumière (96.7, D465/D466 fork; the routed fork is about 0.2 km earlier), La Jumenterie (1.7 km before the Ballon summit, as in stage 13) and the climb feet. Geishouse (142.3) is placed at the village entry on Rue des Champs. Bitschwiller-lès-Thann (130.8) is derived as Moosch 135.1 minus the routed 4.3 km of D1066, so the valley road keeps its true length and the surplus lies on the Route Joffre descent. Routed vs official between official points: Uffholtz -> Col Amic -0.6 km, Ballon d'Alsace -> Sewen +0.3 km, Sewen -> Hundsruck -0.4 km, Hundsruck -> Bitschwiller +0.7 km, Saint-Amarin -> Geishouse +0.6 km and Geishouse -> Col du Haag -0.2 km (communal streets); total routed 155.7 km vs 155.3 km. On the hairpin climbs and descents (Route des Crêtes, D27, D465/D466, Route Joffre, Voie Verte) consecutive points are less than 60 % apart in straight line relative to their km difference; that is the road geometry. Low confidence: Alex-Thur and Cité Alex (lieux-dits placed on the D429 at the bridge and beside the Cité Alex estate), Freundstein (lieu-dit placed on the D431 nearest the castle ruin). Medium: the Virage du Hibou is taken as the southern hairpin about 4 km up the voie, where a 12 % ramp starts (matches the inrng description and the DEM); the exact streets through Saint-Amarin and Geishouse follow climbfinder's street list. 'La Ferme du Grand Ballon' (an itinerary lieu-dit just before the Grand Ballon) is not a separate waypoint.",
+ "sources": [
+  "https://ledicodutour.com/etapes/etapes_par_annees/etapes_2026/etapes_2026_14.html",
+  "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/18/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-14e-etape-mulhouse-le-markstein-1553-km-D2Q5MB3IUJH6BJJ727ZZFEI5VA/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-14-times.htm",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-14-climbs.htm",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-14-tdf-2026/",
+  "https://inforoute.alsace.eu/mod_turbolead/getvue.php/4418_view.pdf",
+  "https://inforoute.alsace.eu/mod_turbolead/getvue.php/4460_view.pdf",
+  "https://labretzelcurieuse.fr/tour-de-france-mulhouse/",
+  "https://inrng.com/2026/06/roads-to-ride-col-du-haag/",
+  "https://climbfinder.com/en/climbs/col-du-haag-saint-amarin",
+  "https://climbfinder.com/en/climbs/col-du-page",
+  "https://www.cols-cyclisme.com/vosges/france/col-du-page-depuis-bussang-c1811.htm",
+  "https://www.cols-cyclisme.com/vosges/france/col-de-hundsrucken-depuis-masevaux-c411.htm",
+  "https://fr.wikipedia.org/wiki/Col_Amic",
+  "https://fr.wikipedia.org/wiki/Col_du_Grand_Ballon",
+  "https://fr.wikipedia.org/wiki/Col_du_Hundsruck",
+  "https://fr.wikipedia.org/wiki/Lac_d'Alfeld",
+  "https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Freundstein",
+  "https://www.refuges.info/point/9635/cabane-non-gardee/abri-du-col-d-Oderen/en/geo:47.9234,6.91643",
+  "https://www.refuges.info/point/8884/gite-d-etape/chalet-du-Treh-UTAN/en/geo:47.92512,7.00655",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments (incl. route relation 'Voie Verte du Haag')",
+  "Copernicus DEM GLO-30 (col high points)"
+ ]
+}

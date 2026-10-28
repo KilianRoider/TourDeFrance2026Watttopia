@@ -1,0 +1,221 @@
+{
+ "id": "tourmalet",
+ "lengthKm": 17.0,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Sainte-Marie-de-Campan – D935/D918 junction, foot of the Tourmalet (852 m)",
+   "lat": 42.98459,
+   "lon": 0.22754,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 1.0,
+   "name": "D918 Vallée de Gripp (Campan)",
+   "lat": 42.976,
+   "lon": 0.22822,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 2.0,
+   "name": "D918 Vallée de Gripp (Las Basses)",
+   "lat": 42.96761,
+   "lon": 0.2302,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D918"
+  },
+  {
+   "km": 3.0,
+   "name": "D918 Vallée de Gripp",
+   "lat": 42.95889,
+   "lon": 0.22896,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 4.0,
+   "name": "D918 below Gripp",
+   "lat": 42.95036,
+   "lon": 0.22581,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 4.5,
+   "name": "Gripp (1020 m) – end of the valley, gradient rises",
+   "lat": 42.94677,
+   "lon": 0.2226,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 5.5,
+   "name": "D918 above Gripp",
+   "lat": 42.94069,
+   "lon": 0.21408,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 6.3,
+   "name": "D918 towards Artigues",
+   "lat": 42.9354,
+   "lon": 0.20834,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 7.01,
+   "name": "Artigues (Campan, ~1230 m)",
+   "lat": 42.93062,
+   "lon": 0.20307,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 7.86,
+   "name": "D918 bend after the Artigues straight",
+   "lat": 42.92496,
+   "lon": 0.19767,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 8.61,
+   "name": "D918 up to the Garet hairpin",
+   "lat": 42.92274,
+   "lon": 0.20576,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 9.34,
+   "name": "Lacet du Garet (hairpin, ~1425 m)",
+   "lat": 42.91698,
+   "lon": 0.20952,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 10.21,
+   "name": "D918 Garet – La Mongie",
+   "lat": 42.92217,
+   "lon": 0.20195,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 11.01,
+   "name": "D918 below the avalanche galleries",
+   "lat": 42.9197,
+   "lon": 0.19318,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 11.81,
+   "name": "Avalanche galleries (paravalanches) before La Mongie",
+   "lat": 42.91488,
+   "lon": 0.18698,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 12.51,
+   "name": "La Mongie – entry (~1720 m)",
+   "lat": 42.91055,
+   "lon": 0.18179,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 13.01,
+   "name": "La Mongie (1766 m)",
+   "lat": 42.91076,
+   "lon": 0.17665,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 14.01,
+   "name": "D918 above La Mongie",
+   "lat": 42.90958,
+   "lon": 0.16481,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 14.99,
+   "name": "Hairpin (~1935 m)",
+   "lat": 42.90657,
+   "lon": 0.15398,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 15.53,
+   "name": "Hairpin (~1980 m)",
+   "lat": 42.91014,
+   "lon": 0.15612,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 16.01,
+   "name": "D918 final ramps",
+   "lat": 42.90893,
+   "lon": 0.15157,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 16.56,
+   "name": "Last hairpin (450 m to go)",
+   "lat": 42.90601,
+   "lon": 0.14811,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D918"
+  },
+  {
+   "km": 17.0,
+   "name": "Col du Tourmalet – summit (2115 m)",
+   "lat": 42.9082,
+   "lon": 0.14511,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D918"
+  }
+ ],
+ "notes": "East side (versant est) of the Col du Tourmalet from Sainte-Marie-de-Campan, as in the app profile (start 847 m, 17.0 km, summit ~2116 m). km 0 = the junction in Sainte-Marie-de-Campan where the D918 Route du Col du Tourmalet leaves the D935 (forge monument square, ~852 m DEM). Route: D918 only — up the Gripp valley (gentle first 4.5 km), Gripp, Artigues, the long straight, the Lacet du Garet hairpin, the avalanche galleries, through La Mongie (Avenue du Tourmalet) and the open final hairpins to the col. All coordinates are taken from the Overture/OSM road geometry of the D918 (points on the road centreline); km values are routed distances along that road from the foot (routed total 16.99 km vs 17.0 km in the app; cols-cyclisme gives 17.2 km from the church square). DEM check (GLO-30) along the routed path: 852 m at the foot, 2117 m at the col, per-km gradients within ~1 % of the app profile. Artigues km 7.0 and Gripp km ~4.5 agree with the Tour 2026 stage 6 itinerary (Ste-Marie km 130.2, Artigues 137.2) and cols-cyclisme (Gripp 4.6 km). The name 'Las Basses' for the hamlet at km ~2 is uncertain (medium); the road itself is unambiguous.",
+ "sources": [
+  "https://www.cols-cyclisme.com/pyrenees-centrales/france/col-du-tourmalet-depuis-sainte-marie-de-campan-c64.htm",
+  "https://en.wikipedia.org/wiki/Col_du_Tourmalet",
+  "https://pjammcycling.com/climb/141.Col du Tourmalet East",
+  "Tour 2026 stage 6 waypoint file (tour26-06.json: Sainte-Marie-de-Campan, Gripp, Artigues, La Mongie, Col du Tourmalet)",
+  "Overture Maps 2026-10-21.0 transportation segments (D918 geometry), Copernicus GLO-30 DEM"
+ ]
+}

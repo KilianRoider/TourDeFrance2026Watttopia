@@ -1,0 +1,1063 @@
+{
+ "id": "tour26-18",
+ "lengthKm": 185.2,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Vourey – départ réel (km 0) on the D1092 Route de Valence/Route de Grenoble at the exit of Vourey towards Tullins",
+   "lat": 45.31836,
+   "lon": 5.51996,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D1092 Route de Grenoble"
+  },
+  {
+   "km": 2.3,
+   "name": "Tullins-Fures, D1092 → Boulevard Michel Perret",
+   "lat": 45.30835,
+   "lon": 5.49538,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1092 Boulevard Michel Perret"
+  },
+  {
+   "km": 2.8,
+   "name": "Tullins, Boulevard Michel Perret (D1092)",
+   "lat": 45.30565,
+   "lon": 5.4913,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1092"
+  },
+  {
+   "km": 3.8,
+   "name": "Tullins, left onto the D45 Route de Saint-Quentin",
+   "lat": 45.29948,
+   "lon": 5.49497,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D45 Route de Saint-Quentin"
+  },
+  {
+   "km": 6.2,
+   "name": "D45 Route de Saint-Quentin, A49 interchange",
+   "lat": 45.28856,
+   "lon": 5.52144,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D45"
+  },
+  {
+   "km": 6.7,
+   "name": "Pont de Saint-Quentin (Isère)",
+   "lat": 45.28631,
+   "lon": 5.52654,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D45"
+  },
+  {
+   "km": 8.0,
+   "name": "Saint-Quentin-sur-Isère, left onto the D1532 Route de Grenoble",
+   "lat": 45.27997,
+   "lon": 5.53902,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1532 Route de Grenoble"
+  },
+  {
+   "km": 9.5,
+   "name": "D1532 Route de Grenoble",
+   "lat": 45.28579,
+   "lon": 5.55621,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1532"
+  },
+  {
+   "km": 11.5,
+   "name": "Le Replat (D1532)",
+   "lat": 45.29257,
+   "lon": 5.57939,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1532 Route de Grenoble"
+  },
+  {
+   "km": 14.7,
+   "name": "D1532 near L'Île du Pont",
+   "lat": 45.29491,
+   "lon": 5.61375,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1532"
+  },
+  {
+   "km": 17.1,
+   "name": "Veurey-Voroize (D1532 passes north of the village)",
+   "lat": 45.27369,
+   "lon": 5.61875,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1532"
+  },
+  {
+   "km": 20.7,
+   "name": "Noyarey (D1532)",
+   "lat": 45.24382,
+   "lon": 5.63231,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1532"
+  },
+  {
+   "km": 22.6,
+   "name": "Sassenage, D1532 Avenue de Valence – roundabout with the D105F",
+   "lat": 45.23134,
+   "lon": 5.64721,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1532 Avenue de Valence"
+  },
+  {
+   "km": 25.0,
+   "name": "Sassenage, roundabout → Nouvelle Route du Vercors (D531)",
+   "lat": 45.21316,
+   "lon": 5.66105,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D531 Nouvelle Route du Vercors"
+  },
+  {
+   "km": 25.5,
+   "name": "Sassenage, roundabout → D531 – foot of the Côte d'Engins (official km 25.3)",
+   "lat": 45.21229,
+   "lon": 5.65578,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D531"
+  },
+  {
+   "km": 27.1,
+   "name": "D531 hairpin above Sassenage",
+   "lat": 45.22439,
+   "lon": 5.65072,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D531"
+  },
+  {
+   "km": 28.7,
+   "name": "D531 hairpins (Les Côtes de Sassenage)",
+   "lat": 45.214,
+   "lon": 5.64314,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D531 Route de Villard-de-Lans"
+  },
+  {
+   "km": 30.1,
+   "name": "Les Grandes Côtes (D531, Gorges d'Engins)",
+   "lat": 45.21364,
+   "lon": 5.63925,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D531"
+  },
+  {
+   "km": 33.8,
+   "name": "Laliarey (D531, Gorges d'Engins)",
+   "lat": 45.20166,
+   "lon": 5.6297,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D531"
+  },
+  {
+   "km": 36.4,
+   "name": "Engins (D531)",
+   "lat": 45.18031,
+   "lon": 5.61958,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D531"
+  },
+  {
+   "km": 36.7,
+   "name": "Côte d'Engins (cat. 1, 11.4 km at 5.4 %, 854 m) – summit",
+   "lat": 45.1785,
+   "lon": 5.61911,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D531 Route de Villard-de-Lans"
+  },
+  {
+   "km": 39.5,
+   "name": "D531 Route de Lans-en-Vercors (Furon valley)",
+   "lat": 45.15554,
+   "lon": 5.6063,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D531"
+  },
+  {
+   "km": 41.8,
+   "name": "Lolette (D531)",
+   "lat": 45.14087,
+   "lon": 5.58994,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D531 Route de Grenoble"
+  },
+  {
+   "km": 43.1,
+   "name": "Lans-en-Vercors, D531 roundabout",
+   "lat": 45.1311,
+   "lon": 5.5816,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue Léopold Fabre"
+  },
+  {
+   "km": 43.8,
+   "name": "Lans-en-Vercors",
+   "lat": 45.12821,
+   "lon": 5.58879,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D106 Avenue Léopold Fabre / Route de Saint-Nizier"
+  },
+  {
+   "km": 45.7,
+   "name": "D106 Route de Saint-Nizier",
+   "lat": 45.13401,
+   "lon": 5.60486,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D106"
+  },
+  {
+   "km": 49.9,
+   "name": "Les Volants (D106)",
+   "lat": 45.15701,
+   "lon": 5.61936,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D106 Route des 4 Montagnes"
+  },
+  {
+   "km": 52.4,
+   "name": "Saint-Nizier-du-Moucherotte",
+   "lat": 45.17069,
+   "lon": 5.6297,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D106 Route du Vercors"
+  },
+  {
+   "km": 53.5,
+   "name": "D106 Route du Vercors (loop below Saint-Nizier)",
+   "lat": 45.16894,
+   "lon": 5.63907,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D106"
+  },
+  {
+   "km": 54.4,
+   "name": "Les Soldanelles (D106)",
+   "lat": 45.17447,
+   "lon": 5.64185,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D106"
+  },
+  {
+   "km": 56.8,
+   "name": "D106 hairpins between Saint-Nizier and Pariset",
+   "lat": 45.17179,
+   "lon": 5.64852,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D106 Route de Saint-Nizier"
+  },
+  {
+   "km": 59.2,
+   "name": "Pariset (D106)",
+   "lat": 45.17492,
+   "lon": 5.65841,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D106 Route de Saint-Nizier"
+  },
+  {
+   "km": 60.0,
+   "name": "D106 Route de Saint-Nizier at La Tour sans Venin",
+   "lat": 45.17161,
+   "lon": 5.6667,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D106"
+  },
+  {
+   "km": 62.1,
+   "name": "Le Haut Seyssins, D106 junction – straight on, Route de Saint-Nizier south towards Seyssins",
+   "lat": 45.1633,
+   "lon": 5.67174,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Route de Saint-Nizier"
+  },
+  {
+   "km": 63.3,
+   "name": "Seyssins, Route de Saint-Nizier hairpin",
+   "lat": 45.15548,
+   "lon": 5.67227,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Saint-Nizier"
+  },
+  {
+   "km": 63.9,
+   "name": "Seyssins, Route de Saint-Nizier",
+   "lat": 45.1597,
+   "lon": 5.67652,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Route de Saint-Nizier"
+  },
+  {
+   "km": 64.5,
+   "name": "Seyssins, Route de Saint-Nizier (lower)",
+   "lat": 45.15556,
+   "lon": 5.67987,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Saint-Nizier"
+  },
+  {
+   "km": 64.7,
+   "name": "Seyssins, roundabout → Avenue de Claix",
+   "lat": 45.15597,
+   "lon": 5.68121,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Claix"
+  },
+  {
+   "km": 65.1,
+   "name": "Avenue de Claix",
+   "lat": 45.15301,
+   "lon": 5.67958,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Claix"
+  },
+  {
+   "km": 65.4,
+   "name": "Seyssins, roundabout Avenue de Claix / Avenue Louis Vicat",
+   "lat": 45.1512,
+   "lon": 5.68052,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Claix"
+  },
+  {
+   "km": 65.8,
+   "name": "Avenue de Claix (south)",
+   "lat": 45.14894,
+   "lon": 5.67824,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Claix / Route de Comboire"
+  },
+  {
+   "km": 69.2,
+   "name": "Claix",
+   "lat": 45.12025,
+   "lon": 5.6729,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Rue du Vercors"
+  },
+  {
+   "km": 71.7,
+   "name": "Le Grand Rochefort (D1075)",
+   "lat": 45.10352,
+   "lon": 5.68614,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1075 Avenue de Provence"
+  },
+  {
+   "km": 72.5,
+   "name": "Le Petit Rochefort (D1075)",
+   "lat": 45.09721,
+   "lon": 5.68377,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1075"
+  },
+  {
+   "km": 73.5,
+   "name": "Varces-Allières-et-Risset (D1075)",
+   "lat": 45.08838,
+   "lon": 5.68353,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1075"
+  },
+  {
+   "km": 76.1,
+   "name": "Vif, D1075 → Vif centre",
+   "lat": 45.06649,
+   "lon": 5.67199,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Boulevard Faidherbe"
+  },
+  {
+   "km": 77.4,
+   "name": "Vif",
+   "lat": 45.05585,
+   "lon": 5.6691,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Avenue de Rivalta di Torino / Avenue de la Gare"
+  },
+  {
+   "km": 79.7,
+   "name": "Drac bridge (Avenue de la Gare, Vif – Saint-Georges-de-Commiers)",
+   "lat": 45.04501,
+   "lon": 5.6935,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de la Gare"
+  },
+  {
+   "km": 81.0,
+   "name": "Saint-Georges-de-Commiers, Rue de la Gare",
+   "lat": 45.04418,
+   "lon": 5.70685,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue de la Tour"
+  },
+  {
+   "km": 81.7,
+   "name": "Saint-Georges-de-Commiers",
+   "lat": 45.03835,
+   "lon": 5.70586,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D529 Rue de la Tour"
+  },
+  {
+   "km": 82.4,
+   "name": "Côte de Monteynard – foot (9.7 km at 5.0 %)",
+   "lat": 45.03483,
+   "lon": 5.70488,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D529"
+  },
+  {
+   "km": 82.9,
+   "name": "Saint-Pierre-de-Commiers (D529)",
+   "lat": 45.03111,
+   "lon": 5.70501,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D529"
+  },
+  {
+   "km": 85.6,
+   "name": "Notre-Dame-de-Commiers (D529)",
+   "lat": 45.00906,
+   "lon": 5.70029,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D529"
+  },
+  {
+   "km": 88.2,
+   "name": "D529 climbing above the Drac",
+   "lat": 44.98818,
+   "lon": 5.69882,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D529"
+  },
+  {
+   "km": 89.7,
+   "name": "Les Blais (D529)",
+   "lat": 44.97596,
+   "lon": 5.70395,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D529 Rue des Blais"
+  },
+  {
+   "km": 90.9,
+   "name": "Monteynard (D529)",
+   "lat": 44.96604,
+   "lon": 5.70066,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de la Matheysine"
+  },
+  {
+   "km": 92.2,
+   "name": "Côte de Monteynard (cat. 2) – summit (Route de la Matheysine, ≈860 m)",
+   "lat": 44.96212,
+   "lon": 5.71154,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Route de la Matheysine"
+  },
+  {
+   "km": 93.1,
+   "name": "Le Mollard (Route de la Matheysine)",
+   "lat": 44.96409,
+   "lon": 5.72103,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de la Matheysine"
+  },
+  {
+   "km": 94.0,
+   "name": "Route de la Matheysine",
+   "lat": 44.96896,
+   "lon": 5.72762,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de la Matheysine"
+  },
+  {
+   "km": 96.4,
+   "name": "La Motte-d'Aveillans",
+   "lat": 44.96227,
+   "lon": 5.74513,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D529"
+  },
+  {
+   "km": 97.7,
+   "name": "La Festinière",
+   "lat": 44.95334,
+   "lon": 5.75477,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route des Maquisards"
+  },
+  {
+   "km": 99.4,
+   "name": "Le Crey",
+   "lat": 44.94133,
+   "lon": 5.76438,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route des Maquisards"
+  },
+  {
+   "km": 101.1,
+   "name": "Le Villaret",
+   "lat": 44.92883,
+   "lon": 5.77546,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route des Maquisards"
+  },
+  {
+   "km": 102.4,
+   "name": "Susville",
+   "lat": 44.9179,
+   "lon": 5.78083,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route du Chevalement"
+  },
+  {
+   "km": 103.0,
+   "name": "Rue du Pont de la Maladière → N85",
+   "lat": 44.91297,
+   "lon": 5.78356,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "N85 Avenue du 22 Août 1944"
+  },
+  {
+   "km": 104.0,
+   "name": "La Mure, N85 Boulevard Fréjus Michon",
+   "lat": 44.90502,
+   "lon": 5.78243,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 104.8,
+   "name": "La Mure, N85 (south-west of the centre)",
+   "lat": 44.89812,
+   "lon": 5.78199,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85 Boulevard du Stade"
+  },
+  {
+   "km": 105.3,
+   "name": "La Mure, N85 Boulevard du Stade",
+   "lat": 44.89584,
+   "lon": 5.78614,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85 Boulevard des Trois Saules"
+  },
+  {
+   "km": 106.1,
+   "name": "La Mure, N85 Boulevard des Trois Saules",
+   "lat": 44.90003,
+   "lon": 5.79403,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85 Rue des Alpes"
+  },
+  {
+   "km": 108.1,
+   "name": "N85 Route des Demoiselles Coiffées",
+   "lat": 44.90018,
+   "lon": 5.81152,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 109.4,
+   "name": "Pont-Haut (N85 bridge over the Bonne) – foot of the Côte des Terrasses",
+   "lat": 44.90212,
+   "lon": 5.81687,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 112.0,
+   "name": "Les Terrasses (N85)",
+   "lat": 44.88899,
+   "lon": 5.82434,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 112.8,
+   "name": "Côte des Terrasses (cat. 3, 3.4 km at 6.6 %) – summit (N85, ≈835 m)",
+   "lat": 44.88247,
+   "lon": 5.82536,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "N85 Route Napoléon"
+  },
+  {
+   "km": 113.9,
+   "name": "Les Égâts (N85)",
+   "lat": 44.87572,
+   "lon": 5.83406,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 116.6,
+   "name": "La Salle-en-Beaumont (N85)",
+   "lat": 44.86377,
+   "lon": 5.85909,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 117.1,
+   "name": "N85 east loop at La Salle-en-Beaumont",
+   "lat": 44.86348,
+   "lon": 5.86445,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 121.1,
+   "name": "Quet-en-Beaumont (N85)",
+   "lat": 44.83762,
+   "lon": 5.87819,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 125.5,
+   "name": "Les Côtes-de-Corps (N85, above the Lac du Sautet)",
+   "lat": 44.83173,
+   "lon": 5.91795,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 129.1,
+   "name": "Intermediate sprint Corps (km 129.1, N85 through Corps)",
+   "lat": 44.82014,
+   "lon": 5.94625,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "N85 Route Napoléon"
+  },
+  {
+   "km": 129.4,
+   "name": "Corps (N85)",
+   "lat": 44.81776,
+   "lon": 5.94789,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 134.1,
+   "name": "Le Motty (N85)",
+   "lat": 44.7923,
+   "lon": 5.97958,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 135.8,
+   "name": "La Trinité (N85)",
+   "lat": 44.77814,
+   "lon": 5.9856,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 138.6,
+   "name": "N85 at Sous la Roche (below Saint-Firmin)",
+   "lat": 44.77326,
+   "lon": 6.0188,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 141.6,
+   "name": "Chauffayer (N85)",
+   "lat": 44.75627,
+   "lon": 6.00708,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 145.1,
+   "name": "N85 at La Guinguette (Saint-Eusèbe-en-Champsaur)",
+   "lat": 44.72699,
+   "lon": 6.01018,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 148.9,
+   "name": "N85 Route des Gorges",
+   "lat": 44.70404,
+   "lon": 6.04511,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 150.3,
+   "name": "La Serre (N85)",
+   "lat": 44.69708,
+   "lon": 6.0588,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 152.0,
+   "name": "Saint-Bonnet-en-Champsaur (N85)",
+   "lat": 44.6833,
+   "lon": 6.06674,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 152.8,
+   "name": "La Fare-en-Champsaur (N85)",
+   "lat": 44.67691,
+   "lon": 6.0707,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 154.8,
+   "name": "N85 Route de Gap",
+   "lat": 44.66206,
+   "lon": 6.08359,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 157.4,
+   "name": "Le Cros (Saint-Laurent-du-Cros), D114 Avenue de la Libération",
+   "lat": 44.64762,
+   "lon": 6.103,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D114 Route du Cros"
+  },
+  {
+   "km": 159.8,
+   "name": "Forest-Saint-Julien",
+   "lat": 44.64511,
+   "lon": 6.13228,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D944"
+  },
+  {
+   "km": 162.6,
+   "name": "D944 near Les Eyrauds",
+   "lat": 44.64208,
+   "lon": 6.16219,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D944"
+  },
+  {
+   "km": 163.3,
+   "name": "Chabottes",
+   "lat": 44.64297,
+   "lon": 6.16975,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D113"
+  },
+  {
+   "km": 163.7,
+   "name": "Côte de Saint-Léger-les-Mélèzes – foot (2.5 km at 6.5 %), D113",
+   "lat": 44.64103,
+   "lon": 6.17016,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D113 Route de Chabottes"
+  },
+  {
+   "km": 166.2,
+   "name": "Saint-Léger-les-Mélèzes – Côte de Saint-Léger-les-Mélèzes (cat. 3, ≈1250 m) summit",
+   "lat": 44.64452,
+   "lon": 6.2,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D13 Route du Baille"
+  },
+  {
+   "km": 167.8,
+   "name": "Les Forests (D13 Route du Baille)",
+   "lat": 44.65332,
+   "lon": 6.21349,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D13 Route du Baille"
+  },
+  {
+   "km": 169.7,
+   "name": "Pont-du-Fossé",
+   "lat": 44.66634,
+   "lon": 6.227,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D944 Route d'Orcières"
+  },
+  {
+   "km": 172.5,
+   "name": "Les Ricous (D944)",
+   "lat": 44.67997,
+   "lon": 6.25611,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D944"
+  },
+  {
+   "km": 174.5,
+   "name": "Les Garnauds (D944)",
+   "lat": 44.68667,
+   "lon": 6.27323,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D944 Route d'Orcières"
+  },
+  {
+   "km": 175.5,
+   "name": "D944 Route d'Orcières at La Fruitière",
+   "lat": 44.68407,
+   "lon": 6.28478,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D944"
+  },
+  {
+   "km": 178.1,
+   "name": "Orcières-Merlette final climb – foot (7.1 km at 6.7 %, max 9.1 %)",
+   "lat": 44.68254,
+   "lon": 6.3153,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D944 Route d'Orcières"
+  },
+  {
+   "km": 179.0,
+   "name": "Orcières village – D944 ends, D76 Route d'Orcières (hairpins) to Merlette",
+   "lat": 44.68389,
+   "lon": 6.32633,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D76 Route d'Orcières"
+  },
+  {
+   "km": 179.2,
+   "name": "D76 hairpin in Orcières village",
+   "lat": 44.68451,
+   "lon": 6.32426,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 179.5,
+   "name": "D76 hairpin in Orcières village (upper)",
+   "lat": 44.68516,
+   "lon": 6.3253,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 179.8,
+   "name": "D76 hairpins above Orcières",
+   "lat": 44.68516,
+   "lon": 6.32161,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 180.4,
+   "name": "D76 hairpins above Orcières (2)",
+   "lat": 44.6865,
+   "lon": 6.3227,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 180.7,
+   "name": "D76 hairpins",
+   "lat": 44.68567,
+   "lon": 6.31961,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 182.0,
+   "name": "D76 hairpins",
+   "lat": 44.68934,
+   "lon": 6.31921,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 182.5,
+   "name": "Les Veyers (D76 hairpins)",
+   "lat": 44.69149,
+   "lon": 6.32268,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D76"
+  },
+  {
+   "km": 182.7,
+   "name": "D76 hairpin",
+   "lat": 44.69271,
+   "lon": 6.324,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D76"
+  },
+  {
+   "km": 183.5,
+   "name": "Les Plautus (D76)",
+   "lat": 44.69092,
+   "lon": 6.31468,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D76"
+  },
+  {
+   "km": 184.2,
+   "name": "D76 Route des Grands Prés hairpin",
+   "lat": 44.69319,
+   "lon": 6.3168,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route des Grands Prés"
+  },
+  {
+   "km": 184.8,
+   "name": "Route des Grands Prés (upper)",
+   "lat": 44.69602,
+   "lon": 6.32269,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route des Grands Prés"
+  },
+  {
+   "km": 185.0,
+   "name": "Merlette, top of Route des Grands Prés → Rue des Écrins",
+   "lat": 44.69649,
+   "lon": 6.32192,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rue des Écrins"
+  },
+  {
+   "km": 185.2,
+   "name": "Orcières-Merlette 1850 – finish (Rue des Écrins, ≈1825 m)",
+   "lat": 44.69715,
+   "lon": 6.32343,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "Mountain stage Voiron – Orcières-Merlette, 185.2 km (Thursday 23 July 2026). Neutral start in Voiron; km 0 (départ réel) is on the D1092 at the exit of Vourey towards Tullins (Voiron magazine: 'D1092 (route de Valence) à la sortie de Vourey, en direction de Tullins'). Its exact spot is placed so that the routed distance to the Côte d'Engins summit is 36.7 km; this puts it at the south-west end of Vourey (±0.3 km). Course: D1092 to Fures (Tullins), Bd Michel Perret / Av. du 11 Novembre, D45 Route de Saint-Quentin over the A49 and the Pont de Saint-Quentin (Isère) to Saint-Quentin-sur-Isère; D1532 Route de Grenoble along the Isère past Veurey-Voroize and Noyarey to Sassenage (Avenue de Valence). Nouvelle Route du Vercors, then the D531 hairpins above Sassenage and the Gorges d'Engins: Côte d'Engins, cat. 1, 11.4 km at 5.4 %, 854 m, foot at the Sassenage roundabout (official km 25.3). D531 up the Furon valley to Lans-en-Vercors; D106 (Route de Saint-Nizier, Route des 4 Montagnes) to Saint-Nizier-du-Moucherotte, then down the D106 hairpins via Pariset and Le Haut Seyssins. Route de Saint-Nizier through Seyssins, Avenue de Claix / Route de Comboire to Claix, then local streets to the D1075 at Le Grand Rochefort, and on through Le Petit Rochefort and Varces to Vif. Avenue de la Gare over the Drac to Saint-Georges-de-Commiers, then the D529 via Saint-Pierre- and Notre-Dame-de-Commiers up to Monteynard: Côte de Monteynard, cat. 2, 9.7 km at 5 %, summit 92.2. Route de la Matheysine to La Motte-d'Aveillans, La Festinière (Col de la Festinière, about 965 m, uncategorised), Route des Maquisards and Susville. N85 Route Napoléon: in La Mure on the ring boulevards (Bd Fréjus Michon, Bd du Stade, Bd des Trois Saules, Rue des Alpes, Route des Demoiselles Coiffées), down to Pont-Haut (Bonne bridge, 604 m), then up the Côte des Terrasses (cat. 3, 3.4 km at 6.6 %, summit 112.8). La Salle-en-Beaumont, Quet-en-Beaumont, Les Côtes-de-Corps above the Lac du Sautet, Corps (intermediate sprint at km 129.1), Le Motty, La Trinité, Chauffayer, Saint-Eusèbe, the Route des Gorges, Saint-Bonnet-en-Champsaur and La Fare-en-Champsaur. D114 via Le Cros (Saint-Laurent-du-Cros) to Forest-Saint-Julien; D944 to Chabottes; D113 Côte de Saint-Léger-les-Mélèzes (cat. 3, 2.5 km at 6.5 %, summit 166.2); D13 Route du Baille via Les Forests to Pont-du-Fossé. D944 Route d'Orcières up the Drac valley via Les Ricous and Les Garnauds to Orcières; the final climb is 7.1 km at 6.7 % (max 9.1 %) and starts about 0.9 km before the village. From the village, the D76 Route d'Orcières climbs 10 hairpins via Les Veyers and Les Plautus; Route des Grands Prés leads to the Orcières-Merlette 1850 station. Finish placed 0.18 km along Rue des Écrins from the top of Route des Grands Prés: this is 6.2 km after the Orcières village junction (official Orcières 179.0, finish 185.2). DEM height there is about 1826 m against the official 1825 m. It is the station locality point of Overture; the exact finish line is not published (±0.2 km, medium). Km method: routed distance on Overture roads, piecewise-scaled between km 0 and these points, located on the road with the Copernicus 30 m DEM: Côte d'Engins summit 36.7 (first point at 854 m), Côte de Monteynard 92.2 (highest point of the flat summit zone on Route de la Matheysine), Côte des Terrasses 112.8 (3.45 km above the Pont-Haut bridge, where the steep part ends), Côte de Saint-Léger 166.2 (road high point at the village) and the finish 185.2. Total routed length between km 0 and the finish is about 185.8 km, against 185.2 official. Check against the itinerary km (Voiron magazine, realigned) and cyclingstage times: Pont-Haut 109.4/109.3, La Salle 116.6/116.3, Corps 129.4/129.0, Le Motty 134.2/134.2, Chauffayer 141.8/141.8, La Fare 153.0/152.9, Forest-Saint-Julien 159.9/159.9, Pont-du-Fossé 169.7/169.9, Orcières 179.0/179.0. LOW-CONFIDENCE STRETCHES: (1) km 0–25. Exact km 0, and the street sequence through Tullins. The itinerary's Fures 1.3, St-Quentin 7.1 and Sassenage 23.7 are 0.5–1.3 km lower than derived; they are probably commune entries. (2) km 62–84, Seyssins – Claix – Le Grand Rochefort – Varces – Vif – Saint-Georges-de-Commiers. The itinerary km disagree by up to ±2 km: Seyssins 63.1, Claix 67.9, Varces 72.1, Vif 78.1 and St-Georges 83.2, against derived 64.1, 69.2, 73.5, 77.5 and 81.8. The link from Claix village to the D1075 at Le Grand Rochefort uses Rue du 11 Novembre, Chemin de la Bâtie and Rue de la Pissarde; it matches the official Claix–Varces gap but is otherwise unverified. The race may instead use the D1075 via Le Pont-de-Claix (+1.5 km). (3) km 103–107, La Mure. The route follows the N85 ring boulevards; a route through the town centre would be about 1.3 km shorter. The ring fits the official Monteynard–Terrasses gap (20.7 km routed vs 20.6). (4) km 92.2, Monteynard summit. The summit zone is flat (about 845–865 m over 1.5 km), and cyclingstage times give 92.9. (5) km 184.6–185.2, the finish position. Overture has few road numbers here; numbers are from hedgehog, the Voiron magazine and the Overture N85 ref.",
+ "sources": [
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-18-tdf-2026",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-18-climbs.htm",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-18-times.htm",
+  "https://www.voiron.fr/uploads/Epublication/epb_file/e9/694_919_AVOIRON_TDF-HORS-SERIE.pdf_web.pdf",
+  "https://hedgehogcycling.co.uk/stage-18-tour-de-france-2026.html",
+  "https://www.isere.gouv.fr/Actualites/Espace-presse/Dossiers-de-presse/Le-Tour-de-France-2026-en-Isere",
+  "https://www.tour-magazin.de/fr/professionnel-cyclisme/tour-de-france/etapes-et-profils-d-altitude/tour-de-france-2026-presentation-de-la-18e-etape-coup-d-envoi-du-triple-dans-les-hautes-alpes/",
+  "https://www.orcieres.com/en/activities/summer/cycling/the-tour-de-france-in-orcieres/",
+  "https://www.intervals.icu/tour-de-france-2026/stage-18/",
+  "https://fr.wikipedia.org/wiki/Col_de_la_Festinière",
+  "Overture Maps 2026-10-21.0 transportation segments (incl. N 85 ref) and divisions; Copernicus DEM GLO-30"
+ ]
+}

@@ -2,12 +2,15 @@ package app.rollentrainer.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -17,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
@@ -36,6 +40,7 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -50,7 +55,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -161,11 +169,13 @@ fun RideScreen(
 
     val sidePanel: @Composable ColumnScope.() -> Unit = {
         if (editing) {
-            Text(
-                "Raster wählen, Felder antippen, Seiten hinzufügen. Jede Seite ist ein festes Raster wie beim Radcomputer.",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            LayoutOptions(settings, update, showReset = false)
+            Column(Modifier.weight(1f).verticalScroll(rememberScrollState())) {
+                Text(
+                    "Raster wählen, Felder antippen, Seiten hinzufügen. Jede Seite ist ein festes Raster wie beim Radcomputer.",
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                LayoutOptions(settings, update, showReset = false)
+            }
         } else if (showCharts) {
             ChartToggle(fullHistory) { fullHistory = it }
             Spacer(Modifier.height(8.dp))
@@ -175,20 +185,21 @@ fun RideScreen(
         }
     }
 
-    val fieldsBlock: @Composable ColumnScope.(Boolean) -> Unit = { fill ->
+    val gauge: @Composable () -> Unit = {
         if (settings.rideShowGauge && s.engine.erg && s.engine.targetWatts != null) TargetGauge(s.displayPower, s.engine.targetWatts)
-        if (!editing) NextPreview(s)
+    }
+    val pagesBlock: @Composable ColumnScope.(Boolean) -> Unit = { fill ->
         Box(if (fill) Modifier.fillMaxWidth().weight(1f) else Modifier.fillMaxWidth()) {
             DataPages(s, settings, pages, editing, fill, onPages, Modifier.fillMaxSize())
             if (!editing) CountdownOverlay(s)
         }
     }
-
-    Column(
-        Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        Header(s, status, editing, onToggleEdit = { editing = !editing }, onSpinningView = onSpinningView)
+    val fieldsBlock: @Composable ColumnScope.(Boolean) -> Unit = { fill ->
+        gauge()
+        if (!editing) NextPreview(s)
+        pagesBlock(fill)
+    }
+    val banners: @Composable () -> Unit = {
         if (editing) {
             Banner("Tippe auf ein Feld, um es zu wählen oder zu ersetzen. Oben wählst du das Raster und legst weitere Seiten an.")
         } else {
@@ -201,40 +212,113 @@ fun RideScreen(
             }
             s.engine.cue?.let { Banner("💬 $it", color = MaterialTheme.colorScheme.surfaceContainerHigh) }
         }
+    }
+    val profile: @Composable (Dp) -> Unit = { h ->
         s.timeline?.takeIf { settings.rideShowProfile }?.let { tl ->
             WorkoutProfile(
-                tl, settings.ftp, Modifier.fillMaxWidth().height(if (wide) 88.dp else 64.dp),
+                tl, settings.ftp, Modifier.fillMaxWidth().height(h),
                 progressSec = s.engine.workoutSec, samples = s.samples, intensityPct = s.engine.intensityPct,
             )
         }
-        if (wide) {
-            Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Column(
-                    Modifier.weight(if (showCharts || editing) 0.5f else 1f).fillMaxHeight(),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                ) { fieldsBlock(true) }
-                if (showCharts || editing) {
-                    Panel(Modifier.weight(0.5f).fillMaxHeight()) { sidePanel() }
-                }
+    }
+    val belowFields: @Composable () -> Unit = {
+        if (editing) {
+            Panel { LayoutOptions(settings, update, showReset = false) }
+        } else if (showCharts) {
+            Panel {
+                ChartToggle(fullHistory) { fullHistory = it }
+                Spacer(Modifier.height(8.dp))
+                charts(Modifier.fillMaxWidth().height(if (wide) 130.dp else 110.dp).padding(bottom = 8.dp))
             }
-        } else {
-            Column(
-                Modifier.weight(1f).verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+        }
+    }
+
+    // The layout follows the space the ride really gets. A phone in landscape counts as "wide" for the
+    // app (≥ 720 dp) but is only about 360 dp tall, and a phone in portrait is narrow: both get their
+    // own arrangement so that the data fields keep most of the screen.
+    BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+        // Landscape by shape, not by width: a 640 × 360 dp phone is under 600 dp wide once the
+        // navigation bar is taken off, and stacking everything there leaves no room for the fields.
+        val landscapePhone = maxHeight < 480.dp && maxWidth > maxHeight * 1.3f
+        val narrow = maxWidth < 600.dp
+        val sideWidth = (maxWidth * 0.4f).coerceIn(240.dp, 360.dp)
+        when {
+            landscapePhone -> Column(
+                Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                fieldsBlock(false)
-                if (editing) {
-                    Panel { LayoutOptions(settings, update, showReset = false) }
-                } else if (showCharts) {
-                    Panel {
-                        ChartToggle(fullHistory) { fullHistory = it }
-                        Spacer(Modifier.height(8.dp))
-                        charts(Modifier.fillMaxWidth().height(130.dp).padding(bottom = 8.dp))
+                // Phone in landscape: the fields take the full height on the left; everything else
+                // scrolls in a column on the right, the target bar first so it is always in view.
+                Header(s, status, editing, compact = true, onToggleEdit = { editing = !editing }, onSpinningView = onSpinningView)
+                // While editing, the toolbar of the pages (page row and layout chips) takes half of the
+                // low height and filling would squeeze the tiles to slivers: the pages keep their
+                // fixed row heights instead and the column scrolls. One Column for both, so the pager
+                // stays on its page when editing starts or ends.
+                val pagesScroll = rememberScrollState()
+                Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Column(
+                        if (editing) Modifier.weight(1f).fillMaxHeight().verticalScroll(pagesScroll)
+                        else Modifier.weight(1f).fillMaxHeight(),
+                    ) { pagesBlock(!editing) }
+                    Column(
+                        Modifier.width(sideWidth).fillMaxHeight().verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        gauge()
+                        if (!editing) NextPreview(s)
+                        banners()
+                        profile(52.dp)
+                        Controls(container, s, settings, compact = true, onEnd = { askEnd = true })
+                        belowFields()
                     }
                 }
             }
+            narrow -> Column(
+                Modifier.fillMaxSize().padding(12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                // Phone in portrait: fields and charts scroll, the controls stay at the bottom.
+                Header(s, status, editing, compact = true, onToggleEdit = { editing = !editing }, onSpinningView = onSpinningView)
+                banners()
+                profile(56.dp)
+                Column(
+                    Modifier.weight(1f).verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    fieldsBlock(false)
+                    belowFields()
+                }
+                Controls(container, s, settings, compact = true, onEnd = { askEnd = true })
+            }
+            else -> Column(
+                Modifier.fillMaxSize().padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Header(s, status, editing, compact = false, onToggleEdit = { editing = !editing }, onSpinningView = onSpinningView)
+                banners()
+                profile(if (wide) 88.dp else 64.dp)
+                if (wide) {
+                    Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Column(
+                            Modifier.weight(if (showCharts || editing) 0.5f else 1f).fillMaxHeight(),
+                            verticalArrangement = Arrangement.spacedBy(10.dp),
+                        ) { fieldsBlock(true) }
+                        if (showCharts || editing) {
+                            Panel(Modifier.weight(0.5f).fillMaxHeight()) { sidePanel() }
+                        }
+                    }
+                } else {
+                    Column(
+                        Modifier.weight(1f).verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        fieldsBlock(false)
+                        belowFields()
+                    }
+                }
+                Controls(container, s, settings, compact = false, onEnd = { askEnd = true })
+            }
         }
-        Controls(container, s, settings, onEnd = { askEnd = true })
     }
 
     val done = s.engine.finished && !finishSeen
@@ -297,7 +381,8 @@ private fun RpeDialog(onSave: (Int?, String) -> Unit, onSkip: () -> Unit, onDism
         onDismissRequest = onDismiss,
         title = { Text("Wie anstrengend war es?") },
         text = {
-            Column {
+            // Scrolls when the keyboard or a phone in landscape leaves little height.
+            Column(Modifier.verticalScroll(rememberScrollState())) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     (1..10).forEach { n ->
                         FilterChip(selected = rpe == n, onClick = { rpe = n }, label = { Text(n.toString()) })
@@ -352,6 +437,8 @@ private fun NextPreview(s: RideState) {
                     next.cadence?.let { append(" · $it rpm") }
                 },
                 style = MaterialTheme.typography.titleMedium,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
             )
         }
     }
@@ -363,62 +450,112 @@ private fun BoxScope.CountdownOverlay(s: RideState) {
     val rem = s.engine.segmentRemainingSec
     if (s.engine.paused || s.engine.nextSegment == null || rem !in 0..2 || s.engine.continuing) return
     // matchParentSize covers the data pages in the scrolling phone layout too, where the Box has no bounded height.
-    Box(Modifier.matchParentSize().background(MaterialTheme.colorScheme.background.copy(alpha = 0.55f), CardShape), contentAlignment = Alignment.Center) {
+    val fontScale = LocalDensity.current.fontScale
+    BoxWithConstraints(
+        Modifier.matchParentSize().background(MaterialTheme.colorScheme.background.copy(alpha = 0.55f), CardShape),
+        contentAlignment = Alignment.Center,
+    ) {
+        // 140 sp on a tablet; over the low field area of a phone in landscape the number shrinks so
+        // that it and the label below still fit.
+        val numberSp = ((maxHeight.value - 40f * fontScale) / 1.1f / fontScale).coerceIn(40f, 140f)
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("${rem + 1}", fontSize = 140.sp, lineHeight = 150.sp, style = MaterialTheme.typography.displayLarge, color = MaterialTheme.colorScheme.primary)
+            Text("${rem + 1}", fontSize = numberSp.sp, lineHeight = (numberSp * 1.07f).sp, style = MaterialTheme.typography.displayLarge, color = MaterialTheme.colorScheme.primary)
             val next = s.engine.nextSegment
             val target = s.engine.nextTargetWatts
             Text(
                 (next?.label?.ifBlank { "Nächster Abschnitt" } ?: "") + (if (next?.erg == false) " · frei" else target?.let { " · $it W" } ?: ""),
-                style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center,
+                style = if (numberSp < 100f) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge,
+                textAlign = TextAlign.Center, maxLines = 2, overflow = TextOverflow.Ellipsis,
             )
         }
     }
 }
 
 @Composable
-private fun Header(s: RideState, status: Map<SensorRole, SensorStatus>, editing: Boolean, onToggleEdit: () -> Unit, onSpinningView: (() -> Unit)? = null) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Column(Modifier.weight(1f)) {
-            Text(s.workout?.name ?: "Freie Fahrt", style = MaterialTheme.typography.titleLarge)
-            val total = s.engine.totalSec
-            Text(
-                when {
-                    s.engine.continuing -> "Weiterfahren · ${formatDuration(s.elapsedSec)}"
-                    total > 0 -> "${formatDuration(s.engine.workoutSec.toInt())} von ${formatDuration(total)}"
-                    else -> formatDuration(s.elapsedSec)
-                },
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        SensorRole.entries.forEach { role ->
-            val st = status[role] ?: return@forEach
-            if (st.sensor == null) return@forEach
-            Row(Modifier.padding(end = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-                ConnectionDot(st.state)
-                Spacer(Modifier.width(6.dp))
-                Text(role.title, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+private fun Header(
+    s: RideState,
+    status: Map<SensorRole, SensorStatus>,
+    editing: Boolean,
+    compact: Boolean,
+    onToggleEdit: () -> Unit,
+    onSpinningView: (() -> Unit)? = null,
+) {
+    // Everything beside the title is measured before it; the sensor names only come along where they
+    // leave the title its room (four of them plus two buttons need about 700 dp).
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val sensorNames = maxWidth >= 1000.dp
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    s.workout?.name ?: "Freie Fahrt",
+                    style = if (compact) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis,
+                )
+                val total = s.engine.totalSec
+                Text(
+                    when {
+                        s.engine.continuing -> "Weiterfahren · ${formatDuration(s.elapsedSec)}"
+                        total > 0 -> "${formatDuration(s.engine.workoutSec.toInt())} von ${formatDuration(total)}"
+                        else -> formatDuration(s.elapsedSec)
+                    },
+                    style = if (compact) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                )
             }
-        }
-        if (editing) {
-            Button(onClick = onToggleEdit) {
-                Icon(Icons.Outlined.Check, null)
-                Spacer(Modifier.width(8.dp))
-                Text("Fertig")
-            }
-        } else {
-            if (onSpinningView != null) {
-                OutlinedButton(onClick = onSpinningView, modifier = Modifier.padding(end = 8.dp)) {
-                    Icon(Icons.Outlined.MusicNote, null)
-                    Spacer(Modifier.width(8.dp))
-                    Text("Spinning")
+            if (compact) {
+                // Only the dots on a phone: the sensor names would push the buttons off the screen.
+                Row(Modifier.padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    SensorRole.entries.forEach { role ->
+                        val st = status[role]
+                        if (st?.sensor != null) ConnectionDot(st.state)
+                    }
                 }
-            }
-            OutlinedButton(onClick = onToggleEdit) {
-                Icon(Icons.Outlined.Tune, null)
-                Spacer(Modifier.width(8.dp))
-                Text("Anpassen")
+                if (editing) {
+                    Button(onClick = onToggleEdit) {
+                        Icon(Icons.Outlined.Check, null)
+                        Spacer(Modifier.width(6.dp))
+                        Text("Fertig")
+                    }
+                } else {
+                    if (onSpinningView != null) {
+                        IconButton(onClick = onSpinningView) { Icon(Icons.Outlined.MusicNote, "Spinning-Ansicht") }
+                    }
+                    IconButton(onClick = onToggleEdit) { Icon(Icons.Outlined.Tune, "Anzeige anpassen") }
+                }
+            } else {
+                SensorRole.entries.forEach { role ->
+                    val st = status[role]
+                    if (st?.sensor != null) {
+                        Row(Modifier.padding(end = if (sensorNames) 16.dp else 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                            ConnectionDot(st.state)
+                            if (sensorNames) {
+                                Spacer(Modifier.width(6.dp))
+                                Text(role.title, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+                            }
+                        }
+                    }
+                }
+                if (editing) {
+                    Button(onClick = onToggleEdit) {
+                        Icon(Icons.Outlined.Check, null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Fertig")
+                    }
+                } else {
+                    if (onSpinningView != null) {
+                        OutlinedButton(onClick = onSpinningView, modifier = Modifier.padding(end = 8.dp)) {
+                            Icon(Icons.Outlined.MusicNote, null)
+                            Spacer(Modifier.width(8.dp))
+                            Text("Spinning")
+                        }
+                    }
+                    OutlinedButton(onClick = onToggleEdit) {
+                        Icon(Icons.Outlined.Tune, null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Anpassen")
+                    }
+                }
             }
         }
     }
@@ -434,17 +571,73 @@ private fun ChartToggle(full: Boolean, onChange: (Boolean) -> Unit) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun Controls(container: AppContainer, s: RideState, settings: AppSettings, onEnd: () -> Unit) {
+private fun Controls(container: AppContainer, s: RideState, settings: AppSettings, compact: Boolean, onEnd: () -> Unit) {
     val session = container.session
     val e: EngineState = s.engine
     val inWorkout = s.timeline != null && !e.continuing && !e.finished
+    // "Weiter" only after a pause by hand; before the start and in an auto-pause pedalling resumes.
+    val resume = e.userPaused
+    if (compact) {
+        // On a phone the wrapped row of a tablet would take a third of the screen: the adjustments
+        // move into one line that scrolls sideways, pause and end stay in a fixed line below. Below
+        // 380 dp the skip buttons join the scrolling line, so "Pause" and "Beenden" keep their words.
+        // What must be in view without swiping leads the scrolling line, ahead of extend and
+        // intensity: the ramp test's way out (the workout tells the exhausted rider to tap it) and
+        // the ERG switch. Outside the ramp test the skip buttons come first; they are narrower than
+        // the grade stepper that follows the switch while ERG is off.
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val roomy = maxWidth >= 380.dp
+            val ramp = inWorkout && s.workout?.test == TestKind.RAMP
+            val steps = inWorkout && !roomy
+            val stepButtons: @Composable () -> Unit = {
+                FilledTonalIconButton(onClick = { session.back() }) { Icon(Icons.Default.SkipPrevious, "Abschnitt zurück") }
+                FilledTonalIconButton(onClick = { session.skip() }) { Icon(Icons.Default.SkipNext, "Überspringen") }
+            }
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Row(
+                    Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    if (ramp) FilledTonalButton(onClick = { session.bail() }) { Text("Ich bin platt") }
+                    if (steps && !ramp) stepButtons()
+                    ErgControls(s, onErg = { session.setErg(it) }, onGrade = { session.adjustGrade(it) })
+                    if (steps && ramp) stepButtons()
+                    Adjustments(s, inWorkout, container, compact = true)
+                }
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Button(
+                        onClick = { session.setPaused(!resume) },
+                        modifier = Modifier.weight(1f).height(52.dp),
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                    ) {
+                        Icon(if (resume) Icons.Default.PlayArrow else Icons.Default.Pause, null)
+                        Spacer(Modifier.width(6.dp))
+                        Text(if (resume) "Weiter" else "Pause", maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    }
+                    if (inWorkout && roomy) {
+                        FilledTonalIconButton(onClick = { session.back() }, modifier = Modifier.size(52.dp)) { Icon(Icons.Default.SkipPrevious, "Abschnitt zurück") }
+                        FilledTonalIconButton(onClick = { session.skip() }, modifier = Modifier.size(52.dp)) { Icon(Icons.Default.SkipNext, "Überspringen") }
+                    }
+                    OutlinedButton(
+                        onClick = onEnd,
+                        modifier = Modifier.weight(1f).height(52.dp),
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                    ) {
+                        Icon(Icons.Default.Stop, null)
+                        Spacer(Modifier.width(6.dp))
+                        Text("Beenden", maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    }
+                }
+            }
+        }
+        return
+    }
     FlowRow(
         Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        // "Weiter" only after a pause by hand; before the start and in an auto-pause pedalling resumes.
-        val resume = e.userPaused
         Button(onClick = { session.setPaused(!resume) }, modifier = Modifier.height(56.dp)) {
             Icon(if (resume) Icons.Default.PlayArrow else Icons.Default.Pause, null)
             Spacer(Modifier.width(8.dp))
@@ -453,36 +646,49 @@ private fun Controls(container: AppContainer, s: RideState, settings: AppSetting
         if (inWorkout) {
             FilledTonalIconButton(onClick = { session.back() }, modifier = Modifier.height(56.dp)) { Icon(Icons.Default.SkipPrevious, "Abschnitt zurück") }
             FilledTonalIconButton(onClick = { session.skip() }, modifier = Modifier.height(56.dp)) { Icon(Icons.Default.SkipNext, "Überspringen") }
-            OutlinedButton(onClick = { session.extend(60) }) { Text("+1 min") }
-            OutlinedButton(onClick = { session.extend(10) }) { Text("+10 s") }
-            // Three direct children, so the row can wrap between them on a phone.
-            Stepper("${e.intensityPct} %", { session.adjustIntensity(-1) }, { session.adjustIntensity(1) }, label = "Intensität")
-            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    SmallChip("−10") { session.adjustIntensity(-10) }
-                    SmallChip("−5") { session.adjustIntensity(-5) }
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    SmallChip("+5") { session.adjustIntensity(5) }
-                    SmallChip("+10") { session.adjustIntensity(10) }
-                }
-            }
-            if (e.intensityPct != 100) TextButton(onClick = { session.setIntensity(100) }) { Text("100 %") }
-            if (s.workout?.test == TestKind.RAMP) {
-                Button(onClick = { session.bail() }, colors = androidx.compose.material3.ButtonDefaults.filledTonalButtonColors()) { Text("Ich bin platt") }
-            }
-        } else {
-            Stepper("${e.targetWatts ?: 0} W", { session.adjustManual(-5) }, { session.adjustManual(5) }, label = "Zielleistung")
-            SmallChip("−25") { session.adjustManual(-25) }
-            SmallChip("+25") { session.adjustManual(25) }
         }
-        ErgControls(s, onErg = { session.setErg(it) }, onGrade = { session.adjustGrade(it) })
+        Adjustments(s, inWorkout, container, compact = false)
         OutlinedButton(onClick = onEnd, modifier = Modifier.height(56.dp)) {
             Icon(Icons.Default.Stop, null)
             Spacer(Modifier.width(8.dp))
             Text("Beenden")
         }
     }
+}
+
+/**
+ * Extend, intensity or target and, on a tablet, the ramp test's bail button and ERG. Emitted as
+ * separate children so that the tablet's FlowRow can wrap between them and the phone's scrolling
+ * row lines them up; the phone ([compact]) places bail and ERG itself, where they are in view.
+ */
+@Composable
+private fun Adjustments(s: RideState, inWorkout: Boolean, container: AppContainer, compact: Boolean) {
+    val session = container.session
+    val e: EngineState = s.engine
+    if (inWorkout) {
+        OutlinedButton(onClick = { session.extend(60) }) { Text("+1 min") }
+        OutlinedButton(onClick = { session.extend(10) }) { Text("+10 s") }
+        Stepper("${e.intensityPct} %", { session.adjustIntensity(-1) }, { session.adjustIntensity(1) }, label = "Intensität")
+        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                SmallChip("−10") { session.adjustIntensity(-10) }
+                SmallChip("−5") { session.adjustIntensity(-5) }
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                SmallChip("+5") { session.adjustIntensity(5) }
+                SmallChip("+10") { session.adjustIntensity(10) }
+            }
+        }
+        if (e.intensityPct != 100) TextButton(onClick = { session.setIntensity(100) }) { Text("100 %") }
+        if (!compact && s.workout?.test == TestKind.RAMP) {
+            Button(onClick = { session.bail() }, colors = androidx.compose.material3.ButtonDefaults.filledTonalButtonColors()) { Text("Ich bin platt") }
+        }
+    } else {
+        Stepper("${e.targetWatts ?: 0} W", { session.adjustManual(-5) }, { session.adjustManual(5) }, label = "Zielleistung")
+        SmallChip("−25") { session.adjustManual(-25) }
+        SmallChip("+25") { session.adjustManual(25) }
+    }
+    if (!compact) ErgControls(s, onErg = { session.setErg(it) }, onGrade = { session.adjustGrade(it) })
 }
 
 @Composable

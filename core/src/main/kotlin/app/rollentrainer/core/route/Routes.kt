@@ -1,9 +1,13 @@
 package app.rollentrainer.core.route
 
+import app.rollentrainer.core.geo.RealProfiles
+
 /**
  * The built-in virtual roads: the famous climbs of the big tours, reproduced from public
  * kilometre-by-kilometre gradient profiles (climbbybike, cyclingcols, climbfinder and the like).
  * Elevations are rounded to the published figures; the road geometry around the profile is synthesised.
+ * Where the geodata pipeline (tools/geodata) has measured the real road, [RealProfiles] replaces the
+ * profile with the measured one.
  */
 object Routes {
     val all: List<Route> = listOf(
@@ -98,7 +102,7 @@ object Routes {
         ),
         Route.fromKmGradients(
             id = "mur-de-bretagne", name = "Mûr-de-Bretagne", region = "Bretagne",
-            description = "Der Mûr-de-Bretagne, die \"Alpe d'Huez der Bretagne\", ist eine kurze, kerzengerade Wand: Die ersten 1000 m steigen mit rund 10 % an, danach flacht die Straße über eine lange Gerade bis zum Falschflach vor der Ziellinie im Dorf ab. Seit der Tour-Premiere 2011 war der Anstieg bei jeder Ankunft (2011, 2015, 2018, 2021, 2025) Schauplatz von Puncheur-Duellen, bei denen oft nur Sekunden entschieden; 2018, 2021 und 2025 wurde er im Finale zweimal befahren.",
+            description = "Der Mûr-de-Bretagne, die \"Alpe d'Huez der Bretagne\", ist eine kurze, kerzengerade Wand: Die ersten 1000 m steigen mit rund 10 % an, danach flacht die Straße auf der langen Geraden durch offene Felder bis zum Falschflach vor der Ziellinie ab; das Dorf selbst liegt unterhalb des Anstiegs. Seit der Tour-Premiere 2011 war der Anstieg bei jeder Ankunft (2011, 2015, 2018, 2021, 2025) Schauplatz von Puncheur-Duellen, bei denen oft nur Sekunden entschieden; 2018, 2021 und 2025 wurde er im Finale zweimal befahren.",
             kind = RouteKind.CLIMB, startElevationM = 146.0, lengthKm = 2.00,
             kmGradients = listOf(9.8, 4.0),
             landmarks = listOf(Landmark(500.0, "Steilstes Stück geschafft"), Landmark(1000.0, "Lange Gerade"), Landmark(1500.0, "Ortseingang Mûr-de-Bretagne")),
@@ -138,10 +142,11 @@ object Routes {
         ),
         Route.fromKmGradients(
             id = "champs-elysees", name = "Champs-Élysées", region = "Paris",
-            description = "Seit 1975 endet die Tour de France traditionell mit mehreren Runden auf diesem rund 6,8 km langen Stadtkurs: über grobes Kopfsteinpflaster hinauf zum Arc de Triomphe, der seit 2013 umrundet wird, hinunter zur Place de la Concorde, durch den Tunnel unter den Tuilerien und über die Rue de Rivoli zurück auf die Prachtstraße. Die Runde ist im Grunde flach, nur der gut 1,5 km lange, sanfte Anstieg zum Triumphbogen (meist 1 bis 1,5 %, kurz gut 3 %) und die kurze Rampe aus dem Tuilerien-Tunnel brechen den Rhythmus. Hier fällt meist der prestigeträchtigste Massensprint des Jahres, 1989 entschied auf den Champs-Élysées sogar ein Zeitfahren die Tour mit nur acht Sekunden Vorsprung.",
-            kind = RouteKind.FLAT, startElevationM = 37.0, lengthKm = 6.80,
-            kmGradients = listOf(0.9, 0.5, -1.2, -0.5, -0.1, 0.2, 0.2),
-            landmarks = listOf(Landmark(300.0, "Rond-Point des Champs-Élysées"), Landmark(1100.0, "Avenue George V"), Landmark(1500.0, "Place de l'Étoile"), Landmark(1700.0, "Arc de Triomphe"), Landmark(2000.0, "Zurück über die Champs-Élysées"), Landmark(3400.0, "Ziellinie"), Landmark(3900.0, "Place de la Concorde"), Landmark(4200.0, "Tunnel unter den Tuilerien"), Landmark(4600.0, "Tiefster Punkt"), Landmark(5000.0, "Rampe am Louvre"), Landmark(5200.0, "Rue de Rivoli"), Landmark(6100.0, "Concorde · zurück auf die Champs")),
+            description = "Seit 1975 endet die Tour de France traditionell mit mehreren Runden auf diesem rund 6,8 km langen Stadtkurs: über grobes Kopfsteinpflaster hinauf zum Arc de Triomphe, der seit 2013 umrundet wird, hinunter zur Place de la Concorde, über die Rue de Rivoli, durch den Tunnel unter den Tuilerien und am Seine-Ufer zurück auf die Prachtstraße. Die Runde ist im Grunde flach, nur der gut 1 km lange, sanfte Anstieg zum Triumphbogen (um 2 %) und die kurze Senke durch den Tuilerien-Tunnel brechen den Rhythmus. Hier fällt meist der prestigeträchtigste Massensprint des Jahres, 1989 entschied auf den Champs-Élysées sogar ein Zeitfahren die Tour mit nur acht Sekunden Vorsprung.",
+            // The lap in race direction, from the finish line on the uphill side (Tour 2026 stage 21).
+            kind = RouteKind.FLAT, startElevationM = 31.0, lengthKm = 6.80,
+            kmGradients = listOf(2.3, -0.1, -2.2, 0.7, -0.5, -0.2, -0.1),
+            landmarks = listOf(Landmark(90.0, "Rond-Point des Champs-Élysées"), Landmark(870.0, "Avenue George V"), Landmark(1270.0, "Place de l'Étoile"), Landmark(1400.0, "Arc de Triomphe"), Landmark(1700.0, "Hinunter über die Champs-Élysées"), Landmark(3670.0, "Place de la Concorde"), Landmark(4050.0, "Rue de Rivoli"), Landmark(4700.0, "Place des Pyramides"), Landmark(4870.0, "Tunnel unter den Tuilerien"), Landmark(5400.0, "Quai am Seine-Ufer"), Landmark(5960.0, "Concorde · zurück auf die Champs"), Landmark(6300.0, "Letzte 500 m bis zur Linie")),
             hairpins = 0, biome = Biome.CITY,
         ),
         Route.fromKmGradients(
@@ -153,7 +158,7 @@ object Routes {
             hairpins = 1, biome = Biome.PYRENEAN,
             hairpinsAtKm = listOf(8.9),
         ),
-    )
+    ).map(RealProfiles::apply)
 
     /** Climbs and stages. */
     fun byId(id: String): Route? = all.firstOrNull { it.id == id } ?: Stages.all.firstOrNull { it.id == id }

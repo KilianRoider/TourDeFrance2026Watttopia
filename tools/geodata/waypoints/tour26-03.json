@@ -1,0 +1,1217 @@
+{
+ "id": "tour26-03",
+ "lengthKm": 195.9,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Start réel (km 0) on C-1415b west of Granollers (Lliçà d'Amunt area); neutral start Granollers, Carrer Ramon Llull",
+   "lat": 41.62445,
+   "lon": 2.25163,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "C-1415b"
+  },
+  {
+   "km": 1.2,
+   "name": "Lliçà d'Amunt (C-1415b)",
+   "lat": 41.62627,
+   "lon": 2.23941,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-1415b"
+  },
+  {
+   "km": 2.9,
+   "name": "Can Farell (Bigues i Riells / Lliçà, C-1415b)",
+   "lat": 41.63275,
+   "lon": 2.2225,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-1415b"
+  },
+  {
+   "km": 4.9,
+   "name": "Santa Eulàlia de Ronçana (C-1415b)",
+   "lat": 41.63854,
+   "lon": 2.20109,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-1415b"
+  },
+  {
+   "km": 7.5,
+   "name": "Caldes de Montbui – junction C-1415b / C-59",
+   "lat": 41.63299,
+   "lon": 2.17437,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "C-59"
+  },
+  {
+   "km": 9.6,
+   "name": "Foot Côte de Sant Feliu de Codines (cat. 3, 7.6 km at 4.5 %)",
+   "lat": 41.64735,
+   "lon": 2.1619,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "C-59"
+  },
+  {
+   "km": 9.8,
+   "name": "Els Saulons (Caldes de Montbui, C-59)",
+   "lat": 41.64906,
+   "lon": 2.16157,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-59"
+  },
+  {
+   "km": 13.4,
+   "name": "Sant Feliu de Codines (town entry, C-59)",
+   "lat": 41.67957,
+   "lon": 2.16415,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-59"
+  },
+  {
+   "km": 14.49,
+   "name": "Sant Feliu de Codines centre (Plaça del Doctor Robert)",
+   "lat": 41.68818,
+   "lon": 2.16479,
+   "kind": "town",
+   "confidence": "high",
+   "road": "C-59"
+  },
+  {
+   "km": 15.15,
+   "name": "C-59 Carretera de Mollet del Vallès a Moià i Eix Transversal",
+   "lat": 41.69178,
+   "lon": 2.16997,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 15.49,
+   "name": "C-59 Carretera de Mollet del Vallès a Moià i Eix Transversal",
+   "lat": 41.6943,
+   "lon": 2.1718,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 15.65,
+   "name": "C-59 Carretera de Mollet del Vallès a Moià i Eix Transversal",
+   "lat": 41.69524,
+   "lon": 2.17162,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 15.84,
+   "name": "C-59 Carretera de Mollet del Vallès a Moià i Eix Transversal C-643",
+   "lat": 41.69422,
+   "lon": 2.17005,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 17.2,
+   "name": "Côte de Sant Feliu de Codines (cat. 3) – KOM",
+   "lat": 41.70268,
+   "lon": 2.16393,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "C-59"
+  },
+  {
+   "km": 18.3,
+   "name": "Junction C-59 / C-1413b (turn right towards Centelles)",
+   "lat": 41.70752,
+   "lon": 2.15619,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "C-1413b"
+  },
+  {
+   "km": 19.4,
+   "name": "tertiary",
+   "lat": 41.70853,
+   "lon": 2.16583,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 20.5,
+   "name": "Les Clotes (Sant Quirze Safaja, C-1413b)",
+   "lat": 41.71431,
+   "lon": 2.17019,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-1413b"
+  },
+  {
+   "km": 21.81,
+   "name": "Pont de Ferreries",
+   "lat": 41.72176,
+   "lon": 2.16656,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 22.44,
+   "name": "tertiary",
+   "lat": 41.72478,
+   "lon": 2.16932,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 22.76,
+   "name": "tertiary",
+   "lat": 41.72349,
+   "lon": 2.17181,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 23.1,
+   "name": "tertiary",
+   "lat": 41.72555,
+   "lon": 2.17401,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 23.26,
+   "name": "tertiary",
+   "lat": 41.72466,
+   "lon": 2.17529,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 23.44,
+   "name": "tertiary",
+   "lat": 41.72613,
+   "lon": 2.17614,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 23.76,
+   "name": "tertiary",
+   "lat": 41.72727,
+   "lon": 2.17839,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 24.08,
+   "name": "tertiary",
+   "lat": 41.72506,
+   "lon": 2.17942,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 24.4,
+   "name": "tertiary",
+   "lat": 41.72644,
+   "lon": 2.18169,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 25.71,
+   "name": "tertiary (between Les Clotes (Sant Quirze Safaja, C-1413b) and Les Comes (Sant Martí de Centelles, C-1413b))",
+   "lat": 41.7364,
+   "lon": 2.18492,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 30.9,
+   "name": "Les Comes (Sant Martí de Centelles, C-1413b)",
+   "lat": 41.76544,
+   "lon": 2.2058,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-1413b"
+  },
+  {
+   "km": 34.4,
+   "name": "Centelles (C-1413b, west edge of town)",
+   "lat": 41.78998,
+   "lon": 2.21611,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-1413b"
+  },
+  {
+   "km": 36.05,
+   "name": "Carrer de Jesús",
+   "lat": 41.80283,
+   "lon": 2.22182,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 37.7,
+   "name": "Els Hostalets de Balenyà (C-1413b → N-152a)",
+   "lat": 41.81221,
+   "lon": 2.23423,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-152a"
+  },
+  {
+   "km": 41.7,
+   "name": "Tona (old N-152 corridor past Tona, now C-17 → BV-5303 towards Sant Miquel de Balenyà)",
+   "lat": 41.8449,
+   "lon": 2.23576,
+   "kind": "town",
+   "confidence": "low",
+   "road": "BV-5303 (reached on the C-17, motorway in Overture)"
+  },
+  {
+   "km": 42.08,
+   "name": "secondary",
+   "lat": 41.84487,
+   "lon": 2.24019,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 42.25,
+   "name": "secondary",
+   "lat": 41.84495,
+   "lon": 2.24207,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 42.45,
+   "name": "secondary",
+   "lat": 41.84475,
+   "lon": 2.24419,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 43.2,
+   "name": "Sant Miquel de Balenyà – junction BV-5303 / BV-5305",
+   "lat": 41.84529,
+   "lon": 2.25253,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "BV-5305"
+  },
+  {
+   "km": 46.9,
+   "name": "Taradell (BV-5305 → B-520)",
+   "lat": 41.86726,
+   "lon": 2.28202,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "B-520"
+  },
+  {
+   "km": 47.93,
+   "name": "Ronda de Ponent",
+   "lat": 41.87492,
+   "lon": 2.28088,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 48.98,
+   "name": "Carretera de Vic",
+   "lat": 41.88275,
+   "lon": 2.28417,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 51.1,
+   "name": "Santa Eugènia de Berga (B-520)",
+   "lat": 41.900001,
+   "lon": 2.28337,
+   "kind": "town",
+   "confidence": "high",
+   "road": "B-520"
+  },
+  {
+   "km": 54.8,
+   "name": "Vic (entry, B-520 → town streets → B-522)",
+   "lat": 41.92613,
+   "lon": 2.26795,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "B-522"
+  },
+  {
+   "km": 56.62,
+   "name": "Carretera de Manlleu",
+   "lat": 41.93447,
+   "lon": 2.25534,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 58.46,
+   "name": "Carretera de Manlleu a Vic (between Vic (entry, B-520 → town streets → B-522) and Granollers de la Plana (Gurb, B-522))",
+   "lat": 41.94858,
+   "lon": 2.26001,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 62.1,
+   "name": "Granollers de la Plana (Gurb, B-522)",
+   "lat": 41.97665,
+   "lon": 2.2739,
+   "kind": "town",
+   "confidence": "high",
+   "road": "B-522"
+  },
+  {
+   "km": 64.1,
+   "name": "Manlleu (town entry, B-522)",
+   "lat": 41.99359,
+   "lon": 2.28127,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "B-522"
+  },
+  {
+   "km": 65.13,
+   "name": "Manlleu centre (Passeig de Sant Joan → BV-5224 Carretera de la Miranda)",
+   "lat": 42.00106,
+   "lon": 2.28583,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-5224"
+  },
+  {
+   "km": 67.51,
+   "name": "Carretera de la Miranda",
+   "lat": 42.01963,
+   "lon": 2.27517,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 69.9,
+   "name": "Torelló (town entry, BV-5224)",
+   "lat": 42.03991,
+   "lon": 2.27509,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-5224"
+  },
+  {
+   "km": 71.19,
+   "name": "Torelló centre (town streets → road to Vila-seca)",
+   "lat": 42.04765,
+   "lon": 2.26506,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-5226"
+  },
+  {
+   "km": 73.5,
+   "name": "Vila-seca (Sant Vicenç de Torelló, BV-5226)",
+   "lat": 42.06135,
+   "lon": 2.25446,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-5226"
+  },
+  {
+   "km": 74.9,
+   "name": "Borgonyà (Sant Vicenç de Torelló)",
+   "lat": 42.06418,
+   "lon": 2.24312,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 76.5,
+   "name": "La Mambla (Orís), old road along the Ter",
+   "lat": 42.07479,
+   "lon": 2.23978,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 78.0,
+   "name": "Junction old road → C-17",
+   "lat": 42.08239,
+   "lon": 2.2289,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-17 (motorway in Overture: Autovia Barcelona - Vic - Ripoll)"
+  },
+  {
+   "km": 79.3,
+   "name": "C-17 Túnel de Sant Quirze de Besora",
+   "lat": 42.09284,
+   "lon": 2.22344,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "C-17 (motorway in Overture: Autovia Barcelona - Vic - Ripoll)"
+  },
+  {
+   "km": 80.4,
+   "name": "Sant Quirze de Besora (C-17 exit → C-17z / Carrer de Ribes)",
+   "lat": 42.10087,
+   "lon": 2.21675,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-17z"
+  },
+  {
+   "km": 81.5,
+   "name": "Montesquiu (C-17z Carrer de Ribes)",
+   "lat": 42.10795,
+   "lon": 2.20859,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-17z"
+  },
+  {
+   "km": 83.2,
+   "name": "Junction C-17z → C-17 northbound on-ramp (north of Montesquiu)",
+   "lat": 42.11999,
+   "lon": 2.20113,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-17 (motorway in Overture: Autovia Barcelona - Vic - Ripoll)"
+  },
+  {
+   "km": 84.7,
+   "name": "C-17 Túnel de la Farga de Bebié (Les Llosses)",
+   "lat": 42.13175,
+   "lon": 2.20177,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "C-17 (motorway in Overture: Autovia Barcelona - Vic - Ripoll)"
+  },
+  {
+   "km": 86.5,
+   "name": "C-17 Túnel de la Cúbia",
+   "lat": 42.1441,
+   "lon": 2.20685,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "C-17 (motorway in Overture: Autovia Barcelona - Vic - Ripoll)"
+  },
+  {
+   "km": 88.0,
+   "name": "C-17 Túnel de Terradelles",
+   "lat": 42.1565,
+   "lon": 2.20021,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "C-17 (motorway in Overture: Autovia Barcelona - Vic - Ripoll)"
+  },
+  {
+   "km": 91.7,
+   "name": "Ripoll (C-17 → C-26 ring → N-260)",
+   "lat": 42.18624,
+   "lon": 2.19661,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 97.3,
+   "name": "Campdevànol (entry, N-260)",
+   "lat": 42.2258,
+   "lon": 2.17035,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 98.4,
+   "name": "Campdevànol – intermediate sprint",
+   "lat": 42.23552,
+   "lon": 2.16802,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 98.9,
+   "name": "Colònia Molinou (N-260)",
+   "lat": 42.23967,
+   "lon": 2.1665,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 99.3,
+   "name": "Colònia Pernau (N-260)",
+   "lat": 42.24301,
+   "lon": 2.1649,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 100.2,
+   "name": "Colònia Herand (N-260)",
+   "lat": 42.25053,
+   "lon": 2.16578,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 103.58,
+   "name": "N-260 Eix Pirinenc (between Colònia Herand (N-260) and Ribes de Freser (N-260))",
+   "lat": 42.2775,
+   "lon": 2.15953,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 107.0,
+   "name": "Ribes de Freser (N-260)",
+   "lat": 42.3059,
+   "lon": 2.1669,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N-260"
+  },
+  {
+   "km": 110.7,
+   "name": "N-260 Eix Pirinenc (between Ribes de Freser (N-260) and Planoles (N-260))",
+   "lat": 42.31217,
+   "lon": 2.13147,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 114.4,
+   "name": "Planoles (N-260)",
+   "lat": 42.31813,
+   "lon": 2.10342,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 114.86,
+   "name": "N-260 Eix Pirinenc",
+   "lat": 42.32065,
+   "lon": 2.10005,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 115.08,
+   "name": "N-260 Eix Pirinenc",
+   "lat": 42.322001,
+   "lon": 2.09941,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 115.3,
+   "name": "Planès – junction N-260 → GIV-4016 (Carretera de Toses)",
+   "lat": 42.32052,
+   "lon": 2.09819,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "GIV-4016"
+  },
+  {
+   "km": 118.1,
+   "name": "Espinosa (GIV-4016)",
+   "lat": 42.32164,
+   "lon": 2.07005,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "GIV-4016"
+  },
+  {
+   "km": 118.4,
+   "name": "Foot Col de Toses (cat. 1, 9.3 km at 6.5 %)",
+   "lat": 42.32351,
+   "lon": 2.06811,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "GIV-4016"
+  },
+  {
+   "km": 120.4,
+   "name": "Fornells de la Muntanya (GIV-4016)",
+   "lat": 42.32258,
+   "lon": 2.04658,
+   "kind": "town",
+   "confidence": "high",
+   "road": "GIV-4016"
+  },
+  {
+   "km": 123.5,
+   "name": "Toses village (GIV-4016 → local road to the Collada)",
+   "lat": 42.32108,
+   "lon": 2.01547,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Carretera de Toses a la Collada de Toses"
+  },
+  {
+   "km": 127.7,
+   "name": "Collada de Toses / Col de Toses (cat. 1, 1778 m) – junction local road → GI-400",
+   "lat": 42.33136,
+   "lon": 1.98485,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "GI-400"
+  },
+  {
+   "km": 131.8,
+   "name": "La Molina (GI-400 → town road → GIV-4082)",
+   "lat": 42.33148,
+   "lon": 1.94589,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "GIV-4082"
+  },
+  {
+   "km": 132.8,
+   "name": "Túnel de la Molina",
+   "lat": 42.3387,
+   "lon": 1.9467,
+   "kind": "other",
+   "confidence": "low",
+   "road": "GIV-4082"
+  },
+  {
+   "km": 133.51,
+   "name": "Avinguda de la Generalitat",
+   "lat": 42.33813,
+   "lon": 1.94028,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 133.71,
+   "name": "Avinguda de la Generalitat",
+   "lat": 42.33678,
+   "lon": 1.93907,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 133.87,
+   "name": "Avinguda de la Generalitat",
+   "lat": 42.33721,
+   "lon": 1.93825,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 134.24,
+   "name": "Avinguda de Supermolina",
+   "lat": 42.34016,
+   "lon": 1.93958,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 135.67,
+   "name": "Avinguda d'Alp",
+   "lat": 42.34303,
+   "lon": 1.95273,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 136.38,
+   "name": "Avinguda d'Alp",
+   "lat": 42.33799,
+   "lon": 1.95507,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 136.57,
+   "name": "Avinguda d'Alp",
+   "lat": 42.33654,
+   "lon": 1.9547,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 136.75,
+   "name": "Avinguda d'Alp",
+   "lat": 42.33649,
+   "lon": 1.95673,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 137.1,
+   "name": "Avinguda d'Alp",
+   "lat": 42.33933,
+   "lon": 1.95798,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 138.53,
+   "name": "Carretera de la Molina (between Túnel de la Molina and Alp (GIV-4082 Carretera de la Molina arriving at Alp))",
+   "lat": 42.34789,
+   "lon": 1.94904,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 144.2,
+   "name": "Alp (GIV-4082 Carretera de la Molina arriving at Alp)",
+   "lat": 42.3744,
+   "lon": 1.89656,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "GIV-4082"
+  },
+  {
+   "km": 144.92,
+   "name": "Alp – junction Carretera de la Molina → C-162 (E9)",
+   "lat": 42.38008,
+   "lon": 1.89347,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-162"
+  },
+  {
+   "km": 145.6,
+   "name": "Escadarcs (Fontanals de Cerdanya, C-162)",
+   "lat": 42.38577,
+   "lon": 1.89234,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-162"
+  },
+  {
+   "km": 146.32,
+   "name": "E 09",
+   "lat": 42.39166,
+   "lon": 1.89524,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 146.68,
+   "name": "E 09",
+   "lat": 42.39436,
+   "lon": 1.89715,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 146.86,
+   "name": "primary",
+   "lat": 42.39499,
+   "lon": 1.89874,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 147.05,
+   "name": "E 09",
+   "lat": 42.39572,
+   "lon": 1.90065,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 148.5,
+   "name": "Queixans – junction C-162 → N-260",
+   "lat": 42.4004,
+   "lon": 1.91565,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "N-260"
+  },
+  {
+   "km": 151.5,
+   "name": "Puigcerdà – roundabout N-260 / N-152 (then N-154 towards Llívia)",
+   "lat": 42.42579,
+   "lon": 1.92369,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "N-152"
+  },
+  {
+   "km": 152.5,
+   "name": "E 09,N-152",
+   "lat": 42.42991,
+   "lon": 1.93349,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 153.53,
+   "name": "N-154 Carretera de Puigcerdà a Llívia (border)",
+   "lat": 42.4373,
+   "lon": 1.94046,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N-154"
+  },
+  {
+   "km": 154.57,
+   "name": "Route Neutre (D68) crossing RN20 – turn left onto RN20 (Ur)",
+   "lat": 42.44549,
+   "lon": 1.94468,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "RN20"
+  },
+  {
+   "km": 156.73,
+   "name": "Ur – junction RN20 → D618",
+   "lat": 42.46229,
+   "lon": 1.93782,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 159.11,
+   "name": "Villeneuve-des-Escaldes (D618)",
+   "lat": 42.47691,
+   "lon": 1.95312,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 160.4,
+   "name": "Angoustrine (D618 hairpins)",
+   "lat": 42.48495,
+   "lon": 1.96244,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 160.64,
+   "name": "Route des Pyrénées",
+   "lat": 42.4864,
+   "lon": 1.96455,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 160.9,
+   "name": "Foot Col du Calvaire (cat. 3, 11.4 km at 4.1 %)",
+   "lat": 42.48462,
+   "lon": 1.96618,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 161.54,
+   "name": "Route des Pyrénées",
+   "lat": 42.48009,
+   "lon": 1.96639,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 162.21,
+   "name": "Route des Pyrénées",
+   "lat": 42.48454,
+   "lon": 1.97069,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 162.85,
+   "name": "Route des Pyrénées",
+   "lat": 42.48845,
+   "lon": 1.9734,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 163.02,
+   "name": "Route des Pyrénées",
+   "lat": 42.48865,
+   "lon": 1.97526,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 163.18,
+   "name": "Route des Pyrénées",
+   "lat": 42.48896,
+   "lon": 1.97534,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 163.5,
+   "name": "Route des Pyrénées",
+   "lat": 42.49114,
+   "lon": 1.97318,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 164.75,
+   "name": "Route des Pyrénées",
+   "lat": 42.49522,
+   "lon": 1.98095,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 166.09,
+   "name": "Targasonne (D618)",
+   "lat": 42.49924,
+   "lon": 1.99535,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 167.98,
+   "name": "Égat – roundabout (D618)",
+   "lat": 42.4979,
+   "lon": 2.01413,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 169.4,
+   "name": "Route de Cerdagne",
+   "lat": 42.50405,
+   "lon": 2.02725,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 170.8,
+   "name": "Font-Romeu centre (D618)",
+   "lat": 42.50497,
+   "lon": 2.04047,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 172.3,
+   "name": "Col du Calvaire (cat. 3, 1836 m), Font-Romeu",
+   "lat": 42.51167,
+   "lon": 2.05036,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D618"
+  },
+  {
+   "km": 173.77,
+   "name": "Pyrénées 2000 (Bolquère, D618)",
+   "lat": 42.51395,
+   "lon": 2.06327,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D618"
+  },
+  {
+   "km": 176.17,
+   "name": "primary",
+   "lat": 42.51112,
+   "lon": 2.08956,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 177.37,
+   "name": "primary",
+   "lat": 42.51308,
+   "lon": 2.10356,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 177.97,
+   "name": "primary",
+   "lat": 42.5132,
+   "lon": 2.10991,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 178.11,
+   "name": "Route des Artigues",
+   "lat": 42.51227,
+   "lon": 2.11003,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 178.27,
+   "name": "Route de Font-Romeu",
+   "lat": 42.51185,
+   "lon": 2.1118,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 178.57,
+   "name": "Mont-Louis / La Cabanasse – roundabout D618 → D118",
+   "lat": 42.51105,
+   "lon": 2.11455,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 180.88,
+   "name": "La Llagonne (D118)",
+   "lat": 42.52562,
+   "lon": 2.1223,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 182.43,
+   "name": "primary",
+   "lat": 42.53581,
+   "lon": 2.12328,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 184.0,
+   "name": "Col de la Quillane (1714 m, D118)",
+   "lat": 42.54812,
+   "lon": 2.11416,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D118"
+  },
+  {
+   "km": 188.23,
+   "name": "Matemale (D118 → D52)",
+   "lat": 42.58072,
+   "lon": 2.11453,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D52"
+  },
+  {
+   "km": 189.83,
+   "name": "Lac de Matemale north shore (D52)",
+   "lat": 42.5868,
+   "lon": 2.10496,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D52"
+  },
+  {
+   "km": 191.2,
+   "name": "Foot of final climb to Les Angles (4.7 km at 4.6 %)",
+   "lat": 42.5851,
+   "lon": 2.0886,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D52"
+  },
+  {
+   "km": 192.97,
+   "name": "Les Angles village (Avenue de l'Aude → Avenue de Mont-Louis, D32)",
+   "lat": 42.57755,
+   "lon": 2.07266,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D32"
+  },
+  {
+   "km": 193.58,
+   "name": "Avenue de Mont-Louis",
+   "lat": 42.57369,
+   "lon": 2.07043,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 194.2,
+   "name": "Junction D32 → Route du Pla del Mir – foot cat. 3 Les Angles (1.7 km at 6.5 %)",
+   "lat": 42.56893,
+   "lon": 2.07256,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Route du Pla del Mir"
+  },
+  {
+   "km": 194.43,
+   "name": "Route du Pla del Mir",
+   "lat": 42.56886,
+   "lon": 2.07196,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 194.63,
+   "name": "Route du Pla del Mir",
+   "lat": 42.5688,
+   "lon": 2.07038,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 194.84,
+   "name": "Route du Pla del Mir",
+   "lat": 42.56879,
+   "lon": 2.06981,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 195.05,
+   "name": "Route du Pla del Mir",
+   "lat": 42.56723,
+   "lon": 2.07032,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 195.9,
+   "name": "Finish Les Angles – Pla del Mir (1794 m)",
+   "lat": 42.5634,
+   "lon": 2.0666,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Route du Pla del Mir"
+  }
+ ],
+ "notes": "km 0 = départ réel on the C-1415b ~1.5 km west of the C-17 interchange north of Granollers (neutral start 12:10 at Carrer Ramon Llull 20, Granollers, through Granollers/Canovelles/Les Franqueses); exact km-0 spot placed 7.5 km before the C-1415b/C-59 junction per the official itinéraire horaire (Generalitat PPT 'Tour horaris', 16.06.2026), so medium confidence. Spanish part follows that itinéraire point by point (C-1415b, C-59, C-1413b, N-152a, BV-5303, BV-5305, B-520, Vic, B-522, BV-5224, BV-5226, old road La Mambla, C-17/C-17z Sant Quirze–Montesquiu, C-17 tunnels, Ripoll ring, N-260, GIV-4016 via Espinosa/Fornells/Toses, local road Toses→Collada (KOM 1778 m at the junction with GI-400), GI-400 to La Molina, GIV-4082 Carretera de la Molina to Alp, C-162 via Escadarcs/Queixans, N-260 to Puigcerdà). French part has no published itinéraire; it was reconstructed from the Puigcerdà road sequence (N-260→N-152→N-154), the Département 66 press kit (communes Ur, Angoustrine-Villeneuve-des-Escaldes, Targasonne, Égat, Font-Romeu, Bolquère, La Cabanasse, Mont-Louis, La Llagonne, Matemale, Les Angles; roads RN20, RD68, RD618, RD118, RD52, RD32) and checked against the official climb data: N-154/D68 Route Neutre to the RN20 crossing, RN20 north to Ur, D618 via Villeneuve-des-Escaldes, Angoustrine, Targasonne, Égat, Font-Romeu to the Col du Calvaire (routed km 172.3–172.5 at 1836 m, climb 11.4 km/473 m reproduced on the Copernicus DEM), D618 via Pyrénées 2000 to the roundabout north of Mont-Louis, D118 over Col de la Quillane (184.0), Matemale, D52 along the north shore of Lac de Matemale, Les Angles, D32 Avenue de Mont-Louis, Route du Pla del Mir to the finish. Although Llívia is named in Catalan town lists, routing through Llívia would not fit the Calvaire climb length/km; the route only passes the exclave on the neutral road. Points whose km is not in the itinéraire (town centres, French communes, junctions) have km derived from the routed path between official points, so their km is medium confidence; unnamed '(between ...)' points are routing fill points. Routing used one-way restrictions (directed graph), so on dual carriageways the points sit on the carriageway in race direction, e.g. the northbound C-17 between Montesquiu and Ripoll with its tunnels. The itinéraire row 'Tona' (41.7) is passed on the old N-152 corridor (now C-17 / N-152a) east of the town before the race turns onto the BV-5303 to Sant Miquel de Balenyà; low confidence for that point. Between Ribes de Freser and Planès the race stays on the N-260 past Planoles; at La Molina the route crosses the resort on Avinguda de la Generalitat / Avinguda de Supermolina / Avinguda d'Alp before the GIV-4082 Carretera de la Molina descent to Alp (exact resort streets uncertain). Alp to Queixans (C-162 via Escadarcs) routes about 0.8 km shorter than the official km difference; a few other legs between official by-km rows (Santa Eugènia-Vic, Manlleu-Granollers de la Plana, Vila-seca-Borgonyà, Ribes-Planoles) also route ~0.3 km shorter, and the full routed length is ~194.6 km against 195.9 km. Straight-line distances below 60 % of the km difference occur only at hairpins (La Molina, D618 between Angoustrine and Targasonne, Route du Pla del Mir) where extra points were added. Uncertain: exact streets inside Vic, La Molina and Les Angles; km 0 spot. [geodata G: the C-17 between La Mambla and Ripoll is class motorway in Overture (Autovia Barcelona - Vic - Ripoll), which the router never uses: no path from the Farga de Bebié tunnel to the Cúbia tunnel. Its waypoints now name the class, which unlocks it within 2.5 km of them (route.py)] [geodata G: via point on the Carretera de Ribes (old N-152, Overture tertiary) east of Tona, as the notes describe: without it the router went west through Tona town (Hostalets -> Tona leg 5.98 km vs 4.0 km in the itinerary)] [geodata G: the Carretera de Ribes via point is withdrawn (it is cut off from Tona by the C-17 and caused a loop); instead the Tona point names the C-17, so the C-17 (motorway in Overture) is unlocked within 2.5 km of it: the itinerary's 4.0 km from Hostalets to Tona matches the C-17 corridor, not the 6 km through the town]",
+ "sources": [
+  "https://pimec.org/wp-content/uploads/2026/07/20260616-_PPT-Tour_horaris.pdf",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-3-times.htm",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-3-climbs.htm",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-3-tdf-2026",
+  "https://www.intervals.icu/tour-de-france-2026/stage-3/",
+  "https://www.ledepartement66.fr/media/2026/06/DossierPresse_TourDeFrance2026_19juin2026EXE.pdf",
+  "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-3-france-welcomes-the-tour-with-a-short-mountain-finish/",
+  "https://www.granollers.cat/printpdf/3aetapa_tour",
+  "https://www.vilaweb.cat/noticies/tour-franca-2026-talls-transit-restriccions-mobilitat-barcelona-principat/",
+  "https://en.wikipedia.org/wiki/Col_de_la_Quillane",
+  "https://www.cols-cyclisme.com/pyrenees-est/france/col-du-calvaire-de-font-romeu-depuis-ur-c2340.htm",
+  "https://www.refuges.info/point/6721",
+  "Overture Maps release 2026-10-21.0 (transportation, divisions) and Copernicus DEM GLO-30 for road geometry/elevation checks"
+ ]
+}

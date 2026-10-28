@@ -1,9 +1,12 @@
 package app.rollentrainer.core.route
 
+import app.rollentrainer.core.geo.RealProfiles
+
 /**
  * The 21 stages of the 2026 tour (Barcelona to Paris), rebuilt from public route data: official
  * lengths, the categorised climbs and the altitudes of the towns along the way. Profiles are
  * approximations good enough for the trainer, not survey data. Generated; do not edit by hand.
+ * Stages measured by the geodata pipeline (tools/geodata) get their real profile from [RealProfiles].
  */
 object Stages {
     const val ID_PREFIX = "tour26-"
@@ -261,7 +264,7 @@ object Stages {
                 winner = "Mathieu van der Poel",
             ),
         ),
-    )
+    ).map(RealProfiles::apply)
 
     fun byNumber(n: Int): Route? = all.firstOrNull { it.stage?.number == n }
 }

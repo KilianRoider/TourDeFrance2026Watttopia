@@ -1,6 +1,7 @@
 package app.rollentrainer.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -47,7 +49,9 @@ import app.rollentrainer.core.route.Route
 import app.rollentrainer.core.route.Routes
 import app.rollentrainer.core.route.Stages
 import app.rollentrainer.core.model.Ride
+import app.rollentrainer.core.race.ProRider
 import app.rollentrainer.data.SensorRole
+import app.rollentrainer.ride.RaceRecord
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.formatDuration
 import kotlin.math.roundToInt
@@ -64,20 +68,35 @@ fun RoutesScreen(container: AppContainer) {
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val status by container.sensors.status.collectAsStateWithLifecycle()
     val rides by container.rides.rides.collectAsStateWithLifecycle()
+    val records by container.session.raceRecords.all.collectAsStateWithLifecycle()
     var fraction by rememberSaveable { mutableStateOf(1.0) }
     var stageCutKm by rememberSaveable { mutableStateOf(30.0) }
     var showTour by rememberSaveable { mutableStateOf(true) }
     var pacerWkg by rememberSaveable { mutableStateOf(settings.pacerWkg) }
     var startCandidate by remember { mutableStateOf<Route?>(null) }
+    var choosingPro by rememberSaveable { mutableStateOf(false) }
+    val pro = remember(settings.proRiderBib) { proRiderByBib(settings.proRiderBib) }
+    // Pro mode only on the Tour list: the legendary climbs have no field to race against.
+    val proOn = showTour && settings.proMode
     val params = remember(settings.weightKg) { RiderParams.forRider(settings.weightKg) }
-    val bests = remember(rides) {
-        rides.filter { it.routeId != null && it.routeTimeSec != null }
+    // Times ridden as a pro (with scaled power) are not the rider's own: they get their own line on the stage.
+    val proRideIds = remember(rides, records) {
+        rides.filter { it.id in records || it.notes.startsWith(RaceRecord.NOTES_PREFIX) }.map { it.id }.toSet()
+    }
+    val ownRides = remember(rides, proRideIds) { rides.filter { it.id !in proRideIds } }
+    val proResults = remember(records) {
+        records.values.groupBy { it.routeId }.mapValues { (_, list) ->
+            list.minWith(compareBy<RaceRecord> { !it.finished }.thenBy { it.rank })
+        }
+    }
+    val bests = remember(ownRides) {
+        ownRides.filter { it.routeId != null && it.routeTimeSec != null }
             .groupBy { it.routeId!! to it.routeFraction }
             .mapValues { (_, list) -> list.minOf { it.routeTimeSec!! } }
     }
     // Per stage: the longest ride done on it (the whole stage beats a finale) with its time.
-    val stageResults = remember(rides) {
-        rides.filter { it.routeId != null && it.routeTimeSec != null && it.routeId!!.startsWith(Stages.ID_PREFIX) }
+    val stageResults = remember(ownRides) {
+        ownRides.filter { it.routeId != null && it.routeTimeSec != null && it.routeId!!.startsWith(Stages.ID_PREFIX) }
             .groupBy { it.routeId!! }
             .mapValues { (_, list) -> list.maxWith(compareBy<Ride> { it.routeFraction }.thenBy { -it.routeTimeSec!! }).let { StageResult(it.routeFraction, it.routeVariant, it.routeTimeSec!!) } }
     }
@@ -85,6 +104,10 @@ fun RoutesScreen(container: AppContainer) {
 
     fun launch(route: Route) {
         val r = if (route.isStage) (if (stageCutKm > 0) route.finale(stageCutKm) else route) else route.shortened(fraction)
+        if (route.isStage && proOn) {
+            container.session.startRace(r, pro.id)
+            return
+        }
         val pacers = if (pacerWkg > 0) listOf(Pacer("Pacer", (pacerWkg * settings.weightKg).roundToInt())) else emptyList()
         container.settings.update { it.copy(pacerWkg = pacerWkg) }
         container.session.startRoute(r, pacers)
@@ -94,90 +117,127 @@ fun RoutesScreen(container: AppContainer) {
         if (status[SensorRole.TRAINER]?.state != ConnectionState.CONNECTED) startCandidate = route else launch(route)
     }
 
-    LazyVerticalGrid(
-        columns = GridCells.Adaptive(minSize = 340.dp),
-        contentPadding = PaddingValues(24.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        item(span = { GridItemSpan(maxLineSpan) }) {
-            Column {
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    FilterChip(selected = showTour, onClick = { showTour = true }, label = { Text("Tour 2026 · ${Stages.all.size} Etappen") })
-                    FilterChip(selected = !showTour, onClick = { showTour = false }, label = { Text("Legendäre Anstiege") })
-                }
-                Spacer(Modifier.height(12.dp))
-                if (showTour) {
-                    Text("Die Tour 2026, Etappe für Etappe", style = MaterialTheme.typography.headlineLarge)
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        "Alle ${Stages.all.size} Etappen von Barcelona bis Paris, nachgebaut aus den öffentlichen Höhenprofilen. Fahr sie der Reihe nach " +
-                            "ganz oder nur das Finale; dein Fortschritt und deine Zeiten werden gesammelt. Der Trainer stellt die Steigung der " +
-                            "Straße, dein Tempo kommt aus Leistung, Gewicht und Gefälle.",
-                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Spacer(Modifier.height(12.dp))
-                    TourProgress(stageResults, settings.ftp, settings.weightKg, params)
-                    Spacer(Modifier.height(12.dp))
-                    Text("Länge", style = MaterialTheme.typography.labelLarge)
+    // Measured on the space the screen gets; on a phone the margins shrink and cards take the full width
+    // (320 dp minimum: two columns only where two cards really fit).
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val compact = maxWidth < 600.dp
+        val headline = if (compact) MaterialTheme.typography.headlineMedium else MaterialTheme.typography.headlineLarge
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(minSize = 320.dp),
+            contentPadding = PaddingValues(if (compact) 16.dp else 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(if (compact) 12.dp else 16.dp),
+            verticalArrangement = Arrangement.spacedBy(if (compact) 12.dp else 16.dp),
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                Column {
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        STAGE_CUTS.forEach { (km, label) ->
-                            FilterChip(selected = stageCutKm == km, onClick = { stageCutKm = km }, label = { Text(label) })
+                        FilterChip(selected = showTour, onClick = { showTour = true }, label = { Text("Tour 2026 · ${Stages.all.size} Etappen") })
+                        FilterChip(selected = !showTour, onClick = { showTour = false }, label = { Text("Legendäre Anstiege") })
+                    }
+                    Spacer(Modifier.height(12.dp))
+                    if (showTour) {
+                        Text("Die Tour 2026, Etappe für Etappe", style = headline)
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            "Alle ${Stages.all.size} Etappen von Barcelona bis Paris, nachgebaut aus den öffentlichen Höhenprofilen. Fahr sie der Reihe nach " +
+                                "ganz oder nur das Finale; dein Fortschritt und deine Zeiten werden gesammelt. Der Trainer stellt die Steigung der " +
+                                "Straße, dein Tempo kommt aus Leistung, Gewicht und Gefälle.",
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.height(12.dp))
+                        TourProgress(stageResults, settings.ftp, settings.weightKg, params)
+                        Spacer(Modifier.height(12.dp))
+                        ProModePanel(
+                            enabled = settings.proMode,
+                            rider = pro,
+                            userFtp = settings.ftp,
+                            onEnabled = { on -> container.settings.update { it.copy(proMode = on) } },
+                            onChoose = { choosingPro = true },
+                        )
+                        Spacer(Modifier.height(12.dp))
+                        Text("Länge", style = MaterialTheme.typography.labelLarge)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            STAGE_CUTS.forEach { (km, label) ->
+                                FilterChip(selected = stageCutKm == km, onClick = { stageCutKm = km }, label = { Text(label) })
+                            }
+                        }
+                    } else {
+                        Text("Legendäre Anstiege", style = headline)
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            "Die berühmten Berge der großen Rundfahrten, nachgebaut aus öffentlichen Höhenprofilen. Der Trainer simuliert die " +
+                                "Steigung, dein Tempo folgt der Physik aus Leistung, Gewicht und Gefälle.",
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.height(12.dp))
+                        Text("Länge", style = MaterialTheme.typography.labelLarge)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            FRACTIONS.forEach { (f, label) ->
+                                FilterChip(selected = fraction == f, onClick = { fraction = f }, label = { Text(label) })
+                            }
                         }
                     }
-                } else {
-                    Text("Legendäre Anstiege", style = MaterialTheme.typography.headlineLarge)
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        "Die berühmten Berge der großen Rundfahrten, nachgebaut aus öffentlichen Höhenprofilen. Der Trainer simuliert die " +
-                            "Steigung, dein Tempo folgt der Physik aus Leistung, Gewicht und Gefälle.",
-                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Spacer(Modifier.height(12.dp))
-                    Text("Länge", style = MaterialTheme.typography.labelLarge)
-                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        FRACTIONS.forEach { (f, label) ->
-                            FilterChip(selected = fraction == f, onClick = { fraction = f }, label = { Text(label) })
+                    Spacer(Modifier.height(8.dp))
+                    if (proOn) {
+                        // The field is the competition; a pacer at constant power would only be in the way.
+                        Text(
+                            "Im Profi-Modus fährst du gegen das Feld, ohne Pacer.",
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    } else {
+                        Text("Pacer (fährt mit konstanter Leistung)", style = MaterialTheme.typography.labelLarge)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            PACERS.forEach { (w, label) ->
+                                val watts = (w * settings.weightKg).roundToInt()
+                                FilterChip(selected = pacerWkg == w, onClick = { pacerWkg = w }, label = { Text(if (w > 0) "$label · $watts W" else label) })
+                            }
                         }
                     }
                 }
-                Spacer(Modifier.height(8.dp))
-                Text("Pacer (fährt mit konstanter Leistung)", style = MaterialTheme.typography.labelLarge)
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    PACERS.forEach { (w, label) ->
-                        val watts = (w * settings.weightKg).roundToInt()
-                        FilterChip(selected = pacerWkg == w, onClick = { pacerWkg = w }, label = { Text(if (w > 0) "$label · $watts W" else label) })
-                    }
+            }
+            if (showTour) {
+                // In pro mode the speed comes from the pro's weight and the scaled watts; the panel above explains that.
+                if (!proOn) item(span = { GridItemSpan(maxLineSpan) }) { SpeedExplainer(settings.ftp, settings.weightKg) }
+                items(Stages.all, key = { it.id }) { stage ->
+                    val shown = remember(stage, stageCutKm) { if (stageCutKm > 0) stage.finale(stageCutKm) else stage }
+                    StageCard(
+                        stage = stage,
+                        shown = shown,
+                        ftp = settings.ftp,
+                        params = params,
+                        result = stageResults[stage.id],
+                        isNext = stage.id == nextStageId,
+                        pro = if (proOn) pro else null,
+                        proResult = proResults[stage.id],
+                        onStart = { start(stage) },
+                    )
+                }
+            } else {
+                items(Routes.all, key = { it.id }) { route ->
+                    val shown = remember(route, fraction) { route.shortened(fraction) }
+                    val estimate = remember(shown, settings.ftp, params) { Physics.estimateSeconds(shown, settings.ftp * 0.9, params) }
+                    RouteCard(
+                        route = shown,
+                        estimateSec = estimate,
+                        bestSec = bests[route.id to shown.fraction],
+                        onStart = { start(route) },
+                    )
                 }
             }
         }
-        if (showTour) {
-            item(span = { GridItemSpan(maxLineSpan) }) { SpeedExplainer(settings.ftp, settings.weightKg) }
-            items(Stages.all, key = { it.id }) { stage ->
-                val shown = remember(stage, stageCutKm) { if (stageCutKm > 0) stage.finale(stageCutKm) else stage }
-                StageCard(
-                    stage = stage,
-                    shown = shown,
-                    ftp = settings.ftp,
-                    params = params,
-                    result = stageResults[stage.id],
-                    isNext = stage.id == nextStageId,
-                    onStart = { start(stage) },
-                )
-            }
-        } else {
-            items(Routes.all, key = { it.id }) { route ->
-                val shown = remember(route, fraction) { route.shortened(fraction) }
-                val estimate = remember(shown, settings.ftp, params) { Physics.estimateSeconds(shown, settings.ftp * 0.9, params) }
-                RouteCard(
-                    route = shown,
-                    estimateSec = estimate,
-                    bestSec = bests[route.id to shown.fraction],
-                    onStart = { start(route) },
-                )
-            }
-        }
+    }
+
+    if (choosingPro) {
+        ProRiderPickerDialog(
+            selectedBib = settings.proRiderBib,
+            userFtp = settings.ftp,
+            onPick = { r ->
+                container.settings.update { it.copy(proRiderBib = r.bib, proMode = true) }
+                choosingPro = false
+            },
+            onDismiss = { choosingPro = false },
+        )
     }
 
     startCandidate?.let { r ->
@@ -194,13 +254,15 @@ fun RoutesScreen(container: AppContainer) {
 /** What the rider has done on a stage: the cut ridden and the time. */
 data class StageResult(val fraction: Double, val variant: String, val timeSec: Int)
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TourProgress(results: Map<String, StageResult>, ftp: Int, weightKg: Double, params: RiderParams) {
     val done = results.size
     val whole = results.values.count { it.fraction >= 0.999 }
     val totalSec = results.values.sumOf { it.timeSec }
     Panel(Modifier.fillMaxWidth()) {
-        Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+        // Four facts are wider than a phone; they wrap instead of being cut off.
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Fact("$done / ${Stages.all.size}", "Etappen gefahren")
             Fact("$whole", "davon ganz")
             Fact(formatDuration(totalSec), "Gesamtzeit")
@@ -242,8 +304,19 @@ private fun SpeedExplainer(ftp: Int, weightKg: Double) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun StageCard(stage: Route, shown: Route, ftp: Int, params: RiderParams, result: StageResult?, isNext: Boolean, onStart: () -> Unit) {
+private fun StageCard(
+    stage: Route,
+    shown: Route,
+    ftp: Int,
+    params: RiderParams,
+    result: StageResult?,
+    isNext: Boolean,
+    pro: ProRider?,
+    proResult: RaceRecord?,
+    onStart: () -> Unit,
+) {
     val info = stage.stage ?: return
     val share = remember(shown, ftp, params) { Physics.paceShareOfFtp(shown, ftp, params) }
     val watts = ftp * share
@@ -266,7 +339,7 @@ private fun StageCard(stage: Route, shown: Route, ftp: Int, params: RiderParams,
             lineColor = MaterialTheme.colorScheme.primary, fillColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
         )
         Spacer(Modifier.height(8.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Fact("%.1f km".format(stage.lengthKm), "Länge")
             Fact("${stage.ascentM.roundToInt()} m", "Höhenmeter")
             Fact("${info.climbs.size}", "Anstiege")
@@ -282,27 +355,67 @@ private fun StageCard(stage: Route, shown: Route, ftp: Int, params: RiderParams,
         Spacer(Modifier.height(8.dp))
         Text(stage.description, style = MaterialTheme.typography.bodyMedium, maxLines = 3, overflow = TextOverflow.Ellipsis)
         Spacer(Modifier.height(10.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
+        val details: @Composable () -> Unit = {
+            if (pro != null) {
+                Text(
+                    // A time trial has no bunch to ride in: say against whom the clock runs.
+                    "${shown.variant.ifBlank { "Ganze Etappe" }} " + when (stage.stage?.type) {
+                        "itt" -> "gegen die Uhr, ${app.rollentrainer.core.race.Tour2026.roster.size} Starter"
+                        "ttt" -> "mit ${pro.team.code} gegen ${app.rollentrainer.core.race.Tour2026.roster.teams.size - 1} Teams"
+                        else -> "im Feld mit ${app.rollentrainer.core.race.Tour2026.roster.size} Fahrern"
+                    } + " · deine Leistung\u00A0${proFactorText(pro, ftp)}",
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            } else {
                 Text(
                     "${shown.variant.ifBlank { "Ganze Etappe" }}: ≈ ${formatDuration(estimate)} bei %.0f W (%.0f %% FTP) · Ø %.1f km/h".format(watts, share * 100, avg),
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+            }
+            Text(
+                if (result != null) "Deine Zeit: ${formatDuration(result.timeSec)} (${result.variant.ifBlank { "ganze Etappe" }})" else "Noch nicht gefahren",
+                style = MaterialTheme.typography.bodySmall,
+                color = if (result != null) Color(0xFFEAB308) else MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            if (proResult != null) {
                 Text(
-                    if (result != null) "Deine Zeit: ${formatDuration(result.timeSec)} (${result.variant.ifBlank { "ganze Etappe" }})" else "Noch nicht gefahren",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = if (result != null) Color(0xFFEAB308) else MaterialTheme.colorScheme.onSurfaceVariant,
+                    "Profi-Modus: " + proResult.historyLine.substringAfter(" · "),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
             }
-            Button(onClick = onStart) {
-                Icon(Icons.Default.PlayArrow, null)
-                Spacer(Modifier.width(6.dp))
-                Text("Fahren")
+        }
+        val label = if (pro != null) proStartLabel(pro) else "Fahren"
+        // In pro mode the button names the rider ("Als T. Halland Johannessen"): beside the texts it would squeeze
+        // them to a strip on a phone or in a tablet's grid, so a card of that size puts it under them. Beside
+        // them on a wide card it is capped, a long name ends in "…".
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            if (pro != null && maxWidth < 480.dp) {
+                Column {
+                    details()
+                    Spacer(Modifier.height(8.dp))
+                    StartButton(label, onStart, Modifier.fillMaxWidth())
+                }
+            } else {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) { details() }
+                    StartButton(label, onStart, Modifier.padding(start = 8.dp).widthIn(max = 260.dp))
+                }
             }
         }
     }
 }
 
+@Composable
+private fun StartButton(label: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Button(onClick = onClick, modifier = modifier) {
+        Icon(Icons.Default.PlayArrow, null)
+        Spacer(Modifier.width(6.dp))
+        Text(label, maxLines = 1, overflow = TextOverflow.Ellipsis)
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun RouteCard(route: Route, estimateSec: Int, bestSec: Int?, onStart: () -> Unit) {
     Panel(Modifier.fillMaxWidth()) {
@@ -314,7 +427,7 @@ private fun RouteCard(route: Route, estimateSec: Int, bestSec: Int?, onStart: ()
             lineColor = MaterialTheme.colorScheme.primary, fillColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
         )
         Spacer(Modifier.height(8.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Fact("%.1f km".format(route.lengthKm), "Länge")
             Fact("${route.ascentM.roundToInt()} m", "Höhenmeter")
             Fact("%.1f %%".format(route.avgGradientPct), "Ø Steigung")

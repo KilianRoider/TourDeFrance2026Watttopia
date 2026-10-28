@@ -26,6 +26,8 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withTimeoutOrNull
 import java.util.UUID
+import kotlin.math.roundToInt
+import kotlin.math.sin
 
 /** A reading with the time it arrived, so stale values can be ignored. */
 data class Reading<T>(val value: T, val atMs: Long) {
@@ -90,6 +92,8 @@ class SensorHub(
     private var lastGrade: Double? = null
     private var lastGradeSentAt = 0L
     private var lastControlRequestAt = 0L
+    /** The simulated sensors of the screenshot demo, see [startDemo]; null in normal use. */
+    private var demo: Job? = null
 
     /** FTMS is a procedure protocol: one control-point command at a time, each answered by an indication. */
     private val cpLock = Mutex()
@@ -103,6 +107,7 @@ class SensorHub(
     }
 
     fun connect(role: SensorRole, sensor: SavedSensor) {
+        if (demo != null) return
         val existing = clients[role]
         if (existing != null && existing.address == sensor.address) {
             existing.connect()
@@ -139,6 +144,47 @@ class SensorHub(
 
     fun disconnectAll() {
         clients.values.forEach { it.disconnect() }
+    }
+
+    /**
+     * Demo mode only (CI screenshots on an emulator, which has no trainer): a simulated smart trainer and
+     * heart-rate strap report as connected and feed the readings a real one would, four times a second.
+     * ERG targets are followed; in simulation mode the rider holds about [baseWatts]. Real Bluetooth stays off.
+     */
+    fun startDemo(baseWatts: Int) {
+        if (demo != null) return
+        val trainer = SavedSensor("00:00:00:00:00:01", "KICKR CORE 2 (Demo)")
+        val strap = SavedSensor("00:00:00:00:00:02", "HRM-Pro (Demo)")
+        _status.update {
+            it + (SensorRole.TRAINER to SensorStatus(trainer, ConnectionState.CONNECTED, 92)) +
+                (SensorRole.HEART_RATE to SensorStatus(strap, ConnectionState.CONNECTED, 78))
+        }
+        _trainerControl.value = true
+        _trainerRange.value = 0..2000
+        val rnd = java.util.Random(26)
+        fun emit() {
+            val t = now()
+            val sec = t / 1000.0
+            val base = (if (simulation) null else lastTarget) ?: baseWatts
+            val watts = (base + 10 * sin(sec / 6) + rnd.nextGaussian() * 6).roundToInt().coerceAtLeast(0)
+            val rpm = 88 + 3 * sin(sec / 11) + rnd.nextGaussian()
+            val hr = (140 + 4 * sin(sec / 37) + rnd.nextGaussian()).roundToInt()
+            val kmh = 31 + 1.5 * sin(sec / 9)
+            _raw.update {
+                it.copy(
+                    trainerPower = Reading(watts, t), trainerCadence = Reading(rpm, t),
+                    trainerSpeed = Reading(kmh, t), hr = Reading(hr, t),
+                )
+            }
+        }
+        // The first reading at once, so a ride started right after this sees a pedalling rider.
+        emit()
+        demo = scope.launch {
+            while (true) {
+                delay(250)
+                emit()
+            }
+        }
     }
 
     private suspend fun GattClient.setup(role: SensorRole) {
@@ -311,6 +357,8 @@ class SensorHub(
      * progress"). Returns the result code, null when no response came in time, or [CP_WRITE_FAILED].
      */
     private suspend fun control(cmd: ByteArray): Int? = cpLock.withLock {
+        // The simulated trainer of the demo accepts every command.
+        if (demo != null) return@withLock Ftms.RESULT_SUCCESS
         val client = clients[SensorRole.TRAINER] ?: return@withLock CP_WRITE_FAILED
         val response = CompletableDeferred<Int>()
         cpResponse = response

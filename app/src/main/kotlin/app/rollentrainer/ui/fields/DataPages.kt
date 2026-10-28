@@ -48,7 +48,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.rollentrainer.data.AppSettings
@@ -116,7 +118,11 @@ fun AppSettings.pages(free: Boolean): List<DataPage> = if (free) {
     ridePages.ifEmpty { if (rideFields == AppSettings().rideFields) PageDefaults.WORKOUT else PageDefaults.migrate(rideFields) }
 }
 
-/** One field in a page. Text size follows the number of tiles in the row and the font scale. */
+/**
+ * One field in a page. Text size follows the number of tiles in the row and the chosen text size,
+ * and is then limited by the tile itself: on a phone in landscape a row can be only 60 dp tall,
+ * so the value shrinks to the height left under the caption, and the second line goes first.
+ */
 @Composable
 fun FieldTile(
     field: DataField?,
@@ -134,65 +140,80 @@ fun FieldTile(
         3 -> 42f
         else -> 32f
     } * scale
-    Column(
+    // Text is sized in sp, the tile in dp; the system font scale converts between them.
+    val fontScale = LocalDensity.current.fontScale
+    BoxWithConstraints(
         modifier
             .clip(CardShape)
             .background(MaterialTheme.colorScheme.surfaceContainer)
             .border(1.dp, border, CardShape)
-            .clickable(enabled = editing, onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
+            .clickable(enabled = editing, onClick = onClick),
     ) {
-        if (field == null || value == null) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                if (editing) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Default.Add, null, tint = MaterialTheme.colorScheme.primary)
-                        Spacer(Modifier.width(6.dp))
-                        Text("Feld", color = MaterialTheme.colorScheme.primary)
+        val padH = if (maxWidth < 120.dp) 8.dp else 12.dp
+        val padV = if (maxHeight < 80.dp) 4.dp else 8.dp
+        val innerW = (maxWidth - padH * 2).value
+        // Unbounded only if a caller puts the tile in a scrolling column without a height.
+        val innerH = if (maxHeight == Dp.Infinity) Float.MAX_VALUE else (maxHeight - padV * 2).value
+        val lineDp = 16f * fontScale // labelMedium and bodySmall both have a 16 sp line
+        val showSub = value?.sub != null && innerH >= lineDp * 2 + 30f * fontScale
+        val valueRoom = innerH - lineDp - (if (showSub) lineDp else 0f)
+        Column(
+            Modifier.fillMaxSize().padding(horizontal = padH, vertical = padV),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            if (field == null || value == null) {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    if (editing) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Default.Add, null, tint = MaterialTheme.colorScheme.primary)
+                            Spacer(Modifier.width(6.dp))
+                            Text("Feld", color = MaterialTheme.colorScheme.primary)
+                        }
                     }
                 }
-            }
-            return@Column
-        }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.size(8.dp).clip(CircleShape).background(value.accent ?: MaterialTheme.colorScheme.outline))
-            Spacer(Modifier.width(8.dp))
-            Text(
-                field.shortLabel.uppercase(), style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis,
-            )
-        }
-        // The value shrinks to the tile's width (digits are about 0.58 em wide), so "1:29:59" or "245 W" never gets cut off.
-        BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val units = value.text.length * 0.58f + if (value.unit.isEmpty()) 0f else 0.1f + value.unit.length * 0.28f * 0.6f
-            val size = minOf(base, maxWidth.value / units).coerceAtLeast(14f)
-            val unitSize = (size * 0.28f).coerceAtLeast(12f)
-            Row(verticalAlignment = Alignment.Bottom) {
-                Text(
-                    value.text,
-                    fontSize = size.sp,
-                    lineHeight = (size * 1.05f).sp,
-                    style = MaterialTheme.typography.displayLarge,
-                    maxLines = 1,
-                    softWrap = false,
-                    color = if (perRow == 1) value.accent ?: MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface,
-                )
-                if (value.unit.isNotEmpty()) {
-                    Spacer(Modifier.width(6.dp))
+            } else {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(Modifier.size(8.dp).clip(CircleShape).background(value.accent ?: MaterialTheme.colorScheme.outline))
+                    Spacer(Modifier.width(if (padH < 12.dp) 6.dp else 8.dp))
                     Text(
-                        value.unit, fontSize = unitSize.sp, lineHeight = (unitSize * 1.2f).sp,
-                        style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = (size * 0.12f).dp),
+                        field.shortLabel.uppercase(), style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis,
                     )
                 }
+                // The value shrinks to the tile's width (digits are about 0.58 em wide) and height, so "1:29:59"
+                // or "245 W" never gets cut off.
+                val units = value.text.length * 0.58f + if (value.unit.isEmpty()) 0f else 0.1f + value.unit.length * 0.28f * 0.6f
+                val byWidth = innerW / units / fontScale
+                val byHeight = valueRoom / 1.05f / fontScale
+                val size = minOf(base, byWidth, byHeight).coerceAtLeast(12f)
+                val unitSize = (size * 0.28f).coerceAtLeast(if (size < 24f) 10f else 12f)
+                Row(verticalAlignment = Alignment.Bottom) {
+                    Text(
+                        value.text,
+                        fontSize = size.sp,
+                        lineHeight = (size * 1.05f).sp,
+                        style = MaterialTheme.typography.displayLarge,
+                        maxLines = 1,
+                        softWrap = false,
+                        color = if (perRow == 1) value.accent ?: MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface,
+                    )
+                    if (value.unit.isNotEmpty()) {
+                        Spacer(Modifier.width(if (size < 30f) 3.dp else 6.dp))
+                        Text(
+                            value.unit, fontSize = unitSize.sp, lineHeight = (unitSize * 1.2f).sp,
+                            style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1, softWrap = false,
+                            modifier = Modifier.padding(bottom = (size * 0.12f).dp),
+                        )
+                    }
+                }
+                if (showSub) {
+                    Text(value.sub.orEmpty(), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis)
+                } else {
+                    Spacer(Modifier.height(if (padV < 8.dp) 0.dp else 2.dp))
+                }
             }
-        }
-        if (value.sub != null) {
-            Text(value.sub, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1, overflow = TextOverflow.Ellipsis)
-        } else {
-            Spacer(Modifier.height(2.dp))
         }
     }
 }
@@ -210,22 +231,57 @@ private fun PageGrid(
 ) {
     val layout = PageLayout.byKey(page.layout)
     val scale = settings.rideFontScale.factor
-    Column(modifier, verticalArrangement = Arrangement.spacedBy(ROW_GAP)) {
-        var slot = 0
-        for (perRow in layout.rows) {
-            val rowWeight = when (perRow) { 1 -> 1.9f; 2 -> 1.3f; else -> 1f }
-            val rowModifier = if (fill) Modifier.fillMaxWidth().weight(rowWeight) else Modifier.fillMaxWidth().height(rowHeight(perRow, scale))
-            Row(rowModifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                for (c in 0 until perRow) {
-                    val index = slot++
-                    val key = page.fields.getOrNull(index).orEmpty()
-                    val field = DataField.byKey(key)
-                    FieldTile(
-                        field, field?.value(s, settings), perRow, scale,
-                        Modifier.weight(1f).fillMaxHeight(), editing = editing, onClick = { onSlot(index) },
-                    )
+    BoxWithConstraints(modifier) {
+        // On a wide and low area (a phone in landscape) a hero page puts the hero tile beside the
+        // other rows; stacked, every row would be a strip too thin for its numbers.
+        val sideBySide = fill && layout.rows.size > 1 && layout.rows.first() == 1 &&
+            maxHeight != Dp.Infinity && maxWidth > maxHeight * 1.8f
+        if (sideBySide) {
+            Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                TileRow(page, s, settings, 1, 0, scale, editing, onSlot, Modifier.weight(1f).fillMaxHeight())
+                Column(Modifier.weight(1.25f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(ROW_GAP)) {
+                    var slot = 1
+                    for (perRow in layout.rows.drop(1)) {
+                        TileRow(page, s, settings, perRow, slot, scale, editing, onSlot, Modifier.fillMaxWidth().weight(1f))
+                        slot += perRow
+                    }
                 }
             }
+        } else {
+            Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(ROW_GAP)) {
+                var slot = 0
+                for (perRow in layout.rows) {
+                    val rowWeight = when (perRow) { 1 -> 1.9f; 2 -> 1.3f; else -> 1f }
+                    val rowModifier = if (fill) Modifier.fillMaxWidth().weight(rowWeight) else Modifier.fillMaxWidth().height(rowHeight(perRow, scale))
+                    TileRow(page, s, settings, perRow, slot, scale, editing, onSlot, rowModifier)
+                    slot += perRow
+                }
+            }
+        }
+    }
+}
+
+/** One row of tiles starting at [firstSlot] of the page. */
+@Composable
+private fun TileRow(
+    page: DataPage,
+    s: RideState,
+    settings: AppSettings,
+    perRow: Int,
+    firstSlot: Int,
+    scale: Float,
+    editing: Boolean,
+    onSlot: (Int) -> Unit,
+    modifier: Modifier,
+) {
+    Row(modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        for (c in 0 until perRow) {
+            val index = firstSlot + c
+            val field = DataField.byKey(page.fields.getOrNull(index).orEmpty())
+            FieldTile(
+                field, field?.value(s, settings), perRow, scale,
+                Modifier.weight(1f).fillMaxHeight(), editing = editing, onClick = { onSlot(index) },
+            )
         }
     }
 }

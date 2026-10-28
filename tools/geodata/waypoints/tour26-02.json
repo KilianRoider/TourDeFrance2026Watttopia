@@ -1,0 +1,1320 @@
+{
+ "id": "tour26-02",
+ "lengthKm": 168.5,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Start (km 0, départ réel) – N-340 at the east end of Tarragona's Via Augusta",
+   "lat": 41.12381,
+   "lon": 1.28256,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 0.6,
+   "name": "Cala Romana (Tarragona, N-340)",
+   "lat": 41.1255,
+   "lon": 1.28925,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 2.0,
+   "name": "Monnars (Tarragona, N-340)",
+   "lat": 41.1309,
+   "lon": 1.30418,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 5.7,
+   "name": "La Móra – N-340 continues on the dual-carriageway variant (Altafulla bypass)",
+   "lat": 41.13878,
+   "lon": 1.34619,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 9.2,
+   "name": "N-340 (between La Móra – N-340 continues on the dual-carriageway variant (Altafulla bypass) and Torredembarra (N-340))",
+   "lat": 41.15605,
+   "lon": 1.37666,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 12.7,
+   "name": "Torredembarra (N-340)",
+   "lat": 41.16097,
+   "lon": 1.41542,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 14.8,
+   "name": "Creixell (N-340)",
+   "lat": 41.16027,
+   "lon": 1.4358,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 16.8,
+   "name": "Roda de Berà (N-340)",
+   "lat": 41.16736,
+   "lon": 1.45699,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 20.3,
+   "name": "Francàs (Roda de Berà / Coma-ruga, N-340)",
+   "lat": 41.17841,
+   "lon": 1.49348,
+   "kind": "town",
+   "confidence": "low",
+   "road": "N-340"
+  },
+  {
+   "km": 22.86,
+   "name": "N-340 Carretera de la Mediterrània (between Francàs (Roda de Berà / Coma-ruga, N-340) and El Vendrell (N-340 → C-31))",
+   "lat": 41.18902,
+   "lon": 1.51915,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 25.4,
+   "name": "El Vendrell (N-340 → C-31)",
+   "lat": 41.20754,
+   "lon": 1.53353,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 26.95,
+   "name": "El Vendrell interchange – N-340 → C-31 towards Calafell",
+   "lat": 41.21674,
+   "lon": 1.54516,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 28.7,
+   "name": "La Franquesa (C-31)",
+   "lat": 41.20601,
+   "lon": 1.55739,
+   "kind": "town",
+   "confidence": "low",
+   "road": "C-31"
+  },
+  {
+   "km": 29.9,
+   "name": "Calafell – C-31 turns south on Carretera de Bellvei",
+   "lat": 41.20623,
+   "lon": 1.57075,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 30.7,
+   "name": "Calafell (C-31)",
+   "lat": 41.19947,
+   "lon": 1.57298,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 32.8,
+   "name": "Bellamar (Calafell, C-31)",
+   "lat": 41.19199,
+   "lon": 1.58691,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 33.9,
+   "name": "Segur de Calafell (C-31)",
+   "lat": 41.19211,
+   "lon": 1.60002,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 35.6,
+   "name": "Cunit (C-31)",
+   "lat": 41.19559,
+   "lon": 1.61896,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 38.1,
+   "name": "Cubelles – La Gavina (C-31)",
+   "lat": 41.20117,
+   "lon": 1.64675,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 40.5,
+   "name": "Cubelles (C-31, Avinguda de Catalunya)",
+   "lat": 41.20748,
+   "lon": 1.67328,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 41.4,
+   "name": "Junction C-31 → C-246a (Cubelles roundabout, exit towards Vilanova i la Geltrú platja)",
+   "lat": 41.20874,
+   "lon": 1.68333,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-246a"
+  },
+  {
+   "km": 43.3,
+   "name": "Racó de Santa Llúcia (C-246a)",
+   "lat": 41.21127,
+   "lon": 1.70548,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-246a"
+  },
+  {
+   "km": 44.4,
+   "name": "Vilanova i la Geltrú (C-246a, Avinguda de la Torre del Vallès)",
+   "lat": 41.21804,
+   "lon": 1.71298,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-246a"
+  },
+  {
+   "km": 44.89,
+   "name": "Vilanova – Avinguda de Cubelles",
+   "lat": 41.21956,
+   "lon": 1.71826,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Cubelles"
+  },
+  {
+   "km": 45.7,
+   "name": "Vilanova – Rambla de Josep Tomàs Ventosa / Rambla de l'Exposició",
+   "lat": 41.2212,
+   "lon": 1.7273,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rambla de l'Exposició"
+  },
+  {
+   "km": 46.34,
+   "name": "Vilanova – Avinguda d'Eduard Toldrà",
+   "lat": 41.22409,
+   "lon": 1.73301,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda d'Eduard Toldrà"
+  },
+  {
+   "km": 47.47,
+   "name": "Vilanova – Avinguda d'Eduard Toldrà → Rambla del Garraf",
+   "lat": 41.23151,
+   "lon": 1.74131,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Rambla del Garraf"
+  },
+  {
+   "km": 47.8,
+   "name": "Sant Pere de Ribes (municipality, C-246a corridor)",
+   "lat": 41.23292,
+   "lon": 1.7445,
+   "kind": "town",
+   "confidence": "low",
+   "road": "C-246a"
+  },
+  {
+   "km": 49.5,
+   "name": "Les Roquetes – roundabout, C-246a towards Sitges",
+   "lat": 41.24021,
+   "lon": 1.76171,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-246a"
+  },
+  {
+   "km": 52.0,
+   "name": "Sitges (C-246a)",
+   "lat": 41.23176,
+   "lon": 1.78749,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-246a"
+  },
+  {
+   "km": 52.13,
+   "name": "Sitges – Passeig de Vilanova → Avinguda de Navarra (down to the seafront)",
+   "lat": 41.23238,
+   "lon": 1.78864,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Avinguda de Navarra"
+  },
+  {
+   "km": 52.64,
+   "name": "Avinguda de Navarra",
+   "lat": 41.2285,
+   "lon": 1.78795,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 52.9,
+   "name": "Avinguda de Navarra",
+   "lat": 41.22623,
+   "lon": 1.78761,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 53.02,
+   "name": "Carrer de Josep Carbonell i Gener",
+   "lat": 41.2265,
+   "lon": 1.78812,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 53.17,
+   "name": "Sitges – Avinguda de Navarra → Passeig Marítim (seafront)",
+   "lat": 41.22641,
+   "lon": 1.78921,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Passeig Marítim"
+  },
+  {
+   "km": 54.71,
+   "name": "Sitges – Passeig Marítim → Avinguda de Sofia",
+   "lat": 41.23388,
+   "lon": 1.80417,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Avinguda de Sofia"
+  },
+  {
+   "km": 55.07,
+   "name": "Sitges – Avinguda de Sofia → Passeig de Vilanova / Avinguda d'Artur Carbonell (back on C-246a)",
+   "lat": 41.2368,
+   "lon": 1.80253,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "Avinguda d'Artur Carbonell"
+  },
+  {
+   "km": 56.77,
+   "name": "Sitges – Carretera de les Costes → C-31 Costes del Garraf",
+   "lat": 41.23972,
+   "lon": 1.82023,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 59.49,
+   "name": "Costes del Garraf (between Sitges – Carretera de les Costes → C-31 Costes del Garraf and Vallcarca (C-31))",
+   "lat": 41.23571,
+   "lon": 1.84539,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 62.2,
+   "name": "Vallcarca (C-31)",
+   "lat": 41.2414,
+   "lon": 1.86765,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 67.0,
+   "name": "Garraf (C-31)",
+   "lat": 41.25684,
+   "lon": 1.9033,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "C-31"
+  },
+  {
+   "km": 69.68,
+   "name": "Les Botigues de Sitges – leave C-31 for the urban seafront road (Avinguda del Rat Penat / Passeig Marítim)",
+   "lat": 41.263001,
+   "lon": 1.92798,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig Marítim"
+  },
+  {
+   "km": 71.5,
+   "name": "Castelldefels (Passeig Marítim)",
+   "lat": 41.26489,
+   "lon": 1.94829,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Passeig Marítim"
+  },
+  {
+   "km": 74.0,
+   "name": "Passeig Marítim",
+   "lat": 41.26559,
+   "lon": 1.97735,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 75.24,
+   "name": "Passeig Marítim",
+   "lat": 41.26533,
+   "lon": 1.99123,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 75.87,
+   "name": "Passeig Marítim",
+   "lat": 41.26538,
+   "lon": 1.99828,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 76.5,
+   "name": "Gavà Mar (Carrer de Llevant / Avinguda d'Europa)",
+   "lat": 41.26849,
+   "lon": 2.00194,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Avinguda d'Europa"
+  },
+  {
+   "km": 77.99,
+   "name": "Gavà Mar – Avinguda d'Europa → Avinguda del Mar",
+   "lat": 41.26945,
+   "lon": 2.01933,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Mar"
+  },
+  {
+   "km": 79.28,
+   "name": "Avinguda del Mar",
+   "lat": 41.28073,
+   "lon": 2.01913,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 80.58,
+   "name": "Plaça de la Terra – Avinguda del Mar → B-210",
+   "lat": 41.29158,
+   "lon": 2.01453,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "B-210"
+  },
+  {
+   "km": 82.5,
+   "name": "Roundabout B-210 / B-204 (Camí del Mar) – turn onto B-204 Carretera de la Vila",
+   "lat": 41.29948,
+   "lon": 2.03451,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "B-204"
+  },
+  {
+   "km": 83.6,
+   "name": "Viladecans entrance (B-204, C-32 crossing)",
+   "lat": 41.30754,
+   "lon": 2.02739,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "B-204"
+  },
+  {
+   "km": 84.7,
+   "name": "Viladecans – Carretera de la Vila → Avinguda de la Generalitat / Avinguda de Gavà (C-245)",
+   "lat": 41.31538,
+   "lon": 2.02042,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "C-245"
+  },
+  {
+   "km": 85.6,
+   "name": "Intermediate sprint (Viladecans, Avinguda de Gavà)",
+   "lat": 41.31054,
+   "lon": 2.01338,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "C-245"
+  },
+  {
+   "km": 86.0,
+   "name": "Gavà (C-245 → urban streets)",
+   "lat": 41.30792,
+   "lon": 2.01011,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Avinguda de l'Eramprunyà"
+  },
+  {
+   "km": 88.1,
+   "name": "Foot of the Côte de Begues (6.1 km at 6.5 %) – start of BV-2041 at the end of Avinguda de l'Eramprunyà",
+   "lat": 41.30726,
+   "lon": 1.98941,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "BV-2041"
+  },
+  {
+   "km": 90.5,
+   "name": "Bruguers (BV-2041)",
+   "lat": 41.3145,
+   "lon": 1.96555,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-2041"
+  },
+  {
+   "km": 92.35,
+   "name": "Carretera de Gavà a Begues",
+   "lat": 41.32002,
+   "lon": 1.95326,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 93.26,
+   "name": "Carretera de Gavà a Begues",
+   "lat": 41.32538,
+   "lon": 1.94949,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 93.5,
+   "name": "Carretera de Gavà a Begues",
+   "lat": 41.32329,
+   "lon": 1.94962,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 93.74,
+   "name": "Carretera de Gavà a Begues",
+   "lat": 41.3237,
+   "lon": 1.94918,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 94.2,
+   "name": "Côte de Begues – top (399 m), Begues (BV-2041 → BV-2411 via the Ronda Urbana)",
+   "lat": 41.3268,
+   "lon": 1.94627,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "BV-2411"
+  },
+  {
+   "km": 96.3,
+   "name": "Ronda Urbana",
+   "lat": 41.32888,
+   "lon": 1.92196,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 98.4,
+   "name": "Begues west – Ronda Urbana → BV-2411 Carretera d'Avinyonet",
+   "lat": 41.33676,
+   "lon": 1.90211,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "BV-2411"
+  },
+  {
+   "km": 101.6,
+   "name": "Carretera d'Avinyonet del Penedès a Begues (between Begues west – Ronda Urbana → BV-2411 Carretera d'Avinyonet and Olesa de Bonesvalls – BV-2411 → BV-2410 (Carretera d'Olesa a Vallirana))",
+   "lat": 41.33467,
+   "lon": 1.86873,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 103.2,
+   "name": "Carretera d'Avinyonet del Penedès a Begues",
+   "lat": 41.34208,
+   "lon": 1.85856,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 104.0,
+   "name": "Carretera d'Avinyonet del Penedès a Begues",
+   "lat": 41.34666,
+   "lon": 1.85545,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 104.4,
+   "name": "Carrer de Pau Casals",
+   "lat": 41.34674,
+   "lon": 1.85093,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 104.8,
+   "name": "Olesa de Bonesvalls – BV-2411 → BV-2410 (Carretera d'Olesa a Vallirana)",
+   "lat": 41.34691,
+   "lon": 1.84675,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "BV-2410"
+  },
+  {
+   "km": 106.9,
+   "name": "Camí de Can Prunera",
+   "lat": 41.35762,
+   "lon": 1.86361,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 109.0,
+   "name": "El Pla del Pèlag (BV-2410)",
+   "lat": 41.36096,
+   "lon": 1.88178,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-2410"
+  },
+  {
+   "km": 110.2,
+   "name": "Les Bassioles de Vallirana (BV-2410)",
+   "lat": 41.36332,
+   "lon": 1.89238,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "BV-2410"
+  },
+  {
+   "km": 111.69,
+   "name": "Camí de Can Prunera a Olesa de Bonesvalls",
+   "lat": 41.37037,
+   "lon": 1.90093,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 113.2,
+   "name": "Les Casetes d'en Julià – BV-2410 → N-340",
+   "lat": 41.37735,
+   "lon": 1.91094,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 114.6,
+   "name": "Vallirana (N-340)",
+   "lat": 41.38211,
+   "lon": 1.92562,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 117.1,
+   "name": "Cervelló (N-340)",
+   "lat": 41.39141,
+   "lon": 1.94703,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 122.0,
+   "name": "Sant Vicenç dels Horts (N-340)",
+   "lat": 41.40478,
+   "lon": 1.9999,
+   "kind": "town",
+   "confidence": "low",
+   "road": "N-340"
+  },
+  {
+   "km": 123.4,
+   "name": "Molins de Rei (N-340)",
+   "lat": 41.40939,
+   "lon": 2.0155,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 125.6,
+   "name": "Sant Feliu de Llobregat (N-340)",
+   "lat": 41.39698,
+   "lon": 2.03387,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 129.9,
+   "name": "Crossing of local road with the N-340 (Sant Just Desvern)",
+   "lat": 41.37921,
+   "lon": 2.07095,
+   "kind": "other",
+   "confidence": "low",
+   "road": "N-340"
+  },
+  {
+   "km": 130.2,
+   "name": "Crossing of local road with the N-340 (Sant Just Desvern)",
+   "lat": 41.37886,
+   "lon": 2.07409,
+   "kind": "other",
+   "confidence": "low",
+   "road": "N-340"
+  },
+  {
+   "km": 131.1,
+   "name": "Esplugues de Llobregat (N-340)",
+   "lat": 41.37776,
+   "lon": 2.08476,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 132.7,
+   "name": "L'Hospitalet de Llobregat (N-340, Carretera de Collblanc)",
+   "lat": 41.37629,
+   "lon": 2.1038,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N-340"
+  },
+  {
+   "km": 133.5,
+   "name": "Tram level crossing (N-340)",
+   "lat": 41.37586,
+   "lon": 2.11335,
+   "kind": "other",
+   "confidence": "low",
+   "road": "N-340"
+  },
+  {
+   "km": 134.8,
+   "name": "Barcelona (N-340 → city streets: Carrer de Sants, Creu Coberta)",
+   "lat": 41.37554,
+   "lon": 2.12892,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Carrer de Sants"
+  },
+  {
+   "km": 136.45,
+   "name": "Plaça d'Espanya – into Avinguda de la Reina Maria Cristina",
+   "lat": 41.37528,
+   "lon": 2.14854,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de la Reina Maria Cristina"
+  },
+  {
+   "km": 136.72,
+   "name": "Avinguda de la Reina Maria Cristina",
+   "lat": 41.37381,
+   "lon": 2.15003,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 137.02,
+   "name": "Fonts de Montjuïc (Plaça de Carles Buïgas, top of Avinguda de la Reina Maria Cristina) – entry to the final circuit, U-turn and back down Avinguda de la Reina Maria Cristina",
+   "lat": 41.37173,
+   "lon": 2.15129,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avinguda de la Reina Maria Cristina"
+  },
+  {
+   "km": 137.25,
+   "name": "Avinguda de la Reina Maria Cristina",
+   "lat": 41.37346,
+   "lon": 2.1501,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 137.49,
+   "name": "Plaça d'Espanya – into Avinguda del Paral·lel (lap 1)",
+   "lat": 41.37496,
+   "lon": 2.15005,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Paral·lel"
+  },
+  {
+   "km": 139.41,
+   "name": "Avinguda del Paral·lel → Carrer de Palaudàries (lap 1)",
+   "lat": 41.37472,
+   "lon": 2.17301,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de Palaudàries"
+  },
+  {
+   "km": 139.61,
+   "name": "Carrer de Palaudàries → Passeig de Montjuïc (lap 1)",
+   "lat": 41.37316,
+   "lon": 2.17235,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig de Montjuïc"
+  },
+  {
+   "km": 139.93,
+   "name": "Foot of the Pujada al Castell de Montjuïc (1.6 km, last 600 m at ~13 %) – Passeig de Montjuïc → Camí de la Font Trobada (lap 1)",
+   "lat": 41.37176,
+   "lon": 2.16947,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Camí de la Font Trobada"
+  },
+  {
+   "km": 140.15,
+   "name": "Passeig de Miramar",
+   "lat": 41.37067,
+   "lon": 2.16757,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 140.39,
+   "name": "Plaça de Carles Ibáñez → Avinguda de Miramar (lap 1)",
+   "lat": 41.37051,
+   "lon": 2.17013,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Miramar"
+  },
+  {
+   "km": 140.63,
+   "name": "Avinguda de Miramar → Carretera de Montjuïc (lap 1)",
+   "lat": 41.36983,
+   "lon": 2.16767,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carretera de Montjuïc"
+  },
+  {
+   "km": 140.92,
+   "name": "Carretera de Montjuïc",
+   "lat": 41.36894,
+   "lon": 2.16964,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 141.22,
+   "name": "Carretera de Montjuïc → Avinguda del Castell (steepest part) (lap 1)",
+   "lat": 41.36673,
+   "lon": 2.16789,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Castell"
+  },
+  {
+   "km": 141.6,
+   "name": "Côte / Pujada al Castell de Montjuïc – top (~172 m, Avinguda del Castell → Passeig del Migdia) (lap 1)",
+   "lat": 41.36455,
+   "lon": 2.16533,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Passeig del Migdia"
+  },
+  {
+   "km": 142.81,
+   "name": "Passeig del Migdia – descent to the Passeig Olímpic roundabout (lap 1)",
+   "lat": 41.35986,
+   "lon": 2.1564,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Passeig del Migdia",
+   "radius": 15
+  },
+  {
+   "km": 143.35,
+   "name": "Passeig del Migdia → Passeig Olímpic (lap 1)",
+   "lat": 41.36069,
+   "lon": 2.15197,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  },
+  {
+   "km": 144.1,
+   "name": "Estadi Olímpic Lluís Companys – passage 1 across the finish line (Passeig Olímpic)",
+   "lat": 41.36478,
+   "lon": 2.15763,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  },
+  {
+   "km": 145.15,
+   "name": "Avinguda de l'Estadi → Carrer dels Jocs del 92 (lap 1)",
+   "lat": 41.36537,
+   "lon": 2.14576,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer dels Jocs del 92"
+  },
+  {
+   "km": 145.87,
+   "name": "Carrer dels Jocs del 92 → Carrer del Foc (lap 1)",
+   "lat": 41.35969,
+   "lon": 2.14932,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Foc"
+  },
+  {
+   "km": 146.63,
+   "name": "Carrer del Foc → Passeig de la Zona Franca (lap 1)",
+   "lat": 41.35636,
+   "lon": 2.14187,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig de la Zona Franca"
+  },
+  {
+   "km": 147.17,
+   "name": "Passeig de la Zona Franca → Carrer de la Foneria (lap 1)",
+   "lat": 41.36055,
+   "lon": 2.13874,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de la Foneria"
+  },
+  {
+   "km": 147.55,
+   "name": "Carrer de la Foneria → Carrer del Segura (lap 1)",
+   "lat": 41.36274,
+   "lon": 2.14183,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Segura"
+  },
+  {
+   "km": 147.87,
+   "name": "Carrer del Segura",
+   "lat": 41.36547,
+   "lon": 2.14111,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 148.18,
+   "name": "Carrer del Segura → Carrer del Polvorí (lap 1)",
+   "lat": 41.36403,
+   "lon": 2.14405,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Polvorí"
+  },
+  {
+   "km": 148.72,
+   "name": "Carrer del Polvorí → Avinguda de Francesc Ferrer i Guàrdia (lap 1)",
+   "lat": 41.36828,
+   "lon": 2.14521,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Francesc Ferrer i Guàrdia"
+  },
+  {
+   "km": 149.37,
+   "name": "Fonts de Montjuïc (Plaça de Carles Buïgas) – end of lap, down Avinguda de la Reina Maria Cristina (lap 1)",
+   "lat": 41.37157,
+   "lon": 2.15124,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avinguda de la Reina Maria Cristina"
+  },
+  {
+   "km": 149.59,
+   "name": "Avinguda de la Reina Maria Cristina",
+   "lat": 41.37327,
+   "lon": 2.15023,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 149.79,
+   "name": "Plaça d'Espanya – into Avinguda del Paral·lel (lap 2)",
+   "lat": 41.37483,
+   "lon": 2.1498,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Paral·lel"
+  },
+  {
+   "km": 151.75,
+   "name": "Avinguda del Paral·lel → Carrer de Palaudàries (lap 2)",
+   "lat": 41.37471,
+   "lon": 2.1732,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de Palaudàries"
+  },
+  {
+   "km": 151.94,
+   "name": "Carrer de Palaudàries → Passeig de Montjuïc (lap 2)",
+   "lat": 41.37323,
+   "lon": 2.17239,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig de Montjuïc"
+  },
+  {
+   "km": 152.26,
+   "name": "Foot of the Pujada al Castell de Montjuïc (1.6 km, last 600 m at ~13 %) – Passeig de Montjuïc → Camí de la Font Trobada (lap 2)",
+   "lat": 41.37164,
+   "lon": 2.16938,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Camí de la Font Trobada"
+  },
+  {
+   "km": 152.47,
+   "name": "Passeig de Miramar",
+   "lat": 41.37056,
+   "lon": 2.16768,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 152.68,
+   "name": "Plaça de Carles Ibáñez → Avinguda de Miramar (lap 2)",
+   "lat": 41.37054,
+   "lon": 2.17015,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Miramar"
+  },
+  {
+   "km": 152.92,
+   "name": "Avinguda de Miramar → Carretera de Montjuïc (lap 2)",
+   "lat": 41.36984,
+   "lon": 2.16762,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carretera de Montjuïc"
+  },
+  {
+   "km": 153.16,
+   "name": "Carretera de Montjuïc",
+   "lat": 41.36896,
+   "lon": 2.16969,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 153.45,
+   "name": "Carretera de Montjuïc → Avinguda del Castell (steepest part) (lap 2)",
+   "lat": 41.36676,
+   "lon": 2.16792,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Castell"
+  },
+  {
+   "km": 153.8,
+   "name": "Côte / Pujada al Castell de Montjuïc – top (~172 m, Avinguda del Castell → Passeig del Migdia) (lap 2)",
+   "lat": 41.36456,
+   "lon": 2.16538,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Passeig del Migdia"
+  },
+  {
+   "km": 155.01,
+   "name": "Passeig del Migdia – descent to the Passeig Olímpic roundabout (lap 2)",
+   "lat": 41.35986,
+   "lon": 2.1564,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Passeig del Migdia",
+   "radius": 15
+  },
+  {
+   "km": 155.55,
+   "name": "Passeig del Migdia → Passeig Olímpic (lap 2)",
+   "lat": 41.36065,
+   "lon": 2.15203,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  },
+  {
+   "km": 156.3,
+   "name": "Estadi Olímpic Lluís Companys – passage 2 across the finish line (Passeig Olímpic)",
+   "lat": 41.36474,
+   "lon": 2.15764,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  },
+  {
+   "km": 157.34,
+   "name": "Avinguda de l'Estadi → Carrer dels Jocs del 92 (lap 2)",
+   "lat": 41.36559,
+   "lon": 2.14584,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer dels Jocs del 92"
+  },
+  {
+   "km": 158.09,
+   "name": "Carrer dels Jocs del 92 → Carrer del Foc (lap 2)",
+   "lat": 41.35969,
+   "lon": 2.14913,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Foc"
+  },
+  {
+   "km": 158.83,
+   "name": "Carrer del Foc → Passeig de la Zona Franca (lap 2)",
+   "lat": 41.35636,
+   "lon": 2.14187,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig de la Zona Franca"
+  },
+  {
+   "km": 159.38,
+   "name": "Passeig de la Zona Franca → Carrer de la Foneria (lap 2)",
+   "lat": 41.36056,
+   "lon": 2.13877,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de la Foneria"
+  },
+  {
+   "km": 159.75,
+   "name": "Carrer de la Foneria → Carrer del Segura (lap 2)",
+   "lat": 41.36268,
+   "lon": 2.14187,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Segura"
+  },
+  {
+   "km": 160.07,
+   "name": "Carrer del Guadalquivir",
+   "lat": 41.36534,
+   "lon": 2.14095,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 160.38,
+   "name": "Carrer del Segura → Carrer del Polvorí (lap 2)",
+   "lat": 41.36399,
+   "lon": 2.14403,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer del Polvorí"
+  },
+  {
+   "km": 160.92,
+   "name": "Carrer del Polvorí → Avinguda de Francesc Ferrer i Guàrdia (lap 2)",
+   "lat": 41.36824,
+   "lon": 2.1452,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Francesc Ferrer i Guàrdia"
+  },
+  {
+   "km": 161.59,
+   "name": "Fonts de Montjuïc (Plaça de Carles Buïgas) – end of lap, down Avinguda de la Reina Maria Cristina (lap 2)",
+   "lat": 41.37164,
+   "lon": 2.15126,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avinguda de la Reina Maria Cristina"
+  },
+  {
+   "km": 161.81,
+   "name": "Avinguda de la Reina Maria Cristina",
+   "lat": 41.37339,
+   "lon": 2.15015,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 162.01,
+   "name": "Plaça d'Espanya – into Avinguda del Paral·lel (lap 3)",
+   "lat": 41.37492,
+   "lon": 2.14993,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Paral·lel"
+  },
+  {
+   "km": 163.96,
+   "name": "Avinguda del Paral·lel → Carrer de Palaudàries (lap 3)",
+   "lat": 41.37471,
+   "lon": 2.17316,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carrer de Palaudàries"
+  },
+  {
+   "km": 164.17,
+   "name": "Carrer de Palaudàries → Passeig de Montjuïc (lap 3)",
+   "lat": 41.37309,
+   "lon": 2.17232,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig de Montjuïc"
+  },
+  {
+   "km": 164.45,
+   "name": "Foot of the Pujada al Castell de Montjuïc (1.6 km, last 600 m at ~13 %) – Passeig de Montjuïc → Camí de la Font Trobada (lap 3)",
+   "lat": 41.37181,
+   "lon": 2.16958,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Camí de la Font Trobada"
+  },
+  {
+   "km": 164.67,
+   "name": "Passeig de Miramar",
+   "lat": 41.37074,
+   "lon": 2.16759,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 164.88,
+   "name": "Plaça de Carles Ibáñez → Avinguda de Miramar (lap 3)",
+   "lat": 41.37067,
+   "lon": 2.16994,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda de Miramar"
+  },
+  {
+   "km": 165.11,
+   "name": "Avinguda de Miramar → Carretera de Montjuïc (lap 3)",
+   "lat": 41.36987,
+   "lon": 2.16759,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Carretera de Montjuïc"
+  },
+  {
+   "km": 165.35,
+   "name": "Carretera de Montjuïc",
+   "lat": 41.36898,
+   "lon": 2.16973,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 165.65,
+   "name": "Carretera de Montjuïc → Avinguda del Castell (steepest part) (lap 3)",
+   "lat": 41.3668,
+   "lon": 2.16794,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avinguda del Castell"
+  },
+  {
+   "km": 166.0,
+   "name": "Côte / Pujada al Castell de Montjuïc – top (~172 m, Avinguda del Castell → Passeig del Migdia) (lap 3)",
+   "lat": 41.36456,
+   "lon": 2.16543,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Passeig del Migdia"
+  },
+  {
+   "km": 167.21,
+   "name": "Passeig del Migdia – descent to the Passeig Olímpic roundabout (final passage)",
+   "lat": 41.35986,
+   "lon": 2.1564,
+   "kind": "via",
+   "confidence": "medium",
+   "road": "Passeig del Migdia",
+   "radius": 15
+  },
+  {
+   "km": 167.77,
+   "name": "Passeig del Migdia → Passeig Olímpic (lap 3)",
+   "lat": 41.36075,
+   "lon": 2.15203,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  },
+  {
+   "km": 168.5,
+   "name": "Finish – Passeig Olímpic in front of the Estadi Olímpic Lluís Companys (top of the 700 m Côte du Stade Olympique)",
+   "lat": 41.3647,
+   "lon": 2.15764,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Passeig Olímpic"
+  }
+ ],
+ "notes": "km 0 (départ réel) is placed on the N-340 at the eastern end of Tarragona's Via Augusta (41.12381, 1.28256), medium confidence: the official itinerary rows Cala Romana 0.6, Monnars 2.0 and La Móra 5.7 all fall within ~0.3 km of the routed path from this point; the neutralised roll-out from the city centre is not included. Length 168.5 km follows the seed and the cyclingstage 'times' table (KOMs 141.6/153.8/166.0, finish-line passages 144.1/156.3, finish 168.5); the PIMEC timetable PDF gives 168.4 / 168.3 km and its circuit kms are 0.1 km lower (Fonts 137.4, KOM 141.5, Estadi 144.0 ...). Routing through the waypoints on Overture roads gives ~167.3-168.0 km. The coastal/N-340 approach measures ~0.5-0.9 km shorter than the official kms, while each 12.2 km Montjuïc lap measures ~12.6 km on the mapped streets: Fonts -> Paral·lel -> Passeig de Montjuïc -> castle is ~4.6 km against an official 4.1 km. Therefore only the KOM and finish-line kms of the circuit are used as fixed official values; the kms of all other circuit points (Fonts, Paral·lel, Palaudàries, climb foot, Zona Franca, Polvorí ...) are derived from the path and differ from the PIMEC values by up to ~0.5 km. Route: N-340 from Tarragona (Cala Romana, Monnars, La Móra) then the N-340 dual-carriageway variant bypassing Altafulla/Torredembarra (vias keep the router off the old town roads), Creixell, Roda de Berà, El Vendrell, then C-31 Calafell (via Carretera de Bellvei), Segur, Cunit, Cubelles; at the Cubelles roundabout C-246a along the coast to Vilanova i la Geltrú (Av. de Cubelles, Rambla de Josep Tomàs Ventosa / Rambla de l'Exposició, Av. d'Eduard Toldrà, Rambla del Garraf) and Les Roquetes. Sitges: the itinerary row reads 'Sitges (C-246a -> VC -> C-246a -> C-31)' at 52.0 km, and a straight transit leaves the path ~2.3 km short of Vallcarca (62.2). The 'VC' (urban road) section is therefore modelled as a seafront loop Passeig de Vilanova -> Av. de Navarra -> Passeig Marítim -> Av. de Sofia -> back on Passeig de Vilanova / Av. d'Artur Carbonell (+1.6 km), low confidence; the old-town link to the Carretera de les Costes follows Hort Gran / Rafael Llopart / Emili Picó / Sant Honorat because the graph has no direct Hort Gran - Costes connection (affects <0.1 km). Then C-31 Costes del Garraf (Vallcarca, Garraf), leaving it at Les Botigues for the seafront road (Passeig Marítim of Castelldefels, Carrer de Llevant / Av. d'Europa in Gavà Mar), Av. del Mar, Plaça de la Terra, B-210, B-204 Carretera de la Vila into Viladecans, Av. de la Generalitat / Av. de Gavà (C-245) with the intermediate sprint at 85.6 (by-km position), Gavà, Av. de l'Eramprunyà and the BV-2041 Côte de Begues (foot 88.1, top 94.2 / 399 m; DEM gives ~408 m at the summit point on Begues' Ronda Urbana), Ronda Urbana, BV-2411 to Olesa de Bonesvalls (104.8), BV-2410 over the Pla del Pèlag to Les Casetes d'en Julià (113.2), then N-340 through Vallirana, Cervelló, La Palma (old N-340 forced instead of the parallel motorway), Molins de Rei, Sant Feliu, Sant Just, Esplugues, L'Hospitalet (Carretera de Collblanc) and Barcelona (Carrer de Sants, Creu Coberta) to Plaça d'Espanya, up Av. de la Reina Maria Cristina to the Fonts de Montjuïc where the race turns back down to start the circuit. Circuit (3 passages over the Montjuïc climb, 2 full laps + run-in; streets from the beteve / vilaweb / 3cat closure notices, order reconstructed on the map): Fonts (Plaça de Carles Buïgas) -> Av. de la Reina Maria Cristina -> Plaça d'Espanya -> Av. del Paral·lel -> Carrer de Palaudàries -> Passeig de Montjuïc -> Camí de la Font Trobada -> Passeig de Miramar -> Plaça de Carles Ibáñez -> Av. de Miramar -> Carretera de Montjuïc -> Av. del Castell (KOM ~172 m DEM; climb 1.6 km with 600 m at ~13 % per beteve) -> Passeig del Migdia -> Passeig Olímpic (finish line at the top of the ~700 m rise from the roundabout, DEM ~65 -> 108 m) -> Av. de l'Estadi -> Carrer dels Jocs del 92 -> Carrer del Foc -> Passeig de la Zona Franca -> Carrer de la Foneria -> Carrer del Segura -> Carrer del Polvorí -> Av. de Francesc Ferrer i Guàrdia -> Fonts. Every pass of every circuit point is listed separately. Finish: Passeig Olímpic in front of the Estadi Olímpic Lluís Companys (41.36470, 2.15764), the same point as the stage 1 TTT finish. Race roads are closed, so one-way restrictions were ignored except on motorways/trunks. Extra unnamed 'between ...' points are routing fill points (≤5 km apart, ≤1-2 km in towns, extra points at hairpins on the Côte de Begues and on Montjuïc, where straight-line < 60 % of the km difference is expected). By-km town points are placed by interpolation between fixed points and are only medium/low confidence; 'high' is not used because no official GPX/roadbook coordinates were available. [geodata G: after each Montjuïc KOM a via point on Passeig del Migdia (Overture c97f7e1f, mid-segment): the router took Passeig Olímpic down to the Migdia/Olímpic roundabout and the same road back up, a U-turn the notes do not describe (they give Migdia down, Olímpic up); km of the new points = KOM km + 0.87 (routed distance)] [geodata G: km of the Passeig del Migdia via points corrected to the routed distance from the KOM (1.21 km)]",
+ "sources": [
+  "https://pimec.org/wp-content/uploads/2026/07/20260616-_PPT-Tour_horaris.pdf",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-2-tdf-2026/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-2-times.htm",
+  "https://beteve.cat/mobilitat/carrers-tallats-barcelona-grand-depart-tour-franca-2026-transport/",
+  "https://www.vilaweb.cat/noticies/tour-franca-2026-talls-transit-restriccions-mobilitat-barcelona-principat/",
+  "https://www.3cat.cat/esport3/restriccions-de-mobilitat-pel-pas-del-tour-de-franca-dia-a-dia/noticia/3415515/",
+  "https://www.3cat.cat/esport3/segona-etapa-del-tour-de-franca-2026-a-catalunya-recorregut-horaris-i-on-veure-la/noticia/3417802/",
+  "Overture Maps transportation segments, release 2026-10-21.0 (routing and road names)",
+  "Copernicus GLO-30 DEM (elevation checks)"
+ ]
+}

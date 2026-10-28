@@ -1,0 +1,68 @@
+{
+ "id": "mur-de-bretagne",
+ "lengthKm": 2.0,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Mûr-de-Bretagne – foot: roundabout D767 / N164 north of the village (~150 m)",
+   "lat": 48.21034,
+   "lon": -2.99395,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D767"
+  },
+  {
+   "km": 0.05,
+   "name": "D767 north exit of the roundabout – start of the straight",
+   "lat": 48.21076,
+   "lon": -2.99419,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D767"
+  },
+  {
+   "km": 0.5,
+   "name": "D767 straight, steepest section (~10 %)",
+   "lat": 48.21461,
+   "lon": -2.99606,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D767"
+  },
+  {
+   "km": 1.0,
+   "name": "D767 – end of the steep first kilometre",
+   "lat": 48.21887,
+   "lon": -2.99821,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D767"
+  },
+  {
+   "km": 1.5,
+   "name": "D767 – long straight, easing to ~4 %",
+   "lat": 48.22327,
+   "lon": -2.99821,
+   "kind": "via",
+   "confidence": "high",
+   "road": "D767"
+  },
+  {
+   "km": 2.0,
+   "name": "Mûr-de-Bretagne – finish line on the D767 (false flat before the 293 m top)",
+   "lat": 48.22771,
+   "lon": -2.99812,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "D767"
+  }
+ ],
+ "notes": "Côte de Mûr-de-Bretagne as used for the Tour finishes (2011, 2015, 2018, 2021, 2025): the dead-straight D767 climbing north from the roundabout with the N164, just north of Mûr-de-Bretagne village, towards Saint-Gilles-Vieux-Marché. Tour figure 2 km at 6.9 % with the first km at almost 10 %; cols-cyclisme gives 2.2 km +144 m to the 293 m top. km 0 = the D767/N164 roundabout (DEM 151 m; app startElevationM 146). DEM along the routed road: km 0-1 9.4 %, km 1-2 4.4 % (app 9.8 / 4.0), ~289 m at km 2.0. The finish line is placed 2.0 km up the D767 from the roundabout (official climb length to the line) on the false flat ~250 m before the actual top (293 m at km 2.25); the exact line position is not published, so the finish is medium confidence. Note: the climb does NOT end in the village - Mûr-de-Bretagne village (~145 m) lies below the foot; the app landmark 'Ortseingang Mûr-de-Bretagne' at 1.5 km has no real counterpart (open fields).",
+ "sources": [
+  "https://www.cyclingstage.com/tour-de-france-2021-route/stage-2-tdf-2021/",
+  "https://www.cyclingstage.com/tour-de-france-2025-route/stage-7-tdf-2025/",
+  "https://www.cols-cyclisme.com/massif-armoricain/france/mur-de-bretagne-depuis-mur-de-bretagne-c2811.htm",
+  "Overture Maps 2026-10-21.0 transportation segments",
+  "Copernicus GLO-30 DEM (profile check)"
+ ]
+}

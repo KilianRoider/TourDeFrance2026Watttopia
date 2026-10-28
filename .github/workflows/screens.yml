@@ -2,8 +2,9 @@ name: Screens
 
 # Screenshots of the app on emulated phones and tablets, started by hand (Actions tab or the REST API).
 # Every scene is opened through the app's demo mode (app/src/main/kotlin/app/rollentrainer/debug/DemoMode.kt)
-# with a simulated trainer. The PNGs, logcats and a status table are published as assets of a
-# pre-release "screens-<run number>", because release assets can be fetched where workflow artifacts cannot.
+# with a simulated trainer. The APK and the raw results travel between the jobs as workflow artifacts; the
+# screenshots (as JPEG), contact sheets, logcats and a status table are then force-pushed to the branch
+# "screens-results" (one folder per run, only the latest run kept), where git can fetch them.
 on:
   # Pushing a branch named screens/... runs it too (the dispatch button only exists once the file is on main).
   push:
@@ -52,20 +53,12 @@ jobs:
       - name: Build debug APK
         run: ./gradlew --no-daemon :app:assembleDebug
 
-      # Workflow artifacts hit the account's storage quota, so the APK and all results travel as assets of
-      # the pre-release this run publishes anyway.
-      - name: Create the screenshot release with the APK
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: screens-${{ github.run_number }}
-        run: |
-          cp app/build/outputs/apk/debug/app-debug.apk app-debug.apk
-          gh release create "$TAG" app-debug.apk \
-            --repo "$GITHUB_REPOSITORY" \
-            --target "$GITHUB_SHA" \
-            --prerelease \
-            --title "Screenshots ${{ github.run_number }}" \
-            --notes "Läuft …"
+      - name: Keep the APK for the emulator jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 3
 
       - name: Plan devices
         id: plan
@@ -92,9 +85,10 @@ jobs:
         device: ${{ fromJSON(needs.build.outputs.devices) }}
     steps:
       - name: Download the APK
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh release download "screens-${{ github.run_number }}" --repo "$GITHUB_REPOSITORY" -p app-debug.apk -D apk
+        uses: actions/download-artifact@v4
+        with:
+          name: apk
+          path: apk
 
       - name: Enable KVM
         run: |
@@ -314,7 +308,7 @@ jobs:
         env:
           DEVICE: ${{ matrix.device }}
           ORIENTATIONS: ${{ steps.dev.outputs.orientations }}
-          SCENES: ${{ inputs.scenes || 'route:alpe-dhuez:3 route:alpe-dhuez:3:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tour26-06:170 route:champs-elysees:1 spinning:first ride:first workouts routes routes-tour settings history history-detail editor:first' }}
+          SCENES: ${{ inputs.scenes || 'route:alpe-dhuez:3 route:alpe-dhuez:12.5:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tourmalet:12 route:champs-elysees:1 race:tour26-12:13:finale=15 race:tour26-19:9:finale=12 route:ventoux:18 ride:first workouts routes routes-tour settings history-race' }}
           ROUTE_WAIT: ${{ inputs.route_wait || '180' }}
           APK: ${{ github.workspace }}/apk/app-debug.apk
           OUT: ${{ github.workspace }}/out
@@ -334,13 +328,12 @@ jobs:
 
       - name: Upload the results
         if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          shopt -s nullglob
-          files=(out/*)
-          [ ${#files[@]} -gt 0 ] || { echo "::warning::no results"; exit 0; }
-          gh release upload "screens-${{ github.run_number }}" "${files[@]}" --repo "$GITHUB_REPOSITORY" --clobber
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.device }}
+          path: out/
+          if-no-files-found: warn
+          retention-days: 3
 
   publish:
     needs: [build, shoot]
@@ -348,15 +341,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download the results
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download "screens-${{ github.run_number }}" --repo "$GITHUB_REPOSITORY" -D out \
-            -p '*.png' -p '*.tsv' -p 'device-*.txt' || true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          merge-multiple: true
+          path: out
 
       - name: Contact sheets and notes
         env:
-          SCENES: ${{ inputs.scenes || 'route:alpe-dhuez:3 route:alpe-dhuez:3:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tour26-06:170 route:champs-elysees:1 spinning:first ride:first workouts routes routes-tour settings history history-detail editor:first' }}
+          SCENES: ${{ inputs.scenes || 'route:alpe-dhuez:3 route:alpe-dhuez:12.5:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tourmalet:12 route:champs-elysees:1 race:tour26-12:13:finale=15 race:tour26-19:9:finale=12 route:ventoux:18 ride:first workouts routes routes-tour settings history-race' }}
           RUN_ID: ${{ github.run_id }}
           SHA: ${{ github.sha }}
         run: |
@@ -393,16 +386,20 @@ jobs:
           cat ../notes.md >> "$GITHUB_STEP_SUMMARY"
           ls -la
 
-      - name: Publish release
+      # Full-size PNGs would make the branch heavy, so the shots go there as JPEG at full resolution.
+      - name: Push the results to the screens-results branch
         env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: screens-${{ github.run_number }}
+          RUN: ${{ github.run_number }}
         run: |
           shopt -s nullglob
-          files=(out/contact-*.jpg)
-          [ ${#files[@]} -eq 0 ] || gh release upload "$TAG" "${files[@]}" --repo "$GITHUB_REPOSITORY" --clobber
-          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --notes-file notes.md
-          # Only the five newest screenshot releases are kept, so they do not crowd the APK releases.
-          gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq '.[] | select(.tag_name | startswith("screens-")) | .tag_name' \
-            | sort -t- -k2 -n -r | tail -n +6 \
-            | while read -r old; do gh release delete "$old" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag || true; done
+          mkdir -p "pub/$RUN"
+          for f in out/*.png; do b=$(basename "$f" .png); convert "$f" -quality 88 "pub/$RUN/$b.jpg" || echo "::warning::could not convert $f"; done
+          for f in out/contact-*.jpg out/*.tsv out/device-*.txt out/logcat-*; do cp "$f" "pub/$RUN/"; done
+          cp notes.md "pub/$RUN/README.md"
+          cd pub
+          git init -q -b screens-results
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Screenshots from run $RUN ($GITHUB_SHA)"
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY.git" screens-results

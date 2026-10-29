@@ -680,11 +680,11 @@ void main() {
             }
             // Puddles: in one 19 m cell of four a flat dark pool near the edge, ragged outline, wet rim.
             float pc = floor(u / 19.0);
-            if (hash1(pc + 3.3) < 0.25 && dist < 120.0) {
+            if (hash1(pc + 3.3) < 0.12 && dist < 120.0) {
                 float pu = pc * 19.0 + 3.0 + hash1(pc + 8.1) * 12.0;
                 float pa = (hash1(pc + 5.7) < 0.5 ? -1.0 : 1.0) * (hw - 0.55 - hash1(pc + 2.2) * 0.9);
-                float pl = 0.6 + hash1(pc + 9.9) * 1.6;
-                float pw = 0.35 + hash1(pc + 4.4) * 0.5;
+                float pl = 0.4 + hash1(pc + 9.9) * 0.9;
+                float pw = 0.25 + hash1(pc + 4.4) * 0.3;
                 vec2 q = vec2((u - pu) / pl, (across - pa) / pw);
                 float r = length(q) + (texture(uNoise, vWorld / 2.0).b - 0.5) * 0.7;
                 float aaP = max(fwidth(r), 0.01);
@@ -763,7 +763,7 @@ void main() {
         vec3 rd = reflect(-v, gn);
         vec3 refl = skyColor(normalize(vec3(rd.x, max(rd.y, 0.02), rd.z)));
         vec3 wet = albedo * 0.25 * (uSkyAmb.rgb + uSunColor.rgb * 0.3 * shadow);
-        vec3 pc = mix(wet, refl, clamp(fr * 1.4, 0.0, 0.9)) + uSunColor.rgb * pow(max(dot(reflect(-uSunDir.xyz, gn), v), 0.0), 400.0) * 4.0 * shadow;
+        vec3 pc = mix(wet, refl * 0.75, clamp(fr * 1.2, 0.0, 0.65)) + uSunColor.rgb * pow(max(dot(reflect(-uSunDir.xyz, gn), v), 0.0), 400.0) * 4.0 * shadow;
         col = mix(col, pc, puddle);
     }
     fragColor = finalColor(atmosphere(col, vRel));

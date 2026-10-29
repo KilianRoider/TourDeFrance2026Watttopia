@@ -626,6 +626,33 @@ internal class Vegetation(private val j: TileJob) {
                     val sc = if (id == "scn_fern") rnd.range(0.7f, 1.2f) else rnd.range(0.55f, 1.5f) * (if (o < 1.2) 0.85f else 1f)
                     j.out.put(id, x, y, z - 0.03, rnd.angle(), sc, InstanceStore.tint(rnd, 0.16f, 0.08f), rnd.f())
                 }
+                // The open meadow beyond the verge (and behind the crowd): tufts and weeds scattered evenly out
+                // to 45 m, so a field next to the road is grass and not a green lawn. Only on grass, scrub and
+                // bare land; crops, gardens and woods keep their own cover.
+                if (!town) for (k in 0 until 40) {
+                    val o = 2.0 + rnd.d() * 43.0
+                    val along = rnd.sym(2.6f)
+                    val x = x0 + -dy * side * (hw + o) + dx * along
+                    val y = y0 + dx * side * (hw + o) + dy * along
+                    if (!j.inTile(x, y)) continue
+                    val cover = j.landCover(x, y)
+                    if (cover != LandCover.GRASS && cover != LandCover.SHRUB && cover != LandCover.BARE && cover != LandCover.MOSS) continue
+                    if (cover == LandCover.BARE && rnd.chance(0.6f)) continue
+                    if (j.roads.edgeDistance(x, y) < 0.6 || j.blocked.get(x, y)) continue
+                    val h = j.routeHit(x, y) ?: continue
+                    val z = j.ground.at(x, y, h)
+                    val r = rnd.f()
+                    val prefix = when {
+                        dry && rnd.chance(0.6f) -> PlantSet.GRASS_DRY
+                        r < 0.07f -> PlantSet.WEED
+                        r < 0.15f -> PlantSet.GRASS_DRY
+                        r < 0.5f -> PlantSet.GRASS_SMALL
+                        r < 0.85f -> PlantSet.GRASS
+                        else -> PlantSet.GRASS_TALL
+                    }
+                    j.out.put(prefix + rnd.int(PlantSet.variants(prefix)), x, y, z - 0.03, rnd.angle(), rnd.range(0.6f, 1.5f),
+                        InstanceStore.tint(rnd, 0.16f, 0.08f), rnd.f())
+                }
             }
         }
     }

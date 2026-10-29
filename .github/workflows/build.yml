@@ -36,7 +36,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          grep -E "^e: |What went wrong|^> Task .* FAILED|^\* What|tests completed" build.log | head -200 > errors.txt || true
+          grep -E "^e: |What went wrong|^> Task .* FAILED| > .* FAILED$|^\* What|tests completed" build.log | head -200 > errors.txt || true
           head -10 errors.txt | while IFS= read -r line; do echo "::error::${line}"; done
           {
             echo "Build ${{ env.WATTWERK_BUILD }} fehlgeschlagen (Run ${{ github.run_id }})."

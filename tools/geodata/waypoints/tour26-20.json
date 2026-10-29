@@ -1,0 +1,1259 @@
+{
+ "id": "tour26-20",
+ "lengthKm": 170.9,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Départ réel on the D1091 north of Le Bourg-d'Oisans (between Les Sables and Rochetaillée)",
+   "lat": 45.1031,
+   "lon": 6.00844,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 1.3,
+   "name": "Rochetaillée – D1091 → D526 over the Romanche (Pont Rouge)",
+   "lat": 45.11436,
+   "lon": 6.00611,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 3.0,
+   "name": "D526 Route de Savoie (Rochetaillée – Allemond)",
+   "lat": 45.12203,
+   "lon": 6.02282,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 4.3,
+   "name": "Allemond – D526 Route des Fonderies Royales (below the village)",
+   "lat": 45.12785,
+   "lon": 6.03814,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 4.9,
+   "name": "D526 hairpin above Allemond (climb to the Eau d'Olle viaduct)",
+   "lat": 45.12802,
+   "lon": 6.04411,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 5.6,
+   "name": "D526 (near Le Boulangeard)",
+   "lat": 45.12914,
+   "lon": 6.04368,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 6.3,
+   "name": "Viaduc de l'Eau d'Olle (D526)",
+   "lat": 45.13191,
+   "lon": 6.04854,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 8.2,
+   "name": "D526 Route de Grand Maison (below the Verney dam)",
+   "lat": 45.14563,
+   "lon": 6.05402,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 8.4,
+   "name": "Le Verney – junction of the road to Vaujany (D526)",
+   "lat": 45.14645,
+   "lon": 6.05135,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 8.7,
+   "name": "Le Verney (Vaujany), D526 at the Lac du Verney dam",
+   "lat": 45.14849,
+   "lon": 6.04859,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 9.7,
+   "name": "Foot of the Col de la Croix de Fer climb (24 km at 5.2 %; placed by the official climb length)",
+   "lat": 45.15645,
+   "lon": 6.04419,
+   "kind": "foot",
+   "confidence": "low",
+   "road": "D526"
+  },
+  {
+   "km": 12.3,
+   "name": "Articol (Allemond, D526)",
+   "lat": 45.17828,
+   "lon": 6.03655,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 15.1,
+   "name": "Le Rivier d'Allemond (D526)",
+   "lat": 45.20227,
+   "lon": 6.04024,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 19.6,
+   "name": "D526 Route de la Combe d'Olle",
+   "lat": 45.20273,
+   "lon": 6.07613,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 24.1,
+   "name": "Barrage de Grand'Maison – road passes the dam (D526, ~1690 m)",
+   "lat": 45.20782,
+   "lon": 6.11081,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D526"
+  },
+  {
+   "km": 28.4,
+   "name": "Route de la Combe d'Olle, valley floor (Rieu Claret / Plan du Suel area, Saint-Colomban-des-Villards, D926)",
+   "lat": 45.22757,
+   "lon": 6.15132,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D926"
+  },
+  {
+   "km": 31.0,
+   "name": "Junction below the Col du Glandon: D927 to the Glandon, race stays on the D926",
+   "lat": 45.23875,
+   "lon": 6.1779,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 33.7,
+   "name": "Col de la Croix de Fer (2067 m, HC)",
+   "lat": 45.22749,
+   "lon": 6.20369,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D926"
+  },
+  {
+   "km": 34.4,
+   "name": "D926 Route du Col de la Croix de Fer (near Turin)",
+   "lat": 45.23058,
+   "lon": 6.21058,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 35.1,
+   "name": "D926 Route du Col de la Croix de Fer (near Turin)",
+   "lat": 45.2291,
+   "lon": 6.21404,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 35.8,
+   "name": "D926 Route du Col de la Croix de Fer (near Turin)",
+   "lat": 45.22803,
+   "lon": 6.21506,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 36.6,
+   "name": "D926 Route du Col de la Croix de Fer (near Turin)",
+   "lat": 45.22785,
+   "lon": 6.21629,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 37.3,
+   "name": "D926 Route du Col de la Croix de Fer (near Turin)",
+   "lat": 45.22328,
+   "lon": 6.21175,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 38.0,
+   "name": "D926 Route du Col de la Croix de Fer (near Turin)",
+   "lat": 45.22428,
+   "lon": 6.21563,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 38.7,
+   "name": "D926 Route du Col de la Croix de Fer (near Le Plan des Choseaux)",
+   "lat": 45.22083,
+   "lon": 6.21732,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 39.4,
+   "name": "D926 bend above Saint-Sorlin-d'Arves (Les Choseaux)",
+   "lat": 45.22212,
+   "lon": 6.22335,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 39.8,
+   "name": "D926 Route du Col de la Croix de Fer (near Entre les Rieux)",
+   "lat": 45.22109,
+   "lon": 6.22409,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 40.2,
+   "name": "Saint-Sorlin-d'Arves (D926)",
+   "lat": 45.22144,
+   "lon": 6.2291,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 41.7,
+   "name": "D926 Route des Arves above Les Chambons",
+   "lat": 45.21754,
+   "lon": 6.246,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 44.3,
+   "name": "Les Chambons (Saint-Jean-d'Arves), D926",
+   "lat": 45.20256,
+   "lon": 6.26813,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 45.4,
+   "name": "D926 Route des Arves (Planchamp)",
+   "lat": 45.19747,
+   "lon": 6.2798,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 46.2,
+   "name": "D926 Pont d'Entraigues (below Entraigues)",
+   "lat": 45.19246,
+   "lon": 6.28602,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 47.1,
+   "name": "D926 Route des Arves (Entraigues – Arvan gorge)",
+   "lat": 45.19342,
+   "lon": 6.29571,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 48.0,
+   "name": "D926 Route des Arves (Arvan gorge)",
+   "lat": 45.19837,
+   "lon": 6.30326,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 48.4,
+   "name": "D926 Viaduc des Sallanches",
+   "lat": 45.2017,
+   "lon": 6.3035,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 48.8,
+   "name": "D926 Route des Arves (Arvan gorge)",
+   "lat": 45.20345,
+   "lon": 6.3067,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 50.1,
+   "name": "D926 Route des Arves (Arvan gorge, Charvin)",
+   "lat": 45.21407,
+   "lon": 6.30636,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 52.0,
+   "name": "D926 Route des Arves (La Combe Bérard)",
+   "lat": 45.22892,
+   "lon": 6.304,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 52.6,
+   "name": "D926 Route des Arves (near Gevoudaz)",
+   "lat": 45.23292,
+   "lon": 6.30487,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 53.1,
+   "name": "D926 Route des Arves (near Gevoudaz)",
+   "lat": 45.22962,
+   "lon": 6.30631,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 53.7,
+   "name": "D926 Route des Arves (near Les Grandes Maisons)",
+   "lat": 45.22638,
+   "lon": 6.30915,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 54.2,
+   "name": "D926 Route des Arves (Le Crêt)",
+   "lat": 45.22434,
+   "lon": 6.30888,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 56.2,
+   "name": "D926 Route des Arves (La Bettaz)",
+   "lat": 45.23829,
+   "lon": 6.31153,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 57.9,
+   "name": "D926 Route des Arves (above Pierre-Pin)",
+   "lat": 45.24788,
+   "lon": 6.31549,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 58.5,
+   "name": "Pierre-Pin Dessous (D926)",
+   "lat": 45.25249,
+   "lon": 6.31651,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 60.2,
+   "name": "D926 descent into Saint-Jean-de-Maurienne (La Combe)",
+   "lat": 45.26416,
+   "lon": 6.32886,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D926"
+  },
+  {
+   "km": 62.0,
+   "name": "Saint-Jean-de-Maurienne – Avenue Samuel Pasquier (town entry)",
+   "lat": 45.27236,
+   "lon": 6.34195,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 62.5,
+   "name": "Saint-Jean-de-Maurienne – Avenue des Clapeys",
+   "lat": 45.27415,
+   "lon": 6.34698,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 62.9,
+   "name": "Saint-Jean-de-Maurienne – Avenue du Mont Cenis",
+   "lat": 45.27237,
+   "lon": 6.35043,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 63.6,
+   "name": "Saint-Jean-de-Maurienne – Rue du Parc de la Vanoise",
+   "lat": 45.2702,
+   "lon": 6.3591,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 64.4,
+   "name": "Saint-Jean-de-Maurienne – Avenue du 8 Mai 1945",
+   "lat": 45.26825,
+   "lon": 6.36818,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 65.6,
+   "name": "Saint-Jean-de-Maurienne east – road joins the D1006",
+   "lat": 45.26638,
+   "lon": 6.38306,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 66.5,
+   "name": "Intermediate sprint, Saint-Julien-Mont-Denis (D1006 at Villard-Clément / Les Resses; placed at the official km)",
+   "lat": 45.25933,
+   "lon": 6.3869,
+   "kind": "sprint",
+   "confidence": "low",
+   "road": "D1006"
+  },
+  {
+   "km": 68.1,
+   "name": "Saint-Julien-Mont-Denis (D1006 below the village)",
+   "lat": 45.25255,
+   "lon": 6.404,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 69.9,
+   "name": "D1006 (near Serpolière)",
+   "lat": 45.24648,
+   "lon": 6.42487,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 71.7,
+   "name": "Les Oeillettes (D1006)",
+   "lat": 45.23627,
+   "lon": 6.44107,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 73.7,
+   "name": "D1006 Rue du Temple (near Les Culées)",
+   "lat": 45.22211,
+   "lon": 6.45325,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 75.6,
+   "name": "Saint-Michel-de-Maurienne – D1006 (Rue du Général Ferrié) → D902 (Rue du Galibier), foot of the Télégraphe",
+   "lat": 45.21569,
+   "lon": 6.47491,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 76.5,
+   "name": "Saint-Martin-d'Arc (D902)",
+   "lat": 45.21253,
+   "lon": 6.4671,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 77.0,
+   "name": "D902 Route du Télégraphe (near La Ravoire)",
+   "lat": 45.21125,
+   "lon": 6.46864,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 77.4,
+   "name": "D902 Route du Télégraphe (near La Ravoire)",
+   "lat": 45.20998,
+   "lon": 6.46724,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 77.8,
+   "name": "D902 Route du Télégraphe (near La Tour)",
+   "lat": 45.20846,
+   "lon": 6.46836,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 78.3,
+   "name": "Les Petites Seignières (D902)",
+   "lat": 45.20786,
+   "lon": 6.4638,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 79.5,
+   "name": "D902 Route du Télégraphe, bend at Les Grandes Seignières",
+   "lat": 45.21007,
+   "lon": 6.4548,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 80.5,
+   "name": "D902 Route du Télégraphe (near Les Grandes Seignières)",
+   "lat": 45.20323,
+   "lon": 6.45503,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 81.0,
+   "name": "D902 Route du Télégraphe (near Les Grandes Seignières)",
+   "lat": 45.20194,
+   "lon": 6.45579,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 81.5,
+   "name": "D902 Route du Télégraphe (near La Tour)",
+   "lat": 45.2032,
+   "lon": 6.46026,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 82.5,
+   "name": "D902 Route du Télégraphe (near La Duchère)",
+   "lat": 45.19822,
+   "lon": 6.46839,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 83.0,
+   "name": "D902 Route du Télégraphe (near La Tour)",
+   "lat": 45.19896,
+   "lon": 6.46701,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 83.5,
+   "name": "D902 Route du Télégraphe (near La Duchère)",
+   "lat": 45.19676,
+   "lon": 6.46783,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 84.0,
+   "name": "D902 Route du Télégraphe (near La Duchère)",
+   "lat": 45.19416,
+   "lon": 6.46843,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 84.6,
+   "name": "D902 Route du Télégraphe (near La Duchère)",
+   "lat": 45.19645,
+   "lon": 6.46632,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 85.1,
+   "name": "D902 Route du Télégraphe (near La Tour)",
+   "lat": 45.19922,
+   "lon": 6.46196,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 85.6,
+   "name": "D902 Route du Télégraphe (near La Duchère)",
+   "lat": 45.19604,
+   "lon": 6.45859,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 87.6,
+   "name": "Col du Télégraphe (1566 m, cat. 1)",
+   "lat": 45.20258,
+   "lon": 6.44484,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 90.9,
+   "name": "Les Granges (Valloire, D902)",
+   "lat": 45.17671,
+   "lon": 6.43448,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 93.0,
+   "name": "Valloire (D902 Avenue de la Vallée d'Or) – foot of the Col du Galibier (17.7 km at 6.9 %)",
+   "lat": 45.16409,
+   "lon": 6.4262,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 95.1,
+   "name": "Les Verneys (Valloire, D902)",
+   "lat": 45.14846,
+   "lon": 6.42055,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 98.0,
+   "name": "Bonnenuit (D902 Route du Galibier)",
+   "lat": 45.12346,
+   "lon": 6.41857,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 102.4,
+   "name": "Plan Lachat (D902, start of the steep last 8 km)",
+   "lat": 45.08848,
+   "lon": 6.43548,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 102.9,
+   "name": "D902 Route du Galibier",
+   "lat": 45.08611,
+   "lon": 6.43562,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 103.4,
+   "name": "D902 Route du Galibier",
+   "lat": 45.08924,
+   "lon": 6.43168,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 103.9,
+   "name": "D902 Route du Galibier",
+   "lat": 45.09043,
+   "lon": 6.43031,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 104.3,
+   "name": "D902 Route du Galibier",
+   "lat": 45.08688,
+   "lon": 6.43069,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 104.8,
+   "name": "D902 Route du Galibier",
+   "lat": 45.08664,
+   "lon": 6.42964,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 105.3,
+   "name": "D902 Route du Galibier",
+   "lat": 45.08353,
+   "lon": 6.4274,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 106.2,
+   "name": "D902 Route du Galibier",
+   "lat": 45.0791,
+   "lon": 6.42254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 106.7,
+   "name": "D902 Route du Galibier",
+   "lat": 45.08091,
+   "lon": 6.42171,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 107.2,
+   "name": "D902 Route du Galibier",
+   "lat": 45.07985,
+   "lon": 6.41632,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 108.1,
+   "name": "D902 Route du Galibier",
+   "lat": 45.07317,
+   "lon": 6.41285,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 109.1,
+   "name": "D902 Route du Galibier",
+   "lat": 45.06843,
+   "lon": 6.40927,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 109.5,
+   "name": "D902 Route du Galibier",
+   "lat": 45.06667,
+   "lon": 6.40927,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 110.0,
+   "name": "Route du Galibier, summit loop (north side)",
+   "lat": 45.06588,
+   "lon": 6.41301,
+   "kind": "other",
+   "confidence": "high"
+  },
+  {
+   "km": 110.5,
+   "name": "Col du Galibier (2642 m, HC, Souvenir Henri Desgrange)",
+   "lat": 45.06417,
+   "lon": 6.40789,
+   "kind": "summit",
+   "confidence": "high"
+  },
+  {
+   "km": 111.0,
+   "name": "Route du Galibier, summit loop (south side)",
+   "lat": 45.06231,
+   "lon": 6.41111,
+   "kind": "other",
+   "confidence": "high"
+  },
+  {
+   "km": 111.5,
+   "name": "D902 Route du Galibier (descent to the Lautaret)",
+   "lat": 45.0618,
+   "lon": 6.40576,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 112.0,
+   "name": "D902 Route du Galibier (descent to the Lautaret)",
+   "lat": 45.06117,
+   "lon": 6.41012,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 112.5,
+   "name": "D902 Route du Galibier (descent to the Lautaret)",
+   "lat": 45.06098,
+   "lon": 6.40746,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 113.0,
+   "name": "D902 Route du Galibier (descent to the Lautaret)",
+   "lat": 45.05684,
+   "lon": 6.40854,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 115.0,
+   "name": "D902 Route du Galibier (descent to the Lautaret)",
+   "lat": 45.05122,
+   "lon": 6.39068,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 117.0,
+   "name": "D902 Route du Galibier (descent to the Lautaret) (near Col du Lautaret)",
+   "lat": 45.03878,
+   "lon": 6.39573,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 117.5,
+   "name": "D902 Route du Galibier (descent to the Lautaret) (near Col du Lautaret)",
+   "lat": 45.03752,
+   "lon": 6.39582,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 118.0,
+   "name": "D902 Route du Galibier (descent to the Lautaret) (near Col du Lautaret)",
+   "lat": 45.03972,
+   "lon": 6.40015,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 119.0,
+   "name": "Col du Lautaret – D902 joins D1091",
+   "lat": 45.03523,
+   "lon": 6.40511,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D1091"
+  },
+  {
+   "km": 122.5,
+   "name": "D1091 (near Le Pied du Col)",
+   "lat": 45.03751,
+   "lon": 6.36737,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 125.9,
+   "name": "Villar-d'Arêne (D1091)",
+   "lat": 45.0431,
+   "lon": 6.33838,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 129.4,
+   "name": "La Grave (D1091)",
+   "lat": 45.04543,
+   "lon": 6.30674,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 132.9,
+   "name": "D1091 Romanche valley (near Le Grand Clot)",
+   "lat": 45.04221,
+   "lon": 6.26443,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 136.3,
+   "name": "D1091 Romanche valley",
+   "lat": 45.03609,
+   "lon": 6.22254,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 139.8,
+   "name": "D1091 Romanche valley",
+   "lat": 45.03927,
+   "lon": 6.18031,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 143.3,
+   "name": "D1091/D25 junction after the Grand Tunnel du Chambon – foot of the Col de Sarenne",
+   "lat": 45.04747,
+   "lon": 6.14011,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D25"
+  },
+  {
+   "km": 143.8,
+   "name": "D25 Grand'Rue (near Mizoën)",
+   "lat": 45.04887,
+   "lon": 6.1434,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D25"
+  },
+  {
+   "km": 144.4,
+   "name": "Mizoën (D25 Grand'Rue)",
+   "lat": 45.05008,
+   "lon": 6.14274,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D25"
+  },
+  {
+   "km": 147.7,
+   "name": "Clavans-le-Bas (D25)",
+   "lat": 45.07144,
+   "lon": 6.15501,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D25"
+  },
+  {
+   "km": 149.0,
+   "name": "Clavans-le-Haut (end of D25 Route du Col)",
+   "lat": 45.08188,
+   "lon": 6.16108,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 151.4,
+   "name": "Col de Sarenne road, hairpins",
+   "lat": 45.09656,
+   "lon": 6.16402,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 152.1,
+   "name": "Col de Sarenne road, hairpins",
+   "lat": 45.09996,
+   "lon": 6.16451,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 152.8,
+   "name": "Col de Sarenne road, hairpins",
+   "lat": 45.0998,
+   "lon": 6.1618,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 153.4,
+   "name": "Col de Sarenne road, hairpins",
+   "lat": 45.09976,
+   "lon": 6.15974,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 154.4,
+   "name": "Col de Sarenne road, hairpins",
+   "lat": 45.09325,
+   "lon": 6.15265,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 155.0,
+   "name": "Col de Sarenne road, hairpins",
+   "lat": 45.09722,
+   "lon": 6.15431,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 156.5,
+   "name": "Col de Sarenne (1999 m, HC)",
+   "lat": 45.0869,
+   "lon": 6.1489,
+   "kind": "summit",
+   "confidence": "high"
+  },
+  {
+   "km": 158.1,
+   "name": "Route du Col de Sarenne (descent)",
+   "lat": 45.0797,
+   "lon": 6.13253,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 159.7,
+   "name": "Route du Col de Sarenne, Sarenne valley",
+   "lat": 45.079,
+   "lon": 6.118,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 161.4,
+   "name": "Route du Col de Sarenne",
+   "lat": 45.08474,
+   "lon": 6.10077,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 163.2,
+   "name": "Altiport de l'Alpe d'Huez (Route de l'Altiport)",
+   "lat": 45.0894,
+   "lon": 6.0857,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 163.8,
+   "name": "Route de l'Altiport (near Les Bergers)",
+   "lat": 45.09059,
+   "lon": 6.07945,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 164.4,
+   "name": "Avenue des Marmottes",
+   "lat": 45.08852,
+   "lon": 6.07727,
+   "kind": "other",
+   "confidence": "low"
+  },
+  {
+   "km": 164.7,
+   "name": "Alpe d'Huez – Rond-Point de l'Europe (first pass)",
+   "lat": 45.09014,
+   "lon": 6.07372,
+   "kind": "junction",
+   "confidence": "low"
+  },
+  {
+   "km": 165.1,
+   "name": "Avenue de Brandes",
+   "lat": 45.09023,
+   "lon": 6.06949,
+   "kind": "other",
+   "confidence": "low"
+  },
+  {
+   "km": 165.2,
+   "name": "Chemin de la Chapelle",
+   "lat": 45.08986,
+   "lon": 6.06789,
+   "kind": "other",
+   "confidence": "low"
+  },
+  {
+   "km": 165.5,
+   "name": "Le Vieil Alpe – Place Joseph Paganon, top of the Route d'Huez",
+   "lat": 45.09043,
+   "lon": 6.06512,
+   "kind": "junction",
+   "confidence": "low"
+  },
+  {
+   "km": 165.8,
+   "name": "Route d'Huez (descent)",
+   "lat": 45.09121,
+   "lon": 6.0613,
+   "kind": "other",
+   "confidence": "low"
+  },
+  {
+   "km": 166.4,
+   "name": "Route d'Huez (descent)",
+   "lat": 45.09138,
+   "lon": 6.05648,
+   "kind": "other",
+   "confidence": "low"
+  },
+  {
+   "km": 167.0,
+   "name": "Route d'Huez (near Vieil Alpe)",
+   "lat": 45.08911,
+   "lon": 6.05847,
+   "kind": "other",
+   "confidence": "low"
+  },
+  {
+   "km": 167.6,
+   "name": "Route d'Huez joins the D211 at the hairpin above Huez",
+   "lat": 45.08662,
+   "lon": 6.05875,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "D211"
+  },
+  {
+   "km": 168.3,
+   "name": "D211 Route de l'Alpe",
+   "lat": 45.08447,
+   "lon": 6.06585,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 169.0,
+   "name": "D211 Route de l'Alpe (near Les Passeaux)",
+   "lat": 45.0859,
+   "lon": 6.06398,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 169.8,
+   "name": "D211 Route de l'Alpe",
+   "lat": 45.08605,
+   "lon": 6.07172,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 170.4,
+   "name": "Alpe d'Huez – Rond-Point de l'Europe (second pass), onto Avenue du Rif Nel",
+   "lat": 45.0904,
+   "lon": 6.07421,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 170.9,
+   "name": "Alpe d'Huez – finish, Avenue du Rif Nel (1850 m)",
+   "lat": 45.0941,
+   "lon": 6.07114,
+   "kind": "finish",
+   "confidence": "high"
+  }
+ ],
+ "notes": "Km 0 is the départ réel on the D1091 north of Le Bourg-d'Oisans, 1.3 km before the Rochetaillée turn onto the D526 (after the neutralised start in Le Bourg-d'Oisans, not included). Its position is not published as a coordinate; it was placed 8.4 routed km before the official 'Le Verney/Vaujany' timetable point (taken as the junction of the Vaujany road at the Verney dam), which then also matches Le Rivier d'Allemond at 15.1 (routed 6.72 km for an official 6.7). Official km used as anchors (cyclingstage/letour timetable, ledicodutour, dhnet): Le Verney 8.4, Le Rivier d'Allemond 15.1, Col de la Croix de Fer 33.7, intermediate sprint Saint-Julien-Mont-Denis 66.5, Saint-Michel-de-Maurienne 75.6 (foot of the Télégraphe), Col du Télégraphe 87.6, Les Verneys 95.1, Col du Galibier 110.5, Col du Lautaret 119.0, La Grave 129.4, Mizoën 144.4, Col de Sarenne 156.5, finish 170.9; every anchor-to-anchor stretch routes within ±3 % on the Overture road graph, other km are interpolated from routed distances. Timetable points that were checked but not anchored: Les Oulles 60.4 and Saint-Jean-de-Maurienne 61.6 (route reaches the D926 entry to Saint-Jean, Avenue Samuel Pasquier, at ~62.0), Valloire 91.1 (= Les Granges, the first houses of Valloire; the centre on Avenue de la Vallée d'Or is at ~93.0). Route (ledicodutour locality list, hedgehogcycling, bikeradar, isere.gouv): D1091 → D526 at Rochetaillée (Pont Rouge), Route de Savoie, Route des Fonderies Royales below Allemond and the hairpins to the Eau d'Olle viaduct, Le Verney, Articol, Le Rivier d'Allemond, Barrage de Grand'Maison, Combe d'Olle (D926 in Savoie), junction below the Col du Glandon, Col de la Croix de Fer; D926 via Saint-Sorlin-d'Arves, Les Chambons, Pont d'Entraigues, the Arvan gorge (Viaduc des Sallanches), Charvin/La Combe Bérard/Le Crêt/La Bettaz hairpins, Pierre-Pin, into Saint-Jean-de-Maurienne (Av. Samuel Pasquier, Av. des Clapeys, Av. du Mont Cenis, Rue du Parc de la Vanoise, Av. du 8 Mai 1945); D1006 via Villard-Clément, Saint-Julien-Mont-Denis, Les Oeillettes to Saint-Michel; D902 (Rue du Galibier) over the Télégraphe, Les Granges, Valloire, Les Verneys, Bonnenuit, Plan Lachat to the Galibier summit road (not the tunnel; the summit point is on the col road above the tunnel, so the two summit-loop points must be kept), descent to the Lautaret; D1091 via Villar-d'Arêne, La Grave and the Grand Tunnel du Chambon to the D1091/D25 junction; D25 via Mizoën, Route du Ferrand, Clavans-le-Bas, Clavans-le-Haut, then the narrow Sarenne road (hairpins) to the Col de Sarenne and down the Sarenne valley to the Altiport; through the resort and down the Route d'Huez to the D211 hairpin above Huez, then up the D211 Route de l'Alpe (last ~3.3 km, final hairpins) to the finish on Avenue du Rif Nel. Low confidence: (1) the resort section Altiport → Avenue des Marmottes → Rond-Point de l'Europe → Avenue de Brandes → Chemin de la Chapelle → Vieil Alpe → Route d'Huez → D211 (km ~164–167.6): bikeradar describes the race going down towards Huez and back up the last hairpins of the classic climb, but the exact streets are not published; the 'Huez/hairpin 3' seed km 167.2 and a '4 km' final climb do not exactly match this junction (3.3 km before the line); (2) the intermediate-sprint coordinate is placed at the official km 66.5 on the D1006 (Villard-Clément), not at a published line position; (3) the foot of the Croix de Fer (km 9.7) is placed by the official climb length; (4) Barrage de Grand'Maison and Combe d'Olle valley points are positioned from the DEM profile, and the D526/D926 department border is approximate. The Col de la Croix de Fer (2066 m), Télégraphe (1566–1570 m), Galibier (2640 m) and Sarenne (1987–1991 m) points were checked against Copernicus GLO-30. Points named after a road with '(near X)' were added along the routed race road to keep spacing and to stop the router using parallel shortcuts (Route du Village in Allemond, Chemin des Choseaux at Saint-Sorlin, Route des Seignes on the Télégraphe, the Fontcouverte back roads above the Arvan gorge, the Galibier tunnel).",
+ "sources": [
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-20-times.htm",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-20-tdf-2026/",
+  "https://ledicodutour.com/etapes/etapes_par_annees/etapes_2026/etapes_2026_20.html",
+  "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/25/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-20e-etape-le-bourg-doisan-alpe-dhuez-1709-km-LIBLTXAHTFCNDILZSPYDVQYMAA/",
+  "https://hedgehogcycling.co.uk/stage-20-tour-de-france-2026.html",
+  "https://www.bikeradar.com/news/everything-you-need-to-know-about-col-de-sarenne",
+  "https://www.cyclingnews.com/cycling-culture/i-rode-the-col-de-sarenne-to-see-what-the-newest-tour-de-france-climb-is-really-like-heres-whats-in-store-for-the-queen-stage/",
+  "https://www.domestiquecycling.com/en/news/mudslide-hits-route-of-tour-de-france-queen-stage-to-alpe-dhuez/",
+  "https://www.isere.gouv.fr/Actualites/Espace-presse/Dossiers-de-presse/Le-Tour-de-France-2026-en-Isere",
+  "https://www.oisans.com/app/uploads/2026/07/infos-route-tour-de-france-2026-auris-en-oisans-fr-en.pdf",
+  "https://www.alpedhuez.com/?p=51434",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments; Copernicus GLO-30 DEM"
+ ]
+}

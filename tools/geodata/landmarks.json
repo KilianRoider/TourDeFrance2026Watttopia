@@ -1,0 +1,64 @@
+{
+ "_comment": "Manual landmark corrections for tools/geodata/landmarks.py: per route, app label -> {km, label} to move or rename, {drop: true} to remove; _add lists new labels. Positions are km on the real (built) road.",
+ "mur-de-bretagne": {
+  "Ortseingang Mûr-de-Bretagne": {
+   "km": 1.5,
+   "label": "Offene Felder · Falschflach"
+  }
+ },
+ "galibier": {
+  "Bonnenuit (1670 m)": {
+   "km": 5.69
+  },
+  "Desgrange-Denkmal · Gipfelrampe": {
+   "km": 17.0,
+   "label": "Abzweig am Tunnelportal · Gipfelrampe"
+  }
+ },
+ "tour26-06": {
+  "Lourdes": {
+   "km": 40.3
+  }
+ },
+ "loze": {
+  "Kehren durch Méribel": {
+   "km": 1.6
+  }
+ },
+ "marie-blanque": {
+  "Steinbrücke am Barescou": {
+   "km": 3.87,
+   "label": "Brücke über den Barescou"
+  },
+  "In den Wald": {
+   "km": 4.49
+  }
+ },
+ "peyresourde": {
+  "Kapelle Saint-Aventin": {
+   "drop": true
+  }
+ },
+ "madeleine": {
+  "Lawinengalerie": {
+   "drop": true
+  }
+ },
+ "champs-elysees": {
+  "Arc de Triomphe": {
+   "km": 1.47
+  },
+  "Hinunter über die Champs-Élysées": {
+   "km": 1.72
+  },
+  "Place de la Concorde": {
+   "km": 3.68
+  },
+  "Rue de Rivoli": {
+   "km": 4.06
+  },
+  "Quai am Seine-Ufer": {
+   "km": 5.4
+  }
+ }
+}

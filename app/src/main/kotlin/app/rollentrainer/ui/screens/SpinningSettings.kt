@@ -6,6 +6,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,6 +36,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import app.rollentrainer.AppContainer
 import app.rollentrainer.data.AppSettings
@@ -45,6 +48,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /** Settings of the spinning view: music folder, studio beat, coach voice, volume. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update: ((AppSettings) -> AppSettings) -> Unit) {
     val context = LocalContext.current
@@ -102,7 +106,10 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
                 Text(if (previewing) "Stopp" else "Probe hören")
             }
             if (previewing) {
-                Text(previewTrack ?: "Studio-Beat", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(
+                    previewTrack ?: "Studio-Beat", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false),
+                )
             }
         }
         Spacer(Modifier.height(8.dp))
@@ -131,7 +138,8 @@ fun SpinningSettingsPanel(container: AppContainer, settings: AppSettings, update
                 )
             }
             Spacer(Modifier.height(4.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            // Wraps on a phone, where both buttons together are wider than the panel.
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedButton(onClick = { picker.launch(null) }) { Text("Anderen Ordner") }
                 TextButton(onClick = {
                     MusicPlayer.releasePersisted(context, folder)

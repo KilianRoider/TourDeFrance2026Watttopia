@@ -1,0 +1,807 @@
+{
+ "id": "tour26-15",
+ "lengthKm": 183.9,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Cize – départ réel (N5)",
+   "lat": 46.7147,
+   "lon": 5.9262,
+   "kind": "start",
+   "confidence": "low",
+   "road": "N5"
+  },
+  {
+   "km": 2.6,
+   "name": "Le Vaudioux (près) – N5",
+   "lat": 46.69194,
+   "lon": 5.93036,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 7.3,
+   "name": "Pont-de-la-Chaux – N5",
+   "lat": 46.65624,
+   "lon": 5.94333,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 13.9,
+   "name": "Le Bourg Derrière (près) (Fort-du-Plasne) – N5",
+   "lat": 46.606,
+   "lon": 5.96233,
+   "kind": "other",
+   "confidence": "low",
+   "road": "N5"
+  },
+  {
+   "km": 17.3,
+   "name": "Saint-Laurent-en-Grandvaux – intermediate sprint",
+   "lat": 46.57697,
+   "lon": 5.9534,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 17.6,
+   "name": "Saint-Laurent-en-Grandvaux",
+   "lat": 46.57618,
+   "lon": 5.956,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 21.7,
+   "name": "Col de la Savine",
+   "lat": 46.56498,
+   "lon": 5.99999,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 23.2,
+   "name": "Le Marais (Morbier) – N5",
+   "lat": 46.55574,
+   "lon": 6.01347,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 26.9,
+   "name": "Morbier – N5, Pont de Morbier",
+   "lat": 46.5358,
+   "lon": 6.0274,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 30.0,
+   "name": "Morez (Hauts de Bienne) – N5 / D25",
+   "lat": 46.5105,
+   "lon": 6.02959,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 30.2,
+   "name": "Côte des Rousses – foot of the climb (cat. 3, 6.6 km at 5.1 %)",
+   "lat": 46.50883,
+   "lon": 6.0298,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 32.7,
+   "name": "N5, Côte des Rousses hairpins",
+   "lat": 46.49122,
+   "lon": 6.03304,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 36.8,
+   "name": "Côte des Rousses (cat. 3) summit",
+   "lat": 46.4856,
+   "lon": 6.05647,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 37.0,
+   "name": "Les Rousses – N5 / Rue Pasteur",
+   "lat": 46.48568,
+   "lon": 6.05861,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N5"
+  },
+  {
+   "km": 39.2,
+   "name": "Les Rousses – N5 / D1005",
+   "lat": 46.46772,
+   "lon": 6.06825,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1005"
+  },
+  {
+   "km": 41.9,
+   "name": "Le Tabagnoz (Prémanon) – D1005",
+   "lat": 46.44875,
+   "lon": 6.07701,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1005"
+  },
+  {
+   "km": 44.7,
+   "name": "D1005 / D313 (Combe en Haut)",
+   "lat": 46.43001,
+   "lon": 6.07277,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D313"
+  },
+  {
+   "km": 48.4,
+   "name": "Combe en Haut – D313",
+   "lat": 46.40419,
+   "lon": 6.04352,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D313"
+  },
+  {
+   "km": 52.1,
+   "name": "D313 / D50",
+   "lat": 46.37959,
+   "lon": 6.01763,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D50"
+  },
+  {
+   "km": 54.5,
+   "name": "Mijoux",
+   "lat": 46.36697,
+   "lon": 5.99718,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D991"
+  },
+  {
+   "km": 60.6,
+   "name": "Les Sept Fontaines",
+   "lat": 46.32159,
+   "lon": 5.95478,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 63.0,
+   "name": "Lélex",
+   "lat": 46.30254,
+   "lon": 5.9408,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 67.1,
+   "name": "D991, Valserine valley",
+   "lat": 46.2716,
+   "lon": 5.91615,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 71.4,
+   "name": "La Rivière",
+   "lat": 46.2413,
+   "lon": 5.89641,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 74.7,
+   "name": "Chézery-Forens",
+   "lat": 46.22217,
+   "lon": 5.86652,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D991"
+  },
+  {
+   "km": 76.7,
+   "name": "Le Grand Essert",
+   "lat": 46.20617,
+   "lon": 5.8621,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 80.0,
+   "name": "D991 Route de Confort",
+   "lat": 46.19028,
+   "lon": 5.83399,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 83.2,
+   "name": "La Serpentouze",
+   "lat": 46.16662,
+   "lon": 5.81908,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 83.9,
+   "name": "La Mulaz",
+   "lat": 46.16087,
+   "lon": 5.81622,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 85.6,
+   "name": "Confort",
+   "lat": 46.14985,
+   "lon": 5.82251,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 88.6,
+   "name": "Lancrans – D991",
+   "lat": 46.12535,
+   "lon": 5.8293,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D991"
+  },
+  {
+   "km": 91.4,
+   "name": "Bellegarde-sur-Valserine (Valserhône) – D1084 / D1206",
+   "lat": 46.10846,
+   "lon": 5.82945,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 95.2,
+   "name": "Grésin",
+   "lat": 46.09204,
+   "lon": 5.86375,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 96.9,
+   "name": "Léaz",
+   "lat": 46.09879,
+   "lon": 5.88077,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1206"
+  },
+  {
+   "km": 99.6,
+   "name": "Longeray",
+   "lat": 46.11573,
+   "lon": 5.88346,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1206"
+  },
+  {
+   "km": 100.7,
+   "name": "Tunnel du Fort l'Écluse (D1206)",
+   "lat": 46.12081,
+   "lon": 5.89201,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D1206"
+  },
+  {
+   "km": 101.0,
+   "name": "Fort l'Écluse – D1206 / D984",
+   "lat": 46.1219,
+   "lon": 5.8957,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 102.4,
+   "name": "Villard (près) (Collonges) – D1206 hairpin",
+   "lat": 46.12838,
+   "lon": 5.91053,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 103.5,
+   "name": "Pont Carnot (Rhône) – Ain / Haute-Savoie border",
+   "lat": 46.12035,
+   "lon": 5.90448,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 106.0,
+   "name": "Chevrier (près) – D1206",
+   "lat": 46.10921,
+   "lon": 5.92324,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 107.0,
+   "name": "Vulbens",
+   "lat": 46.10216,
+   "lon": 5.93133,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1206"
+  },
+  {
+   "km": 109.8,
+   "name": "Valleiry",
+   "lat": 46.10669,
+   "lon": 5.96548,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 111.9,
+   "name": "La Boutique (Chênex) – D1206",
+   "lat": 46.11138,
+   "lon": 5.99101,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 114.4,
+   "name": "Essertet (Viry) – D1206",
+   "lat": 46.11539,
+   "lon": 6.02239,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1206"
+  },
+  {
+   "km": 115.8,
+   "name": "Viry (D1206 / D992 / D18)",
+   "lat": 46.11624,
+   "lon": 6.03816,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D992"
+  },
+  {
+   "km": 117.1,
+   "name": "La Côte (Viry) – D18",
+   "lat": 46.11167,
+   "lon": 6.05176,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D18"
+  },
+  {
+   "km": 117.9,
+   "name": "Vaux",
+   "lat": 46.10585,
+   "lon": 6.05664,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D18"
+  },
+  {
+   "km": 119.1,
+   "name": "Malchamp (Feigères)",
+   "lat": 46.10136,
+   "lon": 6.0667,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D18"
+  },
+  {
+   "km": 120.7,
+   "name": "La Tuilière (Présilly)",
+   "lat": 46.09911,
+   "lon": 6.08386,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D18"
+  },
+  {
+   "km": 122.4,
+   "name": "Le Châble (Beaumont) – D18 / D1201",
+   "lat": 46.09486,
+   "lon": 6.10168,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1201"
+  },
+  {
+   "km": 123.5,
+   "name": "Les Roquettes (Beaumont)",
+   "lat": 46.10199,
+   "lon": 6.10453,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D18"
+  },
+  {
+   "km": 125.4,
+   "name": "La Forge (Neydens)",
+   "lat": 46.11782,
+   "lon": 6.10973,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D18"
+  },
+  {
+   "km": 126.8,
+   "name": "Route de la Forge / Route d'Annecy (Archamps)",
+   "lat": 46.1277,
+   "lon": 6.11968,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D18"
+  },
+  {
+   "km": 128.1,
+   "name": "Archamps – D18 / D318 (Route du Léman), official km 127.6",
+   "lat": 46.13793,
+   "lon": 6.12797,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D318"
+  },
+  {
+   "km": 128.8,
+   "name": "Archamps",
+   "lat": 46.13542,
+   "lon": 6.1333,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D318"
+  },
+  {
+   "km": 129.5,
+   "name": "Aux Peupliers (Archamps)",
+   "lat": 46.13228,
+   "lon": 6.14094,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D318"
+  },
+  {
+   "km": 129.9,
+   "name": "Route de Vovray (D318)",
+   "lat": 46.13055,
+   "lon": 6.1434,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D318"
+  },
+  {
+   "km": 130.2,
+   "name": "La Montagnère",
+   "lat": 46.12917,
+   "lon": 6.14578,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D318"
+  },
+  {
+   "km": 130.5,
+   "name": "Chotard – D318 Route de Vovray / D145 Route du Coin",
+   "lat": 46.12743,
+   "lon": 6.1482,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D145"
+  },
+  {
+   "km": 131.3,
+   "name": "Le Coin (Collonges-sous-Salève) – D145 / D45, foot of the Col de la Croisette",
+   "lat": 46.13215,
+   "lon": 6.15621,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D45"
+  },
+  {
+   "km": 134.3,
+   "name": "D45, Col de la Croisette climb",
+   "lat": 46.12485,
+   "lon": 6.16455,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D45"
+  },
+  {
+   "km": 136.0,
+   "name": "Col de la Croisette (cat. 1) summit – La Croisette (D45 / D41A)",
+   "lat": 46.1195,
+   "lon": 6.17162,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D41A"
+  },
+  {
+   "km": 136.4,
+   "name": "Route du Mont Salève (D41A) – first hairpin below La Croisette",
+   "lat": 46.12028,
+   "lon": 6.17516,
+   "kind": "via",
+   "radius": 20,
+   "road": "Route du Mont Salève"
+  },
+  {
+   "km": 139.0,
+   "name": "Route du Mont Salève (D41A / D215), descent to La Muraz",
+   "lat": 46.1167,
+   "lon": 6.18823,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D215"
+  },
+  {
+   "km": 143.4,
+   "name": "La Muraz – D48 / D15",
+   "lat": 46.12323,
+   "lon": 6.20592,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D15"
+  },
+  {
+   "km": 143.9,
+   "name": "Côte du Mont – foot of the climb (cat. 3, 2.1 km at 8.3 %)",
+   "lat": 46.11876,
+   "lon": 6.20634,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "Route des Monts"
+  },
+  {
+   "km": 146.0,
+   "name": "Côte du Mont (cat. 3) summit",
+   "lat": 46.10921,
+   "lon": 6.21281,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "Route de la Muraz"
+  },
+  {
+   "km": 147.9,
+   "name": "Arbusigny",
+   "lat": 46.09381,
+   "lon": 6.21869,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D6"
+  },
+  {
+   "km": 149.1,
+   "name": "La Platière",
+   "lat": 46.08551,
+   "lon": 6.21991,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D6"
+  },
+  {
+   "km": 149.6,
+   "name": "Le Souget",
+   "lat": 46.08387,
+   "lon": 6.22613,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D6"
+  },
+  {
+   "km": 153.5,
+   "name": "D6 Route d'Arbusigny (Pers-Jussy)",
+   "lat": 46.10824,
+   "lon": 6.25,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D6"
+  },
+  {
+   "km": 157.5,
+   "name": "Moussy – D6 / D2 roundabout (Pers-Jussy / Cornier)",
+   "lat": 46.09022,
+   "lon": 6.28744,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D2"
+  },
+  {
+   "km": 158.7,
+   "name": "La Roche-sur-Foron – approach on the D2 (official km for La Roche-sur-Foron)",
+   "lat": 46.08062,
+   "lon": 6.29398,
+   "kind": "town",
+   "confidence": "low",
+   "road": "D2"
+  },
+  {
+   "km": 160.9,
+   "name": "La Roche-sur-Foron – Avenue Jean Jaurès",
+   "lat": 46.0675,
+   "lon": 6.3113,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D2"
+  },
+  {
+   "km": 163.8,
+   "name": "Amancy – D2B / D1203",
+   "lat": 46.07008,
+   "lon": 6.3455,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1203"
+  },
+  {
+   "km": 165.4,
+   "name": "Saint-Pierre-en-Faucigny – Rond-Point de Macruz (D1203)",
+   "lat": 46.07123,
+   "lon": 6.36535,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1203"
+  },
+  {
+   "km": 167.9,
+   "name": "Bonneville – Avenue des Glières",
+   "lat": 46.07269,
+   "lon": 6.39736,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Avenue des Glières"
+  },
+  {
+   "km": 170.7,
+   "name": "Bonneville – Route de Cluses (D19)",
+   "lat": 46.0706,
+   "lon": 6.43015,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D19"
+  },
+  {
+   "km": 171.6,
+   "name": "Thuet – D19 / D186 (Route de Thuet), Bonneville",
+   "lat": 46.06918,
+   "lon": 6.44198,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D186"
+  },
+  {
+   "km": 172.3,
+   "name": "Thuet",
+   "lat": 46.06319,
+   "lon": 6.44181,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D186"
+  },
+  {
+   "km": 172.6,
+   "name": "Plateau de Solaison – foot of the climb (HC, 11.3 km at 9.0 %)",
+   "lat": 46.06058,
+   "lon": 6.4417,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D186"
+  },
+  {
+   "km": 175.2,
+   "name": "Route de Brison (D186), hairpins above Thuet",
+   "lat": 46.05684,
+   "lon": 6.43366,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D186"
+  },
+  {
+   "km": 178.3,
+   "name": "Brison – D186 / D186A",
+   "lat": 46.04919,
+   "lon": 6.44267,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D186A"
+  },
+  {
+   "km": 178.8,
+   "name": "Les Croix",
+   "lat": 46.0526,
+   "lon": 6.44396,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D186A"
+  },
+  {
+   "km": 179.6,
+   "name": "Les Saillets",
+   "lat": 46.04771,
+   "lon": 6.43919,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D186A"
+  },
+  {
+   "km": 182.4,
+   "name": "D186A Route de Solaison",
+   "lat": 46.03582,
+   "lon": 6.43678,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D186A"
+  },
+  {
+   "km": 183.9,
+   "name": "Plateau de Solaison (HC) – finish",
+   "lat": 46.03322,
+   "lon": 6.42753,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "D186A"
+  }
+ ],
+ "notes": "Km values are the official itinerary kms: the ASO timetable as published by cyclingstage (Saint-Laurent sprint 17.3, Côte des Rousses 36.8, Mijoux 54.5, Chézery-Forens 74.7, Vulbens 107.0, Le Coin 131.3, Col de la Croisette 136.0, Côte du Mont 146.0, Thuet 171.6, finish 183.9), the Monts du Genevois passage schedule (Léaz 96.9, Longeray 99.6, Fort l'Écluse tunnel 100.7, Villard (près) 102.6, Chevrier (près) 106.1, Valleiry 109.8, La Boutique 111.9, Essertet 114.4, Viry 115.8, La Côte 117.1, Vaux 117.9, Malchamp 119.1, La Tuilière 120.7, Le Châble 122.4, Les Roquettes 123.5, La Forge 125.4, Archamps 127.6, Aux Peupliers 129.5, La Montagnère 130.2, Chotard 130.5, La Croisette 135.9/136.0) and ledicodutour (La Roche-sur-Foron 158.7). Km 0 = départ réel 'at Cize' at 13:20 after the 13:10 départ fictif at the place de la Mairie in Champagnole (info.fr); the exact spot is not published, so it is derived: it is placed on the N5 south of Champagnole, 0.7 km south of the N5/D127E2 junction, so that the routed distance to Mijoux is 54.46 km vs 54.5 official; with this km 0 the Copernicus DEM reaches the official 1097 m Côte des Rousses summit at routed km 36.55 (official 36.8) and the 17.3 km sprint falls in Saint-Laurent (Rue de Paris). Km 0 position ±0.5 km (low). Route: N5 via Cize, Le Vaudioux (près), Pont-de-la-Chaux, Le Bourg Derrière (près) (Fort-du-Plasne), Saint-Laurent-en-Grandvaux (sprint), Col de la Savine, Le Marais, Morbier (Pont de Morbier) and Morez; N5 climb out of the Bienne valley = Côte des Rousses (cat. 3, 6.6 km at 5.1 %; foot 30.2 in Morez just past the D25, summit 36.8 at the entrance of Les Rousses, 0.2 km before the N5/Rue Pasteur junction); N5 to the D1005 junction south of Les Rousses; D1005 Route du Tabagnoz / Route de la Faucille past Le Tabagnoz (Prémanon; the road keeps rising to about 1260 m before the D313); D313 Quartier La Combe en Haut and D50 Route de la Combe en Haut down to Mijoux (Rue Delphin Regad, Rue Dame Pernette, Rue Michel Hollard, Route de la Vallée per the Mijoux traffic order); D991 down the Valserine valley via Les Sept Fontaines, Lélex, La Rivière, Chézery-Forens, Le Grand Essert, La Serpentouze, La Mulaz, Confort and Lancrans to Bellegarde-sur-Valserine (Valserhône); D1206 via Grésin, Léaz, Longeray, the Fort l'Écluse tunnel (Overture tunnel flag), the D984 junction, the big hairpin below Villard (Collonges) and the Pont Carnot over the Rhône (Ain/Haute-Savoie border); D1206 (Route de Saint-Julien / Route de Bellegarde) via Chevrier (près), Vulbens, Valleiry, La Boutique (Chênex) and Essertet to Viry; D992/D18 via La Côte, Vaux, Malchamp (Feigères) and La Tuilière (Présilly) to Le Châble; D1201/D18 (Route d'Annemasse, Route de la Forge, Route d'Annecy) via Les Roquettes (Beaumont) and La Forge (Neydens) to Archamps, where the D18/D318 junction (official 127.6) is taken as Route d'Annecy/Route du Léman and routes to 128.1; D318/Route de Vovray via Archamps, Aux Peupliers and La Montagnère to the Chotard junction; D145 (Route du Coin / Route de Vovray) via Vovray and Chez Voirier to Le Coin; D45 Col de la Croisette (cat. 1, 4.7 km at 11.2 % from Le Coin); D41A/D215 (Route du Mont Salève) and D48 down to La Muraz; D15 and Route des Monts up the Côte du Mont (cat. 3, 2.1 km at 8.3 %), then Route d'Arbusigny / Route de la Muraz to Arbusigny; D6 (Route de Pers-Jussy, then Route d'Arbusigny) via La Platière, Le Souget and Pers-Jussy to the D6/D2 roundabout at Moussy; D2 (Avenue des Voirons, Avenue de la Libération, Avenue Lucien Rannard, Avenue Jean Jaurès) through La Roche-sur-Foron; D2B to Amancy; D1203 via Saint-Pierre-en-Faucigny (Rond-Point de Macruz) to Bonneville; D1205 (Avenue des Glières / Avenue Charles de Gaulle) and the D19 Route de Cluses to the D186 junction at Thuet; D186 Route de Thuet / Route de Brison with hairpins up to Brison; D186A Route de Solaison via the Les Croix hairpin and Les Saillets to the Plateau de Solaison. Road numbers in Haute-Savoie come from the departmental traffic order ARP0722 (published by Valleiry); Overture has no road refs there (Jura and Ain refs N5, D1005, D313, D50, D991, D1084, D1206 are Overture refs). Climb points: Côte des Rousses summit and foot from the DEM (foot = summit km minus climb length). Col de la Croisette = the D45/D41A junction at La Croisette, where the DEM gives 1175 m = official; the Monts du Genevois list gives 135.9 for the junction and 136.0 for the col, treated as one point; Le Coin (131.3) is the foot. Côte du Mont summit is placed on the Route d'Arbusigny / Route de La Muraz 0.4 km past the top of the Route des Monts hairpins, where the DEM reaches about 823 m and the routed distance from the Croisette fits (9.84 km routed vs 10.0 official); the road keeps rising gently to about 850 m (DSM, possibly trees) before Arbusigny, so the KOM position is medium (±0.4 km); its foot is placed by km at 143.9, about 0.5 km past La Muraz on the Route des Monts (DEM about 650 m). Thuet 171.6 = the D19/D186 junction: routed distance from there to the finish is 12.29 km vs 12.3 official; the foot of the HC climb (11.3 km at 9.0 %) at 172.6 is 1 km up the Route de Thuet, where the DEM starts the steady climb at about 480 m. Finish placed at the end of the D186A tertiary road on the Plateau de Solaison (DEM 1505 m vs 1508 m official); exact line position ±0.3 km (medium). La Roche-sur-Foron: ledicodutour gives 158.7, but routed from the Côte du Mont along the D6/D2 the town centre (Avenue Jean Jaurès) is at 160.9, while Côte du Mont -> Thuet routes to 25.3 km vs 25.6 official (the route is not short); 158.7 is therefore placed by km on the D2 approach 1.2 km after the Moussy roundabout (low) and the centre is a separate waypoint with a derived km. Points without an official km took their km from the routed distance scaled between official neighbours. Placed by official km on the routed road: the sprint, the climb feet, Valleiry (109.8; lands 0.24 km west of the locality point, i.e. at the village entry), La Boutique, Essertet, La Côte, Chotard (130.5; lands 70 m into the Route du Coin past the D318/D145 junction) and La Roche-sur-Foron 158.7. Villard (official 102.6) and Chevrier (official 106.1) are kept as derived points (hairpin below Villard 102.4; the D1206 point nearest Chevrier, 0.43 km from the hamlet, 106.0) because the Fort l'Écluse tunnel -> Vulbens section routes to 6.66 km vs 6.3 official and pinning them would make the straight-line distance exceed the km difference. Routed vs official between official points: Cize -> Côte des Rousses -0.25 km, Côte des Rousses -> Mijoux +0.2, Mijoux -> Chézery-Forens +0.3, Chézery-Forens -> Léaz -0.6, Longeray -> Vulbens +0.2, Vulbens -> Viry -0.1, Viry -> La Forge -0.9 in total over the short D18 sections (official kms rounded to 0.1), Côte du Mont -> Thuet -0.3, Thuet -> finish 0.0; total routed 182.3 km vs 183.9 km (pipeline path 182.9 km, -0.5 %). On the hairpin roads (N5 above Morez, D45 Croisette, Route du Mont Salève, Route des Monts, D186/D186A) consecutive points are less than 60 % apart in straight line relative to their km difference; that is the road geometry. Low confidence: km 0; Le Bourg Derrière (près), a lieu-dit placed on the N5 at the Fort-du-Plasne junction; La Roche-sur-Foron 158.7. Medium: the Côte des Rousses and Côte du Mont summits, Villard, and the finish line. Itinerary lieux-dits that lie on the route between waypoints but could not be pinned down are not separate waypoints: Le Sagy (between Morbier and the Côte des Rousses, not found in Overture), Les Mars, La Grande Côte (Valserhône), Les Vernes (109.7, Valleiry), Le Tournier, Chez Joindet, Champ de la Pierre, Les Côtes du Fernex, La Moussière and Amancy (près). [geodata G: La Croisette: the router left the D41A (Route du Mont Salève) at the col for the residential Chemin de la Croisette, which cuts the first hairpin with a sharp turn back at the junction; that zigzag at the summit stiffened the profile fit there (summit shaved by 12 m, 19 % ramp before it). Via point at the first D41A hairpin added (+0.27 km on the leg to the La Muraz descent).]",
+ "sources": [
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-15-times.htm",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-15-tdf-2026/",
+  "https://ledicodutour.com/etapes/etapes_par_annees/etapes_2026/etapes_2026_15.html",
+  "https://www.montsdugenevois.com/en/the-2026-tour-de-france-in-the-monts-du-genevois/2026-mens-tour-de-france-stage-15-preview/schedule-for-the-2026-tour-de-frances-passage-through-the-monts-du-genevois/",
+  "https://www.montsdugenevois.com/en/the-2026-tour-de-france-in-the-monts-du-genevois/the-major-mountain-passes-of-stage-15/",
+  "https://valleiry.fr/wp-content/uploads/2026/07/ARP0722_2026_TDF_Etape_15.pdf",
+  "https://www.mijoux.fr/composants/uploads/2026/07/AR-01247-2026-030-Arrete-provisoire-de-circulation-et-de-stationnement-pour-le-passage-du-Tour-de-France-.pdf",
+  "https://info.fr/tour-france-champagnole-fermee-depart-15e-etape/",
+  "https://info.fr/tour-de-france-2026-jura-fermeture-routes-etape-15-champagnole-solaison/",
+  "https://www.hedgehogcycling.co.uk/stage-15-tour-de-france-2026.html",
+  "https://www.tour-magazin.de/fr/etapes-et-profils-d-altitude/tour-de-france-2026-presentation-de-la-15e-etape-avant-la-journee-de-repos-premiere-arrivee-au-sommet-dans-les-alpes/",
+  "https://www.tourisme-haute-savoie.com/actualites-de-haute-savoie/tour-de-france-2026-les-meilleurs-spots-pour-voir-passer-les-coureurs-en-haute-savoie-ce-dimanche/",
+  "https://www.lyoncapitale.fr/actualite/tour-de-france-les-coureurs-debarquent-en-auvergne-rhone-alpes-ce-dimanche",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments (incl. tunnel/bridge flags)",
+  "Copernicus DEM GLO-30 (climb summits and feet)"
+ ]
+}

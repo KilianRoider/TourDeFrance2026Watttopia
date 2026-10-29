@@ -1,0 +1,467 @@
+{
+ "id": "tour26-16",
+ "lengthKm": 26.1,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Évian-les-Bains – start: Quai Baron de Blonay (D1005) / Avenue d'Abondance (D24), foot of Côte de Larringes",
+   "lat": 46.4014,
+   "lon": 6.59612,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D24 Avenue d'Abondance"
+  },
+  {
+   "km": 0.7,
+   "name": "Évian, Av. d'Abondance / Av. d'Aunières",
+   "lat": 46.39934,
+   "lon": 6.60235,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D24"
+  },
+  {
+   "km": 1.4,
+   "name": "Neuvecelle – Rond-Point de Neuvecelle",
+   "lat": 46.39875,
+   "lon": 6.6105,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D24"
+  },
+  {
+   "km": 2.0,
+   "name": "Neuvecelle – D24 Av. d'Abondance → D21 Avenue de Milly (sharp right)",
+   "lat": 46.39667,
+   "lon": 6.61628,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D21 Avenue de Milly"
+  },
+  {
+   "km": 2.9,
+   "name": "Avenue de Milly (D21)",
+   "lat": 46.394,
+   "lon": 6.60588,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 3.7,
+   "name": "Avenue de Milly → Route de la Corniche",
+   "lat": 46.39067,
+   "lon": 6.59573,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D21 Route de la Corniche"
+  },
+  {
+   "km": 4.2,
+   "name": "Route de la Corniche – roundabout",
+   "lat": 46.38875,
+   "lon": 6.5901,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 4.7,
+   "name": "Route de la Corniche (upper road)",
+   "lat": 46.3872,
+   "lon": 6.585,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 4.8,
+   "name": "Time check 1 (km 4.8), Route de la Corniche (D21 PR 7+700)",
+   "lat": 46.38699,
+   "lon": 6.58479,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 5.2,
+   "name": "Évian, Route de la Corniche → D11 Avenue de Gavot",
+   "lat": 46.38575,
+   "lon": 6.5799,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D11 Avenue de Gavot"
+  },
+  {
+   "km": 5.8,
+   "name": "Avenue de Gavot → Route de Champanges",
+   "lat": 46.38398,
+   "lon": 6.57233,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D11 Route de Champanges"
+  },
+  {
+   "km": 6.4,
+   "name": "Route de Champanges",
+   "lat": 46.38207,
+   "lon": 6.56536,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D11"
+  },
+  {
+   "km": 7.3,
+   "name": "Darbon – Route de Champanges → Route d'Évian",
+   "lat": 46.37807,
+   "lon": 6.5563,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D11 Route d'Évian"
+  },
+  {
+   "km": 8.0,
+   "name": "Champanges – Route d'Évian → D32 Route du Val d'Abondance",
+   "lat": 46.37219,
+   "lon": 6.55284,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D32 Route du Val d'Abondance"
+  },
+  {
+   "km": 8.6,
+   "name": "Route du Val d'Abondance (D32)",
+   "lat": 46.37121,
+   "lon": 6.5597,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32"
+  },
+  {
+   "km": 8.9,
+   "name": "Route du Val d'Abondance (D32)",
+   "lat": 46.37034,
+   "lon": 6.56189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32"
+  },
+  {
+   "km": 9.1,
+   "name": "Route du Val d'Abondance (D32)",
+   "lat": 46.36837,
+   "lon": 6.56382,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32"
+  },
+  {
+   "km": 9.4,
+   "name": "Route du Val d'Abondance → Route de Montet",
+   "lat": 46.36693,
+   "lon": 6.56678,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D32 Route de Montet"
+  },
+  {
+   "km": 9.7,
+   "name": "Côte de Larringes (cat. 2, 9.7 km @ 4.3%) summit – time check 2 (D32 PR 7+635)",
+   "lat": 46.36794,
+   "lon": 6.56981,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D32 Route de Montet"
+  },
+  {
+   "km": 10.0,
+   "name": "Larringes – Place du Village, D32 → D121 Route de la Fruitière",
+   "lat": 46.36853,
+   "lon": 6.57272,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D121 Route de la Fruitière"
+  },
+  {
+   "km": 10.7,
+   "name": "Route de la Fruitière (D121, plateau de Gavot)",
+   "lat": 46.36204,
+   "lon": 6.5719,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D121"
+  },
+  {
+   "km": 11.4,
+   "name": "D121 Route de la Fruitière → D21 Route du Gavot",
+   "lat": 46.35619,
+   "lon": 6.57018,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D21 Route du Gavot"
+  },
+  {
+   "km": 12.3,
+   "name": "Féternes",
+   "lat": 46.35277,
+   "lon": 6.55999,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D21"
+  },
+  {
+   "km": 13.0,
+   "name": "Route du Gavot → Route du Plan Fayet (D21)",
+   "lat": 46.35474,
+   "lon": 6.55131,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D21"
+  },
+  {
+   "km": 13.8,
+   "name": "D21 descent (Plan Fayet)",
+   "lat": 46.35392,
+   "lon": 6.54175,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 14.3,
+   "name": "D21 descent, Marin (right bank of the Dranse)",
+   "lat": 46.35542,
+   "lon": 6.5359,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 15.2,
+   "name": "D21 descent, Marin (right bank of the Dranse)",
+   "lat": 46.3581,
+   "lon": 6.52911,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 16.2,
+   "name": "D21 descent, Marin (right bank of the Dranse)",
+   "lat": 46.36216,
+   "lon": 6.52518,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 16.8,
+   "name": "D21 near Pont de la Douceur",
+   "lat": 46.36283,
+   "lon": 6.51958,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D21"
+  },
+  {
+   "km": 17.1,
+   "name": "Pont de la Douceur – D21 joins D902 (Avenue de la Dranse)",
+   "lat": 46.36418,
+   "lon": 6.51716,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D902 Avenue de la Dranse"
+  },
+  {
+   "km": 18.1,
+   "name": "Time check 3 (km 18.1), D902 Avenue de la Dranse (PR 3+650)",
+   "lat": 46.36625,
+   "lon": 6.50479,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 18.3,
+   "name": "Thonon, Avenue de la Dranse (D902)",
+   "lat": 46.36755,
+   "lon": 6.5032,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 19.3,
+   "name": "Thonon, roundabout Av. de la Dranse / Av. des Vallées",
+   "lat": 46.37054,
+   "lon": 6.49128,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue des Vallées"
+  },
+  {
+   "km": 19.8,
+   "name": "Thonon, Av. des Vallées → Av. du Clos Banderet (sharp right)",
+   "lat": 46.37059,
+   "lon": 6.48493,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue du Clos Banderet"
+  },
+  {
+   "km": 20.6,
+   "name": "Thonon, Av. du Clos Banderet → Av. des Prés Verts",
+   "lat": 46.37719,
+   "lon": 6.49056,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue des Prés Verts"
+  },
+  {
+   "km": 21.2,
+   "name": "Thonon, Av. des Prés Verts → Av. de Thuyset",
+   "lat": 46.38085,
+   "lon": 6.49526,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue de Thuyset"
+  },
+  {
+   "km": 21.4,
+   "name": "Thonon, Av. de Thuyset → Av. d'Évian",
+   "lat": 46.38073,
+   "lon": 6.49283,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue d'Évian"
+  },
+  {
+   "km": 21.8,
+   "name": "Thonon, roundabout Av. d'Évian → Av. Jules Ferry",
+   "lat": 46.378,
+   "lon": 6.4901,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue Jules Ferry"
+  },
+  {
+   "km": 22.2,
+   "name": "Thonon, Avenue Jules Ferry",
+   "lat": 46.37477,
+   "lon": 6.48667,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue Jules Ferry"
+  },
+  {
+   "km": 22.6,
+   "name": "Thonon Ville Haute – Av. Jules Ferry → Av. Saint-François de Sales",
+   "lat": 46.37245,
+   "lon": 6.48335,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Avenue Saint-François de Sales"
+  },
+  {
+   "km": 22.9,
+   "name": "Thonon, Rue des Ursules",
+   "lat": 46.37371,
+   "lon": 6.48,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue des Ursules / Rue Michaud"
+  },
+  {
+   "km": 23.1,
+   "name": "Thonon, Place de l'Hôtel de Ville",
+   "lat": 46.37326,
+   "lon": 6.47833,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue de la Paix"
+  },
+  {
+   "km": 23.3,
+   "name": "Thonon, Rue de l'Annexion → Boulevard Carnot",
+   "lat": 46.3722,
+   "lon": 6.4768,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Boulevard Carnot"
+  },
+  {
+   "km": 23.4,
+   "name": "Thonon, Place Jean Moulin → Avenue de Corzent",
+   "lat": 46.37285,
+   "lon": 6.47516,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue de Corzent"
+  },
+  {
+   "km": 23.8,
+   "name": "Thonon (Corzent), hairpin Av. de Corzent → Av. du Général Leclerc",
+   "lat": 46.37134,
+   "lon": 6.47115,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue du Général Leclerc"
+  },
+  {
+   "km": 24.2,
+   "name": "Thonon, Avenue du Général Leclerc (Château de Rives)",
+   "lat": 46.37354,
+   "lon": 6.47498,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue du Général Leclerc"
+  },
+  {
+   "km": 24.5,
+   "name": "Thonon-Rives, port – Quai Georges Pianta",
+   "lat": 46.37503,
+   "lon": 6.47811,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai Georges Pianta"
+  },
+  {
+   "km": 25.1,
+   "name": "Thonon, Quai de Ripaille",
+   "lat": 46.38,
+   "lon": 6.4818,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Quai de Ripaille"
+  },
+  {
+   "km": 25.8,
+   "name": "Thonon, Quai de Ripaille → Avenue de Ripaille",
+   "lat": 46.38609,
+   "lon": 6.48364,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue de Ripaille"
+  },
+  {
+   "km": 26.1,
+   "name": "Thonon-les-Bains – finish, Avenue de Ripaille in front of the Château de Ripaille",
+   "lat": 46.38696,
+   "lon": 6.48662,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "Individual time trial, 26.1 km. Course taken from the Haute-Savoie prefectural traffic order for stage 16 (ARP0723, 'tracé course'): Évian D24 from the RD1005 junction (Quai Baron de Blonay) up Avenue d'Abondance to Neuvecelle; D21 (Avenue de Milly, upper Route de la Corniche) back into Évian; D11 (Avenue de Gavot, Route de Champanges via Darbon, Route d'Évian) to Champanges; D32 (Route du Val d'Abondance, Route de Montet) to Larringes; D121 (Route de la Fruitière) to the D21 Route du Gavot; D21 through Féternes and down via Plan Fayet/Marin to the Dranse (Pont de la Douceur); D902 Avenue de la Dranse into Thonon; then avenue des Vallées, (sharp right) avenue du Clos Banderet, avenue des Prés Verts, avenue de Thuyset, avenue d'Évian, avenue Jules Ferry, avenue Saint-François de Sales, rue des Ursules, rue Michaud, place de l'Hôtel de Ville, rue de la Paix, rue de l'Annexion, boulevard Carnot, place Jean Moulin, avenue de Corzent to the hairpin, avenue du Général Leclerc past Rives port, quai Georges Pianta, quai de Ripaille, finish on avenue de Ripaille in front of the Château de Ripaille (closures continue to the rond-point de la Combe). km 0 = start ramp at the D1005/D24 junction (time trial: no neutralised section). Km values are routed distances along this exact course on Overture roads (routed start→finish 26.22 km), scaled by 26.1/26.22; the time checks (km 4.8 / 9.7 / 18.1, letour/cyclingstage) were placed at their official km and agree with the order's PR locations (D21 PR 7+700, D32 PR 7+635 near the top of the climb, D902 PR 3+650 ~0.9 km after the D21 junction). Exact positions of the start ramp and finish line are not published to the metre (medium). Overture/OSM roads here carry no D-numbers; road numbers are from the traffic order. Confidence: junction/town points are exact junctions of the streets named in the order with km from the measured course (error about ±0.15 km) = high; shaping points along a road, the start ramp and the finish line = medium.",
+ "sources": [
+  "https://www.ville-publier.fr/wp-content/uploads/2026/07/ARP0723_2026_TDF_Etape_16_CLM.pdf",
+  "https://hedgehogcycling.co.uk/stage-16-tour-de-france-2026.html",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-16-tdf-2026/",
+  "https://bikeraceinfo.com/tdf/2026-TDF-daily/tdf2026-stage-16.html",
+  "https://www.intervals.icu/tour-de-france-2026/stage-16/",
+  "https://www.tour-magazin.de/fr/professionnel-cyclisme/tour-de-france/etapes-cles-du-tour-de-france-2026-le-contre-la-montre-individuel-au-bord-du-lac-leman/",
+  "https://www.tourisme-haute-savoie.com/actualites-de-haute-savoie/tour-de-france-2026-thonon-les-bains/",
+  "https://www.techno-science.net/fr/definitions/chateau-de-ripaille",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments"
+ ]
+}

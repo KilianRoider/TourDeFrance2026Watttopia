@@ -1,0 +1,166 @@
+{
+ "id": "izoard",
+ "lengthKm": 14.2,
+ "notes": "South side from the Queyras as in the app ('beginnt nach dem Abzweig bei Château-Queyras'): km 0 = the junction where the D902 Route de l'Izoard leaves the Guil valley road (D947) about 2 km west of Château-Queyras (~1360 m; app 1370 m). The app's Arvieux at 3.7 km and length 14.2 km both match this foot (routed 3.9 km to Arvieux centre and 14.24 km to the col). cols-cyclisme lists a longer 15.9 km version starting lower in the Gorges du Guil; not used. Route: D902 via Les Moulins, Arvieux, La Chalp, Brunissard, the hairpins in the larch forest, the Casse Déserte (short descent ~11.6-12.0 km, low point ~2185 m) and the summit hairpins to the col (2360 m; one road only, no alternatives). km values = routed distance on Overture roads scaled by 14.2/14.243. Hamlet points are where the D902 passes them (Overture locality positions snapped to the road). The Coppi/Bobet stele position is approximate (medium).",
+ "sources": [
+  "https://www.cols-cyclisme.com/queyras/france/col-de-l-izoard-depuis-gorges-du-guil-d902-d947-c46.htm",
+  "https://en.wikipedia.org/wiki/Col_d%27Izoard",
+  "https://www.envie-de-queyras.com/guide/la-casse-deserte",
+  "Overture Maps 2026-10-21.0 transportation segments (D902 Route de l'Izoard / Route du Col d'Izoard) and divisions (Les Moulins, Arvieux, La Chalp, Brunissard)"
+ ],
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Foot: turn-off of the D902 (Route de l'Izoard) from the Guil valley road (D947), ~2 km west of Château-Queyras (~1360-1370 m)",
+   "lat": 44.74804,
+   "lon": 6.77253,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 1.53,
+   "name": "Les Moulins (Arvieux)",
+   "lat": 44.75357,
+   "lon": 6.7583,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 2.53,
+   "name": "Le Pasquier (below the road)",
+   "lat": 44.75819,
+   "lon": 6.74813,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 3.26,
+   "name": "La Cassière",
+   "lat": 44.76325,
+   "lon": 6.74277,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 3.88,
+   "name": "Arvieux",
+   "lat": 44.76775,
+   "lon": 6.7382,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 4.43,
+   "name": "Le Coin (Arvieux)",
+   "lat": 44.77246,
+   "lon": 6.7365,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 5.36,
+   "name": "La Chalp (Arvieux)",
+   "lat": 44.78075,
+   "lon": 6.7354,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 6.9,
+   "name": "Brunissard (Arvieux)",
+   "lat": 44.79402,
+   "lon": 6.73087,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D902"
+  },
+  {
+   "km": 7.25,
+   "name": "Above Brunissard / La Draye – start of the Route du Col d'Izoard into the larch forest",
+   "lat": 44.79636,
+   "lon": 6.72805,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 7.38,
+   "name": "First hairpin in the larch forest",
+   "lat": 44.7969,
+   "lon": 6.72922,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 8.64,
+   "name": "Hairpin in the larch forest",
+   "lat": 44.79902,
+   "lon": 6.72895,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 9.85,
+   "name": "Hairpin in the larch forest",
+   "lat": 44.80204,
+   "lon": 6.73425,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 10.78,
+   "name": "Hairpin below the Casse Déserte",
+   "lat": 44.80567,
+   "lon": 6.73477,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 11.56,
+   "name": "Casse Déserte – crest before the short descent",
+   "lat": 44.8073,
+   "lon": 6.73606,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 12.16,
+   "name": "Casse Déserte – Coppi/Bobet memorial stele (approx.)",
+   "lat": 44.81133,
+   "lon": 6.73699,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 13.35,
+   "name": "Summit hairpins",
+   "lat": 44.81835,
+   "lon": 6.73275,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D902"
+  },
+  {
+   "km": 14.2,
+   "name": "Col d'Izoard summit (2360 m)",
+   "lat": 44.8203,
+   "lon": 6.73507,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D902"
+  }
+ ]
+}

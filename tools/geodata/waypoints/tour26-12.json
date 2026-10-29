@@ -1,0 +1,1047 @@
+{
+ "id": "tour26-12",
+ "lengthKm": 179.1,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Circuit de Nevers Magny-Cours – km 0 (départ réel, estimated): D58 Route du Circuit at the southern circuit access, ~0.6 km after the neutralised start leaves the circuit at D58 PR 2+068",
+   "lat": 46.85716,
+   "lon": 3.16784,
+   "kind": "start",
+   "confidence": "low",
+   "road": "D58"
+  },
+  {
+   "km": 0.6,
+   "name": "Saint-Parize-le-Châtel – junction D58 / D133 (west edge of village)",
+   "lat": 46.85429,
+   "lon": 3.1735,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D133"
+  },
+  {
+   "km": 3.6,
+   "name": "Moiry – junction D133 / D907 (Route Bleue)",
+   "lat": 46.85626,
+   "lon": 3.13938,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D907"
+  },
+  {
+   "km": 5.5,
+   "name": "Route Bleue",
+   "lat": 46.84375,
+   "lon": 3.13362,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D907"
+  },
+  {
+   "km": 7.4,
+   "name": "Route Bleue (near Bière)",
+   "lat": 46.82804,
+   "lon": 3.12656,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D907"
+  },
+  {
+   "km": 9.1,
+   "name": "D907 Route Bleue (south end)",
+   "lat": 46.813,
+   "lon": 3.1225,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D907"
+  },
+  {
+   "km": 10.6,
+   "name": "Saint-Pierre-le-Moûtier – north roundabout (old N7 → D2076 west)",
+   "lat": 46.8028,
+   "lon": 3.11558,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D2076"
+  },
+  {
+   "km": 11.1,
+   "name": "Saint-Pierre-le-Moûtier – D2076 → D108 (south)",
+   "lat": 46.80225,
+   "lon": 3.1091,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D108"
+  },
+  {
+   "km": 11.9,
+   "name": "Saint-Pierre-le-Moûtier – D108 Rue de la Gare",
+   "lat": 46.7952,
+   "lon": 3.11107,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D108"
+  },
+  {
+   "km": 12.3,
+   "name": "Saint-Pierre-le-Moûtier – Rue de la Gare → Rue du Bergeron (D108)",
+   "lat": 46.79175,
+   "lon": 3.11168,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D108"
+  },
+  {
+   "km": 12.7,
+   "name": "Saint-Pierre-le-Moûtier – Place Gambetta (D108 → D978A)",
+   "lat": 46.79119,
+   "lon": 3.11555,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D978A"
+  },
+  {
+   "km": 13.0,
+   "name": "Saint-Pierre-le-Moûtier – Place de la République (D978A → D431 Avenue du 8 Mai)",
+   "lat": 46.79117,
+   "lon": 3.1188,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D431"
+  },
+  {
+   "km": 13.3,
+   "name": "Saint-Pierre-le-Moûtier – Avenue du 8 Mai (D431)",
+   "lat": 46.79276,
+   "lon": 3.12098,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D431"
+  },
+  {
+   "km": 13.6,
+   "name": "Saint-Pierre-le-Moûtier – D431 → D978A Rue de Decize",
+   "lat": 46.79468,
+   "lon": 3.12246,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D978A"
+  },
+  {
+   "km": 14.1,
+   "name": "D978A east of the N7",
+   "lat": 46.79399,
+   "lon": 3.12866,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 16.8,
+   "name": "D978A",
+   "lat": 46.78883,
+   "lon": 3.16226,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 19.6,
+   "name": "D978A",
+   "lat": 46.78543,
+   "lon": 3.19497,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 22.4,
+   "name": "Azy-le-Vif",
+   "lat": 46.78518,
+   "lon": 3.22946,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D978A"
+  },
+  {
+   "km": 25.3,
+   "name": "D978A (near Les Loges Fraillons)",
+   "lat": 46.77844,
+   "lon": 3.26566,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 28.3,
+   "name": "Le Charme",
+   "lat": 46.77252,
+   "lon": 3.30319,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 29.3,
+   "name": "Neuville-lès-Decize",
+   "lat": 46.77095,
+   "lon": 3.31521,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 31.3,
+   "name": "Les Bruyères Paray (Saint-Parize-en-Viry / Avril-sur-Loire)",
+   "lat": 46.77293,
+   "lon": 3.3412,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 35.3,
+   "name": "Saint-Germain-Chassenay",
+   "lat": 46.77631,
+   "lon": 3.39282,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D978A"
+  },
+  {
+   "km": 38.8,
+   "name": "D978A / D979A junction (Boudrillon)",
+   "lat": 46.78787,
+   "lon": 3.43438,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 42.3,
+   "name": "Decize – Route de Moulins (Saint-Maurice)",
+   "lat": 46.81699,
+   "lon": 3.45024,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 43.8,
+   "name": "Decize – Pont du 152e R.I.",
+   "lat": 46.82795,
+   "lon": 3.45797,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D978A"
+  },
+  {
+   "km": 44.3,
+   "name": "Decize – Place du Champ de Foire",
+   "lat": 46.83,
+   "lon": 3.4627,
+   "kind": "town",
+   "confidence": "medium"
+  },
+  {
+   "km": 44.8,
+   "name": "Decize – Quai de Loire → Avenue de Verdun (D978A → D981)",
+   "lat": 46.8306,
+   "lon": 3.46791,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 45.8,
+   "name": "Decize – intermediate sprint, Avenue de Verdun in front of the tile/ceramics factory (Decize Carrelages, no. 166)",
+   "lat": 46.82824,
+   "lon": 3.48038,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 46.1,
+   "name": "Decize – D981 Avenue de Verdun (east end)",
+   "lat": 46.8278,
+   "lon": 3.48403,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 48.9,
+   "name": "Route de Cercy la Tour (near Moulin de la Fougère)",
+   "lat": 46.83078,
+   "lon": 3.52054,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 51.7,
+   "name": "Route de Cercy la Tour",
+   "lat": 46.83557,
+   "lon": 3.55665,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 54.5,
+   "name": "D981 (near Faye)",
+   "lat": 46.84413,
+   "lon": 3.59105,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 57.3,
+   "name": "Les Arreaux – D981 → D37 (Route de Decize)",
+   "lat": 46.84882,
+   "lon": 3.62668,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D37"
+  },
+  {
+   "km": 58.2,
+   "name": "D37 Route de Decize (towards Cercy-la-Tour)",
+   "lat": 46.8534,
+   "lon": 3.6356,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D37"
+  },
+  {
+   "km": 59.4,
+   "name": "Cercy-la-Tour (south edge) – D37 → D10 (Rue des Grandes Brunettes)",
+   "lat": 46.85759,
+   "lon": 3.64878,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D10"
+  },
+  {
+   "km": 60.2,
+   "name": "D10 Rue des Grandes Brunettes (Cercy-la-Tour)",
+   "lat": 46.85115,
+   "lon": 3.65101,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 60.9,
+   "name": "Champlevois – D10 → D981",
+   "lat": 46.84514,
+   "lon": 3.65186,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D981"
+  },
+  {
+   "km": 63.0,
+   "name": "Route d'Autun (near Domaine de Coddes)",
+   "lat": 46.83837,
+   "lon": 3.67728,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 65.1,
+   "name": "Route d'Autun",
+   "lat": 46.82677,
+   "lon": 3.69781,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 67.2,
+   "name": "Fours",
+   "lat": 46.81726,
+   "lon": 3.72102,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D981"
+  },
+  {
+   "km": 69.5,
+   "name": "Route du Fours-Luzy (near Les Chamonts)",
+   "lat": 46.81434,
+   "lon": 3.74994,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 71.9,
+   "name": "Apponay (Rémilly)",
+   "lat": 46.80663,
+   "lon": 3.779,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 74.3,
+   "name": "Foot Côte de Lanty",
+   "lat": 46.8056,
+   "lon": 3.81018,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 76.5,
+   "name": "Côte de Lanty (cat. 4) summit",
+   "lat": 46.8087,
+   "lon": 3.8366,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 78.1,
+   "name": "La Grande Brosse (Lanty, près)",
+   "lat": 46.81027,
+   "lon": 3.85528,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 79.8,
+   "name": "Les Flaudes (Avrée), D981",
+   "lat": 46.80991,
+   "lon": 3.87,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 81.8,
+   "name": "Route de Genève (near Vaux)",
+   "lat": 46.80579,
+   "lon": 3.8932,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 83.8,
+   "name": "Recoulon (Fléty), D981",
+   "lat": 46.79844,
+   "lon": 3.91511,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 86.7,
+   "name": "Luzy – D981 → VC (Rue de Fontaine Blanche)",
+   "lat": 46.7908,
+   "lon": 3.947,
+   "kind": "junction",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 87.3,
+   "name": "Luzy – VC Rue de Fontaine Blanche",
+   "lat": 46.79021,
+   "lon": 3.95498,
+   "kind": "other",
+   "confidence": "low",
+   "road": "VC"
+  },
+  {
+   "km": 88.2,
+   "name": "Luzy – back on D981 (Avenue Marceau)",
+   "lat": 46.78737,
+   "lon": 3.9663,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D981"
+  },
+  {
+   "km": 88.5,
+   "name": "Luzy – Avenue Marceau → Cours Gambetta",
+   "lat": 46.78796,
+   "lon": 3.96822,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 88.9,
+   "name": "Luzy – Avenue du Docteur Alain Benoist",
+   "lat": 46.79062,
+   "lon": 3.97079,
+   "kind": "town",
+   "confidence": "high"
+  },
+  {
+   "km": 89.2,
+   "name": "Luzy – Avenue du Docteur Bramard → Avenue Hoche (La Poste)",
+   "lat": 46.78972,
+   "lon": 3.97286,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 89.5,
+   "name": "Luzy – Avenue Hoche → Route de Toulon-sur-Arroux (D985)",
+   "lat": 46.78914,
+   "lon": 3.97585,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 91.8,
+   "name": "D985 (near Les Antoines)",
+   "lat": 46.77611,
+   "lon": 3.9987,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 93.9,
+   "name": "Le Moulin de Cuzy (D985)",
+   "lat": 46.76384,
+   "lon": 4.01961,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 95.2,
+   "name": "Foot Côte de Cuzy (D985)",
+   "lat": 46.75347,
+   "lon": 4.02688,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 97.8,
+   "name": "Côte de Cuzy (cat. 4) summit",
+   "lat": 46.74592,
+   "lon": 4.04841,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 100.1,
+   "name": "D985 (near La Franche)",
+   "lat": 46.73696,
+   "lon": 4.0658,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 102.4,
+   "name": "D985",
+   "lat": 46.72284,
+   "lon": 4.0853,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 104.8,
+   "name": "D985 (Le Borget)",
+   "lat": 46.70932,
+   "lon": 4.10873,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 107.6,
+   "name": "Toulon-sur-Arroux – Rue du Pont (Arroux bridge)",
+   "lat": 46.69364,
+   "lon": 4.13695,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D985"
+  },
+  {
+   "km": 108.0,
+   "name": "Toulon-sur-Arroux – Rue de Chalon / Rue de Montagrin",
+   "lat": 46.69294,
+   "lon": 4.14146,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D985"
+  },
+  {
+   "km": 110.8,
+   "name": "Toulon – D985 / D57 junction (Route de Montceau)",
+   "lat": 46.68587,
+   "lon": 4.1755,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 112.9,
+   "name": "D57 (near Les Gaudiaux)",
+   "lat": 46.69869,
+   "lon": 4.19356,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 115.0,
+   "name": "La Praye (Saint-Eugène)",
+   "lat": 46.70519,
+   "lon": 4.2175,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 117.1,
+   "name": "D57 (near La Croix Pacaud)",
+   "lat": 46.70961,
+   "lon": 4.24372,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 119.2,
+   "name": "D57 (bend north of Sanvignes)",
+   "lat": 46.7191,
+   "lon": 4.26656,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 121.8,
+   "name": "Saint-Berain-sous-Sanvignes",
+   "lat": 46.70468,
+   "lon": 4.29329,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D57"
+  },
+  {
+   "km": 124.4,
+   "name": "D57 (near La Chapelle Badeau)",
+   "lat": 46.69935,
+   "lon": 4.32433,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 127.1,
+   "name": "Montceau-les-Mines – Rue de la Coudraie (Bois du Verne)",
+   "lat": 46.69077,
+   "lon": 4.35529,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 128.4,
+   "name": "Montceau – Avenue des Alouettes",
+   "lat": 46.68358,
+   "lon": 4.36164,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 129.1,
+   "name": "Montceau – Av. des Alouettes → Quai Jules Chagot",
+   "lat": 46.67821,
+   "lon": 4.3662,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D974"
+  },
+  {
+   "km": 129.9,
+   "name": "Montceau – Quai Jules Chagot",
+   "lat": 46.67302,
+   "lon": 4.35979,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D974"
+  },
+  {
+   "km": 130.2,
+   "name": "Montceau – Pont Mobile (lift bridge over the canal du Centre)",
+   "lat": 46.67106,
+   "lon": 4.35863,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D91"
+  },
+  {
+   "km": 131.0,
+   "name": "Montceau – Rue du 11 Novembre 1918 (after Quai du Général de Gaulle / hôtel de ville)",
+   "lat": 46.67586,
+   "lon": 4.36642,
+   "kind": "junction",
+   "confidence": "medium"
+  },
+  {
+   "km": 131.2,
+   "name": "Montceau – Rue du 8 Mai 1945",
+   "lat": 46.67517,
+   "lon": 4.36809,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 131.5,
+   "name": "Montceau – Rue de Cluny",
+   "lat": 46.6744,
+   "lon": 4.3716,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 131.9,
+   "name": "Montceau – Rue du Champ du Moulin",
+   "lat": 46.67547,
+   "lon": 4.37582,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D90"
+  },
+  {
+   "km": 132.6,
+   "name": "Montceau – Rue de la Loge (D90)",
+   "lat": 46.67989,
+   "lon": 4.38101,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D90"
+  },
+  {
+   "km": 133.7,
+   "name": "Montceau – D90 → Route de Mâcon (D980)",
+   "lat": 46.68698,
+   "lon": 4.39062,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D980"
+  },
+  {
+   "km": 134.7,
+   "name": "Blanzy – Route de Mâcon → Route de Montchanin (D974)",
+   "lat": 46.69591,
+   "lon": 4.39132,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D974"
+  },
+  {
+   "km": 135.7,
+   "name": "D974 Route de Montchanin (canal du Centre)",
+   "lat": 46.69772,
+   "lon": 4.40137,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D974"
+  },
+  {
+   "km": 137.8,
+   "name": "D974 (canal du Centre)",
+   "lat": 46.70596,
+   "lon": 4.42396,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D974"
+  },
+  {
+   "km": 140.2,
+   "name": "D974 (canal du Centre)",
+   "lat": 46.7194,
+   "lon": 4.44351,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D974"
+  },
+  {
+   "km": 140.9,
+   "name": "D974 – car-free section beside the N70 (Overture/OSM class path, segment 1b3e66bf-e58a-4ed7-95e9-066ec4e03c89)",
+   "lat": 46.72328,
+   "lon": 4.45079,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D974 (path in Overture: car-free section)",
+   "radius": 25
+  },
+  {
+   "km": 141.9,
+   "name": "D974 / D977 junction (Les Morands, Saint-Eusèbe)",
+   "lat": 46.72762,
+   "lon": 4.46181,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 143.4,
+   "name": "Montchanin-le-Haut (Saint-Eusèbe)",
+   "lat": 46.72591,
+   "lon": 4.48099,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 146.5,
+   "name": "Les Grandes Bruyères (Saint-Laurent-d’Andenay), D977",
+   "lat": 46.72669,
+   "lon": 4.52015,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 148.6,
+   "name": "La Grosse Auberge (Saint-Martin-d’Auxy), D977",
+   "lat": 46.73698,
+   "lon": 4.54353,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 149.7,
+   "name": "Les Baudots (Marcilly-lès-Buxy), D977",
+   "lat": 46.73708,
+   "lon": 4.55786,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 151.4,
+   "name": "D977 (near La Croix Pautet)",
+   "lat": 46.72719,
+   "lon": 4.57359,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 153.2,
+   "name": "Marcilly-lès-Buxy (près), D977 Route de Buxy",
+   "lat": 46.72354,
+   "lon": 4.59613,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 155.1,
+   "name": "Les Blignys",
+   "lat": 46.71451,
+   "lon": 4.6174,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 155.9,
+   "name": "Cersot (D977, Grande Rue)",
+   "lat": 46.70964,
+   "lon": 4.62362,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 156.4,
+   "name": "La Redoute (Sassangy, près) – foot Côte de Montagny-lès-Buxy",
+   "lat": 46.70905,
+   "lon": 4.62997,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 157.3,
+   "name": "D977 (near La Redoute)",
+   "lat": 46.71104,
+   "lon": 4.64174,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 158.3,
+   "name": "D977 (near Neully)",
+   "lat": 46.71178,
+   "lon": 4.65508,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 159.4,
+   "name": "Côte de Montagny-lès-Buxy (cat. 4) summit",
+   "lat": 46.71528,
+   "lon": 4.6672,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 160.3,
+   "name": "D977 (Montagny-lès-Buxy)",
+   "lat": 46.70989,
+   "lon": 4.67367,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 162.5,
+   "name": "Buxy (D977)",
+   "lat": 46.7126,
+   "lon": 4.6941,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D977"
+  },
+  {
+   "km": 163.2,
+   "name": "Buxy – D981 / D977 junction",
+   "lat": 46.71318,
+   "lon": 4.70314,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 165.9,
+   "name": "D977 (near Le Marnizot)",
+   "lat": 46.71174,
+   "lon": 4.737,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 168.6,
+   "name": "D977 (near Clos des Charmilles)",
+   "lat": 46.7237,
+   "lon": 4.7661,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 171.4,
+   "name": "D977 (near Sienne le Haut)",
+   "lat": 46.73715,
+   "lon": 4.79449,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 174.1,
+   "name": "Cortelin",
+   "lat": 46.7504,
+   "lon": 4.8187,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 175.5,
+   "name": "Saint-Rémy – D977 Route de Buxy",
+   "lat": 46.75917,
+   "lon": 4.82963,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D977"
+  },
+  {
+   "km": 176.4,
+   "name": "Saint-Rémy – Route de Buxy → Rue Charles Dodille",
+   "lat": 46.7633,
+   "lon": 4.8395,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D369"
+  },
+  {
+   "km": 176.9,
+   "name": "Chalon-sur-Saône – Rue Charles Dodille → Route de Lyon (D906)",
+   "lat": 46.7599,
+   "lon": 4.8425,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D906"
+  },
+  {
+   "km": 177.8,
+   "name": "D906 (near Californie)",
+   "lat": 46.76767,
+   "lon": 4.84343,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D906"
+  },
+  {
+   "km": 178.7,
+   "name": "Route de Lyon → Quai Saint-Cosme",
+   "lat": 46.7753,
+   "lon": 4.8461,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D906"
+  },
+  {
+   "km": 179.1,
+   "name": "Chalon-sur-Saône – finish, Quai Saint-Cosme (between Rue de Sébastopol and Pont Jean-Richard)",
+   "lat": 46.77762,
+   "lon": 4.84999,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D906"
+  }
+ ],
+ "notes": "km 0 = départ réel, estimated. The neutralised start runs inside the Circuit de Nevers Magny-Cours and joins the D58 Route du Circuit at its PR 2+068 (46.8599,3.1622; the Nièvre departmental traffic order D-2026-493 lists the race on the RD 58 from PR 2+068 to PR 3+302, i.e. to Saint-Parize). km 0 is put 0.6 km further on, at the southern circuit access (46.8572,3.1678), because then the routed distances match the official km of the Decize sprint (45.8), Côte de Lanty (76.5) and the dhnet Le Charme km (28) within 0.1-0.3 km. If km 0 is in fact at the circuit exit, every km shifts by +0.6. Itinerary (Nièvre council list with road changes, traffic order D-2026-493 and D-2026-494, ledicodutour/dhnet km): D58 → Saint-Parize-le-Châtel (D58-D133) → D133 west → Moiry (D133-D907) → D907 Route Bleue (old N7, west of the N7 dual carriageway; the order calls it the RN7 substitute road) → Saint-Pierre-le-Moûtier north roundabout → D2076 west 0.45 km → D108 south (unnamed road, Rue de la Gare, Rue du Bergeron) → Place Gambetta → D978A Avenue du 11 Novembre → Place de la République → D431 Avenue du 8 Mai → D978A Rue de Decize east (this matches the order's PR list D2076 0.14-0.595, D108 1.548-0, D978A 6.641-6.913, D431 0-0.510, D978A 7.597-38.359; the earlier build went straight down Rue du Faubourg de Nevers and was 1.4 km too short here) → D978A via Azy-le-Vif, Le Charme, Neuville-lès-Decize, Les Bruyères Paray, Saint-Germain-Chassenay, Boudrillon (D979A junction) → Decize (Route de Moulins, Loire bridge, Place du Champ de Foire, Quai de Loire) → D981 Avenue de Verdun; intermediate sprint (45.8) on Avenue de Verdun 'in front of the ceramics factory' per the Decize town page, i.e. Decize Carrelages, no. 166 (coordinate ±150 m) → D981 via Marcy and L'Ouche Migeard → Les Arreaux, where the route LEAVES the D981 for the D37 (Route de Decize) to the south edge of Cercy-la-Tour, then D10 (Rue des Grandes Brunettes) back to the D981 at Champlevois (+1.4 km compared with staying on the D981; the earlier build missed this) → Fours → Apponay → Côte de Lanty (2.0 km at 4%, summit 76.5) → Les Flaudes → Recoulon → Luzy: D981 → VC Rue de Fontaine Blanche → D981 Avenue Marceau → Cours Gambetta → Av. du Dr Alain Benoist → Av. du Dr Bramard → Av. Hoche → D985 Route de Toulon-sur-Arroux (centre loop from the Luzy town programme; the VC bit is the Nièvre list's 'D981-VC-D981-D985', so its exact street is low confidence) → D985 Le Moulin de Cuzy → Côte de Cuzy (2.4 km at 4.5%, summit 97.8) → Toulon-sur-Arroux (Rue du Faubourg d'Arroux, Rue du Pont, Rue de Chalon, Rue de Montagrin) → D57 via La Praye (115.0) and Saint-Bérain-sous-Sanvignes → Montceau-les-Mines (official km 126.5 is about the commune entry on Rue de la Coudraie): Av. des Alouettes, Quai Jules Chagot, Pont Mobile (lift bridge), Quai du Général de Gaulle past the hôtel de ville, Rue du 11 Novembre 1918, Rue du 8 Mai 1945, Rue de Cluny, Rue du Champ du Moulin, Rue de la Loge (D90) → D980 Route de Mâcon → Blanzy → D974 Route de Montchanin along the Canal du Centre → D977 at Les Morands → Montchanin-le-Haut (143.4) → Les Grandes Bruyères → La Grosse Auberge → Les Baudots → Marcilly-lès-Buxy (près) → Les Blignys → Cersot → La Redoute → Côte de Montagny-lès-Buxy (2.6 km at 4.3%, summit 159.4, on the D977 and not via Germagny) → Buxy → D977 → Cortelin → Saint-Rémy → Rue Charles Dodille → D906 Route de Lyon → finish on Quai Saint-Cosme near Rue de Sébastopol / Pont Jean-Richard. Waypoint km: the official km are anchors (0, 45.8, 76.5, 97.8, 115.0, 143.4, 159.4, 179.1); points in between have routed km scaled between the anchors. Routed length on Overture 2026-10-21.0 = 180.0 km. Routed minus official between anchors: +0.07/-0.07, +0.34, +0.17, -0.11, +0.24, +0.66 (Montchanin-le-Haut→Montagny, unexplained), -0.33. PIPELINE CAVEATS: (1) Between km 140.2 and 141.9 the D974 is a car-free section 1.2 km long, mapped as class 'path' (Overture segment 1b3e66bf-e58a-4ed7-95e9-066ec4e03c89, ref D 974). The current router excludes paths and detours 7.5 km via the D601/N70 (pipeline total 187.7). Allow that one segment, or use the fallback: replace the three waypoints at km 140.2/140.9/141.9 by the N70 (RCEA) from the Blanzy interchange: Blanzy D980 → N70 on-ramp (46.7004,4.3913) → N70 (46.7130,4.4300) → Les Morands exit → D974/D977 junction (46.7276,4.4618). That is the same length (7.28 km vs 7.3 km) and almost the same height (canal valley), but on the dual carriageway. (2) Quai du Général de Gaulle in Montceau is one-way southbound in OSM, and the race rides it northbound. No waypoint is placed on it, so the router may use the parallel Rue Rouget de Lisle one block east (same length, flat). Uncertain: exact km 0 (±0.6 km), the Luzy VC street, the 0.66 km excess before Montagny. Fours: dhnet gives 66.1 (probably the town entry) vs 66.9 at the centre here. [geodata G: Moiry waypoint moved ~150 m onto the D907 just south-west of the D133 junction (the old spot north of the junction made the route ride up and back); La Grande Brosse snapped onto the D981 (it lay 160 m off, on the Rue de la Grande Brosse, and pulled the route through Route de Fours); Luzy 'back on D981' moved 80 m east past the Route des Fours / Avenue Marceau junction (it caused a spur); the car-free D974 waypoint's road now names the class path so the router may use that segment (without it the route detoured 4.3 km and doubled back).] [geodata G: car-free D974 waypoint pinned with radius 25 so that the widened search cannot snap it to the N70 154 m away.]",
+ "sources": [
+  "https://nievre.fr/shared-files/57267/ (Nièvre council traffic order D-2026-493: stage 12 roads with PR)",
+  "https://nievre.fr/shared-files/57312/ (order D-2026-494: RD 2076 at Saint-Pierre-le-Moûtier)",
+  "https://nievre.fr/parcours-des-11e-et-12e-etapes-du-tour-de-france-2026/ (commune list with road changes)",
+  "https://nievre.fr/wp-content/uploads/2026/06/Programme-Tour-de-France-LUZY-1.pdf (Luzy streets)",
+  "https://unidivers.fr/event/tour-de-france-il-passe-et-repasse-decize-nievre-2026-07-15/ (sprint on Avenue de Verdun)",
+  "https://www.ledicodutour.com/etapes/etapes_par_annees/etapes_2026/etapes_2026_12.html",
+  "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/16/tour-de-france-2026-itineraire-parcours-adrien-petit-lotto-intermarche-decrypte-la-12e-etape-magny-cours-chalon-sur-saone-1791-km-UGQ6PX4DXFDDHM2F6DVF7BOXN4/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-12-times.htm",
+  "https://www.hedgehogcycling.co.uk/stage-12-tour-de-france-2026.html",
+  "https://www.intervals.icu/tour-de-france-2026/stage-12/",
+  "https://linformateurdebourgogne.com/tour-de-france-la-course-cycliste-empruntera-le-centre-ville-de-montceau-le-16-juillet/",
+  "https://linformateurdebourgogne.com/tour-de-france-la-12e-etape-passera-a-montceau-et-blanzy-le-16-juillet-2025/",
+  "https://montceau-news.com/montceau_et_sa_region/blanzy/881921-le-tour-de-france-2026-passe-par-blanzy-un-evenement-a-ne-pas-manquer.html",
+  "https://panneau-pocket.s3.gra.perf.cloud.ovh.net/source/sign_pdf/2544556016988d14b36bb93.34550768-1770574155.pdf (Toulon-sur-Arroux)",
+  "https://www.francevelotourisme.com/itineraire/le-tour-de-bourgogne-a-velo/montchanin-montceau-les-mines",
+  "https://www.velofute.com/post/tour-de-france-2026-%C3%A9tape-12",
+  "https://www.tour-magazin.de/en/stages-and-altitude-profiles/tour-de-france-2026-preview-of-stage-12-at-f1-speed-into-the-penultimate-sprint-finish/",
+  "Overture Maps 2026-10-21.0 (transportation, divisions, places); Copernicus GLO-30 DEM"
+ ]
+}

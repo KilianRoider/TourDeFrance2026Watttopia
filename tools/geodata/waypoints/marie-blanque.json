@@ -1,0 +1,173 @@
+{
+ "id": "marie-blanque",
+ "lengthKm": 9.2,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Escot – junction Rue de Labuchoa / D294 Route du Barescou, foot of the climb (~334 m)",
+   "lat": 43.07665,
+   "lon": -0.60611,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 0.5,
+   "name": "D294 Route du Barescou leaving Escot",
+   "lat": 43.07698,
+   "lon": -0.60009,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 1.13,
+   "name": "Bridge over the Barescou",
+   "lat": 43.07837,
+   "lon": -0.59294,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 2.01,
+   "name": "D294 in the Barescou valley",
+   "lat": 43.07865,
+   "lon": -0.58234,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 2.51,
+   "name": "D294 Barescou valley (bend)",
+   "lat": 43.0805,
+   "lon": -0.57899,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 3.01,
+   "name": "D294 Barescou valley",
+   "lat": 43.08093,
+   "lon": -0.57371,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 3.89,
+   "name": "Bridge over the Barescou (~495 m)",
+   "lat": 43.07986,
+   "lon": -0.56366,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 4.49,
+   "name": "Double bridge (~530 m) – into the forest",
+   "lat": 43.077,
+   "lon": -0.55826,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 5.02,
+   "name": "D294 – double-digit gradients begin",
+   "lat": 43.07534,
+   "lon": -0.55232,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 5.53,
+   "name": "D294 in the forest",
+   "lat": 43.07484,
+   "lon": -0.54625,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 6.03,
+   "name": "D294 in the forest",
+   "lat": 43.07411,
+   "lon": -0.5404,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 6.53,
+   "name": "D294 in the forest",
+   "lat": 43.07324,
+   "lon": -0.53464,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 7.03,
+   "name": "D294 – steepest section (~13 %)",
+   "lat": 43.07266,
+   "lon": -0.52936,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 7.54,
+   "name": "D294 steepest section",
+   "lat": 43.07056,
+   "lon": -0.52431,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 8.04,
+   "name": "D294 near-straight forest ramp",
+   "lat": 43.0703,
+   "lon": -0.51838,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 8.54,
+   "name": "D294 final ramp",
+   "lat": 43.07049,
+   "lon": -0.51248,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 8.87,
+   "name": "The only hairpin (~1015 m)",
+   "lat": 43.06856,
+   "lon": -0.51006,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D294"
+  },
+  {
+   "km": 9.2,
+   "name": "Col de Marie-Blanque – summit (1035 m)",
+   "lat": 43.07047,
+   "lon": -0.50747,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D294"
+  }
+ ],
+ "notes": "West side of the Col de Marie-Blanque from Escot (Aspe valley), as in the app (start 330 m, 9.2 km, summit 1035 m). km 0 = the junction in Escot village where the D294 Route du Barescou leaves Rue de Labuchoa (~334 m DEM), 0.66 km after the N134; starting at the N134 junction itself would give 9.8 km, so the app profile (9.2 km) starts in the village (DEM per-km fit rms ~1.3 %). Route: D294 only — up the narrow Barescou valley (gentle 3-6 %), several bridges over the Barescou, into the forest at ~km 4.5, then a nearly straight 10-13 % ramp with a single hairpin ~330 m below the col. Coordinates are on the Overture/OSM road geometry; km are routed distances from the foot (routed 9.16 km vs 9.2 km). The app landmark 'stone bridge at the Barescou' (km 2.3) has no bridge in the map data there; the bridges in the data are at km 1.1, 3.9 and 4.5.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Col_de_Marie-Blanque",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions (Escot), Copernicus GLO-30 DEM"
+ ]
+}

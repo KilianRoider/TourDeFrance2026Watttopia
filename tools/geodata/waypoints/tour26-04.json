@@ -1,0 +1,943 @@
+{
+ "id": "tour26-04",
+ "lengthKm": 181.9,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "km 0 – départ réel on the D3 south of Trèbes",
+   "lat": 43.19918,
+   "lon": 2.45218,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 1.7,
+   "name": "Fontiès-d'Aude",
+   "lat": 43.18709,
+   "lon": 2.4545,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 3.15,
+   "name": "via Route de Lagrasse",
+   "lat": 43.17717,
+   "lon": 2.45358,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 4.6,
+   "name": "Col de Bouc",
+   "lat": 43.16787,
+   "lon": 2.45956,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D3"
+  },
+  {
+   "km": 6.0,
+   "name": "Monze",
+   "lat": 43.15903,
+   "lon": 2.4576,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 8.3,
+   "name": "Carbonac",
+   "lat": 43.15055,
+   "lon": 2.48112,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 10.7,
+   "name": "Pradelles-en-Val",
+   "lat": 43.14684,
+   "lon": 2.51007,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 17.4,
+   "name": "La Bedosse (près), Serviès-en-Val",
+   "lat": 43.10106,
+   "lon": 2.53155,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 18.37,
+   "name": "via D3",
+   "lat": 43.09375,
+   "lon": 2.53799,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 19.3,
+   "name": "Villemagne (Lagrasse)",
+   "lat": 43.09248,
+   "lon": 2.54925,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 26.3,
+   "name": "Moulin de Boysède (Lagrasse)",
+   "lat": 43.09545,
+   "lon": 2.60574,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 27.98,
+   "name": "Lagrasse (D3, Boulevard de la Promenade)",
+   "lat": 43.09047,
+   "lon": 2.62064,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 31.0,
+   "name": "Carrefour D3/D23",
+   "lat": 43.07138,
+   "lon": 2.61064,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D23"
+  },
+  {
+   "km": 33.1,
+   "name": "Forodonos (Saint-Pierre-des-Champs)",
+   "lat": 43.05993,
+   "lon": 2.62228,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D23"
+  },
+  {
+   "km": 36.6,
+   "name": "Carrefour D23/D613",
+   "lat": 43.03802,
+   "lon": 2.64347,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 38.6,
+   "name": "Bouttes (Talairan)",
+   "lat": 43.02462,
+   "lon": 2.63342,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 39.45,
+   "name": "via D613",
+   "lat": 43.01924,
+   "lon": 2.63891,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 40.3,
+   "name": "Col de Villerouge",
+   "lat": 43.01559,
+   "lon": 2.63361,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 41.5,
+   "name": "Villerouge-Termenès",
+   "lat": 43.00732,
+   "lon": 2.63343,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 43.4,
+   "name": "Col de la Tranchée",
+   "lat": 42.99545,
+   "lon": 2.62194,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 44.2,
+   "name": "Félines-Termenès",
+   "lat": 42.99097,
+   "lon": 2.61642,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 44.9,
+   "name": "Col de Bedos – foot (3.3 km at 4.4 %)",
+   "lat": 42.98661,
+   "lon": 2.6113,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 48.2,
+   "name": "Col de Bedos (cat. 4)",
+   "lat": 42.97368,
+   "lon": 2.58083,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 50.6,
+   "name": "Laroque-de-Fa",
+   "lat": 42.9581,
+   "lon": 2.56861,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 53.4,
+   "name": "Col des Fourches",
+   "lat": 42.96048,
+   "lon": 2.54224,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 54.3,
+   "name": "Mouthoumet",
+   "lat": 42.96012,
+   "lon": 2.53124,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 58.1,
+   "name": "Pont d'Orbieu (Lanet)",
+   "lat": 42.95675,
+   "lon": 2.49574,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 59.1,
+   "name": "Col du Paradis – foot (5.8 km at 4.1 %)",
+   "lat": 42.95529,
+   "lon": 2.48593,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 61.2,
+   "name": "Albières (près)",
+   "lat": 42.94463,
+   "lon": 2.47351,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 61.85,
+   "name": "via D613",
+   "lat": 42.94426,
+   "lon": 2.46566,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 64.9,
+   "name": "Col du Paradis (cat. 3)",
+   "lat": 42.94461,
+   "lon": 2.43147,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 70.8,
+   "name": "Arques",
+   "lat": 42.95173,
+   "lon": 2.37833,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 73.3,
+   "name": "La Parade",
+   "lat": 42.94818,
+   "lon": 2.35116,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 73.8,
+   "name": "Pébrières",
+   "lat": 42.94785,
+   "lon": 2.34676,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 74.5,
+   "name": "Les Pontils",
+   "lat": 42.9508,
+   "lon": 2.3397,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 76.1,
+   "name": "Serres",
+   "lat": 42.946,
+   "lon": 2.32233,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 77.3,
+   "name": "Pachevan (Cassaignes)",
+   "lat": 42.9418,
+   "lon": 2.31089,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 78.04,
+   "name": "via D613",
+   "lat": 42.94024,
+   "lon": 2.30207,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 80.5,
+   "name": "Coustaussa",
+   "lat": 42.93982,
+   "lon": 2.27312,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 82.0,
+   "name": "Couiza – D613 → D118",
+   "lat": 42.94298,
+   "lon": 2.25545,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D118"
+  },
+  {
+   "km": 85.4,
+   "name": "Espéraza",
+   "lat": 42.92979,
+   "lon": 2.22268,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 86.3,
+   "name": "La Roquette",
+   "lat": 42.92377,
+   "lon": 2.21836,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 86.8,
+   "name": "Campagne-les-Bains",
+   "lat": 42.92104,
+   "lon": 2.21434,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 87.0,
+   "name": "Campagne-sur-Aude",
+   "lat": 42.92042,
+   "lon": 2.21214,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 91.6,
+   "name": "Quillan (entrée)",
+   "lat": 42.89326,
+   "lon": 2.19464,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 93.4,
+   "name": "Quillan – intermediate sprint",
+   "lat": 42.87888,
+   "lon": 2.18875,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D118"
+  },
+  {
+   "km": 93.87,
+   "name": "Quillan – D118 → D117 (Avenue de Foix)",
+   "lat": 42.87755,
+   "lon": 2.1839,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D117"
+  },
+  {
+   "km": 94.2,
+   "name": "Col de Coudons – foot in Quillan (10.7 km at 5.5 %, via the Col du Portel)",
+   "lat": 42.87789,
+   "lon": 2.18062,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D117"
+  },
+  {
+   "km": 95.5,
+   "name": "via Route de Foix",
+   "lat": 42.87967,
+   "lon": 2.16987,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D117"
+  },
+  {
+   "km": 96.15,
+   "name": "via Route de Foix",
+   "lat": 42.87948,
+   "lon": 2.16335,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D117"
+  },
+  {
+   "km": 96.8,
+   "name": "Ginoles – D117 at the Ginoles road",
+   "lat": 42.87516,
+   "lon": 2.16333,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D117"
+  },
+  {
+   "km": 98.0,
+   "name": "via D117",
+   "lat": 42.87254,
+   "lon": 2.15439,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D117"
+  },
+  {
+   "km": 99.2,
+   "name": "Col du Portel – D117 → D59",
+   "lat": 42.87981,
+   "lon": 2.15496,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D59"
+  },
+  {
+   "km": 99.75,
+   "name": "via D59",
+   "lat": 42.87663,
+   "lon": 2.1543,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D59"
+  },
+  {
+   "km": 100.03,
+   "name": "via D59",
+   "lat": 42.87542,
+   "lon": 2.15295,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D59"
+  },
+  {
+   "km": 100.3,
+   "name": "Carrefour D59/D613",
+   "lat": 42.87768,
+   "lon": 2.15179,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 104.1,
+   "name": "Coudons",
+   "lat": 42.86543,
+   "lon": 2.12777,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 104.9,
+   "name": "Col de Coudons (883 m, cat. 2)",
+   "lat": 42.86165,
+   "lon": 2.12181,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D613"
+  },
+  {
+   "km": 108.4,
+   "name": "Lapeyre (Belvis)",
+   "lat": 42.84536,
+   "lon": 2.10034,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 111.95,
+   "name": "via Route de Quillan",
+   "lat": 42.84664,
+   "lon": 2.05813,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 116.0,
+   "name": "Espezel",
+   "lat": 42.82635,
+   "lon": 2.0234,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D613"
+  },
+  {
+   "km": 118.0,
+   "name": "Roquefeuil – D613 → D29 (Route de Bélesta)",
+   "lat": 42.82767,
+   "lon": 2.001,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D29"
+  },
+  {
+   "km": 120.3,
+   "name": "Larémassadou",
+   "lat": 42.84548,
+   "lon": 1.99669,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D29"
+  },
+  {
+   "km": 125.4,
+   "name": "Col de la Croix des Morts",
+   "lat": 42.87685,
+   "lon": 1.97152,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D16"
+  },
+  {
+   "km": 127.1,
+   "name": "via D16",
+   "lat": 42.87369,
+   "lon": 1.95586,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D16"
+  },
+  {
+   "km": 128.8,
+   "name": "via D16",
+   "lat": 42.88548,
+   "lon": 1.94926,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D16"
+  },
+  {
+   "km": 132.2,
+   "name": "Bélesta – D16 → D9",
+   "lat": 42.90141,
+   "lon": 1.93451,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D9"
+  },
+  {
+   "km": 133.5,
+   "name": "Fontestorbes",
+   "lat": 42.89281,
+   "lon": 1.92711,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 134.3,
+   "name": "La Barraque",
+   "lat": 42.88921,
+   "lon": 1.919,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 135.2,
+   "name": "Fougax-et-Barrineuf – itinerary point",
+   "lat": 42.88596,
+   "lon": 1.90908,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 137.11,
+   "name": "Fougax-et-Barrineuf",
+   "lat": 42.88033,
+   "lon": 1.89159,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 137.9,
+   "name": "Plaine Saint-Nicolas",
+   "lat": 42.88308,
+   "lon": 1.8833,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 139.8,
+   "name": "Col de Montségur – foot (6.9 km at 6.6 %)",
+   "lat": 42.88176,
+   "lon": 1.8625,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 141.7,
+   "name": "Serrelongue (Bénaix)",
+   "lat": 42.88174,
+   "lon": 1.84083,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 144.02,
+   "name": "via D9",
+   "lat": 42.86792,
+   "lon": 1.83541,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 144.46,
+   "name": "via D9",
+   "lat": 42.86525,
+   "lon": 1.83204,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 144.9,
+   "name": "Montségur",
+   "lat": 42.8683,
+   "lon": 1.83238,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 145.35,
+   "name": "via D9",
+   "lat": 42.8709,
+   "lon": 1.83158,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 145.8,
+   "name": "via D9",
+   "lat": 42.87279,
+   "lon": 1.83243,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 146.7,
+   "name": "Col de Montségur (1059 m, cat. 2)",
+   "lat": 42.87405,
+   "lon": 1.82451,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D9"
+  },
+  {
+   "km": 150.9,
+   "name": "Montferrier",
+   "lat": 42.89469,
+   "lon": 1.79345,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 151.83,
+   "name": "via Avenue du Saint-Barthélemy",
+   "lat": 42.89972,
+   "lon": 1.80155,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 153.1,
+   "name": "Villeneuve-d'Olmes – itinerary point",
+   "lat": 42.9054,
+   "lon": 1.81503,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 153.87,
+   "name": "Villeneuve-d'Olmes",
+   "lat": 42.90893,
+   "lon": 1.82305,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D9"
+  },
+  {
+   "km": 155.2,
+   "name": "Les Chaubets – D9 → D117",
+   "lat": 42.91917,
+   "lon": 1.83019,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D117"
+  },
+  {
+   "km": 156.0,
+   "name": "Lavelanet – itinerary point",
+   "lat": 42.92381,
+   "lon": 1.8364,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 157.09,
+   "name": "Lavelanet – closest point to the village",
+   "lat": 42.93192,
+   "lon": 1.83927,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 160.3,
+   "name": "Raissac",
+   "lat": 42.94214,
+   "lon": 1.80799,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 162.8,
+   "name": "Tanière",
+   "lat": 42.94953,
+   "lon": 1.78502,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 164.4,
+   "name": "Ilhat (près)",
+   "lat": 42.95874,
+   "lon": 1.77566,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D10"
+  },
+  {
+   "km": 164.7,
+   "name": "Rapy – D10 → D1",
+   "lat": 42.95993,
+   "lon": 1.77307,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D1"
+  },
+  {
+   "km": 166.5,
+   "name": "Le Carol",
+   "lat": 42.96122,
+   "lon": 1.75579,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 169.4,
+   "name": "Le Pradet",
+   "lat": 42.96653,
+   "lon": 1.72538,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 171.8,
+   "name": "via Route du Plantaurel",
+   "lat": 42.9722,
+   "lon": 1.6984,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 173.2,
+   "name": "Le Sabarthès (L'Herm)",
+   "lat": 42.97593,
+   "lon": 1.68242,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 176.9,
+   "name": "Le Général (Arabaux)",
+   "lat": 42.97833,
+   "lon": 1.64211,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 178.1,
+   "name": "Le Barbié",
+   "lat": 42.97501,
+   "lon": 1.63079,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 178.9,
+   "name": "via D1",
+   "lat": 42.97669,
+   "lon": 1.62131,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 179.8,
+   "name": "Foix (entrée)",
+   "lat": 42.97856,
+   "lon": 1.61159,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 179.92,
+   "name": "Foix, Avenue Georges Clemenceau (D1)",
+   "lat": 42.97764,
+   "lon": 1.61103,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1"
+  },
+  {
+   "km": 180.81,
+   "name": "Foix – D1 → D919 (Cours Irénée Cros)",
+   "lat": 42.97022,
+   "lon": 1.60809,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D919"
+  },
+  {
+   "km": 181.58,
+   "name": "Foix – sharp right onto the D117 bridge over the Ariège",
+   "lat": 42.9641,
+   "lon": 1.61159,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D117 Cours Gabriel Fauré"
+  },
+  {
+   "km": 181.9,
+   "name": "Foix – finish, Cours Gabriel Fauré (D117) by the tourist office",
+   "lat": 42.96402,
+   "lon": 1.6079,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "Official length 181.9 km (cyclingstage stage-4 times; tourdefranceparcours itinéraire horaire). Col de Bedos (cat. 4) 48.2, Col du Paradis (cat. 3) 64.9, intermediate sprint in Quillan 93.4, Col de Coudons (cat. 2) 104.9, Col de Montségur (cat. 2) 146.7, finish in Foix 181.9. km 0 (départ réel) is placed on the D3 south of Trèbes, 1.7 km before the D3 point nearest Fontiès-d'Aude, at (43.1992, 2.4522). The itinerary gives Fontiès at km 1.7, but no km 0 coordinate is published, so allow about ±0.3 km. The neutralised section is not included: départ fictif at the Portail des Jacobins in Carcassonne, then La Cité, the D6161/D6113 and Trèbes. Route: D3 via Fontiès-d'Aude, the Col de Bouc, Monze, Pradelles-en-Val, Serviès-en-Val (La Bedosse), Villemagne and Lagrasse (Bd de la Promenade); D23 from the D3/D23 junction (31.0) via Saint-Pierre-des-Champs; D613 from km 36.6 via the Col de Villerouge (uncategorised), Villerouge-Termenès, the Col de la Tranchée, Félines-Termenès, the Col de Bedos, Laroque-de-Fa, the Col des Fourches, Mouthoumet, the Pont d'Orbieu, Albières, the Col du Paradis, Arques, Serres and Coustaussa to Couiza; D118 via Espéraza and Campagne-sur-Aude into Quillan (sprint on the D118, Av. François Mitterrand, about 0.5 km before the D117 junction); D117 (Route de Foix) west past the Ginoles turning up to the Col du Portel; D59 down to the D613; D613 via Coudons, the Col de Coudons, Belvis (Lapeyre) and Espezel to Roquefeuil; D29 to Larémassadou; D16 over the Col de la Croix des Morts down to Bélesta; D9 via Fontestorbes, Fougax-et-Barrineuf, the Plaine Saint-Nicolas, Montségur village, the Col de Montségur, Montferrier and Villeneuve-d'Olmes to Les Chaubets; D117 and local streets through the west side of Lavelanet to the D10 via Raissac and Ilhat; D1 from Rapy along the Plantaurel (Le Carol, L'Herm, Arabaux) into Foix (Av. Georges Clemenceau); D919 Cours Irénée Cros / Cours Bouychères along the east bank of the Ariège; a sharp right onto the D117 bridge; the finish is on Cours Gabriel Fauré (D117) about 0.3 km after the bend, by the tourist office (Rue Théophile Delcassé). Climb feet are summit km minus the published climb length (Bedos 3.3 km, Paradis 5.8 km, Coudons 10.7 km counted from Quillan over the Col du Portel, Montségur 6.9 km), so they are medium confidence. Placement: summits are OSM saddle nodes on the road. Itinerary points sit on the routed road at their official km, interpolated between firmly located anchors (km 0, junctions, summits, finish). Where the itinerary km falls well before a village centre (Fougax-et-Barrineuf, Villeneuve-d'Olmes, Lavelanet), the official point is named '… – itinerary point', and a separate town point near the centre carries a km derived from routed distance. Points named 'via …' only keep a shortest-path router on the race road (bends, parallel roads); their km is derived. Village anchors that pulled the router off the D613 (Lanet, Serres, Coustaussa, Belvis, Espezel) were removed, so those points lie on the through road. Routed length through all waypoints on Overture 2026-10-21.0 roads is about 180.9 km (−0.6 %). Uncertain: the streets through Lavelanet, where the routed Les Chaubets→Raissac distance is about 0.8 km shorter than the itinerary; km 0 placement; the Fougax itinerary point (135.2), which may refer to the hamlet of Barrineuf rather than Fougax; and the exact finish-line spot on Cours Gabriel Fauré.",
+ "sources": [
+  "https://tourdefranceparcours.fr/tour-de-france-2026/etape-4-2026/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-4-times.htm",
+  "https://hedgehogcycling.co.uk/stage-4-tour-de-france-2026.html",
+  "https://intervals.icu (Tour de France 2026 stage 4 route)",
+  "https://www.tour-magazin.de (Tour de France 2026, 4. Etappe)",
+  "https://www.audetourisme.com (Tour de France 2026 départ Carcassonne)",
+  "https://info.fr/tour-de-france-2026-carcassonne-4e-etape-circulation-stationnement-7/",
+  "Overture Maps 2026-10-21.0 divisions (localities), base land saddles, water and transportation segments"
+ ]
+}

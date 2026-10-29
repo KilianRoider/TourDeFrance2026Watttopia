@@ -1,0 +1,1260 @@
+{
+ "id": "tour26-09",
+ "lengthKm": 185.5,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Brive-la-Gaillarde – départ réel (D38, Route de Meyssac)",
+   "lat": 45.13936,
+   "lon": 1.54923,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D38 (Route de Meyssac, Route de Rochelongue)"
+  },
+  {
+   "km": 1.5,
+   "name": "Les Escrozes",
+   "lat": 45.12696,
+   "lon": 1.5542,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D38 (Route de Meyssac, Route de Rochelongue)"
+  },
+  {
+   "km": 2.3,
+   "name": "Rochelongue",
+   "lat": 45.12041,
+   "lon": 1.55678,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D38 (Route de Meyssac, Route de Rochelongue)"
+  },
+  {
+   "km": 4.9,
+   "name": "Monplaisir – D38 → D8 (roundabout)",
+   "lat": 45.101,
+   "lon": 1.57219,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 5.2,
+   "name": "La Dercie",
+   "lat": 45.0987,
+   "lon": 1.5721,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 6.8,
+   "name": "Logne",
+   "lat": 45.08642,
+   "lon": 1.56311,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 7.1,
+   "name": "Jugeals-Nazareth",
+   "lat": 45.08415,
+   "lon": 1.5615,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 9.4,
+   "name": "La Ringe (près)",
+   "lat": 45.06491,
+   "lon": 1.56301,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 11.7,
+   "name": "Turenne",
+   "lat": 45.05371,
+   "lon": 1.5782,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 12.6,
+   "name": "Turenne (près)",
+   "lat": 45.04907,
+   "lon": 1.58464,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 13.5,
+   "name": "Boulou les Roses (près)",
+   "lat": 45.04512,
+   "lon": 1.5936,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8 (Route de Montplaisir, Route de Turenne)"
+  },
+  {
+   "km": 14.4,
+   "name": "Turenne-Gare (D8 → D19)",
+   "lat": 45.03857,
+   "lon": 1.59888,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D19 (Route de la Merlette, Route du Moulin, Route de la Planche)"
+  },
+  {
+   "km": 14.7,
+   "name": "Turenne-Gare – level crossing PN 95",
+   "lat": 45.03665,
+   "lon": 1.60122,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D19 (Route de la Merlette, Route du Moulin, Route de la Planche)"
+  },
+  {
+   "km": 15.7,
+   "name": "Le Peuch",
+   "lat": 45.03714,
+   "lon": 1.61373,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D19 (Route de la Merlette, Route du Moulin, Route de la Planche)"
+  },
+  {
+   "km": 18.0,
+   "name": "Péchal (près)",
+   "lat": 45.05419,
+   "lon": 1.62852,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D19 (Route de la Merlette, Route du Moulin, Route de la Planche)"
+  },
+  {
+   "km": 20.4,
+   "name": "Carrefour D19/D38",
+   "lat": 45.07032,
+   "lon": 1.64366,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D38 (Route de Brive)"
+  },
+  {
+   "km": 20.8,
+   "name": "Le Lac",
+   "lat": 45.06789,
+   "lon": 1.64697,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D38 (Route de Brive)"
+  },
+  {
+   "km": 21.3,
+   "name": "Collonges-la-Rouge",
+   "lat": 45.06499,
+   "lon": 1.65128,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D38 (Route de Brive)"
+  },
+  {
+   "km": 22.2,
+   "name": "Collonges-la-Rouge, Route de Brive",
+   "lat": 45.05989,
+   "lon": 1.65999,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D38 (Route de Brive)"
+  },
+  {
+   "km": 23.1,
+   "name": "Meyssac (D38 → D14)",
+   "lat": 45.05648,
+   "lon": 1.67011,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 23.9,
+   "name": "Meyssac, Avenue de la Libération",
+   "lat": 45.05876,
+   "lon": 1.67591,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 24.7,
+   "name": "Pierre Taillade (près)",
+   "lat": 45.06538,
+   "lon": 1.67839,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 25.5,
+   "name": "La Rozière",
+   "lat": 45.0646,
+   "lon": 1.68301,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 26.3,
+   "name": "Cheyssiol",
+   "lat": 45.06167,
+   "lon": 1.68797,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 28.3,
+   "name": "Ratabout",
+   "lat": 45.07305,
+   "lon": 1.7009,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 29.7,
+   "name": "La Croix d'Antignac",
+   "lat": 45.08302,
+   "lon": 1.70141,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 30.0,
+   "name": "Le Liondor",
+   "lat": 45.08571,
+   "lon": 1.70215,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 30.8,
+   "name": "La Croix du Bouix",
+   "lat": 45.0926,
+   "lon": 1.70273,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 32.6,
+   "name": "Le Barrat",
+   "lat": 45.10569,
+   "lon": 1.70211,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 33.2,
+   "name": "Le Planchat",
+   "lat": 45.10746,
+   "lon": 1.70586,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 34.4,
+   "name": "Le Suc",
+   "lat": 45.11355,
+   "lon": 1.69431,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 35.2,
+   "name": "Groschamp",
+   "lat": 45.11544,
+   "lon": 1.68723,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D14 (Route de Lagleygeolle, Route du Planchât, Route de la Vicomté)"
+  },
+  {
+   "km": 37.7,
+   "name": "Lanteuil – D14 → D921",
+   "lat": 45.12776,
+   "lon": 1.66507,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 38.0,
+   "name": "La Miraudie",
+   "lat": 45.12894,
+   "lon": 1.66849,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 41.7,
+   "name": "Le Moulin à Papier",
+   "lat": 45.11969,
+   "lon": 1.70654,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 42.6,
+   "name": "Beynat (près)",
+   "lat": 45.12394,
+   "lon": 1.71022,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 43.6,
+   "name": "Beynat (près)",
+   "lat": 45.12516,
+   "lon": 1.71587,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 44.5,
+   "name": "Beynat (entrée)",
+   "lat": 45.12518,
+   "lon": 1.72193,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 44.9,
+   "name": "Beynat – intermediate sprint",
+   "lat": 45.12511,
+   "lon": 1.72681,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 47.4,
+   "name": "Le Perrier Haut",
+   "lat": 45.1298,
+   "lon": 1.75029,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 48.3,
+   "name": "Lac de Miel",
+   "lat": 45.13209,
+   "lon": 1.75945,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D921 (Route d'Argentat)"
+  },
+  {
+   "km": 50.3,
+   "name": "Les Quatre Routes d'Albussac – D921 → D940",
+   "lat": 45.13618,
+   "lon": 1.78193,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 52.9,
+   "name": "La Borie",
+   "lat": 45.1559,
+   "lon": 1.76744,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 55.5,
+   "name": "Clairfage",
+   "lat": 45.17411,
+   "lon": 1.75537,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 57.7,
+   "name": "Riou-Blanquet",
+   "lat": 45.18987,
+   "lon": 1.76932,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 58.6,
+   "name": "La Chapeloune",
+   "lat": 45.19667,
+   "lon": 1.77402,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 59.3,
+   "name": "Sainte-Fortunade",
+   "lat": 45.20237,
+   "lon": 1.7708,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 61.6,
+   "name": "Le Grelet",
+   "lat": 45.22184,
+   "lon": 1.76712,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 62.0,
+   "name": "La Croix d'Eure",
+   "lat": 45.22534,
+   "lon": 1.76619,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 65.6,
+   "name": "Laguenne – Quartier Montana",
+   "lat": 45.25043,
+   "lon": 1.76517,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D940 (Route de Beaulieu, Route de Tulle)"
+  },
+  {
+   "km": 65.7,
+   "name": "Tulle – D940 → VC (Rue du Docteur Aimé Audubert)",
+   "lat": 45.25113,
+   "lon": 1.76557,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC (Tulle: Rue du Dr Aimé Audubert, Av. Lucien Sampaix, Av. Winston Churchill, Av. Victor Hugo, quais Gabriel Péri / Alfred de Chammard / Aristide Briand, Pont des Carmes)"
+  },
+  {
+   "km": 66.4,
+   "name": "Place Carnot (près)",
+   "lat": 45.25629,
+   "lon": 1.76111,
+   "kind": "other",
+   "confidence": "high",
+   "road": "VC (Tulle: Rue du Dr Aimé Audubert, Av. Lucien Sampaix, Av. Winston Churchill, Av. Victor Hugo, quais Gabriel Péri / Alfred de Chammard / Aristide Briand, Pont des Carmes)"
+  },
+  {
+   "km": 67.1,
+   "name": "Tulle – Avenue Victor Hugo",
+   "lat": 45.26056,
+   "lon": 1.7575,
+   "kind": "other",
+   "confidence": "high",
+   "road": "VC (Tulle: Rue du Dr Aimé Audubert, Av. Lucien Sampaix, Av. Winston Churchill, Av. Victor Hugo, quais Gabriel Péri / Alfred de Chammard / Aristide Briand, Pont des Carmes)"
+  },
+  {
+   "km": 68.1,
+   "name": "Place Carnot, Quai Gabriel Péri",
+   "lat": 45.26338,
+   "lon": 1.76764,
+   "kind": "other",
+   "confidence": "high",
+   "road": "VC (Tulle: Rue du Dr Aimé Audubert, Av. Lucien Sampaix, Av. Winston Churchill, Av. Victor Hugo, quais Gabriel Péri / Alfred de Chammard / Aristide Briand, Pont des Carmes)"
+  },
+  {
+   "km": 69.0,
+   "name": "Tulle – Pont des Carmes (Corrèze)",
+   "lat": 45.26963,
+   "lon": 1.77402,
+   "kind": "other",
+   "confidence": "high",
+   "road": "VC (Tulle: Rue du Dr Aimé Audubert, Av. Lucien Sampaix, Av. Winston Churchill, Av. Victor Hugo, quais Gabriel Péri / Alfred de Chammard / Aristide Briand, Pont des Carmes)"
+  },
+  {
+   "km": 69.5,
+   "name": "Place Jean-Moulin, Quai Victor Continsouza",
+   "lat": 45.27295,
+   "lon": 1.77485,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D23 (Quai Victor Continsouza, Av. Guynemer, Av. du Lt-Col. Farro)"
+  },
+  {
+   "km": 70.0,
+   "name": "Tulle – Avenue Guynemer",
+   "lat": 45.27682,
+   "lon": 1.77411,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D23 (Quai Victor Continsouza, Av. Guynemer, Av. du Lt-Col. Farro)"
+  },
+  {
+   "km": 72.3,
+   "name": "Freyssinge (près)",
+   "lat": 45.28715,
+   "lon": 1.78637,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D23 (Quai Victor Continsouza, Av. Guynemer, Av. du Lt-Col. Farro)"
+  },
+  {
+   "km": 74.6,
+   "name": "Carrefour D23/D58 (hairpin)",
+   "lat": 45.30038,
+   "lon": 1.7979,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D58"
+  },
+  {
+   "km": 74.7,
+   "name": "Côte de Naves (cat. 3) – foot",
+   "lat": 45.2995,
+   "lon": 1.79763,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D58"
+  },
+  {
+   "km": 75.6,
+   "name": "Le Maugein",
+   "lat": 45.29857,
+   "lon": 1.78778,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D58"
+  },
+  {
+   "km": 77.0,
+   "name": "Côte de Naves (cat. 3) – summit",
+   "lat": 45.30529,
+   "lon": 1.77904,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D58"
+  },
+  {
+   "km": 77.4,
+   "name": "Naves (D58 → D1120)",
+   "lat": 45.30805,
+   "lon": 1.77577,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1120"
+  },
+  {
+   "km": 79.8,
+   "name": "Carrefour D1120/D53",
+   "lat": 45.32804,
+   "lon": 1.76896,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D53 (Route du Puy de Cueille)"
+  },
+  {
+   "km": 81.2,
+   "name": "Puy de Cueille",
+   "lat": 45.33599,
+   "lon": 1.78116,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D53 (Route du Puy de Cueille)"
+  },
+  {
+   "km": 81.9,
+   "name": "Vimbelle, Route du Puy de Cueille",
+   "lat": 45.33546,
+   "lon": 1.7882,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D53 (Route du Puy de Cueille)"
+  },
+  {
+   "km": 82.5,
+   "name": "Vimbelle (Bar) – D53 → D23 → D32",
+   "lat": 45.33836,
+   "lon": 1.79006,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D23 → D32 (Vimbelle)"
+  },
+  {
+   "km": 85.3,
+   "name": "Neuvialle",
+   "lat": 45.35971,
+   "lon": 1.79694,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D32 (Route des Monédières)"
+  },
+  {
+   "km": 87.4,
+   "name": "Le Chassagnou",
+   "lat": 45.37678,
+   "lon": 1.80292,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D32 (Route des Monédières)"
+  },
+  {
+   "km": 88.1,
+   "name": "La Chèze",
+   "lat": 45.38277,
+   "lon": 1.80494,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D32 (Route des Monédières)"
+  },
+  {
+   "km": 88.8,
+   "name": "L'Échamel",
+   "lat": 45.38764,
+   "lon": 1.8106,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D32 (Route des Monédières)"
+  },
+  {
+   "km": 91.3,
+   "name": "Sarlat (Corrèze)",
+   "lat": 45.40209,
+   "lon": 1.82567,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D32 (Route des Monédières)"
+  },
+  {
+   "km": 92.5,
+   "name": "Le Mas",
+   "lat": 45.41262,
+   "lon": 1.82748,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D32 (Route des Monédières)"
+  },
+  {
+   "km": 93.6,
+   "name": "Saint-Augustin (D32 → D26 → D32)",
+   "lat": 45.42099,
+   "lon": 1.83112,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D26 / D32 (Saint-Augustin: Rue des Écoles, Rue du Suc au May)"
+  },
+  {
+   "km": 94.5,
+   "name": "Place du 19 Mars, Rue du Suc au May",
+   "lat": 45.42439,
+   "lon": 1.83876,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26 / D32 (Saint-Augustin: Rue des Écoles, Rue du Suc au May)"
+  },
+  {
+   "km": 95.3,
+   "name": "Place du 19 Mars (près)",
+   "lat": 45.42636,
+   "lon": 1.84855,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26 / D32 (Saint-Augustin: Rue des Écoles, Rue du Suc au May)"
+  },
+  {
+   "km": 96.2,
+   "name": "Mézinges",
+   "lat": 45.43085,
+   "lon": 1.85588,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32 (Route du Pont, Route de Tulle)"
+  },
+  {
+   "km": 99.9,
+   "name": "Chaumeil – D32 → D121 → VC (Route des Puys)",
+   "lat": 45.45563,
+   "lon": 1.88139,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D121 → VC"
+  },
+  {
+   "km": 100.6,
+   "name": "Chaumeil, Route des Puys",
+   "lat": 45.45935,
+   "lon": 1.8803,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 101.2,
+   "name": "Suc au May (cat. 2) – foot",
+   "lat": 45.4647,
+   "lon": 1.8801,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 101.3,
+   "name": "Étang de Maurianges",
+   "lat": 45.46549,
+   "lon": 1.87987,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 102.1,
+   "name": "Maurianges (près)",
+   "lat": 45.46744,
+   "lon": 1.87314,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 103.0,
+   "name": "Maurianges (près)",
+   "lat": 45.46574,
+   "lon": 1.86578,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 103.9,
+   "name": "La Monédière (près)",
+   "lat": 45.46937,
+   "lon": 1.85774,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 104.7,
+   "name": "Site de la Fournaise",
+   "lat": 45.46922,
+   "lon": 1.85264,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 105.0,
+   "name": "Suc au May (cat. 2) – summit (903 m)",
+   "lat": 45.47164,
+   "lon": 1.85202,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "VC (Route des Puys, then the Suc au May road)"
+  },
+  {
+   "km": 105.4,
+   "name": "Site du Hangar – VC → D128E",
+   "lat": 45.47289,
+   "lon": 1.84776,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D128E"
+  },
+  {
+   "km": 105.7,
+   "name": "D128E – bend east of the Hangar",
+   "lat": 45.47443,
+   "lon": 1.85067,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D128E"
+  },
+  {
+   "km": 106.3,
+   "name": "La Monédière (près)",
+   "lat": 45.47798,
+   "lon": 1.84857,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D128E"
+  },
+  {
+   "km": 106.6,
+   "name": "La Monédière (près)",
+   "lat": 45.48003,
+   "lon": 1.84868,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D128E"
+  },
+  {
+   "km": 106.9,
+   "name": "Col du Bos – D128E → D128",
+   "lat": 45.47997,
+   "lon": 1.84703,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D128"
+  },
+  {
+   "km": 110.9,
+   "name": "Carrefour D128/D121",
+   "lat": 45.46161,
+   "lon": 1.81472,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D121 (Route de Chaumeil)"
+  },
+  {
+   "km": 113.0,
+   "name": "Madranges (D121 → D44)",
+   "lat": 45.4738,
+   "lon": 1.79504,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D44 (Route de Treignac)"
+  },
+  {
+   "km": 115.1,
+   "name": "Boulou – D44 → D940",
+   "lat": 45.48277,
+   "lon": 1.78089,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D940"
+  },
+  {
+   "km": 117.9,
+   "name": "La Gane Sauviat",
+   "lat": 45.5052,
+   "lon": 1.78453,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D940"
+  },
+  {
+   "km": 120.1,
+   "name": "Le Puy Montviallard",
+   "lat": 45.52384,
+   "lon": 1.78501,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D940"
+  },
+  {
+   "km": 120.6,
+   "name": "La Gane",
+   "lat": 45.52822,
+   "lon": 1.78437,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D940"
+  },
+  {
+   "km": 121.1,
+   "name": "Treignac (D940 → D16E5 → D16)",
+   "lat": 45.5321,
+   "lon": 1.78655,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D940 → D16E5 (Treignac: Av. Léon Vacher, Av. Edmond Michelet, Bd du Maréchal de Lattre)"
+  },
+  {
+   "km": 121.9,
+   "name": "Treignac, Avenue du Général de Gaulle",
+   "lat": 45.53681,
+   "lon": 1.79366,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D940 → D16E5 (Treignac: Av. Léon Vacher, Av. Edmond Michelet, Bd du Maréchal de Lattre)"
+  },
+  {
+   "km": 122.7,
+   "name": "Treignac (près)",
+   "lat": 45.53516,
+   "lon": 1.80102,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D16 (Route d'Egletons, Route Treignac–Egletons)"
+  },
+  {
+   "km": 123.5,
+   "name": "Le Boucheteil",
+   "lat": 45.53388,
+   "lon": 1.80886,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D16 (Route d'Egletons, Route Treignac–Egletons)"
+  },
+  {
+   "km": 124.6,
+   "name": "Côte de la Croix du Pey (cat. 3) – foot, Pont d'Auxillat (Ruisseau d'Alembre)",
+   "lat": 45.53304,
+   "lon": 1.82074,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D16 (Route d'Egletons, Route Treignac–Egletons)"
+  },
+  {
+   "km": 128.5,
+   "name": "La Croix de la Gane",
+   "lat": 45.52526,
+   "lon": 1.86145,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D16 (Route d'Egletons, Route Treignac–Egletons)"
+  },
+  {
+   "km": 129.4,
+   "name": "Côte de la Croix du Pey (cat. 3) – summit",
+   "lat": 45.51982,
+   "lon": 1.86602,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D16 (Route d'Egletons, Route Treignac–Egletons)"
+  },
+  {
+   "km": 130.0,
+   "name": "Lestards",
+   "lat": 45.5158,
+   "lon": 1.87181,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D16 (Route d'Egletons, Route Treignac–Egletons)"
+  },
+  {
+   "km": 130.7,
+   "name": "La Philipperie – D16 → D32",
+   "lat": 45.51363,
+   "lon": 1.87918,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D32 (Route de Tulle, Rue de Vezou)"
+  },
+  {
+   "km": 133.6,
+   "name": "Malagnoux (près)",
+   "lat": 45.53679,
+   "lon": 1.87236,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32 (Route de Tulle, Rue de Vezou)"
+  },
+  {
+   "km": 136.5,
+   "name": "Gourdon-Murat",
+   "lat": 45.55515,
+   "lon": 1.8903,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D32 (Route de Tulle, Rue de Vezou)"
+  },
+  {
+   "km": 137.4,
+   "name": "Chemin",
+   "lat": 45.56055,
+   "lon": 1.89354,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32 (Route de Tulle, Rue de Vezou)"
+  },
+  {
+   "km": 140.0,
+   "name": "Terracol (près)",
+   "lat": 45.57786,
+   "lon": 1.90943,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32 (Route de Tulle, Rue de Vezou)"
+  },
+  {
+   "km": 142.7,
+   "name": "Vezou",
+   "lat": 45.59626,
+   "lon": 1.92734,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D32 (Route de Tulle, Rue de Vezou)"
+  },
+  {
+   "km": 142.9,
+   "name": "Bugeat – D32 → D979",
+   "lat": 45.59738,
+   "lon": 1.92809,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D979 (Rue Nationale)"
+  },
+  {
+   "km": 145.5,
+   "name": "Gioux (près)",
+   "lat": 45.59202,
+   "lon": 1.95683,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979 (Rue Nationale)"
+  },
+  {
+   "km": 148.2,
+   "name": "Pérols-sur-Vézère (près)",
+   "lat": 45.58663,
+   "lon": 1.98623,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D979 (Rue Nationale)"
+  },
+  {
+   "km": 151.8,
+   "name": "Barsanges Haut (près)",
+   "lat": 45.57223,
+   "lon": 2.02342,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979 (Rue Nationale)"
+  },
+  {
+   "km": 155.5,
+   "name": "via D979",
+   "lat": 45.57237,
+   "lon": 2.06449,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979 (Rue Nationale)"
+  },
+  {
+   "km": 159.1,
+   "name": "Carrefour D979/VC (Mont Bessou road)",
+   "lat": 45.57791,
+   "lon": 2.1069,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 159.6,
+   "name": "Lontrade (près)",
+   "lat": 45.57588,
+   "lon": 2.11294,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 160.1,
+   "name": "Mont Bessou (cat. 4) – foot",
+   "lat": 45.57434,
+   "lon": 2.1192,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 160.6,
+   "name": "Lontrade (près)",
+   "lat": 45.5732,
+   "lon": 2.12421,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 161.0,
+   "name": "Mont Bessou (cat. 4) – summit (977 m, tower)",
+   "lat": 45.56977,
+   "lon": 2.12253,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 161.4,
+   "name": "Mont Bessou – VC junction south-west of the summit",
+   "lat": 45.56694,
+   "lon": 2.12368,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 162.1,
+   "name": "Mont Bessou – VC junction east of the summit",
+   "lat": 45.5708,
+   "lon": 2.1291,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 162.6,
+   "name": "Lontrade (près)",
+   "lat": 45.57347,
+   "lon": 2.1331,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC (Mont Bessou)"
+  },
+  {
+   "km": 163.1,
+   "name": "Carrefour VC/D36 (Route de Paris)",
+   "lat": 45.57624,
+   "lon": 2.13616,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D36 (Route de Paris)"
+  },
+  {
+   "km": 166.3,
+   "name": "La Feuillade (Meymac)",
+   "lat": 45.55075,
+   "lon": 2.14594,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D36 (Route de Paris)"
+  },
+  {
+   "km": 166.6,
+   "name": "Meymac (D36 → D36E → D979)",
+   "lat": 45.54801,
+   "lon": 2.14584,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D36E (Meymac: Rue de Panazol, Chemin du Champ Peyrat, Bd de la Garenne, Bd de la Borde)"
+  },
+  {
+   "km": 166.9,
+   "name": "Meymac – level crossing PN 64 (itinerary km 167.6)",
+   "lat": 45.54491,
+   "lon": 2.1458,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D36E (Meymac: Rue de Panazol, Chemin du Champ Peyrat, Bd de la Garenne, Bd de la Borde)"
+  },
+  {
+   "km": 167.5,
+   "name": "Croiziat, Chemin du Champ Peyrat",
+   "lat": 45.54255,
+   "lon": 2.15063,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D36E (Meymac: Rue de Panazol, Chemin du Champ Peyrat, Bd de la Garenne, Bd de la Borde)"
+  },
+  {
+   "km": 168.1,
+   "name": "Croiziat, Boulevard de la Garenne",
+   "lat": 45.53889,
+   "lon": 2.15314,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D36E (Meymac: Rue de Panazol, Chemin du Champ Peyrat, Bd de la Garenne, Bd de la Borde)"
+  },
+  {
+   "km": 168.7,
+   "name": "Meymac – Boulevard de la Borde → D979 Route des Gardes",
+   "lat": 45.53383,
+   "lon": 2.15385,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D979 (Route des Gardes, Route de Meymac)"
+  },
+  {
+   "km": 171.9,
+   "name": "Les Buigeottes",
+   "lat": 45.51474,
+   "lon": 2.17999,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D979 (Route des Gardes, Route de Meymac)"
+  },
+  {
+   "km": 176.2,
+   "name": "Saint-Angel – D979 → D1089",
+   "lat": 45.50386,
+   "lon": 2.23176,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1089 (Rue Neuve, Route d'Ussel)"
+  },
+  {
+   "km": 180.6,
+   "name": "L'Empereur",
+   "lat": 45.52024,
+   "lon": 2.27387,
+   "kind": "other",
+   "confidence": "low",
+   "road": "D1089 (Rue Neuve, Route d'Ussel)"
+  },
+  {
+   "km": 184.7,
+   "name": "Ussel (entrée) – last roundabout, Avenue Turgot",
+   "lat": 45.54066,
+   "lon": 2.29948,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Av. Turgot"
+  },
+  {
+   "km": 185.0,
+   "name": "Ussel, Avenue Turgot",
+   "lat": 45.54326,
+   "lon": 2.30189,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Av. Turgot"
+  },
+  {
+   "km": 185.3,
+   "name": "Ussel – Avenue Turgot → Avenue Thiers",
+   "lat": 45.54577,
+   "lon": 2.30448,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Av. Turgot"
+  },
+  {
+   "km": 185.5,
+   "name": "Ussel – finish, Avenue Thiers at Place Voltaire",
+   "lat": 45.54615,
+   "lon": 2.3069,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "Av. Thiers"
+  }
+ ],
+ "notes": "Official (planned) route, 185.5 km. km 0 = départ réel on the D38 (Route de Meyssac) at the southern edge of Brive-la-Gaillarde, 4.6 km after the neutral start at Malemort (avenue de la Riante Borie; neutral section not included). On race day (12 July 2026) the organisers shortened the stage to about 155 km because of a heat alert: the opening loop south of Brive (Turenne, Collonges-la-Rouge, Meyssac, Lagleygeolle) was dropped and the race rejoined the course at Lanteuil. This file keeps the official 185.5 km route. Km 0–93.6 (to Saint-Augustin): coordinates from the official route track (cyclingstage stage-9 KMLs; the first one ends at Sainte-Fortunade, the second covers Sainte-Fortunade to Saint-Augustin), map-matched onto Overture roads. Km 93.6–185.5: rebuilt from the official itinéraire horaire (road numbers at each junction) by shortest-path routing between checked junctions. Climb summits were placed at the Copernicus DEM high point on the road. Route: D38 to Monplaisir; D8 via Jugeals-Nazareth and Turenne to Turenne-Gare (PN 95); D19 to the D19/D38 junction; D38 via Collonges-la-Rouge to Meyssac; D14 over Lagleygeolle to Lanteuil; D921 via Beynat (intermediate sprint 44.9) and Lac de Miel to Les Quatre Routes; D940 via Sainte-Fortunade into Tulle; town streets and the Pont des Carmes; D23 up the Montane valley to the D23/D58 hairpin; D58 for the Côte de Naves (cat. 3, 2.3 km at 7.4 %, foot 74.7, summit 77.0; the DEM high point is 0.3 km later on the D1120 at Naves, 435 m); D1120; D53 over the Puy de Cueille to Vimbelle; D23/D32 via Neuvialle and Sarlat (Corrèze) to Saint-Augustin; D26/D32 to Chaumeil; D121 for 40 m, then the VC Route des Puys and the Suc au May road (cat. 2, 3.8 km at 7.7 %, foot 101.2, summit 105.0, DEM 897 m against 903 m official); D128E past the Hangar to the Col du Bos; D128 to the D121; D121 to Madranges; D44 to Boulou; D940 to Treignac; D16E5/D16 east (Côte de la Croix du Pey, cat. 3, 4.8 km at 6 %, foot 124.6 at the Pont d'Auxillat over the Ruisseau d'Alembre, summit 129.4, DEM 535 → 826 m); Lestards; D32 north via Gourdon-Murat to Bugeat; D979 past Pérols-sur-Vézère to the Mont Bessou turn-off (159.1); VC over Mont Bessou (cat. 4, 0.9 km at 7.3 %, foot 160.1, summit 161.0, DEM 981 m); the descent is a loop around the summit that rejoins Route de Paris at 163.1, which the itinerary numbers D36; Route de Paris south via La Feuillade into Meymac; D36E and Bd de la Garenne / Bd de la Borde; D979 Route des Gardes to Saint-Angel; D1089 via L'Empereur to the last roundabout at the Ussel town sign; Avenue Turgot (Château de la Diège on the left); finish on Avenue Thiers at Place Voltaire. Each km value is the distance along this path, calibrated piecewise to itinerary junctions: PN 95 14.7, D19/D38 20.4, Lanteuil 37.7, Les Quatre Routes 50.3, Tulle 65.7, D23/D58 74.6, D1120/D53 79.8, Chaumeil 99.9, Suc au May 105.0, Hangar 105.4, Col du Bos 106.9, D128/D121 110.9, Boulou 115.1, Pont d'Auxillat 124.6, Croix du Pey 129.4, La Philipperie 130.7, Bugeat 142.9, D979/VC 159.1, Mont Bessou 161.0, VC/D36 163.1, Saint-Angel 176.2, Ussel entrée 184.7 and the finish 185.5. Without calibration the path is 184.7 km. Hamlets and town rows are placed at their itinerary km. The track points for Monplaisir, Jugeals and Turenne fall 0.3–0.5 km after the itinerary values. Lower confidence: (1) Saint-Angel to Ussel, where the mapped D1089 is 0.9 km shorter than the itinerary (7.6 against 8.5 km). That section is stretched evenly, so L'Empereur at 180.6 may be up to ~0.8 km off. (2) Meymac: the only level crossing on the mapped route is on Route de Paris at km ≈167.0, but the itinerary lists PN 64 at 167.6. The street sequence through Meymac (D36E) is assumed. (3) Chaumeil to the Suc au May: the mapped VC is ~0.3 km shorter than the itinerary, so the Étang de Maurianges and the Site de la Fournaise are placed by km only. (4) The Mont Bessou loop: the Overture roads have no numbers, and the route was chosen because its distances match the itinerary to within 0.1 km. (5) The street sequences through Tulle (track-based) and Treignac (assumed).",
+ "sources": [
+  "https://files.appli-intramuros.com/website/uploads/41569/2026/etape_9_malemort_-_ussel.pdf",
+  "https://cdn.cyclingstage.com/images/tour-de-france/2026/stage-9-parcours.kml",
+  "https://cdn.cyclingstage.com/images/tour-de-france/2026/stage-9-ne.kml",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-9-tdf-2026/",
+  "https://www.intervals.icu/tour-de-france-2026/stage-9/",
+  "https://mesinfos.fr/nouvelle-aquitaine/en-attendant-le-tour-on-a-reconnu-les-185-km-de-l-etape-100-percent-correze-ca-va-etre-grandiose-332672.html",
+  "https://www.tourisme-hautecorreze.fr/en/?p=14535",
+  "https://en.brujulabike.com/stage-9-of-the-tour-is-shortened-due-to-the-heatwave-new-schedule-route-and-favorites/",
+  "Overture Maps 2026-10-21.0 transportation segments, divisions, rail, water; Copernicus DEM GLO-30 (climb summits)"
+ ]
+}

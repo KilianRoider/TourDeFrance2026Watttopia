@@ -1,0 +1,57 @@
+{
+ "name": "race_signs",
+ "kind": "atlas",
+ "category": "race",
+ "file": "race_signs.webp",
+ "size_px": [
+  2048,
+  2048
+ ],
+ "alpha": false,
+ "source": "procedural (scratchpad/b14/w3/tex/gen_race_textures.py)",
+ "banner_cell_px": [
+  1024,
+  128
+ ],
+ "banner_cols": 2,
+ "banners": [
+  "ARRIVÉE",
+  "DÉPART",
+  "SPRINT",
+  "GRAND PRIX DE LA MONTAGNE",
+  "25 km",
+  "20 km",
+  "15 km",
+  "10 km",
+  "5 km",
+  "4 km",
+  "3 km",
+  "2 km",
+  "DERNIER KILOMÈTRE",
+  "WATTWERK",
+  "ALLEZ ! ALLEZ ! ALLEZ !",
+  "4:27:13",
+  "500 m",
+  "300 m",
+  "200 m",
+  "150 m",
+  "100 m",
+  "50 m",
+  "ARRIVÉE",
+  "BIENVENUE"
+ ],
+ "cover_cell_px": [
+  512,
+  256
+ ],
+ "cover_origin_px": [
+  0,
+  1536
+ ],
+ "cover_cols": 4,
+ "covers": 8,
+ "size_m": [
+  8.0,
+  1.0
+ ]
+}

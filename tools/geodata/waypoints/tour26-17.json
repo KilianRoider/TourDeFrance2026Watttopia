@@ -1,0 +1,1162 @@
+{
+ "id": "tour26-17",
+ "lengthKm": 174.7,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Voglans/Viviers-du-Lac – départ réel (km 0) on the Route d'Aix-les-Bains",
+   "lat": 45.637,
+   "lon": 5.9124,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "Route d'Aix-les-Bains (D991 per hedgehog)"
+  },
+  {
+   "km": 2.2,
+   "name": "Viviers-du-Lac, Route du Lac",
+   "lat": 45.64802,
+   "lon": 5.90272,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Route du Lac"
+  },
+  {
+   "km": 3.1,
+   "name": "Viviers-du-Lac, Carrefour des Quatre Chemins → lakeside road north",
+   "lat": 45.6478,
+   "lon": 5.8934,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Les Rives du Lac / Bord du Lac"
+  },
+  {
+   "km": 5.4,
+   "name": "Lac du Bourget lakeside road (Bord du Lac)",
+   "lat": 45.66783,
+   "lon": 5.8947,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Bord du Lac"
+  },
+  {
+   "km": 7.0,
+   "name": "Aix-les-Bains, Boulevard Jean Charcot (lakeside)",
+   "lat": 45.68206,
+   "lon": 5.89453,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Boulevard Jean Charcot"
+  },
+  {
+   "km": 8.4,
+   "name": "Aix-les-Bains, Petit Port → Avenue du Petit Port",
+   "lat": 45.6935,
+   "lon": 5.89645,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Petit Port",
+   "radius": 15
+  },
+  {
+   "km": 9.6,
+   "name": "Aix-les-Bains centre, Bd de Lattre de Tassigny / Avenue du Grand Port",
+   "lat": 45.69709,
+   "lon": 5.90709,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Avenue Franklin Roosevelt"
+  },
+  {
+   "km": 10.9,
+   "name": "Aix-les-Bains, Avenue de Saint-Simond",
+   "lat": 45.70521,
+   "lon": 5.9137,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Saint-Simond"
+  },
+  {
+   "km": 12.3,
+   "name": "Aix-les-Bains (Pont-Pierre) → Route des Bauges (D911)",
+   "lat": 45.71625,
+   "lon": 5.92033,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D911 Route des Bauges"
+  },
+  {
+   "km": 14.5,
+   "name": "Route des Bauges (D911), Grésy-sur-Aix",
+   "lat": 45.72657,
+   "lon": 5.93998,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D911"
+  },
+  {
+   "km": 16.8,
+   "name": "Route des Bauges (D911)",
+   "lat": 45.73477,
+   "lon": 5.96521,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D911"
+  },
+  {
+   "km": 17.7,
+   "name": "Côte de Bassa – foot (1.5 km at 5.5 %)",
+   "lat": 45.74065,
+   "lon": 5.97103,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D911"
+  },
+  {
+   "km": 19.2,
+   "name": "Côte de Bassa (cat. 4, 481 m) – summit",
+   "lat": 45.74727,
+   "lon": 5.98694,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D911"
+  },
+  {
+   "km": 19.5,
+   "name": "Bassa (D911 Route de Bassa)",
+   "lat": 45.74837,
+   "lon": 5.98974,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D911"
+  },
+  {
+   "km": 23.2,
+   "name": "Cusy (D911)",
+   "lat": 45.7651,
+   "lon": 6.0301,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D911 Route des Bauges"
+  },
+  {
+   "km": 29.1,
+   "name": "Pont de Banges (Chéran)",
+   "lat": 45.74473,
+   "lon": 6.09428,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D911"
+  },
+  {
+   "km": 31.1,
+   "name": "Bellecombe-en-Bauges / Arith, Route d'Aix-les-Bains (D911)",
+   "lat": 45.72802,
+   "lon": 6.09571,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D911"
+  },
+  {
+   "km": 33.8,
+   "name": "Côte de Rossillon – foot (1.7 km at 5.3 %)",
+   "lat": 45.71267,
+   "lon": 6.10426,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D59"
+  },
+  {
+   "km": 34.6,
+   "name": "Lescheraines",
+   "lat": 45.70828,
+   "lon": 6.10563,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de Rossillon (D59)"
+  },
+  {
+   "km": 35.5,
+   "name": "Côte de Rossillon (cat. 4, 686 m) – summit",
+   "lat": 45.70062,
+   "lon": 6.10727,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D59 Route de Rossillon"
+  },
+  {
+   "km": 35.8,
+   "name": "Route de Rossillon (D59)",
+   "lat": 45.69947,
+   "lon": 6.1097,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D59"
+  },
+  {
+   "km": 39.7,
+   "name": "Le Cimeterêt (Aillon-le-Vieux), Route du Cimeterêt (D59)",
+   "lat": 45.67061,
+   "lon": 6.09567,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D59"
+  },
+  {
+   "km": 42.0,
+   "name": "Aillon-le-Vieux (D59 passes west of the village)",
+   "lat": 45.65166,
+   "lon": 6.08697,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D59"
+  },
+  {
+   "km": 43.8,
+   "name": "Route sur la Vy (D59)",
+   "lat": 45.63655,
+   "lon": 6.08371,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D59"
+  },
+  {
+   "km": 45.8,
+   "name": "Aillon-le-Jeune",
+   "lat": 45.6192,
+   "lon": 6.08009,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D206 Route du Col des Prés"
+  },
+  {
+   "km": 46.1,
+   "name": "Col des Prés – foot (3.5 km at 6.8 %)",
+   "lat": 45.61664,
+   "lon": 6.07954,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 49.6,
+   "name": "Col des Prés (cat. 3, 1135 m) – summit",
+   "lat": 45.59611,
+   "lon": 6.06004,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D206 Route du Col des Prés"
+  },
+  {
+   "km": 52.5,
+   "name": "D206 descent from the Col des Prés towards Thoiry",
+   "lat": 45.57925,
+   "lon": 6.05382,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 54.0,
+   "name": "D206 descent, hairpins above Thoiry",
+   "lat": 45.58486,
+   "lon": 6.04074,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 55.2,
+   "name": "D206 loop above Thoiry",
+   "lat": 45.58505,
+   "lon": 6.03615,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 55.7,
+   "name": "Thoiry, Route du Col des Prés (D206)",
+   "lat": 45.58259,
+   "lon": 6.03646,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D206"
+  },
+  {
+   "km": 56.1,
+   "name": "D206 below Thoiry towards the Leysse",
+   "lat": 45.58438,
+   "lon": 6.03284,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 57.2,
+   "name": "D206 hairpins down to the Leysse",
+   "lat": 45.59191,
+   "lon": 6.02494,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 58.4,
+   "name": "Côte de Saint-Jean-d'Arvey – foot (1.1 km at 5.7 %), Leysse bridge",
+   "lat": 45.59006,
+   "lon": 6.01966,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D206"
+  },
+  {
+   "km": 59.5,
+   "name": "Côte de Saint-Jean-d'Arvey (cat. 4, ~610 m) – summit",
+   "lat": 45.58822,
+   "lon": 6.01204,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D206"
+  },
+  {
+   "km": 60.8,
+   "name": "Saint-Jean-d'Arvey, D206 → D912 Route des Bauges",
+   "lat": 45.58602,
+   "lon": 5.9958,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D912 Route des Bauges"
+  },
+  {
+   "km": 62.2,
+   "name": "D912 Route des Bauges (bend below Saint-Jean-d'Arvey)",
+   "lat": 45.58436,
+   "lon": 5.98175,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 63.1,
+   "name": "D912 hairpins above Saint-Alban-Leysse",
+   "lat": 45.58507,
+   "lon": 5.97764,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 64.2,
+   "name": "D912 Route de la Féclaz, hairpins above Saint-Alban-Leysse",
+   "lat": 45.58009,
+   "lon": 5.97103,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 64.9,
+   "name": "Saint-Alban-Leysse, roundabout Route de la Féclaz (D912)",
+   "lat": 45.57744,
+   "lon": 5.96553,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D912 Route de Plainpalais"
+  },
+  {
+   "km": 65.6,
+   "name": "Saint-Alban-Leysse, roundabout Route de Plainpalais",
+   "lat": 45.57608,
+   "lon": 5.95917,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D912"
+  },
+  {
+   "km": 66.2,
+   "name": "Saint-Alban-Leysse, Route de Plainpalais → Avenue de Chambéry",
+   "lat": 45.5737,
+   "lon": 5.95225,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Chambéry",
+   "radius": 15
+  },
+  {
+   "km": 67.1,
+   "name": "Chambéry (Bissy side), Route de Challes (D1006) towards N201 interchange 18",
+   "lat": 45.57009,
+   "lon": 5.94691,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1006 Route de Challes"
+  },
+  {
+   "km": 68.2,
+   "name": "Chambéry, roundabout Faubourg Montmélian → Avenue Marius Berroir",
+   "lat": 45.5662,
+   "lon": 5.9342,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue Marius Berroir"
+  },
+  {
+   "km": 68.9,
+   "name": "Chambéry, Rond-point Jean-Jacques Rousseau",
+   "lat": 45.5634,
+   "lon": 5.9282,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Rue André Jacques"
+  },
+  {
+   "km": 69.2,
+   "name": "Chambéry, Rue André Jacques",
+   "lat": 45.56258,
+   "lon": 5.92548,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue André Jacques"
+  },
+  {
+   "km": 69.5,
+   "name": "Chambéry, roundabout Rue André Jacques / Avenue de Lyon",
+   "lat": 45.56349,
+   "lon": 5.92255,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Lyon"
+  },
+  {
+   "km": 69.8,
+   "name": "Chambéry, Avenue de Lyon",
+   "lat": 45.56379,
+   "lon": 5.91936,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Lyon"
+  },
+  {
+   "km": 70.2,
+   "name": "Chambéry, Place Lucien Biset roundabout",
+   "lat": 45.564,
+   "lon": 5.915,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue de Lyon"
+  },
+  {
+   "km": 70.8,
+   "name": "Chambéry, Avenue de Lyon (west)",
+   "lat": 45.56289,
+   "lon": 5.90856,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de Lyon"
+  },
+  {
+   "km": 71.3,
+   "name": "Chambéry, Giratoire de la Favorite → Avenue Robert Badinter (D1006)",
+   "lat": 45.56355,
+   "lon": 5.90329,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1006 Avenue Robert Badinter"
+  },
+  {
+   "km": 72.2,
+   "name": "Cognin, Avenue Robert Badinter (D1006)",
+   "lat": 45.55833,
+   "lon": 5.89545,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 73.1,
+   "name": "Cognin, Pont Saint-Charles → Route de Lyon (D1006)",
+   "lat": 45.5512,
+   "lon": 5.89051,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D1006 Route de Lyon"
+  },
+  {
+   "km": 74.6,
+   "name": "Route de Lyon (D1006), Saint-Cassin",
+   "lat": 45.5421,
+   "lon": 5.87809,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 76.1,
+   "name": "Route de Lyon (D1006), Vimines",
+   "lat": 45.53318,
+   "lon": 5.8644,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 78.3,
+   "name": "Route de Lyon (D1006)",
+   "lat": 45.51637,
+   "lon": 5.85261,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 80.1,
+   "name": "Saint-Thibaud-de-Couz (D1006 Route de Chartreuse)",
+   "lat": 45.50173,
+   "lon": 5.84433,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 81.9,
+   "name": "Route de Chartreuse (D1006), climb to Col de Couz",
+   "lat": 45.48802,
+   "lon": 5.8354,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 84.0,
+   "name": "Col de Couz (626 m, uncategorised)",
+   "lat": 45.47287,
+   "lon": 5.82217,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D1006"
+  },
+  {
+   "km": 85.1,
+   "name": "Saint-Jean-de-Couz, Route du Cheval Blanc (D1006)",
+   "lat": 45.46532,
+   "lon": 5.81436,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1006"
+  },
+  {
+   "km": 87.4,
+   "name": "D1006 descent towards the Grottes des Échelles",
+   "lat": 45.45429,
+   "lon": 5.79517,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 89.1,
+   "name": "Saint-Christophe-la-Grotte (D1006, tunnel des Échelles)",
+   "lat": 45.45496,
+   "lon": 5.77659,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1006"
+  },
+  {
+   "km": 91.6,
+   "name": "Les Échelles, Rue des Commandeurs (D1006)",
+   "lat": 45.43869,
+   "lon": 5.75707,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1006 Rue Jean-Jacques Rousseau"
+  },
+  {
+   "km": 92.8,
+   "name": "Les Échelles, Rue Jean-Jacques Rousseau (D1006)",
+   "lat": 45.44114,
+   "lon": 5.74689,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 94.8,
+   "name": "D1006 Route de Lyon north of Les Échelles",
+   "lat": 45.45662,
+   "lon": 5.73607,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 96.6,
+   "name": "Chailles (Saint-Franc), Gorges de Chailles (D1006)",
+   "lat": 45.47267,
+   "lon": 5.73747,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1006 Route des Gorges"
+  },
+  {
+   "km": 100.7,
+   "name": "Saint-Béron (D1006)",
+   "lat": 45.50085,
+   "lon": 5.72611,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1006 Route de Chambéry"
+  },
+  {
+   "km": 102.4,
+   "name": "D1006 Route de Chambéry, Guiers valley",
+   "lat": 45.51123,
+   "lon": 5.71079,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 104.4,
+   "name": "D1006 Route des Échelles",
+   "lat": 45.52466,
+   "lon": 5.69535,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1006"
+  },
+  {
+   "km": 105.8,
+   "name": "Le Pont-de-Beauvoisin – D1006 roundabout (Av. du Baron de Crousaz), left onto the D82 over the Guiers",
+   "lat": 45.5313,
+   "lon": 5.6812,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D82"
+  },
+  {
+   "km": 106.9,
+   "name": "Le Pont-de-Beauvoisin (Isère), D82 Avenue des Trois Saints",
+   "lat": 45.5222,
+   "lon": 5.68298,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D82"
+  },
+  {
+   "km": 107.8,
+   "name": "D82 Route des Éteppes",
+   "lat": 45.51609,
+   "lon": 5.6901,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D82"
+  },
+  {
+   "km": 109.0,
+   "name": "D82 Route de la Chartreuse",
+   "lat": 45.50813,
+   "lon": 5.70009,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D82"
+  },
+  {
+   "km": 109.7,
+   "name": "Saint-Albin-de-Vaulserre",
+   "lat": 45.50304,
+   "lon": 5.70451,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de la Valdaine"
+  },
+  {
+   "km": 111.0,
+   "name": "Route de la Valdaine → Route de Saint-Bueil",
+   "lat": 45.49267,
+   "lon": 5.70619,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Saint-Bueil"
+  },
+  {
+   "km": 112.9,
+   "name": "Saint-Bueil",
+   "lat": 45.48018,
+   "lon": 5.6905,
+   "kind": "town",
+   "confidence": "high",
+   "road": "La Grand'Route"
+  },
+  {
+   "km": 115.0,
+   "name": "La Grand'Route (Valdaine)",
+   "lat": 45.47271,
+   "lon": 5.66771,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "La Grand'Route"
+  },
+  {
+   "km": 116.7,
+   "name": "Route de Savoie",
+   "lat": 45.46463,
+   "lon": 5.64923,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Savoie"
+  },
+  {
+   "km": 118.2,
+   "name": "Saint-Geoire-en-Valdaine (Route de Savoie → Route de Chartreuse, below the village)",
+   "lat": 45.45447,
+   "lon": 5.63799,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de Chartreuse"
+  },
+  {
+   "km": 118.9,
+   "name": "Route de Chartreuse",
+   "lat": 45.44971,
+   "lon": 5.63225,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Chartreuse"
+  },
+  {
+   "km": 120.3,
+   "name": "Route de Chartreuse → Route de Saint-Geoire",
+   "lat": 45.44269,
+   "lon": 5.61856,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Saint-Geoire"
+  },
+  {
+   "km": 122.2,
+   "name": "Massieu",
+   "lat": 45.43906,
+   "lon": 5.59522,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de Chirens"
+  },
+  {
+   "km": 123.7,
+   "name": "Route du Val d'Ainan",
+   "lat": 45.43502,
+   "lon": 5.57708,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route du Val d'Ainan"
+  },
+  {
+   "km": 124.7,
+   "name": "Chirens (Le Marais), Route du Val d'Ainan → D1075 Route du Marais",
+   "lat": 45.43051,
+   "lon": 5.5672,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1075 Route du Marais"
+  },
+  {
+   "km": 125.6,
+   "name": "D1075 Route du Marais",
+   "lat": 45.42448,
+   "lon": 5.5596,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1075"
+  },
+  {
+   "km": 127.2,
+   "name": "Chirens",
+   "lat": 45.41378,
+   "lon": 5.55658,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de Bonpertuis"
+  },
+  {
+   "km": 128.6,
+   "name": "Route de Bonpertuis",
+   "lat": 45.40393,
+   "lon": 5.54942,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Bonpertuis"
+  },
+  {
+   "km": 129.5,
+   "name": "Route de Bonpertuis → Route de Rives (north)",
+   "lat": 45.40032,
+   "lon": 5.54055,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Route de Rives"
+  },
+  {
+   "km": 131.3,
+   "name": "Route de Rives",
+   "lat": 45.40886,
+   "lon": 5.53299,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Rives"
+  },
+  {
+   "km": 133.0,
+   "name": "Charavines (south), Rue Principale",
+   "lat": 45.41965,
+   "lon": 5.5193,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Rue Principale"
+  },
+  {
+   "km": 134.0,
+   "name": "Charavines",
+   "lat": 45.42752,
+   "lon": 5.51553,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Rue Principale"
+  },
+  {
+   "km": 135.0,
+   "name": "Charavines, Rue Principale (north)",
+   "lat": 45.43583,
+   "lon": 5.51389,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Vers Ars"
+  },
+  {
+   "km": 135.8,
+   "name": "Vers Ars (Villages du Lac de Paladru), Route de Vers Ars",
+   "lat": 45.44229,
+   "lon": 5.51441,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Route de Vers Ars"
+  },
+  {
+   "km": 136.7,
+   "name": "Le Pin junction, Route de Vers Ars → Route des Plaines",
+   "lat": 45.44913,
+   "lon": 5.51249,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route des Plaines"
+  },
+  {
+   "km": 138.6,
+   "name": "Route des Plaines",
+   "lat": 45.44018,
+   "lon": 5.49411,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route des Plaines"
+  },
+  {
+   "km": 140.2,
+   "name": "Route des Plaines",
+   "lat": 45.42919,
+   "lon": 5.48139,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route des Plaines"
+  },
+  {
+   "km": 141.1,
+   "name": "Oyeu, Route des Plaines",
+   "lat": 45.4265,
+   "lon": 5.47174,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Route des Plaines"
+  },
+  {
+   "km": 142.4,
+   "name": "Route des Plaines → road beside the A48 (Apprieu)",
+   "lat": 45.41902,
+   "lon": 5.46139,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "road beside the A48 (D520 per hedgehog)"
+  },
+  {
+   "km": 143.6,
+   "name": "Road beside the A48 (Apprieu)",
+   "lat": 45.40916,
+   "lon": 5.46457,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D520 per hedgehog"
+  },
+  {
+   "km": 144.7,
+   "name": "Junction with Route du Tram (D73a per hedgehog) → west",
+   "lat": 45.40053,
+   "lon": 5.46549,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Route du Tram"
+  },
+  {
+   "km": 146.1,
+   "name": "Colombe (Route du Tram)",
+   "lat": 45.39769,
+   "lon": 5.4491,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Route du Tram"
+  },
+  {
+   "km": 147.5,
+   "name": "Intermediate sprint Colombe (km 147.5) – Route du Tram, west part of Colombe towards Le Grand-Lemps",
+   "lat": 45.39747,
+   "lon": 5.43223,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "Route du Tram"
+  },
+  {
+   "km": 148.5,
+   "name": "Le Grand-Lemps",
+   "lat": 45.39813,
+   "lon": 5.41968,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "Route du Vercors"
+  },
+  {
+   "km": 150.8,
+   "name": "Route du Vercors (D73b per hedgehog)",
+   "lat": 45.37906,
+   "lon": 5.42598,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D73b"
+  },
+  {
+   "km": 152.9,
+   "name": "Izeaux, Avenue de la Gare → D1085",
+   "lat": 45.36178,
+   "lon": 5.43396,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1085"
+  },
+  {
+   "km": 154.5,
+   "name": "D1085",
+   "lat": 45.35438,
+   "lon": 5.45106,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1085"
+  },
+  {
+   "km": 156.6,
+   "name": "Beaucroissant (D1085)",
+   "lat": 45.34649,
+   "lon": 5.47496,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1085"
+  },
+  {
+   "km": 159.1,
+   "name": "Rives (D1085)",
+   "lat": 45.34575,
+   "lon": 5.50575,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1085"
+  },
+  {
+   "km": 160.9,
+   "name": "Charnècles (D1085)",
+   "lat": 45.34183,
+   "lon": 5.52727,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D1085"
+  },
+  {
+   "km": 162.7,
+   "name": "D1085 towards Moirans",
+   "lat": 45.33671,
+   "lon": 5.54784,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1085"
+  },
+  {
+   "km": 164.5,
+   "name": "Moirans (D1085)",
+   "lat": 45.33053,
+   "lon": 5.568,
+   "kind": "town",
+   "confidence": "high",
+   "road": "Avenue Marius Chorot"
+  },
+  {
+   "km": 165.4,
+   "name": "Moirans, Avenue Marius Chorot",
+   "lat": 45.32652,
+   "lon": 5.578,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue Marius Chorot"
+  },
+  {
+   "km": 166.2,
+   "name": "Moirans → D120 (Chemin de l'Archat)",
+   "lat": 45.32731,
+   "lon": 5.58756,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D120"
+  },
+  {
+   "km": 167.1,
+   "name": "D120 over the A48 (Saint-Jean-de-Moirans)",
+   "lat": 45.33023,
+   "lon": 5.59751,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D120"
+  },
+  {
+   "km": 168.0,
+   "name": "D120 Route Départementale 120 (La Buisse)",
+   "lat": 45.33174,
+   "lon": 5.60805,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D120"
+  },
+  {
+   "km": 168.4,
+   "name": "La Buisse – D120 roundabout, left (north) on the primary road",
+   "lat": 45.33148,
+   "lon": 5.6125,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Chemin de Pré Chapelle"
+  },
+  {
+   "km": 169.3,
+   "name": "La Buisse – junction with the D1075 (Route de Voiron / Avenue du Vercors)",
+   "lat": 45.3379,
+   "lon": 5.61867,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1075 Avenue du Vercors"
+  },
+  {
+   "km": 170.3,
+   "name": "D1075 Avenue du Vercors (climb of La Commanderie)",
+   "lat": 45.34318,
+   "lon": 5.60859,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1075"
+  },
+  {
+   "km": 171.1,
+   "name": "D1075 Avenue Abel Rossignol (La Commanderie)",
+   "lat": 45.34588,
+   "lon": 5.59931,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1075"
+  },
+  {
+   "km": 172.1,
+   "name": "La Commanderie (top of the last climb, Avenue Abel Rossignol)",
+   "lat": 45.35272,
+   "lon": 5.59725,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D1075"
+  },
+  {
+   "km": 172.4,
+   "name": "Voiron, Route de Grenoble",
+   "lat": 45.3551,
+   "lon": 5.59861,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de Grenoble"
+  },
+  {
+   "km": 173.2,
+   "name": "Voiron, left onto Boulevard Denfert-Rochereau",
+   "lat": 45.36128,
+   "lon": 5.59859,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Boulevard Denfert-Rochereau"
+  },
+  {
+   "km": 173.6,
+   "name": "Voiron, right onto Boulevard Franklin Roosevelt",
+   "lat": 45.36016,
+   "lon": 5.59478,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Boulevard Franklin Roosevelt"
+  },
+  {
+   "km": 174.0,
+   "name": "Voiron, left onto Avenue François Mitterrand",
+   "lat": 45.36337,
+   "lon": 5.5945,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Avenue François Mitterrand"
+  },
+  {
+   "km": 174.3,
+   "name": "Voiron, right onto Cours Sénozan (final 400 m)",
+   "lat": 45.36345,
+   "lon": 5.59084,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Cours Sénozan"
+  },
+  {
+   "km": 174.7,
+   "name": "Voiron – finish, Cours Sénozan (in front of the church)",
+   "lat": 45.367,
+   "lon": 5.59115,
+   "kind": "finish",
+   "confidence": "medium"
+  }
+ ],
+ "notes": "Flat/hilly stage Chambéry – Voiron, 174.7 km. Neutral start from the Fontaine des Éléphants in Chambéry north along Avenue/Route d'Aix-les-Bains (13:20); km 0 (départ réel) is on the Route d'Aix-les-Bains (D991 per hedgehog) just short of Viviers-du-Lac – placed at 45.6370,5.9124, about 1.7 km before the turn onto the Route du Lac; this position makes the routed distances to the Côte de Bassa (19.2), Côte de Rossillon (35.5) and Col des Prés (49.6) summits match the official km within 0.1 km, but the exact spot is not published (±1 km). Course: Viviers-du-Lac, Route du Lac to the lakeside road (Les Rives du Lac, Bord du Lac, Bd Jean Charcot) into Aix-les-Bains (Petit Port, Bd de Lattre de Tassigny, Av. Franklin Roosevelt, Av. de Saint-Simond, Route de Pont-Pierre), D911 Route des Bauges via Grésy-sur-Aix and the Côte de Bassa to Cusy, Pont de Banges, Lescheraines; D59 (Route de Rossillon – Côte de Rossillon, Route du Cimeterêt past Le Cimeterêt/Aillon-le-Vieux, Route sur la Vy) to Aillon-le-Jeune; D206 over the Col des Prés, Thoiry, Leysse bridge and the Côte de Saint-Jean-d'Arvey; D912 down to Saint-Alban-Leysse; Chambéry second passage (Route de Challes through the closed N201 interchange 18, Faubourg Montmélian, Av. Marius Berroir, rond-point J.-J. Rousseau, Rue André Jacques, Avenue de Lyon, Place Lucien Biset, Giratoire de la Favorite) and D1006 via Cognin, Saint-Thibaud-de-Couz, Col de Couz, Saint-Jean-de-Couz, Saint-Christophe-la-Grotte, Les Échelles, Gorges de Chailles, Saint-Béron to the D1006 roundabout at Le Pont-de-Beauvoisin; D82 over the Guiers into Isère (Av. des Trois Saints, Route des Éteppes, Route de la Chartreuse) to Saint-Albin-de-Vaulserre; Route de la Valdaine/Route de Saint-Bueil, Saint-Bueil, La Grand'Route, Route de Savoie, Saint-Geoire-en-Valdaine, Route de Chartreuse/Route de Saint-Geoire, Massieu, Route du Val d'Ainan, D1075 to Chirens; Route de Bonpertuis and Route de Rives to Charavines; Route de Vers Ars, Route des Plaines past Oyeu, the road beside the A48 and Route du Tram to the Colombe sprint (147.5); Le Grand-Lemps, Route du Vercors/Avenue de la Gare (Izeaux) to the D1085, Beaucroissant, Rives, Charnècles, Moirans (Av. Marius Chorot), D120 over the A48 to La Buisse, D1075 Avenue du Vercors/Avenue Abel Rossignol (uncategorised climb of La Commanderie, top ≈ km 171.9–172.4) and Route de Grenoble into Voiron; finale: left Bd Denfert-Rochereau, right Bd Franklin Roosevelt, left Av. François Mitterrand, right Cours Sénozan; finish line on Cours Sénozan in front of the church (400 m final straight; line placed 400 m after the last corner, medium). Km: routed distance on Overture roads (total 175.17 km), piecewise-scaled between official anchors: km 0, Bassa 19.2, Rossillon 35.5, Col des Prés 49.6 and Saint-Jean-d'Arvey 59.5 summits (located on the road with the Copernicus 30 m DEM: 479/686/1138/610 m), Col de Couz 84.0 (top of the D1006 at the St-Thibaud/St-Jean-de-Couz boundary), Saint-Béron 100.7, finish 174.7. The Colombe sprint (official km 147.5) is then placed at km 147.5 on Route du Tram ~1.4 km west of Colombe centre: with the sprint at the village centre the official 27.2 km from the sprint to the finish would be shorter than the straight-line chain through Le Grand-Lemps, Izeaux, Beaucroissant, Rives, Moirans and La Buisse, so the line must lie west of the centre (or the itinerary km is approximate) – medium. Official town km (Voiron magazine itinerary, re-paired with cyclingstage climb/sprint km) agree within 0.5 km at Pont de Banges, Lescheraines, Thoiry, Cognin, Saint-Thibaud, Les Échelles, Saint-Béron, Saint-Albin, Beaucroissant, Rives, La Buisse (those town points = high); other town points differ by 0.7–1.8 km, probably because the itinerary uses commune entries rather than centres (kept medium). LOW-CONFIDENCE stretches: (1) km 0–12: exact km 0 and the streets through Aix-les-Bains (official Viviers 1.2 / Aix 8.2 are 1.0–1.4 km earlier than on this route); (2) km 64–71: Chambéry second passage (street sequence reconstructed from closure notices: Avenue de Lyon + Lucien Biset closed, interchange 18 closed); (3) km 125–136: Chirens – Charavines via Route de Bonpertuis/Route de Rives chosen because it matches the official 6.6 km (the shorter Route de Clermont would be 4.5 km); (4) km 141–147: Oyeu – Colombe on the road beside the A48 (hedgehog: D17, D520 beside the motorway, D73a) – Overture has no road numbers here; (5) km 164–170: Moirans – D120 – La Buisse junction (D120 per hedgehog; the race may pass La Buisse village instead of the bypass, ±0.5 km). Overture roads here have almost no D-numbers; numbers given are from hedgehog/cyclingstage/Savoie closure orders (D911, D59, D206, D912, D1006) or Overture refs (D1006, D1085, D120). Legs flagged by the 60 % straight-line rule (km 54–59 and 62–64) are hairpin descents/climbs of the D206 and D912; extra points were added there. Points before km 17.7 are medium because their km depends on the uncertain km 0 position. [geodata G: Aix-les-Bains Petit Port: the point sat 40 m north of the turn onto the Avenue du Petit Port, so the route rode 50 m on and came back; moved to the junction] [geodata G: Saint-Alban-Leysse: the Avenue de Chambéry point sat 200 m east of where the Route de Plainpalais comes down onto it, so the route turned back east to it, crossed to the D1006 and came back west (a 1.3 km loop); moved to the junction, 0.6 km from the Plainpalais roundabout as in the itinerary (65.6 -> 66.2)]",
+ "sources": [
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-17-tdf-2026/",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-17-climbs.htm",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-17-times.htm",
+  "https://www.voiron.fr/uploads/Epublication/epb_file/e9/694_919_AVOIRON_TDF-HORS-SERIE.pdf_web.pdf",
+  "https://hedgehogcycling.co.uk/stage-17-tour-de-france-2026.html",
+  "https://www.savoie.fr/web/sw_179160/tour-de-france-2026-restrictions-de-circulation-du-22-au-25-juillet-2026-pdf-202-ko",
+  "https://www.isere.gouv.fr/Actualites/Espace-presse/Dossiers-de-presse/Le-Tour-de-France-2026-en-Isere",
+  "https://www.ledicodutour.com/etapes/etapes_par_annees/etapes_2026/etapes_2026_17.html",
+  "https://jacob-bellecombette.fr/wp-content/uploads/2026/07/tdf-flyer-circulation-ville-de-chambery.pdf",
+  "https://info.fr/tour-de-france-2026-chambery-boule-routes-coupees-etape-voiron-22/",
+  "https://en.tourisme.paysvoironnais.com/infos-pratiques-tour-de-france/",
+  "https://www.voiron.fr/4474-le-tour-de-france-2026.htm",
+  "https://www.radsport-news.com/sport/sportnews_vorschau_145967.htm",
+  "https://www.tour-magazin.de/en/professional-cycling/tour-de-france/stages-and-altitude-profiles/2026-tour-de-france-preview-of-stage-17-only-for-the-toughest-sprinters/",
+  "https://radsport-seite.de/fileadmin/user_upload/planer/tour-2026-planer.pdf",
+  "https://explore.chamberymontagnes.com/en/routes/stage-of-the-2026-tour-de-france",
+  "https://www.intervals.icu/tour-de-france-2026/stage-17/",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions; Copernicus DEM GLO-30"
+ ]
+}

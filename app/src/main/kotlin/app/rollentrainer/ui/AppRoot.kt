@@ -32,7 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
@@ -42,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.rollentrainer.AppContainer
+import app.rollentrainer.debug.DemoMode
 import app.rollentrainer.ui.screens.EditorScreen
 import app.rollentrainer.ui.screens.HistoryScreen
 import app.rollentrainer.ui.screens.RideDetailScreen
@@ -52,6 +53,7 @@ import app.rollentrainer.ui.screens.SpinningScreen
 import app.rollentrainer.ui.screens.SettingsScreen
 import app.rollentrainer.ui.screens.WorkoutsScreen
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 enum class Tab(val title: String, val icon: ImageVector) {
     WORKOUTS("Trainings", Icons.Outlined.DirectionsBike),
@@ -78,6 +80,35 @@ class Navigator {
     }
 }
 
+/** Keeps the back stack when the device is turned (the activity is recreated), one string per screen. */
+private val NavigatorSaver = listSaver<Navigator, String>(
+    save = { nav -> nav.stack.map { it.key() } },
+    restore = { keys ->
+        Navigator().apply {
+            val screens = keys.mapNotNull { screenOf(it) }
+            if (screens.isNotEmpty()) {
+                stack.clear()
+                stack.addAll(screens)
+            }
+        }
+    },
+)
+
+private fun Screen.key(): String = when (this) {
+    is Screen.Main -> "main:${tab.name}"
+    is Screen.Editor -> "editor:$copy:${workoutId.orEmpty()}"
+    is Screen.RideDetail -> "ride:$rideId"
+}
+
+private fun screenOf(key: String): Screen? = when {
+    key.startsWith("main:") -> Tab.entries.firstOrNull { it.name == key.removePrefix("main:") }?.let { Screen.Main(it) }
+    key.startsWith("editor:") -> key.removePrefix("editor:").let { rest ->
+        Screen.Editor(rest.substringAfter(':').ifEmpty { null }, copy = rest.substringBefore(':') == "true")
+    }
+    key.startsWith("ride:") -> Screen.RideDetail(key.removePrefix("ride:"))
+    else -> null
+}
+
 val LocalWide = staticCompositionLocalOf { false }
 
 /** Bluetooth permissions differ before and after Android 12. */
@@ -88,8 +119,8 @@ fun blePermissions(): Array<String> = if (Build.VERSION.SDK_INT >= 31) {
 }
 
 @Composable
-fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
-    val nav = remember { Navigator() }
+fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>, demoScene: StateFlow<DemoMode.Scene?>) {
+    val nav = rememberSaveable(saver = NavigatorSaver) { Navigator() }
     val ride by container.session.state.collectAsStateWithLifecycle()
     val settings by container.settings.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -103,10 +134,19 @@ fun AppRoot(container: AppContainer, stravaMessage: MutableStateFlow<String?>) {
         if (result.values.all { it }) container.sensors.connectSaved()
     }
     LaunchedEffect(Unit) {
+        // A demo scene (CI screenshots) never asks: the workflow grants the permissions on install.
+        if (DemoMode.active) return@LaunchedEffect
         val needed = blePermissions().toMutableList()
         if (Build.VERSION.SDK_INT >= 33) needed += Manifest.permission.POST_NOTIFICATIONS
         val missing = needed.filter { ContextCompat.checkSelfPermission(context, it) != PackageManager.PERMISSION_GRANTED }
         if (missing.isEmpty()) container.sensors.connectSaved() else permissionLauncher.launch(missing.toTypedArray())
+    }
+    // A demo scene opens its screen directly.
+    val demo by demoScene.collectAsStateWithLifecycle()
+    LaunchedEffect(demo) {
+        val d = demo ?: return@LaunchedEffect
+        d.tab?.let { nav.tab(it) }
+        d.screen?.let { nav.push(it) }
     }
 
     // A running ride takes over the whole screen until it ends.

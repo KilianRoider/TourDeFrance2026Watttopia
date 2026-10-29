@@ -1,0 +1,167 @@
+{
+ "id": "loze",
+ "lengthKm": 10.5,
+ "notes": "Méribel side, the Tour route of 2020/2023/2025 (Brides-les-Bains – Les Allues – Méribel – voie verte). Route through Méribel per the resort's Tour road-closure notice: D90 Route de Méribel from Mussillon to Rue des Jeux Olympiques / Rue Albert Gacon, Rue des Jeux Olympiques, Rue des Glaciers, Route de l'Altiport from the school (Route de l'Agentila junction) up to the Route du Belvédère, Route du Belvédère to the entrance of the voie verte, then the car-free cycle road (Overture: cycleway, then 'Route du Col de la Loze' unclassified) to the col (2304 m, where the Méribel and Courchevel branches meet; Wikipedia's rounded coordinate 45.4050, 6.6019 lies ~300 m before it on the same road). The waypoints name 'cycleway' as road so the pipeline unlocks the cycle path. km 0: the app's 10.5 km profile only fits a foot 10.5 km before the col on this route, i.e. on the D90 at Mussillon at the north entrance of Méribel (GLO-30 ~1410 m, app 1435 m): from there the routed km 4-10.5 elevations match the app profile within ~10 m and the voie verte begins at ~3.35 km (app landmark 'Beginn des Radwegs' 3.4 km). Climbfinder's 'from Méribel' version starts 0.3 km later in the centre (10.2 km, 870 m). Routed on Overture 10.42 km; km values scaled by 10.5/10.422. The Méribel Altiport itself (~45.408, 6.581) is not on the route; the voie verte turns away below it.",
+ "sources": [
+  "https://www.meribel.net/le-tour-de-france-a-meribel-et-col-de-la-loze",
+  "https://www.meribel.net/les-sites-a-decouvrir/col-de-la-loze/",
+  "https://climbfinder.com/en/climbs/col-de-la-loze-meribel",
+  "https://en.wikipedia.org/wiki/Col_de_la_Loze",
+  "Overture Maps 2026-10-21.0 transportation segments (Route de Méribel, Rue des Jeux Olympiques, Rue des Glaciers, Route de l'Altiport, Route du Belvédère, Route du Col de la Loze cycleway) and divisions (Mussillon, Meribel-les-Allues)"
+ ],
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Méribel (Mussillon) – foot on the D90 Route de Méribel at the north entrance of the resort (~1410-1435 m)",
+   "lat": 45.40227,
+   "lon": 6.56438,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D90"
+  },
+  {
+   "km": 0.48,
+   "name": "Méribel centre – turn off the Route de Méribel into Rue des Jeux Olympiques",
+   "lat": 45.39812,
+   "lon": 6.56571,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Rue des Jeux Olympiques"
+  },
+  {
+   "km": 0.63,
+   "name": "Méribel – hairpin into Rue des Glaciers",
+   "lat": 45.39691,
+   "lon": 6.56612,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Rue des Glaciers"
+  },
+  {
+   "km": 1.12,
+   "name": "Méribel – Route de l'Altiport at the school / Route de l'Agentila junction",
+   "lat": 45.40086,
+   "lon": 6.56802,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route de l'Altiport"
+  },
+  {
+   "km": 1.45,
+   "name": "Route de l'Altiport hairpin",
+   "lat": 45.40365,
+   "lon": 6.56889,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de l'Altiport"
+  },
+  {
+   "km": 2.16,
+   "name": "Route de l'Altiport hairpin (not the parallel Route des Chalets)",
+   "lat": 45.40201,
+   "lon": 6.57216,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de l'Altiport"
+  },
+  {
+   "km": 2.73,
+   "name": "Route de l'Altiport hairpin",
+   "lat": 45.39995,
+   "lon": 6.57325,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Route de l'Altiport"
+  },
+  {
+   "km": 3.18,
+   "name": "Route de l'Altiport / Route du Belvédère junction (Altiport road continues north, race turns right)",
+   "lat": 45.39769,
+   "lon": 6.57517,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route du Belvédère"
+  },
+  {
+   "km": 3.33,
+   "name": "Entrance of the car-free voie verte to the Col de la Loze (off the Route du Belvédère)",
+   "lat": 45.39644,
+   "lon": 6.5749,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 4.35,
+   "name": "Voie verte – hairpin below the Altiport (~1720 m)",
+   "lat": 45.40184,
+   "lon": 6.57619,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 5.01,
+   "name": "Route du Col de la Loze – hairpin",
+   "lat": 45.39637,
+   "lon": 6.58044,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 5.84,
+   "name": "Route du Col de la Loze – steep forest hairpins",
+   "lat": 45.39654,
+   "lon": 6.58222,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 6.95,
+   "name": "Route du Col de la Loze – hairpin",
+   "lat": 45.39257,
+   "lon": 6.58639,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 8.02,
+   "name": "Route du Col de la Loze – southernmost hairpin under the lifts",
+   "lat": 45.38898,
+   "lon": 6.58918,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 9.02,
+   "name": "Route du Col de la Loze – final traverse",
+   "lat": 45.39537,
+   "lon": 6.59666,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 10.02,
+   "name": "Route du Col de la Loze – last kilometre",
+   "lat": 45.4037,
+   "lon": 6.60077,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  },
+  {
+   "km": 10.5,
+   "name": "Col de la Loze summit (2304 m)",
+   "lat": 45.40762,
+   "lon": 6.60265,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "cycleway (voie verte du Col de la Loze)"
+  }
+ ]
+}

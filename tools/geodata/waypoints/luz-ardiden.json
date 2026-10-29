@@ -1,0 +1,256 @@
+{
+ "id": "luz-ardiden",
+ "lengthKm": 13.1,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Saint-Sauveur (Luz-Saint-Sauveur) – junction D921 Av. de l'Impératrice Eugénie / D12 Route de l'Ardiden, foot of the climb (~712 m)",
+   "lat": 42.86661,
+   "lon": -0.01149,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 0.79,
+   "name": "D12 Route de l'Ardiden above Saint-Sauveur",
+   "lat": 42.87219,
+   "lon": -0.01718,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 1.53,
+   "name": "D12 below Sassis",
+   "lat": 42.87813,
+   "lon": -0.02043,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 2.27,
+   "name": "Hairpin below Sazos (~840 m)",
+   "lat": 42.88079,
+   "lon": -0.02285,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 2.56,
+   "name": "Hairpin (~860 m)",
+   "lat": 42.88159,
+   "lon": -0.02381,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 2.84,
+   "name": "Sazos (village just above the road)",
+   "lat": 42.88305,
+   "lon": -0.02585,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 3.45,
+   "name": "Hairpin (~940 m)",
+   "lat": 42.88688,
+   "lon": -0.03055,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 3.93,
+   "name": "Grust",
+   "lat": 42.88832,
+   "lon": -0.03202,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 4.45,
+   "name": "Hairpin above Grust (~1025 m)",
+   "lat": 42.88761,
+   "lon": -0.0341,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 4.75,
+   "name": "Hairpin (~1055 m)",
+   "lat": 42.88533,
+   "lon": -0.03294,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 5.72,
+   "name": "Hairpin (~1140 m) in the forest",
+   "lat": 42.89286,
+   "lon": -0.03667,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 6.15,
+   "name": "Hairpin (~1180 m)",
+   "lat": 42.88937,
+   "lon": -0.03851,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 6.84,
+   "name": "D12 in the forest",
+   "lat": 42.89522,
+   "lon": -0.04034,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 7.4,
+   "name": "Hairpin (~1285 m)",
+   "lat": 42.89709,
+   "lon": -0.04548,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 7.79,
+   "name": "Hairpin (~1310 m)",
+   "lat": 42.89658,
+   "lon": -0.04601,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 8.36,
+   "name": "Hairpin (~1355 m)",
+   "lat": 42.89256,
+   "lon": -0.04404,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 8.92,
+   "name": "D12 – out of the forest",
+   "lat": 42.89466,
+   "lon": -0.04918,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 9.58,
+   "name": "Hairpin (~1450 m)",
+   "lat": 42.89189,
+   "lon": -0.05379,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 10.04,
+   "name": "Hairpin (~1490 m)",
+   "lat": 42.88881,
+   "lon": -0.05678,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 10.54,
+   "name": "Hairpin (~1525 m)",
+   "lat": 42.89314,
+   "lon": -0.05601,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 11.28,
+   "name": "Hairpin (~1585 m)",
+   "lat": 42.88734,
+   "lon": -0.05866,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 11.64,
+   "name": "Hairpin at the Route de Bederet junction (~1610 m) – final hairpin stack",
+   "lat": 42.89011,
+   "lon": -0.05904,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 12.01,
+   "name": "Hairpin (~1635 m)",
+   "lat": 42.88968,
+   "lon": -0.05993,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 12.37,
+   "name": "Hairpin (~1660 m)",
+   "lat": 42.88731,
+   "lon": -0.06049,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 12.77,
+   "name": "Hairpin (~1690 m)",
+   "lat": 42.88671,
+   "lon": -0.06065,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 13.03,
+   "name": "Last hairpin (~1705 m)",
+   "lat": 42.88499,
+   "lon": -0.06227,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D12"
+  },
+  {
+   "km": 13.1,
+   "name": "Luz Ardiden – finish at the ski station car park (~1715 m)",
+   "lat": 42.88502,
+   "lon": -0.06145,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D12"
+  }
+ ],
+ "notes": "Luz Ardiden from Luz-Saint-Sauveur (app: start 721 m, 13.1 km, Sazos km 2.7, Grust km 4.3). km 0 = the junction in Saint-Sauveur where the D12 Route de l'Ardiden leaves the D921 (Avenue de l'Impératrice Eugénie), ~1.2 km from Luz centre; the app profile fits this foot best (DEM 712 m, per-km rms 0.6 %). Route: D12 only — hairpins below Sazos, Sazos, Grust, the forest section with hairpin pairs, out of the forest at ~km 9, then the open hairpin stack up to the station; finish at the end of the road at the ski station car park. Coordinates are on the Overture/OSM road geometry; km are routed distances from the foot (routed 13.21 km vs 13.1 km, +0.9 %). The Tour 2021 (stage 18) itinerary gives a 13.3 km final climb starting about 1.1 km after the Saint-Sauveur thermal station, i.e. roughly at this junction; its Sazos/Grust km are not consistent with the map (Sazos lies ~120 m above the road), so the village km here are the routed positions. The exact finish-line spot (end of a 130 m final straight at the station) is taken as the end of the D12 at the car park (DEM ~1712 m).",
+ "sources": [
+  "https://www.hautespyrenees.fr/wp-content/uploads/2021/07/Fiche-horaire_-etape-18-IH.pdf",
+  "https://en.wikipedia.org/wiki/Luz_Ardiden",
+  "https://www.cols-cyclisme.com/pyrenees-centrales/france/station-de-luz-ardiden-depuis-luz-saint-sauveur-c61.htm",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions (Sazos, Grust), Copernicus GLO-30 DEM"
+ ]
+}

@@ -16,28 +16,47 @@ import java.nio.IntBuffer
 object Gl {
     private const val TAG = "WorldGl"
 
-    fun program(vertex: String, fragment: String): Int {
-        val vs = shader(GLES30.GL_VERTEX_SHADER, vertex)
-        val fs = shader(GLES30.GL_FRAGMENT_SHADER, fragment)
+    /**
+     * Compiles and links a program. Errors are logged; with [strict] a compile or link error throws
+     * (IllegalStateException with the info log) instead of returning the broken program, so a caller
+     * with a fallback can take it.
+     */
+    fun program(vertex: String, fragment: String, strict: Boolean = false): Int {
+        val vs = shader(GLES30.GL_VERTEX_SHADER, vertex, strict)
+        val fs = try {
+            shader(GLES30.GL_FRAGMENT_SHADER, fragment, strict)
+        } catch (e: IllegalStateException) {
+            GLES30.glDeleteShader(vs)
+            throw e
+        }
         val p = GLES30.glCreateProgram()
         GLES30.glAttachShader(p, vs)
         GLES30.glAttachShader(p, fs)
         GLES30.glLinkProgram(p)
         val status = IntArray(1)
         GLES30.glGetProgramiv(p, GLES30.GL_LINK_STATUS, status, 0)
-        if (status[0] == 0) Log.e(TAG, "link: " + GLES30.glGetProgramInfoLog(p))
+        val linkLog = if (status[0] == 0) GLES30.glGetProgramInfoLog(p) else null
+        if (linkLog != null) Log.e(TAG, "link: $linkLog")
         GLES30.glDeleteShader(vs)
         GLES30.glDeleteShader(fs)
+        if (linkLog != null && strict) throw IllegalStateException("shader link failed: $linkLog")
         return p
     }
 
-    private fun shader(type: Int, src: String): Int {
+    private fun shader(type: Int, src: String, strict: Boolean): Int {
         val s = GLES30.glCreateShader(type)
         GLES30.glShaderSource(s, src)
         GLES30.glCompileShader(s)
         val status = IntArray(1)
         GLES30.glGetShaderiv(s, GLES30.GL_COMPILE_STATUS, status, 0)
-        if (status[0] == 0) Log.e(TAG, "compile: " + GLES30.glGetShaderInfoLog(s))
+        if (status[0] == 0) {
+            val log = GLES30.glGetShaderInfoLog(s)
+            Log.e(TAG, "compile: $log")
+            if (strict) {
+                GLES30.glDeleteShader(s)
+                throw IllegalStateException("shader compile failed: $log")
+            }
+        }
         return s
     }
 
@@ -86,9 +105,12 @@ object Gl {
     }
 }
 
-/** A linked shader program with its uniform locations cached by name (no lookups per frame). */
-class Program(vertex: String, fragment: String) {
-    val id = Gl.program(vertex, fragment)
+/**
+ * A linked shader program with its uniform locations cached by name (no lookups per frame). [strict]: a
+ * compile or link error throws (see [Gl.program]); the procedural renderer keeps the old lenient default.
+ */
+class Program(vertex: String, fragment: String, strict: Boolean = false) {
+    val id = Gl.program(vertex, fragment, strict)
     private val locations = HashMap<String, Int>()
 
     fun use() = GLES30.glUseProgram(id)

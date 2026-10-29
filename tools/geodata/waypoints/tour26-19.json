@@ -1,0 +1,899 @@
+{
+ "id": "tour26-19",
+ "lengthKm": 127.9,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Gap – départ réel at the foot of Col Bayard (N85 Route Napoléon, 4.8 km below the pass)",
+   "lat": 44.58125,
+   "lon": 6.08088,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 0.4,
+   "name": "N85 Route Napoléon, hairpins above Gap",
+   "lat": 44.58233,
+   "lon": 6.08068,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 0.8,
+   "name": "N85 Route Napoléon, hairpins above Gap",
+   "lat": 44.58383,
+   "lon": 6.08196,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 1.3,
+   "name": "N85 Route Napoléon, hairpins above Gap",
+   "lat": 44.58777,
+   "lon": 6.0813,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 1.9,
+   "name": "N85 Route Napoléon, hairpins (climb to Col Bayard)",
+   "lat": 44.59095,
+   "lon": 6.08011,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 3.3,
+   "name": "N85 Route Napoléon (climb to Col Bayard)",
+   "lat": 44.60074,
+   "lon": 6.08108,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 4.8,
+   "name": "Col Bayard (1246 m, cat. 2)",
+   "lat": 44.61283,
+   "lon": 6.08098,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "N85"
+  },
+  {
+   "km": 8.0,
+   "name": "Laye (N85)",
+   "lat": 44.64109,
+   "lon": 6.08466,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 10.4,
+   "name": "Brutinel (Laye, N85)",
+   "lat": 44.66216,
+   "lon": 6.08354,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 10.9,
+   "name": "Bonnette (La Fare-en-Champsaur, N85)",
+   "lat": 44.6664,
+   "lon": 6.08088,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 12.3,
+   "name": "La Fare-en-Champsaur (N85 Route de Grenoble)",
+   "lat": 44.67691,
+   "lon": 6.0707,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 13.1,
+   "name": "La Fare-en-Champsaur – Les Barraques: N85 → D17 (Route du Noyer)",
+   "lat": 44.6833,
+   "lon": 6.06674,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 15.1,
+   "name": "Poligny (D17 Route du Noyer)",
+   "lat": 44.69189,
+   "lon": 6.0462,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 16.3,
+   "name": "D17 Poligny – Le Noyer",
+   "lat": 44.69518,
+   "lon": 6.03432,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 18.3,
+   "name": "Le Noyer east (Route du Moulin) – foot of Col du Noyer (7.2 km at 8.5 %)",
+   "lat": 44.69664,
+   "lon": 6.01522,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 18.6,
+   "name": "Le Noyer (D17 through the village, Route du Pré la Combe)",
+   "lat": 44.69822,
+   "lon": 6.01376,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 18.7,
+   "name": "Le Noyer, church (Route du Pré la Combe)",
+   "lat": 44.69793,
+   "lon": 6.01242,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 21.2,
+   "name": "D17 Route du Col, hairpins",
+   "lat": 44.70178,
+   "lon": 6.00308,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 22.7,
+   "name": "D17 Route du Col",
+   "lat": 44.69428,
+   "lon": 5.99591,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 25.2,
+   "name": "Col du Noyer (1664 m, cat. 1)",
+   "lat": 44.69241,
+   "lon": 5.98451,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D17"
+  },
+  {
+   "km": 27.2,
+   "name": "D17 descent (Dévoluy side)",
+   "lat": 44.69713,
+   "lon": 5.96377,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 29.6,
+   "name": "Truziaud (D17)",
+   "lat": 44.68331,
+   "lon": 5.95637,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 32.5,
+   "name": "D17 joins D937 (Route des Stations) south of Saint-Étienne-en-Dévoluy",
+   "lat": 44.68714,
+   "lon": 5.94612,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 33.0,
+   "name": "Saint-Étienne-en-Dévoluy (D937)",
+   "lat": 44.69111,
+   "lon": 5.94241,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 34.0,
+   "name": "D937 Saint-Étienne – Giers",
+   "lat": 44.6966,
+   "lon": 5.93368,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 35.5,
+   "name": "Giers – Le Courtil (D937 Route des Gillardes)",
+   "lat": 44.70548,
+   "lon": 5.92277,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 37.0,
+   "name": "D937 Défilé des Étroits",
+   "lat": 44.71731,
+   "lon": 5.91601,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 38.4,
+   "name": "D937 above Saint-Disdier",
+   "lat": 44.72659,
+   "lon": 5.907,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 39.9,
+   "name": "Saint-Disdier (D937)",
+   "lat": 44.73458,
+   "lon": 5.89477,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 40.9,
+   "name": "D937 north of Saint-Disdier",
+   "lat": 44.7417,
+   "lon": 5.89132,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D937"
+  },
+  {
+   "km": 41.9,
+   "name": "Pont de la Baume (Souloise)",
+   "lat": 44.74859,
+   "lon": 5.88531,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 43.3,
+   "name": "D537 Rue des Gillardes (woods)",
+   "lat": 44.76037,
+   "lon": 5.88517,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 44.8,
+   "name": "D537 Rue des Gillardes",
+   "lat": 44.76993,
+   "lon": 5.89602,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 46.3,
+   "name": "La Posterle (Pellafol, D537)",
+   "lat": 44.77401,
+   "lon": 5.90365,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 47.7,
+   "name": "D537 Pellafol",
+   "lat": 44.78536,
+   "lon": 5.90885,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 49.2,
+   "name": "Les Payas (Pellafol, D537)",
+   "lat": 44.79877,
+   "lon": 5.91084,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 50.7,
+   "name": "D537 Le Sautet",
+   "lat": 44.8118,
+   "lon": 5.91324,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 51.9,
+   "name": "Barrage du Sautet (dam crossing)",
+   "lat": 44.81818,
+   "lon": 5.90967,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 53.6,
+   "name": "D537 Route du Sautet (climb from the lake)",
+   "lat": 44.81849,
+   "lon": 5.92731,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D537"
+  },
+  {
+   "km": 54.5,
+   "name": "D537 Route du Sautet, bend below Corps",
+   "lat": 44.81968,
+   "lon": 5.93511,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 55.4,
+   "name": "Corps – D537 (Route du Sautet) joins N85 (Rue du Pied de Ville)",
+   "lat": 44.81972,
+   "lon": 5.94629,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 56.1,
+   "name": "N85 hairpin north of Corps",
+   "lat": 44.82312,
+   "lon": 5.95237,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 57.3,
+   "name": "N85 Corps – Les Côtes-de-Corps",
+   "lat": 44.82477,
+   "lon": 5.93705,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 59.0,
+   "name": "Les Côtes-de-Corps (N85)",
+   "lat": 44.83173,
+   "lon": 5.91795,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 61.0,
+   "name": "N85 (Sainte-Luce)",
+   "lat": 44.83303,
+   "lon": 5.90299,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 63.5,
+   "name": "Quet-en-Beaumont (N85)",
+   "lat": 44.83898,
+   "lon": 5.87746,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 65.9,
+   "name": "Les Marcoux (N85)",
+   "lat": 44.85352,
+   "lon": 5.85837,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 67.3,
+   "name": "N85 hairpin at La Salle-en-Beaumont",
+   "lat": 44.86309,
+   "lon": 5.86422,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 67.9,
+   "name": "La Salle-en-Beaumont (N85)",
+   "lat": 44.86373,
+   "lon": 5.85873,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 69.4,
+   "name": "N85 La Salle – Les Égâts",
+   "lat": 44.86967,
+   "lon": 5.84193,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 70.5,
+   "name": "Les Égâts (N85)",
+   "lat": 44.87572,
+   "lon": 5.83406,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N85"
+  },
+  {
+   "km": 71.1,
+   "name": "N85 → D212B junction (Saint-Laurent-en-Beaumont)",
+   "lat": 44.8786,
+   "lon": 5.82764,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D212B"
+  },
+  {
+   "km": 71.9,
+   "name": "D212B/D26A",
+   "lat": 44.88409,
+   "lon": 5.8349,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26A"
+  },
+  {
+   "km": 72.5,
+   "name": "Les Miards (D26A)",
+   "lat": 44.88811,
+   "lon": 5.83771,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26A"
+  },
+  {
+   "km": 74.1,
+   "name": "D26A descent to the Bonne",
+   "lat": 44.88673,
+   "lon": 5.84895,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26A"
+  },
+  {
+   "km": 75.0,
+   "name": "D26A descent to the Bonne",
+   "lat": 44.89288,
+   "lon": 5.85701,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D26A"
+  },
+  {
+   "km": 75.6,
+   "name": "D26A → D526 junction (west bank of the Bonne)",
+   "lat": 44.89658,
+   "lon": 5.85706,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 76.5,
+   "name": "D526 Pont du Prêtre",
+   "lat": 44.89796,
+   "lon": 5.86585,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 77.9,
+   "name": "D526 to Valbonnais",
+   "lat": 44.89188,
+   "lon": 5.8802,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 79.7,
+   "name": "Valbonnais (D526)",
+   "lat": 44.89917,
+   "lon": 5.90001,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 82.1,
+   "name": "Pont des Fayettes (D526, over the Bonne)",
+   "lat": 44.89769,
+   "lon": 5.92453,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 84.5,
+   "name": "Entraigues (D526)",
+   "lat": 44.90146,
+   "lon": 5.94892,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 86.0,
+   "name": "D526 Route du Col (Bonne/Malsanne)",
+   "lat": 44.91356,
+   "lon": 5.95089,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 88.0,
+   "name": "Les Doras (D526)",
+   "lat": 44.92518,
+   "lon": 5.96653,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 89.4,
+   "name": "Le Périer – intermediate sprint (D526)",
+   "lat": 44.93586,
+   "lon": 5.97336,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 90.1,
+   "name": "Les Rambeaux (D526)",
+   "lat": 44.94182,
+   "lon": 5.97197,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 92.1,
+   "name": "Les Daurens (D526)",
+   "lat": 44.9571,
+   "lon": 5.96149,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 93.6,
+   "name": "D526 Le Chalp",
+   "lat": 44.97038,
+   "lon": 5.95991,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 95.6,
+   "name": "Chantelouve (D526)",
+   "lat": 44.98549,
+   "lon": 5.96837,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 96.3,
+   "name": "D526 hairpins above Chantelouve",
+   "lat": 44.99004,
+   "lon": 5.96618,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 97.0,
+   "name": "D526 hairpins above Chantelouve",
+   "lat": 44.99469,
+   "lon": 5.96589,
+   "kind": "other",
+   "confidence": "medium"
+  },
+  {
+   "km": 98.5,
+   "name": "D526 (Les Siauds)",
+   "lat": 45.00282,
+   "lon": 5.968,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 99.2,
+   "name": "Col d'Ornon (1371 m, cat. 2)",
+   "lat": 45.00915,
+   "lon": 5.96761,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D526"
+  },
+  {
+   "km": 100.8,
+   "name": "D526 descent",
+   "lat": 45.02162,
+   "lon": 5.97338,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 102.3,
+   "name": "Le Rivier d'Ornon (D526)",
+   "lat": 45.0284,
+   "lon": 5.97345,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 104.5,
+   "name": "Le Pont des Oulles (D526)",
+   "lat": 45.03936,
+   "lon": 5.97804,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 105.5,
+   "name": "La Palud (Ornon, D526)",
+   "lat": 45.0458,
+   "lon": 5.98459,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 107.0,
+   "name": "D526 Lignarre gorge",
+   "lat": 45.05572,
+   "lon": 5.99094,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 108.6,
+   "name": "D526 Lignarre gorge",
+   "lat": 45.06613,
+   "lon": 5.99914,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D526"
+  },
+  {
+   "km": 110.9,
+   "name": "La Paute – D526 joins D1091",
+   "lat": 45.07217,
+   "lon": 6.018,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 111.8,
+   "name": "D1091 La Paute – Le Bourg-d'Oisans",
+   "lat": 45.06587,
+   "lon": 6.02277,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 112.3,
+   "name": "Le Bourg-d'Oisans (D1091 Avenue de la Gare)",
+   "lat": 45.06197,
+   "lon": 6.02574,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D1091"
+  },
+  {
+   "km": 113.1,
+   "name": "Le Bourg-d'Oisans, Avenue de la République",
+   "lat": 45.05588,
+   "lon": 6.02965,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue de la République"
+  },
+  {
+   "km": 113.9,
+   "name": "Le Bourg-d'Oisans, Avenue Aristide Briand",
+   "lat": 45.05799,
+   "lon": 6.03602,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "Avenue Aristide Briand"
+  },
+  {
+   "km": 114.1,
+   "name": "Le Bourg-d'Oisans – D1091/D211 roundabout, foot of Alpe d'Huez",
+   "lat": 45.05961,
+   "lon": 6.03775,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D211"
+  },
+  {
+   "km": 114.8,
+   "name": "D211 first ramps",
+   "lat": 45.06541,
+   "lon": 6.04006,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 115.6,
+   "name": "D211 lower hairpins",
+   "lat": 45.07186,
+   "lon": 6.03923,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 116.8,
+   "name": "D211 hairpins below La Garde",
+   "lat": 45.06679,
+   "lon": 6.0431,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 117.8,
+   "name": "La Garde-en-Oisans (D211)",
+   "lat": 45.07105,
+   "lon": 6.04729,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 119.5,
+   "name": "D211 hairpins below Huez",
+   "lat": 45.075,
+   "lon": 6.04805,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 120.5,
+   "name": "D211 hairpins below Huez",
+   "lat": 45.07639,
+   "lon": 6.0477,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 121.7,
+   "name": "D211 hairpins below Huez",
+   "lat": 45.07812,
+   "lon": 6.04853,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 122.5,
+   "name": "Huez (village entry, D211)",
+   "lat": 45.07965,
+   "lon": 6.05462,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 123.6,
+   "name": "Huez (D211 Avenue des Jardins/Fontaines)",
+   "lat": 45.08261,
+   "lon": 6.05762,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 124.6,
+   "name": "D211 hairpins above Huez",
+   "lat": 45.08605,
+   "lon": 6.05934,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 125.3,
+   "name": "D211 Route de l'Alpe",
+   "lat": 45.08447,
+   "lon": 6.06585,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 126.8,
+   "name": "D211 Route de l'Alpe",
+   "lat": 45.08605,
+   "lon": 6.07172,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D211"
+  },
+  {
+   "km": 127.4,
+   "name": "Alpe d'Huez – Rond-Point de l'Europe (resort entry)",
+   "lat": 45.0904,
+   "lon": 6.07421,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "Avenue du Rif Nel"
+  },
+  {
+   "km": 127.9,
+   "name": "Alpe d'Huez – finish, Avenue du Rif Nel (1850 m)",
+   "lat": 45.0941,
+   "lon": 6.07114,
+   "kind": "finish",
+   "confidence": "high"
+  }
+ ],
+ "notes": "Km 0 is the départ réel on the N85 Route Napoléon at the foot of Col Bayard, 4.8 km below the pass (after the neutralised start from the Plaine de Fontreyne, avenue de Traunstein, through Gap; not included). Official km used as anchors: Col Bayard 4.8, Poligny 15.1, Col du Noyer 25.2, Corps 55.4, Valbonnais 79.7, Le Périer sprint 89.4, Col d'Ornon 99.2, foot of Alpe d'Huez 114.1 (= 127.9 − 13.8 km climb), finish 127.9 (letour timetable as reproduced by cyclingstage/dhnet, ledicodutour); all other km are interpolated from routed distances on the Overture road graph between these anchors (routed total 128.0 km). Route (official locality list via ledicodutour, roads via hedgehogcycling): N85 over Col Bayard via Laye, Brutinel, Bonnette, La Fare-en-Champsaur; at Les Barraques onto the D17 via Poligny and Le Noyer (through the village, not the Chemin de Gueytières shortcut) over Col du Noyer, Truziaud; D937 through Saint-Étienne-en-Dévoluy, Giers/Le Courtil, the Défilé des Étroits to Saint-Disdier; D537 via Pont de la Baume, La Posterle and Les Payas (Pellafol), across the Sautet dam and up to Corps; N85 via the hairpin north of Corps, Les Côtes-de-Corps, Quet-en-Beaumont, Les Marcoux, La Salle-en-Beaumont, Les Égâts; then D212B/D26A via Les Miards down to the Bonne and the D526 through Valbonnais, Pont des Fayettes, Entraigues, Les Doras, Le Périer (sprint), Les Rambeaux, Les Daurens, Chantelouve, Col d'Ornon, Le Rivier, Pont des Oulles, La Palud, the Lignarre gorge to La Paute; D1091 into Le Bourg-d'Oisans (Av. de la Gare, Av. de la République, Av. Aristide Briand) to the D211 roundabout and the 21 hairpins via La Garde and Huez to the finish on Avenue du Rif Nel. Timetable km that did not fit the routed geometry and were therefore not used as anchors: 'Dévoluy' 35.3 (Saint-Étienne centre routes at ~33.0; 35.3 falls near Giers/Le Courtil), Saint-Disdier 39.5 (routes at ~39.9), La Salle-en-Beaumont 67.5 (~67.9), Entraigues 84.1 (~84.5), Le Bourg-d'Oisans 111.6 (that km lies at the D526/D1091 junction area; the town itself is at 112.3–113.9), Huez-village 122.2 (~122.5, village entry). Points named 'hairpins', 'via' or a road without a village are placed on the race road to keep the router off parallel shortcuts (N85 lacets above Gap, Chemin de Gueytières at Le Noyer, Chemin de Saint-Brême below Corps, Chemin de Serviset at La Salle, Chemin de Bourg d'Oisans above Chantelouve); their road field is left empty on purpose so the router keeps the 60 m via radius. Les Égâts→Valbonnais road numbers (D212B/D26A/D526) are from hedgehogcycling, not from Overture (Overture has no refs here). Summit positions checked against Copernicus GLO-30 (Col Bayard 1246 m, Col du Noyer 1664 m, Col d'Ornon 1370 m). [geodata G: 'D526 Pont du Prêtre' moved from 44.89724,5.865 (a side road across the Bonne, which made the route loop twice) onto the D526 loop at 44.89796,5.86585, 0.9 km after the D26A/D526 junction as the km figures say.]",
+ "sources": [
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-19-times.htm",
+  "https://www.cyclingstage.com/images/tour-de-france/2026/stage-19-climbs.htm",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-19-tdf-2026/",
+  "https://ledicodutour.com/etapes/etapes_par_annees/etapes_2026/etapes_2026_19.html",
+  "https://hedgehogcycling.co.uk/stage-19-tour-de-france-2026.html",
+  "https://www.dhnet.be/sports/cyclisme/tour-de-france/2026/07/24/tour-de-france-2026-itineraire-horaires-parcours-adrien-petit-lotto-intermarche-decrypte-la-19e-etape-gap-alpe-dhuez-1279-km-VBE762R3M5CWZE3SXLTYBI6M4A/",
+  "https://www.isere.gouv.fr/Actualites/Espace-presse/Dossiers-de-presse/Le-Tour-de-France-2026-en-Isere",
+  "https://info.fr/tour-de-france-2026-gap-circulation-24/",
+  "https://en.wikipedia.org/wiki/Col_Bayard",
+  "Overture Maps 2026-10-21.0 divisions (localities) and transportation segments; Copernicus GLO-30 DEM"
+ ]
+}

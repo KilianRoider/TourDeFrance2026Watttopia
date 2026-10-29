@@ -117,6 +117,17 @@ data class AppSettings(
     val musicVolume: Int = 70,
     /** Open workouts in the spinning-class view by default. */
     val spinningByDefault: Boolean = false,
+    /**
+     * Pro mode on Tour stages: the rider is one of the pros in a simulated field, his power scaled by the
+     * pro's FTP over his own. Remembered with the chosen pro (by bib, which survives roster edits better
+     * than a list index), so the next stage starts the way the last one did.
+     */
+    val proMode: Boolean = false,
+    val proRiderBib: Int = 1,
+    /** Wind, tyres, spectators and the bunch around the rider on virtual routes. */
+    val ambience: Boolean = true,
+    /** Ambience level 0..100; its own slider, so the crowd can sit under the signals or the rider's music. */
+    val ambienceVolume: Int = 80,
 ) {
     val autoPauseSeconds: Double get() = if (autoPause) autoPauseSec.coerceIn(1, 30).toDouble() else 0.0
 }

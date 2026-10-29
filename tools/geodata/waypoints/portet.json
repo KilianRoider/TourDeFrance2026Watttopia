@@ -1,0 +1,248 @@
+{
+ "id": "portet",
+ "lengthKm": 16.0,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Vignec – roundabout D123 / Route du Pla d'Adet (rond-point de Vignec), foot of the climb (~817 m)",
+   "lat": 42.82593,
+   "lon": 0.31805,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 0.69,
+   "name": "D123 Route du Pla d'Adet above Vignec",
+   "lat": 42.8316,
+   "lon": 0.32109,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 1.42,
+   "name": "Hairpin above Vielle-Aure (~945 m)",
+   "lat": 42.83697,
+   "lon": 0.32593,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 2.37,
+   "name": "D123 Route du Pla d'Adet",
+   "lat": 42.83232,
+   "lon": 0.31809,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 3.5,
+   "name": "Hairpin (~1165 m)",
+   "lat": 42.83068,
+   "lon": 0.30658,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 3.77,
+   "name": "Hairpin (~1185 m)",
+   "lat": 42.8316,
+   "lon": 0.30904,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 4.45,
+   "name": "D123 below Soulan",
+   "lat": 42.83111,
+   "lon": 0.30125,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 5.03,
+   "name": "Soulan (~1290 m) – fountain",
+   "lat": 42.83043,
+   "lon": 0.29475,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 5.94,
+   "name": "D123 Soulan – Espiaube",
+   "lat": 42.82736,
+   "lon": 0.28529,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 6.73,
+   "name": "D123 Soulan – Espiaube",
+   "lat": 42.827,
+   "lon": 0.2757,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D123"
+  },
+  {
+   "km": 7.41,
+   "name": "Espiaube fork – leave the D123 (continues left to Pla d'Adet) for the VC to Espiaube / Col du Portet",
+   "lat": 42.82548,
+   "lon": 0.27091,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "VC Espiaube"
+  },
+  {
+   "km": 7.98,
+   "name": "Espiaube (~1530 m)",
+   "lat": 42.82586,
+   "lon": 0.26627,
+   "kind": "town",
+   "confidence": "high",
+   "road": "VC Espiaube"
+  },
+  {
+   "km": 8.13,
+   "name": "Espiaube – start of the Route du Col de Portet",
+   "lat": 42.82604,
+   "lon": 0.26469,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 9.05,
+   "name": "Hairpin (~1620 m)",
+   "lat": 42.82991,
+   "lon": 0.27443,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 9.66,
+   "name": "Hairpin (~1670 m)",
+   "lat": 42.83034,
+   "lon": 0.27363,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 10.19,
+   "name": "Hairpin (~1715 m) – hairpin series by the shepherd's hut",
+   "lat": 42.83069,
+   "lon": 0.27212,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 10.63,
+   "name": "Hairpin (~1755 m)",
+   "lat": 42.83153,
+   "lon": 0.27107,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 11.17,
+   "name": "Hairpin (~1800 m)",
+   "lat": 42.83007,
+   "lon": 0.26577,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 11.7,
+   "name": "Hairpin (~1850 m)",
+   "lat": 42.83122,
+   "lon": 0.26353,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 12.18,
+   "name": "Hairpin (~1895 m)",
+   "lat": 42.83324,
+   "lon": 0.26859,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 13.06,
+   "name": "Route du Col de Portet – easier section",
+   "lat": 42.83316,
+   "lon": 0.2582,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 13.85,
+   "name": "Route du Col de Portet",
+   "lat": 42.83454,
+   "lon": 0.2496,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 14.63,
+   "name": "Hairpin (~2095 m)",
+   "lat": 42.83501,
+   "lon": 0.24108,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 15.0,
+   "name": "Tunnel (unlit, ~100 m) – 1 km to go",
+   "lat": 42.83408,
+   "lon": 0.23895,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 15.46,
+   "name": "Last hairpin (~2160 m)",
+   "lat": 42.83042,
+   "lon": 0.24111,
+   "kind": "other",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  },
+  {
+   "km": 16.0,
+   "name": "Col du Portet – summit (2215 m), end of the paved road",
+   "lat": 42.83311,
+   "lon": 0.2365,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "Route du Col de Portet"
+  }
+ ],
+ "notes": "Col du Portet from Saint-Lary-Soulan as climbed in the Tour de France 2018/2021 (16 km at 8.7 %, summit 2215 m; app start 822 m). km 0 = the small roundabout in Vignec (Saint-Lary-Soulan) where the D123 Route du Pla d'Adet starts (cols-cyclisme: 'rond-point de Vignec', ~810-820 m). Route: D123 Route du Pla d'Adet via the hairpins above Vielle-Aure and Soulan; at km 7.5 the route leaves the D123 (which continues left to Pla d'Adet) and takes the road to Espiaube, then from Espiaube the narrow Route du Col de Portet with its hairpin series and the unlit tunnel ~1 km below the col, to the end of the paved road at the col (tracks continue beyond — not part of the route). Coordinates are on the Overture/OSM road geometry; km are routed distances from the foot scaled to the app length (routed 16.17 km vs 16.0 km official, +1 %). DEM (GLO-30): 817 m at the foot, ~2211 m at the col; per-km gradients match the app profile (rms ~0.7 %). Cross-check with the Tour 2021 stage 17 itinéraire horaire (km to go: Vignec 16.3, Soulan 11.5, Espiaube D123→VC 8.9, VC tunnel 1.1; finish at the col at the end of a 40 m final straight): routed from the roundabout 16.17, 11.09, 8.68 (fork), 1.01 — consistent. The app landmark 'Vignec' at km 1.0 is approximate: the climb starts in Vignec.",
+ "sources": [
+  "https://www.hautespyrenees.fr/wp-content/uploads/2021/07/Fiche-horaire_etape-17-IH.pdf",
+  "https://www.cols-cyclisme.com/pyrenees-centrales/france/col-de-portet-depuis-saint-lary-soulan-c127.htm",
+  "https://en.wikipedia.org/wiki/Col_de_Portet",
+  "https://www.hautespyrenees.fr/wp-content/uploads/2021/07/ST_LARY_Flyer_tdf2021.pdf",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions (Vignec, Soulan, Espiaube), Copernicus GLO-30 DEM"
+ ]
+}

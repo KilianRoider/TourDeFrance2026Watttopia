@@ -39,8 +39,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rollentrainer">
 
+        <!-- Turning the device or resizing the window does not recreate the activity: Compose lays out again,
+             and a ride's 3D world keeps its GL context and streamed terrain instead of loading it again. -->
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density"
             android:exported="true"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">

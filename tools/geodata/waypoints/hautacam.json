@@ -1,0 +1,223 @@
+{
+ "id": "hautacam",
+ "lengthKm": 13.6,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Ayros-Arbouix – D13 / D100 Route du Hautacam junction, foot of the climb (~460 m)",
+   "lat": 43.00257,
+   "lon": -0.06905,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 0.4,
+   "name": "Ayros-Arbouix (Ayros), D100 / Chemin du Lavoir",
+   "lat": 43.00467,
+   "lon": -0.0654,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 1.38,
+   "name": "Arbouix",
+   "lat": 42.99733,
+   "lon": -0.06195,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 2.0,
+   "name": "Hairpin above Arbouix",
+   "lat": 42.99336,
+   "lon": -0.05759,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 2.61,
+   "name": "D100 Route de Hautacam",
+   "lat": 42.98914,
+   "lon": -0.05841,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 3.2,
+   "name": "Souin (Artalens-Souin)",
+   "lat": 42.98595,
+   "lon": -0.05326,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 3.9,
+   "name": "Arribat (Artalens-Souin)",
+   "lat": 42.98081,
+   "lon": -0.04977,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D100"
+  },
+  {
+   "km": 4.75,
+   "name": "Artalens (Artalens-Souin)",
+   "lat": 42.97519,
+   "lon": -0.04615,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D100",
+   "radius": 40
+  },
+  {
+   "km": 4.94,
+   "name": "Hairpin below Artalens",
+   "lat": 42.97364,
+   "lon": -0.04613,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100",
+   "radius": 40
+  },
+  {
+   "km": 5.28,
+   "name": "D100 Artalens – Saint-André (stay on the D100, not the Voie Communale)",
+   "lat": 42.97571,
+   "lon": -0.04349,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100",
+   "radius": 40
+  },
+  {
+   "km": 5.77,
+   "name": "Hairpin",
+   "lat": 42.97965,
+   "lon": -0.04287,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 6.42,
+   "name": "Saint-André (Artalens-Souin, ~920 m)",
+   "lat": 42.98426,
+   "lon": -0.04404,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 7.1,
+   "name": "Hairpin above Saint-André",
+   "lat": 42.98996,
+   "lon": -0.04336,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 7.94,
+   "name": "D100 – steepest section",
+   "lat": 42.98369,
+   "lon": -0.03838,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 8.79,
+   "name": "Double hairpin (~1155 m)",
+   "lat": 42.97906,
+   "lon": -0.03123,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 9.5,
+   "name": "Hairpin (~1205 m)",
+   "lat": 42.97888,
+   "lon": -0.02468,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 10.25,
+   "name": "Hairpin (~1255 m)",
+   "lat": 42.97339,
+   "lon": -0.02764,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 11.11,
+   "name": "Hourquet (Beaucens) – hairpin (~1345 m)",
+   "lat": 42.97195,
+   "lon": -0.01795,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D100"
+  },
+  {
+   "km": 11.99,
+   "name": "Hairpin (~1415 m), open pasture",
+   "lat": 42.97746,
+   "lon": -0.01428,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 12.28,
+   "name": "Hairpin (~1435 m)",
+   "lat": 42.97501,
+   "lon": -0.01483,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 12.87,
+   "name": "D100 final hairpins",
+   "lat": 42.97667,
+   "lon": -0.00983,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 13.35,
+   "name": "Last hairpin (~1505 m)",
+   "lat": 42.97559,
+   "lon": -0.01158,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D100"
+  },
+  {
+   "km": 13.6,
+   "name": "Hautacam – finish line, main car park on the D100 (1520 m)",
+   "lat": 42.97419,
+   "lon": -0.00953,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D100"
+  }
+ ],
+ "notes": "Hautacam as climbed by the Tour de France (13.6 km at 7.8 %, finish 1520 m; app start 465 m). km 0 = the junction in Ayros-Arbouix where the D100 Route du Hautacam leaves the D13 (the itinerary's 'D100 Ayros-Arbouix (D100-D13-D100)': the race comes on the D100 from Argelès-Gazost, takes the D13 for ~150 m, then the D100 up). Route: D100 only — Ayros, Arbouix, Souin, Arribat, through Artalens (the D100 loops through the village and the hairpin below it; a parallel Voie Communale de Saint-André is ~0.3 km shorter and must NOT be used), Saint-André, the hairpin stack, Hourquet, open pastures, finish on the D100 at the main car park ('parking principal du Hautacam, D100, au bout d'une ligne droite de 70 m'), just before the D100 continues towards the Col de Tramassel. Coordinates are points on the Overture/OSM road geometry; km are routed distances from the foot (routed 13.53 km vs 13.6 km). Cross-check with the 2025 stage 12 itinéraire horaire (km to go: Arbouix 12.1, Souin 10.4, Arribat 9.7, Artalens 8.8, Saint-André 7.2, Hourquet 2.5): routed km to go are 12.2, 10.4, (Arribat placed by itinerary), 8.8, 7.1 — consistent. Arribat and Hourquet are placed at their itinerary distance on the road (no map point found), hence medium. DEM (GLO-30) along the routed path: 458 m at the foot, 1522 m at the finish; per-km gradients within ~1 % of the app profile. Note: the app landmarks (Arbouix 1.0, Artalens-Souin 3.6, Saint-André 7.0) are approximate; the real positions are 1.4, 4.7 and 6.4 km.",
+ "sources": [
+  "https://www.hautespyrenees.fr/wp-content/uploads/2025/07/12-IH.pdf",
+  "https://pjammcycling.com/climb/1268.Hautacam",
+  "https://en.wikipedia.org/wiki/Hautacam",
+  "Overture Maps 2026-10-21.0 transportation segments and divisions (Ayros-Arbouix, Arbouix, Souin, Artalens-Souin, Saint-André), Copernicus GLO-30 DEM"
+ ]
+}

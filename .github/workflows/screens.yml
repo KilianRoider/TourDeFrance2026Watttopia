@@ -1,0 +1,405 @@
+name: Screens
+
+# Screenshots of the app on emulated phones and tablets, started by hand (Actions tab or the REST API).
+# Every scene is opened through the app's demo mode (app/src/main/kotlin/app/rollentrainer/debug/DemoMode.kt)
+# with a simulated trainer. The APK and the raw results travel between the jobs as workflow artifacts; the
+# screenshots (as JPEG), contact sheets, logcats and a status table are then force-pushed to the branch
+# "screens-results" (one folder per run, only the latest run kept), where git can fetch them.
+on:
+  # Pushing a branch named screens/... runs it too (the dispatch button only exists once the file is on main).
+  push:
+    branches: ["screens/**"]
+  workflow_dispatch:
+    inputs:
+      scenes:
+        description: "Scenes, separated by spaces (see DemoMode.kt); suffixes +tap=Some_Text, +scroll=N, +wait=S"
+        required: false
+        default: "route:alpe-dhuez:3 route:alpe-dhuez:12.5:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tourmalet:12 route:champs-elysees:1 race:tour26-12:13:finale=15 race:tour26-19:9:finale=12 route:ventoux:18 ride:first workouts routes routes-tour settings history-race"
+      devices:
+        description: "Devices, separated by spaces: phone (Pixel 7, portrait + landscape), small (small phone), tablet (Pixel Tablet, landscape)"
+        required: false
+        default: "phone tablet"
+      api_level:
+        description: "Android API level of the emulator image"
+        required: false
+        default: "34"
+      route_wait:
+        description: "Longest wait in route scenes for the 3D world (seconds); the shot is taken as soon as it is drawn"
+        required: false
+        default: "180"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: screens
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      devices: ${{ steps.plan.outputs.devices }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build debug APK
+        run: ./gradlew --no-daemon :app:assembleDebug
+
+      - name: Keep the APK for the emulator jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 3
+
+      - name: Plan devices
+        id: plan
+        env:
+          DEVICES: ${{ inputs.devices || 'phone tablet' }}
+        run: |
+          list=""
+          for d in ${DEVICES//,/ }; do
+            case "$d" in
+              phone|small|tablet) list="$list\"$d\"," ;;
+              *) echo "::warning::Unknown device '$d' (phone, small, tablet)" ;;
+            esac
+          done
+          [ -n "$list" ] || list='"phone",'
+          echo "devices=[${list%,}]" >> "$GITHUB_OUTPUT"
+
+  shoot:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      matrix:
+        device: ${{ fromJSON(needs.build.outputs.devices) }}
+    steps:
+      - name: Download the APK
+        uses: actions/download-artifact@v4
+        with:
+          name: apk
+          path: apk
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Device profile
+        id: dev
+        run: |
+          case "${{ matrix.device }}" in
+            phone)  profile=pixel_7;      orientations="portrait landscape" ;;
+            small)  profile=small_phone;  orientations="portrait landscape" ;;
+            tablet) profile=pixel_tablet; orientations="landscape" ;;
+          esac
+          echo "profile=$profile" >> "$GITHUB_OUTPUT"
+          echo "orientations=$orientations" >> "$GITHUB_OUTPUT"
+
+      # The emulator action runs every line of its script on its own, so the scene loop lives in a file.
+      - name: Write the scene runner
+        run: |
+          cat > "$RUNNER_TEMP/shoot.sh" <<'SCRIPT'
+          #!/usr/bin/env bash
+          # Runs every scene on the booted emulator: launch, wait, screenshot, logcat, crash check.
+          # Env: DEVICE, ORIENTATIONS, SCENES, ROUTE_WAIT, APK, OUT
+          set -u
+          PKG=app.rollentrainer
+          ACT=app.rollentrainer/.MainActivity
+          ROUTE_WAIT=${ROUTE_WAIT:-180}
+          SCENES=${SCENES//,/ }
+          mkdir -p "$OUT"
+          WORK=$(mktemp -d)
+          TSV="$OUT/scenes-$DEVICE.tsv"
+          LOG="$OUT/logcat-$DEVICE.txt"
+          FULL="$OUT/logcat-full-$DEVICE.txt"
+          INFO="$OUT/device-$DEVICE.txt"
+          : > "$TSV"; : > "$LOG"; : > "$FULL"
+          sh_() { timeout 60 adb shell "$@" 2>/dev/null | tr -d '\r'; }
+
+          adb wait-for-device
+          for _ in $(seq 1 90); do [ "$(sh_ getprop sys.boot_completed)" = 1 ] && break; sleep 2; done
+          # The launcher and system UI keep starting for a while after boot_completed.
+          sleep 15
+          sh_ svc power stayon true
+          sh_ settings put system screen_off_timeout 2147483647
+          sh_ input keyevent 82
+          sh_ wm dismiss-keyguard
+          sh_ settings put global heads_up_notifications_enabled 0
+          adb logcat -G 16M >/dev/null 2>&1 || true
+
+          {
+            echo "device: $DEVICE"
+            echo "model: $(sh_ getprop ro.product.model)"
+            echo "android: $(sh_ getprop ro.build.version.release) (API $(sh_ getprop ro.build.version.sdk))"
+            echo "ro.opengles.version: $(sh_ getprop ro.opengles.version)  (196608 = ES 3.0, 196609 = 3.1, 196610 = 3.2)"
+            sh_ wm size
+            sh_ wm density
+            sh_ dumpsys SurfaceFlinger | grep -iE "GLES|EGL" | head -5
+          } > "$INFO"
+          timeout 180 adb install -r -g "$APK" >> "$INFO" 2>&1 || echo "install failed" >> "$INFO"
+          for p in BLUETOOTH_SCAN BLUETOOTH_CONNECT POST_NOTIFICATIONS; do sh_ pm grant "$PKG" "android.permission.$p" >/dev/null; done
+          cat "$INFO"
+          gles=$(sh_ getprop ro.opengles.version)
+          if [ "${gles:-0}" -lt 196608 ] 2>/dev/null; then echo "::warning::$DEVICE reports OpenGL ES $gles (< 3.0): route scenes show the 2D fallback"; fi
+
+          size=$(sh_ wm size | awk '/Physical size/ {print $3}')
+          W=${size%x*}; H=${size#*x}
+          W=${W:-1080}; H=${H:-2400}
+          CW=$W; CH=$H
+          # Rotation 0 is the panel's natural orientation: portrait on a phone, landscape on the Pixel Tablet.
+          set_orientation() {
+            local rot
+            if [ "$1" = landscape ]; then rot=$(( W > H ? 0 : 1 )); else rot=$(( W > H ? 1 : 0 )); fi
+            if [ $(( rot % 2 )) = 1 ]; then CW=$H; CH=$W; else CW=$W; CH=$H; fi
+            sh_ settings put system accelerometer_rotation 0
+            sh_ settings put system user_rotation "$rot"
+            # The settings alone do not turn the display on API 34; the window manager command does.
+            sh_ cmd window user-rotation lock "$rot" >/dev/null
+            sleep 4
+            local now
+            now=$(sh_ dumpsys window displays | grep -oE 'mCurrentRotation=ROTATION_[0-9]+' | head -1)
+            echo "orientation $1: wanted rotation $rot, display reports ${now:-unknown}"
+            case "$now" in
+              *ROTATION_$(( rot * 90 ))) ;;
+              *) echo "::warning::$DEVICE did not rotate to $1 ($now)" ;;
+            esac
+          }
+
+          # Taps the first view whose text or description contains $1 (case-insensitive).
+          tap_text() {
+            timeout 40 adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1
+            timeout 20 adb exec-out cat /sdcard/ui.xml > "$WORK/ui.xml" 2>/dev/null
+            local xy
+            xy=$(python3 - "$WORK/ui.xml" "$1" <<'PY'
+          import re, sys
+          import xml.etree.ElementTree as ET
+          try:
+              root = ET.parse(sys.argv[1]).getroot()
+          except Exception:
+              sys.exit(1)
+          needle = sys.argv[2].lower()
+          for node in root.iter('node'):
+              label = (node.get('text') or '') + ' ' + (node.get('content-desc') or '')
+              if needle in label.lower():
+                  b = [int(v) for v in re.findall(r'-?\d+', node.get('bounds') or '')]
+                  if len(b) == 4:
+                      print((b[0] + b[2]) // 2, (b[1] + b[3]) // 2)
+                      sys.exit(0)
+          sys.exit(1)
+          PY
+          )
+            [ -n "$xy" ] || return 1
+            sh_ input tap $xy
+          }
+
+          run_scene() {
+            local orient=$1 scene=$2
+            local app=${scene%%+*} mods="" wait=6 waitworld=0 note="" actions=() parts=()
+            [[ "$scene" == *+* ]] && mods=${scene#*+}
+            case "$app" in
+              route:*|stage:*|race:*) wait=$ROUTE_WAIT; waitworld=1 ;;
+              spinning*|ride*) wait=12 ;;
+            esac
+            # The routes tab has two lists behind filter chips.
+            case "$app" in
+              routes) actions+=("tap Legend") ;;
+              routes-tour) actions+=("tap Tour_2026") ;;
+            esac
+            IFS='+' read -ra parts <<< "$mods"
+            for m in "${parts[@]}"; do
+              case "$m" in
+                tap=*) actions+=("tap ${m#tap=}") ;;
+                scroll=*) actions+=("scroll ${m#scroll=}") ;;
+                wait=*) wait=${m#wait=} ;;
+              esac
+            done
+            local name="$DEVICE-$orient-$(printf '%s' "$scene" | tr -c 'A-Za-z0-9._-' '_')"
+            sh_ am force-stop "$PKG"
+            adb logcat -c >/dev/null 2>&1
+            local t0=$SECONDS
+            sh_ am start -W -n "$ACT" --es wattwerk_demo "$app" --es wattwerk_orientation "$orient" > "$WORK/start.txt"
+            sleep 3
+            local pid1 pid2 a t n
+            pid1=$(sh_ pidof "$PKG")
+            for a in "${actions[@]}"; do
+              case "$a" in
+                tap\ *)
+                  t=${a#tap }; t=${t//_/ }
+                  tap_text "$t" || note="$note tap '$t' not found;"
+                  sleep 2 ;;
+                scroll\ *)
+                  for n in $(seq 1 "${a#scroll }"); do
+                    sh_ input swipe $(( CW / 2 )) $(( CH * 3 / 4 )) $(( CW / 2 )) $(( CH / 4 )) 400
+                    sleep 1
+                  done ;;
+              esac
+            done
+            if [ "$waitworld" = 1 ]; then
+              # Software rendering builds a large world slowly: wait for the renderer's "world ready" line,
+              # then give it a few frames to draw.
+              local waited=0
+              until timeout 20 adb logcat -d -s WorldView:I 2>/dev/null | grep -q "world ready"; do
+                [ "$waited" -ge "$wait" ] && { note="$note world not ready after ${wait}s;"; break; }
+                sleep 3; waited=$(( waited + 3 ))
+              done
+              sleep 6
+            else
+              sleep "$wait"
+            fi
+            # Closes a stray system dialog ("System UI isn't responding" on a slow emulator) over the app.
+            sh_ am broadcast -a android.intent.action.CLOSE_SYSTEM_DIALOGS >/dev/null
+            # A busy software-rendered emulator sometimes cuts exec-out short; write on the device, pull, check.
+            local try
+            for try in 1 2 3; do
+              sh_ screencap -p /sdcard/shot.png
+              timeout 60 adb pull /sdcard/shot.png "$OUT/$name.png" >/dev/null 2>&1
+              tail -c 12 "$OUT/$name.png" 2>/dev/null | grep -q IEND && break
+              note="$note screenshot retry;"
+              sleep 2
+            done
+            pid2=$(sh_ pidof "$PKG")
+            timeout 60 adb logcat -d -v threadtime > "$WORK/raw.txt" 2>/dev/null
+            local status=ok
+            if grep -qE "AndroidRuntime.*Process: $PKG," "$WORK/raw.txt"; then status=crash
+            elif grep -qE "ANR in $PKG" "$WORK/raw.txt"; then status=anr
+            elif [ -z "$pid2" ]; then status=no-process
+            elif [ -n "$pid1" ] && [ "$pid1" != "$pid2" ]; then status=restarted
+            fi
+            [ -s "$OUT/$name.png" ] || note="$note no screenshot;"
+            local focus
+            focus=$(sh_ dumpsys window | grep -m1 mCurrentFocus | sed 's/^ *//')
+            printf '%s\t%s\t%s\t%s\t%ss\t%s\t%s\n' "$DEVICE" "$orient" "$scene" "$status" "$(( SECONDS - t0 ))" "$focus" "$note" >> "$TSV"
+            {
+              echo "===== $name: $status (pid ${pid1:-none} -> ${pid2:-none})$note ====="
+              awk -v a="$pid1" -v b="$pid2" '
+                (a != "" && $3 == a) || (b != "" && $3 == b) ||
+                /AndroidRuntime|FATAL EXCEPTION|ANR in|app\.rollentrainer|WattwerkDemo/ ||
+                ($5 ~ /^[EF]$/ && /EGL|GLES|OpenGL|[Ss]hader|gralloc|[Ss]wift[Ss]hader|emugl|RenderThread|GLSurface/)
+              ' "$WORK/raw.txt"
+            } >> "$LOG"
+            { echo "===== $name ====="; cat "$WORK/raw.txt"; } >> "$FULL"
+            echo "$name: $status$note"
+          }
+
+          for orient in $ORIENTATIONS; do
+            set_orientation "$orient"
+            for scene in $SCENES; do run_scene "$orient" "$scene"; done
+          done
+          sh_ am force-stop "$PKG"
+          gzip -f "$FULL"
+          exit 0
+          SCRIPT
+          chmod +x "$RUNNER_TEMP/shoot.sh"
+
+      - name: Run the scenes on the emulator
+        uses: reactivecircus/android-emulator-runner@v2.37.0
+        env:
+          DEVICE: ${{ matrix.device }}
+          ORIENTATIONS: ${{ steps.dev.outputs.orientations }}
+          SCENES: ${{ inputs.scenes || 'route:alpe-dhuez:3 route:alpe-dhuez:12.5:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tourmalet:12 route:champs-elysees:1 race:tour26-12:13:finale=15 race:tour26-19:9:finale=12 route:ventoux:18 ride:first workouts routes routes-tour settings history-race' }}
+          ROUTE_WAIT: ${{ inputs.route_wait || '180' }}
+          APK: ${{ github.workspace }}/apk/app-debug.apk
+          OUT: ${{ github.workspace }}/out
+        with:
+          api-level: ${{ inputs.api_level || '34' }}
+          target: google_apis
+          arch: x86_64
+          profile: ${{ steps.dev.outputs.profile }}
+          avd-name: ${{ matrix.device }}
+          ram-size: 4096M
+          disk-size: 6000M
+          emulator-boot-timeout: 900
+          # SwiftShader renders OpenGL ES 3 in software on the runner, which has no GPU.
+          emulator-options: -no-window -gpu swiftshader_indirect -feature GLESDynamicVersion -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
+          disable-animations: true
+          script: bash "$RUNNER_TEMP/shoot.sh"
+
+      - name: Upload the results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.device }}
+          path: out/
+          if-no-files-found: warn
+          retention-days: 3
+
+  publish:
+    needs: [build, shoot]
+    if: always() && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          merge-multiple: true
+          path: out
+
+      - name: Contact sheets and notes
+        env:
+          SCENES: ${{ inputs.scenes || 'route:alpe-dhuez:3 route:alpe-dhuez:12.5:fp route:tour26-12:100 route:tour26-12:100+tap=Alle_Werte_zeigen route:tourmalet:12 route:champs-elysees:1 race:tour26-12:13:finale=15 race:tour26-19:9:finale=12 route:ventoux:18 ride:first workouts routes routes-tour settings history-race' }}
+          RUN_ID: ${{ github.run_id }}
+          SHA: ${{ github.sha }}
+        run: |
+          mkdir -p out && cd out
+          command -v montage >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick >/dev/null; }
+          shopt -s nullglob
+          # One sheet per device and orientation; thumbnails first, so the full-size PNGs never sit in memory together.
+          for set in $(for f in *.png; do echo "$f" | sed -E 's/^([a-z]+-(portrait|landscape))-.*/\1/'; done | sort -u); do
+            case "$set" in *portrait) geo=270x600; tile=6x ;; *) geo=600x340; tile=3x ;; esac
+            mkdir -p "../thumbs/$set"
+            for f in "$set"-*.png; do
+              convert "$f" -resize "$geo" "../thumbs/$set/${f#"$set"-}" || echo "::warning::could not read $f"
+            done
+            montage -font DejaVu-Sans -pointsize 14 -fill white -background '#1b1b1b' -label '%t' \
+              "../thumbs/$set"/*.png -tile "$tile" -geometry "$geo+6+6" -quality 85 "contact-$set.jpg" \
+              || echo "::warning::montage failed for $set"
+          done
+          tsv=(scenes-*.tsv)
+          {
+            echo "Screenshots aus Run [$RUN_ID](https://github.com/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID), Commit $SHA."
+            echo
+            echo "Szenen: \`$SCENES\`"
+            echo
+            echo "| Gerät | Lage | Szene | Status | Zeit | Notiz |"
+            echo "|---|---|---|---|---|---|"
+            if [ ${#tsv[@]} -gt 0 ]; then
+              cat "${tsv[@]}" | awk -F'\t' '{ gsub(/\|/, "/", $7); printf "| %s | %s | %s | %s | %s | %s |\n", $1, $2, $3, $4, $5, $7 }'
+            else
+              echo "| – | – | – | keine Ergebnisse | – | – |"
+            fi
+            echo
+            for f in device-*.txt; do echo "**$f**"; echo '```'; cat "$f"; echo '```'; done
+          } > ../notes.md
+          cat ../notes.md >> "$GITHUB_STEP_SUMMARY"
+          ls -la
+
+      # Full-size PNGs would make the branch heavy, so the shots go there as JPEG at full resolution.
+      - name: Push the results to the screens-results branch
+        env:
+          RUN: ${{ github.run_number }}
+        run: |
+          shopt -s nullglob
+          mkdir -p "pub/$RUN"
+          for f in out/*.png; do b=$(basename "$f" .png); convert "$f" -quality 88 "pub/$RUN/$b.jpg" || echo "::warning::could not convert $f"; done
+          for f in out/contact-*.jpg out/*.tsv out/device-*.txt out/logcat-*; do cp "$f" "pub/$RUN/"; done
+          cp notes.md "pub/$RUN/README.md"
+          cd pub
+          git init -q -b screens-results
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Screenshots from run $RUN ($GITHUB_SHA)"
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY.git" screens-results

@@ -1,0 +1,237 @@
+{
+ "id": "madeleine",
+ "lengthKm": 19.2,
+ "notes": "South side from La Chambre (Maurienne) on the D213, as in the app (19.2 km, start 472 m, ~8 %). km 0 = La Chambre town centre where the D213 (Route de Saint-Martin) leaves the Grande Rue next to the Place de la Mairie (~473 m in GLO-30); the town-hall square itself is 0.1 km before it. Route: D213 via Saint-Martin-sur-la-Chambre, La Côte, Montoudras, Le Planet, Saint-François-Longchamp (village) and the Saint-François-Longchamp 1650 resort to the col (1993 m, Tour signs 2000 m); a single road except the short residential Chemin de la Fontaine at ~4.3 km, which a router would use to cut the D213 hairpin loop — the point at 4.34 km prevents that. Routed on Overture roads 19.27 km (app 19.2, Wikipedia 19 km / 1522 m); km values = routed distance scaled by 19.2/19.271. The Tour 2025 itinerary counted 19.8 km from its 'La Chambre' point (km 84.8) to the col (km 104.6), i.e. from further back in the valley; the app's 19.2 km fits the town-centre start. Village points are where the D213 passes them (Overture locality positions snapped to the road); hairpin points are on the road. The avalanche gallery (~7.9 km) and the 'demoiselles coiffées' are not mapped as such in Overture and are not used as waypoints.",
+ "sources": [
+  "https://en.wikipedia.org/wiki/Col_de_la_Madeleine",
+  "https://www.cyclingstage.com/images/tour-de-france/2025/stage-18-times.htm",
+  "Overture Maps 2026-10-21.0 transportation segments (D213 Route de Saint-Martin / Route de Saint-François / Route du Col de la Madeleine) and divisions (La Chambre, Saint-Martin-sur-la-Chambre, La Côte, Montoudras, Le Planet, Saint-François-Longchamp, Saint-François-Longchamp 1650)"
+ ],
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "La Chambre – foot: Grande Rue / D213 Route de Saint-Martin junction in the town centre, by the Place de la Mairie (~473 m)",
+   "lat": 45.35971,
+   "lon": 6.29933,
+   "kind": "start",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 0.68,
+   "name": "La Chambre – D213 leaving the town (Route de Saint-Martin becomes Route de Saint-François)",
+   "lat": 45.36328,
+   "lon": 6.30642,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 1.67,
+   "name": "Saint-Martin-sur-la-Chambre",
+   "lat": 45.36589,
+   "lon": 6.3161,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 1.93,
+   "name": "First hairpin above Saint-Martin (Le Mollard)",
+   "lat": 45.36797,
+   "lon": 6.31576,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 2.7,
+   "name": "Hairpin above Saint-Martin",
+   "lat": 45.36977,
+   "lon": 6.31821,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 3.48,
+   "name": "La Côte",
+   "lat": 45.37057,
+   "lon": 6.32044,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 3.97,
+   "name": "Hairpin below Montailler",
+   "lat": 45.37438,
+   "lon": 6.32139,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 4.32,
+   "name": "D213 hairpin loop (not the Chemin de la Fontaine short cut)",
+   "lat": 45.37196,
+   "lon": 6.32372,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 4.54,
+   "name": "Maisons Puges",
+   "lat": 45.37366,
+   "lon": 6.32406,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 5.26,
+   "name": "Montoudras",
+   "lat": 45.37922,
+   "lon": 6.32585,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 6.06,
+   "name": "Hairpins in the forest",
+   "lat": 45.38443,
+   "lon": 6.3276,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 6.82,
+   "name": "Hairpins in the forest",
+   "lat": 45.38456,
+   "lon": 6.33178,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 7.67,
+   "name": "D213 in the forest",
+   "lat": 45.3879,
+   "lon": 6.33678,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 8.46,
+   "name": "Hairpin below Le Planet",
+   "lat": 45.39368,
+   "lon": 6.33486,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 9.38,
+   "name": "Le Planet (Saint-François-Longchamp)",
+   "lat": 45.39981,
+   "lon": 6.33779,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 10.52,
+   "name": "L'Epalud",
+   "lat": 45.40461,
+   "lon": 6.34326,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 11.27,
+   "name": "Saint-François-Longchamp (village, 1450 m)",
+   "lat": 45.40784,
+   "lon": 6.34568,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 12.22,
+   "name": "Hairpin between Saint-François and the resort",
+   "lat": 45.41411,
+   "lon": 6.35236,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 13.35,
+   "name": "Hairpin below the resort",
+   "lat": 45.41599,
+   "lon": 6.361,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 13.73,
+   "name": "Saint-François-Longchamp 1650 (ski resort)",
+   "lat": 45.41679,
+   "lon": 6.36202,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D213"
+  },
+  {
+   "km": 14.05,
+   "name": "Longchamp",
+   "lat": 45.41749,
+   "lon": 6.36392,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 15.16,
+   "name": "Les Perelles",
+   "lat": 45.42313,
+   "lon": 6.36038,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 16.67,
+   "name": "Hairpin above the tree line",
+   "lat": 45.42586,
+   "lon": 6.37408,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 17.93,
+   "name": "Last hairpin below the col",
+   "lat": 45.43053,
+   "lon": 6.36215,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D213"
+  },
+  {
+   "km": 19.2,
+   "name": "Col de la Madeleine summit (1993 m; 2000 m on Tour signs)",
+   "lat": 45.43479,
+   "lon": 6.37541,
+   "kind": "finish",
+   "confidence": "high",
+   "road": "D213"
+  }
+ ]
+}

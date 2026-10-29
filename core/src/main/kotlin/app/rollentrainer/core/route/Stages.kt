@@ -1,9 +1,12 @@
 package app.rollentrainer.core.route
 
+import app.rollentrainer.core.geo.RealProfiles
+
 /**
  * The 21 stages of the 2026 tour (Barcelona to Paris), rebuilt from public route data: official
  * lengths, the categorised climbs and the altitudes of the towns along the way. Profiles are
  * approximations good enough for the trainer, not survey data. Generated; do not edit by hand.
+ * Stages measured by the geodata pipeline (tools/geodata) get their real profile from [RealProfiles].
  */
 object Stages {
     const val ID_PREFIX = "tour26-"
@@ -41,7 +44,7 @@ object Stages {
             landmarks = listOf(Landmark(17200.0, "Côte de Sant Feliu (Kat. 3)"), Landmark(39000.0, "Centelles"), Landmark(56000.0, "Vic"), Landmark(92000.0, "Ripoll"), Landmark(98400.0, "Zwischensprint Campdevànol"), Landmark(108500.0, "Ribes de Freser"), Landmark(118400.0, "Planoles – Fuß Toses"), Landmark(127700.0, "Collada de Toses (Kat. 1)"), Landmark(136000.0, "La Molina"), Landmark(154000.0, "Puigcerdà"), Landmark(158000.0, "Llívia – Grenze Frankreich"), Landmark(170000.0, "Font-Romeu"), Landmark(172300.0, "Col du Calvaire (Kat. 3)"), Landmark(179300.0, "Mont-Louis"), Landmark(183500.0, "Col de la Quillane"), Landmark(191200.0, "Lac de Matemale")),
             stage = StageInfo(
                 number = 3, date = "2026-07-06", startTown = "Granollers", finishTown = "Les Angles", type = "mountain",
-                climbs = listOf(Climb("Côte de Sant Feliu de Codines", 530.0, 17.2, 7.6, 4.5, "3"), Climb("Col de Toses (Collada de Toses)", 1785.0, 127.7, 9.3, 6.5, "1"), Climb("Col du Calvaire", 1836.0, 172.3, 11.4, 4.1, "3"), Climb("Les Angles (Pla del Mir)", 1794.0, 195.9, 1.7, 6.5, "3")),
+                climbs = listOf(Climb("Côte de Sant Feliu de Codines", 620.0, 17.2, 7.6, 4.5, "3"), Climb("Col de Toses (Collada de Toses)", 1785.0, 127.7, 9.3, 6.5, "1"), Climb("Col du Calvaire", 1836.0, 172.3, 11.4, 4.1, "3"), Climb("Les Angles (Pla del Mir)", 1794.0, 195.9, 1.7, 6.5, "3")),
                 winner = "Tadej Pogačar",
             ),
         ),
@@ -77,7 +80,7 @@ object Stages {
             landmarks = listOf(Landmark(24000.0, "Coarraze"), Landmark(43000.0, "Lourdes"), Landmark(50900.0, "Côte de Loucrup (Kat. 4)"), Landmark(59100.0, "Zwischensprint Pouzac"), Landmark(62000.0, "Bagnères-de-Bigorre"), Landmark(77300.0, "Côte de Mauvezin (Kat. 3)"), Landmark(99000.0, "Sarrancolin"), Landmark(106100.0, "Arreau – Fuß Aspin"), Landmark(118100.0, "Col d'Aspin 1489 m (Kat. 1)"), Landmark(130700.0, "Sainte-Marie-de-Campan"), Landmark(144200.0, "La Mongie"), Landmark(147800.0, "Col du Tourmalet 2115 m (HC)"), Landmark(158000.0, "Barèges"), Landmark(167500.0, "Luz-Saint-Sauveur"), Landmark(176000.0, "Gèdre")),
             stage = StageInfo(
                 number = 6, date = "2026-07-09", startTown = "Pau", finishTown = "Gavarnie-Gèdre", type = "mountain",
-                climbs = listOf(Climb("Côte de Loucrup", 575.0, 50.9, 1.9, 7.1, "4"), Climb("Côte de Mauvezin", 518.0, 77.3, 3.0, 6.8, "3"), Climb("Col d'Aspin", 1489.0, 118.1, 12.0, 6.5, "1"), Climb("Col du Tourmalet", 2115.0, 147.8, 17.1, 7.3, "HC"), Climb("Gavarnie-Gèdre", 1379.0, 186.2, 18.7, 3.7, "2")),
+                climbs = listOf(Climb("Côte de Loucrup", 530.0, 50.9, 1.9, 7.1, "4"), Climb("Côte de Mauvezin", 518.0, 77.3, 3.0, 6.8, "3"), Climb("Col d'Aspin", 1489.0, 118.1, 12.0, 6.5, "1"), Climb("Col du Tourmalet", 2115.0, 147.8, 17.1, 7.3, "HC"), Climb("Gavarnie-Gèdre", 1379.0, 186.2, 18.7, 3.7, "2")),
                 winner = "Tadej Pogačar",
             ),
         ),
@@ -89,7 +92,7 @@ object Stages {
             landmarks = listOf(Landmark(12200.0, "Saint-Sever / Adour"), Landmark(29000.0, "Mont-de-Marsan"), Landmark(57000.0, "Labrit (Landes-Wald)"), Landmark(79000.0, "Sore"), Landmark(98300.0, "Saint-Symphorien"), Landmark(120200.0, "Zwischensprint Landiras"), Landmark(131100.0, "Cérons (Garonne-Tal)"), Landmark(133900.0, "Cadillac-sur-Garonne"), Landmark(137300.0, "Côte de Béguey (Kat. 4)"), Landmark(144100.0, "Capian (Plateau)"), Landmark(150600.0, "Langoiran (Garonne-Ufer)"), Landmark(166900.0, "Latresne"), Landmark(170600.0, "Pont Simone-Veil")),
             stage = StageInfo(
                 number = 7, date = "2026-07-10", startTown = "Hagetmau", finishTown = "Bordeaux", type = "flat",
-                climbs = listOf(Climb("Côte de Béguey", 61.0, 137.3, 1.2, 4.4, "4")),
+                climbs = listOf(Climb("Côte de Béguey", 107.0, 137.3, 1.2, 4.4, "4")),
                 winner = "Tim Merlier",
             ),
         ),
@@ -137,7 +140,7 @@ object Stages {
             landmarks = listOf(Landmark(4400.0, "Saint-Germain-des-Fossés"), Landmark(12200.0, "Billy"), Landmark(27800.0, "Zwischensprint St-Pourçain"), Landmark(32900.0, "Côte de Billonnière (4)"), Landmark(38700.0, "Châtel-de-Neuvre"), Landmark(55700.0, "Moulins (Tour-Halbzeit)"), Landmark(73200.0, "Saint-Ennemond"), Landmark(90300.0, "Decize (Loire)"), Landmark(99500.0, "La Machine"), Landmark(108500.0, "Anlezy"), Landmark(117500.0, "Rouy"), Landmark(123400.0, "Côte de Billy-Chevannes (4)"), Landmark(131600.0, "Saint-Jean-aux-Amognes"), Landmark(146000.0, "Guérigny"), Landmark(150400.0, "Urzy")),
             stage = StageInfo(
                 number = 11, date = "2026-07-15", startTown = "Vichy", finishTown = "Nevers", type = "flat",
-                climbs = listOf(Climb("Côte de Billonnière", 290.0, 32.9, 1.0, 5.8, "4"), Climb("Côte de Billy-Chevannes", 321.0, 123.4, 1.4, 5.0, "4")),
+                climbs = listOf(Climb("Côte de Billonnière", 290.0, 32.9, 1.0, 5.8, "4"), Climb("Côte de Billy-Chevannes", 358.0, 123.4, 1.4, 5.0, "4")),
                 winner = "Søren Wærenskjold",
             ),
         ),
@@ -149,7 +152,7 @@ object Stages {
             landmarks = listOf(Landmark(5000.0, "Saint-Parize-le-Châtel"), Landmark(11000.0, "Saint-Pierre-le-Moûtier"), Landmark(45800.0, "Decize – Zwischensprint"), Landmark(62000.0, "Fours"), Landmark(76500.0, "Côte de Lanty (Kat. 4)"), Landmark(86400.0, "Luzy"), Landmark(97800.0, "Côte de Cuzy (Kat. 4)"), Landmark(108000.0, "Toulon-sur-Arroux"), Landmark(126500.0, "Montceau-les-Mines"), Landmark(130000.0, "Blanzy"), Landmark(140000.0, "Montchanin-le-Haut"), Landmark(146000.0, "Hochfläche Saint-Micaud"), Landmark(159400.0, "Côte de Montagny-lès-Buxy"), Landmark(165000.0, "Buxy"), Landmark(173000.0, "Saint-Rémy")),
             stage = StageInfo(
                 number = 12, date = "2026-07-16", startTown = "Circuit de Nevers Magny-Cours", finishTown = "Chalon-sur-Saône", type = "flat",
-                climbs = listOf(Climb("Côte de Lanty", 345.0, 76.5, 2.0, 4.0, "4"), Climb("Côte de Cuzy", 405.0, 97.8, 2.4, 4.5, "4"), Climb("Côte de Montagny-lès-Buxy", 375.0, 159.4, 2.6, 4.3, "4")),
+                climbs = listOf(Climb("Côte de Lanty", 305.0, 76.5, 2.0, 4.0, "4"), Climb("Côte de Cuzy", 405.0, 97.8, 2.4, 4.5, "4"), Climb("Côte de Montagny-lès-Buxy", 375.0, 159.4, 2.6, 4.3, "4")),
                 winner = "Tim Merlier",
             ),
         ),
@@ -221,7 +224,7 @@ object Stages {
             landmarks = listOf(Landmark(10000.0, "Saint-Quentin-sur-Isère"), Landmark(25200.0, "Sassenage, Fuß Engins"), Landmark(36700.0, "Côte d'Engins (Kat. 1)"), Landmark(52400.0, "Saint-Nizier-du-Moucherotte"), Landmark(70500.0, "Vif"), Landmark(92200.0, "Côte de Monteynard (Kat. 2)"), Landmark(97700.0, "Col de la Festinière"), Landmark(104000.0, "La Mure"), Landmark(112800.0, "Côte des Terrasses (Kat. 3)"), Landmark(129000.0, "Zwischensprint Corps"), Landmark(150500.0, "Saint-Bonnet-en-Champsaur"), Landmark(166200.0, "Côte de St-Léger (Kat. 3)"), Landmark(178100.0, "Orcières, Fuß Schlussanstieg")),
             stage = StageInfo(
                 number = 18, date = "2026-07-23", startTown = "Voiron", finishTown = "Orcières-Merlette", type = "mountain",
-                climbs = listOf(Climb("Côte d'Engins", 854.0, 36.7, 11.4, 5.4, "1"), Climb("Côte de Monteynard", 830.0, 92.2, 9.7, 5.0, "2"), Climb("Côte des Terrasses", 865.0, 112.8, 3.4, 6.6, "3"), Climb("Côte de Saint-Léger-les-Mélèzes", 1260.0, 166.2, 2.5, 6.9, "3"), Climb("Orcières-Merlette", 1825.0, 185.2, 7.1, 6.7, "1")),
+                climbs = listOf(Climb("Côte d'Engins", 854.0, 36.7, 11.4, 5.4, "1"), Climb("Côte de Monteynard", 858.0, 92.2, 9.7, 5.0, "2"), Climb("Côte des Terrasses", 865.0, 112.8, 3.4, 6.6, "3"), Climb("Côte de Saint-Léger-les-Mélèzes", 1260.0, 166.2, 2.5, 6.9, "3"), Climb("Orcières-Merlette", 1825.0, 185.2, 7.1, 6.7, "1")),
                 winner = "Richard Carapaz",
             ),
         ),
@@ -261,7 +264,7 @@ object Stages {
                 winner = "Mathieu van der Poel",
             ),
         ),
-    )
+    ).map(RealProfiles::apply)
 
     fun byNumber(n: Int): Route? = all.firstOrNull { it.stage?.number == n }
 }

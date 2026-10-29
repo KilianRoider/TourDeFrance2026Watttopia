@@ -1,0 +1,1264 @@
+{
+ "id": "tour26-10",
+ "lengthKm": 166.6,
+ "waypoints": [
+  {
+   "km": 0.0,
+   "name": "Aurillac – km 0 départ réel, D617 Route de la Gane Cabrières",
+   "lat": 44.87613,
+   "lon": 2.40501,
+   "kind": "start",
+   "confidence": "medium",
+   "road": "D617"
+  },
+  {
+   "km": 1.5,
+   "name": "D617 Route de la Grange",
+   "lat": 44.87153,
+   "lon": 2.3885,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D617"
+  },
+  {
+   "km": 2.6,
+   "name": "La Course du Mouton (Roannes-Saint-Mary), D617",
+   "lat": 44.86386,
+   "lon": 2.38426,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D617"
+  },
+  {
+   "km": 3.7,
+   "name": "Roannes-Saint-Mary, D617",
+   "lat": 44.85774,
+   "lon": 2.39112,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D617"
+  },
+  {
+   "km": 6.0,
+   "name": "D617 Route de la Traverse",
+   "lat": 44.84063,
+   "lon": 2.3924,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D617"
+  },
+  {
+   "km": 7.8,
+   "name": "D617 (Calves)",
+   "lat": 44.83013,
+   "lon": 2.38247,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D617"
+  },
+  {
+   "km": 10.2,
+   "name": "L'Enseigne (Roannes-Saint-Mary) – D617 → D20",
+   "lat": 44.8222,
+   "lon": 2.36424,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D20"
+  },
+  {
+   "km": 11.1,
+   "name": "Carrefour D20 / D45",
+   "lat": 44.81606,
+   "lon": 2.37095,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D45"
+  },
+  {
+   "km": 12.0,
+   "name": "D45 (Mougeac)",
+   "lat": 44.80897,
+   "lon": 2.36715,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D45"
+  },
+  {
+   "km": 14.2,
+   "name": "D45 (Le Poux)",
+   "lat": 44.79286,
+   "lon": 2.35261,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D45"
+  },
+  {
+   "km": 15.1,
+   "name": "La Loudière (Marcolès), D45",
+   "lat": 44.78519,
+   "lon": 2.35385,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D45"
+  },
+  {
+   "km": 15.2,
+   "name": "Marcolès (entrée), D45",
+   "lat": 44.78457,
+   "lon": 2.35391,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D45"
+  },
+  {
+   "km": 15.5,
+   "name": "Marcolès centre – D45 Rue des Jardins → VC Le Balat → D66 Faubourg Saint-Martin",
+   "lat": 44.78219,
+   "lon": 2.35234,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D66"
+  },
+  {
+   "km": 17.0,
+   "name": "Carrefour D66 / D51",
+   "lat": 44.77583,
+   "lon": 2.3626,
+   "kind": "junction",
+   "confidence": "medium",
+   "road": "D51"
+  },
+  {
+   "km": 17.9,
+   "name": "D51 (Leygonie)",
+   "lat": 44.77475,
+   "lon": 2.37335,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D51"
+  },
+  {
+   "km": 19.8,
+   "name": "D51",
+   "lat": 44.76757,
+   "lon": 2.39113,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D51"
+  },
+  {
+   "km": 21.9,
+   "name": "Carrefour D51 / D601",
+   "lat": 44.76008,
+   "lon": 2.40985,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D601"
+  },
+  {
+   "km": 23.8,
+   "name": "Le Garric (Lacapelle-del-Fraisse), D601",
+   "lat": 44.7718,
+   "lon": 2.42129,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D601"
+  },
+  {
+   "km": 25.2,
+   "name": "Lacapelle-del-Fraisse (entrée), D601",
+   "lat": 44.78015,
+   "lon": 2.43378,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D601"
+  },
+  {
+   "km": 25.5,
+   "name": "Lacapelle-del-Fraisse – intermediate sprint (D601)",
+   "lat": 44.78052,
+   "lon": 2.43685,
+   "kind": "sprint",
+   "confidence": "medium",
+   "road": "D601"
+  },
+  {
+   "km": 26.9,
+   "name": "Lafeuillade-en-Vézie – D601 → D920",
+   "lat": 44.78629,
+   "lon": 2.45149,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D920"
+  },
+  {
+   "km": 27.8,
+   "name": "Lafeuillade-en-Vézie, D920 Rue Louis Maffre",
+   "lat": 44.78942,
+   "lon": 2.461,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D920"
+  },
+  {
+   "km": 30.0,
+   "name": "D920",
+   "lat": 44.80349,
+   "lon": 2.4753,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D920"
+  },
+  {
+   "km": 31.7,
+   "name": "Prunet (près), D920",
+   "lat": 44.81607,
+   "lon": 2.48451,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D920"
+  },
+  {
+   "km": 32.4,
+   "name": "Lasprandine (Prunet), D920",
+   "lat": 44.81906,
+   "lon": 2.49184,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D920"
+  },
+  {
+   "km": 32.9,
+   "name": "La Croix d'Aubugues – D920 → D8",
+   "lat": 44.8229,
+   "lon": 2.4955,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D8"
+  },
+  {
+   "km": 33.7,
+   "name": "D8",
+   "lat": 44.82894,
+   "lon": 2.50024,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D8"
+  },
+  {
+   "km": 35.0,
+   "name": "Carrefour D8 / D32",
+   "lat": 44.83792,
+   "lon": 2.50953,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D32"
+  },
+  {
+   "km": 35.7,
+   "name": "La Joyeuse – D32 → D8",
+   "lat": 44.84271,
+   "lon": 2.50514,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D8"
+  },
+  {
+   "km": 37.0,
+   "name": "D8",
+   "lat": 44.85333,
+   "lon": 2.50997,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D8"
+  },
+  {
+   "km": 39.9,
+   "name": "D8",
+   "lat": 44.86961,
+   "lon": 2.53275,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D8"
+  },
+  {
+   "km": 42.8,
+   "name": "Lachaux, D8",
+   "lat": 44.88308,
+   "lon": 2.54948,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8"
+  },
+  {
+   "km": 43.9,
+   "name": "Feneyrols, D8",
+   "lat": 44.8899,
+   "lon": 2.54765,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D8"
+  },
+  {
+   "km": 44.6,
+   "name": "Carrefour D8 / D990 (Lagane)",
+   "lat": 44.89499,
+   "lon": 2.54373,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D990"
+  },
+  {
+   "km": 46.0,
+   "name": "D990 (Cabannes)",
+   "lat": 44.89804,
+   "lon": 2.56097,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 46.8,
+   "name": "D990 (Embarre)",
+   "lat": 44.89692,
+   "lon": 2.56575,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 48.3,
+   "name": "Carlat, D990 Rue de la Reine Margot",
+   "lat": 44.88745,
+   "lon": 2.56059,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D990"
+  },
+  {
+   "km": 50.1,
+   "name": "D990 (Lessenat)",
+   "lat": 44.8821,
+   "lon": 2.57551,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 51.9,
+   "name": "D990 (Juzelles)",
+   "lat": 44.891,
+   "lon": 2.59029,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 52.9,
+   "name": "D990 (Le Montat)",
+   "lat": 44.89722,
+   "lon": 2.59851,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 54.4,
+   "name": "Loubéjac, D990",
+   "lat": 44.89993,
+   "lon": 2.61277,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D990"
+  },
+  {
+   "km": 56.1,
+   "name": "D990",
+   "lat": 44.89693,
+   "lon": 2.62856,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 57.7,
+   "name": "D990 Route d'Aurillac",
+   "lat": 44.90709,
+   "lon": 2.6427,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D990"
+  },
+  {
+   "km": 59.5,
+   "name": "Raulhac – D990 → D59",
+   "lat": 44.91144,
+   "lon": 2.65804,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D59"
+  },
+  {
+   "km": 60.7,
+   "name": "Cropières (Raulhac), D59",
+   "lat": 44.92024,
+   "lon": 2.6615,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D59"
+  },
+  {
+   "km": 62.8,
+   "name": "Jou-sous-Monjou, D59",
+   "lat": 44.93835,
+   "lon": 2.66452,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D59"
+  },
+  {
+   "km": 63.8,
+   "name": "D59 (Canroux)",
+   "lat": 44.94627,
+   "lon": 2.66129,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D59"
+  },
+  {
+   "km": 64.9,
+   "name": "Carrefour D59 / D54 – foot of Côte de Pailherols",
+   "lat": 44.95258,
+   "lon": 2.66388,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D54"
+  },
+  {
+   "km": 65.5,
+   "name": "Cassagne (Jou-sous-Monjou), D54",
+   "lat": 44.94733,
+   "lon": 2.66462,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D54"
+  },
+  {
+   "km": 66.2,
+   "name": "D54",
+   "lat": 44.94486,
+   "lon": 2.67003,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D54"
+  },
+  {
+   "km": 67.2,
+   "name": "D54",
+   "lat": 44.94842,
+   "lon": 2.67322,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D54"
+  },
+  {
+   "km": 68.0,
+   "name": "Côte de Pailherols (cat. 3) summit, D54",
+   "lat": 44.95133,
+   "lon": 2.67901,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D54"
+  },
+  {
+   "km": 68.5,
+   "name": "Pailherols, D54",
+   "lat": 44.95036,
+   "lon": 2.68415,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D54"
+  },
+  {
+   "km": 70.4,
+   "name": "La Bonétie (Pailherols), D54",
+   "lat": 44.94796,
+   "lon": 2.69708,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D54"
+  },
+  {
+   "km": 71.9,
+   "name": "Chemin de la Beauté (near Coufrouge)",
+   "lat": 44.94583,
+   "lon": 2.71427,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D54"
+  },
+  {
+   "km": 73.4,
+   "name": "Lacapelle-Barrès – D54 → D990",
+   "lat": 44.93492,
+   "lon": 2.72301,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D990"
+  },
+  {
+   "km": 74.5,
+   "name": "Le Chambon (Thérondels), D990",
+   "lat": 44.93379,
+   "lon": 2.72839,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D990"
+  },
+  {
+   "km": 76.1,
+   "name": "Pont la Vieille (Narnhac) – D990 → D57",
+   "lat": 44.93461,
+   "lon": 2.74375,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D57"
+  },
+  {
+   "km": 77.4,
+   "name": "D57 (Nouvialle)",
+   "lat": 44.94137,
+   "lon": 2.75353,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 79.2,
+   "name": "D57",
+   "lat": 44.94818,
+   "lon": 2.77286,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 81.3,
+   "name": "Vigouroux (Saint-Martin-sous-Vigouroux), D57",
+   "lat": 44.95121,
+   "lon": 2.79096,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D57"
+  },
+  {
+   "km": 83.0,
+   "name": "D57",
+   "lat": 44.9606,
+   "lon": 2.80027,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D57"
+  },
+  {
+   "km": 85.0,
+   "name": "Landonnes (Brezons), D57",
+   "lat": 44.97626,
+   "lon": 2.80587,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D57"
+  },
+  {
+   "km": 85.3,
+   "name": "Le Chauteil (Brezons), D57",
+   "lat": 44.97393,
+   "lon": 2.8057,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D57"
+  },
+  {
+   "km": 85.7,
+   "name": "Le Pessin (Brezons) – D57 → D39",
+   "lat": 44.97189,
+   "lon": 2.80884,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 86.0,
+   "name": "D39 (Le Pessin)",
+   "lat": 44.97396,
+   "lon": 2.80972,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 87.5,
+   "name": "Farreyre (Brezons), D39",
+   "lat": 44.98699,
+   "lon": 2.81121,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 88.7,
+   "name": "D39 (La Bohal)",
+   "lat": 44.9976,
+   "lon": 2.80819,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 90.2,
+   "name": "Les Roussinches (Brezons), D39",
+   "lat": 45.00549,
+   "lon": 2.79347,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 91.7,
+   "name": "Le Bourguet (Brezons), D39 – foot of Col de la Griffoul",
+   "lat": 45.01334,
+   "lon": 2.77959,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 92.5,
+   "name": "D39 (Lustrande)",
+   "lat": 45.01087,
+   "lon": 2.78822,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 93.5,
+   "name": "D39",
+   "lat": 45.0083,
+   "lon": 2.80019,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 94.5,
+   "name": "D39",
+   "lat": 45.01651,
+   "lon": 2.80237,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 95.7,
+   "name": "La Griffoul (Brezons), D39",
+   "lat": 45.01357,
+   "lon": 2.81299,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 96.3,
+   "name": "D39",
+   "lat": 45.01223,
+   "lon": 2.8171,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 97.3,
+   "name": "Col de la Griffoul (cat. 2) summit, D39",
+   "lat": 45.02084,
+   "lon": 2.8191,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 98.9,
+   "name": "D39 (La Combe)",
+   "lat": 45.02452,
+   "lon": 2.83115,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 99.7,
+   "name": "D39",
+   "lat": 45.0284,
+   "lon": 2.82748,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 100.7,
+   "name": "La Sagnette (Paulhac) – foot of Col de Prat de Bouc",
+   "lat": 45.03625,
+   "lon": 2.82214,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 101.7,
+   "name": "D39 Route du Plomb du Cantal",
+   "lat": 45.04313,
+   "lon": 2.81411,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 103.8,
+   "name": "Col de Prat de Bouc (cat. 3) summit, D39",
+   "lat": 45.05295,
+   "lon": 2.79358,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 105.3,
+   "name": "D39 Route du Plomb du Cantal",
+   "lat": 45.06221,
+   "lon": 2.80535,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 107.1,
+   "name": "D39",
+   "lat": 45.07089,
+   "lon": 2.82064,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 108.4,
+   "name": "Albepierre (Albepierre-Bredons), D39",
+   "lat": 45.07581,
+   "lon": 2.83294,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D39"
+  },
+  {
+   "km": 110.4,
+   "name": "D39 Rue du Plomb du Cantal",
+   "lat": 45.09023,
+   "lon": 2.84277,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D39"
+  },
+  {
+   "km": 112.7,
+   "name": "Murat – D39 Route d'Albepierre → D3",
+   "lat": 45.10567,
+   "lon": 2.86146,
+   "kind": "town",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 113.5,
+   "name": "Murat – D3 Route de Riom-ès-Montagnes, foot of Côte de Murat",
+   "lat": 45.11135,
+   "lon": 2.85847,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 113.9,
+   "name": "Murat – D3 hairpin",
+   "lat": 45.11479,
+   "lon": 2.85669,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 114.5,
+   "name": "Murat – D3 hairpin (east)",
+   "lat": 45.11391,
+   "lon": 2.86297,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 114.9,
+   "name": "D3 above Murat – Côte de Murat",
+   "lat": 45.11649,
+   "lon": 2.85926,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 116.2,
+   "name": "D3 (Chastel-sur-Murat, près)",
+   "lat": 45.12428,
+   "lon": 2.85031,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 117.3,
+   "name": "D3",
+   "lat": 45.13095,
+   "lon": 2.84227,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 118.8,
+   "name": "Côte de Murat (cat. 3) summit, D3",
+   "lat": 45.13829,
+   "lon": 2.82727,
+   "kind": "summit",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 120.1,
+   "name": "D3 (plateau)",
+   "lat": 45.14582,
+   "lon": 2.81593,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D3"
+  },
+  {
+   "km": 121.2,
+   "name": "Carrefour D3 / D680",
+   "lat": 45.15294,
+   "lon": 2.81482,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D680"
+  },
+  {
+   "km": 122.8,
+   "name": "Le Peuch (Dienne), D680",
+   "lat": 45.1563,
+   "lon": 2.79706,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D680"
+  },
+  {
+   "km": 123.5,
+   "name": "Dienne, D680",
+   "lat": 45.15846,
+   "lon": 2.78854,
+   "kind": "town",
+   "confidence": "high",
+   "road": "D680"
+  },
+  {
+   "km": 125.1,
+   "name": "D680 Route du Puy Mary",
+   "lat": 45.14837,
+   "lon": 2.77399,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D680"
+  },
+  {
+   "km": 127.7,
+   "name": "Lavigerie, D680 – foot of Puy Mary / Pas de Peyrol",
+   "lat": 45.13818,
+   "lon": 2.74473,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D680"
+  },
+  {
+   "km": 129.0,
+   "name": "D680 (La Gandilhon)",
+   "lat": 45.13545,
+   "lon": 2.72995,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D680"
+  },
+  {
+   "km": 130.3,
+   "name": "D680",
+   "lat": 45.1329,
+   "lon": 2.71486,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D680"
+  },
+  {
+   "km": 131.5,
+   "name": "Col de Serre, D680",
+   "lat": 45.12832,
+   "lon": 2.70179,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D680"
+  },
+  {
+   "km": 132.5,
+   "name": "D680",
+   "lat": 45.12084,
+   "lon": 2.69545,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D680"
+  },
+  {
+   "km": 134.2,
+   "name": "Col d'Eylac, D680",
+   "lat": 45.10915,
+   "lon": 2.68294,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D680"
+  },
+  {
+   "km": 135.0,
+   "name": "D680",
+   "lat": 45.11179,
+   "lon": 2.67811,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D680"
+  },
+  {
+   "km": 135.7,
+   "name": "Puy Mary – Pas de Peyrol (cat. 1) summit – D680 → D17",
+   "lat": 45.11324,
+   "lon": 2.67173,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D17"
+  },
+  {
+   "km": 136.6,
+   "name": "D17 Route des Volcans",
+   "lat": 45.1063,
+   "lon": 2.67001,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 137.5,
+   "name": "Col de Redondet, D17",
+   "lat": 45.10429,
+   "lon": 2.66211,
+   "kind": "other",
+   "confidence": "high",
+   "road": "D17"
+  },
+  {
+   "km": 138.0,
+   "name": "D17",
+   "lat": 45.10406,
+   "lon": 2.66804,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 139.0,
+   "name": "D17",
+   "lat": 45.10502,
+   "lon": 2.67639,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 139.9,
+   "name": "D17",
+   "lat": 45.09957,
+   "lon": 2.6841,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 140.8,
+   "name": "D17",
+   "lat": 45.09326,
+   "lon": 2.68364,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 141.8,
+   "name": "D17",
+   "lat": 45.09371,
+   "lon": 2.69264,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 142.9,
+   "name": "D17",
+   "lat": 45.08949,
+   "lon": 2.68337,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 143.7,
+   "name": "D17",
+   "lat": 45.08985,
+   "lon": 2.67668,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 144.4,
+   "name": "Rudez (Mandailles-Saint-Julien), D17",
+   "lat": 45.0855,
+   "lon": 2.67249,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 145.7,
+   "name": "D17",
+   "lat": 45.07861,
+   "lon": 2.66858,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D17"
+  },
+  {
+   "km": 147.4,
+   "name": "Mandailles-Saint-Julien – D17 → D317, foot of Col de Pertus",
+   "lat": 45.0674,
+   "lon": 2.65505,
+   "kind": "foot",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 148.2,
+   "name": "D317 Rue de la Pauze (hairpins)",
+   "lat": 45.06634,
+   "lon": 2.66005,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 148.7,
+   "name": "D317",
+   "lat": 45.06425,
+   "lon": 2.65617,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 150.0,
+   "name": "D317",
+   "lat": 45.05874,
+   "lon": 2.66635,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 151.1,
+   "name": "D317",
+   "lat": 45.06315,
+   "lon": 2.66979,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 152.1,
+   "name": "Col de Pertus (cat. 1) summit, D317",
+   "lat": 45.05807,
+   "lon": 2.67399,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "D317"
+  },
+  {
+   "km": 153.1,
+   "name": "D317",
+   "lat": 45.0602,
+   "lon": 2.68408,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 154.3,
+   "name": "D317",
+   "lat": 45.05222,
+   "lon": 2.6902,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 155.2,
+   "name": "D317",
+   "lat": 45.05083,
+   "lon": 2.69661,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 156.4,
+   "name": "D317",
+   "lat": 45.04661,
+   "lon": 2.70555,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D317"
+  },
+  {
+   "km": 157.5,
+   "name": "Saint-Jacques-des-Blats – D317 → N122",
+   "lat": 45.05528,
+   "lon": 2.7116,
+   "kind": "town",
+   "confidence": "high",
+   "road": "N122"
+  },
+  {
+   "km": 158.6,
+   "name": "N122 (Lacombe)",
+   "lat": 45.06369,
+   "lon": 2.71515,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N122"
+  },
+  {
+   "km": 159.9,
+   "name": "N122 (Les Chazes)",
+   "lat": 45.07215,
+   "lon": 2.7225,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "N122"
+  },
+  {
+   "km": 160.8,
+   "name": "Carrefour N122 / D67 Route du Lioran (west portal of the Lioran tunnel) – foot of Col de Font de Cère",
+   "lat": 45.07712,
+   "lon": 2.72742,
+   "kind": "foot",
+   "confidence": "high",
+   "road": "D67"
+  },
+  {
+   "km": 161.6,
+   "name": "D67 Route du Lioran (hairpins)",
+   "lat": 45.07697,
+   "lon": 2.72171,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D67"
+  },
+  {
+   "km": 162.6,
+   "name": "D67 Route du Lioran",
+   "lat": 45.08294,
+   "lon": 2.7296,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "D67"
+  },
+  {
+   "km": 163.4,
+   "name": "Carrefour D67 / VC Route des Cîmes",
+   "lat": 45.08129,
+   "lon": 2.7355,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 163.9,
+   "name": "Col de Font de Cère (cat. 3) summit, VC",
+   "lat": 45.08484,
+   "lon": 2.73241,
+   "kind": "summit",
+   "confidence": "high",
+   "road": "VC"
+  },
+  {
+   "km": 164.6,
+   "name": "VC Route Impériale",
+   "lat": 45.08567,
+   "lon": 2.73934,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 165.2,
+   "name": "VC Route Impériale",
+   "lat": 45.08641,
+   "lon": 2.74205,
+   "kind": "other",
+   "confidence": "medium",
+   "road": "VC"
+  },
+  {
+   "km": 166.0,
+   "name": "Font d'Alagnon – VC → D67",
+   "lat": 45.08767,
+   "lon": 2.74427,
+   "kind": "junction",
+   "confidence": "high",
+   "road": "D67"
+  },
+  {
+   "km": 166.6,
+   "name": "Le Lioran – finish, D67 at Super Lioran",
+   "lat": 45.0839,
+   "lon": 2.74786,
+   "kind": "finish",
+   "confidence": "medium",
+   "road": "D67"
+  }
+ ],
+ "notes": "Aurillac - Le Lioran (Super Lioran), 166.6 km. km 0 = départ réel on the D617 (Route de la Gane / Cabrières) south-west of Aurillac, 7.4 km after the neutralised start on avenue Gambetta (the neutral section is not included). The itinerary gives no coordinate for km 0; it is placed 2.6 routed km before La Course du Mouton (official 2.6), medium confidence (about ±0.3 km). Source for km and road changes: the official itinéraire horaire for the Cantal (cantal.fr, tdf26-ih-etape-10). It lists every locality and road change with km. Overture has no road refs in the Cantal, so roads were identified from the junction geometry, road class, street and hamlet names, and the official order of road changes. Route: D617 → La Course du Mouton → Roannes-Saint-Mary → L'Enseigne (D617-D20, 10.2) → D20 → D45 (11.0) → La Loudière → Marcolès (official 15.2 = village entry; D45 Rue des Jardins → VC Le Balat → D66 Faubourg Saint-Martin / Route du Puy des Fourches) → D66-D51 → D51-D601 → Le Garric → Lacapelle-del-Fraisse (intermediate sprint 25.5) → Lafeuillade-en-Vézie (D601-D920, 26.9) → Prunet (près) → Lasprandine → La Croix d'Aubugues (D920-D8, 32.9) → D8 → D32 (35.0) → La Joyeuse (D32-D8) → D8 Lachaux, Feneyrols → D990 (44.4) Carlat, Loubéjac → Raulhac (D990-D59, 59.5) → D59 Cropières, Jou-sous-Monjou → D54 (64.9) → Côte de Pailherols (cat. 3, summit 68.0, DEM 1044 m) → Pailherols → La Bonétie → Lacapelle-Barrès (D54-D990) → Le Chambon → Pont la Vieille (D990-D57, 76.1) → D57 Vigouroux → Brezons (Landonnes, Le Chauteil, Le Pessin D57-D39 85.7; the hairpins match the official 85.0/85.4/85.7; along the D39 valley from Le Pessin to Le Bourguet the road is about 0.4 km longer than the official km, so the hamlets there sit 0.1-0.3 km after their official km) → D39 Farreyre, Les Roussinches, Le Bourguet → Col de la Griffoul (cat. 2, 97.3) → La Sagnette → Col de Prat de Bouc (cat. 3, 103.8, DEM 1387 m) → Albepierre → Murat (D39-D3, 112.7) → D3 Côte de Murat (cat. 3, 118.8) → D3-D680 (121.2) → Le Peuch → Dienne → Lavigerie → Col de Serre → Col d'Eylac → Puy Mary - Pas de Peyrol (cat. 1, 135.7, D680-D17, DEM 1583 m) → D17 Col de Redondet → Rudez → Mandailles-Saint-Julien (D17-D317) → Col de Pertus (cat. 1, 152.1, DEM 1311 m) → Saint-Jacques-des-Blats (D317-N122) → N122 → D67 Route du Lioran at the west portal of the Lioran tunnel (160.8; the race does NOT use the tunnel) → D67 hairpins → VC Route des Cîmes (163.4) → Col de Font de Cère (cat. 3, 163.9, DEM 1296 m) → VC Route Impériale → Font d'Alagnon (VC-D67, 166.0) → finish on the D67 at Super Lioran (166.6). Waypoint km: official km for the anchors (0, 15.2, 26.9, 32.9, 35.0, 59.5, 68.0, 76.1, 85.7, 97.3, 103.8, 118.8, 121.2, 135.7, 152.1, 160.8, 163.4, 163.9, 166.6) and for every other itinerary point whose routed position is within 0.3 km of its official km. All other points are mapped linearly on routed distance between those fixed points, then nudged by 0.1-0.2 km where needed so that the straight-line distance never exceeds the km difference (D20/D45 11.1, Lasprandine 32.4, D8/D990 44.6, Jou 62.8). Routed length on Overture 2026-10-21.0 = 167.0 km (pipeline check 166.9 km, no bad legs). Known differences from the official km: Roannes-Saint-Mary is at 3.7 against the official 3.4 (the official point is probably the village entry); the D66-D51 junction is at 17.0 against the official 16.3 (the route through Marcolès village may be shorter than the official one, while the totals before and after match); Mandailles (D17-D317) is at 147.4 against the official 147.0, but Pas de Peyrol → Col de Pertus totals match. The Col de la Griffoul summit is uncertain by about ±0.3 km because it is in forest and the DSM is biased there. The Côte de Murat summit (118.8) is the top of the steady climb; the plateau peaks at 1208 m about 1.2 km later. Medium: the street route inside Murat. The itinerary says D39-D3-VC-D3; the route here goes from Route d'Albepierre straight onto the D3 Route de Riom-ès-Montagnes and its hairpins, without a separate VC piece, and the length to the Côte de Murat summit matches within 0.2 km. Hamlets the itinerary names without a road change (La Loudière, Prunet (près), Lasprandine, Le Garric, La Griffoul, Le Peuch, Rudez) are placed on the race road at the official km, medium confidence. The intermediate sprint coordinate is ±150 m. The finish line position on the D67 at Super Lioran is ±100 m (5.50 m wide line at the end of a 160 m straight). Profile: the 30 m DSM includes forest and buildings, so elevations can read 10-40 m high in wooded sections.",
+ "sources": [
+  "https://www.cantal.fr/wp-content/uploads/2025/10/tdf26-ih-etape-10-sans-r-zc.pdf (official itinéraire horaire for stage 10: km, localities and road changes)",
+  "https://www.cyclingstage.com/tour-de-france-2026-route/stage-10-tdf-2026/ (climbs; Côte de Murat 6.6 km at 4.4%; 2.5 km from Font de Cère to the finish)",
+  "https://www.letour.fr/en/stage-10",
+  "Overture Maps 2026-10-21.0 (transportation, divisions, places, addresses); Copernicus GLO-30 DEM"
+ ]
+}

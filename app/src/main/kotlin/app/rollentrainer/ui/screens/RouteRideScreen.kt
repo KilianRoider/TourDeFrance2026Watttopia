@@ -95,6 +95,7 @@ import app.rollentrainer.ride.RaceFeed
 import app.rollentrainer.ride.RideState
 import app.rollentrainer.ride.RoadSurface
 import app.rollentrainer.ui.components.CameraSwitch
+import app.rollentrainer.ui.components.EndRideButton
 import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.world.FrameState
 import app.rollentrainer.ui.world.WorldCache
@@ -273,7 +274,7 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
             // Captured here: inside the Column the layout scope's DslMarker hides BoxWithConstraintsScope.
             val hudMax = maxHeight * (if (short) 0.5f else 0.55f)
             Column(Modifier.fillMaxSize().padding(horizontal = if (short) 8.dp else 12.dp, vertical = if (short) 6.dp else 12.dp)) {
-                TopBar(route, rs, short, narrow)
+                TopBar(route, rs, short, narrow, onEnd = { askEnd = true })
                 Spacer(Modifier.height(if (short) 4.dp else 8.dp))
                 // The race HUD, the pacer line and the landmark toast share the height that is left once the
                 // banner, the licence line and the panel below are measured (weighted, so it is measured last):
@@ -467,7 +468,7 @@ private fun Hud(
 
 /** Route and what is left on the left, the clock and the time to the finish on the right. */
 @Composable
-private fun TopBar(route: Route, rs: RouteState, short: Boolean, narrow: Boolean) {
+private fun TopBar(route: Route, rs: RouteState, short: Boolean, narrow: Boolean, onEnd: () -> Unit) {
     val vertical = if (short) 5.dp else 8.dp
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Top) {
         // The name gives way first, so a long stage name never pushes the clock off a phone screen.
@@ -501,6 +502,9 @@ private fun TopBar(route: Route, rs: RouteState, short: Boolean, narrow: Boolean
                 style = if (short) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium,
             )
         }
+        // Always on screen, whether the panel below is open or closed.
+        Spacer(Modifier.width(8.dp))
+        EndRideButton(onEnd, compact = short || narrow)
     }
 }
 
@@ -510,7 +514,7 @@ private class HudValue(val label: String, val value: String, val unit: String, v
 /**
  * The panel at the bottom. Closed it is one slim row with the four values that matter while riding
  * (power, speed, grade, distance to go) plus pause and the virtual gears; open it adds the other
- * values, the elevation profile, "Beenden" and the camera switch. A tap on the arrow or a swipe on
+ * values, the elevation profile and the camera switch ("Beenden" sits in the top bar). A tap on the arrow or a swipe on
  * the row opens and closes it.
  */
 @OptIn(ExperimentalLayoutApi::class)
@@ -624,11 +628,6 @@ private fun MetricsPanel(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
-                    FilledTonalButton(onClick = onEnd, modifier = Modifier.align(Alignment.CenterVertically)) {
-                        Icon(Icons.Default.Stop, null)
-                        Spacer(Modifier.width(6.dp))
-                        Text("Beenden")
-                    }
                     if (showCamera) {
                         CameraSwitch(settings.firstPersonView, onCamera, Modifier.align(Alignment.CenterVertically), compact = true, onDark = true)
                     }

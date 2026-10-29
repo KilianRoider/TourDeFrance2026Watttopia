@@ -1,0 +1,1121 @@
+{
+ "source": "Poly Haven (https://polyhaven.com)",
+ "license": "CC0 1.0 (https://polyhaven.com/license)",
+ "textures": [
+  {
+   "app_material": "grass_meadow",
+   "id": "leafy_grass",
+   "name": "Leafy Grass",
+   "page": "https://polyhaven.com/a/leafy_grass",
+   "authors": [
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/grass_meadow/leafy_grass_diff_2k.jpg",
+    "nor_gl": "textures/grass_meadow/leafy_grass_nor_gl_2k.jpg",
+    "rough": "textures/grass_meadow/leafy_grass_rough_2k.jpg",
+    "ao": "textures/grass_meadow/leafy_grass_ao_2k.jpg",
+    "disp": "textures/grass_meadow/leafy_grass_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "grass_alpine",
+   "id": "grass_ground",
+   "name": "Grass Ground",
+   "page": "https://polyhaven.com/a/grass_ground",
+   "authors": [
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2509.999990463257,
+    2509.999990463257
+   ],
+   "files": {
+    "diff": "textures/grass_alpine/grass_ground_diff_2k.jpg",
+    "nor_gl": "textures/grass_alpine/grass_ground_nor_gl_2k.jpg",
+    "rough": "textures/grass_alpine/grass_ground_rough_2k.jpg",
+    "ao": "textures/grass_alpine/grass_ground_ao_2k.jpg",
+    "disp": "textures/grass_alpine/grass_ground_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "grass_dry",
+   "id": "sparse_grass",
+   "name": "Sparse Grass",
+   "page": "https://polyhaven.com/a/sparse_grass",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/grass_dry/sparse_grass_diff_2k.jpg",
+    "nor_gl": "textures/grass_dry/sparse_grass_nor_gl_2k.jpg",
+    "rough": "textures/grass_dry/sparse_grass_rough_2k.jpg",
+    "ao": "textures/grass_dry/sparse_grass_ao_2k.jpg",
+    "disp": "textures/grass_dry/sparse_grass_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "field_ploughed",
+   "id": "farm_soil",
+   "name": "Farm Soil",
+   "page": "https://polyhaven.com/a/farm_soil",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    1999.9992847442627,
+    2000.000238418579
+   ],
+   "files": {
+    "diff": "textures/field_ploughed/farm_soil_diff_2k.jpg",
+    "nor_gl": "textures/field_ploughed/farm_soil_nor_gl_2k.jpg",
+    "rough": "textures/field_ploughed/farm_soil_rough_2k.jpg",
+    "ao": "textures/field_ploughed/farm_soil_ao_2k.jpg",
+    "disp": "textures/field_ploughed/farm_soil_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "vineyard_soil",
+   "id": "dry_ground_rocks",
+   "name": "Dry Ground Rocks",
+   "page": "https://polyhaven.com/a/dry_ground_rocks",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    4000,
+    4000
+   ],
+   "files": {
+    "diff": "textures/vineyard_soil/dry_ground_rocks_diff_2k.jpg",
+    "nor_gl": "textures/vineyard_soil/dry_ground_rocks_nor_gl_2k.jpg",
+    "rough": "textures/vineyard_soil/dry_ground_rocks_rough_2k.jpg",
+    "ao": "textures/vineyard_soil/dry_ground_rocks_ao_2k.jpg",
+    "disp": "textures/vineyard_soil/dry_ground_rocks_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "forest_floor",
+   "id": "forest_floor",
+   "name": "Forest Floor",
+   "page": "https://polyhaven.com/a/forest_floor",
+   "authors": [
+    "eye-candy.xyz"
+   ],
+   "real_size_mm": [
+    2139.9996280670166,
+    2139.9996280670166
+   ],
+   "files": {
+    "diff": "textures/forest_floor/forest_floor_diff_2k.jpg",
+    "nor_gl": "textures/forest_floor/forest_floor_nor_gl_2k.jpg",
+    "rough": "textures/forest_floor/forest_floor_rough_2k.jpg",
+    "ao": "textures/forest_floor/forest_floor_ao_2k.jpg",
+    "disp": "textures/forest_floor/forest_floor_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "pine_needles",
+   "id": "forrest_ground_03",
+   "name": "Forest Ground 03",
+   "page": "https://polyhaven.com/a/forrest_ground_03",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/pine_needles/forrest_ground_03_diff_2k.jpg",
+    "nor_gl": "textures/pine_needles/forrest_ground_03_nor_gl_2k.jpg",
+    "rough": "textures/pine_needles/forrest_ground_03_rough_2k.jpg",
+    "ao": "textures/pine_needles/forrest_ground_03_ao_2k.jpg",
+    "disp": "textures/pine_needles/forrest_ground_03_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "soil_dirt",
+   "id": "dirt",
+   "name": "Dirt",
+   "page": "https://polyhaven.com/a/dirt",
+   "authors": [
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/soil_dirt/dirt_diff_2k.jpg",
+    "nor_gl": "textures/soil_dirt/dirt_nor_gl_2k.jpg",
+    "rough": "textures/soil_dirt/dirt_rough_2k.jpg",
+    "ao": "textures/soil_dirt/dirt_ao_2k.jpg",
+    "disp": "textures/soil_dirt/dirt_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "mud_wetland",
+   "id": "mud_forest",
+   "name": "Mud Forest",
+   "page": "https://polyhaven.com/a/mud_forest",
+   "authors": [
+    "eye-candy.xyz"
+   ],
+   "real_size_mm": [
+    2349.9999046325684,
+    2349.9999046325684
+   ],
+   "files": {
+    "diff": "textures/mud_wetland/mud_forest_diff_2k.jpg",
+    "nor_gl": "textures/mud_wetland/mud_forest_nor_gl_2k.jpg",
+    "rough": "textures/mud_wetland/mud_forest_rough_2k.jpg",
+    "ao": "textures/mud_wetland/mud_forest_ao_2k.jpg",
+    "disp": "textures/mud_wetland/mud_forest_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "scree",
+   "id": "gray_rocks",
+   "name": "Gray Rocks",
+   "page": "https://polyhaven.com/a/gray_rocks",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    1799.9995946884155,
+    1799.9995946884155
+   ],
+   "files": {
+    "diff": "textures/scree/gray_rocks_diff_2k.jpg",
+    "nor_gl": "textures/scree/gray_rocks_nor_gl_2k.jpg",
+    "rough": "textures/scree/gray_rocks_rough_2k.jpg",
+    "ao": "textures/scree/gray_rocks_ao_2k.jpg",
+    "disp": "textures/scree/gray_rocks_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "rock_limestone",
+   "id": "rock_face_03",
+   "name": "Rock Face 03",
+   "page": "https://polyhaven.com/a/rock_face_03",
+   "authors": [
+    "Dario Barresi",
+    "Rico Cilliers"
+   ],
+   "real_size_mm": [
+    2699.9995708465576,
+    2699.9995708465576
+   ],
+   "files": {
+    "diff": "textures/rock_limestone/rock_face_03_diff_2k.jpg",
+    "nor_gl": "textures/rock_limestone/rock_face_03_nor_gl_2k.jpg",
+    "rough": "textures/rock_limestone/rock_face_03_rough_2k.jpg",
+    "ao": "textures/rock_limestone/rock_face_03_ao_2k.jpg",
+    "disp": "textures/rock_limestone/rock_face_03_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "rock_granite",
+   "id": "rock_surface",
+   "name": "Rock Surface",
+   "page": "https://polyhaven.com/a/rock_surface",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/rock_granite/rock_surface_diff_2k.jpg",
+    "nor_gl": "textures/rock_granite/rock_surface_nor_gl_2k.jpg",
+    "rough": "textures/rock_granite/rock_surface_rough_2k.jpg",
+    "ao": "textures/rock_granite/rock_surface_ao_2k.jpg",
+    "disp": "textures/rock_granite/rock_surface_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "rock_schist",
+   "id": "dark_rock",
+   "name": "Dark Rock",
+   "page": "https://polyhaven.com/a/dark_rock",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2421.1976528167725,
+    2421.199083328247
+   ],
+   "files": {
+    "diff": "textures/rock_schist/dark_rock_diff_2k.jpg",
+    "nor_gl": "textures/rock_schist/dark_rock_nor_gl_2k.jpg",
+    "rough": "textures/rock_schist/dark_rock_rough_2k.jpg",
+    "ao": "textures/rock_schist/dark_rock_ao_2k.jpg",
+    "disp": "textures/rock_schist/dark_rock_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "snow",
+   "id": "snow_02",
+   "name": "Snow 02",
+   "page": "https://polyhaven.com/a/snow_02",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/snow/snow_02_diff_2k.jpg",
+    "nor_gl": "textures/snow/snow_02_nor_gl_2k.jpg",
+    "rough": "textures/snow/snow_02_rough_2k.jpg",
+    "ao": "textures/snow/snow_02_ao_2k.jpg",
+    "disp": "textures/snow/snow_02_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "gravel_shoulder",
+   "id": "rocky_trail",
+   "name": "Rocky Trail",
+   "page": "https://polyhaven.com/a/rocky_trail",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/gravel_shoulder/rocky_trail_diff_2k.jpg",
+    "nor_gl": "textures/gravel_shoulder/rocky_trail_nor_gl_2k.jpg",
+    "rough": "textures/gravel_shoulder/rocky_trail_rough_2k.jpg",
+    "ao": "textures/gravel_shoulder/rocky_trail_ao_2k.jpg",
+    "disp": "textures/gravel_shoulder/rocky_trail_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "pavers_stone",
+   "id": "cobblestone_square",
+   "name": "Cobblestone Square",
+   "page": "https://polyhaven.com/a/cobblestone_square",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1000,
+    1000
+   ],
+   "files": {
+    "diff": "textures/pavers_stone/cobblestone_square_diff_2k.jpg",
+    "nor_gl": "textures/pavers_stone/cobblestone_square_nor_gl_2k.jpg",
+    "rough": "textures/pavers_stone/cobblestone_square_rough_2k.jpg",
+    "ao": "textures/pavers_stone/cobblestone_square_ao_2k.jpg",
+    "disp": "textures/pavers_stone/cobblestone_square_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "sand_beach",
+   "id": "coast_sand_01",
+   "name": "Coast Sand 01",
+   "page": "https://polyhaven.com/a/coast_sand_01",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    15000,
+    15000
+   ],
+   "files": {
+    "diff": "textures/sand_beach/coast_sand_01_diff_2k.jpg",
+    "nor_gl": "textures/sand_beach/coast_sand_01_nor_gl_2k.jpg",
+    "rough": "textures/sand_beach/coast_sand_01_rough_2k.jpg",
+    "ao": "textures/sand_beach/coast_sand_01_ao_2k.jpg",
+    "disp": "textures/sand_beach/coast_sand_01_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "kerb_concrete",
+   "id": "brushed_concrete",
+   "name": "Brushed Concrete ",
+   "page": "https://polyhaven.com/a/brushed_concrete",
+   "authors": [
+    "Dario Barresi",
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    2500,
+    2500
+   ],
+   "files": {
+    "diff": "textures/kerb_concrete/brushed_concrete_diff_2k.jpg",
+    "nor_gl": "textures/kerb_concrete/brushed_concrete_nor_gl_2k.jpg",
+    "rough": "textures/kerb_concrete/brushed_concrete_rough_2k.jpg",
+    "ao": "textures/kerb_concrete/brushed_concrete_ao_2k.jpg",
+    "disp": "textures/kerb_concrete/brushed_concrete_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "asphalt_fresh",
+   "id": "clean_asphalt",
+   "name": "Clean Asphalt",
+   "page": "https://polyhaven.com/a/clean_asphalt",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    2099.9999046325684,
+    2099.9999046325684
+   ],
+   "files": {
+    "diff": "textures/asphalt_fresh/clean_asphalt_diff_2k.jpg",
+    "nor_gl": "textures/asphalt_fresh/clean_asphalt_nor_gl_2k.jpg",
+    "rough": "textures/asphalt_fresh/clean_asphalt_rough_2k.jpg",
+    "ao": "textures/asphalt_fresh/clean_asphalt_ao_2k.jpg",
+    "disp": "textures/asphalt_fresh/clean_asphalt_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "asphalt_polish",
+   "id": "asphalt_04",
+   "name": "Asphalt 04",
+   "page": "https://polyhaven.com/a/asphalt_04",
+   "authors": [
+    "Jenelle van Heerden",
+    "Sergej Majboroda"
+   ],
+   "real_size_mm": [
+    4039.9999618530273,
+    4039.9999618530273
+   ],
+   "files": {
+    "diff": "textures/asphalt_polish/asphalt_04_diff_2k.jpg",
+    "nor_gl": "textures/asphalt_polish/asphalt_04_nor_gl_2k.jpg",
+    "rough": "textures/asphalt_polish/asphalt_04_rough_2k.jpg",
+    "ao": "textures/asphalt_polish/asphalt_04_ao_2k.jpg",
+    "disp": "textures/asphalt_polish/asphalt_04_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "asphalt_worn",
+   "id": "asphalt_02",
+   "name": "Asphalt 02",
+   "page": "https://polyhaven.com/a/asphalt_02",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    3000.000238418579,
+    3000
+   ],
+   "files": {
+    "diff": "textures/asphalt_worn/asphalt_02_diff_2k.jpg",
+    "nor_gl": "textures/asphalt_worn/asphalt_02_nor_gl_2k.jpg",
+    "rough": "textures/asphalt_worn/asphalt_02_rough_2k.jpg",
+    "ao": "textures/asphalt_worn/asphalt_02_ao_2k.jpg",
+    "disp": "textures/asphalt_worn/asphalt_02_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "cobbles_pave",
+   "id": "cobblestone_floor_04",
+   "name": "Cobblestone Floor 04",
+   "page": "https://polyhaven.com/a/cobblestone_floor_04",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1500,
+    1500
+   ],
+   "files": {
+    "diff": "textures/cobbles_pave/cobblestone_floor_04_diff_2k.jpg",
+    "nor_gl": "textures/cobbles_pave/cobblestone_floor_04_nor_gl_2k.jpg",
+    "rough": "textures/cobbles_pave/cobblestone_floor_04_rough_2k.jpg",
+    "ao": "textures/cobbles_pave/cobblestone_floor_04_ao_2k.jpg",
+    "disp": "textures/cobbles_pave/cobblestone_floor_04_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "bark_oak",
+   "id": "jolcham_oak_bark_01",
+   "name": "Jolcham Oak Bark 01",
+   "page": "https://polyhaven.com/a/jolcham_oak_bark_01",
+   "authors": [
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    1000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/bark_oak/jolcham_oak_bark_01_diff_2k.jpg",
+    "nor_gl": "textures/bark_oak/jolcham_oak_bark_01_nor_gl_2k.jpg",
+    "rough": "textures/bark_oak/jolcham_oak_bark_01_rough_2k.jpg",
+    "ao": "textures/bark_oak/jolcham_oak_bark_01_ao_2k.jpg",
+    "disp": "textures/bark_oak/jolcham_oak_bark_01_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "bark_platanus",
+   "id": "bark_platanus",
+   "name": "Bark Platanus",
+   "page": "https://polyhaven.com/a/bark_platanus",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    1500.0001192092896,
+    1500.0001192092896
+   ],
+   "files": {
+    "diff": "textures/bark_platanus/bark_platanus_diff_2k.jpg",
+    "nor_gl": "textures/bark_platanus/bark_platanus_nor_gl_2k.jpg",
+    "rough": "textures/bark_platanus/bark_platanus_rough_2k.jpg",
+    "ao": "textures/bark_platanus/bark_platanus_ao_2k.jpg",
+    "disp": "textures/bark_platanus/bark_platanus_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "bark_pine",
+   "id": "pine_bark",
+   "name": "Pine Bark",
+   "page": "https://polyhaven.com/a/pine_bark",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    1999.9996423721313,
+    1999.9996423721313
+   ],
+   "files": {
+    "diff": "textures/bark_pine/pine_bark_diff_2k.jpg",
+    "nor_gl": "textures/bark_pine/pine_bark_nor_gl_2k.jpg",
+    "rough": "textures/bark_pine/pine_bark_rough_2k.jpg",
+    "ao": "textures/bark_pine/pine_bark_ao_2k.jpg",
+    "disp": "textures/bark_pine/pine_bark_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_barn",
+   "id": "raw_plank_wall",
+   "name": "Raw Plank Wall",
+   "page": "https://polyhaven.com/a/raw_plank_wall",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    1870.0001239776611,
+    1870.0001239776611
+   ],
+   "files": {
+    "diff": "textures/facade_barn/raw_plank_wall_diff_2k.jpg",
+    "nor_gl": "textures/facade_barn/raw_plank_wall_nor_gl_2k.jpg",
+    "rough": "textures/facade_barn/raw_plank_wall_rough_2k.jpg",
+    "ao": "textures/facade_barn/raw_plank_wall_ao_2k.jpg",
+    "disp": "textures/facade_barn/raw_plank_wall_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_basque",
+   "id": "white_rough_plaster",
+   "name": "White Rough Plaster",
+   "page": "https://polyhaven.com/a/white_rough_plaster",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1000,
+    1000
+   ],
+   "files": {
+    "diff": "textures/facade_basque/white_rough_plaster_diff_2k.jpg",
+    "nor_gl": "textures/facade_basque/white_rough_plaster_nor_gl_2k.jpg",
+    "rough": "textures/facade_basque/white_rough_plaster_rough_2k.jpg",
+    "ao": "textures/facade_basque/white_rough_plaster_ao_2k.jpg",
+    "disp": "textures/facade_basque/white_rough_plaster_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_chalet",
+   "id": "wood_plank_wall",
+   "name": "Wood Plank Wall",
+   "page": "https://polyhaven.com/a/wood_plank_wall",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    1000,
+    1000
+   ],
+   "files": {
+    "diff": "textures/facade_chalet/wood_plank_wall_diff_2k.jpg",
+    "nor_gl": "textures/facade_chalet/wood_plank_wall_nor_gl_2k.jpg",
+    "rough": "textures/facade_chalet/wood_plank_wall_rough_2k.jpg",
+    "ao": "textures/facade_chalet/wood_plank_wall_ao_2k.jpg",
+    "disp": "textures/facade_chalet/wood_plank_wall_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_church",
+   "id": "large_sandstone_blocks",
+   "name": "Large Sandstone Blocks",
+   "page": "https://polyhaven.com/a/large_sandstone_blocks",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    3000,
+    3000.000238418579
+   ],
+   "files": {
+    "diff": "textures/facade_church/large_sandstone_blocks_diff_2k.jpg",
+    "nor_gl": "textures/facade_church/large_sandstone_blocks_nor_gl_2k.jpg",
+    "rough": "textures/facade_church/large_sandstone_blocks_rough_2k.jpg",
+    "ao": "textures/facade_church/large_sandstone_blocks_ao_2k.jpg",
+    "disp": "textures/facade_church/large_sandstone_blocks_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_eixample",
+   "id": "red_sandstone_wall",
+   "name": "Red Sandstone Wall",
+   "page": "https://polyhaven.com/a/red_sandstone_wall",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_eixample/red_sandstone_wall_diff_2k.jpg",
+    "nor_gl": "textures/facade_eixample/red_sandstone_wall_nor_gl_2k.jpg",
+    "rough": "textures/facade_eixample/red_sandstone_wall_rough_2k.jpg",
+    "ao": "textures/facade_eixample/red_sandstone_wall_ao_2k.jpg",
+    "disp": "textures/facade_eixample/red_sandstone_wall_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_haussmann",
+   "id": "white_sandstone_blocks_02",
+   "name": "White Sandstone Blocks 02",
+   "page": "https://polyhaven.com/a/white_sandstone_blocks_02",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_haussmann/white_sandstone_blocks_02_diff_2k.jpg",
+    "nor_gl": "textures/facade_haussmann/white_sandstone_blocks_02_nor_gl_2k.jpg",
+    "rough": "textures/facade_haussmann/white_sandstone_blocks_02_rough_2k.jpg",
+    "ao": "textures/facade_haussmann/white_sandstone_blocks_02_ao_2k.jpg",
+    "disp": "textures/facade_haussmann/white_sandstone_blocks_02_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_modern",
+   "id": "concrete_wall_006",
+   "name": "Concrete Wall 006",
+   "page": "https://polyhaven.com/a/concrete_wall_006",
+   "authors": [
+    "Dario Barresi",
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_modern/concrete_wall_006_diff_2k.jpg",
+    "nor_gl": "textures/facade_modern/concrete_wall_006_nor_gl_2k.jpg",
+    "rough": "textures/facade_modern/concrete_wall_006_rough_2k.jpg",
+    "ao": "textures/facade_modern/concrete_wall_006_ao_2k.jpg",
+    "disp": "textures/facade_modern/concrete_wall_006_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_plaster_cream",
+   "id": "beige_wall_001",
+   "name": "Beige Wall 001",
+   "page": "https://polyhaven.com/a/beige_wall_001",
+   "authors": [
+    "Dimitrios Savva",
+    "Rico Cilliers"
+   ],
+   "real_size_mm": [
+    3000,
+    3000.000238418579
+   ],
+   "files": {
+    "diff": "textures/facade_plaster_cream/beige_wall_001_diff_2k.jpg",
+    "nor_gl": "textures/facade_plaster_cream/beige_wall_001_nor_gl_2k.jpg",
+    "rough": "textures/facade_plaster_cream/beige_wall_001_rough_2k.jpg",
+    "ao": "textures/facade_plaster_cream/beige_wall_001_ao_2k.jpg",
+    "disp": "textures/facade_plaster_cream/beige_wall_001_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_plaster_ochre",
+   "id": "yellow_plaster",
+   "name": "Yellow Plaster",
+   "page": "https://polyhaven.com/a/yellow_plaster",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_plaster_ochre/yellow_plaster_diff_2k.jpg",
+    "nor_gl": "textures/facade_plaster_ochre/yellow_plaster_nor_gl_2k.jpg",
+    "rough": "textures/facade_plaster_ochre/yellow_plaster_rough_2k.jpg",
+    "ao": "textures/facade_plaster_ochre/yellow_plaster_ao_2k.jpg",
+    "disp": "textures/facade_plaster_ochre/yellow_plaster_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_pyrenean",
+   "id": "old_stone_wall",
+   "name": "Old Stone Wall",
+   "page": "https://polyhaven.com/a/old_stone_wall",
+   "authors": [
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_pyrenean/old_stone_wall_diff_2k.jpg",
+    "nor_gl": "textures/facade_pyrenean/old_stone_wall_nor_gl_2k.jpg",
+    "rough": "textures/facade_pyrenean/old_stone_wall_rough_2k.jpg",
+    "ao": "textures/facade_pyrenean/old_stone_wall_ao_2k.jpg",
+    "disp": "textures/facade_pyrenean/old_stone_wall_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_shop",
+   "id": "painted_plaster_wall",
+   "name": "Painted Plaster Wall",
+   "page": "https://polyhaven.com/a/painted_plaster_wall",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_shop/painted_plaster_wall_diff_2k.jpg",
+    "nor_gl": "textures/facade_shop/painted_plaster_wall_nor_gl_2k.jpg",
+    "rough": "textures/facade_shop/painted_plaster_wall_rough_2k.jpg",
+    "ao": "textures/facade_shop/painted_plaster_wall_ao_2k.jpg",
+    "disp": "textures/facade_shop/painted_plaster_wall_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "facade_stone_village",
+   "id": "stone_wall",
+   "name": "Stone Wall",
+   "page": "https://polyhaven.com/a/stone_wall",
+   "authors": [
+    "Dario Barresi",
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "files": {
+    "diff": "textures/facade_stone_village/stone_wall_diff_2k.jpg",
+    "nor_gl": "textures/facade_stone_village/stone_wall_nor_gl_2k.jpg",
+    "rough": "textures/facade_stone_village/stone_wall_rough_2k.jpg",
+    "ao": "textures/facade_stone_village/stone_wall_ao_2k.jpg",
+    "disp": "textures/facade_stone_village/stone_wall_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "roof_flat_tiles",
+   "id": "roof_tiles_14",
+   "name": "Roof Tiles 14",
+   "page": "https://polyhaven.com/a/roof_tiles_14",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1500,
+    1500
+   ],
+   "files": {
+    "diff": "textures/roof_flat_tiles/roof_tiles_14_diff_2k.jpg",
+    "nor_gl": "textures/roof_flat_tiles/roof_tiles_14_nor_gl_2k.jpg",
+    "rough": "textures/roof_flat_tiles/roof_tiles_14_rough_2k.jpg",
+    "ao": "textures/roof_flat_tiles/roof_tiles_14_ao_2k.jpg",
+    "disp": "textures/roof_flat_tiles/roof_tiles_14_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "roof_roman_tiles",
+   "id": "clay_roof_tiles_02",
+   "name": "Clay Roof Tiles 02",
+   "page": "https://polyhaven.com/a/clay_roof_tiles_02",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2500,
+    2500
+   ],
+   "files": {
+    "diff": "textures/roof_roman_tiles/clay_roof_tiles_02_diff_2k.jpg",
+    "nor_gl": "textures/roof_roman_tiles/clay_roof_tiles_02_nor_gl_2k.jpg",
+    "rough": "textures/roof_roman_tiles/clay_roof_tiles_02_rough_2k.jpg",
+    "ao": "textures/roof_roman_tiles/clay_roof_tiles_02_ao_2k.jpg",
+    "disp": "textures/roof_roman_tiles/clay_roof_tiles_02_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "roof_slate",
+   "id": "roof_slates_02",
+   "name": "Roof Slates 02",
+   "page": "https://polyhaven.com/a/roof_slates_02",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    3000,
+    3000
+   ],
+   "files": {
+    "diff": "textures/roof_slate/roof_slates_02_diff_2k.jpg",
+    "nor_gl": "textures/roof_slate/roof_slates_02_nor_gl_2k.jpg",
+    "rough": "textures/roof_slate/roof_slates_02_rough_2k.jpg",
+    "ao": "textures/roof_slate/roof_slates_02_ao_2k.jpg",
+    "disp": "textures/roof_slate/roof_slates_02_disp_2k.jpg"
+   },
+   "license": "CC0"
+  },
+  {
+   "app_material": "roof_zinc",
+   "id": "corrugated_iron_02",
+   "name": "Corrugated Iron 02",
+   "page": "https://polyhaven.com/a/corrugated_iron_02",
+   "authors": [
+    "Jenelle van Heerden",
+    "Sergej Majboroda"
+   ],
+   "real_size_mm": [
+    2700.000047683716,
+    2700.000047683716
+   ],
+   "files": {
+    "diff": "textures/roof_zinc/corrugated_iron_02_diff_2k.jpg",
+    "nor_gl": "textures/roof_zinc/corrugated_iron_02_nor_gl_2k.jpg",
+    "rough": "textures/roof_zinc/corrugated_iron_02_rough_2k.jpg",
+    "ao": "textures/roof_zinc/corrugated_iron_02_ao_2k.jpg",
+    "disp": "textures/roof_zinc/corrugated_iron_02_disp_2k.jpg"
+   },
+   "license": "CC0"
+  }
+ ],
+ "hdris": [
+  {
+   "id": "alps_field",
+   "name": "Alps Field",
+   "page": "https://polyhaven.com/a/alps_field",
+   "authors": [
+    "Andreas Mischok"
+   ],
+   "categories": [
+    "natural light",
+    "outdoor",
+    "nature",
+    "high contrast",
+    "partly cloudy",
+    "morning-afternoon"
+   ],
+   "files": [
+    "hdri/alps_field_2k.hdr",
+    "hdri/alps_field_4k.hdr"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "immenstadter_horn",
+   "name": "Immenst\u00e4dter Horn",
+   "page": "https://polyhaven.com/a/immenstadter_horn",
+   "authors": [
+    "Andreas Mischok"
+   ],
+   "categories": [
+    "outdoor",
+    "nature",
+    "midday",
+    "partly cloudy",
+    "medium contrast",
+    "natural light"
+   ],
+   "files": [
+    "hdri/immenstadter_horn_2k.hdr",
+    "hdri/immenstadter_horn_4k.hdr"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "clarens_midday",
+   "name": "Clarens Midday",
+   "page": "https://polyhaven.com/a/clarens_midday",
+   "authors": [
+    "Dimitrios Savva",
+    "Jarod Guest"
+   ],
+   "categories": [
+    "natural light",
+    "nature",
+    "outdoor",
+    "low contrast",
+    "midday",
+    "partly cloudy",
+    "skies"
+   ],
+   "files": [
+    "hdri/clarens_midday_2k.hdr",
+    "hdri/clarens_midday_4k.hdr"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "spaichingen_hill",
+   "name": "Spaichingen Hill",
+   "page": "https://polyhaven.com/a/spaichingen_hill",
+   "authors": [
+    "Andreas Mischok"
+   ],
+   "categories": [
+    "outdoor",
+    "nature",
+    "natural light",
+    "sunrise-sunset",
+    "morning-afternoon",
+    "partly cloudy",
+    "high contrast"
+   ],
+   "files": [
+    "hdri/spaichingen_hill_2k.hdr",
+    "hdri/spaichingen_hill_4k.hdr"
+   ],
+   "license": "CC0"
+  }
+ ],
+ "models": [
+  {
+   "id": "fir_tree_01",
+   "name": "Fir Tree 01",
+   "page": "https://polyhaven.com/a/fir_tree_01",
+   "authors": [
+    "Rob Tuytel",
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures",
+   "files": [],
+   "license": "CC0",
+   "note": "not committed: originals are 480/950 MB (7M/17M tris, several trees per file); gltfpack simplification strips the needle cards, so conifers need impostors/billboards baked from the original (download glTF 1k from the page)"
+  },
+  {
+   "id": "pine_tree_01",
+   "name": "Pine Tree 01",
+   "page": "https://polyhaven.com/a/pine_tree_01",
+   "authors": [
+    "Rob Tuytel",
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures",
+   "files": [],
+   "license": "CC0",
+   "note": "not committed: originals are 480/950 MB (7M/17M tris, several trees per file); gltfpack simplification strips the needle cards, so conifers need impostors/billboards baked from the original (download glTF 1k from the page)"
+  },
+  {
+   "id": "island_tree_01",
+   "name": "Island Tree 01",
+   "page": "https://polyhaven.com/a/island_tree_01",
+   "authors": [
+    "Rob Tuytel",
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures; simplified with gltfpack 0.24 (-si): _mobile ~100k tris, _far ~27-46k tris (originals 1.6-2.1M tris, 60-95 MB)",
+   "files": [
+    "models/island_tree_01/island_tree_01_arm_1k.jpg",
+    "models/island_tree_01/island_tree_01_branches_arm_1k.jpg",
+    "models/island_tree_01/island_tree_01_branches_diff_1k.jpg",
+    "models/island_tree_01/island_tree_01_branches_nor_gl_1k.jpg",
+    "models/island_tree_01/island_tree_01_diff_1k.jpg",
+    "models/island_tree_01/island_tree_01_far.bin",
+    "models/island_tree_01/island_tree_01_far.gltf",
+    "models/island_tree_01/island_tree_01_leaves_arm_1k.jpg",
+    "models/island_tree_01/island_tree_01_leaves_diff_1k.jpg",
+    "models/island_tree_01/island_tree_01_leaves_nor_gl_1k.jpg",
+    "models/island_tree_01/island_tree_01_mobile.bin",
+    "models/island_tree_01/island_tree_01_mobile.gltf",
+    "models/island_tree_01/island_tree_01_nor_gl_1k.jpg"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "tree_small_02",
+   "name": "Tree Small 02",
+   "page": "https://polyhaven.com/a/tree_small_02",
+   "authors": [
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures; simplified with gltfpack 0.24 (-si): _mobile ~100k tris, _far ~27-46k tris (originals 1.6-2.1M tris, 60-95 MB)",
+   "files": [
+    "models/tree_small_02/tree_small_02_arm_1k.jpg",
+    "models/tree_small_02/tree_small_02_branch_arm_1k.jpg",
+    "models/tree_small_02/tree_small_02_branch_diff_1k.jpg",
+    "models/tree_small_02/tree_small_02_branch_nor_gl_1k.jpg",
+    "models/tree_small_02/tree_small_02_diff_1k.jpg",
+    "models/tree_small_02/tree_small_02_far.bin",
+    "models/tree_small_02/tree_small_02_far.gltf",
+    "models/tree_small_02/tree_small_02_leaves_arm_1k.jpg",
+    "models/tree_small_02/tree_small_02_leaves_diff_1k.jpg",
+    "models/tree_small_02/tree_small_02_leaves_nor_gl_1k.jpg",
+    "models/tree_small_02/tree_small_02_mobile.bin",
+    "models/tree_small_02/tree_small_02_mobile.gltf",
+    "models/tree_small_02/tree_small_02_nor_gl_1k.jpg"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "shrub_01",
+   "name": "Shrub 01",
+   "page": "https://polyhaven.com/a/shrub_01",
+   "authors": [
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures, original (unsimplified)",
+   "files": [
+    "models/shrub_01/shrub_01.bin",
+    "models/shrub_01/shrub_01_1k.gltf",
+    "models/shrub_01/textures/shrub_01_arm_1k.jpg",
+    "models/shrub_01/textures/shrub_01_diff_1k.jpg",
+    "models/shrub_01/textures/shrub_01_nor_gl_1k.jpg"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "shrub_02",
+   "name": "Shrub 02",
+   "page": "https://polyhaven.com/a/shrub_02",
+   "authors": [
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures, original (unsimplified)",
+   "files": [
+    "models/shrub_02/shrub_02.bin",
+    "models/shrub_02/shrub_02_1k.gltf",
+    "models/shrub_02/textures/shrub_02_arm_1k.jpg",
+    "models/shrub_02/textures/shrub_02_diff_1k.jpg",
+    "models/shrub_02/textures/shrub_02_nor_gl_1k.jpg"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "shrub_04",
+   "name": "Shrub 04",
+   "page": "https://polyhaven.com/a/shrub_04",
+   "authors": [
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures, original (unsimplified)",
+   "files": [
+    "models/shrub_04/shrub_04.bin",
+    "models/shrub_04/shrub_04_1k.gltf",
+    "models/shrub_04/textures/shrub_04_arm_1k.jpg",
+    "models/shrub_04/textures/shrub_04_diff_1k.jpg",
+    "models/shrub_04/textures/shrub_04_nor_gl_1k.jpg"
+   ],
+   "license": "CC0"
+  },
+  {
+   "id": "grass_medium_01",
+   "name": "Grass Medium 01",
+   "page": "https://polyhaven.com/a/grass_medium_01",
+   "authors": [
+    "Rob Tuytel",
+    "Rico Cilliers"
+   ],
+   "format": "glTF 2.0, 1k textures, original (unsimplified)",
+   "files": [
+    "models/grass_medium_01/grass_medium_01.bin",
+    "models/grass_medium_01/grass_medium_01_1k.gltf",
+    "models/grass_medium_01/textures/grass_medium_01_arm_1k.jpg",
+    "models/grass_medium_01/textures/grass_medium_01_diff_1k.jpg",
+    "models/grass_medium_01/textures/grass_medium_01_nor_gl_1k.jpg"
+   ],
+   "license": "CC0"
+  }
+ ],
+ "not_covered": {
+  "cereal_green": "no Poly Haven texture for green cereal; ambientCG downloads blocked (acg-download.struffelproductions.com)",
+  "wheat_ripe": "no Poly Haven texture for ripe wheat; same",
+  "maize_rows": "no Poly Haven texture for maize rows; field_ploughed (farm_soil) can serve as base"
+ },
+ "notes": [
+  "Texture maps: diff (sRGB albedo), nor_gl (OpenGL +Y normal), rough, ao, disp; 2k JPG. real_size_mm = real-world size of one repeat.",
+  "facade_*/roof_* are wall/roof surface materials only (no windows/doors); the app's facade layouts stay procedural.",
+  "bark_platanus and bark_pine are extra (plane trees along Tour roads, pine forests)."
+ ]
+}

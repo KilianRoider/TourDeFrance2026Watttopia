@@ -48,7 +48,18 @@ def load(path: Path, size, mode):
     im = Image.open(path)
     if im.mode in ("I;16", "I;16B", "I"):
         im = im.point(lambda v: v / 256).convert("L")
-    return im.convert(mode).resize(size, Image.LANCZOS)
+    im = im.convert(mode)
+    # A non-square target (a kerb, 2 x 0.5 m) gets the seamless square source repeated along its long
+    # side instead of squashed, so the texture keeps its real scale.
+    w, h = size
+    rx, ry = max(1, round(w / h)), max(1, round(h / w))
+    if rx > 1 or ry > 1:
+        tiled = Image.new(mode, (im.width * rx, im.height * ry))
+        for i in range(rx):
+            for j in range(ry):
+                tiled.paste(im, (i * im.width, j * im.height))
+        im = tiled
+    return im.resize(size, Image.LANCZOS)
 
 
 def convert(name: str, opts: dict, src_root: Path, tex: Path):

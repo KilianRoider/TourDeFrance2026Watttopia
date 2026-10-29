@@ -424,6 +424,8 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         prepareRiders(sc, dt)
         prepareVehicles(sc, dt)
         frameTris = (riders?.triangles() ?: 0L) * (if (shadowOn) 2 else 1)
+        val nowMs = SystemClock.uptimeMillis()
+        if (drawnLogged && nowMs - budgetLogMs > 10_000) { budgetLogDue = true; budgetLogMs = nowMs }
         frameGroundTris = 0L
         if (shadowOn) drawShadows()
         GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0)
@@ -1399,6 +1401,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
                         val part = parts[pi]
                         debugDraws[0]++
                         tris += part.mesh.indexCount / 3L * n
+                        if (budgetLogDue) debugProtoTris[g.proto.id] = (debugProtoTris[g.proto.id] ?: 0L) + part.mesh.indexCount / 3L * n
                         setMaterial(prog, part.material)
                         part.mesh.drawInstanced(n)
                     }
@@ -1417,7 +1420,17 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         // Road paint and finish lines bias their depth themselves (MaterialGpu.decal, set in setMaterial).
         for (i in 0 until sceneryList.size) drawChunkMeshes(prog, sceneryList[i], cx, cz, maxD, shadowPass)
         for (i in 0 until dressList.size) drawChunkMeshes(prog, dressList[i], cx, cz, maxD, shadowPass)
-        if (!shadowPass) objectTris = frameTris
+        if (!shadowPass) {
+            objectTris = frameTris
+            if (budgetLogDue) {
+                // Where the object triangles go (logcat, for the screenshot runs): the LOD bias coarsens
+                // every prototype, spectators included, once the total is over the budget.
+                val top = debugProtoTris.entries.sortedByDescending { it.value }.take(10).joinToString { "${it.key}=${it.value / 1000}k" }
+                Log.i("WorldView", "budget: objects ${objectTris / 1000}k of ${objectBudget() / 1000}k, ground ${groundTris / 1000}k, lod bias $lodBias; main pass: $top")
+                debugProtoTris.clear()
+                budgetLogDue = false
+            }
+        }
         GLES30.glDisable(GLES30.GL_POLYGON_OFFSET_FILL)
         GLES30.glEnable(GLES30.GL_CULL_FACE)
     }
@@ -1528,6 +1541,9 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
 
     /** GPU bytes of each object texture (with mipmaps), for the preview's report. */
     internal val debugObjectTex = HashMap<String, Int>()
+    private val debugProtoTris = HashMap<String, Long>()
+    private var budgetLogDue = false
+    private var budgetLogMs = 0L
 
     /** Prototype parts drawn in the main pass of the last frame: "id/lod" to (parts, instances). Not for the GL loop. */
     internal fun debugProtoDraws(): Map<String, IntArray> {

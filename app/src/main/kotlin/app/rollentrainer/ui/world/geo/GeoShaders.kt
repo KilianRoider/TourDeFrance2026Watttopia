@@ -281,6 +281,8 @@ void main() {
         }
     }
 #endif
+    // TerrainBuilder bakes the ridges' cast shadows into the normal's length (1 lit, 0.55 shadowed).
+    float sunVis = clamp((length(vNormal) - 0.55) / 0.43, 0.0, 1.0);
     vec3 gn = normalize(vNormal);
     float dist = length(vRel);
     vec3 v = -vRel / max(dist, 0.001);
@@ -446,8 +448,14 @@ void main() {
         vec3 farCol = mix(albedo * patchy, rockC * (0.85 + 0.3 * m2.r), rk * 0.65);
         farCol *= 1.0 - 0.25 * smoothstep(0.45, 0.8, slopeF) * (1.0 - m2.a);
         albedo = mix(albedo, farCol, farK * uGrade.w);
+        // Relief the 10-90 m height grid smooths away: ribs and gullies on two scales, stronger on steep
+        // ground, so the sun draws light and dark across a far slope instead of one even gradient.
+        vec2 g1 = (texture(uNoise, vWorld / 300.0).rg - 0.5) * 2.0;
+        vec2 g2 = (texture(uNoise, vWorld / 75.0).ba - 0.5) * 2.0;
+        vec2 rel = (g1 * 0.55 + g2 * 0.35) * (0.35 + 0.9 * smoothstep(0.1, 0.5, slopeF)) * farK * min(uGrade.w, 1.5);
+        n = normalize(n + vec3(rel.x, 0.0, rel.y) * 0.45);
     }
-    float shadow = shadowAt(vRel, gn);
+    float shadow = min(shadowAt(vRel, gn), mix(1.0, sunVis, smoothstep(40.0, 120.0, dist)));
     vec3 col = shade(albedo, n, v, rough, ao, shadow, spec);
 #ifndef FAR
     if (water > 0.01) {

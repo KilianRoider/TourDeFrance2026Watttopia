@@ -24,6 +24,7 @@ layout(std140) uniform Frame {
     vec4 uSkyHorizon;    // rgb horizon colour, w = camera altitude (m)
     vec4 uCamWorld;      // xyz camera world position modulo 1200 m (texture space), w = shadow distance (m)
     vec4 uWind;          // xy wind direction, z strength, w gust phase
+    vec4 uGrade;         // the rider's picture settings: x exposure, y contrast, z saturation, w ground and road detail
 };
 """
 
@@ -56,7 +57,13 @@ vec3 linearToSrgb(vec3 c) {
     return mix(lo, hi, step(vec3(0.0031308), c));
 }
 vec4 finalColor(vec3 hdr) {
-    return vec4(linearToSrgb(acesFit(hdr * uSkyAmb.w)), 1.0);
+    vec3 c = linearToSrgb(acesFit(hdr * uSkyAmb.w * uGrade.x));
+    // Grading in display space, like the sliders of a photo app: saturation around the luminance,
+    // contrast around mid grey.
+    float l = dot(c, vec3(0.2126, 0.7152, 0.0722));
+    c = mix(vec3(l), c, uGrade.z);
+    c = (c - 0.5) * uGrade.y + 0.5;
+    return vec4(clamp(c, 0.0, 1.0), 1.0);
 }
 """
 
@@ -352,6 +359,11 @@ void main() {
         if (wsum > 0.0) {
             detail /= wsum;
             dn /= wsum;
+            // The photo textures vary little around their mean; near the camera their structure (blades,
+            // clods, stones) is stretched so the ground reads as grass and not as a green blur.
+            float boost = uGrade.w * mix(1.0, 1.7, 1.0 - smoothstep(15.0, 120.0, dist));
+            detail = max(vec3(1.0) + (detail - vec3(1.0)) * boost, vec3(0.04));
+            dn *= min(boost, 2.0);
             ao = mix(1.0, aosum / wsum, fade);
             rough = mix(rough, rsum / wsum, fade);
             // Medium-scale brightness variation (clumps, worn patches) that the 10 m imagery does not have,
@@ -532,6 +544,9 @@ void main() {
         float m = smoothstep(0.35, 0.65, nz.r);
         vec4 a = mix(texture(uRoad, vec3(uv1, layer)), texture(uRoad, vec3(uv2, layer)), m);
         a.rgb *= gainOf(layer);
+        // Stretch the asphalt's grain around its mean (the texture's last mips) so chippings and stains show.
+        vec3 avgA = textureLod(uRoad, vec3(0.5, 0.5, layer), 9.0).rgb * gainOf(layer);
+        a.rgb = max(avgA + (a.rgb - avgA) * (1.6 * uGrade.w), vec3(0.0));
         vec4 na = mix(texture(uRoadN, vec3(uv1, layer)), texture(uRoadN, vec3(uv2, layer)), m);
         float seam = 0.0;
         if (kind == 0) {
@@ -640,7 +655,7 @@ void main() {
         specScale = 0.3;
     }
     float fadeN = 1.0 - smoothstep(25.0, 140.0, dist);
-    vec3 n = perturb(gn, vRel, tuv, nrm.xy, fadeN * 0.8);
+    vec3 n = perturb(gn, vRel, tuv, nrm.xy, fadeN * 0.8 * clamp(uGrade.w * 1.5, 0.0, 2.0));
     float shadow = shadowAt(vRel, gn);
     if (kind == 6) shadow = 0.0;
     // Inside a tunnel: no sun and a quarter of the sky light some 30 m from the portals, where the shadow
@@ -890,6 +905,10 @@ uniform sampler2D uNoise;
 // Per cloud noise scale (15000, 4300, 1300 m): fract((camera + wind drift) / scale), computed on the CPU in
 // Double. Not uCamWorld: it wraps every 1200 m, which none of the scales divides, so the clouds would jump.
 uniform vec2 uCloudOff[3];
+// Photographed sky (a CC0 HDRI, upper hemisphere, sRGB of radiance / max): x = u of its sun, y = max
+// (0 = no panorama, the analytic sky and clouds stay).
+uniform sampler2D uSkyTex;
+uniform vec2 uSkyParams;
 out vec4 fragColor;
 void main() {
     vec4 a = uInvViewProj * vec4(vNdc, -1.0, 1.0);
@@ -897,11 +916,22 @@ void main() {
     vec3 dir = normalize(b.xyz / b.w - a.xyz / a.w);
     vec3 col = skyColor(dir);
     float mu = dot(dir, uSunDir.xyz);
+    bool photo = uSkyParams.y > 0.0;
+    if (photo && dir.y > 0.0) {
+        // Turned so the panorama's bright side lies where the route's sun is.
+        float az = atan(dir.x, -dir.z);
+        float saz = atan(uSunDir.x, -uSunDir.z);
+        float u = fract((az - saz) / 6.2831853 + uSkyParams.x);
+        float v = 1.0 - asin(clamp(dir.y, 0.0, 1.0)) / 1.5707963;
+        vec3 ph = textureLod(uSkyTex, vec2(u, v), 0.0).rgb * uSkyParams.y;
+        // Low over the horizon the analytic haze stays: it matches the aerial perspective of the terrain.
+        col = mix(col, ph, smoothstep(0.02, 0.2, dir.y));
+    }
     // Sun disc (0.27 degrees radius) with limb darkening.
     float disc = smoothstep(0.999955, 0.999975, mu);
     col += uSunColor.rgb * disc * 60.0;
     // Fair-weather cumulus on a layer 1800 m above the camera, drifting with the wind.
-    if (dir.y > 0.015 && uSkyZenith.w > 0.0) {
+    if (!photo && dir.y > 0.015 && uSkyZenith.w > 0.0) {
         float t = 1800.0 / dir.y;
         vec2 p = dir.xz * t;
         // Cumulus a few km across: a large blob field, its edges broken up by finer noise.

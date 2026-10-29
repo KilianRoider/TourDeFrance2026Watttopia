@@ -80,6 +80,11 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
     private var shadowTex = 0
     private var shadowFbo = 0
     private var kitTex = 0
+    /** The photographed sky panorama (assets/sky, see tools/assets-cc0/sky.py), 0 until loaded or without one. */
+    private var skyTex = 0
+    private var skySunU = 0f
+    private var skyMax = 0f
+    private var skyTried = false
     /** Rows of [kitTex]; kit indices are clamped to it (texelFetch outside the texture is undefined). */
     private var kitCount = 1
     private val layerMean = FloatArray(24 * 3)
@@ -257,8 +262,8 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
     private val shadowMat = FloatArray(16)
     private val tmpM = FloatArray(16)
     private val planes = FloatArray(24)
-    private val block = FloatArray(72)
-    private val blockBuf: FloatBuffer = ByteBuffer.allocateDirect(72 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer()
+    private val block = FloatArray(76)
+    private val blockBuf: FloatBuffer = ByteBuffer.allocateDirect(76 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer()
     private val sun = DoubleArray(3)
     private var sunLat = Double.NaN
     private var sunTime = Double.NaN
@@ -287,6 +292,8 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         // Names of the old context mean nothing now (deleting them would hit new objects).
         shadowTex = 0
         shadowFbo = 0
+        skyTex = 0
+        skyTried = false
         try {
             GeoGl.init()
             // A new context: everything on the GPU is gone. Programs now, the world streams in again.
@@ -299,10 +306,10 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
             objectShadowCutProg = GeoProgram(GeoShaders.OBJECT_SHADOW_VS, GeoShaders.SHADOW_CUTOUT_FS, mapOf("uAlbedo" to 8))
             riderProg = GeoProgram(GeoShaders.RIDER_VS, GeoShaders.OBJECT_FS, mapOf("uShadow" to 5, "uAlbedo" to 8, "uNormalMap" to 9, "uKits" to 10))
             riderShadowProg = GeoProgram(GeoShaders.RIDER_SHADOW_VS, GeoShaders.SHADOW_FS, mapOf("uKits" to 10))
-            skyProg = GeoProgram(GeoShaders.SKY_VS, GeoShaders.SKY_FS, mapOf("uNoise" to 4))
+            skyProg = GeoProgram(GeoShaders.SKY_VS, GeoShaders.SKY_FS, mapOf("uNoise" to 4, "uSkyTex" to 11))
             frameUbo = GeoGl.genBuffer()
             GLES30.glBindBuffer(GLES30.GL_UNIFORM_BUFFER, frameUbo)
-            GLES30.glBufferData(GLES30.GL_UNIFORM_BUFFER, 72 * 4, null, GLES30.GL_DYNAMIC_DRAW)
+            GLES30.glBufferData(GLES30.GL_UNIFORM_BUFFER, 76 * 4, null, GLES30.GL_DYNAMIC_DRAW)
             GLES30.glBindBufferBase(GLES30.GL_UNIFORM_BUFFER, 0, frameUbo)
             gridIbo = GeoGl.staticBuffer(GLES30.GL_ELEMENT_ARRAY_BUFFER, GeoGl.shorts(TerrainGrid.indices), TerrainGrid.indices.size * 2)
             skyVao = GeoGl.genVao()
@@ -471,6 +478,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         val st = TileStreamer(sc, assets, quality, sceneryGen, dressingGen)
         streamer = st
         createMaterialArrays()
+        loadSky()
         st.start()
         st.post(TileStreamer.MaterialsJob())
         st.post(TileStreamer.PrototypesJob())
@@ -507,6 +515,29 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
             val sc = scene
             scene = null
             pendingScene = pendingScene ?: sc
+        }
+    }
+
+    /**
+     * The sky panorama, once per context. 4096 px wide on a tablet; 2048 on a phone, the smallest texture
+     * size every OpenGL ES 3 device has to support.
+     */
+    private fun loadSky() {
+        if (skyTex != 0 || skyTried) return
+        skyTried = true
+        try {
+            val meta = org.json.JSONObject(assets.open("sky/$SKY.json").use { it.readBytes().decodeToString() })
+            val w = if (quality.phone) 2048 else 4096
+            val bmp = Materials.bitmap(assets, "sky/$SKY.webp", w, w / 4) ?: return
+            val buf = ByteBuffer.allocateDirect(bmp.width * bmp.height * 4).order(ByteOrder.nativeOrder())
+            bmp.copyPixelsToBuffer(buf)
+            skyTex = GeoGl.texture2D(buf, bmp.width, bmp.height, true, false, 1f, GLES30.GL_REPEAT)
+            bmp.recycle()
+            skySunU = meta.getDouble("sunU").toFloat()
+            skyMax = meta.getDouble("max").toFloat()
+        } catch (e: Exception) {
+            Log.w(TAG, "sky panorama not loaded; analytic sky", e)
+            skyTex = 0
         }
     }
 
@@ -1072,18 +1103,22 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         b[66] = (e[2] - floor(e[2] / TEX_PERIOD) * TEX_PERIOD).toFloat()
         b[67] = quality.shadowRadius.toFloat() * 1.05f
         b[68] = 0.8f; b[69] = 0.6f; b[70] = 1.0f; b[71] = 0f
+        b[72] = frame.exposure; b[73] = frame.contrast; b[74] = frame.saturation; b[75] = frame.detail
         blockBuf.position(0)
         blockBuf.put(b)
         blockBuf.position(0)
         GLES30.glBindBuffer(GLES30.GL_UNIFORM_BUFFER, frameUbo)
-        GLES30.glBufferSubData(GLES30.GL_UNIFORM_BUFFER, 0, 72 * 4, blockBuf)
+        GLES30.glBufferSubData(GLES30.GL_UNIFORM_BUFFER, 0, 76 * 4, blockBuf)
         GLES30.glBindBufferBase(GLES30.GL_UNIFORM_BUFFER, 0, frameUbo)
         // The clear colour is the horizon haze, so a gap at the horizon never shows.
         for (i in 0 until 3) {
-            val x = b[60 + i] * EXPOSURE
+            val x = b[60 + i] * EXPOSURE * frame.exposure
             val a = ((x * (2.51f * x + 0.03f)) / (x * (2.43f * x + 0.59f) + 0.14f)).coerceIn(0f, 1f)
             horizonSrgb[i] = if (a <= 0.0031308f) a * 12.92f else (1.055 * Math.pow(a.toDouble(), 1 / 2.4) - 0.055).toFloat()
         }
+        // The same grading as finalColor, so the clear colour matches the haze.
+        val hl = horizonSrgb[0] * 0.2126f + horizonSrgb[1] * 0.7152f + horizonSrgb[2] * 0.0722f
+        for (i in 0 until 3) horizonSrgb[i] = ((hl + (horizonSrgb[i] - hl) * frame.saturation - 0.5f) * frame.contrast + 0.5f).coerceIn(0f, 1f)
     }
 
     /** Centre of the shadow box: ahead of the camera on the ground, snapped to whole shadow texels in light space. */
@@ -1619,6 +1654,9 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
             cloudOff[k * 2 + 1] = (oz / sc - floor(oz / sc)).toFloat()
         }
         GLES30.glUniform2fv(skyProg.p.loc("uCloudOff"), 3, cloudOff, 0)
+        val photo = skyTex != 0 && frame.photoSky
+        if (photo) bindTex(11, GLES30.GL_TEXTURE_2D, skyTex)
+        GLES30.glUniform2f(skyProg.p.loc("uSkyParams"), skySunU, if (photo) skyMax else 0f)
         GLES30.glDepthMask(false)
         GLES30.glBindVertexArray(skyVao)
         GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, 3)
@@ -1849,6 +1887,8 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         /** Earth curvature with standard refraction: drop = d^2 / (2 * 7/6 R). */
         const val CURVATURE = (1.0 / (2.0 * 6371000.0 * 7.0 / 6.0)).toFloat()
         const val EXPOSURE = 0.85f
+        /** The sky panorama in assets/sky. */
+        const val SKY = "clarens"
         /** Sun irradiance (relative to the sky's radiance, which sets the brightness of the sky dome). */
         const val SUN = 2.05f
         const val RIDER_WHEEL_R = 0.34

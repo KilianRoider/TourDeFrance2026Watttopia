@@ -177,10 +177,10 @@ class PersonBuilder(private val p: PersonPose) {
 
     fun body(lod: Int): MeshBuffer {
         val m = MeshBuilder(1024)
-        val sides = if (lod == 0) 10 else 6
+        val sides = if (lod == 0) 7 else 4
         // Head with the hair on the same grid: hair on the crown and the back of the head.
-        val rows = if (lod == 0) 9 else 5
-        val cols = if (lod == 0) 14 else 8
+        val rows = if (lod == 0) 7 else 4
+        val cols = if (lod == 0) 10 else 6
         m.colorGrid(rows, cols, wrap = true,
             point = { r, c ->
                 val lat = (-PI / 2 + PI * r / (rows - 1)).toFloat()
@@ -214,7 +214,7 @@ class PersonBuilder(private val p: PersonPose) {
         }
         // Pelvis in the legwear colour, then legs.
         m.withColor(legs) {
-            m.with(spine) { m.ellipsoid(v3(0f, 0.02f, 0f), p.body.hipW + 0.075f, 0.13f, 0.12f, if (lod == 0) 6 else 4, if (lod == 0) 12 else 7) }
+            m.with(spine) { m.ellipsoid(v3(0f, 0.02f, 0f), p.body.hipW + 0.075f, 0.13f, 0.12f, if (lod == 0) 4 else 3, if (lod == 0) 9 else 5) }
         }
         for (right in listOf(false, true)) {
             val l = leg(right)
@@ -261,7 +261,7 @@ class PersonBuilder(private val p: PersonPose) {
             R(0.55f, 0.065f, 0.058f, 0f),
         )
         val rr = if (lod == 0) rings else listOf(rings[0], rings[2], rings[4], rings[6])
-        val cols = if (lod == 0) 14 else 8
+        val cols = if (lod == 0) 10 else 6
         m.colorGrid(rr.size, cols, wrap = true,
             point = { r, c ->
                 val ring = rr[r]
@@ -276,7 +276,7 @@ class PersonBuilder(private val p: PersonPose) {
         for (right in listOf(false, true)) {
             val a = arm(right)
             val end = a.sh.lerp(a.elbow, 0.45f)
-            m.withColor(cloth) { m.tube(a.sh + (a.sh - a.elbow).norm() * 0.02f, end, 0.06f, 0.052f, if (lod == 0) 10 else 6, capA = true, capB = false, ea = 0f, eb = w(0.22f)) }
+            m.withColor(cloth) { m.tube(a.sh + (a.sh - a.elbow).norm() * 0.02f, end, 0.06f, 0.052f, if (lod == 0) 7 else 4, capA = true, capB = false, ea = 0f, eb = w(0.22f)) }
         }
         return m.build()
     }

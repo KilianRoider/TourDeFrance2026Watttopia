@@ -165,11 +165,11 @@ internal object PlantSet {
     const val WEED = "scn_weed"
     private fun meadow(prefix: String, cells: List<UvRect>, size: Float, maxDist: Float, cards: Int = 3) =
         cells.mapIndexed { k, r -> get("$prefix$k") { PlantProtos.meadow("$prefix$k", r, size, maxDist, cards) } }
-    val grassSmall get() = meadow(GRASS_SMALL, MeadowAtlas.GREEN, 0.38f, 30f, cards = 2)
-    val grass get() = meadow(GRASS, MeadowAtlas.GREEN, 0.7f, 45f)
-    val grassTall get() = meadow(GRASS_TALL, MeadowAtlas.TALL + MeadowAtlas.GREEN.take(3), 1.1f, 55f, cards = 4)
-    val grassDry get() = meadow(GRASS_DRY, MeadowAtlas.DRY, 0.8f, 45f)
-    val weeds get() = meadow(WEED, MeadowAtlas.WEEDS, 0.55f, 35f, cards = 2)
+    val grassSmall get() = meadow(GRASS_SMALL, MeadowAtlas.GREEN, 0.38f, 22f, cards = 2)
+    val grass get() = meadow(GRASS, MeadowAtlas.GREEN, 0.7f, 34f)
+    val grassTall get() = meadow(GRASS_TALL, MeadowAtlas.TALL + MeadowAtlas.GREEN.take(3), 1.1f, 45f, cards = 4)
+    val grassDry get() = meadow(GRASS_DRY, MeadowAtlas.DRY, 0.8f, 34f)
+    val weeds get() = meadow(WEED, MeadowAtlas.WEEDS, 0.55f, 28f, cards = 2)
     fun variants(prefix: String) = when (prefix) {
         GRASS_SMALL, GRASS -> MeadowAtlas.GREEN.size
         GRASS_TALL -> MeadowAtlas.TALL.size + 3

@@ -650,6 +650,14 @@ void main() {
             float k = clamp(uGrade.w, 0.0, 2.0);
             float mott = texture(uNoise, vWorld / 6.0).r * 0.55 + texture(uNoise, vWorld / 1.5).g * 0.45;
             albedo *= 1.0 + (mott - 0.5) * 0.55 * k;
+            // The asphalt photo once more at a quarter of its scale (8 m): binder-rich darker and dry lighter
+            // areas in the mid distance, where the fine chippings have long merged into one grey.
+            vec3 big = texture(uRoad, vec3(uv1 * 0.25 + vec2(0.13, 0.71), layer)).rgb * gainOf(layer);
+            albedo *= mix(vec3(1.0), clamp(big / max(avgA, vec3(0.01)), 0.6, 1.5), 0.55 * min(k, 1.5));
+            // Surfaces of different age along the road (every 40 to 120 m): a little warmer and lighter or
+            // cooler and darker, as where one resurfacing job ended and the next began.
+            vec4 nzA = texture(uNoise, vec2(u / 120.0, 0.5));
+            albedo *= mix(vec3(1.0), mix(vec3(0.9, 0.9, 0.92), vec3(1.1, 1.07, 1.02), smoothstep(0.3, 0.7, nzA.r)), min(k, 1.0));
             // An oily darker strip in the middle of each lane, between the wheel tracks.
             float lc = (abs(abs(across) - hw * 0.5)) / 0.45;
             albedo *= 1.0 - 0.14 * k * exp(-lc * lc) * smoothstep(1.0, 2.0, hw);
@@ -658,6 +666,18 @@ void main() {
             float wornE = (1.0 - smoothstep(0.1, 0.7, edge)) * k;
             albedo = mix(albedo, albedo * 1.25 + vec3(0.03, 0.028, 0.022), clamp(wornE, 0.0, 1.0) * 0.6);
             nrm.xy *= 1.0 + wornE * 0.8;
+            // Crumbled edge: here and there the last decimetres have broken away and the gravel of the
+            // shoulder shows through, with a ragged outline.
+            float rag = hw - abs(across) - 0.05 - 0.45 * smoothstep(0.55, 0.85, texture(uNoise, vec2(u / 11.0, across / 11.0)).b)
+                + (texture(uNoise, vWorld / 1.25).r - 0.5) * 0.18;
+            float broken = 1.0 - smoothstep(-0.02, 0.02, rag);
+            if (broken > 0.0) {
+                vec2 gv = tuv / uGravelSize.x;
+                vec4 ga = texture(uGround, vec3(gv, uGroundIdx.z));
+                vec4 gnr = texture(uGroundN, vec3(gv, uGroundIdx.z));
+                albedo = mix(albedo, ga.rgb * uGroundGain.z * 0.85, broken);
+                nrm = mix(nrm, vec4(gnr.xy * 2.0 - 1.0, gnr.zw), broken);
+            }
             // Puddles: in one 19 m cell of four a flat dark pool near the edge, ragged outline, wet rim.
             float pc = floor(u / 19.0);
             if (hash1(pc + 3.3) < 0.25 && dist < 120.0) {

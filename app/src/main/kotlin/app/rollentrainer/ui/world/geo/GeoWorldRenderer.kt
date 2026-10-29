@@ -298,7 +298,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
             GeoGl.init()
             // A new context: everything on the GPU is gone. Programs now, the world streams in again.
             terrainProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_FS, mapOf("uSat" to 0, "uLc" to 1, "uGround" to 2, "uGroundN" to 3, "uNoise" to 4, "uShadow" to 5))
-            terrainFarProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_FAR_FS, mapOf("uSat" to 0, "uShadow" to 5))
+            terrainFarProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_FAR_FS, mapOf("uSat" to 0, "uNoise" to 4, "uShadow" to 5))
             terrainCutProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_CUT_FS, mapOf("uSat" to 0, "uLc" to 1, "uGround" to 2, "uGroundN" to 3, "uNoise" to 4, "uShadow" to 5))
             roadProg = GeoProgram(GeoShaders.ROAD_VS, GeoShaders.ROAD_FS, mapOf("uGround" to 2, "uGroundN" to 3, "uNoise" to 4, "uShadow" to 5, "uRoad" to 6, "uRoadN" to 7))
             objectProg = GeoProgram(GeoShaders.OBJECT_VS, GeoShaders.OBJECT_FS, mapOf("uShadow" to 5, "uAlbedo" to 8, "uNormalMap" to 9))

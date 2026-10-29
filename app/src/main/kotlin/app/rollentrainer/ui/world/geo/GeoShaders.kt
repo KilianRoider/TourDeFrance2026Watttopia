@@ -181,12 +181,12 @@ in float vAlt;
 in float vRoadDist;
 uniform sampler2D uSat;
 uniform float uSatGain;
+uniform sampler2D uNoise;
 #ifndef FAR
 uniform highp usampler2D uLc;
 uniform float uLcCells;
 uniform highp sampler2DArray uGround;
 uniform highp sampler2DArray uGroundN;
-uniform sampler2D uNoise;
 uniform int uClassLayer[16];
 uniform vec3 uLayerMean[24];
 uniform float uLayerSize[24];
@@ -332,6 +332,8 @@ void main() {
         float wsum = 0.0;
         float rsum = 0.0;
         float aosum = 0.0;
+        vec3 photo = vec3(0.0);
+        vec3 photoMean = vec3(0.0);
         for (int i = 0; i < 4; i++) {
             if (w[i] < 0.02 || ls[i] < 0) continue;
             vec4 nrm;
@@ -339,6 +341,8 @@ void main() {
             // Height-based blending: grass grows over the gravel, stones poke through.
             float wh = w[i] * (0.25 + a.a * 1.5);
             detail += wh * a.rgb / uLayerMean[ls[i]];
+            photo += wh * a.rgb;
+            photoMean += wh * uLayerMean[ls[i]];
             dn += wh * vec3(nrm.xy, 0.0);
             aosum += wh * nrm.z;
             rsum += wh * nrm.w;
@@ -373,6 +377,14 @@ void main() {
             vec4 nzL = texture(uNoise, vWorld / 150.0);
             vec3 hue = mix(vec3(0.95, 1.0, 1.0), vec3(1.07, 1.0, 0.84), smoothstep(0.3, 0.7, nzL.g));
             albedo = sat * mix(vec3(1.0), detail * macro * hue, fade);
+            // Close to the rider the 10 m satellite colour is a blur: there the photo keeps its own colours
+            // (green blades, yellow straw, brown soil), only its brightness follows the satellite.
+            if (wsum > 0.0) {
+                vec3 lw = vec3(0.2126, 0.7152, 0.0722);
+                vec3 own = photo / wsum * (dot(sat, lw) / max(dot(photoMean / wsum, lw), 0.01));
+                float nearW = 0.7 * (1.0 - smoothstep(20.0, 110.0, dist));
+                albedo = mix(albedo, own * macro * hue, nearW);
+            }
             n = normalize(gn + vec3(dn.x, 0.0, -dn.y) * 0.6 * fade);
         }
         // Rock on steep slopes: biplanar projection so cliffs are not smeared.
@@ -407,9 +419,27 @@ void main() {
     // crowns that shadow each other are below its resolution, so it reads too bright and flat when lit.
 #ifdef FAR
     albedo *= 0.8;
+    float farK = 1.0;
 #else
     albedo *= mix(1.0, 0.8, smoothstep(uDetailFar * 0.5, uDetailFar, dist));
+    float farK = smoothstep(uDetailFar * 0.4, uDetailFar, dist);
 #endif
+    if (farK > 0.0) {
+        // Mountains far away: the 10 m imagery is smooth, so add what the eye expects of a slope seen from
+        // afar. Patchy brightness on two scales (periods divide the 1200 m texture wrap), bare grey rock with
+        // strata where it is steep, and darker gullies.
+        vec4 m1 = texture(uNoise, vWorld / 400.0);
+        vec4 m2 = texture(uNoise, vWorld / 100.0);
+        float slopeF = 1.0 - gn.y;
+        float patchy = 0.8 + 0.4 * (m1.r * 0.55 + m2.g * 0.45);
+        float lumA = dot(albedo, vec3(0.2126, 0.7152, 0.0722));
+        float rk = smoothstep(0.28, 0.55, slopeF + (m2.b - 0.5) * 0.2);
+        float strata = 1.0 + 0.16 * sin(vAlt / 9.0 + m1.g * 6.0) * rk;
+        vec3 rockC = vec3(lumA) * vec3(1.06, 1.03, 0.98) * 1.25 * strata;
+        vec3 farCol = mix(albedo * patchy, rockC * (0.85 + 0.3 * m2.r), rk * 0.65);
+        farCol *= 1.0 - 0.25 * smoothstep(0.45, 0.8, slopeF) * (1.0 - m2.a);
+        albedo = mix(albedo, farCol, farK * uGrade.w);
+    }
     float shadow = shadowAt(vRel, gn);
     vec3 col = shade(albedo, n, v, rough, ao, shadow, spec);
 #ifndef FAR

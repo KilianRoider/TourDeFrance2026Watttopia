@@ -570,10 +570,11 @@ internal class Vegetation(private val j: TileJob) {
                 val free = j.ground.freeAt(i, side > 0)
                 val offs = j.ground.offsets(i)
                 val reach = if (offs != null && free > 0) offs[min(free, offs.size) - 1].toDouble() + 5.0 else 6.0
-                val n = if (town) 3 else 13
+                val n = if (town) 3 else 30
                 for (k in 0 until n) {
-                    // Most tufts right at the edge where the mower does not reach, fewer further out.
-                    val o = 0.35 + rnd.d() * rnd.d() * min(reach, 16.0)
+                    // Most tufts right at the edge where the mower does not reach, fewer further out; the
+                    // meadow beyond gets its share too, so it reads as grass and not as a painted slope.
+                    val o = 0.35 + rnd.d() * rnd.d() * min(reach, 26.0)
                     val along = rnd.sym(2.6f)
                     val nx = -dy * side
                     val ny = dx * side

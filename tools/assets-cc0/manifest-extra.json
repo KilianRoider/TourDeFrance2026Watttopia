@@ -1,0 +1,731 @@
+{
+ "note": "Raw CC0 PBR texture sets for Wattwerk. Not used by the app until converted.",
+ "ambientcg": [
+  {
+   "id": "Grass001",
+   "page": "https://ambientcg.com/view?id=Grass001",
+   "download": "https://ambientcg.com/get?file=Grass001_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass001_2K-JPG_AmbientOcclusion.jpg",
+    "Grass001_2K-JPG_Color.jpg",
+    "Grass001_2K-JPG_Displacement.jpg",
+    "Grass001_2K-JPG_NormalGL.jpg",
+    "Grass001_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass002",
+   "page": "https://ambientcg.com/view?id=Grass002",
+   "download": "https://ambientcg.com/get?file=Grass002_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass002_2K-JPG_AmbientOcclusion.jpg",
+    "Grass002_2K-JPG_Color.jpg",
+    "Grass002_2K-JPG_Displacement.jpg",
+    "Grass002_2K-JPG_NormalGL.jpg",
+    "Grass002_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass003",
+   "page": "https://ambientcg.com/view?id=Grass003",
+   "download": "https://ambientcg.com/get?file=Grass003_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass003_2K-JPG_AmbientOcclusion.jpg",
+    "Grass003_2K-JPG_Color.jpg",
+    "Grass003_2K-JPG_Displacement.jpg",
+    "Grass003_2K-JPG_NormalGL.jpg",
+    "Grass003_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass004",
+   "page": "https://ambientcg.com/view?id=Grass004",
+   "download": "https://ambientcg.com/get?file=Grass004_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass004_2K-JPG_AmbientOcclusion.jpg",
+    "Grass004_2K-JPG_Color.jpg",
+    "Grass004_2K-JPG_Displacement.jpg",
+    "Grass004_2K-JPG_NormalGL.jpg",
+    "Grass004_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass005",
+   "page": "https://ambientcg.com/view?id=Grass005",
+   "download": "https://ambientcg.com/get?file=Grass005_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass005_2K-JPG_AmbientOcclusion.jpg",
+    "Grass005_2K-JPG_Color.jpg",
+    "Grass005_2K-JPG_Displacement.jpg",
+    "Grass005_2K-JPG_NormalGL.jpg",
+    "Grass005_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass006",
+   "page": "https://ambientcg.com/view?id=Grass006",
+   "download": "https://ambientcg.com/get?file=Grass006_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass006_2K-JPG_AmbientOcclusion.jpg",
+    "Grass006_2K-JPG_Color.jpg",
+    "Grass006_2K-JPG_Displacement.jpg",
+    "Grass006_2K-JPG_NormalGL.jpg",
+    "Grass006_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass007",
+   "page": "https://ambientcg.com/view?id=Grass007",
+   "download": "https://ambientcg.com/get?file=Grass007_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass007_2K-JPG_AmbientOcclusion.jpg",
+    "Grass007_2K-JPG_Color.jpg",
+    "Grass007_2K-JPG_Displacement.jpg",
+    "Grass007_2K-JPG_NormalGL.jpg",
+    "Grass007_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Grass008",
+   "page": "https://ambientcg.com/view?id=Grass008",
+   "download": "https://ambientcg.com/get?file=Grass008_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Grass008_2K-JPG_AmbientOcclusion.jpg",
+    "Grass008_2K-JPG_Color.jpg",
+    "Grass008_2K-JPG_Displacement.jpg",
+    "Grass008_2K-JPG_NormalGL.jpg",
+    "Grass008_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground037",
+   "page": "https://ambientcg.com/view?id=Ground037",
+   "download": "https://ambientcg.com/get?file=Ground037_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground037_2K-JPG_AmbientOcclusion.jpg",
+    "Ground037_2K-JPG_Color.jpg",
+    "Ground037_2K-JPG_Displacement.jpg",
+    "Ground037_2K-JPG_NormalGL.jpg",
+    "Ground037_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground054",
+   "page": "https://ambientcg.com/view?id=Ground054",
+   "download": "https://ambientcg.com/get?file=Ground054_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground054_2K-JPG_AmbientOcclusion.jpg",
+    "Ground054_2K-JPG_Color.jpg",
+    "Ground054_2K-JPG_Displacement.jpg",
+    "Ground054_2K-JPG_NormalGL.jpg",
+    "Ground054_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground068",
+   "page": "https://ambientcg.com/view?id=Ground068",
+   "download": "https://ambientcg.com/get?file=Ground068_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground068_2K-JPG_AmbientOcclusion.jpg",
+    "Ground068_2K-JPG_Color.jpg",
+    "Ground068_2K-JPG_Displacement.jpg",
+    "Ground068_2K-JPG_NormalGL.jpg",
+    "Ground068_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground013",
+   "page": "https://ambientcg.com/view?id=Ground013",
+   "download": "https://ambientcg.com/get?file=Ground013_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground013_2K-JPG_AmbientOcclusion.jpg",
+    "Ground013_2K-JPG_Color.jpg",
+    "Ground013_2K-JPG_Displacement.jpg",
+    "Ground013_2K-JPG_NormalGL.jpg",
+    "Ground013_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground044",
+   "page": "https://ambientcg.com/view?id=Ground044",
+   "download": "https://ambientcg.com/get?file=Ground044_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground044_2K-JPG_AmbientOcclusion.jpg",
+    "Ground044_2K-JPG_Color.jpg",
+    "Ground044_2K-JPG_Displacement.jpg",
+    "Ground044_2K-JPG_NormalGL.jpg",
+    "Ground044_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground048",
+   "page": "https://ambientcg.com/view?id=Ground048",
+   "download": "https://ambientcg.com/get?file=Ground048_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground048_2K-JPG_AmbientOcclusion.jpg",
+    "Ground048_2K-JPG_Color.jpg",
+    "Ground048_2K-JPG_Displacement.jpg",
+    "Ground048_2K-JPG_NormalGL.jpg",
+    "Ground048_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Ground103",
+   "page": "https://ambientcg.com/view?id=Ground103",
+   "download": "https://ambientcg.com/get?file=Ground103_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Ground103_2K-JPG_AmbientOcclusion.jpg",
+    "Ground103_2K-JPG_Color.jpg",
+    "Ground103_2K-JPG_Displacement.jpg",
+    "Ground103_2K-JPG_NormalGL.jpg",
+    "Ground103_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Moss001",
+   "page": "https://ambientcg.com/view?id=Moss001",
+   "download": "https://ambientcg.com/get?file=Moss001_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Moss001_2K-JPG_AmbientOcclusion.jpg",
+    "Moss001_2K-JPG_Color.jpg",
+    "Moss001_2K-JPG_Displacement.jpg",
+    "Moss001_2K-JPG_NormalGL.jpg",
+    "Moss001_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Moss002",
+   "page": "https://ambientcg.com/view?id=Moss002",
+   "download": "https://ambientcg.com/get?file=Moss002_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Moss002_2K-JPG_AmbientOcclusion.jpg",
+    "Moss002_2K-JPG_Color.jpg",
+    "Moss002_2K-JPG_Displacement.jpg",
+    "Moss002_2K-JPG_NormalGL.jpg",
+    "Moss002_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Rock023",
+   "page": "https://ambientcg.com/view?id=Rock023",
+   "download": "https://ambientcg.com/get?file=Rock023_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Rock023_2K-JPG_AmbientOcclusion.jpg",
+    "Rock023_2K-JPG_Color.jpg",
+    "Rock023_2K-JPG_Displacement.jpg",
+    "Rock023_2K-JPG_NormalGL.jpg",
+    "Rock023_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Rock030",
+   "page": "https://ambientcg.com/view?id=Rock030",
+   "download": "https://ambientcg.com/get?file=Rock030_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Rock030_2K-JPG_AmbientOcclusion.jpg",
+    "Rock030_2K-JPG_Color.jpg",
+    "Rock030_2K-JPG_Displacement.jpg",
+    "Rock030_2K-JPG_NormalGL.jpg",
+    "Rock030_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Rock035",
+   "page": "https://ambientcg.com/view?id=Rock035",
+   "download": "https://ambientcg.com/get?file=Rock035_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Rock035_2K-JPG_AmbientOcclusion.jpg",
+    "Rock035_2K-JPG_Color.jpg",
+    "Rock035_2K-JPG_Displacement.jpg",
+    "Rock035_2K-JPG_NormalGL.jpg",
+    "Rock035_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Rocks011",
+   "page": "https://ambientcg.com/view?id=Rocks011",
+   "download": "https://ambientcg.com/get?file=Rocks011_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Rocks011_2K-JPG_AmbientOcclusion.jpg",
+    "Rocks011_2K-JPG_Color.jpg",
+    "Rocks011_2K-JPG_Displacement.jpg",
+    "Rocks011_2K-JPG_NormalGL.jpg",
+    "Rocks011_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Rock064",
+   "page": "https://ambientcg.com/view?id=Rock064",
+   "download": "https://ambientcg.com/get?file=Rock064_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Rock064_2K-JPG_AmbientOcclusion.jpg",
+    "Rock064_2K-JPG_Color.jpg",
+    "Rock064_2K-JPG_Displacement.jpg",
+    "Rock064_2K-JPG_NormalGL.jpg",
+    "Rock064_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Asphalt010",
+   "page": "https://ambientcg.com/view?id=Asphalt010",
+   "download": "https://ambientcg.com/get?file=Asphalt010_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Asphalt010_2K-JPG_Color.jpg",
+    "Asphalt010_2K-JPG_Displacement.jpg",
+    "Asphalt010_2K-JPG_NormalGL.jpg",
+    "Asphalt010_2K-JPG_Opacity.jpg",
+    "Asphalt010_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Asphalt012",
+   "page": "https://ambientcg.com/view?id=Asphalt012",
+   "download": "https://ambientcg.com/get?file=Asphalt012_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Asphalt012_2K-JPG_Color.jpg",
+    "Asphalt012_2K-JPG_Displacement.jpg",
+    "Asphalt012_2K-JPG_NormalGL.jpg",
+    "Asphalt012_2K-JPG_Opacity.jpg",
+    "Asphalt012_2K-JPG_Roughness.jpg"
+   ]
+  },
+  {
+   "id": "Asphalt015",
+   "page": "https://ambientcg.com/view?id=Asphalt015",
+   "download": "https://ambientcg.com/get?file=Asphalt015_2K-JPG.zip",
+   "license": "CC0 1.0",
+   "files": [
+    "Asphalt015_2K-JPG_Color.jpg",
+    "Asphalt015_2K-JPG_Displacement.jpg",
+    "Asphalt015_2K-JPG_NormalGL.jpg",
+    "Asphalt015_2K-JPG_Roughness.jpg"
+   ]
+  }
+ ],
+ "polyhaven": [
+  {
+   "id": "aerial_grass_rock",
+   "name": "Aerial Grass Rock",
+   "page": "https://polyhaven.com/a/aerial_grass_rock",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    15000,
+    15000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "aerial_grass_rock_diff_2k.jpg",
+    "aerial_grass_rock_nor_gl_2k.jpg",
+    "aerial_grass_rock_rough_2k.jpg",
+    "aerial_grass_rock_ao_2k.jpg",
+    "aerial_grass_rock_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "aerial_rocks_02",
+   "name": "Aerial Rocks 02",
+   "page": "https://polyhaven.com/a/aerial_rocks_02",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    50000,
+    50000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "aerial_rocks_02_diff_2k.jpg",
+    "aerial_rocks_02_nor_gl_2k.jpg",
+    "aerial_rocks_02_rough_2k.jpg",
+    "aerial_rocks_02_ao_2k.jpg",
+    "aerial_rocks_02_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "aerial_ground_rock",
+   "name": "Aerial Ground Rock",
+   "page": "https://polyhaven.com/a/aerial_ground_rock",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    19999.950408935547,
+    20000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "aerial_ground_rock_diff_2k.jpg",
+    "aerial_ground_rock_nor_gl_2k.jpg",
+    "aerial_ground_rock_rough_2k.jpg",
+    "aerial_ground_rock_ao_2k.jpg",
+    "aerial_ground_rock_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "grass_path_2",
+   "name": "Grass Path 2",
+   "page": "https://polyhaven.com/a/grass_path_2",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1000,
+    1000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "grass_path_2_diff_2k.jpg",
+    "grass_path_2_nor_gl_2k.jpg",
+    "grass_path_2_rough_2k.jpg",
+    "grass_path_2_ao_2k.jpg",
+    "grass_path_2_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "grass_path_3",
+   "name": "Grass Path 3",
+   "page": "https://polyhaven.com/a/grass_path_3",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1000,
+    1000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "grass_path_3_diff_2k.jpg",
+    "grass_path_3_nor_gl_2k.jpg",
+    "grass_path_3_rough_2k.jpg",
+    "grass_path_3_ao_2k.jpg",
+    "grass_path_3_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "withered_grass",
+   "name": "Withered Grass",
+   "page": "https://polyhaven.com/a/withered_grass",
+   "authors": [
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    1999.9996423721313,
+    1999.9996423721313
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "withered_grass_diff_2k.jpg",
+    "withered_grass_nor_gl_2k.jpg",
+    "withered_grass_rough_2k.jpg",
+    "withered_grass_ao_2k.jpg",
+    "withered_grass_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "mossy_rock",
+   "name": "Mossy Rock",
+   "page": "https://polyhaven.com/a/mossy_rock",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    3000,
+    3000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "mossy_rock_diff_2k.jpg",
+    "mossy_rock_nor_gl_2k.jpg",
+    "mossy_rock_rough_2k.jpg",
+    "mossy_rock_ao_2k.jpg",
+    "mossy_rock_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "lichen_rock",
+   "name": "Lichen Rock",
+   "page": "https://polyhaven.com/a/lichen_rock",
+   "authors": [
+    "Rico Cilliers"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "lichen_rock_diff_2k.jpg",
+    "lichen_rock_nor_gl_2k.jpg",
+    "lichen_rock_rough_2k.jpg",
+    "lichen_rock_ao_2k.jpg",
+    "lichen_rock_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "rock_face_04",
+   "name": "Rock Face 04",
+   "page": "https://polyhaven.com/a/rock_face_04",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "rock_face_04_diff_2k.jpg",
+    "rock_face_04_nor_gl_2k.jpg",
+    "rock_face_04_rough_2k.jpg",
+    "rock_face_04_ao_2k.jpg",
+    "rock_face_04_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "cliff_side",
+   "name": "Cliff Side",
+   "page": "https://polyhaven.com/a/cliff_side",
+   "authors": [
+    "James Ray Cock",
+    "Jenelle van Heerden",
+    "Dario Barresi"
+   ],
+   "real_size_mm": [
+    1830.0000429153442,
+    1830.0000429153442
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "cliff_side_diff_2k.jpg",
+    "cliff_side_nor_gl_2k.jpg",
+    "cliff_side_rough_2k.jpg",
+    "cliff_side_ao_2k.jpg",
+    "cliff_side_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "rocky_terrain_02",
+   "name": "Rocky Terrain 02",
+   "page": "https://polyhaven.com/a/rocky_terrain_02",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    90000,
+    90000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "rocky_terrain_02_diff_2k.jpg",
+    "rocky_terrain_02_nor_gl_2k.jpg",
+    "rocky_terrain_02_rough_2k.jpg",
+    "rocky_terrain_02_ao_2k.jpg",
+    "rocky_terrain_02_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "rock_ground",
+   "name": "Rock Ground",
+   "page": "https://polyhaven.com/a/rock_ground",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    1500,
+    1500
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "rock_ground_diff_2k.jpg",
+    "rock_ground_nor_gl_2k.jpg",
+    "rock_ground_rough_2k.jpg",
+    "rock_ground_ao_2k.jpg",
+    "rock_ground_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "rocks_ground_02",
+   "name": "Rocks Ground 02",
+   "page": "https://polyhaven.com/a/rocks_ground_02",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "rocks_ground_02_col_2k.jpg",
+    "rocks_ground_02_nor_gl_2k.jpg",
+    "rocks_ground_02_rough_2k.jpg",
+    "rocks_ground_02_ao_2k.jpg",
+    "rocks_ground_02_height_2k.jpg"
+   ]
+  },
+  {
+   "id": "snow_field_aerial",
+   "name": "Snow Field Aerial",
+   "page": "https://polyhaven.com/a/snow_field_aerial",
+   "authors": [
+    "Rob Tuytel"
+   ],
+   "real_size_mm": [
+    80000,
+    80000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "snow_field_aerial_col_2k.jpg",
+    "snow_field_aerial_nor_gl_2k.jpg",
+    "snow_field_aerial_rough_2k.jpg",
+    "snow_field_aerial_ao_2k.jpg",
+    "snow_field_aerial_height_2k.jpg"
+   ]
+  },
+  {
+   "id": "asphalt_01",
+   "name": "Asphalt 01",
+   "page": "https://polyhaven.com/a/asphalt_01",
+   "authors": [
+    "Dario Barresi",
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2079.9994468688965,
+    2079.9996852874756
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "asphalt_01_diff_2k.jpg",
+    "asphalt_01_nor_gl_2k.jpg",
+    "asphalt_01_rough_2k.jpg",
+    "asphalt_01_ao_2k.jpg",
+    "asphalt_01_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "asphalt_03",
+   "name": "Asphalt 03",
+   "page": "https://polyhaven.com/a/asphalt_03",
+   "authors": [
+    "Dario Barresi",
+    "Charlotte Baglioni"
+   ],
+   "real_size_mm": [
+    2049.999713897705,
+    2049.999713897705
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "asphalt_03_diff_2k.jpg",
+    "asphalt_03_nor_gl_2k.jpg",
+    "asphalt_03_rough_2k.jpg",
+    "asphalt_03_ao_2k.jpg",
+    "asphalt_03_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "asphalt_06",
+   "name": "Asphalt 06",
+   "page": "https://polyhaven.com/a/asphalt_06",
+   "authors": [
+    "Jan Martens"
+   ],
+   "real_size_mm": [
+    3000,
+    3000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "asphalt_06_diff_2k.jpg",
+    "asphalt_06_nor_gl_2k.jpg",
+    "asphalt_06_rough_2k.jpg",
+    "asphalt_06_ao_2k.jpg",
+    "asphalt_06_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "road_damaged",
+   "name": "Road Damaged",
+   "page": "https://polyhaven.com/a/road_damaged",
+   "authors": [
+    "Dimitrios Savva"
+   ],
+   "real_size_mm": [
+    2200.000047683716,
+    2200.000047683716
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "road_damaged_diff_2k.jpg",
+    "road_damaged_nor_gl_2k.jpg",
+    "road_damaged_rough_2k.jpg",
+    "road_damaged_ao_2k.jpg",
+    "road_damaged_disp_2k.jpg"
+   ]
+  },
+  {
+   "id": "worn_asphalt",
+   "name": "Worn Asphalt",
+   "page": "https://polyhaven.com/a/worn_asphalt",
+   "authors": [
+    "Amal Kumar"
+   ],
+   "real_size_mm": [
+    2000,
+    2000
+   ],
+   "license": "CC0 1.0",
+   "files": [
+    "worn_asphalt_diff_2k.jpg",
+    "worn_asphalt_nor_gl_2k.jpg",
+    "worn_asphalt_rough_2k.jpg",
+    "worn_asphalt_ao_2k.jpg",
+    "worn_asphalt_disp_2k.jpg"
+   ]
+  }
+ ],
+ "failed": [
+  {
+   "id": "Asphalt025",
+   "error": "not on ambientCG (id does not exist)"
+  },
+  {
+   "id": "Asphalt026",
+   "error": "not on ambientCG (id does not exist)"
+  }
+ ],
+ "dropped": [
+  {
+   "id": "Ground075",
+   "reason": "grass pavers in a concrete grid, not usable as meadow"
+  }
+ ]
+}

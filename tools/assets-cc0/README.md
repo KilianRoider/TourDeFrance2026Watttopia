@@ -14,3 +14,7 @@ and licence, and maps each texture to the app material name used in
   cards, so they need impostors baked from the originals (see manifest notes).
 - Not covered: `cereal_green`, `wheat_ripe`, `maize_rows` (no Poly Haven equivalent; ambientCG downloads are blocked).
 - `preview/` contact sheet of the texture candidates and a render of the simplified trees.
+
+## Extra raw sets (2026-10-29)
+
+`textures-acg/<AssetId>/` holds 25 ambientCG 2K-JPG sets (Color, NormalGL, Roughness, AO, Displacement where present) and `textures-ph/<id>/` 19 more Poly Haven 2k sets (diff/col, nor_gl, rough, ao, disp/height). They are raw: not yet mapped in `mapping.json` and not used by the app. Sources, authors and licence (all CC0 1.0) are in `manifest-extra.json`; a contact sheet of the colour maps is `preview/extra-texturen-kontaktbogen.jpg`.

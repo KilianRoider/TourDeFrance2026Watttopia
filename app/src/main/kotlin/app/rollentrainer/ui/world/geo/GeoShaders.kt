@@ -97,7 +97,8 @@ vec3 shade(vec3 albedo, vec3 n, vec3 v, float rough, float ao, float shadow, flo
     float nl = max(dot(n, l), 0.0);
     float hemi = 0.5 + 0.5 * n.y;
     vec3 ambient = (uSkyAmb.rgb * hemi + uGroundAmb.rgb * (1.0 - hemi)) * ao;
-    vec3 diffuse = uSunColor.rgb * (nl * shadow);
+    // Cavities stay a little dark in the sun too, so normal and AO maps still read in full light.
+    vec3 diffuse = uSunColor.rgb * (nl * shadow * mix(1.0, ao * ao, 0.6));
     vec3 h = normalize(l + v);
     float nh = max(dot(n, h), 0.0);
     float nv = max(dot(n, v), 0.001);
@@ -332,6 +333,7 @@ void main() {
         float wsum = 0.0;
         float rsum = 0.0;
         float aosum = 0.0;
+        float hsum = 0.0;
         vec3 photo = vec3(0.0);
         vec3 photoMean = vec3(0.0);
         for (int i = 0; i < 4; i++) {
@@ -345,6 +347,7 @@ void main() {
             photoMean += wh * uLayerMean[ls[i]];
             dn += wh * vec3(nrm.xy, 0.0);
             aosum += wh * nrm.z;
+            hsum += wh * a.a;
             rsum += wh * nrm.w;
             wsum += wh;
         }
@@ -384,6 +387,10 @@ void main() {
                 vec3 own = photo / wsum * (dot(sat, lw) / max(dot(photoMean / wsum, lw), 0.01));
                 float nearW = 0.7 * (1.0 - smoothstep(20.0, 110.0, dist));
                 albedo = mix(albedo, own * macro * hue, nearW);
+                // Cavity: the gaps between blades and stones are dark, the tips catch the light. Without it
+                // the near ground is one flat green.
+                float hgt = clamp(hsum / wsum, 0.0, 1.0);
+                albedo *= mix(1.0, 0.5 + 0.6 * hgt, (1.0 - smoothstep(10.0, 45.0, dist)) * clamp(uGrade.w, 0.0, 1.5) * 0.8);
             }
             n = normalize(gn + vec3(dn.x, 0.0, -dn.y) * 0.6 * fade);
         }
@@ -713,7 +720,7 @@ void main() {
         nrm = vec4(0.0, 0.0, 1.0, 0.9);
         specScale = 0.3;
     }
-    float fadeN = 1.0 - smoothstep(25.0, 140.0, dist);
+    float fadeN = 1.0 - smoothstep(40.0, 200.0, dist);
     vec3 n = perturb(gn, vRel, tuv, nrm.xy, fadeN * 0.8 * clamp(uGrade.w * 1.5, 0.0, 2.0));
     float shadow = shadowAt(vRel, gn);
     if (kind == 6) shadow = 0.0;

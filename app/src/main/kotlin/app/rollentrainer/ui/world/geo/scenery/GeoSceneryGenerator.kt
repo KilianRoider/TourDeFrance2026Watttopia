@@ -155,6 +155,8 @@ internal object PlantSet {
     private fun get(id: String, make: () -> Prototype): Prototype = cache.getOrPut(id, make)
 
     val grass get() = get("scn_grass") { PlantProtos.grass("scn_grass", PlantAtlas.GRASS, 0.75f, 0.55f) }
+    val grassSmall get() = get("scn_grass_s") { PlantProtos.grass("scn_grass_s", PlantAtlas.GRASS, 0.42f, 0.3f, 32f) }
+    val grassTall get() = get("scn_grass_l") { PlantProtos.grass("scn_grass_l", PlantAtlas.GRASS, 1.05f, 0.85f, 55f, cards = 5) }
     val grassDry get() = get("scn_grass_dry") { PlantProtos.grass("scn_grass_dry", PlantAtlas.GRASS_DRY, 0.8f, 0.6f) }
     val flowers get() = get("scn_flowers") { PlantProtos.grass("scn_flowers", PlantAtlas.FLOWERS, 0.7f, 0.5f, 40f) }
     val poppies get() = get("scn_poppies") { PlantProtos.grass("scn_poppies", PlantAtlas.POPPIES, 0.7f, 0.6f, 40f) }
@@ -178,10 +180,16 @@ internal object PlantSet {
         val id = "scn_boulder_${texture.removePrefix("rock_")}_$k"
         return get(id) { PlantProtos.boulder(id, texture, 1000L + k * 17 + Hash.str(texture), 1.0f) }
     }
+    fun pebble(texture: String, k: Int): Prototype {
+        val id = "scn_pebble_${texture.removePrefix("rock_")}_$k"
+        return get(id) { PlantProtos.pebble(id, texture, 2000L + k * 29 + Hash.str(texture)) }
+    }
 
     fun forRegions(profiles: List<RegionProfile>): List<Prototype> {
         val out = ArrayList<Prototype>()
         out += grass
+        out += grassSmall
+        out += grassTall
         out += flowers
         out += poppies
         out += fern
@@ -195,7 +203,7 @@ internal object PlantSet {
         if (profiles.any { (it.crops[Crop.SUNFLOWER] ?: 0f) > 0f }) out += sunflower
         if (profiles.any { (it.crops[Crop.LAVENDER] ?: 0f) > 0f }) out += lavender
         for (p in profiles) out += vine(p.vineRowM)
-        for (tex in profiles.map { it.rock }.toSet()) for (k in 0 until 3) out += boulder(tex, k)
+        for (tex in profiles.map { it.rock }.toSet()) for (k in 0 until 3) { out += boulder(tex, k); out += pebble(tex, k) }
         return out.distinctBy { it.id }
     }
 }

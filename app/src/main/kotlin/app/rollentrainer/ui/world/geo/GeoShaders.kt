@@ -561,6 +561,7 @@ void main() {
     vec4 nrm;
     vec2 tuv;
     float specScale = 1.0;
+    float puddle = 0.0;
     float aa = max(fwidth(across), 0.004) * 0.75;
     if (kind == 0 || kind == 1) {
         // Asphalt: the region's base mix, with large patches of older and repaired surface.
@@ -629,6 +630,34 @@ void main() {
         nrm = vec4(na.xy * 2.0 - 1.0, na.zw);
         nrm.w = mix(nrm.w, 0.5, seam);
         if (kind == 0) {
+            // Mottling on a metre and several-metre scale: real asphalt is never one grey, and at a rider's
+            // eye height the fine chippings average out, so this is what makes the surface read as road.
+            float k = clamp(uGrade.w, 0.0, 2.0);
+            float mott = texture(uNoise, vWorld / 6.0).r * 0.55 + texture(uNoise, vWorld / 1.5).g * 0.45;
+            albedo *= 1.0 + (mott - 0.5) * 0.55 * k;
+            // An oily darker strip in the middle of each lane, between the wheel tracks.
+            float lc = (abs(abs(across) - hw * 0.5)) / 0.45;
+            albedo *= 1.0 - 0.14 * k * exp(-lc * lc) * smoothstep(1.0, 2.0, hw);
+            // Worn, dusty edges: the last half metre is lighter and rougher, ragged towards the verge.
+            float edge = hw - abs(across) + (nz.g - 0.5) * 0.5;
+            float wornE = (1.0 - smoothstep(0.1, 0.7, edge)) * k;
+            albedo = mix(albedo, albedo * 1.25 + vec3(0.03, 0.028, 0.022), clamp(wornE, 0.0, 1.0) * 0.6);
+            nrm.xy *= 1.0 + wornE * 0.8;
+            // Puddles: in one 19 m cell of four a flat dark pool near the edge, ragged outline, wet rim.
+            float pc = floor(u / 19.0);
+            if (hash1(pc + 3.3) < 0.25 && dist < 120.0) {
+                float pu = pc * 19.0 + 3.0 + hash1(pc + 8.1) * 12.0;
+                float pa = (hash1(pc + 5.7) < 0.5 ? -1.0 : 1.0) * (hw - 0.55 - hash1(pc + 2.2) * 0.9);
+                float pl = 0.6 + hash1(pc + 9.9) * 1.6;
+                float pw = 0.35 + hash1(pc + 4.4) * 0.5;
+                vec2 q = vec2((u - pu) / pl, (across - pa) / pw);
+                float r = length(q) + (texture(uNoise, vWorld / 2.0).b - 0.5) * 0.7;
+                float aaP = max(fwidth(r), 0.01);
+                puddle = 1.0 - smoothstep(1.0 - aaP, 1.0 + aaP, r);
+                float rim = (1.0 - smoothstep(1.0, 1.45, r)) * (1.0 - puddle);
+                albedo *= 1.0 - 0.35 * rim;
+                nrm.w = mix(nrm.w, 0.3, rim);
+            }
             // Tyre tracks: two smoother, darker bands per lane; the crown between them a little lighter.
             float lane = hw * 0.5;
             float t1 = (abs(abs(across) - lane) - 0.75) / 0.28;
@@ -693,6 +722,15 @@ void main() {
     shadow *= 1.0 - vDark;
     float ao = mix(1.0, nrm.z, 0.8) * (1.0 - 0.75 * vDark);
     vec3 col = shade(albedo, n, v, clamp(nrm.w, 0.25, 1.0), ao, shadow, specScale);
+    if (puddle > 0.0) {
+        // Standing water: a dark body and a mirror of the sky, strong at the grazing angles a rider sees.
+        float fr = 0.02 + 0.98 * pow(1.0 - max(dot(gn, v), 0.0), 5.0);
+        vec3 rd = reflect(-v, gn);
+        vec3 refl = skyColor(normalize(vec3(rd.x, max(rd.y, 0.02), rd.z)));
+        vec3 wet = albedo * 0.25 * (uSkyAmb.rgb + uSunColor.rgb * 0.3 * shadow);
+        vec3 pc = mix(wet, refl, clamp(fr * 1.4, 0.0, 0.9)) + uSunColor.rgb * pow(max(dot(reflect(-uSunDir.xyz, gn), v), 0.0), 400.0) * 4.0 * shadow;
+        col = mix(col, pc, puddle);
+    }
     fragColor = finalColor(atmosphere(col, vRel));
 }
 """

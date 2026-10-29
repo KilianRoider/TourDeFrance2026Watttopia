@@ -78,8 +78,8 @@ internal object PlantProtos {
         return mb
     }
 
-    fun grass(id: String, rect: UvRect, w: Float, h: Float, maxDist: Float = 45f): Prototype {
-        val mb = clump(rect, w, h, 3, 0.18f, 0.6f, Hash.str(id))
+    fun grass(id: String, rect: UvRect, w: Float, h: Float, maxDist: Float = 45f, cards: Int = 3): Prototype {
+        val mb = clump(rect, w, h, cards, 0.18f + 0.04f * (cards - 3), 0.6f, Hash.str(id))
         return Prototype(id, listOf(ProtoLod(listOf(mat to mb.build()), maxDist)), max(w, h))
     }
 
@@ -308,6 +308,12 @@ internal object PlantProtos {
         }
         val m = Mats.rock(texture)
         return Prototype(id, listOf(ProtoLod(listOf(m to build(1).build()), 120f), ProtoLod(listOf(m to build(0).build()), 700f)), size * 1.1f)
+    }
+
+    /** A small stone for verges and meadows: the boulder shape, low-poly, only drawn close by. */
+    fun pebble(id: String, texture: String, seed: Long): Prototype {
+        val b = boulder(id, texture, seed, 1.0f)
+        return Prototype(id, listOf(ProtoLod(b.lods.last().parts, 40f)), 1.1f)
     }
 
     private fun icosphere(subdiv: Int): Pair<List<Vec3>, List<IntArray>> {

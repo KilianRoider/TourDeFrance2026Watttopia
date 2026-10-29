@@ -1,0 +1,4 @@
+{"facade_stone_village": {"src": "facade_stone_village", "boxes": [[102, 102, 410, 336], [614, 102, 922, 336]]},
+ "facade_pyrenean": {"src": "facade_pyrenean", "boxes": [[126, 112, 388, 314], [638, 112, 900, 314]]},
+ "facade_barn": {"src": "facade_pyrenean", "boxes": [[338, 128, 730, 512]]},
+ "facade_eixample": {"src": "facade_eixample", "fill": 0.35, "join": 31}}

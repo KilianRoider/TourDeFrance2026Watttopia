@@ -247,10 +247,10 @@ jobs:
               esac
             done
             if [ "$waitworld" = 1 ]; then
-              # Software rendering builds a large world slowly: wait for the renderer's "world ready" line,
-              # then give it a few frames to draw.
+              # Software rendering builds a large world slowly, and its first full frame can take 20 s: wait
+              # for the renderer's "world drawn" line (logged after glFinish), then a few more frames.
               local waited=0
-              until timeout 20 adb logcat -d -s WorldView:I 2>/dev/null | grep -q "world ready"; do
+              until timeout 20 adb logcat -d -s WorldView:I 2>/dev/null | grep -q "world drawn"; do
                 [ "$waited" -ge "$wait" ] && { note="$note world not ready after ${wait}s;"; break; }
                 sleep 3; waited=$(( waited + 3 ))
               done

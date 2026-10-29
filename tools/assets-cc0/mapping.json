@@ -1,0 +1,86 @@
+{
+ "asphalt_fresh": {
+  "src": "asphalt_fresh"
+ },
+ "asphalt_polish": {
+  "src": "asphalt_polish"
+ },
+ "asphalt_worn": {
+  "src": "asphalt_worn"
+ },
+ "bark_oak": {
+  "src": "bark_oak"
+ },
+ "bark_pine": {
+  "src": "bark_pine"
+ },
+ "cobbles_pave": {
+  "src": "cobbles_pave"
+ },
+ "field_ploughed": {
+  "src": "field_ploughed"
+ },
+ "forest_floor": {
+  "src": "forest_floor"
+ },
+ "grass_alpine": {
+  "src": "grass_alpine"
+ },
+ "grass_dry": {
+  "src": "grass_dry"
+ },
+ "grass_meadow": {
+  "src": "grass_meadow"
+ },
+ "gravel_shoulder": {
+  "src": "gravel_shoulder"
+ },
+ "kerb_concrete": {
+  "src": "kerb_concrete"
+ },
+ "mud_wetland": {
+  "src": "mud_wetland"
+ },
+ "pavers_stone": {
+  "src": "pavers_stone"
+ },
+ "pine_needles": {
+  "src": "pine_needles"
+ },
+ "rock_granite": {
+  "src": "rock_granite"
+ },
+ "rock_limestone": {
+  "src": "rock_limestone"
+ },
+ "rock_schist": {
+  "src": "rock_schist"
+ },
+ "roof_flat_tiles": {
+  "src": "roof_flat_tiles"
+ },
+ "roof_roman_tiles": {
+  "src": "roof_roman_tiles"
+ },
+ "roof_slate": {
+  "src": "roof_slate"
+ },
+ "roof_zinc": {
+  "src": "roof_zinc"
+ },
+ "sand_beach": {
+  "src": "sand_beach"
+ },
+ "scree": {
+  "src": "scree"
+ },
+ "snow": {
+  "src": "snow"
+ },
+ "soil_dirt": {
+  "src": "soil_dirt"
+ },
+ "vineyard_soil": {
+  "src": "vineyard_soil"
+ }
+}

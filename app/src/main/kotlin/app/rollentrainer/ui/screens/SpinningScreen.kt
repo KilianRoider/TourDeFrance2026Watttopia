@@ -92,6 +92,7 @@ import app.rollentrainer.core.model.Timeline
 import app.rollentrainer.ride.RideState
 import app.rollentrainer.ride.SpinningAudio
 import app.rollentrainer.ui.LocalWide
+import app.rollentrainer.ui.components.EndRideButton
 import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.theme.Metric
 import app.rollentrainer.ui.theme.zoneColorAt
@@ -208,10 +209,10 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
                         Modifier.weight(0.58f).fillMaxHeight().verticalScroll(rememberScrollState()),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        StudioHeader(s, settings.zoneScheme, ftp, onStandardView, compact = true)
+                        StudioHeader(s, settings.zoneScheme, ftp, onEnd, compact = true)
                         SegmentCard(s, color, targetPct, scale * 0.8f, Modifier.fillMaxWidth(), compact = true)
                         Tiles(s, track, playing, musicEnabled, bpm, compact = true)
-                        Controls(container, audio, s, musicEnabled, onStandardView, onEnd, compact = true)
+                        Controls(container, audio, s, musicEnabled, onStandardView, compact = true)
                     }
                 }
                 narrow -> Column(
@@ -220,7 +221,7 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
                 ) {
                     // Phone in portrait: the ring is the hero, the segment reads as one wide card, the
                     // riders only come along when the phone is tall enough.
-                    StudioHeader(s, settings.zoneScheme, ftp, onStandardView, compact = true)
+                    StudioHeader(s, settings.zoneScheme, ftp, onEnd, compact = true)
                     PowerRing(s.displayPower, target, color, accent, clock.seconds, liveBpm, mood, scale, Modifier.weight(1f).fillMaxWidth())
                     SegmentCard(s, color, targetPct, scale * 0.85f, Modifier.fillMaxWidth(), compact = true)
                     if (ridersInPortrait) {
@@ -228,13 +229,13 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
                     }
                     Tiles(s, track, playing, musicEnabled, bpm, compact = true)
                     CoachBanner(coachLine, s, accent, scale * 0.8f, minHeight = 44.dp)
-                    Controls(container, audio, s, musicEnabled, onStandardView, onEnd, compact = true)
+                    Controls(container, audio, s, musicEnabled, onStandardView, compact = true)
                 }
                 else -> Column(
                     Modifier.fillMaxSize().padding(horizontal = 16.dp, vertical = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    StudioHeader(s, settings.zoneScheme, ftp, onStandardView, compact = false)
+                    StudioHeader(s, settings.zoneScheme, ftp, onEnd, compact = false)
                     if (wide) {
                         Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                             Riders(s.live.cadence, e.targetCadence, accent, rim, standing, e.paused, clock.seconds, liveBpm, Modifier.weight(0.28f).fillMaxHeight())
@@ -253,7 +254,7 @@ fun SpinningScreen(container: AppContainer, audio: SpinningAudio, onStandardView
                         Tiles(s, track, playing, musicEnabled, bpm, compact = false)
                     }
                     CoachBanner(coachLine, s, accent, scale)
-                    Controls(container, audio, s, musicEnabled, onStandardView, onEnd, compact = false)
+                    Controls(container, audio, s, musicEnabled, onStandardView, compact = false)
                 }
             }
         }
@@ -523,7 +524,7 @@ private fun LightShow(clock: FloatState, palette: Palette, mood: Int, bpm: Int, 
 }
 
 @Composable
-private fun StudioHeader(s: RideState, scheme: ZoneScheme, ftp: Int, onStandardView: () -> Unit, compact: Boolean) {
+private fun StudioHeader(s: RideState, scheme: ZoneScheme, ftp: Int, onEnd: () -> Unit, compact: Boolean) {
     val e = s.engine
     val status = when {
         e.workoutSec == 0.0 && e.paused -> "Tritt in die Pedale, dann geht's los"
@@ -559,6 +560,9 @@ private fun StudioHeader(s: RideState, scheme: ZoneScheme, ftp: Int, onStandardV
                     maxLines = 2, modifier = Modifier.weight(1f, fill = false).padding(start = 12.dp),
                 )
             }
+            // Fixed in the header: in the button row it scrolled off a phone screen.
+            Spacer(Modifier.width(12.dp))
+            EndRideButton(onEnd, enabled = !e.finished, compact = compact)
         }
         val tl = s.timeline
         if (tl != null) {
@@ -885,7 +889,6 @@ private fun Controls(
     s: RideState,
     musicEnabled: Boolean,
     onStandardView: () -> Unit,
-    onEnd: () -> Unit,
     compact: Boolean,
 ) {
     val session = container.session
@@ -906,10 +909,9 @@ private fun Controls(
         StudioButton("Nächster Titel", Icons.Default.MusicNote, enabled = on) { audio.nextTrack() }
         StudioButton(if (musicEnabled) "Musik aus" else "Musik an", if (musicEnabled) Icons.Default.VolumeOff else Icons.Default.VolumeUp, enabled = on) { audio.toggleMusic() }
         StudioButton("Normale Ansicht", Icons.Outlined.GridView, enabled = on, onClick = onStandardView)
-        StudioButton("Beenden", Icons.Default.Stop, enabled = on, onClick = onEnd)
     }
     if (compact) {
-        // One line that scrolls sideways: wrapped, the nine buttons would take four lines of a phone.
+        // One line that scrolls sideways: wrapped, the eight buttons would take four lines of a phone.
         Row(
             Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(8.dp),

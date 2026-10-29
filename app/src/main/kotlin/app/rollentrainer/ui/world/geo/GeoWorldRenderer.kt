@@ -281,6 +281,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
     /** [timeSec] without the hourly wrap (s), for the cloud drift. */
     private var clockSec = 0.0
     private var shadowOn = true
+    private var drawnLogged = false
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         // Names of the old context mean nothing now (deleting them would hit new objects).
@@ -399,6 +400,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         if (!ready) {
             if (checkReady(sc)) {
                 ready = true
+                drawnLogged = false
                 camera.invalidate()
                 updateCamera(sc, 0.0)
                 // The emulator screenshot workflow waits for this line before it takes a picture.
@@ -436,6 +438,13 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         drawSky()
         GLES30.glBindVertexArray(0)
         groundTris = frameGroundTris
+        if (!drawnLogged) {
+            // The first full frame can take many seconds on a software GPU (the emulator): the screenshot
+            // workflow waits for this line, after the GPU has really finished the frame.
+            GLES30.glFinish()
+            drawnLogged = true
+            Log.i("WorldView", "world drawn: ${sc.route.id}")
+        }
     }
 
     // =============================================================================================

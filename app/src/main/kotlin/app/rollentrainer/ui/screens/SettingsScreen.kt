@@ -64,6 +64,7 @@ import app.rollentrainer.data.SavedSensor
 import app.rollentrainer.data.SensorRole
 import app.rollentrainer.ui.blePermissions
 import app.rollentrainer.ui.components.CameraSwitch
+import app.rollentrainer.ui.components.PictureSettings
 import app.rollentrainer.ui.components.ConnectionDot
 import app.rollentrainer.ui.components.Panel
 import app.rollentrainer.ui.components.SectionTitle
@@ -356,6 +357,13 @@ private fun RoutesPanel(settings: AppSettings, update: ((AppSettings) -> AppSett
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         Spacer(Modifier.height(8.dp))
+        Text("Bild der 3D-Welt", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(top = 8.dp))
+        Text(
+            "Auch während der Fahrt über „Bild“ im aufgeklappten Panel, dann siehst du jede Änderung sofort.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        PictureSettings(settings, update)
         Text("Kamera", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(top = 8.dp))
         Spacer(Modifier.height(8.dp))
         CameraSwitch(

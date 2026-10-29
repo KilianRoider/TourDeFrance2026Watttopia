@@ -128,6 +128,13 @@ data class AppSettings(
     val ambience: Boolean = true,
     /** Ambience level 0..100; its own slider, so the crowd can sit under the signals or the rider's music. */
     val ambienceVolume: Int = 80,
+    /** Picture of the 3D world, in percent (100 = as designed): exposure, contrast, colour, ground and road detail. */
+    val gfxExposure: Int = 100,
+    val gfxContrast: Int = 100,
+    val gfxSaturation: Int = 100,
+    val gfxDetail: Int = 100,
+    /** Photographed sky (HDRI) instead of the computed one. */
+    val gfxPhotoSky: Boolean = true,
 ) {
     val autoPauseSeconds: Double get() = if (autoPause) autoPauseSec.coerceIn(1, 30).toDouble() else 0.0
 }

@@ -13,9 +13,9 @@ import kotlin.math.min
 
 /** Quality and memory settings by screen class (phones get smaller textures and radii). */
 internal class GeoQuality(val phone: Boolean) {
-    val groundSize = if (phone) 256 else 512
+    val groundSize = if (phone) 512 else 1024
     /** Ground normal maps at half the albedo size on a tablet: 20 layers, ~21 MB saved, invisible past a few metres. */
-    val groundNormalSize = 256
+    val groundNormalSize = if (phone) 256 else 512
     val roadSize = if (phone) 512 else 1024
     val objectTexSize = if (phone) 256 else 512
     val shadowSize = if (phone) 1024 else 2048

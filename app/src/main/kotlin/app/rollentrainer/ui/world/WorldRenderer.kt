@@ -51,6 +51,16 @@ class FrameState {
     @Volatile var playerKit = 0
     /** Local clock time (CEST) for the sun of the geodata renderer; Tour stages finish mid-afternoon. */
     @Volatile var timeOfDayH = 16.0
+    /**
+     * The rider's picture settings for the geodata renderer (Settings, "Bild"): exposure, contrast and
+     * saturation as factors (1 = neutral), [detail] scales the structure of the ground and road textures,
+     * [photoSky] shows the photographed sky instead of the computed one.
+     */
+    @Volatile var exposure = 1f
+    @Volatile var contrast = 1f
+    @Volatile var saturation = 1f
+    @Volatile var detail = 1f
+    @Volatile var photoSky = true
 }
 
 /**

@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -40,6 +41,7 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.AlertDialog
@@ -96,6 +98,8 @@ import app.rollentrainer.ride.RideState
 import app.rollentrainer.ride.RoadSurface
 import app.rollentrainer.ui.components.CameraSwitch
 import app.rollentrainer.ui.components.EndRideButton
+import app.rollentrainer.ui.components.PictureSettings
+import app.rollentrainer.ui.components.applyPicture
 import app.rollentrainer.ui.components.formatDuration
 import app.rollentrainer.ui.world.FrameState
 import app.rollentrainer.ui.world.WorldCache
@@ -238,6 +242,9 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
     }
 
     val gear by container.session.gear.collectAsStateWithLifecycle()
+    // Picture settings reach the renderer through the frame state; the "Bild" card changes them live.
+    LaunchedEffect(settings) { frame.applyPicture(settings) }
+    var pictureOpen by rememberSaveable { mutableStateOf(false) }
     // The metrics panel at the bottom opens and closes. Null until the rider chooses, so the default follows
     // the screen: closed on a phone (portrait or landscape), where the open panel would hide much of the
     // road; open on a tablet. Saveable, so turning the device keeps the choice.
@@ -346,7 +353,23 @@ fun RouteRideScreen(container: AppContainer, onFinished: (rideId: String?) -> Un
                     onShiftDown = { container.session.shiftDown() },
                     onShiftUp = { container.session.shiftUp() },
                     onCamera = setCamera,
+                    onPicture = { pictureOpen = !pictureOpen },
                 )
+            }
+            if (pictureOpen && gl3) {
+                // Over the road, without a scrim: the effect of every slider shows behind it at once.
+                Column(
+                    Modifier.align(Alignment.TopStart).padding(top = 64.dp, start = 12.dp).widthIn(max = 360.dp)
+                        .heightIn(max = maxHeight * 0.75f)
+                        .background(Color(0xE0101418), RoundedCornerShape(12.dp))
+                        .verticalScroll(rememberScrollState()).padding(horizontal = 14.dp, vertical = 10.dp),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Bild", color = Color.White, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+                        TextButton(onClick = { pictureOpen = false }) { Text("Fertig") }
+                    }
+                    PictureSettings(settings, container.settings::update, onLive = { frame.applyPicture(it) }, textColor = Color.White)
+                }
             }
         }
     }
@@ -536,6 +559,7 @@ private fun MetricsPanel(
     onShiftDown: () -> Unit,
     onShiftUp: () -> Unit,
     onCamera: (Boolean) -> Unit,
+    onPicture: () -> Unit,
 ) {
     val valueSp = when {
         short -> 20f
@@ -629,6 +653,11 @@ private fun MetricsPanel(
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
                     if (showCamera) {
+                        FilledTonalButton(onClick = onPicture, modifier = Modifier.align(Alignment.CenterVertically)) {
+                            Icon(Icons.Default.Tune, null)
+                            Spacer(Modifier.width(6.dp))
+                            Text("Bild")
+                        }
                         CameraSwitch(settings.firstPersonView, onCamera, Modifier.align(Alignment.CenterVertically), compact = true, onDark = true)
                     }
                     Text(

@@ -608,9 +608,20 @@ internal class Vegetation(private val j: TileJob) {
                             rnd.chance(if (south) 0.45f else 0.3f) -> "scn_poppies"
                             else -> "scn_flowers"
                         }
-                        dry && j.reg.has("scn_grass_dry") && rnd.chance(0.7f) -> "scn_grass_dry"
-                        // Mixed sizes: many small tufts, a good share of medium ones, a few tall clumps.
-                        else -> rnd.f().let { r -> if (r < 0.45f) "scn_grass_s" else if (r < 0.82f) "scn_grass" else "scn_grass_l" }
+                        else -> {
+                            // Mixed sizes: many small tufts, a good share of medium ones, a few tall clumps,
+                            // some dry ones and weeds; each in one of several scanned variants.
+                            val r = rnd.f()
+                            val prefix = when {
+                                dry && rnd.chance(0.6f) -> PlantSet.GRASS_DRY
+                                r < 0.08f -> PlantSet.WEED
+                                r < 0.14f -> PlantSet.GRASS_DRY
+                                r < 0.52f -> PlantSet.GRASS_SMALL
+                                r < 0.86f -> PlantSet.GRASS
+                                else -> PlantSet.GRASS_TALL
+                            }
+                            prefix + rnd.int(PlantSet.variants(prefix))
+                        }
                     }
                     val sc = if (id == "scn_fern") rnd.range(0.7f, 1.2f) else rnd.range(0.55f, 1.5f) * (if (o < 1.2) 0.85f else 1f)
                     j.out.put(id, x, y, z - 0.03, rnd.angle(), sc, InstanceStore.tint(rnd, 0.16f, 0.08f), rnd.f())

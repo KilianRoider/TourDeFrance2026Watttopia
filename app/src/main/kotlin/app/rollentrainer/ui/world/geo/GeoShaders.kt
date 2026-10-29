@@ -385,7 +385,7 @@ void main() {
             if (wsum > 0.0) {
                 vec3 lw = vec3(0.2126, 0.7152, 0.0722);
                 vec3 own = photo / wsum * (dot(sat, lw) / max(dot(photoMean / wsum, lw), 0.01));
-                float nearW = 0.7 * (1.0 - smoothstep(20.0, 110.0, dist));
+                float nearW = 0.9 * (1.0 - smoothstep(25.0, 140.0, dist));
                 albedo = mix(albedo, own * macro * hue, nearW);
                 // Cavity: the gaps between blades and stones are dark, the tips catch the light. Without it
                 // the near ground is one flat green.

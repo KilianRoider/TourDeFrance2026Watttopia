@@ -570,10 +570,13 @@ internal class Vegetation(private val j: TileJob) {
                 val free = j.ground.freeAt(i, side > 0)
                 val offs = j.ground.offsets(i)
                 val reach = if (offs != null && free > 0) offs[min(free, offs.size) - 1].toDouble() + 5.0 else 6.0
-                val n = if (town) 3 else 13
+                val n = if (town) 4 else 75
                 for (k in 0 until n) {
-                    // Most tufts right at the edge where the mower does not reach, fewer further out.
-                    val o = 0.35 + rnd.d() * rnd.d() * min(reach, 16.0)
+                    // Most tufts right at the edge where the mower does not reach, fewer further out; a
+                    // quarter spread evenly over the meadow beyond, so it reads as grass and not as a
+                    // painted slope. Every eighth spot gets a stone instead.
+                    val far = rnd.chance(0.25f)
+                    val o = if (far) 0.35 + rnd.d() * min(reach, 34.0) else 0.35 + rnd.d() * rnd.d() * min(reach, 26.0)
                     val along = rnd.sym(2.6f)
                     val nx = -dy * side
                     val ny = dx * side
@@ -588,20 +591,67 @@ internal class Vegetation(private val j: TileJob) {
                     // No weeds on town pavements: in towns only where the cover is green.
                     if (town && (cover == LandCover.BUILT || cover == LandCover.ROAD)) continue
                     val z = j.ground.at(x, y, h)
+                    if (rnd.chance(if (cover == LandCover.BARE) 0.3f else 0.12f)) {
+                        // Stones: mostly fist-sized, now and then one the size of a football or more.
+                        val pid = "scn_pebble_${p.rock.removePrefix("rock_")}_${rnd.int(3)}"
+                        if (!j.reg.has(pid)) continue
+                        val s = 0.06f + 0.34f * rnd.f() * rnd.f() * rnd.f()
+                        j.out.put(pid, x, y, z - 0.3 * s, rnd.angle(), s, InstanceStore.tint(rnd, 0.12f, 0.03f), 0f)
+                        continue
+                    }
                     val alpine = z > p.treeline - 300
                     val id = when {
                         cover == LandCover.TREE && rnd.chance(0.35f) && !dry -> "scn_fern"
                         cover == LandCover.BARE && rnd.chance(0.5f) -> continue
-                        rnd.chance(0.16f) -> when {
+                        rnd.chance(0.12f) -> when {
                             alpine && j.reg.has("scn_flowers_alpine") -> "scn_flowers_alpine"
                             rnd.chance(if (south) 0.45f else 0.3f) -> "scn_poppies"
                             else -> "scn_flowers"
                         }
-                        dry && j.reg.has("scn_grass_dry") && rnd.chance(0.7f) -> "scn_grass_dry"
-                        else -> "scn_grass"
+                        else -> {
+                            // Mixed sizes: many small tufts, a good share of medium ones, a few tall clumps,
+                            // some dry ones and weeds; each in one of several scanned variants.
+                            val r = rnd.f()
+                            val prefix = when {
+                                dry && rnd.chance(0.6f) -> PlantSet.GRASS_DRY
+                                r < 0.08f -> PlantSet.WEED
+                                r < 0.14f -> PlantSet.GRASS_DRY
+                                r < 0.52f -> PlantSet.GRASS_SMALL
+                                r < 0.86f -> PlantSet.GRASS
+                                else -> PlantSet.GRASS_TALL
+                            }
+                            prefix + rnd.int(PlantSet.variants(prefix))
+                        }
                     }
-                    val sc = if (id == "scn_fern") rnd.range(0.7f, 1.2f) else rnd.range(0.65f, 1.35f) * (if (o < 1.2) 0.8f else 1f)
-                    j.out.put(id, x, y, z - 0.03, rnd.angle(), sc, InstanceStore.tint(rnd, 0.14f, 0.07f), rnd.f())
+                    val sc = if (id == "scn_fern") rnd.range(0.7f, 1.2f) else rnd.range(0.55f, 1.5f) * (if (o < 1.2) 0.85f else 1f)
+                    j.out.put(id, x, y, z - 0.03, rnd.angle(), sc, InstanceStore.tint(rnd, 0.16f, 0.08f), rnd.f())
+                }
+                // The open meadow beyond the verge (and behind the crowd): tufts and weeds scattered evenly out
+                // to 45 m, so a field next to the road is grass and not a green lawn. Only on grass, scrub and
+                // bare land; crops, gardens and woods keep their own cover.
+                if (!town) for (k in 0 until 40) {
+                    val o = 2.0 + rnd.d() * 43.0
+                    val along = rnd.sym(2.6f)
+                    val x = x0 + -dy * side * (hw + o) + dx * along
+                    val y = y0 + dx * side * (hw + o) + dy * along
+                    if (!j.inTile(x, y)) continue
+                    val cover = j.landCover(x, y)
+                    if (cover != LandCover.GRASS && cover != LandCover.SHRUB && cover != LandCover.BARE && cover != LandCover.MOSS) continue
+                    if (cover == LandCover.BARE && rnd.chance(0.6f)) continue
+                    if (j.roads.edgeDistance(x, y) < 0.6 || j.blocked.get(x, y)) continue
+                    val h = j.routeHit(x, y) ?: continue
+                    val z = j.ground.at(x, y, h)
+                    val r = rnd.f()
+                    val prefix = when {
+                        dry && rnd.chance(0.6f) -> PlantSet.GRASS_DRY
+                        r < 0.07f -> PlantSet.WEED
+                        r < 0.15f -> PlantSet.GRASS_DRY
+                        r < 0.5f -> PlantSet.GRASS_SMALL
+                        r < 0.85f -> PlantSet.GRASS
+                        else -> PlantSet.GRASS_TALL
+                    }
+                    j.out.put(prefix + rnd.int(PlantSet.variants(prefix)), x, y, z - 0.03, rnd.angle(), rnd.range(0.6f, 1.5f),
+                        InstanceStore.tint(rnd, 0.16f, 0.08f), rnd.f())
                 }
             }
         }

@@ -156,10 +156,13 @@ internal class TerrainBuilder(
         val blockMin = FloatArray(16) { Float.MAX_VALUE }
         val blockMax = FloatArray(16) { -Float.MAX_VALUE }
         val nrm = ByteArray(n * n * 3)
+        val vis = sunVisibility(h, hs)
         for (r in 0 until n) for (c in 0 until n) {
             val dx = ((hAt(c + 1, r) - hAt(c - 1, r)) / (2 * s)).toFloat()
             val dz = ((hAt(c, r + 1) - hAt(c, r - 1)) / (2 * s)).toFloat()
-            val l = sqrt(dx * dx + 1 + dz * dz)
+            // The normal's length carries the baked sun visibility (TERRAIN_FS): 1 in the sun, 0.55 in the
+            // shadow of a ridge.
+            val l = sqrt(dx * dx + 1 + dz * dz) / (0.55f + 0.45f * vis[r * n + c])
             val o = (r * n + c) * 3
             nrm[o] = packNormal(-dx / l); nrm[o + 1] = packNormal(1 / l); nrm[o + 2] = packNormal(-dz / l)
         }
@@ -201,6 +204,66 @@ internal class TerrainBuilder(
             key, ax, az, tile.toFloat(), buf, total, corridorIdx, blockMin, blockMax, blockMin.min(), blockMax.max(),
             image, imageSize, lc?.classes, lc?.cells ?: 0, side, bytes,
         )
+    }
+
+    /** Towards the sun in route coordinates (x east, y north) and the tangent of its elevation. */
+    private val sun: DoubleArray by lazy {
+        // The renderer's clock (WorldRenderer.timeOfDayH) stays at 16:00, so the shadows can be baked.
+        val d = SunPosition.direction(pack.meta.projection.lat0, pack.meta.projection.lon0, 16.0)
+        val hl = sqrt(d[0] * d[0] + d[2] * d[2]).coerceAtLeast(1e-6)
+        doubleArrayOf(d[0] / hl, -d[2] / hl, d[1] / hl)
+    }
+
+    /**
+     * Cast shadows of the terrain on itself, per grid vertex: 1 in the sun, 0 behind a ridge, soft in
+     * between. A ray towards the sun is marched over the height tiles of this LOD (coarser ones further out)
+     * for up to 9 km; the shadow map only reaches some 100 m, so without this the far slopes are lit even
+     * where a mountain stands between them and the sun.
+     */
+    private fun sunVisibility(h: HeightTile, hs: FloatArray): FloatArray {
+        val n = TerrainGrid.N
+        val out = FloatArray(n * n) { 1f }
+        val (sx, sy, tanE) = Triple(sun[0], sun[1], sun[2])
+        if (tanE <= 0.0) { out.fill(0f); return out }
+        val s = h.spacingM
+        val lods = pack.meta.lods.map { it.lod }.filter { it >= h.key.lod }.sorted()
+        var cached: HeightTile? = null
+        fun terrainAt(x: Double, y: Double, minLod: Int): Double? {
+            cached?.let { t ->
+                if (t.key.lod >= minLod && x >= t.originX && x <= t.originX + t.sizeM && y >= t.originY && y <= t.originY + t.sizeM) return t.heightAt(x, y)
+            }
+            for (l in lods) {
+                if (l < minLod) continue
+                val tm = pack.lod(l).tileM
+                val t = heights.get(TileKey(l, floor(x / tm).toInt(), floor(y / tm).toInt())) ?: continue
+                cached = t
+                return t.heightAt(x, y)
+            }
+            return null
+        }
+        // Penumbra: a ray that clears the terrain by less than 4 % of its length is partly shadowed.
+        val soft = 0.04
+        val coarseFrom = s * 120
+        for (r in 0 until n) for (c in 0 until n) {
+            val x0 = h.originX + c * s
+            val y0 = h.originY + h.sizeM - r * s
+            val z0 = hs[r * n + c] + 1.0
+            var t = s * 1.5
+            var v = 1.0
+            while (t < 9000.0) {
+                val minLod = if (t > coarseFrom) h.key.lod + 1 else h.key.lod
+                val z = terrainAt(x0 + sx * t, y0 + sy * t, minLod) ?: terrainAt(x0 + sx * t, y0 + sy * t, h.key.lod) ?: break
+                val clear = z0 + t * tanE - z
+                v = min(v, 0.5 + clear / (t * soft * 2))
+                if (v <= 0.0) break
+                // Above Mont Blanc nothing can shade any more.
+                if (z0 + t * tanE > 4810.0) break
+                // Steps grow with the distance: a far ridge needs less precision than a near one.
+                t += s * 0.75 + t * 0.06
+            }
+            out[r * n + c] = v.coerceIn(0.0, 1.0).toFloat()
+        }
+        return out
     }
 
     private fun packNormal(v: Float): Byte = (v * 127f).coerceIn(-127f, 127f).toInt().toByte()

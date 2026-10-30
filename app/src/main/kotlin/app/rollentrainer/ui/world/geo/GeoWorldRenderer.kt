@@ -298,7 +298,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
             GeoGl.init()
             // A new context: everything on the GPU is gone. Programs now, the world streams in again.
             terrainProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_FS, mapOf("uSat" to 0, "uLc" to 1, "uGround" to 2, "uGroundN" to 3, "uNoise" to 4, "uShadow" to 5))
-            terrainFarProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_FAR_FS, mapOf("uSat" to 0, "uShadow" to 5))
+            terrainFarProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_FAR_FS, mapOf("uSat" to 0, "uNoise" to 4, "uShadow" to 5))
             terrainCutProg = GeoProgram(GeoShaders.TERRAIN_VS, GeoShaders.TERRAIN_CUT_FS, mapOf("uSat" to 0, "uLc" to 1, "uGround" to 2, "uGroundN" to 3, "uNoise" to 4, "uShadow" to 5))
             roadProg = GeoProgram(GeoShaders.ROAD_VS, GeoShaders.ROAD_FS, mapOf("uGround" to 2, "uGroundN" to 3, "uNoise" to 4, "uShadow" to 5, "uRoad" to 6, "uRoadN" to 7))
             objectProg = GeoProgram(GeoShaders.OBJECT_VS, GeoShaders.OBJECT_FS, mapOf("uShadow" to 5, "uAlbedo" to 8, "uNormalMap" to 9))
@@ -424,6 +424,8 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         prepareRiders(sc, dt)
         prepareVehicles(sc, dt)
         frameTris = (riders?.triangles() ?: 0L) * (if (shadowOn) 2 else 1)
+        val nowMs = SystemClock.uptimeMillis()
+        if (drawnLogged && nowMs - budgetLogMs > 10_000) { budgetLogDue = true; budgetLogMs = nowMs }
         frameGroundTris = 0L
         if (shadowOn) drawShadows()
         GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0)
@@ -1399,6 +1401,7 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
                         val part = parts[pi]
                         debugDraws[0]++
                         tris += part.mesh.indexCount / 3L * n
+                        if (budgetLogDue) debugProtoTris[g.proto.id] = (debugProtoTris[g.proto.id] ?: 0L) + part.mesh.indexCount / 3L * n
                         setMaterial(prog, part.material)
                         part.mesh.drawInstanced(n)
                     }
@@ -1417,7 +1420,17 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
         // Road paint and finish lines bias their depth themselves (MaterialGpu.decal, set in setMaterial).
         for (i in 0 until sceneryList.size) drawChunkMeshes(prog, sceneryList[i], cx, cz, maxD, shadowPass)
         for (i in 0 until dressList.size) drawChunkMeshes(prog, dressList[i], cx, cz, maxD, shadowPass)
-        if (!shadowPass) objectTris = frameTris
+        if (!shadowPass) {
+            objectTris = frameTris
+            if (budgetLogDue) {
+                // Where the object triangles go (logcat, for the screenshot runs): the LOD bias coarsens
+                // every prototype, spectators included, once the total is over the budget.
+                val top = debugProtoTris.entries.sortedByDescending { it.value }.take(10).joinToString { "${it.key}=${it.value / 1000}k" }
+                Log.i("WorldView", "budget: objects ${objectTris / 1000}k of ${objectBudget() / 1000}k, ground ${groundTris / 1000}k, lod bias $lodBias; main pass: $top")
+                debugProtoTris.clear()
+                budgetLogDue = false
+            }
+        }
         GLES30.glDisable(GLES30.GL_POLYGON_OFFSET_FILL)
         GLES30.glEnable(GLES30.GL_CULL_FACE)
     }
@@ -1528,6 +1541,9 @@ class GeoWorldRenderer(val frame: FrameState, private val context: Context) : GL
 
     /** GPU bytes of each object texture (with mipmaps), for the preview's report. */
     internal val debugObjectTex = HashMap<String, Int>()
+    private val debugProtoTris = HashMap<String, Long>()
+    private var budgetLogDue = false
+    private var budgetLogMs = 0L
 
     /** Prototype parts drawn in the main pass of the last frame: "id/lod" to (parts, instances). Not for the GL loop. */
     internal fun debugProtoDraws(): Map<String, IntArray> {

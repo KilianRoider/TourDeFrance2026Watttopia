@@ -154,8 +154,29 @@ internal object PlantSet {
     private val cache = ConcurrentHashMap<String, Prototype>()
     private fun get(id: String, make: () -> Prototype): Prototype = cache.getOrPut(id, make)
 
-    val grass get() = get("scn_grass") { PlantProtos.grass("scn_grass", PlantAtlas.GRASS, 0.75f, 0.55f) }
-    val grassDry get() = get("scn_grass_dry") { PlantProtos.grass("scn_grass_dry", PlantAtlas.GRASS_DRY, 0.8f, 0.6f) }
+    /**
+     * Photo-scanned tufts ([MeadowAtlas]) in several variants per size, so neighbouring tufts differ:
+     * ids [GRASS_SMALL]k, [GRASS]k, [GRASS_TALL]k, [GRASS_DRY]k, [WEED]k with k < the list's size.
+     */
+    const val GRASS_SMALL = "scn_grass_s"
+    const val GRASS = "scn_grass_m"
+    const val GRASS_TALL = "scn_grass_l"
+    const val GRASS_DRY = "scn_grass_dry"
+    const val WEED = "scn_weed"
+    private fun meadow(prefix: String, cells: List<UvRect>, size: Float, maxDist: Float, cards: Int = 3) =
+        cells.mapIndexed { k, r -> get("$prefix$k") { PlantProtos.meadow("$prefix$k", r, size, maxDist, cards) } }
+    val grassSmall get() = meadow(GRASS_SMALL, MeadowAtlas.GREEN, 0.38f, 22f, cards = 2)
+    val grass get() = meadow(GRASS, MeadowAtlas.GREEN, 0.7f, 34f)
+    val grassTall get() = meadow(GRASS_TALL, MeadowAtlas.TALL + MeadowAtlas.GREEN.take(3), 1.1f, 45f, cards = 4)
+    val grassDry get() = meadow(GRASS_DRY, MeadowAtlas.DRY, 0.8f, 34f)
+    val weeds get() = meadow(WEED, MeadowAtlas.WEEDS, 0.55f, 28f, cards = 2)
+    fun variants(prefix: String) = when (prefix) {
+        GRASS_SMALL, GRASS -> MeadowAtlas.GREEN.size
+        GRASS_TALL -> MeadowAtlas.TALL.size + 3
+        GRASS_DRY -> MeadowAtlas.DRY.size
+        WEED -> MeadowAtlas.WEEDS.size
+        else -> 1
+    }
     val flowers get() = get("scn_flowers") { PlantProtos.grass("scn_flowers", PlantAtlas.FLOWERS, 0.7f, 0.5f, 40f) }
     val poppies get() = get("scn_poppies") { PlantProtos.grass("scn_poppies", PlantAtlas.POPPIES, 0.7f, 0.6f, 40f) }
     val alpineFlowers get() = get("scn_flowers_alpine") { PlantProtos.grass("scn_flowers_alpine", PlantAtlas.ALPINE_FLOWERS, 0.6f, 0.35f, 40f) }
@@ -178,24 +199,32 @@ internal object PlantSet {
         val id = "scn_boulder_${texture.removePrefix("rock_")}_$k"
         return get(id) { PlantProtos.boulder(id, texture, 1000L + k * 17 + Hash.str(texture), 1.0f) }
     }
+    fun pebble(texture: String, k: Int): Prototype {
+        val id = "scn_pebble_${texture.removePrefix("rock_")}_$k"
+        return get(id) { PlantProtos.pebble(id, texture, 2000L + k * 29 + Hash.str(texture)) }
+    }
 
     fun forRegions(profiles: List<RegionProfile>): List<Prototype> {
         val out = ArrayList<Prototype>()
         out += grass
+        out += grassSmall
+        out += grassTall
+        out += grassDry
+        out += weeds
         out += flowers
         out += poppies
         out += fern
         out += hedge
         out += bale
         out += shrub
-        if (profiles.any { it.shrubKind == 1 || it.style == RegionStyle.SOUTH_WEST }) { out += grassDry; out += garrigue }
+        if (profiles.any { it.shrubKind == 1 || it.style == RegionStyle.SOUTH_WEST }) out += garrigue
         if (profiles.any { it.shrubKind == 2 }) out += gorse
         if (profiles.any { it.treeline < 2500f }) { out += rhodo; out += alpineFlowers }
         if (profiles.any { (it.crops[Crop.MAIZE] ?: 0f) > 0f }) out += maize
         if (profiles.any { (it.crops[Crop.SUNFLOWER] ?: 0f) > 0f }) out += sunflower
         if (profiles.any { (it.crops[Crop.LAVENDER] ?: 0f) > 0f }) out += lavender
         for (p in profiles) out += vine(p.vineRowM)
-        for (tex in profiles.map { it.rock }.toSet()) for (k in 0 until 3) out += boulder(tex, k)
+        for (tex in profiles.map { it.rock }.toSet()) for (k in 0 until 3) { out += boulder(tex, k); out += pebble(tex, k) }
         return out.distinctBy { it.id }
     }
 }

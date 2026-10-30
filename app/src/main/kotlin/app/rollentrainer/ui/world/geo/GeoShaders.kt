@@ -97,7 +97,8 @@ vec3 shade(vec3 albedo, vec3 n, vec3 v, float rough, float ao, float shadow, flo
     float nl = max(dot(n, l), 0.0);
     float hemi = 0.5 + 0.5 * n.y;
     vec3 ambient = (uSkyAmb.rgb * hemi + uGroundAmb.rgb * (1.0 - hemi)) * ao;
-    vec3 diffuse = uSunColor.rgb * (nl * shadow);
+    // Cavities stay a little dark in the sun too, so normal and AO maps still read in full light.
+    vec3 diffuse = uSunColor.rgb * (nl * shadow * mix(1.0, ao * ao, 0.6));
     vec3 h = normalize(l + v);
     float nh = max(dot(n, h), 0.0);
     float nv = max(dot(n, v), 0.001);
@@ -181,12 +182,12 @@ in float vAlt;
 in float vRoadDist;
 uniform sampler2D uSat;
 uniform float uSatGain;
+uniform sampler2D uNoise;
 #ifndef FAR
 uniform highp usampler2D uLc;
 uniform float uLcCells;
 uniform highp sampler2DArray uGround;
 uniform highp sampler2DArray uGroundN;
-uniform sampler2D uNoise;
 uniform int uClassLayer[16];
 uniform vec3 uLayerMean[24];
 uniform float uLayerSize[24];
@@ -280,6 +281,8 @@ void main() {
         }
     }
 #endif
+    // TerrainBuilder bakes the ridges' cast shadows into the normal's length (1 lit, 0.55 shadowed).
+    float sunVis = clamp((length(vNormal) - 0.55) / 0.43, 0.0, 1.0);
     vec3 gn = normalize(vNormal);
     float dist = length(vRel);
     vec3 v = -vRel / max(dist, 0.001);
@@ -332,6 +335,9 @@ void main() {
         float wsum = 0.0;
         float rsum = 0.0;
         float aosum = 0.0;
+        float hsum = 0.0;
+        vec3 photo = vec3(0.0);
+        vec3 photoMean = vec3(0.0);
         for (int i = 0; i < 4; i++) {
             if (w[i] < 0.02 || ls[i] < 0) continue;
             vec4 nrm;
@@ -339,8 +345,11 @@ void main() {
             // Height-based blending: grass grows over the gravel, stones poke through.
             float wh = w[i] * (0.25 + a.a * 1.5);
             detail += wh * a.rgb / uLayerMean[ls[i]];
+            photo += wh * a.rgb;
+            photoMean += wh * uLayerMean[ls[i]];
             dn += wh * vec3(nrm.xy, 0.0);
             aosum += wh * nrm.z;
+            hsum += wh * a.a;
             rsum += wh * nrm.w;
             wsum += wh;
         }
@@ -373,6 +382,18 @@ void main() {
             vec4 nzL = texture(uNoise, vWorld / 150.0);
             vec3 hue = mix(vec3(0.95, 1.0, 1.0), vec3(1.07, 1.0, 0.84), smoothstep(0.3, 0.7, nzL.g));
             albedo = sat * mix(vec3(1.0), detail * macro * hue, fade);
+            // Close to the rider the 10 m satellite colour is a blur: there the photo keeps its own colours
+            // (green blades, yellow straw, brown soil), only its brightness follows the satellite.
+            if (wsum > 0.0) {
+                vec3 lw = vec3(0.2126, 0.7152, 0.0722);
+                vec3 own = photo / wsum * (dot(sat, lw) / max(dot(photoMean / wsum, lw), 0.01));
+                float nearW = 0.9 * (1.0 - smoothstep(25.0, 140.0, dist));
+                albedo = mix(albedo, own * macro * hue, nearW);
+                // Cavity: the gaps between blades and stones are dark, the tips catch the light. Without it
+                // the near ground is one flat green.
+                float hgt = clamp(hsum / wsum, 0.0, 1.0);
+                albedo *= mix(1.0, 0.5 + 0.6 * hgt, (1.0 - smoothstep(10.0, 45.0, dist)) * clamp(uGrade.w, 0.0, 1.5) * 0.8);
+            }
             n = normalize(gn + vec3(dn.x, 0.0, -dn.y) * 0.6 * fade);
         }
         // Rock on steep slopes: biplanar projection so cliffs are not smeared.
@@ -407,10 +428,34 @@ void main() {
     // crowns that shadow each other are below its resolution, so it reads too bright and flat when lit.
 #ifdef FAR
     albedo *= 0.8;
+    float farK = 1.0;
 #else
     albedo *= mix(1.0, 0.8, smoothstep(uDetailFar * 0.5, uDetailFar, dist));
+    float farK = smoothstep(uDetailFar * 0.4, uDetailFar, dist);
 #endif
-    float shadow = shadowAt(vRel, gn);
+    if (farK > 0.0) {
+        // Mountains far away: the 10 m imagery is smooth, so add what the eye expects of a slope seen from
+        // afar. Patchy brightness on two scales (periods divide the 1200 m texture wrap), bare grey rock with
+        // strata where it is steep, and darker gullies.
+        vec4 m1 = texture(uNoise, vWorld / 400.0);
+        vec4 m2 = texture(uNoise, vWorld / 100.0);
+        float slopeF = 1.0 - gn.y;
+        float patchy = 0.8 + 0.4 * (m1.r * 0.55 + m2.g * 0.45);
+        float lumA = dot(albedo, vec3(0.2126, 0.7152, 0.0722));
+        float rk = smoothstep(0.28, 0.55, slopeF + (m2.b - 0.5) * 0.2);
+        float strata = 1.0 + 0.16 * sin(vAlt / 9.0 + m1.g * 6.0) * rk;
+        vec3 rockC = vec3(lumA) * vec3(1.06, 1.03, 0.98) * 1.25 * strata;
+        vec3 farCol = mix(albedo * patchy, rockC * (0.85 + 0.3 * m2.r), rk * 0.65);
+        farCol *= 1.0 - 0.25 * smoothstep(0.45, 0.8, slopeF) * (1.0 - m2.a);
+        albedo = mix(albedo, farCol, farK * uGrade.w);
+        // Relief the 10-90 m height grid smooths away: ribs and gullies on two scales, stronger on steep
+        // ground, so the sun draws light and dark across a far slope instead of one even gradient.
+        vec2 g1 = (texture(uNoise, vWorld / 300.0).rg - 0.5) * 2.0;
+        vec2 g2 = (texture(uNoise, vWorld / 75.0).ba - 0.5) * 2.0;
+        vec2 rel = (g1 * 0.55 + g2 * 0.35) * (0.35 + 0.9 * smoothstep(0.1, 0.5, slopeF)) * farK * min(uGrade.w, 1.5);
+        n = normalize(n + vec3(rel.x, 0.0, rel.y) * 0.45);
+    }
+    float shadow = min(shadowAt(vRel, gn), mix(1.0, sunVis, smoothstep(40.0, 120.0, dist)));
     vec3 col = shade(albedo, n, v, rough, ao, shadow, spec);
 #ifndef FAR
     if (water > 0.01) {
@@ -531,6 +576,7 @@ void main() {
     vec4 nrm;
     vec2 tuv;
     float specScale = 1.0;
+    float puddle = 0.0;
     float aa = max(fwidth(across), 0.004) * 0.75;
     if (kind == 0 || kind == 1) {
         // Asphalt: the region's base mix, with large patches of older and repaired surface.
@@ -599,6 +645,54 @@ void main() {
         nrm = vec4(na.xy * 2.0 - 1.0, na.zw);
         nrm.w = mix(nrm.w, 0.5, seam);
         if (kind == 0) {
+            // Mottling on a metre and several-metre scale: real asphalt is never one grey, and at a rider's
+            // eye height the fine chippings average out, so this is what makes the surface read as road.
+            float k = clamp(uGrade.w, 0.0, 2.0);
+            float mott = texture(uNoise, vWorld / 6.0).r * 0.55 + texture(uNoise, vWorld / 1.5).g * 0.45;
+            albedo *= 1.0 + (mott - 0.5) * 0.55 * k;
+            // The asphalt photo once more at a quarter of its scale (8 m): binder-rich darker and dry lighter
+            // areas in the mid distance, where the fine chippings have long merged into one grey.
+            vec3 big = texture(uRoad, vec3(uv1 * 0.25 + vec2(0.13, 0.71), layer)).rgb * gainOf(layer);
+            albedo *= mix(vec3(1.0), clamp(big / max(avgA, vec3(0.01)), 0.6, 1.5), 0.55 * min(k, 1.5));
+            // Surfaces of different age along the road (every 40 to 120 m): a little warmer and lighter or
+            // cooler and darker, as where one resurfacing job ended and the next began.
+            vec4 nzA = texture(uNoise, vec2(u / 120.0, 0.5));
+            albedo *= mix(vec3(1.0), mix(vec3(0.9, 0.9, 0.92), vec3(1.1, 1.07, 1.02), smoothstep(0.3, 0.7, nzA.r)), min(k, 1.0));
+            // An oily darker strip in the middle of each lane, between the wheel tracks.
+            float lc = (abs(abs(across) - hw * 0.5)) / 0.45;
+            albedo *= 1.0 - 0.14 * k * exp(-lc * lc) * smoothstep(1.0, 2.0, hw);
+            // Worn, dusty edges: the last half metre is lighter and rougher, ragged towards the verge.
+            float edge = hw - abs(across) + (nz.g - 0.5) * 0.5;
+            float wornE = (1.0 - smoothstep(0.1, 0.7, edge)) * k;
+            albedo = mix(albedo, albedo * 1.25 + vec3(0.03, 0.028, 0.022), clamp(wornE, 0.0, 1.0) * 0.6);
+            nrm.xy *= 1.0 + wornE * 0.8;
+            // Crumbled edge: here and there the last decimetres have broken away and the gravel of the
+            // shoulder shows through, with a ragged outline.
+            float rag = hw - abs(across) - 0.05 - 0.45 * smoothstep(0.55, 0.85, texture(uNoise, vec2(u / 11.0, across / 11.0)).b)
+                + (texture(uNoise, vWorld / 1.25).r - 0.5) * 0.18;
+            float broken = 1.0 - smoothstep(-0.02, 0.02, rag);
+            if (broken > 0.0) {
+                vec2 gv = tuv / uGravelSize.x;
+                vec4 ga = texture(uGround, vec3(gv, uGroundIdx.z));
+                vec4 gnr = texture(uGroundN, vec3(gv, uGroundIdx.z));
+                albedo = mix(albedo, ga.rgb * uGroundGain.z * 0.85, broken);
+                nrm = mix(nrm, vec4(gnr.xy * 2.0 - 1.0, gnr.zw), broken);
+            }
+            // Puddles: in one 19 m cell of four a flat dark pool near the edge, ragged outline, wet rim.
+            float pc = floor(u / 19.0);
+            if (hash1(pc + 3.3) < 0.12 && dist < 120.0) {
+                float pu = pc * 19.0 + 3.0 + hash1(pc + 8.1) * 12.0;
+                float pa = (hash1(pc + 5.7) < 0.5 ? -1.0 : 1.0) * (hw - 0.55 - hash1(pc + 2.2) * 0.9);
+                float pl = 0.4 + hash1(pc + 9.9) * 0.9;
+                float pw = 0.25 + hash1(pc + 4.4) * 0.3;
+                vec2 q = vec2((u - pu) / pl, (across - pa) / pw);
+                float r = length(q) + (texture(uNoise, vWorld / 2.0).b - 0.5) * 0.7;
+                float aaP = max(fwidth(r), 0.01);
+                puddle = 1.0 - smoothstep(1.0 - aaP, 1.0 + aaP, r);
+                float rim = (1.0 - smoothstep(1.0, 1.45, r)) * (1.0 - puddle);
+                albedo *= 1.0 - 0.35 * rim;
+                nrm.w = mix(nrm.w, 0.3, rim);
+            }
             // Tyre tracks: two smoother, darker bands per lane; the crown between them a little lighter.
             float lane = hw * 0.5;
             float t1 = (abs(abs(across) - lane) - 0.75) / 0.28;
@@ -654,7 +748,7 @@ void main() {
         nrm = vec4(0.0, 0.0, 1.0, 0.9);
         specScale = 0.3;
     }
-    float fadeN = 1.0 - smoothstep(25.0, 140.0, dist);
+    float fadeN = 1.0 - smoothstep(40.0, 200.0, dist);
     vec3 n = perturb(gn, vRel, tuv, nrm.xy, fadeN * 0.8 * clamp(uGrade.w * 1.5, 0.0, 2.0));
     float shadow = shadowAt(vRel, gn);
     if (kind == 6) shadow = 0.0;
@@ -663,6 +757,15 @@ void main() {
     shadow *= 1.0 - vDark;
     float ao = mix(1.0, nrm.z, 0.8) * (1.0 - 0.75 * vDark);
     vec3 col = shade(albedo, n, v, clamp(nrm.w, 0.25, 1.0), ao, shadow, specScale);
+    if (puddle > 0.0) {
+        // Standing water: a dark body and a mirror of the sky, strong at the grazing angles a rider sees.
+        float fr = 0.02 + 0.98 * pow(1.0 - max(dot(gn, v), 0.0), 5.0);
+        vec3 rd = reflect(-v, gn);
+        vec3 refl = skyColor(normalize(vec3(rd.x, max(rd.y, 0.02), rd.z)));
+        vec3 wet = albedo * 0.25 * (uSkyAmb.rgb + uSunColor.rgb * 0.3 * shadow);
+        vec3 pc = mix(wet, refl * 0.75, clamp(fr * 1.2, 0.0, 0.65)) + uSunColor.rgb * pow(max(dot(reflect(-uSunDir.xyz, gn), v), 0.0), 400.0) * 4.0 * shadow;
+        col = mix(col, pc, puddle);
+    }
     fragColor = finalColor(atmosphere(col, vRel));
 }
 """

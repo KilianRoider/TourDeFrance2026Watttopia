@@ -40,6 +40,27 @@ internal object PlantAtlas {
     val WOOD = cell(3, 3)
 }
 
+/**
+ * Ground cover rendered from Poly Haven's scanned plant models (CC0, tools/assets-cc0/tufts.py): 4 x 4
+ * square cells, each a tuft standing on the cell's bottom edge with transparent space above it.
+ */
+internal object MeadowAtlas {
+    const val TEXTURE = "scn_meadow"
+    private fun cell(k: Int): UvRect {
+        val g = UvRect.grid(k % 4, k / 4, 4, 4)
+        val e = 0.002f
+        return UvRect(g.u0 + e, g.v0 + e, g.u1 - e, g.v1 - e)
+    }
+    /** Green clumps, small to large (grass_medium_01 / 02, bermuda). */
+    val GREEN = listOf(0, 1, 2, 4, 5, 6, 7).map(::cell)
+    /** Tall grass with seed heads. */
+    val TALL = listOf(3, 4).map(::cell)
+    /** Dry and half dry clumps. */
+    val DRY = listOf(8, 9, 10, 11).map(::cell)
+    /** Dandelions and broad-leaved weeds. */
+    val WEEDS = listOf(12, 13, 14, 15).map(::cell)
+}
+
 internal object PlantProtos {
     private val mat: SceneMaterial get() = Mats.foliage(PlantAtlas.TEXTURE)
     private val WHITE = floatArrayOf(1f, 1f, 1f)
@@ -78,9 +99,18 @@ internal object PlantProtos {
         return mb
     }
 
-    fun grass(id: String, rect: UvRect, w: Float, h: Float, maxDist: Float = 45f): Prototype {
-        val mb = clump(rect, w, h, 3, 0.18f, 0.6f, Hash.str(id))
+    fun grass(id: String, rect: UvRect, w: Float, h: Float, maxDist: Float = 45f, cards: Int = 3): Prototype {
+        val mb = clump(rect, w, h, cards, 0.18f + 0.04f * (cards - 3), 0.6f, Hash.str(id))
         return Prototype(id, listOf(ProtoLod(listOf(mat to mb.build()), maxDist)), max(w, h))
+    }
+
+    /**
+     * A tuft from [MeadowAtlas]: [n] crossed square cards of edge [size] (the cell keeps the model's
+     * real proportions, so the card is square and the tuft fills it from the bottom).
+     */
+    fun meadow(id: String, rect: UvRect, size: Float, maxDist: Float, cards: Int = 3): Prototype {
+        val mb = clump(rect, size, size, cards, 0.08f, 0.5f, Hash.str(id), darkBase = 0.85f)
+        return Prototype(id, listOf(ProtoLod(listOf(Mats.groundCover(MeadowAtlas.TEXTURE) to mb.build()), maxDist)), size)
     }
 
     fun fern(): Prototype {
@@ -308,6 +338,12 @@ internal object PlantProtos {
         }
         val m = Mats.rock(texture)
         return Prototype(id, listOf(ProtoLod(listOf(m to build(1).build()), 120f), ProtoLod(listOf(m to build(0).build()), 700f)), size * 1.1f)
+    }
+
+    /** A small stone for verges and meadows: the boulder shape, low-poly, only drawn close by. */
+    fun pebble(id: String, texture: String, seed: Long): Prototype {
+        val b = boulder(id, texture, seed, 1.0f)
+        return Prototype(id, listOf(ProtoLod(b.lods.last().parts, 28f)), 1.1f)
     }
 
     private fun icosphere(subdiv: Int): Pair<List<Vec3>, List<IntArray>> {

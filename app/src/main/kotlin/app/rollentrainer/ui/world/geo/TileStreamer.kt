@@ -2,6 +2,7 @@ package app.rollentrainer.ui.world.geo
 
 import android.content.res.AssetManager
 import android.util.Log
+import app.rollentrainer.ui.world.geo.scenery.MeadowAtlas
 import app.rollentrainer.core.geo.GeoLayer
 import app.rollentrainer.core.geo.TileKey
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -175,7 +176,12 @@ internal class TileStreamer(
             }
             is ObjectTextureJob -> {
                 // Atlases with lettering (signs, road writing) need more pixels than a bark or facade repeat.
-                val max = if (job.name.startsWith("race_") || job.name.startsWith("decal_")) quality.objectTexSize * 2 else quality.objectTexSize
+                // The ground-cover atlas holds 16 photo-scanned tufts; they stand right next to the camera.
+                val max = when {
+                    job.name == MeadowAtlas.TEXTURE -> quality.objectTexSize * 4
+                    job.name.startsWith("race_") || job.name.startsWith("decal_") -> quality.objectTexSize * 2
+                    else -> quality.objectTexSize
+                }
                 val tex = runCatching {
                     if (TownSigns.isSign(job.name)) TownSigns.render(job.name, quality.objectTexSize / 2)
                     else Materials.decodeObject(assets, job.name, max)

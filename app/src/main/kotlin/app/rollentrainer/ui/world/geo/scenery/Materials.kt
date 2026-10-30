@@ -22,6 +22,15 @@ internal object Mats {
     }
 
     /**
+     * Ground-cover tufts: like [foliage], but without shadows. Thousands of them stand along the road and
+     * their shadow is lost in the grass anyway; casting them would cost the spectators their detail under
+     * the triangle budget.
+     */
+    fun groundCover(atlas: String): SceneMaterial = get(atlas) {
+        SceneMaterial(key = atlas, texture = atlas, alphaCutout = true, doubleSided = true, roughness = 0.85f, anim = Anim.WIND, castsShadow = false)
+    }
+
+    /**
      * Opaque textured surfaces of buildings (tiling facade / roof textures). One material per
      * texture: the renderer gives a texture to the materials that exist when it arrives, so a second
      * key for the same texture would stay untextured. Its roughness is therefore the texture's

@@ -33,6 +33,12 @@ internal class InstanceAssembler {
         val lodBias: Float = 1f,
     )
 
+    /**
+     * The triangle budget's LOD bias at [dist] metres: none within 15 m, the full bias from 40 m. Close by
+     * every triangle shows (a spectator next to the road with a box for a head), far away hardly any.
+     */
+    private fun biasAt(bias: Float, dist: Float): Float = 1f + (bias - 1f) * ((dist - 15f) / 25f).coerceIn(0f, 1f)
+
     class Bucket(val protoId: String, val lod: Int, val data: FloatArray, val count: Int, val nearCount: Int)
 
     /**
@@ -98,7 +104,8 @@ internal class InstanceAssembler {
                 // that, at the block's largest scale, is past the last LOD.
                 val ex = maxOf(0f, b[0] + ox, -(b[2] + ox))
                 val ez = maxOf(0f, b[1] + oz, -(b[3] + oz))
-                if (sqrt(ex * ex + ez * ez) / maxOf(0.5f, b[4]) * s.lodBias > maxD) continue
+                val bd = sqrt(ex * ex + ez * ez)
+                if (bd / maxOf(0.5f, b[4]) * biasAt(s.lodBias, bd) > maxD) continue
                 val d = set.data
                 for (i in 0 until set.count) {
                     val o = i * InstanceSet.FLOATS
@@ -106,7 +113,7 @@ internal class InstanceAssembler {
                     val dh2 = rx * rx + rz * rz
                     val dist = sqrt(dh2 + ry * ry)
                     val scale = d[o + 4]
-                    val lodDist = dist / maxOf(0.5f, scale) * s.lodBias
+                    val lodDist = dist / maxOf(0.5f, scale) * biasAt(s.lodBias, dist)
                     if (lodDist > maxD) continue
                     val r = info.radius * scale
                     if (dist > 60f + r) {
